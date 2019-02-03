@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>body{font-family:sans-serif; font-size:93.75%}</style>
+<title>Save the miner, a javascript HTML5 game</title>
+<body>
+<div style="position:absolute; top:10px; left:430px; width:300px;">
+<p id="help">
+Your mission is to find a smart path to lead the blue miner to the surface.<br><br>
+
+Use arrow keys to move or (WASD). <br>
+Press Ctrl and arrow keys (WASD) to dig in a direction.<br><br>
+If you collect <span id="nblock"></span> blocks of dirt you can create a new block at your position.
+This will help you to guide the miner out of here.
+</p>
+<p id="difficulty">Diffilcutly <a href="?easy=1" id="easy">easy</a>, <a href="?hard=1" id="hard">hard</a></p>
+<p id="digged" ></p>
+<p id="win" style="display:none">Congratulations, you saved the miner! <a href="">Wanna replay?</a></p>
+
+</div>
+<canvas id="bg" width="730" height="410" style="border:2px #eee solid;padding:10px;"></canvas>
+<p style="color:#999">Provided by <a href="http://batiste.info/">Batiste Bieler</a></p>
+<script>
+function get(id){return document.getElementById(id)}
+function gets(tag){return document.getElementsByTagName(tag)}
+
+var bg = get("bg");
+
+difficulty = "easy";
+block_required = 10;
+if(document.location.search.search("hard") == 1) {
+    difficulty = "hard";
+    get('hard').style['fontSize'] = '1.3em';
+    block_required = 20;
+} else {
+    get('easy').style['fontSize'] = '1.3em'
+}
+get('nblock').innerHTML = block_required
+
+grid = [];
+
+for(var y=0; y<40; y++) {
+    grid[y] = [];
+    for(var x=0; x<40; x++) {
+        if(x==20 && y < 35 && !(y < 20 && y >16))
+            grid[y][x] = 0;//sky
+        else {
+            if(y<8) {
+                grid[y][x] = 0;//sky
+            }else{
+                grid[y][x] = 1;//dirt
+                var rand = Math.random();
+                if(difficulty == "hard") {
+                    if(rand>0.75)
+                        grid[y][x] = 2;// hard dirt
+                } else {
+                    if(rand>0.83)
+                        grid[y][x] = 2;// hard dirt
+                }
+            }
+        }
+    }
+}
+
+// the cave
+grid[35][21] = 0
+grid[35][20] = 0
+grid[35][19] = 0
+grid[35][18] = 0
+
+grid[36][21] = 0
+grid[36][20] = 0
+grid[36][19] = 0
+grid[36][18] = 0
+
+// some randomness
+
+function funnels(size){
+    var rx = Math.floor(Math.random() * 16) + 2
+    var ry = Math.floor(Math.random() * 22) + 8
+    for(y=0; y<size; y++) {
+        grid[ry+y][rx] = 0;
+    }
+    var rx = Math.floor(Math.random() * 16) + 22
+    var ry = Math.floor(Math.random() * 22) + 8
+    for(y=0; y<size; y++) {
+        grid[ry+y][rx] = 0;
+    }
+}
+if(difficulty=="easy") {
+    funnels(8)
+    funnels(8)
+    funnels(8)
+    funnels(6)
+    funnels(6)
+    funnels(4)
+    funnels(4)
+}
+if(difficulty=="hard") {
+    funnels(8)
+    funnels(8)
+    funnels(6)
+    funnels(6)
+    funnels(6)
+    funnels(6)
+    funnels(6)
+    funnels(6)
+    funnels(6)
+    funnels(4)
+    funnels(4)
+    funnels(4)
+    funnels(4)
+}
+
+
+var ctx = bg.getContext("2d");
+ctx.fillStyle   = '#000';
+ctx.strokeStyle = '#000';
+ctx.lineWidth   = 1;
+ctx.strokeStyle = "#000";
+ctx.stroke();
+
+function rec(x, y) {
+    ctx.fillRect(x*10, y*10, 10, 10);
+}
+
+var keyboard = {'up':0, 'left':0, 'right':0, 'down':0};
+function update_keyboard(e, val) {
+    if(e.keyCode==40 || e.keyCode==83) {
+        keyboard['down'] = val;
+    }
+    if(e.keyCode==38 || e.keyCode==87) {
+        keyboard['up'] = val;
+    }
+    if(e.keyCode==39 || e.keyCode==68) {
+        keyboard['right'] = val;
+    }
+    if(e.keyCode==37 || e.keyCode==65) {
+        keyboard['left'] = val;
+    };
+    if(e.keyCode==32 || e.keyCode==17) {
+        keyboard['space'] = val;
+    }
+    if(e.keyCode==13) {
+        keyboard['enter'] = val;
+    }
+};
+
+function used_key(e) {
+    if(e.keyCode==40 || e.keyCode==83 ||
+       e.keyCode==38 || e.keyCode==87 ||
+       e.keyCode==39 || e.keyCode==68 ||
+       e.keyCode==37 || e.keyCode==65 ||
+       e.keyCode==32 || e.keyCode==17 ||
+       e.keyCode==13 || e.charCode==100 ||
+       e.charCode==119 || e.charCode==115 ||
+       e.charCode==97) {
+        return true;
+    }
+}
+
+document.onkeydown = function(e) {
+    update_keyboard(e, 1);
+    //if(used_key(e))
+    //    return false;
+};
+document.onkeyup = function(e) {
+    update_keyboard(e, 0);
+    //if(used_key(e))
+    //    return false;
+};
+document.onkeypress = function(e) {
+    if(used_key(e))
+        return false;
+};
+
+win = false;
+
+player = {}
+player.x = 19
+player.y = 35
+player.y_velocity = 0;
+player.x_velocity = 0;
+
+miner = {}
+miner.x = 21
+miner.y = 35
+miner.y_velocity = 0;
+miner.x_velocity = 0;
+
+digged = 0;
+var del = get('digged');
+function upd(d) {
+    if(!d)
+        d = 1;
+    digged += d;
+    var str = 'You have ' + digged + ' blocks of dirt.'
+    if (digged>=block_required)
+        str += '<br><b>Press enter to build a block of dirt.</b>'
+    del.innerHTML = str;
+}
+
+
+function collision(y, x) {
+    y = Math.floor(y);
+    if(y < 0) y =  0;
+    if(y > 39) y = 39;
+    var b = grid[Math.floor(y)][Math.floor(x)];
+    return b == 1 || b == 2;
+}
+
+for(var y=0; y<40; y++) {
+    for(var x=0; x<40; x++) {
+        if(grid[y][x]==0) {
+            ctx.fillStyle = '#ddf';
+        }
+        if(grid[y][x]==1) {
+            ctx.fillStyle = '#563';
+        }
+        if(grid[y][x]==2) {
+            ctx.fillStyle = '#243';
+        }
+        rec(x,y)
+    }
+}
+
+dirty_blocks = {};
+
+function mark_dirty(p) {
+    // mark the 9 blocks around fo redraw
+    var y = Math.floor(p.y);
+    var x = Math.floor(p.x);
+    dirty_blocks[y+','+x] = [y, x]
+    dirty_blocks[y+','+(x+1)] = [y, x+1]
+    dirty_blocks[y+','+(x-1)] = [y, x-1]
+    dirty_blocks[(y-1)+','+x] = [y-1, x]
+    dirty_blocks[(y-1)+','+(x-1)] = [y-1, x-1]
+    dirty_blocks[(y-1)+','+(x+1)] = [y-1, x+1]
+    dirty_blocks[(y+1)+','+x] = [y+1, x]
+    dirty_blocks[(y+1)+','+(x-1)] = [y+1, x-1]
+    dirty_blocks[(y+1)+','+(x+1)] = [y+1, x+1]
+}
+
+function eliminateDuplicates(arr) {
+  var i,
+      len=arr.length,
+      out=[],
+      obj={};
+
+  for (i=0;i<len;i++) {
+    obj[arr[i]]=0;
+  }
+  for (i in obj) {
+    out.push(i);
+  }
+  return out;
+}
+
+win = false;
+
+function break_block(y, x) {
+    var x = Math.floor(x);
+    var y = Math.floor(y);
+    if(y > 38)
+        return
+    if(grid[y][x] == 1) {
+        var xv = (Math.random()-0.5) / 2;
+        var yv = (Math.random()-0.5) / 2;
+        debris.push({"y":y, "x":x, "yv":yv, "xv":xv, "age":1})
+        xv = (Math.random()-0.5) / 2;
+        yv = (Math.random()-0.5) / 2;
+        debris.push({"y":y, "x":x, "yv":yv, "xv":xv, "age":10})
+        xv = (Math.random()-0.5) / 2;
+        yv = (Math.random()-0.5) / 2;
+        debris.push({"y":y, "x":x, "yv":yv, "xv":xv, "age":10})
+        grid[y][x] = 0;
+        upd()
+    }
+}
+
+debris = [];
+
+function paint(tick) {
+
+    ctx.save();
+
+    if(miner.y <= 8 && ! win) {
+        get('win').style['display'] = 'block';
+        win = true;
+    }
+
+    // gravity
+    // this gives more control on the jump height
+    if(keyboard.up)
+        player.y_velocity = player.y_velocity + 0.03;
+    else
+        player.y_velocity = player.y_velocity + 0.06;
+
+    miner.y_velocity = miner.y_velocity + 0.06;
+
+    // clear around the players
+    //ctx.clearRect((player.x * 10) - 10, (player.y * 10) -10, 20, 20);
+    //ctx.clearRect((miner.x * 10) - 10, (miner.y * 10) -10, 20, 20);
+    for(var i=0; i<debris.length; i++) {
+        var debri = debris[i];
+        //ctx.clearRect((debri.x * 10) - 5, (debri.y * 10) - 5, 10, 10);
+        mark_dirty(debri)
+    }
+    mark_dirty(player)
+    mark_dirty(miner)
+
+    ctx.fillStyle = '#563';
+    for(index in dirty_blocks) {
+        var block = dirty_blocks[index];
+        var x = block[1];
+        var y = block[0];
+        if(x>=0 && x<40 && y>=0 && y<40) {
+            if(grid[y][x]==0) {
+                ctx.fillStyle   = '#ddf';
+            }
+            if(grid[y][x]==1) {
+                ctx.fillStyle   = '#563';
+            }
+            if(grid[y][x]==2) {
+                ctx.fillStyle   = '#243';
+            }
+            rec(block[1], block[0]);
+        }
+    }
+    dirty_blocks = {}
+
+    var is_on_the_ground = collision(player.y + 0.1, player.x);
+
+    if(keyboard.enter) {
+
+        if(grid[Math.floor(player.y)][Math.floor(player.x)] == 0 && digged>=block_required) {
+            grid[Math.floor(player.y)][Math.floor(player.x)] = 1;
+            player.y_velocity -= 0.1;
+            if(collision(miner.y, miner.x) && Math.abs(player.y - miner.y) < 1)
+                miner.y = miner.y - 1;
+            player.y = player.y - 1;
+            keyboard.enter = false;
+            upd(-block_required);
+        }
+    }
+
+    if(keyboard.up) {
+        if(collision(player.y + 0.1, player.x))
+            player.y_velocity = -0.36;
+        if(keyboard['space'] && collision(player.y - 0.4, player.x)) {
+            break_block(player.y - 0.4, player.x);
+            player.y_velocity += 0.1;
+        }
+    }
+
+    if(keyboard.left) {
+        player.x_velocity -= 0.05;
+        if(player.x_velocity < -0.2)
+            player.x_velocity = -0.15
+        if(keyboard['space'] && collision(player.y, player.x - 0.2)) {
+            break_block(player.y, player.x-0.2);
+            if(is_on_the_ground)
+                player.x_velocity = 0;
+        }
+    }
+
+    if(keyboard.right) {
+        player.x_velocity += 0.05;
+        if(player.x_velocity > 0.2)
+            player.x_velocity = 0.15
+        if(keyboard['space'] && collision(player.y, player.x + 0.2)) {
+            break_block(player.y, player.x+0.2);
+            if(is_on_the_ground)
+                player.x_velocity = 0;
+        }
+    }
+
+    if(keyboard['space'] && keyboard.down && is_on_the_ground) {
+        break_block(player.y + 0.1, player.x);
+    }
+
+    if(!keyboard.left && !keyboard.right)
+        player.x_velocity = 0;
+
+    // try to move the player
+    if(collision(player.y + player.y_velocity, player.x))
+        player.y_velocity = 0;
+    else
+        player.y += player.y_velocity;
+
+    if(player.y < 0)
+        player.y = 0
+    if(player.y >= 40)
+        player.y = 39
+
+    if(collision(player.y, player.x + player.x_velocity))
+        player.x_velocity = 0;
+    else
+        player.x += player.x_velocity;
+
+    if(player.x <= 2)
+        player.x = 2
+    if(player.x >= 38)
+        player.x = 38
+
+    // try to move miner guy
+    if(player.x - miner.x < 0)
+        miner.x_velocity = -0.08;
+    else
+        miner.x_velocity = 0.08;
+
+    if(Math.abs(player.x - miner.x) < 1)
+        miner.x_velocity = 0;
+
+    if(collision(miner.y + miner.y_velocity, miner.x))
+        miner.y_velocity = 0;
+    else
+        miner.y += miner.y_velocity;
+
+    if(collision(miner.y, miner.x + miner.x_velocity)) {
+        miner.x_velocity = 0;
+        if(collision(miner.y + 0.2, miner.x)) {
+            miner.y_velocity = -0.55;
+        }
+    } else
+        miner.x += miner.x_velocity;
+
+    ctx.fillStyle   = '#22d';
+    rec(miner.x - 0.5, miner.y - 0.9)
+
+    ctx.fillStyle   = '#e00';
+    rec(player.x - 0.5, player.y - 0.9)
+
+    for(var i=0; i<debris.length; i++) {
+        var debri = debris[i];
+        debri.yv = debri.yv + 0.05;
+        if(collision(debri.y + debri.yv, debri.x)) {
+            debri.yv = 0;
+            debri.xv = debri.xv / 1.1;
+        } else {
+            debri.y = debri.y + debri.yv;
+        }
+        if(collision(debri.y, debri.x + debri.xv)) {
+            debri.xv = 0;
+        } else {
+            debri.x = debri.x + debri.xv;
+        }
+        debri.age++;
+        ctx.fillStyle = '#8a8';
+        ctx.fillRect(debri.x*10-2, debri.y*10-3, 3, 3);
+    }
+
+    // cleanup debris
+    for(var i=0; i<debris.length; i++) {
+        var debri = debris[i];
+        if(debri.age > 40) {
+            mark_dirty(debri)
+            debris.splice(i, 1);
+            i--;
+        }
+    }
+
+    ctx.restore();
+
+}
+
+var firstTick = (new Date()).getTime();
+var currentTick = 0;
+var last_tick = 0;
+var new_tick = 0;
+var game_tick = setInterval(function() {
+    currentTick = (new Date()).getTime();
+    last_tick = new_tick;
+    new_tick = Math.round((currentTick - firstTick) / 25);
+    if(last_tick != new_tick) {
+        paint(new_tick);
+    }
+}, 10);
+
+
+</script>

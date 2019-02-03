@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<style>body{font-family:sans-serif; font-size:93.75%;}
+p, body {padding:0; margin:0;}
+canvas {position:absolute;top:50px}
+</style>
+<title>Save the miner, a javascript HTML5 game</title>
+<body>
+
+<p>Brushes: <a href="#sky" id="sky">sky</a>, <a href="#dirt" id="dirt">dirt</a>, <a href="#rock" id="rock">rock</a>.<br>
+An block map editor (24x24), should work on a phone. Use a real image for the rock brush</p>
+<canvas id="bg"></canvas>
+<canvas id="fg"></canvas>
+
+<script>
+function get(id){return document.getElementById(id)}
+function gets(tag){return document.getElementsByTagName(tag)}
+
+var grid_height = 80;
+var grid_width = 50;
+var block_size = 24;
+var brush = 0;
+mouse_down = false;
+mouse_coord = [0, 0];
+
+// background
+var bg = get('bg');
+// foreground
+var fg = get('fg');
+fg.width = bg.width = window.innerWidth;
+fg.height = bg.height = window.innerHeight - 50;
+var rock_img = new Image();
+rock_img.src = "rock.png";
+
+
+fg.ontouchstart = function(event) {
+    mouse_down = true;
+}
+fg.ontouchend = function(event) {
+    mouse_down = false;
+}
+
+fg.onmousedown = function(event) {
+    mouse_down = true;
+    return false;
+}
+fg.onmouseup = function(event) {
+    mouse_down = false;
+}
+
+function coord(event) {
+    var x = Math.floor(event.clientX / block_size);
+    var y = Math.floor((event.clientY - 50) / block_size);
+    return [x, y];
+}
+
+function draw_block_event(event) {
+    var c = coord(event)
+    grid[c[0]][c[1]] = brush;
+    draw_grid_block(c[0], c[1]);
+}
+
+fg.onclick = function(event) {
+    draw_block_event(event)
+}
+fg.onmousemove = function(event) {
+    ctx2.clearRect(mouse_coord[0]*block_size-1, mouse_coord[1]*block_size-1, block_size+2, block_size+2);
+    mouse_coord = coord(event);
+    draw_helper(mouse_coord[0], mouse_coord[1]);
+    if(mouse_down)
+         draw_block_event(event);
+}
+fg.ontouchmove = function(tevent) {
+    if(tevent.touches.length == 1) {
+        event = tevent.touches[0];
+        mouse_coord = coord(event);
+        if(mouse_down)
+            draw_block_event(event);
+    }
+}
+
+get('sky').onclick = function() {
+    brush = 0;
+}
+get('dirt').onclick = function() {
+    brush = 1;
+}
+get('rock').onclick = function() {
+    brush = 2;
+}
+
+grid = [];
+
+for(var x=0; x<grid_width; x++) {
+    grid[x] = [];
+    for(var y=0; y<grid_height; y++) {
+        if(y<8) {
+            grid[x][y] = 0;//sky
+        } else {
+            grid[x][y] = 1;//dirt
+        }
+    }
+}
+
+function init_ctx(ctx) {
+    ctx.fillStyle   = '#000';
+    ctx.lineWidth   = 1;
+    ctx.strokeStyle = "#000";
+    ctx.stroke();
+}
+var ctx = bg.getContext("2d");
+var ctx2 = fg.getContext("2d");
+init_ctx(ctx);
+init_ctx(ctx2);
+
+function draw_helper(x, y) {
+    ctx.strokeStyle = "#f00";
+    ctx2.strokeRect(x*block_size, y*block_size, block_size, block_size);
+}
+
+function draw_player(x, y) {
+    ctx2.strokeStyle = "#00f";
+    ctx2.fillRect(x*block_size, y*block_size, block_size, block_size);
+}
+
+function draw_grid_block(x, y) {
+    if(grid[x][y]==0) {
+        ctx.fillStyle = '#ddf';
+        ctx.fillRect(x*block_size, y*block_size, block_size, block_size);
+    }
+    if(grid[x][y]==1) {
+        ctx.fillStyle = '#563';
+        ctx.fillRect(x*block_size, y*block_size, block_size, block_size);
+    }
+    if(grid[x][y]==2) {
+        ctx.drawImage(rock_img, x*block_size, y*block_size);
+    }
+
+}
+
+for(var x=0; x<grid_width; x++) {
+    for(var y=0; y<grid_height; y++) {
+        draw_grid_block(x, y);
+    }
+}
+
+// game stuff
+
+var p = {};
+p.x = 5;
+p.y = 1;
+p.vx = 0;
+p.vy = 0;
+var gravity = 0.02
+
+function collision(x, y) {
+    y = Math.ceil(y);
+    x = Math.ceil(x);
+    return !(grid[x][y] == 0);
+}
+
+var game_tick = setInterval(function() {
+
+    p.vy=p.vy+gravity;
+
+    ctx2.clearRect(p.x*block_size-1, p.y*block_size-1, block_size+2, block_size+2);
+
+    if(collision(p.x, p.y+p.vy)) {
+        // detected a collision
+        p.y = Math.ceil(p.y+p.vy) - 1;
+        p.vy = 0;
+
+    }
+
+    p.x += p.vx;
+    p.y += p.vy;
+
+    //ctx2.clearRect(0, 0, fg.width, fg.height);
+
+    draw_player(p.x, p.y);
+
+}, 30);
+
+</script>

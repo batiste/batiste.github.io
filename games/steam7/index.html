@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digger</title>
+
+    <meta name = "viewport" content = "user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+
+<body>
+<!-- game stats -->
+<div id="load"></div>
+Sound volume <input id="volume" type="number" min="0" max="1" step="0.1" value="0.0" style="width:4em;">
+<div id="editor"><a href="editor.html">Level editor</a></div>
+
+<!-- a speed dial icon (to be replaced in Barracuda) -->
+<div id="speeddial">
+    <img src="images/speeddial.png" alt="" />
+</div>
+
+</body>
+<script src="js/base64.js"></script>
+<script src="js/common.js"></script>
+<script src="js/sprite.js?3"></script>
+<script src="js/player.js"></script>
+<script src="js/lib/audio.js"></script>
+<script src="js/lib/jsfx.js"></script>
+<script src="js/lib/jsfxlib.js"></script>
+<script>
+
+// global game object
+game = {}
+game.levels = [
+    {name:"Level 1", file:"maps/map1.json"},
+    {name:"Level 2", file:"maps/map2.json"}
+]
+
+game.loadLevel = function(n) {
+    sjs.reset();
+    var s = document.createElement('script');
+    s.src = game.levels[n].file+'?t='+(new Date()).getTime();
+    document.body.appendChild(s);
+    var div = sjs.overlay(10, 10, sjs.w - 60, 50);
+    div.style.padding = '20px';
+    div.innerHTML = '<h1>'+ game.levels[n].name +'</h1>';
+    sjs.dom.appendChild(div);
+    game.level = n;
+    game.levelOverlay = div;
+}
+
+// load the map
+window.onload = function() {
+    // sixe of the window seems to have an impact on performances
+    sjs.init(640, 480);
+
+    var data = queryString('data');
+    if(data) {
+        var data = Base64.decode(data);
+        eval(data);
+    } else {
+        game.loadLevel(0);
+    }
+}
+
+audioLibParams = {
+gold : ["sine",3.0,0.0310,0.0,0.0,0.0330,0.4320,1260.0,1152.0,2208.0,0.7420,1.0,0.0,4.0412,-0.2350,-0.5320,0.0560,0.5310,0.0,0.070,0.0,0.0280,0.060,1.0,-0.6580,0.1010,0.070,-0.930],
+jump: ["saw",1.0,0.0270,0.0210,0.0,3.0,0.6860,178.0,291.0,1226.0,0.2220,0.0240,0.0,2.6974,-0.1583,-0.7620,-0.0640,0.430,0.0,0.070,0.0,0.060,0.0320,1.0,0.9160,0.9790,0.070,0.8460]
+};
+
+audio = jsfxlib.createWaves(audioLibParams);
+var blast = new Audio("media/sounds/blast.ogg");
+var volume = document.getElementById('volume');
+volume.addEventListener("load", function() {setSoundVolume(0);}, false);
+function setSoundVolume(soundVolume) {
+    audio.gold.volume = soundVolume;
+    audio.jump.volume = soundVolume;
+    blast.volume = soundVolume;
+}
+setSoundVolume(0.0);
+var load = document.getElementById('load');
+var mute = document.getElementById('mute');
+var soundMuted = true;
+
+volume.addEventListener("click", function() {
+    if(parseFloat(volume.value)==0)
+        soundMuted = true;
+    if(parseFloat(volume.value)>0)
+        soundMuted = false;
+    setSoundVolume(parseFloat(volume.value));
+    volume.blur();
+}, false);
+
+// callback for the map
+window.buildMap = function(sprites_meta, map) {
+    window.current_map = {}
+    current_map.sprites_meta = sprites_meta;
+    current_map.map = map;
+    sjs.reset();
+    _buildMap(sprites_meta, map.clone(true));
+}
+
+function _buildMap(sprites_meta, map) {
+
+sprite_list = [];
+for(var i=0; i<sprites_meta.length; i++) {
+    sprite_list.push(sprites_meta[i][0]);
+}
+
+// additionnal sprites to load
+sprite_list.push('sprites/bg-jungles.png');
+sprite_list.push('sprites/objects/gold-01.png');
+sprite_list.push('sprites/chars/miner.png');
+game.sprite_list = sprite_list;
+
+sjs.loadImages(sprite_list, function() {
+
+    function game_over() {
+        var div = sjs.overlay(10, 10, sjs.w-60, 50);
+        div.style.padding = '20px';
+        div.innerHTML = "<h1>Game over! Retry?</h1>";
+        var x = 1.0;
+        var y = 1.0;
+        ticker.paint = function() {
+            player.sprite.rotate(0.3);
+            player.sprite.scale(x);
+            x = x + 0.4;
+            y = y - 0.05;
+            player.sprite.setOpacity(y);
+            player.sprite.update();
+            if(y<0)
+                ticker.pause();
+        }
+        div.onclick = function() {
+            ticker.pause();
+            sjs.reset();
+            _buildMap(current_map.sprites_meta, current_map.map.clone());
+            sjs.dom.removeChild(div);
+        }
+        sjs.dom.appendChild(div)
+    }
+
+    function next_level() {
+        ticker.pause();
+        var div = sjs.overlay(10, 10, sjs.w-240, 50);
+        div.style.padding = '20px';
+        if(game.levels.length <= game.level + 1) {
+            div.innerHTML = "<h1>You beat the game! Congratulations!</h1>";
+            div.onclick = function() {
+                game.loadLevel(0);
+                sjs.dom.removeChild(div);
+            }
+        } else {
+            div.innerHTML = "<h1>Level completed! Click for next level!</h1>";
+            div.onclick = function() {
+                game.loadLevel(game.level + 1);
+                sjs.dom.removeChild(div);
+            }
+        }
+        sjs.dom.appendChild(div)
+    }
+
+    if(game.levelOverlay)
+        setTimeout(function() {
+            sjs.dom.removeChild(game.levelOverlay);
+        }, 3000);
+
+    var game_block_width = map.length;
+    var game_block_height = map[0].length;
+    var game_height = map[0].length * 32;
+    var game_width = map.length * 32;
+
+    var montains = sjs.Layer('montains', {useCanvas:false});
+    var montain = sjs.Sprite('sprites/bg-jungles.png', montains);
+    montain.w = game_width;
+    montain.update();
+
+    var background = sjs.Layer('background', {useCanvas:false, w:game_width, h:game_height, autoClear:false});
+    var foreground = sjs.Layer('foregound', {useCanvas:false,  w:game_width, h:game_height});
+
+    var input = sjs.Input();
+
+    // various objects submitted to physic
+    var particles = [];
+    var dynamites = [];
+    var nuggets = [];
+    var crates = [];
+    var deadly = [];
+
+    var dynamic_objects = [];
+    var destructible_objects = [];
+
+    function deleteFromList(list, toDelete) {
+        for(var i=0, el; el = list[i]; i++) {
+            if(el==toDelete) {
+                list.splice(i, 1);
+                return;
+            }
+        }
+    }
+
+    // build the map from the data
+    for(var i=0; i< map.length; i++) {
+        for(var j=0; j < map[0].length; j++) {
+            var infos = sprites_meta[map[i][j]];
+            if(infos) {
+                if(infos[1].dynamic)
+                    var sp = new sjs.Sprite(infos[0], foreground);
+                else
+                    var sp = new sjs.Sprite(infos[0], background);
+                if(infos[1].dynamic) {
+                    dynamic_objects.push(sp);
+                    map[i][j] = [false];
+                }
+                if(infos[1].destructible) {
+                    destructible_objects.push(sp);
+                }
+                if(infos[1].mass) {
+                    sp.mass = infos[1].mass;
+                }
+                if(infos[1].inert) {
+                    map[i][j] = [false];
+                }
+                if(infos[1].deadly) {
+                    deadly.push(sp);
+                }
+                sp.setX(i * 32);
+                sp.setY(j * 32);
+                sp.update();
+            } else {
+                // an empty map cell is a empty array
+                map[i][j] = [false];
+            }
+        }
+    }
+
+    var player = new Player(foreground);
+    game.player = player;
+    dynamic_objects.push(player.sprite);
+
+    var gravity = 1;
+
+    function isPositionAvailable(obj) {
+
+        // detect collision with other dynamic objects
+        if(obj.collidesWithArray(dynamic_objects)) {
+            return false;
+        }
+
+        var x = (obj.x) / 32.0 | 0;
+        var x2 = (obj.x + obj.w - 1) / 32.0 | 0;
+        var y = (obj.y) / 32.0 | 0;
+        var y2 = (obj.y + obj.h - 1) / 32.0 | 0;
+
+        if(obj.x < 0 || obj.y < 0 || y2 >= game_block_height || x2 >= game_block_width)
+            return false;
+
+        return map[x][y][0] === false &&
+            map[x2][y][0] === false &&
+            map[x2][y2][0] === false &&
+            map[x][y2][0] === false;
+    }
+
+    function createParticule(x, y) {
+        if(ticker.load > 50)
+            return;
+        var p = sjs.Sprite(false, foreground);
+        p.move(x, y - 20);
+        var c = 120 * Math.random() | 0;
+        c = 'rgba('+c+','+c+','+c+',1)';
+        p.setColor(c);
+        p.size(Math.max(3, Math.random()*5 | 0), Math.max(3, Math.random()*5) | 0);
+        p.xv = 20 * (Math.random()-0.5);
+        p.yv = -20 * Math.random();
+        particles.push(p);
+    }
+
+    function createGold(x, y) {
+        var p = sjs.Sprite('sprites/objects/gold-01.png', foreground);
+        p.move(x, y - 20);
+        p.xv = 20 * (Math.random()-0.5);
+        p.yv = -20 * Math.random();
+        nuggets.push(p);
+    }
+
+    function paint() {
+
+        player.sprite.applyYVelocity();
+        var xd = player.sprite.x + 16;
+        var yd = player.sprite.y + 32;
+        for(var i=0; i<deadly.length; i++) {
+            var p = deadly[i];
+            if(p.isPointIn(xd, yd))
+                game_over();
+        }
+        player.sprite.reverseYVelocity();
+
+        if(player.sprite.x >= (game_width - 32))
+            next_level();
+
+        // apply velocity effects on dynamic objects
+        for(var i=0; i<dynamic_objects.length; i++) {
+            var p = dynamic_objects[i];
+
+            p.applyXVelocity()
+            if(!isPositionAvailable(p)) {
+                p.reverseXVelocity();
+                p.xv = 0;
+            } else {
+
+            }
+
+            p.yv = p.yv + 0.5;
+            p.applyYVelocity();
+            if(!isPositionAvailable(p)) {
+                p.ycontact = true;
+                p.reverseYVelocity();
+                p.yv = 0.5;
+                p.xv = 0;
+            } else {
+                p.yv = p.yv + 0.5;
+                p.ycontact = false;
+            }
+
+            p.update();
+        }
+
+        if (player.sprite.ycontact) {
+            if(input.keyPressed('up')) {
+                player.sprite.yv -= 9.5;
+                if(!soundMuted) {
+                    audio.jump.load();
+                    audio.jump.play();
+                }
+            }
+        }
+
+        // gives more control over the height of the jump when the up
+        // button stay pressed
+        if (input.keyboard.up && player.sprite.yv < 0) {
+            player.sprite.yv -= 0.45;
+        }
+
+
+        if(input.keyboard.left) {
+            var new_velocity = -4;
+        } else if(input.keyboard.right) {
+            var new_velocity = 4;
+        } else {
+            var new_velocity = 0;
+        }
+
+
+        if(new_velocity < 0)
+            player.direction = -1;
+        if(new_velocity > 0)
+            player.direction = 1;
+
+        player.sprite.xv = new_velocity;
+
+        // pushing dynamic objects, only when on the ground
+        if(player.sprite.ycontact) {
+            player.sprite.applyXVelocity();
+                var obj = player.sprite.collidesWithArray(dynamic_objects);
+                if(obj.mass < 2) {
+                    obj.xv = new_velocity * 0.5;
+                }
+            player.sprite.reverseXVelocity();
+        }
+
+
+        if (input.keyPressed('down')) {
+            player.squat.goto(0);
+        }
+        if (input.keyPressed('right')) {
+            player.moveR.goto(0);
+        }
+        // let him relax
+        if (input.keyReleased('down') || input.keyReleased('right') || input.keyReleased('left')) {
+            player.relax.goto(0);
+        }
+
+        // we should have a status "in the air"
+        if (input.keyboard.up) {
+            if(player.sprite.xv > 0) {
+                player.jumpR.goto(0);
+            }
+            if(player.sprite.xv < 0) {
+                player.jumpL.goto(0);
+            }
+        } else if (input.keyboard.down) {
+            player.squat.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.right) {
+            player.moveR.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.left) {
+            player.moveL.next(ticker.lastTicksElapsed);
+        } else if (player.direction == 1) {
+                player.stand.goto(0);
+        } else if (player.direction == -1) {
+                player.stand.goto(1);
+        } else {
+            player.relax.next(ticker.lastTicksElapsed);
+        }
+
+        if (input.keyPressed('space')) {
+            var sp = sjs.Sprite('sprites/objects/dynamite-01.png', foreground);
+
+            sp.setX(player.sprite.x);
+            sp.setY(player.sprite.y + player.sprite.h - 12);
+            sp.size(24, 12);
+            sp.life = 50;
+            sp.update();
+
+            var tick = new sjs.Cycle([[0, 0, 5],[26, 0, 5]]);
+            tick.sprites = [sp];
+            sp.cycle = tick;
+
+            dynamites.push(sp);
+        }
+
+            // scrolling
+        var scrolling_left = - player.sprite.x + (sjs.w / 2) | 0;
+        if(scrolling_left > 0)
+            scrolling_left = 0;
+        if(scrolling_left < -(game_width - sjs.w))
+            scrolling_left = -(game_width - sjs.w);
+        background.dom.style.left = scrolling_left + 'px';
+        foreground.dom.style.left = scrolling_left + 'px';
+        montains.dom.style.left = (scrolling_left / 2) + 'px';
+
+        var scrolling_top = - player.sprite.y + (sjs.h / 2) | 0;
+        if(scrolling_top > 0)
+            scrolling_top = 0;
+        if(scrolling_top < -(game_height - sjs.h))
+            scrolling_top = -(game_height - sjs.h);
+
+        background.dom.style.top = scrolling_top + 'px';
+        foreground.dom.style.top = scrolling_top + 'px';
+        if(scrolling_top < 0)
+            montains.dom.style.top = (scrolling_top / 2  | 0) + 'px';
+
+
+        // move the other objects
+
+        for(var i=0; i<dynamites.length; i++) {
+            var d = dynamites[i];
+            d.life = d.life - 1;
+            var ctx = background.ctx;
+            if(d.life == 2) {
+                background.dom.style.left = scrolling_left + 5 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left - 5 * Math.random() + 'px';
+                d.remove();
+                d.cycle = null;
+                if(!soundMuted) {
+                    blast.load();
+                    blast.play();
+                }
+            }
+            if(d.life == 1) {
+                background.dom.style.left = scrolling_left - 4 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left + 4 * Math.random() + 'px';
+                for (j=0;j<32;j++) {
+                    createParticule(d.x + d.w/2, d.y + d.h/2);
+                }
+                createGold(d.x + d.w/2, d.y + d.h/2);
+            }
+            if(d.life == 0) {
+                var distance = player.sprite.distance(d.x, d.y);
+                if(distance < 70) {
+                    game_over();
+                }
+
+                var center = d.center();
+                for(var j=0; j<destructible_objects.length; j++) {
+                    var p = destructible_objects[j];
+                    if(p.distance(center[0], center[1]) < 60) {
+                        deleteFromList(dynamic_objects, p);
+                        deleteFromList(destructible_objects, p);
+                        // Remove from the map if the object is not dynamic
+                        var infos = sprites_meta[map[p.x / 32.0 | 0][p.y / 32.0 | 0]];
+                        if(infos && infos[1].destructible)
+                            map[p.x / 32.0 | 0][p.y / 32.0 | 0] = [false]
+                        p.remove();
+                        j--;
+                        continue;
+                    }
+                }
+
+                background.dom.style.left = scrolling_left + 3 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left - 3 * Math.random() + 'px';
+                dynamites.splice(i, 1);
+                i--;
+            }
+        }
+
+        for(var i=0; i<dynamites.length; i++) {
+            var p = dynamites[i];
+            // already removed from the DOM
+            if(p.life < 3)
+                return;
+            p.cycle.next();
+            p.yv = p.yv + gravity;
+            p.applyVelocity();
+            if(!isPositionAvailable(p)) {
+                p.reverseVelocity();
+                p.yv = 0;
+            }
+            p.update();
+        }
+
+        var center = player.sprite.center();
+        for(var i=0; i<nuggets.length; i++) {
+            var p = nuggets[i];
+            // pick up the nuggets if close enough
+            if(p.distance(center[0], center[1]) < 20) {
+                nuggets.splice(i, 1);
+                if(!soundMuted) {
+                    audio.gold.load();
+                    audio.gold.play();
+                }
+                p.remove();
+                i--;
+                continue;
+            }
+            p.yv = p.yv + gravity;
+            p.applyVelocity();
+            if(!isPositionAvailable(p)) {
+                p.reverseVelocity();
+                p.yv = 0;
+                p.xv = 0;
+            }
+            p.update();
+        }
+
+        for(var i=0; i<particles.length; i++) {
+            var p = particles[i];
+            if(isPositionAvailable(p)) {
+                p.xv = p.xv * 0.95;
+                p.yv = p.yv * 0.95;
+                p.applyVelocity();
+                p.yv = p.yv + gravity;
+                p.update();
+            } else {
+                if(p.yv < 0) {
+                    p.yv = 0;
+                    p.xv = p.xv / 1.2;
+                } else {
+                    p.update();
+                    particles.splice(i, 1);
+                    p.remove();
+                    i--;
+                }
+            }
+        }
+
+        if(ticker.currentTick % 10 == 0)
+            load.innerHTML = 'System load: ' + ticker.load + '%';
+        player.sprite.update();
+    };
+
+    var ticker = sjs.Ticker(20, paint);
+    ticker.run();
+
+    });
+};
+</script>
+</html>

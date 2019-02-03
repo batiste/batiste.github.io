@@ -1,0 +1,33 @@
+    /*var test_surface = new srollingSurface(scene, 40, 40, function(layer, rect) {});
+
+    assertEqual(test_surface.neededBlocks(0, 0).length, 16);
+    assertEqual(test_surface.neededBlocks(0, 0)[0], [-1, -1]);
+    assertEqual(test_surface.neededBlocks(0, 0)[15], [2, 2]);
+
+    test_surface.move(-1, -1);
+    assertEqual(test_surface.neededBlocks(0, 0)[0], [-2, -2]);
+    assertEqual(test_surface.neededBlocks(0, 0)[15], [1, 1]);
+    test_surface.move(-20, -20);
+    assertEqual(test_surface.neededBlocks(0, 0)[0], [-2, -2]);
+    assertEqual(test_surface.neededBlocks(0, 0)[15], [1, 1]);
+    test_surface.move(19, 19);
+    assertEqual(test_surface.neededBlocks(0, 0)[0], [-1, -1]);
+    assertEqual(test_surface.neededBlocks(0, 0)[15], [2, 2]);
+
+    assertEqual(test_surface.blockToRender().length, 16);
+    test_surface.rendered_blocks = [{block:[2, 2]}]
+    assertEqual(test_surface.blockToRender().length, 15);
+    test_surface.rendered_blocks.push({block:[1, 1]})
+    assertEqual(test_surface.blockToRender().length, 14);
+    test_surface.rendered_blocks.push({block:[1, 3]})
+    assertEqual(test_surface.blockToRender().length, 14);
+    test_surface.move(80, 80);
+    assertEqual(test_surface.blockToRender().length, 16);
+    test_surface.rendered_blocks.push({block:[4, 4]})
+    assertEqual(test_surface.blockToRender().length, 15);
+
+    test_surface.move(0, 0);
+    test_surface.rendered_blocks = [{block:[-1, 1]}];
+    assertEqual(test_surface.blockToRender().length, 15);
+    test_surface.renderBlocks();
+    assertEqual(test_surface.blockToRender().length, 0);*/

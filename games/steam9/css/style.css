@@ -1,0 +1,42 @@
+body {
+    width:640px;
+    font-family:arial;
+    font-size:11px;
+    margin:0 auto;
+    overflow:hidden;
+    position:relative;
+    text-align:center;
+}
+#status-bar {
+    text-align:left;
+    padding:10px 0;
+}
+#status-bar img {
+    vertical-align:middle;
+}
+
+#status-bar #nb-dynamite {
+    margin-right:4px;
+}
+
+#status-bar .element {
+    margin-right:10px;
+}
+
+#infos {height:20px;width:300px;color:#999;float:left;font-weight:bold;padding-bottom:5px;text-align:left;}
+#retry {width:200px;overflow:hidden;}
+#retry a {background:#ddd;border:#ccc;border-radius:4px;color:#666;font-weight:bold;padding:5px 15px;text-decoration:none;text-shadow:#fff 0 1px 0;text-transform:uppercase;}
+#retry a:hover {background:#ccc;border-color:#aaa;color:#333;}
+#sjs {
+    background:#070c1a;
+    border:1px #666 solid;
+    margin-top:25px;
+    margin-left:-50%;
+    position:absolute;
+    left:50%;
+    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+    -moz-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.4);
+}
+
+#nb-dynamite {width:20px;height:20px;background:url(../images/bg-dynamite.png) 0 0 no-repeat;color:#fff;font-weight:bold;line-height:20px;margin:10px 10px 0 0;padding:3px 30px 4px 16px;position:absolute;right:10px;top:40px;z-index:300;}

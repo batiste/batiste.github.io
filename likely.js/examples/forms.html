@@ -1,0 +1,88 @@
+<html>
+<head>
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/docs.css">
+</head>
+
+<body>
+<div class="container">
+<div class="header">
+</div>
+<div class="row">
+<div class="col-md-6">
+
+<h2>Form elements data binding</h2>
+
+<div id="test"></div>
+
+</div>
+<div class="col-md-6">
+
+<h2>Data</h2>
+
+<pre id="data"></pre>
+
+<h2>Template used</h2>
+
+<pre id="template">select class="form-control" lk-bind="selected"
+  for key, value in list
+    option value={{ key }} \
+  selected={{ key == selected && "selected" }}
+      "Option {{ value }}"
+
+input value={{ selected }} class="form-control"
+textarea class="form-control"
+  {{ selected }}
+
+ol
+  for key, value in list
+    li
+      label
+        input type="checkbox" value="{{ key }}" \
+  lk-bind="selected" \
+  checked={{ key == selected && "checked" }}
+        " checkbox {{ value }}"
+
+ol
+  for key, value in list
+    li
+      label
+        input type="radio" value="{{ key }}" \
+  lk-bind="selected" \
+  checked={{ key == selected  && "checked"}}
+        " radio {{ value }}"
+
+button lk-click={{ save() }} class="btn btn-primary"
+  "Save"</pre>
+</div>
+
+</div>
+</div>
+
+<script src="../dist/likely.js"></script>
+<script src="../lib/jsonfn.js"></script>
+<script>
+  "use strict";
+  var div = document.getElementById('test');
+  var data_dom = document.getElementById('data');
+  var tplStr = document.getElementById('template').textContent;
+
+  var data = {list: {
+      lion:"Lion", 
+      tiger:"Tiger", 
+      penguin:"Penguin"
+    },
+    selected:"lion", save:function() {
+      data.checkData = true;
+      alert(data.selected);
+    }};
+  var tpl = likely.Template(tplStr);
+  data_dom.innerHTML = likely.escape(JSON.stringify(data, null, 2));
+  var binding = new likely.Binding(div, tpl, data);
+  binding.init();
+
+  div.addEventListener("dataViewChanged", function() {
+    document.getElementById('data').innerHTML = likely.escape(JSON.stringify(data, null, 2));
+  });
+
+</script>

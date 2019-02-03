@@ -1,0 +1,110 @@
+﻿<html>
+
+<!-- cursive -->
+<link href='http://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Berkshire+Swash' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+
+
+
+<!-- serif -->
+<link href='http://fonts.googleapis.com/css?family=Sanchez' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Bree+Serif' rel='stylesheet' type='text/css'>
+
+<style>
+body {
+  font-family:sans-serif;
+}
+h1 {
+  font-family:Pacifico, sans-serif;
+  font-weight:normal;
+}
+.symb {
+	font-size:40px;
+}
+</style>
+
+<body style="background:#0d0d0d;color:#eee">
+<div style="margin:0 auto;width:460px; text-align:center">
+
+<h1>T-Shirt Design Generator</h1>
+
+<p><a href="http://thesunshineroom.com/2011/08/28/how-t-shirts-are-designed-in-2011/">
+Original idea from The Sunshine Room</a></p>
+
+<div id="main" style="background:#832 url(shirt.png) no-repeat top left; 
+width:460px; height:460px; font-size:40px; line-height:45px; position:relative; ">
+<div style="position:absolute;top:130px;left:0; width:460px; text-shadow: 0px 2px 3px #333;">
+<span id="l1" style="font-family: 'Leckerli One', cursive; ">San Jose</span><br>
+<span id="l2" style="font-family: 'Leckerli One', cursive; font-size:35px;">Disco Club</span><br>
+<span id="l3" style="line-height:41px; font-family:Bree Serif, serif; font-size:35px">♪ 1983 ♪</span>
+</div>
+
+
+</div>
+
+<form action="index.html" style="text-align:center;width:460px;">
+<input type="submit" value="Get me another one" style="font-size:20px;" />
+</form>
+
+<p><a href="http://batiste.info/">Brought to you by me</a></p>
+
+</div>
+
+<script>
+
+var cool_chars = "♪,♚,♛,☠,☢,✌,★,☭,✪,✞,✰,♣,♥".split(",");
+var cool_cities = "Paris,Tokyo,San Jose,Beijing,Berlin,Denver,Sydney,Denim,Lima,Barcelona,London,Mexico,Rome,Houston,Seattle,Holywood,New York".split(",");
+var cool_stuff = "Disco Club,S&M Club,Surf Club,Soccer Team,Skateboard,Guerilla,Baseball,Boxing Club,Kitty Killer,Dolphin Love,Ape Cult,Racing Team,Team building".split(",");
+var dates = "1977,1979,1967,1952,1973,1971,1991".split(",");
+
+
+var fonts = "Satisfy,Berkshire Swash,Leckerli One,Pacifico".split(",");
+var serif = "Bree Serif,Sanchez,Arvo".split(",");
+
+function rand_from(list) {
+  var n = Math.random() * (list.length - 1);
+  return list[Math.round(n)];
+}
+function decimalToHex(d, padding) {
+    var hex = Number(d).toString(16);
+    padding = typeof (padding) === "undefined" || padding === null ? padding = 2 : padding;
+
+    while (hex.length < padding) {
+        hex = "0" + hex;
+    }
+
+    return hex;
+}
+
+
+var l3 = document.getElementById("l3");
+var c = rand_from(cool_chars);
+var date = rand_from(dates);
+l3.innerHTML = "<span class='symb'>" + c + "</span> " + date + " <span class='symb'>" + c + "</span>";
+
+var l1 = document.getElementById("l1");
+l1.innerHTML = rand_from(cool_cities);
+
+var l2 = document.getElementById("l2");
+l2.innerHTML = rand_from(cool_stuff );
+
+var f = rand_from(fonts);
+l1.style.fontFamily = f + ", cursive";
+l2.style.fontFamily = f + ", cursive";
+
+var f = rand_from(serif);
+l3.style.fontFamily = f + ", serif";
+
+var main = document.getElementById("main");
+var c1 = Math.round(Math.random() * 200 + 20);
+var c2 = Math.round(Math.random() * 200 + 20);
+var c3 = Math.round(Math.random() * 200 + 20);
+var color = decimalToHex(c1, 2) + decimalToHex(c2, 2) + decimalToHex(c3, 2);
+
+main.style.backgroundColor = "#" + color;
+
+
+</script>

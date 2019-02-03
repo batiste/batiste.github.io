@@ -1,0 +1,495 @@
+<html>
+<head>
+<title>Likely.js Template Library</title>
+<link href='http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Ubuntu+Mono' rel='stylesheet' type='text/css'>
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/prism.css">
+<link rel="stylesheet" href="css/docs.css">
+
+</head>
+<body>
+
+<div id="header">
+<div class="container" >
+    <h1>Likely.js Template Library</h1>
+    <p class="lead">Likely.js is a templating language for HTML that offers
+      automatic DOM diff, and bidirectional data binding.</p>
+    <p>
+      <a class="btn btn-lg btn-success" href="https://github.com/batiste/likely.js" role="button">On github <span class="glyphicon glyphicon-download"></span></a>
+      <a href="tests/testsuite.html" class="btn btn-lg btn-success">Test suite <span class="glyphicon glyphicon-th-list"></span></a>
+    </p>
+</div>
+</div>
+
+<div class="container">
+
+<h2>Feature highlights</h2>
+
+<ol>
+  <li>A simple template language to generate HTML.</li>
+  <li>Bidirectional data binding to <strong>any</strong> JavaScript object.</li>
+  <li>A template object renders it's result in a render tree. Using 2 of those tree likely.js 
+  produce a DOM manipulation diff that updates the existing DOM with minimal impact.</li>
+  <li>This library works and is tested on Chrome, Firefox and IE11.</li>
+  <li>Test coverage is bigger than 90%.</li>
+</ol>
+
+<div class="row">
+<div class="col-md-6">
+
+<h2>Template Syntax Example</h2>
+
+<textarea id="template" spellcheck="false" class="form-control" rows="11">
+for key, value in list
+  p
+    {{ key }}
+    input value={{ value }} class="form-control"</textarea>
+
+</div>
+<div class="col-md-6">
+
+<h2>Data used to render the Template</h2>
+
+<textarea id="data" class="form-control" rows="11" spellcheck="false">
+{
+  "list":{
+    "Email":"test@example.com",
+    "Firstname":"Charles",
+    "Lastname":"Darwin"
+  }
+}
+</textarea><br>
+
+</div>
+</div>
+
+<div class="row">
+<div class="col-md-6">
+
+<div id='errors' class="alert alert-danger" style="display:none"></div>
+
+<h2>Result</h2>
+<div id="resulth">
+</div>
+
+</div>
+<div class="col-md-6">
+
+
+<h2>Html Output</h2>
+<p>This output is here for illustration purpose.
+<pre id="result">
+</pre>
+
+</div>
+</div>
+
+<h2>Other examples</h2>
+
+<ol>
+<li><a href="examples/todomvc/index.html">TodoMVC example.</a></li>
+<li><a href="examples/crud.html">A basic CRUD application demo.</a></li>
+<li><a href="examples/forms.html">Bidirectional data binding with HTML form elements.</a></li>
+<li><a href="examples/menu.html">Recursive structure using Component.</a></li>
+<li><a href="examples/component.html">Nested components with context watching.</a></li>
+</ol>
+
+<div id="doc-container">
+
+<h2 id="documentation">Documentation</h2>
+
+<h3>Table of content</h3>
+
+<div id="toc">
+
+</div>
+
+<h3>Basic complete example</h3>
+
+<div class="row">
+<div class="col-md-12">
+
+<pre><code class="language-javascript">var data = {list:[1, 2, 3]};
+var template = likely.Template([
+'for key, value in list',
+'  p',
+'    {{ value }}'
+]);
+
+var div = document.createElement("div");
+document.body.appendChild(div);
+var binding = new likely.Binding(div, template, data);
+binding.init();
+</code></pre>
+
+<p>
+  <a class="requirebin-link" target="_blank" href="http://requirebin.com/?gist=06a70538adb4a59bdb63">View this example on RequireBin</a>
+</p>
+
+</div>
+</div>
+
+<p>Produce</p>
+
+<pre><code class="language-markup">&lt;p&gt;1&lt;/p&gt;&lt;p&gt;2&lt;/p&gt;&lt;p&gt;3&lt;/p&gt;</code></pre>
+
+<h3 id="generate">Generating HTML with the template language</h3>
+
+<p>Any line starting by an alphabetical letter which is not part of the language keywords will produce an HTML node. Indentation indicates the nesting of the nodes. Only one HTML node by line is allowed.</p>
+
+<pre><code class="language-python">ul
+  li
+    a href="/"
+      "Home"
+
+  li
+    a href="/products"
+      "Products"
+</code></pre>
+
+<p>Will produce</p>
+
+<pre><code class="language-markup">&lt;ul&gt;&lt;li&gt;&lt;a href="/"&gt;Home&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/products"&gt;Products&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;</code></pre>
+
+<p>The language keywords that cannot be used as HTML nodes are:</p>
+
+<ul>
+<li>if</li>
+<li>for</li>
+<li>else</li>
+<li>elseif</li>
+<li>component</li>
+</ul>
+
+<h3>How does Likely.js modify the DOM</h3>
+
+<p>To modify the DOM Likely.js use a list of differences between 2 arbitrary abstract render tree.</p>
+
+<p>A simple heuristic algorithm is used that aims to minimize the amount of changes needed.
+To acomplish this goal the algorithm is only allowed to add and remove elements, 
+change attributes, and modify the content of text nodes.</p>
+
+<p>Finally the diff produced by the algorithm is applied to the DOM 
+to bring it up to a state consitent with the data.</p>
+
+<p>
+<a class="requirebin-link" target="_blank" href="http://requirebin.com/?gist=8ce92ca035045799190d">View an example on RequireBin</a>
+</p>
+
+<h3 id="binding">Bidirectional Data Binding</h3>
+
+<p>Likely.js regonize elements with a value attribute (input, textarea and select) and will produce specific HTML
+that enable to update automaticaly the data object. The condition for
+the data binding to work is to set the value attribute to a simple name expression that exist within the data.</p>
+
+<pre><code class="language-javascript">var tpl = likely.Template("input value=<strong>{{ name }}</strong>");
+var div = document.getElementById('someDiv');
+var data = {<strong>name</strong>:"Chevalier d'Eon"};
+var binding = new likely.Binding(div, tpl, data);
+binding.init();
+</code></pre>
+
+<p>Will produce something like this</p>
+
+<pre><code class="language-markup">&lt;input value="Chevalier d'Eon" lk-bind="<strong>name</strong>" lk-path=".0"&gt;</code></pre>
+
+<p>The binding object takes care of the events and reflect the changes of the input value back to the data object.
+The binding does so using the path to fetch the corresponding abstract render node. Using this node context the value is then changed.
+Finally a new tree render is triggered and the diff is applied to the DOM to reflect the data changes.</p>
+
+<h4>Changing the data externally</h4>
+
+<p>Likely.js doesn't use any dirty checking or other object proxy technics. It's up to 
+you to know when you need to update the view after changing the data.</p>
+
+<p>To do so call call the update method on the binding object.</p>
+
+<pre><code class="language-javascript">binding.update();</code></pre>
+
+<p>This method will generate a new render tree, trigger a diff and apply those changes to the DOM.</p>
+
+<h4>Manual Data Binding</h4>
+
+<p>When the value of an HTML element has to be binded to another data target you
+can defined the lk-bind attribute yourself. E.g.</p>
+
+<pre><code class="language-python">for n in numbers
+  input type="radio" value="{{ n }}" lk-bind="selected"</code></pre>
+
+<p>There is a <a href="examples/forms.html">demo of bidirectional data binding with HTML form elements.</a></p>
+
+<h3>Flow Control</h3>
+
+<p>Flow control keywords are minimal but sufficient to do anything.</p>
+
+<h4>For Loop</h4>
+
+<p>Iterate over an <strong>object</strong> or an <strong>array</strong>. Syntax: </p>
+<pre><code class="language-python"><strong>for</strong> [key,] value <strong>in</strong> iterable
+  "{{ key }} : {{ value }}"
+</code></pre>
+
+<h4>If / Elseif / Else</h4>
+
+<p>Clasic conditions. Syntax: </p>
+<pre><code class="language-python"><strong>if</strong> expression
+  "something"
+<strong>elseif</strong> expression
+  "something else"
+<strong>else</strong>
+  "otherwise"
+</code></pre>
+
+<h3>Strings</h3>
+
+<p>To declare a string you need to start and end a line with a double quote.</p>
+
+<pre><code class="language-python">p
+  "my paragraph text"
+</code></pre>
+
+<h4>Multi Line Strings</h4>
+
+<p>By using 3 double quotes strings can span across multiple lines</p>
+
+<pre><code class="language-python">p
+  """my long
+     paragraph of text"""
+</code></pre>
+
+<h4>Comments</h4>
+
+<p>A line starting by a # will be ignored.</p>
+
+<pre><code class="language-python">p
+  # some math
+ {{ 1 + 2 }}
+</code></pre>
+
+<p>Produce</p>
+
+<pre><code class="language-markup">&lt;p&gt;3&lt;/p&gt;</code></pre>
+
+<h4>Empty lines</h4>
+
+<p>Empty lines are significant and produce a carriage return inside the rendered HTML.
+
+<pre>p
+
+p</pre>
+
+<p>Produce</p>
+
+<pre><code class="language-markup">&lt;p&gt;&lt;/p&gt;
+&lt;p&gt;&lt;/p&gt;</code></pre>
+
+<h3>Expressions</h3>
+
+<p>An expression in likely.js is just a plain and simple JavaScript function.</p>
+
+<p>They are used in if/elseif nodes, HTML attributes, inside strings, or as
+a text node.</p>
+
+<pre><code class="language-python">h1
+  # expression as text node
+  <strong>{{ value }}</strong>
+
+if <strong>value > 10</strong>
+  # expression inside a string
+  "<strong>{{ value }}</strong> is bigger than 10"
+else
+  # expression inside an HTML element's  attribute
+  input value=<strong>{{ value }}</strong></pre>
+</code></pre>
+
+<h4>Conditional attributes</h4>
+
+<pre><code class="language-python">p class="{{ 1 == 1 &amp;&amp; 'selected' }}"</code></pre>
+
+<p>Produce</p>
+
+<pre><code class="language-markup">&lt;p class="selected"&gt;&lt;/p&gt;</code></pre>
+
+<h3>Function Call and Events</h3>
+
+<p>Given a function in your data</p>
+
+<pre><code class="language-javascript">var data = {
+  <strong>callMe</strong>:function(param){
+    return param;
+  }
+};</code></pre>
+
+<p>This function <strong>callMe</strong> can be called anywhere in your template. A function call is just another expression so it will be evaluated once at the template evalutation time.</p>
+
+<pre><code class="language-python">a class={{ <strong>callMe</strong>("myClass") }}</code></pre>
+
+<p>In the other hand when the function is called by an event attribute, the function is evaluated 
+at runtime when the event is triggered.</p>
+
+<pre><code class="language-python">a lk-click={{ <strong>callMe</strong>("clicked") }}</code></pre>
+
+<p>For an example of function usage <a href="examples/crud.html">checkout the basic CRUD application demo.</a></p>
+
+<h4>Passing the event object</h4>
+
+<p>The event object is injected into the context under the name <strong>event</strong> 
+so it can be passed as an argument.</p>
+
+<pre><code class="language-python">a lk-click={{ callMe(<strong>event</strong>) }}</code></pre>
+
+<h4>Passing the context object</h4>
+
+<p>The context object represent the variables available in the current scope. It is directly available as an argument.</p>
+
+<pre><code class="language-python">a lk-click={{ callMe(<strong>context</strong>) }}</code></pre>
+
+<h3>Components</h3>
+
+<p>A component is a piece of reusable template that can be referenced by name within the template language. A component can also define a controller function that can manipulate the context before rendering.</a>
+
+<pre><code class="language-javascript">var componentTemplate = [
+'ul',
+'  for link in links',
+'    li',
+'      a href={{ link }}',
+'        {{ link }}'
+];
+
+var listOfLinks = likely.Component("ListOfLinks", componentTemplate, function(context) {
+  // This function is executed at every tree rendering.
+  // Here we enforce the maximum value of maxLinks to 5.
+  var maxLinks = parseInt(context.get('maxLinks'), 10);
+  var list = context.get('list');
+  if(maxLinks &lt; list.length) {
+    list = list.slice(0); // copy
+    list.splice(maxLinks-1);
+    context.set('list', list);
+  }
+});
+</code></pre>
+
+<p>Once this component declared you can use it in your template by calling.</p>
+
+
+<pre><code class="language-python">component ListOfLinks links={{ menu.links }} maxLinks="10"</code></pre>
+
+<p>Components can have any number of attributes. Those are evaluated at render time within current context and then added to the component's context. For this data object: </p>
+
+
+<pre><code class="language-javascript">var data = {menu:{links:['home', 'products']}};</code></pre>
+
+<p>The result will be</p>
+
+<pre><code class="language-markup">&lt;ul>
+&lt;li href="home">home&lt;/li>
+&lt;li href="products">products&lt;/li>
+&lt;/ul>
+</code></pre>
+
+<p>For an more complex example of component usage check out this <a href="examples/component.html">example of a DateRange component composed of 2 Date component</a>.</p>
+
+</div>
+</div>
+</div>
+
+<script src="dist/likely.js"></script>
+<script src="lib/jsonfn.js"></script>
+<script src="lib/prism.js"></script>
+
+
+<script>
+
+function get(id) { return document.getElementById(id); }
+
+var r = get("result");
+var rh = get("resulth");
+var tpl = get("template");
+var d = get("data");
+var errors = get("errors");
+
+var data = JSONfn.parse(d.value);
+var currentTemplate = likely.Template(tpl.value);
+
+var binding = new likely.Binding(rh, currentTemplate, data);
+binding.init();
+r.innerHTML = likely.escape(rh.innerHTML);
+
+rh.addEventListener("dataViewChanged", function() {
+  d.value = JSON.stringify(data, null, 2);
+  r.innerHTML = likely.escape(rh.innerHTML);
+});
+
+tpl.onkeyup = logErrors(function(){
+  binding.template = likely.Template(tpl.value);
+  binding.update();
+  r.innerHTML = likely.escape(rh.innerHTML);
+});
+d.onkeyup = logErrors(function(){
+  data = JSONfn.parse(d.value);
+  binding.data = data;
+  binding.update();
+  r.innerHTML = likely.escape(rh.innerHTML);
+});
+
+function logErrors(fct) {
+  return function() {
+    errors.style.display = 'none';
+    try {
+      return fct();
+    } catch(e) {
+      errors.innerHTML = e.toString();
+      errors.style.display = 'block';
+      throw e;
+    }
+  };
+}
+
+var tocTemplate = [
+'ul',
+'  for item in list',
+'     li',
+'       a href="#{{ item.hash }}"',
+'         {{ item.value }}',
+'       if item.children.length',
+'         component TocList list={{ item.children }}'];
+
+var tocComponent = likely.Component("TocList", tocTemplate);
+var template = likely.Template("component TocList");
+
+
+var titles = document.getElementById('doc-container').querySelectorAll('h3, h4, h5');
+var list = [], i;
+var previous, parent;
+// eclude toc
+for(i=1; i<titles.length; i++) {
+  var value = titles[i].innerHTML;
+  var hash = value.toLowerCase().replace(/ /g, '_');
+  titles[i].id = hash;
+  var level = parseInt(titles[i].tagName.charAt(1), 10);
+  var title = {hash:hash, value:value, level:level, children:[]};
+
+  // try to find a matching parent
+  parent = previous;
+  while(parent && parent.level >= title.level) {
+    parent = parent.parent;
+  }
+
+  if(parent) {
+    parent.children.push(title);
+    title.parent = parent;
+  } else {
+    list.push(title);
+  }
+
+  previous = title;
+}
+var toc = likely.Binding(
+  document.getElementById('toc'), template, {list:list});
+toc.init();
+
+
+</script>

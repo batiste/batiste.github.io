@@ -1,0 +1,48 @@
+**********
+MILESTONES
+**********
+
+• We're gonna need to define deadlines for each stage and try to stick to them as much as possible.
+
+
+Stage 1 [end Jan 2011]
+––––––––––––––––––––––
+
+1. Having a fully animated main character
+2. Being able to create and to edit level design [oki, partial]
+3. Load the map in the game [oki]
+4. Having basic game physics implemented [oki]
+5. Starting a bug tracker
+
+
+Stage 2 [mid Feb 2011]
+––––––––––––––––––––––
+
+1. Coming up with the name for the game and it's main characters
+2. Coming up with the rough story line, the map of the game, with basic character dialogs, intros etc.
+3. Get the feedback from people about the whole thing
+4. Refining the details, according to the feedback
+5. Buying a domain name for the game
+
+
+Stage 3 []
+––––––––––
+
+1. Creating the rest of the sprites for the first world and its characters and polishing the physics
+2. Finilizing the design of the first level completely
+3. Adding an inventory, where player can find his weapon, armor, items etc.
+4. Adding a level map
+4. Testing and adjusting the gameplay
+5. Getting feedback from people
+6. Refining the game, according to the first feedback
+
+
+Stage 4 []
+––––––––––
+
+1. Designing a website
+2. Buying hosting
+3. Publishing the first alpha of the game
+4. Creating the buzz on the Web, Twitter, Facebook etc. about the game
+5. Getting tons of feedback from users
+6. Opening the bug tracker to the public?

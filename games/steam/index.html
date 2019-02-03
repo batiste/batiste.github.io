@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digger</title>
+
+    <meta name = "viewport" content = "user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body style="margin:0;padding:0;">
+
+<div id="infos" style="position:absolute;z-index:100;"></div>
+
+<div id="speeddial">
+    <img src="images/speeddial.png" alt="" />
+</div>
+
+</body>
+<script src="js/sprite.js?3"></script>
+<script>
+// load the map
+window.onload = function() {
+    var s = document.createElement('script');
+    s.src = "map_test.json?t="+(new Date()).getTime();
+    document.body.appendChild(s);
+}
+
+// callback for the map
+window.buildMap = function(map) {
+
+    var sprite_list = [
+        'sprites/terrain/grass-01.png',
+        'sprites/terrain/dirt-01.png',
+        'sprites/terrain/dirt-rocks-01.png',
+        'sprites/montains.png',
+        'sprites/chars/miner.png',
+    ];
+
+    sjs.loadImages(sprite_list, function() {
+
+    var game_height = map[0].length * 32;
+    var game_width = map.length * 32;
+    // sixe of the window seems to have an impact on performances
+    sjs.h = 320; //window.innerHeight - 2;
+    sjs.w = 640; //window.innerWidth - 2;
+    var montains = sjs.Layer('montains', {useCanvas:false});
+    var montain = sjs.Sprite('sprites/montains.png', montains);
+    montain.w = game_width;
+    montain.update();
+
+    var background = sjs.Layer('background', {useCanvas:true, w:game_width, h:game_height, autoClear:false});
+
+    var foreground = sjs.Layer('foregound', {useCanvas:false});
+    var infos = document.getElementById('infos');
+
+
+
+    for(var i=0; i< map.length; i++) {
+        setTimeout(function(){}, 0)
+        for(var j=0; j < map[0].length; j++) {
+            var src = sprite_list[map[i][j]];
+            if(src && src.length)
+                src = src[0];
+            else
+                src = false;
+            if(src) {
+                var sp = new sjs.Sprite(sprite_list[map[i][j]], background);
+                sp.x = i * 32;
+                sp.y = j * 32;
+                sp.update();
+            }
+        }
+    }
+    // this operation is very expensive with FF
+    var backgroundImageData = background.ctx.getImageData(0, 0, game_width, game_height);
+
+    function updateBackgroundImageData(x, y, w, h) {
+        // update the background according to a rect
+        x = Math.floor(x);
+        y = Math.floor(y);
+        // maximum efficiency?
+        var target = backgroundImageData.data;
+        var source = background.ctx.getImageData(x, y, w, h).data;
+        var width = backgroundImageData.width;
+        var index_source = 0;
+        for(var i=y; i<(y+h); i++) {
+            for(var j=x; j<(x+w); j++) {
+                var index_target = (i * width * 4) + (j * 4);
+                target[index_target] = source[index_source];
+                target[index_target+1] = source[index_source+1];
+                target[index_target+2] = source[index_source+2];
+                target[index_target+3] = source[index_source+3];
+                index_source = index_source + 4;
+            }
+        }
+    }
+
+    function isPositionAvailable(x, y) {
+        x = Math.floor(x);
+        y = Math.floor(y);
+        var index = (y * backgroundImageData.width * 4) + (x * 4);
+    }
+
+    var player = new sjs.Sprite('sprites/chars/miner.png', foreground);
+    player.x = 60;
+    player.y = 20;
+    player.size(24, 30);
+
+    // player is standing still for a long period of time
+    var relax = new sjs.Cycle([
+        [0, 0, 35],
+        [26, 0, 2],
+        [0, 0, 45],
+        [26, 0, 2],
+        [0, 0, 45],
+        [52, 0, 20],
+        [78, 0, 5],
+        [104, 0, 15],
+        [78, 0, 20],
+        [130, 0, 2],
+        [156, 0, 3],
+        [182, 0, 1],
+        [208, 0, 3],
+        [234, 0, 2],
+        [260, 0, 2],
+        [286, 0, 18],
+        [312, 0, 18],
+        [0, 0, 35],
+        [26, 0, 2],
+        [0, 0, 45],
+        [338, 0, 2],
+        [364, 0, 30],
+        [390, 0, 2],
+        [364, 0, 30],
+        [416, 0, 5],
+        [364, 0, 5],
+        [416, 0, 5],
+        [364, 0, 5],
+        [416, 0, 5],
+        [364, 0, 30],
+        [338, 0, 1]
+        ]);
+
+
+    // player squatts
+    var squat = new sjs.Cycle([
+        [0, 0, 1],
+        [0, 40, 1],
+        [26, 40, 30],
+        [52, 40, 30],
+        [0, 40, 1],
+        [0, 0, 1]]);
+
+    var moveR = new sjs.Cycle([[0, 80, 1]]);
+    var moveL = new sjs.Cycle([[26, 80, 1]]);
+
+    relax.sprites = [player];
+    squat.sprites = [player];
+    moveR.sprites = [player];
+    moveL.sprites = [player];
+
+    var input = sjs.Input();
+
+    // x velocity, and y velocity
+    player.xv = 0;
+    player.yv = 0;
+    var gravity = 0.9;
+
+    function on_map(v) {
+        return Math.floor(v / 32.0);
+    }
+
+    // return true if there is no collision with the map tiles
+    function isPositionAvailable(x, y) {
+        x = Math.floor(x);
+        y = Math.floor(y);
+        var index = (y * backgroundImageData.width * 4) + (x * 4);
+        if(backgroundImageData.data[index] == 0 && backgroundImageData.data[index+1] == 0 && backgroundImageData.data[index+2] == 0)
+            return true;
+        else
+            return false;
+    }
+
+    function findAvailable(x, y, xv, yv) {
+        var i = 0;
+        while(i < 12) {
+            if(isPositionAvailable(x + i * xv,  y + i * yv)) {
+                return [i * xv, i * yv];
+                break;
+            }
+            i += 1;
+        }
+        return false;
+    }
+
+    function paint() {
+
+        // gravity effect
+        player.yv += gravity * ticker.lastTicksElapsed;
+        // the pysical point on the sprite we gonna use for the physic
+        var px = player.x + 12;
+        var py = player.y + 29;
+
+        // handle vertical movements
+        if (input.keyboard.up && player.yv >=0 && !isPositionAvailable(px, py + player.yv)) {
+            player.yv -= 12;
+        }
+
+        if (!isPositionAvailable(px, py + player.yv)) {
+            // find the collision point
+            var i = gravity;
+            while(true) {
+                // be sure to avoid infinite loops
+                if(i >= player.yv) {
+                    player.yv = 0;
+                    break;
+                }
+                if(isPositionAvailable(px, py + player.yv - i)) {
+                    player.yv -= i;
+                    break;
+                }
+                // half a pixel precision is enough to avoid
+                // twitching effect
+                i += gravity;
+            }
+        }
+
+
+        // handle horizontal movements
+        var xv = 5 * ticker.lastTicksElapsed;
+
+        // reset
+        player.xv = 0;
+
+        if (input.keyboard.left && px > xv) {
+            var pos = findAvailable(px - xv, py, 0, -1);
+            if(pos) {
+                player.y = player.y + pos[1];
+                player.xv = -xv;
+            }
+        }
+
+        if (input.keyboard.right && px < (game_width-xv)) {
+            var pos = findAvailable(px + xv, py, 0, -1);
+            if(pos) {
+                player.y = player.y + pos[1];
+                player.xv = xv;
+            }
+        }
+
+        player.move(player.xv, player.yv);
+
+        // scrolling
+        var scrolling_left = - player.x + (sjs.w / 2);
+        if(scrolling_left > 0)
+            scrolling_left = 0;
+        if(scrolling_left < -(game_width - sjs.w))
+            scrolling_left = -(game_width - sjs.w);
+        background.dom.style.left = scrolling_left + 'px';
+        foreground.dom.style.left = scrolling_left + 'px';
+        montains.dom.style.left = (scrolling_left / 2) + 'px';
+
+        var scrolling_top = - player.y + (sjs.h / 2);
+        if(scrolling_top > 0)
+            scrolling_top = 0;
+        if(scrolling_top < -(game_height - sjs.h))
+            scrolling_top = -(game_height - sjs.h);
+
+        background.dom.style.top = scrolling_top + 'px';
+        foreground.dom.style.top = scrolling_top + 'px';
+        montains.dom.style.top = (scrolling_top / 2) + 'px';
+
+
+        if (input.keyPressed('down')) {
+            squat.reset();
+        }
+        if (input.keyPressed('right')) {
+            moveR.reset();
+        }
+        // let him relax
+        if (input.keyReleased('down') || input.keyReleased('right') || input.keyReleased('left')) {
+            relax.reset();
+        }
+
+        if (input.keyPressed('space')) {
+            var ctx = background.ctx;
+            ctx.save();
+            ctx.globalCompositeOperation = 'destination-out';
+            //draw a circle
+            ctx.strockStyle = "rgba(0,0,0,1)";
+            ctx.fillStyle = "rgba(0,0,0,1)";
+            ctx.beginPath();
+            ctx.arc(px, py, 35, 0, Math.PI*2, true);
+            ctx.closePath();
+            ctx.fill();
+            ctx.restore();
+            //background.ctx.clearRect(px-20, py, 40, 40);
+            updateBackgroundImageData(px-40, py-40, 80, 80);
+            //backgroundImageData = ctx.getImageData(0, 0, game_width, game_height);
+        }
+
+        if (input.keyboard.down) {
+            squat.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.right) {
+            moveR.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.left) {
+            moveL.next(ticker.lastTicksElapsed);
+        } else {
+            relax.next(ticker.lastTicksElapsed);
+        }
+
+        if(ticker.currentTick % 10 == 0)
+            infos.innerHTML = 'System load ' + ticker.load + '%';
+        player.update();
+    };
+
+    var ticker = sjs.Ticker(25, paint);
+    ticker.run();
+
+    });
+};
+</script>
+</html>

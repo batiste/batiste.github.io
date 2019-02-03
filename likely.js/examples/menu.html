@@ -1,0 +1,116 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" href="../css/bootstrap.min.css">
+<link rel="stylesheet" href="../css/docs.css">
+</head>
+
+<body>
+<div class="container">
+  <div class="header">
+
+  </div>
+
+<div class="row">
+<div class="col-md-6">
+
+<h2>Recursive structure using Component</h2>
+
+<div id="test">
+</div>
+
+<h2>Template used</h2>
+
+<pre id="template">
+component Menu menu={{ menu }}
+</pre>
+
+
+<h2>Component used</h2>
+
+<p>This Component is a composed of a list of items which can contain another Component called "Menu"</p>
+
+<pre id="menuComponent">
+ul
+  for child in menu.children
+    li
+      a href="#{{ child.text }}" lk-click={{ toggle(child) }}
+        {{ child.text }}
+      if child.children
+        if child.open
+          " ▴"
+          # The Component Menu call itself
+          component Menu menu={{ child }}
+        else
+          " ▸"
+</pre>
+
+<p>If you want to create a recursive structure with Likely.js you should create a
+Component with an uncompiled template string.</p>
+
+<pre>
+var menuTemplateString = document.getElementById('menuComponent').textContent;
+var menuComponent = likely.Component("Menu", menuTemplateString);
+</pre>
+
+<p>The Component Menu will register it's existence before compiling the template string. 
+By doing so a reference to itself within the template is possible.</p>
+
+</div>
+<div class="col-md-6">
+
+
+<h2>Data</h2>
+
+<pre id="data"></pre>
+
+</div>
+
+
+</div>
+</div>
+
+<script src="../dist/likely.js"></script>
+<script src="../lib/jsonfn.js"></script>
+<script>
+  "use strict";
+  var div = document.getElementById('test');
+  var data_dom = document.getElementById('data');
+  var tplStr = document.getElementById('template').textContent;
+
+  var cpnt = document.getElementById('menuComponent').textContent;
+
+  var children = [
+    {text:"Pony"},
+    {text:"Green dragon", children:[{text:'Leaf'}]},
+  ];
+
+  var data = {
+    menu:{
+      children:[
+        {text:"Plastic chicken", children:children},
+        {text:"Red hoodie", children:children},
+        {text:"Fake beard"},
+      ]
+    },
+    toggle: function(item) {
+      item.open = !item.open;
+      binding.update();
+    }
+  };
+
+  var comp = likely.Component("Menu", cpnt, function(){});
+  var tpl = likely.Template(tplStr);
+  data_dom.innerHTML = likely.escape(JSON.stringify(data, null, 2));
+  var binding = new likely.Binding(div, tpl, data);
+  binding.init();
+
+  function updateData(){
+    document.getElementById('data').innerHTML = likely.escape(JSON.stringify(data, null, 2));
+  }
+
+  div.addEventListener("dataViewChanged", function() {
+    updateData();
+  });
+
+</script>

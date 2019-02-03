@@ -1,0 +1,58 @@
+<html>
+<head>
+<meta charset=utf-8>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+<style>
+#upload-photo, #upload-logo {
+    width:150px;
+    height:150px;
+}
+#upload-logo {
+    position:absolute;
+    z-index:-100;
+}
+#upload-photo {
+    opacity: 0.01;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h2>Entrer votre facture</h2>  
+
+<form>
+    <div class="form-group">
+        <label>Selectionner un client</label>
+        <select class="form-control">
+        <option>Dupont et Dupond</option>
+        <option>Frutiger et fils</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Libelé</label>
+        <input type="text" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Montant de la facture</label>
+        <input type="number" class="form-control">
+    </div>
+
+    <div class="form-group">
+        <label>Prendre une photo</label>
+        <div>
+            <img src="upload.png" id="upload-logo">
+            <input id="upload-photo" type="file" accept="image/*;capture=camera" value="Prendre une photo">
+        <div>
+    </div>
+    <hr>
+    <button type="submit" class="btn btn-default">Submit</button>
+
+</form>
+
+</div>
+

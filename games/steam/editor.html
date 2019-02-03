@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digger level editor</title>
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<style>
+    body{margin:0;}
+    #brushes img, #brushes span {border:2px #fff solid; width:32px; height:32px; display:inline-block; vertical-align:top;}
+    #background, #background div {cursor:crosshair}
+</style>
+</head>
+<body>
+<div style="margin:5px;" id="toolbar">
+<span id="brushes">
+<span id="erase">Erase</span>
+</span>
+
+<input type="file" id="open" name="open" value="Open" />
+
+<button id="export">Export</button>
+</div>
+
+<script src="js/sprite.js"></script>
+<script src="js/base64.js"></script>
+</body>
+<script>
+window.onbeforeunload = function(e) {
+    // For IE and Firefox
+    if (e) {
+        e.returnValue = 'Are you sure you want to leave';
+    }
+    // For Safari
+    return 'Are you sure you want to leave';
+}
+
+window.onload = function() {
+
+    function handleFileSelect(evt) {
+        var file = evt.target.files[0];
+        var reader = new FileReader()
+        reader.onerror = function(e){console.log(e);alert("Error loading the file")};
+        reader.onprogress =  function(){};
+        reader.onabort = function(e) {};
+        reader.onloadstart = function(e) {};
+        reader.onload = function(e) {
+            var data = e.target.result;
+            // should call loadMap
+            eval(data);
+        }
+
+        // Read in the image file as a binary string.
+        reader.readAsText(file);
+    }
+    document.getElementById('open').addEventListener('change', handleFileSelect, false);
+    var toolbar = document.getElementById('toolbar');
+
+
+    sjs.h = window.innerHeight - 80;
+    sjs.w = window.innerWidth - 12;
+    sjs.dom.style.border = "2px #999 solid";
+    sjs.dom.style.top = "50px";
+    sjs.dom.style.left = "5px";
+    sjs.dom.style.overflow = "scroll";
+    var background = sjs.Layer('background');
+    var game_block_width = 100;
+    var game_block_height = 20;
+    background.dom.style.height = (game_block_height * 32) + 'px';
+    background.dom.style.width = (game_block_width * 32) + 'px';
+    background.dom.style.background = '#eee';
+
+    // sprite list
+    var sprite_list = [
+        'sprites/terrain/grass-01.png',
+        'sprites/terrain/dirt-01.png',
+        'sprites/terrain/dirt-rocks-01.png',
+    ]
+
+    var brush = sprite_list[0];
+    var brushes = document.getElementById('brushes');
+    var erase = document.getElementById('erase');
+    var sprite_index = {};
+
+    function getSpriteIndex(spr) {
+        return sprite_index[spr.img.src];
+    }
+
+    // map import/export functions and data
+
+    var ground = getGrid();
+
+    window.buildMap = function(map) {
+        clearGrid();
+        for(var i=0; i< map.length; i++) {
+            for(var j=0; j < map[0].length; j++) {
+                var sp = new sjs.Sprite(sprite_list[map[i][j]], background);
+                sp.x = i * 32;
+                sp.y = j * 32;
+                sp.update();
+                ground[i][j] = sp;
+            }
+        }
+    };
+
+    // create a grid
+    function getGrid() {
+        var grid = [];
+        for(var i=0; i< game_block_width; i++) {
+            grid.push([]);
+            for(var j=0; j< game_block_height; j++) {
+                grid[i][j] = false;
+            }
+        }
+        return grid;
+    };
+
+    // export the grid
+    function exportGrid() {
+        var str = "buildMap([";
+        for(var i=0; i<game_block_width; i++) {
+            str += '[';
+            for(var j=0; j<game_block_height; j++) {
+                str += '[';
+                var g = ground[i][j];
+                if(g && g.img)
+                    str += getSpriteIndex(g);
+                str += '],';
+            }
+            str += "],\r\n";
+        }
+        str += "]);";
+        var a = document.getElementById("saveas");
+        if(!a)
+            var a = document.createElement("a");
+        a.id = "saveas";
+        a.innerHTML = "Right click and save as.";
+        a.target = "_blank";
+        a.href = "data:text/json;base64,"+Base64.encode(str);
+        toolbar.appendChild(a);
+    }
+    var ex = document.getElementById('export');
+    ex.onclick = exportGrid;
+
+    function clearGrid() {
+        for(var i=0; i<game_block_width; i++) {
+            for(var j=0; j<game_block_height; j++) {
+                var g = ground[i][j];
+                if(g) {
+                    ground[i][j]=false;
+                    g.remove();
+                }
+            }
+        }
+    }
+
+
+    // toolbar events
+
+    function removeBorder() {
+        for(var index = 0; index < brushes.childNodes.length; index++) {
+            if(brushes.childNodes[index].style)
+                brushes.childNodes[index].style.border='';
+        }
+    }
+
+    erase.onclick = function(e) {
+        brush = false;
+        removeBorder();
+        this.style.border = '2px red solid';
+    };
+
+    for(var i=0; i<sprite_list.length; i++) {
+        var img = new Image();
+        // necessery to get the full path
+        img.src = sprite_list[i];
+        sprite_index[img.src]=i;
+        var b = document.createElement('img');
+        b.src = sprite_list[i];
+        brushes.appendChild(b);
+        b.onclick = function(e) {
+            e.stopPropagation();
+            removeBorder();
+            this.style.border = '2px red solid';
+            brush = this.src;
+            mousedown = false;
+        }
+    }
+
+    // map events
+
+    var mousedown = false;
+
+    function drawSprite(event) {
+        // draw a sprite
+        var x = Math.floor((event.clientX + sjs.dom.scrollLeft -10)/ 32.0);
+        var y = Math.floor((event.clientY + sjs.dom.scrollTop - 50) / 32.0);
+        if(x >= game_block_width || y >= game_block_height) {
+            return;
+        }
+
+        var old_sp = ground[x][y];
+        if(old_sp) {
+            if(old_sp.img && old_sp.img.src == brush) {
+                return;
+            }
+            old_sp.remove();
+        }
+
+        if(brush === false) {
+            ground[x][y] = false;
+            return;
+        }
+
+        var sp = new sjs.Sprite(brush, background);
+        sp.x = x * 32;
+        sp.y = y * 32;
+        sp.update();
+        ground[x][y] = sp;
+    }
+
+    background.dom.onmousemove = function(e) {
+        e.stopPropagation();
+        if(mousedown) {
+            drawSprite(e);
+        }
+    }
+
+    background.dom.onclick = function(e) {
+        e.stopPropagation();
+        drawSprite(e);
+    }
+
+    background.dom.onmousedown = function(e) {
+        e.stopPropagation();
+        mousedown = true;
+    }
+
+    background.dom.onmouseup = function(e) {
+        e.stopPropagation();
+        mousedown = false;
+    }
+
+};
+</script>
+</html>

@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Digger level editor</title>
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<style>
+    body{margin:0;font-size:14px;font-family:sans-serif}
+    #brushes img, #brushes span {border:2px #fff solid; width:32px; height:32px; display:inline-block; vertical-align:top;}
+    #background, #background div {cursor:crosshair}
+    input[type=number] { width:3em; }
+    #toolbar #brushes {float:left;}
+    #toolbar input,
+    #toolbar button {float:right;}
+</style>
+</head>
+<body>
+<p id="create">
+size <input type="number" value="40" maxlength=3 id="mapWidth">
+<input type="number" value="20" maxlength=3 id="mapHeight">
+<button id="createMap">Create map</button>
+
+or open a existing map <input type="file" id="open" name="open" value="Open" />
+</p>
+
+<p style="margin:5px;display:none" id="toolbar">
+
+<span id="brushes">
+<span id="erase">Erase</span>
+</span>
+
+
+<button id="export">Export the file</button>
+<button id="test">Test in a new window</button>
+
+</p>
+
+<script src="js/sprite.js"></script>
+<script src="js/sprite_list.js"></script>
+<script src="js/base64.js"></script>
+</body>
+<script>
+/*window.onbeforeunload = function(e) {
+    // For IE and Firefox
+    if (e) {
+        e.returnValue = 'Are you sure you want to leave';
+    }
+    // For Safari
+    return 'Are you sure you want to leave';
+}*/
+
+window.onload = function() {
+sjs.loadImages(sprite_list, function() {
+
+    var toolbar = document.getElementById('toolbar');
+
+    sjs.dom.style.border = "2px #999 solid";
+    sjs.dom.style.overflow = "scroll";
+    sjs.h = window.innerHeight - 70;
+    sjs.w = window.innerWidth - 12;
+    sjs.dom.style.top = '50px';
+    sjs.dom.style.display = 'none';
+    var background = sjs.Layer('background');
+    var game_block_width = 40;
+    var game_block_height = 20;
+    var ground = null;
+
+    /* Create map section */
+
+    function reset_game_size(w, h) {
+        document.getElementById('create').style.display = 'none';
+        toolbar.style.display = 'block';
+        sjs.dom.style.display = 'block';
+        clearGrid();
+        ground = getGrid(w, h);
+        game_block_width = w;
+        game_block_height = h;
+        background.dom.style.height = (game_block_height * 32) + 'px';
+        background.dom.style.width = (game_block_width * 32) + 'px';
+    }
+
+    var createMap = document.getElementById('createMap');
+    createMap.onclick = function() {
+        game_block_width = parseInt(document.getElementById('mapWidth').value);
+        game_block_height = parseInt(document.getElementById('mapHeight').value);
+        reset_game_size(game_block_width, game_block_height);
+    }
+    background.dom.style.background = '#eee';
+
+    function handleFileSelect(evt) {
+        var file = evt.target.files[0];
+        var reader = new FileReader()
+        reader.onerror = function(e){console.log(e);alert("Error loading the file")};
+        reader.onprogress =  function(){};
+        reader.onabort = function(e) {};
+        reader.onloadstart = function(e) {};
+        reader.onload = function(e) {
+            var data = e.target.result;
+            // should call loadMap
+            eval(data);
+        }
+
+        // Read in the image file as a binary string.
+        reader.readAsText(file);
+    }
+    document.getElementById('open').addEventListener('change', handleFileSelect, false);
+
+    /* end create map */
+
+    var brush = sprite_list[0];
+    var brushes = document.getElementById('brushes');
+    var erase = document.getElementById('erase');
+    var sprite_index = {};
+
+    function getSpriteIndex(spr) {
+        return sprite_index[spr.img.src];
+    }
+
+    window.buildMap = function(index, map) {
+        reset_game_size(map.length, map[0].length);
+        for(var i=0; i< map.length; i++) {
+            for(var j=0; j < map[0].length; j++) {
+                var sp = new sjs.Sprite(sprite_list[map[i][j]], background);
+                sp.move(i * 32, j * 32);
+                sp.update();
+                ground[i][j] = sp;
+            }
+        }
+        document.getElementById('create').style.display = 'none';
+    };
+
+    // create a grid
+    function getGrid(w, h) {
+        var grid = [];
+        for(var i=0; i<w; i++) {
+            grid.push([]);
+            for(var j=0; j<h; j++) {
+                grid[i][j] = false;
+            }
+        }
+        return grid;
+    };
+
+    function buildJson() {
+        var str = "buildMap("+JSON.stringify(sprite_list)+", [";
+        for(var i=0; i<game_block_width; i++) {
+            str += '[';
+            for(var j=0; j<game_block_height; j++) {
+                str += '[';
+                var g = ground[i][j];
+                if(g && g.img)
+                    str += getSpriteIndex(g);
+                str += '],';
+            }
+            str += "],\r\n";
+        }
+        str += "]);";
+        return str;
+    }
+
+    // export the grid
+    function exportGrid() {
+        var a = document.getElementById("saveas");
+        if(!a)
+            var a = document.createElement("a");
+        a.id = "saveas";
+        a.innerHTML = "Right click and save as.";
+        a.target = "_blank";
+        a.href = "data:text/json;base64,"+Base64.encode(buildJson());
+        toolbar.appendChild(a);
+    }
+    var ex = document.getElementById('export');
+    ex.onclick = exportGrid;
+
+    var test = document.getElementById('test');
+    test.onclick = function() {
+        var a = document.getElementById("saveas");
+        if(!a)
+            var a = document.createElement("a");
+        a.id = "saveas";
+        a.target = "_blank";
+        a.innerHTML = "Click here to test the map.";
+        a.target = "_blank";
+        a.href = "index.html?data="+Base64.encode(buildJson());
+        toolbar.appendChild(a);
+    };
+
+    function clearGrid() {
+        if(!ground)
+            return;
+        for(var i=0; i<game_block_width; i++) {
+            for(var j=0; j<game_block_height; j++) {
+                var g = ground[i][j];
+                if(g) {
+                    ground[i][j]=false;
+                    g.remove();
+                }
+            }
+        }
+    }
+
+
+    // toolbar events
+
+    function removeBorder() {
+        for(var index = 0; index < brushes.childNodes.length; index++) {
+            if(brushes.childNodes[index].style)
+                brushes.childNodes[index].style.border='';
+        }
+    }
+
+    erase.onclick = function(e) {
+        brush = false;
+        removeBorder();
+        this.style.border = '2px red solid';
+    };
+
+    for(var i=0; i<sprite_list.length; i++) {
+        var img = new Image();
+        // necessery to get the full path
+        img.src = sprite_list[i];
+        sprite_index[img.src]=i;
+        var b = document.createElement('img');
+        b.src = sprite_list[i];
+        brushes.appendChild(b);
+        b.onclick = function(e) {
+            e.stopPropagation();
+            removeBorder();
+            this.style.border = '2px red solid';
+            brush = this.src;
+            mousedown = false;
+        }
+    }
+
+    // map events
+
+    var mousedown = false;
+
+    function drawSprite(event) {
+        // draw a sprite
+        var x = Math.floor((event.clientX + sjs.dom.scrollLeft -10)/ 32.0);
+        var y = Math.floor((event.clientY + sjs.dom.scrollTop - 50) / 32.0);
+        if(x >= game_block_width || y >= game_block_height) {
+            return;
+        }
+
+        var old_sp = ground[x][y];
+        if(old_sp) {
+            if(old_sp.img && old_sp.img.src == brush) {
+                return;
+            }
+            old_sp.remove();
+        }
+
+        if(brush === false) {
+            ground[x][y] = false;
+            return;
+        }
+
+        var sp = new sjs.Sprite(brush, background);
+        sp.move(x * 32, y * 32);
+        sp.size(32, 32);
+        sp.update();
+        ground[x][y] = sp;
+    }
+
+    background.dom.onmousemove = function(e) {
+        e.stopPropagation();
+        if(mousedown) {
+            drawSprite(e);
+        }
+    }
+
+    background.dom.onclick = function(e) {
+        e.stopPropagation();
+        drawSprite(e);
+    }
+
+    background.dom.onmousedown = function(e) {
+        e.stopPropagation();
+        mousedown = true;
+    }
+
+    background.dom.onmouseup = function(e) {
+        e.stopPropagation();
+        mousedown = false;
+    }
+
+})
+
+};
+</script>
+</html>

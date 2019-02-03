@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Digger</title>
+
+    <meta name = "viewport" content = "user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+</head>
+<body style="margin:0;padding:0;">
+
+<div id="infos" style="position:absolute;z-index:100;"></div>
+
+<div id="speeddial">
+    <img src="images/speeddial.png" alt="" />
+</div>
+
+</body>
+
+<script src="js/sprite.js?3"></script>
+<script>
+// load the map
+window.onload = function() {
+    var s = document.createElement('script');
+    s.src = "map_test.json?t="+(new Date()).getTime();
+    document.body.appendChild(s);
+}
+
+// callback for the map
+window.buildMap = function(map) {
+
+    var blast = new Audio("js/blast.ogg");
+
+    var sprite_list = [
+        'sprites/terrain/grass-01.png',
+        'sprites/terrain/dirt-01.png',
+        'sprites/terrain/dirt-rocks-01.png',
+        'sprites/dynamite.png',
+        'sprites/montains.png',
+        'sprites/chars/miner.png',
+    ];
+
+    sjs.loadImages(sprite_list, function() {
+
+    var game_height = map[0].length * 32;
+    var game_width = map.length * 32;
+    // sixe of the window seems to have an impact on performances
+    sjs.h = 320; //window.innerHeight - 2;
+    sjs.w = 640; //window.innerWidth - 2;
+    var montains = sjs.Layer('montains', {useCanvas:false});
+    var montain = sjs.Sprite('sprites/montains.png', montains);
+    montain.w = game_width;
+    montain.update();
+
+    var background = sjs.Layer('background', {useCanvas:true, w:game_width, h:game_height, autoClear:false});
+
+    var foreground = sjs.Layer('foregound', {useCanvas:false});
+    var infos = document.getElementById('infos');
+
+
+    for(var i=0; i< map.length; i++) {
+        setTimeout(function(){}, 0)
+        for(var j=0; j < map[0].length; j++) {
+            var src = sprite_list[map[i][j]];
+            if(src && src.length)
+                src = src[0];
+            else
+                src = false;
+            if(src) {
+                var sp = new sjs.Sprite(sprite_list[map[i][j]], background);
+                sp.setX(i * 32);
+                sp.setY(j * 32);
+                sp.update();
+            }
+        }
+    }
+    // this operation is very expensive with FF
+    var backgroundImageData = background.ctx.getImageData(0, 0, game_width, game_height);
+
+    function updateBackgroundImageData(x, y, w, h) {
+        // update the background according to a rect
+        x = x | 0;
+        y = y | 0;
+        // maximum efficiency?
+        var target = backgroundImageData.data;
+        var source = background.ctx.getImageData(x, y, w, h).data;
+        var width = backgroundImageData.width;
+        var index_source = 0;
+        for(var i=y; i<(y+h); i++) {
+            for(var j=x; j<(x+w); j++) {
+                var index_target = (i * width * 4) + (j * 4);
+                target[index_target] = source[index_source];
+                target[index_target+1] = source[index_source+1];
+                target[index_target+2] = source[index_source+2];
+                target[index_target+3] = source[index_source+3];
+                index_source = index_source + 4;
+            }
+        }
+    }
+
+    function isPositionAvailable(x, y) {
+        x = x | 0;
+        y = y | 0;
+        var index = (y * backgroundImageData.width * 4) + (x * 4);
+    }
+
+    var player = new sjs.Sprite('sprites/chars/miner.png', foreground);
+    player.move(60, 20);
+    player.size(24, 30);
+
+    // player is standing still for a long period of time
+    var relax = new sjs.Cycle([
+        [0, 0, 35],
+        [26, 0, 2],
+        [0, 0, 45],
+        [26, 0, 2],
+        [0, 0, 45],
+        [52, 0, 20],
+        [78, 0, 5],
+        [104, 0, 15],
+        [78, 0, 20],
+        [130, 0, 2],
+        [156, 0, 3],
+        [182, 0, 1],
+        [208, 0, 3],
+        [234, 0, 2],
+        [260, 0, 2],
+        [286, 0, 18],
+        [312, 0, 18],
+        [0, 0, 35],
+        [26, 0, 2],
+        [0, 0, 45],
+        [338, 0, 2],
+        [364, 0, 30],
+        [390, 0, 2],
+        [364, 0, 30],
+        [416, 0, 5],
+        [364, 0, 5],
+        [416, 0, 5],
+        [364, 0, 5],
+        [416, 0, 5],
+        [364, 0, 30],
+        [338, 0, 1]
+        ]);
+
+
+    // player squatts
+    var squat = new sjs.Cycle([
+        [0, 0, 1],
+        [0, 40, 1],
+        [26, 40, 30],
+        [52, 40, 30],
+        [0, 40, 1],
+        [0, 0, 1]]);
+
+    var moveR = new sjs.Cycle([[52, 80, 4],[78,80, 4],[104,80,4],[78,80, 4]]);
+    var moveL = new sjs.Cycle([[26, 80, 1]]);
+
+    relax.sprites = [player];
+    squat.sprites = [player];
+    moveR.sprites = [player];
+    moveL.sprites = [player];
+
+    var input = sjs.Input();
+
+    // x velocity, and y velocity
+    player.xv = 0;
+    player.yv = 0;
+    var gravity = 0.9;
+
+    function on_map(v) {
+        return v / 32.0 | 0;
+    }
+
+    // return true if there is no collision with the map tiles
+    function isPositionAvailable(x, y) {
+        x = x | 0;
+        y = y | 0;
+        var index = (y * backgroundImageData.width * 4) + (x * 4);
+        if(backgroundImageData.data[index] == 0 && backgroundImageData.data[index+1] == 0 && backgroundImageData.data[index+2] == 0)
+            return true;
+        else
+            return false;
+    }
+
+    function findClosestAvailable(x, y, xv, yv) {
+        var i = 1;
+        while(i < 5) {
+            if(isPositionAvailable(x + i * xv,  y + i * yv)) {
+                return [i * xv, i * yv];
+            }
+            i += 1;
+        }
+        return false;
+    }
+
+    function findCollisionPoint(x, y, xv, yv) {
+        var steps = 10.0;
+        var x_step = xv / steps;
+        var y_step = yv / steps;
+        var i = 0;
+        while(i <= steps) {
+            if(!isPositionAvailable(x + (i * x_step),  y + (i * y_step))) {
+                return [(i) * x_step, (i) * y_step];
+            }
+            i += 1;
+        }
+        return false;
+    }
+
+    particules = [];
+    dynamites = [];
+    function createParticule(x, y) {
+        if(ticker.load > 50)
+            return;
+        var p = sjs.Sprite(false, foreground);
+        p.move(x, y - 20);
+        var c = 120 * Math.random() | 0;
+        c = 'rgba('+c+','+c+','+c+',1)';
+        p.setColor(c);
+        p.size(Math.max(3, Math.random()*5 | 0), Math.max(3, Math.random()*5) | 0);
+        p.xv = 20 * (Math.random()-0.5);
+        p.yv = -20 * Math.random();
+        particules.push(p);
+    }
+
+    function paint() {
+
+        // gravity effect
+        player.yv += gravity * ticker.lastTicksElapsed;
+        // the pysical point on the sprite we gonna use for the physic
+        var px = player.x + 12;
+        var py = player.y + 29;
+
+        // handle vertical movements
+        if (input.keyboard.up && player.yv >=0 && !isPositionAvailable(px, py + player.yv)) {
+            player.yv -= 12;
+        }
+
+        if (!isPositionAvailable(px, py + player.yv)) {
+            player.xv = player.xv * 0.8;
+
+            // find the collision point
+            var i = gravity;
+            while(true) {
+                // be sure to avoid infinite loops
+                if(i >= player.yv) {
+                    player.yv = 0;
+                    break;
+                }
+                if(isPositionAvailable(px, py + player.yv - i)) {
+                    player.yv -= i;
+                    break;
+                }
+                i += gravity;
+            }
+        } else {
+            //player.xv = player.xv * 0.95;
+        }
+
+
+        // handle horizontal movements
+        var diff = 0;
+        if(input.keyboard.left)
+            var diff = -2 * ticker.lastTicksElapsed;
+        else if(input.keyboard.right)
+            var diff = 2 * ticker.lastTicksElapsed;
+
+        if (px < (game_width-player.xv) && px > player.xv) {
+            var new_velocity = Math.min(5, Math.max(-5, player.xv + diff));
+            var pos = findClosestAvailable(px, py, new_velocity, 0);
+            if(!pos)
+                var pos = findClosestAvailable(px + new_velocity, py, 0, -1);
+            if(pos) {
+                player.setY(player.y + pos[1]);
+                player.xv = new_velocity;
+            } else {
+                player.xv = 0;
+            }
+        }
+
+        player.move(player.xv, player.yv);
+
+        // scrolling
+        var scrolling_left = - player.x + (sjs.w / 2);
+        if(scrolling_left > 0)
+            scrolling_left = 0;
+        if(scrolling_left < -(game_width - sjs.w))
+            scrolling_left = -(game_width - sjs.w);
+        background.dom.style.left = scrolling_left + 'px';
+        foreground.dom.style.left = scrolling_left + 'px';
+        montains.dom.style.left = (scrolling_left / 2) + 'px';
+
+        var scrolling_top = - player.y + (sjs.h / 2);
+        if(scrolling_top > 0)
+            scrolling_top = 0;
+        if(scrolling_top < -(game_height - sjs.h))
+            scrolling_top = -(game_height - sjs.h);
+
+        background.dom.style.top = scrolling_top + 'px';
+        foreground.dom.style.top = scrolling_top + 'px';
+        montains.dom.style.top = (scrolling_top / 2) + 'px';
+
+
+        if (input.keyPressed('down')) {
+            squat.reset();
+        }
+        if (input.keyPressed('right')) {
+            moveR.reset();
+        }
+        // let him relax
+        if (input.keyReleased('down') || input.keyReleased('right') || input.keyReleased('left')) {
+            relax.reset();
+        }
+
+        if (input.keyPressed('space')) {
+            var sp = sjs.Sprite('sprites/dynamite.png', foreground);
+
+            sp.setX(player.x);
+            sp.setY(player.y);
+            sp.size(24, 16);
+            sp.life = 100;
+            sp.update();
+
+            var tick = new sjs.Cycle([[0, 0, 5],[26, 0, 5]]);
+            tick.sprites = [sp];
+            sp.cycle = tick;
+
+            dynamites.push(sp);
+        }
+
+
+        for(var i=0; i<dynamites.length; i++) {
+            var d = dynamites[i];
+            d.life = d.life - 1;
+            var ctx = background.ctx;
+            if(d.life == 2) {
+                background.dom.style.left = scrolling_left + 5 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left - 5 * Math.random() + 'px';
+                ctx.save();
+                ctx.strockStyle = 'rgba(255,255,200,1)';
+                ctx.fillStyle = 'rgba(255,255, 200,1)';
+                ctx.beginPath();
+                ctx.arc(d.x + d.w/2, d.y + d.h/2, 35, 0, Math.PI*2, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+                d.remove();
+                d.cycle = null;
+            }
+            if(d.life == 1) {
+                background.dom.style.left = scrolling_left - 4 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left + 4 * Math.random() + 'px';
+                ctx.save();
+                ctx.strockStyle = 'rgba(255,255,0,1)';
+                ctx.fillStyle = 'rgba(255,255, 0,1)';
+                ctx.beginPath();
+                ctx.arc(d.x + d.w/2, d.y + d.h/2, 45, 0, Math.PI*2, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+                for (j=0;j<32;j++) {
+                    createParticule(d.x + d.w/2, d.y + d.h/2);
+                }
+            }
+            if(d.life == 0) {
+                if(Math.abs(d.x - player.x) < 80 && Math.abs(d.y - player.y) < 80) {
+                    player.yv = -24;
+                    player.xv = (Math.random() - 0.5) * 25;
+                }
+
+                ctx.save();
+                ctx.globalCompositeOperation = 'destination-out';
+                //draw a circle
+                ctx.strockStyle = "rgba(0,0,0,1)";
+                ctx.fillStyle = "rgba(0,0,0,1)";
+                ctx.beginPath();
+                ctx.arc(d.x + d.w/2, d.y + d.h/2, 50, 0, Math.PI*2, true);
+                ctx.closePath();
+                ctx.fill();
+                ctx.restore();
+                background.dom.style.left = scrolling_left + 3 * Math.random() + 'px';
+                foreground.dom.style.left = scrolling_left - 3 * Math.random() + 'px';
+                dynamites.splice(i, 1);
+                i--;
+                updateBackgroundImageData(d.x + d.w/2 -50, d.y + d.h/2 -50, 100, 100);
+                // only one explosion by tick
+                blast = new Audio("js/blast.ogg");
+                blast.play();
+                break;
+            }
+        }
+
+        for(var i=0; i<dynamites.length; i++) {
+            var p = dynamites[i];
+            // already removed from the DOM
+            if(p.life < 3)
+                return;
+            p.cycle.next();
+            var vector = findCollisionPoint(p.x + (p.w / 2), p.y + p.h - 5, p.xv, p.yv);
+            if(vector === false) {
+                p.applyVelocity();
+                p.yv = p.yv + gravity;
+                p.update();
+            } else {
+                p.setX(p.x + vector[0]);
+                p.setY(p.y + vector[1]);
+                p.update();
+            }
+        }
+
+        for(var i=0; i<particules.length; i++) {
+            var p = particules[i];
+            var vector = findCollisionPoint(p.x + (p.w / 2), p.y + (p.h / 2), p.xv, p.yv);
+            if(vector === false) {
+                p.xv = p.xv * 0.95;
+                p.yv = p.yv * 0.95;
+                p.applyVelocity();
+                p.yv = p.yv + gravity;
+                p.update();
+            } else {
+                if(p.yv < 0) {
+                    p.yv = 0;
+                    p.xv = p.xv / 1.2;
+                } else {
+                    p.x += vector[0];
+                    p.y += vector[1];
+                    p.update();
+                    particules.splice(i, 1);
+                    p.canvasUpdate(background);
+                    p.remove();
+                    i--;
+                }
+            }
+        }
+
+        if (input.keyboard.down) {
+            squat.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.right) {
+            moveR.next(ticker.lastTicksElapsed);
+        } else if (input.keyboard.left) {
+            moveL.next(ticker.lastTicksElapsed);
+        } else {
+            relax.next(ticker.lastTicksElapsed);
+        }
+
+        if(ticker.currentTick % 10 == 0)
+            infos.innerHTML = 'System load ' + ticker.load + '%';
+        player.update();
+    };
+
+    var ticker = sjs.Ticker(20, paint);
+    ticker.run();
+
+    });
+};
+</script>
+</html>

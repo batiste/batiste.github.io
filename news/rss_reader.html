@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <title>Whoupie News</title>
+  
+  <meta name="viewport" content="initial-scale=1.0">
+  <link href='http://fonts.googleapis.com/css?family=Droid+Sans' rel='stylesheet' type='text/css'>
+  <script type='text/javascript' src='https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js'></script>
+  <script type='text/javascript' src='htmlparser.js'></script>
+  
+  <style type='text/css'>
+html{ 
+	font-family: 'Droid Sans', sans-serif; 
+	font-size:15px;
+	
+}
+
+body {
+    margin:0;
+    padding:20px;
+}
+
+h1 {
+	margin:0 0 10px 0;
+}
+
+#entries {
+    display:block;
+    overflow:hidden;
+}
+
+.feed-title {
+	margin:0 0 10px 0;
+	padding:0;
+	color:#666;
+}
+
+.entry h2 {
+	margin:0 0 10px 0;
+	font-size:23px;
+	padding:0;
+	font-weight:normal;
+}
+
+.entry h2 a {
+	text-decoration:none;
+	color:#222;
+}
+
+.entry img {
+	max-width:350px;
+}
+
+.entry {
+    float:left;
+    max-width:350px;
+    margin-right:20px;
+    margin-bottom:25px;
+    height:490px;
+    padding: 20px;
+    
+    border:1px #bbb solid;
+    box-shadow: 5px 5px 7px #ddd;
+
+    overflow: hidden;
+}
+
+.small-entry {
+	height:220px;
+	padding: 20px;
+}
+
+@media only screen and (min-device-width: 120px) and (max-device-width: 600px) {
+	.entry {
+		overflow: visible;
+		height:auto;
+		border:0;
+		box-shadow: none;
+		width:100%;
+		padding:0;
+		margin:0;
+		margin-bottom:20px;
+		max-width:none;
+	}
+	
+	.entry img {
+		max-width:300px;
+		float:left;
+		margin-right:10px;
+	}
+}
+
+#footer {
+    width:100%;
+    clear:both;
+    display:block;
+    color:#666;
+}
+</style>
+
+
+<script type='text/javascript'>//<![CDATA[ 
+$(window).load(function(){
+var ajax_api_url = "https://ajax.googleapis.com/ajax/services/feed/load?v=1.0&callback=rssFeedLoaded&q=";
+
+function isAd(url) {
+	var adList = [
+		'http://feeds.feedburner.com/~ff',
+		'ads',
+	]
+	
+	for(var i=0; i<adList.length; i++) {
+		if(url.indexOf(adList[i]) !=  -1)
+			return true;
+	}
+	return false;
+}
+
+function sanitize(html) {
+  var results = "";
+  HTMLParser(html, {
+    start: function( tag, attrs, unary ) {
+      if(tag != 'a' && tag != 'p' && tag != 'img') {
+	return;
+      }
+      results += "<" + tag;
+      for ( var i = 0; i < attrs.length; i++ ) {
+	 if(attrs[i].name == 'src' || attrs[i].name == 'href' || attrs[i].name == 'width') {
+	    results += " " + attrs[i].name + '="' + attrs[i].escaped + '"';
+	 }
+      }
+      results += (unary ? "/" : "") + ">";
+    },
+    end: function( tag ) {
+      results += "</" + tag + ">";
+    },
+    chars: function( text ) {
+      results += text;
+    },
+    comment: function( text ) {
+      
+    }
+  });
+  return results;
+}
+
+
+function rssFeedLoaded(json) {
+	//console.log("Loaded");
+	//console.log(json);
+	var entries = json.responseData.feed.entries;
+	var feed_title = json.responseData.feed.title;
+	//console.log(entries)
+	
+	for(var i=0; i<entries.length; i++) {
+		var entry = entries[i];
+		
+		var div = $('<div class="entry"></div>');
+		div[0].innerHTML = '<p class="feed-title">' + feed_title + '</p>' 
+			+ '<h2><a href="'+entry.link+'">' + entry.title + '</a></h2>'
+			+ sanitize(entry.content);
+		//div.find('img').attr('height', 'auto');
+		var estimed_size = entry.title.length * 4 + div.text().length;
+		//console.log(estimed_size)
+		if(estimed_size < 800)
+			div.addClass('small-entry');
+		
+		var toRemove = [];
+		div.find('img[width=0]').remove();
+		var imgs = div.find('img');
+		for(var j=0; j<imgs.length; j++) {
+			var img = imgs[j];
+			if( parseInt($(img).attr('width')) < 20
+				|| isAd($(img).attr('src')) ) {
+				img.parentNode.removeChild(img);
+			}
+		}
+		
+		entries_dom.append(div);
+	}
+}
+
+window.rssFeedLoaded = rssFeedLoaded;
+var entries_dom = $('#entries');
+
+function loadRss(url) {
+    var sc= document.createElement('script');
+    sc.src = ajax_api_url + encodeURIComponent(url);
+    document.body.appendChild(sc);
+}
+
+entries_dom.delegate('.entry', 'click', function(e) {
+	$(e.currentTarget).css('overflow', 'visible');
+	$(e.currentTarget).css('height', 'auto');
+});
+
+loadRss("http://www.theverge.com/rss/index.xml");
+loadRss("http://feeds.gawker.com/gizmodo/full");
+loadRss("http://feeds.wired.com/wired/index");
+loadRss("http://feeds.arstechnica.com/arstechnica/index/");
+loadRss("http://popsci.feedsportal.com/c/34567/f/632419/index.rss");
+
+});//]]>  
+
+</script>
+
+
+</head>
+<body>
+<div id="header"><h1>Wouphie News</h1></div>
+
+  <div id="entries"></div>
+  <p id="footer">Whoupie news - Batiste Bieler 2012</p>
+</body>
+
+
+</html>
+

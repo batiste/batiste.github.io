@@ -1,0 +1,172 @@
+<!DOCTYPE html><html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<title>Inspirational Pitch generator, buzzword and ideas</title>
+<style>
+body { text-align:center; font-family:sans-serif; }
+textarea { width:400px; height:200px; font-size:1.5em;
+    font-family:sans-serif; padding: 10px; }
+input { width:200px; font-size:2em; }
+
+</style>
+</head>
+<body>
+
+<h1>Webscale Pitch Generator</h1>
+
+<p>No idea for a product marketing pitch?<br/> The pitch generator inspire profound insights and reward with incredible business opportunities:</p>
+
+<textarea id="pitch"></textarea>
+<br />
+<input id="cp" type="submit" value="Pitch this!" />
+
+<p>There is more than <span id="nbpitch"></span> different pitch idea in our database. Keep clicking.</p>
+
+<script>
+
+var verbs = ['focus on', 'leverage', 'enable', 'grow', 'share', 'win', 'raise',
+    'en-power', 'improve', 'achieve', 'create', 'manage', 'innovate', 'increase', 'combine',
+    'multiply', 'monetize', 'lead on', 'secure', 'consolidate', 'build', 'bet on', 'advocate',
+    'question', 'change', 'lock', 'brand', 'merge', 'distribute', 'execute', 'unit', 'separate',
+    'control', 'liberate', 'revolutionize', 'fragment', 'capture', 'retain', 'spin', 'reverse',
+    'invest', 'recover', 'aim at', 'acquire', 'call for', 'open', 'choke', 'stop', 'isolate',
+    'concentrate', 'direct', 'drive', 'deliver', 'release', 'play', 'launch', 'inspire', 'orchestrate',
+    'research', 'find', 'reward', 'move', 'promote', 'collaborate on', 'organize', 'coordinate',
+    'outsource', 'optimize', 'sign', 'sell', 'compare', 'construct', 'assemble', 'form', 'streamline',
+    'accelerate', 'unlock', 'design', 'benefit', 'reinvente', 'revolution', 'inspire', 'insure', 'match',
+    'partition', 'demystify', 'take on'];
+var adjectives = ['threaded', 'streamed', 'synaptic', 'hyper', 'shared', 'authentic', 'true',
+    'distributed', 'aggregated', 'social', 'multimedia', 'scalable', 'cutting edge', 'scale',
+    'real time', 'viral', 'multi-paradigm', 'vertical', 'horizontal', 'innovative', 'ajax',
+    'user-centered',  'embeded', 'desktop free', 'lightweight', 'pretty', 'great', 'incredible',
+    'structured', 'unstructured', 'free', 'user-generated', 'agnostic', 'fantastic', 'enormous',
+    'concurrence-free', 'real', 'trustworthy', 'original', 'server-free', 'wireless', 'standardized',
+    'interactive', 'important', 'thousand of', 'million of', 'almost infinite', 'smart', 'huge',
+    'animated', 'multi-platform', 'standard', 'special', 'shifting', 'mind blowing', 'targeted',
+    'centered', 'focused', '3 dimensional', 'risk-taking', 'money-making', 'synchronous', 'opiniated',
+    'asynchronous', 'exponential', 'crazy', 'peer-to-peer', 'well-recognized', 'carefully-crafted',
+    'fragmented', 'more than 100', 'smartest', 'environmental', 'organically-grown', 'green',
+    'few', 'long tail', 'free value', 'granular', 'value added', 'rich media', 'next level',
+    'mission critical', 'State-of-the-Art', 'scalable', 'decentralized', 'business-focused', 'crispy',
+    'highly innovative', 'customizable', 'award-winning', 'unprecedented', 'amazing', 'massively', '"back in the game"',
+    'inexpensive', 'scalable', 'highly-available and low-latency', '99.99% Availability', '21th century'];
+var names = ['privacy', 'copyrights', 'licences', 'flows', 'engagements', 'gestures', 'killer-feature',
+    'working-space', 'business', 'cash flow', 'opportunity', 'service', 'network', 'attitude',
+    'streams', 'vision', 'fund', 'capital', 'strategy', 'resources', 'visibility',
+    'synergy', 'extensions', 'trust', 'software', 'design', 'interface', 'security', 'notebook',
+    'applications', 'module', 'device', 'user interface', 'web site', 'actions', 'metrics',
+    'extension', 'clone', 'business model', 'time to market', 'stream', 'server', 'designers',
+    'language', 'smart phone', 'interaction', 'pitch', 'instant messager', 'investors',
+    'future', 'consultants', 'marketing bluff', 'position', 'monopole', 'law infringement',
+    'trends', 'explosion', 'users', 'user monitoring', 'marketing', 'revenue', 'cash-flow',
+    'clients', 'big dollars', 'virtual machine', 'flat screen', 'source code', 'stimulus recovery plan',
+    'task force', 'methodology', 'seamless mobility', 'mobile broadband', 'progress reports', 'rapid delivery',
+    'celebrity', 'guerrilla', 'phenomonen', 'energy-drink', 'slow-food business', 'global warming', 'buzz',
+    'buzzword', 'insights', 'impact', 'campaign', 'stocks', 'generator', 'Search Engine Optimisation',
+    'Product placement', 'start-up', 'word of mouth', 'share options', 'mindshare', 'poping effect',
+    'scalability', 'time to market', 'real convergence', 'seamless connectivity', 'strong relationships',
+    'historical velocity', 'iteration burn-up', 'high-level tool', 'Transaction level redirection',
+    'Three-dimensional scaling', '*uck you attitude', 'comeback', 'record revenue', 'price war', 'Coca Cola'];
+var products = ['Facebook', 'Twitter', 'Cloud computing', 'Java', 'Twitter', 'Objective-C',
+    'Google Waves', 'widget', 'Chrome', 'Firefox', 'iPhone', '.Net', 'Tech crunch', 'calendar', 'Android',
+    'Apple', 'Linux', 'Open source', 'Community', 'Company', 'enterprise', 'App store', 'knowledge capital',
+    'Miscrosoft', 'Adobe air', 'internet Provider', 'IBM servers', 'Database', 'technology', 'Javascript framework',
+    'PHP framework', 'Content management', 'iPad', 'Sharepoint', 'Data analyser', 'Corporate website',
+    'Social websites', 'Web 2.0 website', 'Rich desktop application', 'planning tool',
+    'data visualisation tool', 'platform standard', 'non relational database', 'Abobe Flash', 'Silverlight',
+    'Chrome OS', 'RSS reader', 'Office', 'Data-mining', 'Oracle', 'browser', 'plugin', 'Wikipedia',
+    'Web shops', 'Adobe Photoshop', 'Word', 'Excel', 'Power Point', 'Excel sheet', 'Nintendo Wii', 'email',
+    'Consortium', 'Basecamp', 'brand identity', 'social initiative', 'Data Warehouse', 'infrastructure',
+    'video game', 'Flash game', 'Youtube', 'Yahoo', 'Craiglist', 'Safari', 'Google map', 'Flickr', 'iPod',
+    'relational database', 'Mainframe', 'robot', 'search engine', 'Rock Band controllers', 'Wii controlers',
+    'Security firewall', 'Anti virus', 'paperless Office', 'seamless integration', 'Mashup', 'Elitist product',
+    'Crisis management', 'software certification', 'automated self-activation', 'retail channel distribution',
+    'mobile ecosystem', 'digital media revolution', 'online store', 'professional applications',
+    'Amazon\'s Simple Storage Service (S3)', 'ColdFusion Component service', 'IRC bot', 'XML API', 'printable PDF view',
+    'CSV export', 'tablet PC', 'HTML5 website', 'Web scale database', 'Cloud', 'Local storage', 'Document database',
+    'Identity Management Server', 'Low costs per user', 'Low costs per server', 'video delivery service',
+    'On-demand infrastructure', 'service protection', 'advertising markets', 'schema-less storage', 'Dinosaur', 'Dart language'];
+
+var conjuctions1 = ['to', 'in order to',
+    'to', 'and just after,',
+    'but just before', 'and at the same time', 'and', 'and after 3 years', 'and during the time gap',
+    'and without any shame', 'and without transition', 'and one week after', 'to', 'to',
+    'within 10 years and', 'and in few months', 'and before noticing', 'and when the time comes',
+    'to generate money and', 'to generate leverage and', 'to start and', 'and before the market can react,',
+    'but also', 'in the short term, then', 'for the long term, then', 'and don\'t forget to'];
+
+var conjuctions2 = ['via', 'via', 'via', 'through', 'through', 'through'];
+
+var nb_pitch = verbs.length * names.length * names.length * products.length * adjectives.length * adjectives.length;
+
+for(var i=0; i<verbs.length; i++) {
+    var v = verbs[i];
+    if(v.indexOf(" ") == -1) {
+        if(v[v.length-1] == 'e')
+            v = v.substr(0, v.length-1)
+        conjuctions2.push('by '+v+'ing');
+        // we want to see those less often
+        if(Math.random() < 0.2) {
+            conjuctions2.push('in the prospect of '+v+'ing');
+            conjuctions2.push('in the goal of '+v+'ing');
+            conjuctions2.push('in the vision of '+v+'ing');
+        }
+    }
+}
+
+function random_from_list(list)  {
+    var index = Math.floor(Math.random() * list.length)
+    return list[index];
+}
+
+function preposition(adj, n)  {
+    if(n[n.length-1] == 's')
+        return ' ';
+    var vowels = "aeiouy"
+    var chr = adj.charAt(0)
+    if (vowels.indexOf( chr.toLowerCase() ) != -1)
+        return ' an ';
+    return ' a ';
+}
+
+function capitalize(a)  {
+    return a.charAt(0).toUpperCase() + a.substr(1).toLowerCase();
+}
+
+function generate_pitch() {
+    var name1 = random_from_list(names);
+    var verb1 = random_from_list(verbs);
+    var verb2 = random_from_list(verbs);
+    var adjective1 = random_from_list(adjectives);
+    var adjective2 = random_from_list(adjectives);
+    var conjuction1 = random_from_list(conjuctions1);
+    var conjuction2 = random_from_list(conjuctions2);
+    var product1 = random_from_list(products);
+    var name2 = random_from_list(names);
+
+    p1 = capitalize(verb1) + preposition(adjective1, name1) + adjective1 + ' '+ product1 +' ' + name1 + ' ' +
+        conjuction2 + preposition(adjective2, name2) + adjective2 + ' ' + name2 + '.';
+
+    p2 = capitalize(verb1) + preposition(adjective1, name1) + adjective1 + ' '+ product1 +' ' + name1 + ' ' +
+        conjuction1 + ' ' + verb2 + preposition(adjective2, name2) + adjective2 + ' ' + name2 + '.';
+
+    if(Math.random() < 0.5)
+        return p1;
+    else
+        return p2;
+}
+
+document.getElementById('cp').onclick = function() {
+    document.getElementById('pitch').value = generate_pitch();
+}
+
+document.getElementById('pitch').value = generate_pitch();
+
+document.getElementById('nbpitch').innerHTML = nb_pitch;
+
+</script>
+
+<p>Provided for you by <a href="http://batiste.dosimple.ch/">Batiste Bieler</a></p>
+
+</body>
+</html>

@@ -1,0 +1,12 @@
+body {margin:0 auto;}
+#sjs {background:#f1f4fe;border:1px #777 solid;margin:0;}
+
+/* for Opera's Speed Dial */
+#speeddial {display:none;}
+
+@media only screen and (max-width:1024px) and (min-width:1024px) and (max-height:768px) and (min-height:768px) {
+	/* hiding blocks */
+	#sjs {display:none;}
+	/* showing the special .speedidal block */
+	#speeddial {display:block;}
+}

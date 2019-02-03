@@ -1,0 +1,245 @@
+<!DOCTYPE html><html>
+<head>
+<title>Combo breaker</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<style>
+body {
+    margin:0;
+    background:#111;
+}
+.sjs {
+    margin:0 auto;
+    background:#999;
+}
+</style>
+</head>
+<body>
+
+</body>
+<script src="vendors/touch.js"></script>
+<script src="sprite.js"></script>
+<script src="lib/collision.js"></script>
+<script>
+
+function rand(n) {
+  return Math.floor(Math.random()*n);
+}
+
+var start = function() {
+    // iphone    320×480
+    // iphone 4  640×960
+    var game_height = 480;
+    var game_width = 320;
+    sjs.debug = true;
+    var scene = sjs.Scene({w:game_width, h:game_height});
+    var layer = scene.Layer("main", {useCanvas:true});
+    var input = scene.Input();
+    //input.repeatKeyPressed = 10;
+    // scene.scale(1, 1);
+
+    var colors = ['#ba006f', '#e89c00', '#ccf5ec', '#00a6e3', '#5f00ff'];
+    function create_block() {
+        var type = rand(5);
+        var sprite = layer.Sprite(false, {color:colors[type], w:36, h:36});
+        sprite.shape = {
+            x:0,
+            y:0,
+            type:"rectangle",
+            w:36,
+            h:36,
+        }
+        sprite._type = type;
+        return sprite;
+    }
+
+    function create_line() {
+        var b1 = create_block();
+        var b2 = create_block();
+        return {x:2, blocks:[b1, b2], orientation:0};
+    }
+
+    var line, free_blocks, last_fall, falling_line, breaking_parts;
+    function init() {
+        line = create_line();
+        free_blocks = sjs.List();
+        last_fall = 0;
+        falling_line = false;
+        breaking_parts = sjs.List();
+    }
+    init();
+
+    function move_block(block) {
+
+        block._moving = false;
+
+        if(block.y >= 430) {
+            block.setY(430);
+            block.yv = 0;
+            return true;
+        }
+
+        var step = 0.5;
+
+        block.yv = Math.min(block.yv + step, 12);
+        block.applyYVelocity();
+
+        var collides = block.collidesWithArray(free_blocks);
+        if(!collides) {
+            block._moving = true;
+            return false;
+        }
+
+        if(block.y < 60) {
+            free_blocks.empty();
+            alert("game over");
+            init();
+        }
+
+        while(collides) {
+            block.move(0, -step);
+            collides = block.collidesWithArray(free_blocks);
+        }
+
+        block.yv = 0;
+        return true;
+    }
+
+    function search_for_blocks(b1, list) {
+
+        if(!list) {
+            list = sjs.List([b1]);
+        }
+        if(b1._moving) {
+            return list;
+        }
+
+        b1.move(-10, 0);
+        var left = b1.collidesWithArray(free_blocks);
+        b1.move(10, 0);
+
+        b1.move(10, 0);
+        var right = b1.collidesWithArray(free_blocks);
+        b1.move(-10, 0);
+
+        b1.move(0, 10);
+        var bottom = b1.collidesWithArray(free_blocks);
+        b1.move(0, -10);
+
+        b1.move(0, -10);
+        var top = b1.collidesWithArray(free_blocks);
+        b1.move(0, 10);
+
+        if(left._type == b1._type && !list.isIn(left) && !left._moving) {
+            list.append(left);
+            search_for_blocks(left, list);
+        }
+        if(right._type == b1._type && !list.isIn(right) && !left._moving) {
+            list.append(right);
+            search_for_blocks(right, list);
+        }
+        if(bottom._type == b1._type && !list.isIn(bottom) && !left._moving) {
+            list.append(bottom);
+            search_for_blocks(bottom, list);
+        }
+        if(top._type == b1._type && !list.isIn(top) && !left._moving) {
+            list.append(top);
+            search_for_blocks(top, list);
+        }
+        return list;
+    }
+
+    function paint() {
+        var block;
+
+        if(input.keyPressed("up")) {
+            line.orientation += 1;
+            line.orientation = line.orientation % 4;
+            line.x = Math.min(6 + line.orientation % 2, line.x);
+        }
+
+        if(input.keyPressed("left")) {
+            line.x = Math.max(0, line.x-1);
+        }
+        if(input.keyPressed("right")) {
+            line.x = Math.min(6 + line.orientation % 2, line.x+1);
+        }
+
+        if(input.keyPressed("down") && falling_line === false) {
+            falling_line = line;
+            line = create_line();
+        }
+
+        if(falling_line) {
+            var c1 = move_block(falling_line.blocks[0]);
+            var c2 = move_block(falling_line.blocks[1]);
+            if(c1)
+                free_blocks.append(falling_line.blocks[0]);
+            if(c2)
+                free_blocks.append(falling_line.blocks[1]);
+
+            falling_line.blocks[0].update();
+            falling_line.blocks[1].update();
+            if(c1 && c2) {
+                falling_line = false;
+            }
+        } else {
+            while(block = free_blocks.iterate()) {
+                move_block(block);
+                var break_list = search_for_blocks(block);
+                if(break_list.length > 2) {
+                    var b;
+                    while(b = break_list.iterate()) {
+                        free_blocks.remove(b);
+                        breaking_parts.append(b.explode4(12, 12, layer));
+                    }
+                }
+            }
+        }
+
+        while(block = free_blocks.iterate()) {
+            block.update();
+        }
+
+        while(block = breaking_parts.iterate()) {
+            if(block.rv == 0) {
+                block.rv = Math.random() / 4.0;
+                block.xv = (Math.random() - 0.5) * 10;
+                block.yv = (Math.random() - 0.5) * 10;
+            }
+            block.setOpacity(block.opacity - 0.02);
+            block.applyVelocity();
+            block.update();
+            if(block.opacity < 0.1) {
+                breaking_parts.remove(block);
+            }
+        }
+
+        if(line.orientation == 0) {
+            line.blocks[0].position(2 + 40 * (line.x), 20);
+            line.blocks[1].position(2 + 40 * (1 + line.x), 20);
+        }
+        if(line.orientation == 1) {
+            line.blocks[0].position(2 + 40 * (line.x), 20);
+            line.blocks[1].position(2 + 40 * (line.x), 62);
+        }
+        if(line.orientation == 2) {
+            line.blocks[1].position(2 + 40 * (line.x), 20);
+            line.blocks[0].position(2 + 40 * (1 + line.x), 20);
+        }
+        if(line.orientation == 3) {
+            line.blocks[1].position(2 + 40 * (line.x), 20);
+            line.blocks[0].position(2 + 40 * (line.x), 62);
+        }
+
+        line.blocks[0].update();
+        line.blocks[1].update();
+
+    };
+
+    var ticker = scene.Ticker(25, paint);
+    ticker.run();
+
+};
+document.addEventListener("DOMContentLoaded", start, false);
+</script>
+</html>

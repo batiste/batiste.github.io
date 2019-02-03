@@ -1,0 +1,50 @@
+<html>
+<head>
+<style>
+html, body{margin:0;padding:0}
+</style>
+
+
+</head>
+<body>
+<img src="tiles.png" id="tiles" />
+<div style="width:44px;height:44px;border:2px solid #f00;position:absolute" id="select"></div>
+<script src="sprite.js"></script>
+<script>
+
+var scene = sjs.Scene({w:640, h:480, useCanvas:true});
+
+var tiles = document.getElementById('tiles');
+var select = document.getElementById('select');
+
+
+scene.loadImages(['tiles.png'], function() {
+
+var offsetx = 0;
+var offsety = 0;
+
+tiles.onclick = function(e) {
+    var x = Math.floor(e.offsetX / 48.);
+    var y = Math.floor(e.offsetY / 48. );
+    offsety = (y * 48);
+    offsetx = (x * 48);
+
+    select.style.top = (y * 48) + 'px';
+    select.style.left = (x * 48) + 'px';
+
+}
+
+scene.dom.onclick = function(e) {
+    var x = Math.floor(e.offsetX / 48.);
+    var y = Math.floor(e.offsetY / 48.);
+    console.log(x , y)
+
+    var sp = scene.Sprite('tiles.png', {w:48, h:48, x:(x * 48), y:(y * 48)});
+    sp.offset(offsetx, offsety);
+    sp.update()
+}
+
+
+});
+
+</script>

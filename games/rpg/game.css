@@ -1,0 +1,73 @@
+h1,h2,h3 { padding:0; margin:0; }
+html, body{
+    margin:0;
+    padding:0;background:#333;
+    font-family:sans-serif;
+    font-size:13px;}
+#sjs0 {margin:0 auto;top:10px;border:2px solid #222;}
+#xp, #health{
+    width:150px;
+    opacity:0.8;
+    height:18px;
+    border:1px solid #000;
+    position:absolute;
+    background:#436;
+    top:5px;
+    right:5px;
+    color:#fff;
+    font-weight:bold;
+    text-align:center;
+    position:absolute;
+}
+#health {
+    right:none;
+    left:5px;
+    background:#622;
+}
+
+#xptext, #healthtext {
+    position:absolute;
+    margin-left:10px
+}
+#sp2 {
+    height:18px;
+    display:block;
+    background:#29f;
+}
+#sp3 {
+    height:18px;
+    display:block;
+    background:#e22;
+}
+.dialog {
+    color:#fff;
+    background:#222;
+    position:absolute;
+    border:3px #666 solid;
+    top:120px;
+    left:120px;
+    right:120px;
+    padding:20px;
+    border-radius:10px;
+}
+
+.dialog button {
+    cursor:hand;
+    display:block;
+    float:right;
+    padding:5px 15px;
+    background:#eee;
+    border:3px #555 solid;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.dialog button:hover {
+    background:#ccc;
+}
+a{color:#eee}
+
+#credits {
+    text-align:center;
+    color:#ccc;
+}

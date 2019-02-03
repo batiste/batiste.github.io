@@ -1,0 +1,468 @@
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="game.css">
+
+</head>
+<body>
+
+<script src="sprite.js"></script>
+<script>
+
+function random_index_list(list) {
+    var index=Math.floor(Math.random() * list.length);
+    return index;
+}
+
+var scene = sjs.Scene({w:672, h:480, autoPause:true});
+
+scene.main = function() {
+
+    var foreground = scene.Layer("foreground", {useCanvas:true});
+
+    // all ground tiles
+    var possible_tiles_positions = [[11, 5], [13, 6], [12, 6], [11, 6], [14, 6], [13, 5], [12, 5], [14, 5], [13, 1], [14, 1], [15, 1], [13, 2], [14, 2], [15, 2]];
+    var tile_list = [];
+    for(var i = 0; i<possible_tiles_positions.length; i++) {
+        var tile = scene.Sprite('tiles.png', {w:48, h:48, x:0, y:0});
+        tile.offset(48 * possible_tiles_positions[i][0], 48 * possible_tiles_positions[i][1]);
+        tile_list.push(tile);
+    }
+
+    var tile_center = [1, 2, 3, 4, 5, 6, 7, 7, 7];
+    var tile_forest = [0, 1, 2, 3, 4, 5, 6, 7, 7, 7];
+    var tile_light_forest = [0, 1, 2, 3, 4, 5, 6, 7,  1, 2, 3, 4, 5, 6, 7, 7, 7];
+    var tile_house = [8, 9, 10, 11, 12, 13];
+
+    var free_tile = [1, 2, 3, 4, 5, 6, 7];
+
+    var monsters = sjs.SpriteList();
+
+    var ultimate_present = false;
+
+    var evil_blobs = sjs.SpriteList();
+
+    var monster_pieces = sjs.SpriteList();
+
+    // hash map of all the tiles
+    grid = new Object();
+    player_attributes = {speed:5, agility:5, xp:0, vitality:2, strength:9, health:30, maxHealth:30, level:0, nextLevel:16};
+
+    function createMonster(x, y) {
+        if(available(x, y)) {
+            var nb = (Math.random() * 2 + player_attributes.level / 6) ;
+            var a = Math.random() * 3.14;
+            for(var i=0; i<nb; i++) {
+                if(Math.random() < player_attributes.level / 60) {
+                    var v = 1 + (player_attributes.level / 7);
+                    var sp = scene.Sprite('devil2.png', {w:16, h:30, x:x-background.x, y:y-background.y, xv:v*Math.cos(a), yv:v*Math.sin(a)});
+                    sp.health = 6;
+                    sp.type = 'lord';
+                } else {
+                    var v = 2 + (player_attributes.level / 4);
+                    var sp = scene.Sprite('devil.png', {w:14, h:28, x:x-background.x, y:y-background.y, xv:v*Math.cos(a), yv:v*Math.sin(a)});
+                    sp.health = 2;
+                    sp.type = 'underling';
+                }
+                monsters.add(sp);
+            }
+
+            // boss
+            if(player_attributes.level >= 12 && Math.random() < 0.02 && ultimate_present == false) {
+                var v = 2.5;
+                var sp = scene.Sprite('devil3.png', {w:20, h:34, x:x-background.x, y:y-background.y, xv:v*Math.cos(a), yv:v*Math.sin(a)});
+                sp.health = 100;
+                sp.type = 'boss';
+                monsters.add(sp);
+                ultimate_present = true;
+            }
+        }
+    }
+
+    function createHouse(_x, _y) {
+        var block_x = (_x / 48) + 2 * (Math.random() - 0.5) | 0;
+        var block_y = (_y / 48) + 2 * (Math.random() - 0.5) | 0;
+        for(var i = 0; i < 6; i++) {
+            var x = i % 3;
+            var y = Math.floor(i / 3.0);
+            var map_index = String(block_x + x)+'|'+String(block_y + y);
+            var tile_index = tile_house[i];
+            grid[map_index] = tile_index;
+        }
+    }
+
+    var background = sjs.SrollingSurface(scene, scene.w, scene.h, function(layer, _x, _y) {
+        var distance = sjs.math.hypo(_x - scene.w/2, _y - scene.h/2);
+
+        var authorized_tile = tile_forest;
+
+        if(distance < 800) {
+            var authorized_tile = tile_light_forest;
+        }
+
+        if(distance < 500) {
+            var authorized_tile = tile_center;
+        }
+
+        var block_x = _x / 48;
+        var block_y = _y / 48;
+        for(var x = 0; x < (layer.w / 48); x++) {
+            for(var y = 0; y < (layer.h / 48); y++) {
+                var map_index = String(block_x + x)+'|'+String(block_y + y);
+                var tile_index = grid[map_index];
+                if(tile_index === undefined) {
+                    var index = random_index_list(authorized_tile);
+                    tile_index = authorized_tile[index];
+                    grid[map_index] = tile_index;
+                } else {
+
+                }
+                var tile = tile_list[tile_index];
+                tile.position(48 * x, 48 * y);
+                tile.canvasUpdate(layer);
+            }
+        }
+
+        if(distance > 1000) {
+            createMonster(_x + layer.w / 2, _y  + layer.h / 2);
+        }
+    });
+
+    for(var i=0; i<6.00; i=i+0.7) {
+        createHouse(400*Math.cos(i) + scene.w/2, 400*Math.sin(i) + scene.h/2);
+    }
+
+
+    var xp = document.createElement("div");
+    var sp1 = document.createElement("span");
+    var sp2 = document.createElement("span");
+    sp2.id = "sp2"
+    xp.appendChild(sp1);
+    xp.appendChild(sp2);
+    xp.id="xp";
+    sp1.id="xptext";
+    var interface = scene.Layer("interface");
+    interface.dom.appendChild(xp);
+
+    var health = document.createElement("div");
+    var sp3 = document.createElement("span");
+    var sp4 = document.createElement("span");
+    health.id = "health";
+    sp3.id = "sp3";
+    sp4.id="healthtext";
+    //sp4.innerHTML = "Health"
+    health.appendChild(sp4);
+    health.appendChild(sp3);
+    interface.dom.appendChild(health);
+
+
+    var player = scene.Sprite("character.png", {w:20, h:48, x:scene.w/2, y:scene.h/2});
+    var input = sjs.Input(scene);
+    background.position(0, 0);
+    stones = sjs.SpriteList();
+
+    // trigger the first draw
+    background.update();
+
+    function normal_vector(x, y, length) {
+        var n = sjs.math.hypo(x, y);
+        if(length) {
+            return {x:((x/n)*length), y:((y/n)*length)}
+        }
+        return {x:x/n, y:y/n};
+    }
+
+    function available(x, y) {
+        var x_map = Math.floor(x / 48);
+        var y_map = Math.floor(y / 48);
+        var index = grid[String(x_map)+'|'+String(y_map)];
+        for(var i=0; i<free_tile.length; i++) {
+            if(free_tile[i] == index)
+                return true;
+        }
+        return false;
+    }
+
+    var lastStone = 0;
+    increase_xp(0);
+    display_health();
+    function increase_xp(n) {
+
+        player_attributes.xp = player_attributes.xp + n;
+
+        if(player_attributes.xp > player_attributes.nextLevel) {
+
+            var buttons = [
+                {text:"Agility", callback:function() {
+                    player_attributes.agility += 1.5;
+                    scene.ticker.resume();
+                }},
+                {text:"Speed", callback:function() {
+                    player_attributes.speed += 0.6;
+                    scene.ticker.resume();
+                }},
+                {text:"Vitality", callback:function() {
+                    player_attributes.vitality += 2;
+                    player_attributes.maxHealth += 20;
+                    scene.ticker.resume();
+                }},
+                {text:"Strength", callback:function() {
+                    player_attributes.strength += 1.5;
+                    scene.ticker.resume();
+                }}
+            ]
+
+            scene.ticker.pause();
+            scene.dialog({html:"<h1>Level increased</h1><p>You can now increase one of those caracteristic</p>" +
+            "<ul><li>Agility: throw stones faster</li>" +
+            "<li>Speed: move faster</li>" +
+            "<li>Vitality: health points recover faster and 20 more health points</li>" +
+            "<li>Strength: increase the speed and the reach of the stones.</li>"
+            , buttons:buttons});
+
+            player_attributes.xp = 0;
+            player_attributes.level += 1;
+            player_attributes.nextLevel += 3;
+        }
+
+        sp1.innerHTML = player_attributes.xp + ' xp, level ' + player_attributes.level;
+        sp2.style.width = (100 * player_attributes.xp / player_attributes.nextLevel) + '%';
+    }
+
+    function display_health() {
+        sp3.style.width = (100 * player_attributes.health / player_attributes.maxHealth) + '%';
+        sp4.innerHTML = player_attributes.health + ' / ' + player_attributes.maxHealth;
+    }
+
+    function increase_health(n) {
+        player_attributes.health = Math.min(player_attributes.maxHealth, Math.max(0, player_attributes.health + n));
+
+        if(player_attributes.health <= 0) {
+            scene.ticker.pause();
+            scene.dialog({"html":"<h1>Game over</h1><p>You perished in battle.</p>",
+                buttons:[{text:"Play again", callback:function(){
+                    scene.reset();
+                    scene.main();
+                }}]
+            });
+        }
+
+        display_health();
+    }
+
+    var lastHurt = 0;
+    function monster_attack(monster) {
+        player_attributes.health = Math.min(player_attributes.maxHealth, Math.max(0, player_attributes.health -1));
+        display_health()
+        if(player_attributes.health == 0) {
+            scene.ticker.pause();
+            scene.dialog({"html":"<h1>Game over</h1><p>You perished in battle.</p>",
+                buttons:[{text:"Play again", callback:function(){
+                    scene.reset();
+                    scene.main();
+                }}]
+            });
+        }
+    }
+
+    var lastHeal = 0;
+
+    function paint() {
+
+        var move_x = 0;
+        var move_y = 0;
+        if(input.keyboard.left)
+            move_x = -player_attributes.speed;
+        if(input.keyboard.right)
+            move_x = player_attributes.speed;
+        if(input.keyboard.up)
+            move_y = -player_attributes.speed;
+        if(input.keyboard.down)
+            move_y = player_attributes.speed;
+
+        if(scene.ticker.currentTick > lastHeal + (240 / player_attributes.vitality)) {
+            lastHeal = scene.ticker.currentTick;
+            increase_health(1);
+        }
+
+        if(input.mousedown && scene.ticker.currentTick > lastStone + (60 / player_attributes.agility)) {
+            lastStone = scene.ticker.currentTick;
+            var pos = input.mouse.position;
+
+            var d = player.distance(pos.x, pos.y);
+            var v = sjs.math.normalVector((pos.x - player.x), (pos.y - player.y), player_attributes.strength);
+            var p = scene.Sprite(false, {layer:foreground, x:player.x + 12, y:player.y + 16, w:4, h:4, color:"#444", xv:v.x, yv:v.y});
+            p.age = 0;
+            stones.add(p);
+        }
+
+        var p;
+        while(p = stones.iterate()) {
+            p.applyVelocity();
+            p.move(-move_x, -move_y)
+            p.update();
+            p.age = p.age + 1;
+            if(p.age > player_attributes.strength) {
+                stones.remove(p);
+                p.remove();
+            }
+            var collide = p.collidesWithArray(monsters);
+            if(collide) {
+                collide.health -= 1;
+                if(collide.health <= 0) {
+                    if(collide.type=="boss") {
+                        scene.ticker.pause();
+                        scene.dialog({"html":"<h1>You killed the evil lord</h1><p>Congratulations you saved our village.</p>",
+                            buttons:[{text:"Play again", callback:function(){
+                                scene.reset();
+                                scene.main();
+                            }}]
+                        });
+                    }
+                    if(collide.type=="lord")
+                        increase_xp(3);
+                    else
+                        increase_xp(1);
+
+                    var pc = collide.explode2(undefined, false, foreground);
+                    pc[0].xv = -1;
+                    pc[0].life = 25;
+                    pc[1].xv = 1;
+                    pc[1].life = 25;
+                    monster_pieces.add(pc);
+                    monsters.remove(collide);
+                    collide.remove();
+                }
+                stones.remove(p);
+                p.remove();
+            }
+        }
+
+        var p;
+        while(p = monster_pieces.iterate()) {
+            p.applyXVelocity();
+            p.setOpacity(p.life / 25)
+            p.move(-move_x, -move_y);
+            p.update();
+            p.life -= 1;
+            if(p.life <=0) {
+                monster_pieces.remove(p);
+                p.remove();
+            }
+        }
+
+        var move = sjs.math.normalVector(move_x, move_y, player_attributes.speed);
+
+        var guy_pos = {x:background.x + scene.w / 2 + 12, y:background.y + scene.h / 2 + 24}
+
+        if(!available(guy_pos.x + move.x, guy_pos.y))
+            move.x = 0;
+        if(!available(guy_pos.x, guy_pos.y + move.y))
+            move.y = 0;
+
+        background.move(move.x, move.y);
+        background.update();
+
+        var d;
+        while(d = monsters.iterate()) {
+
+            var distance_player = d.distance(scene.w/2, scene.h/2);
+
+            if(distance_player > 1000) {
+                if(d.type == 'boss')
+                    ultimate_present = false;
+                monsters.remove(d);
+                d.remove();
+                continue;
+            }
+
+            if(d.type=="boss") {
+                if(distance_player < 600) {
+                    var v = d.pointVelocityTo(scene.w/2 - d.x, scene.h/2 -d.y);
+                    if(scene.ticker.currentTick % (10) == 0) {
+                        d.rotateVelocity(0.2);
+                        var p = scene.Sprite(false, {layer:foreground, x:d.x + 6, y:d.y + 6, w:6, h:6, color:"#f22", xv:3*d.xv, yv:3*d.yv});
+                        p.life = 50;
+                        evil_blobs.add(p);
+                        p.update();
+                        d.rotateVelocity(-0.4);
+                        var p = scene.Sprite(false, {layer:foreground, x:d.x + 6, y:d.y + 6, w:6, h:6, color:"#f22", xv:3*d.xv, yv:3*d.yv});
+                        p.life = 50;
+                        evil_blobs.add(p);
+                        p.update();
+                        d.rotateVelocity(0.2);
+                        var p = scene.Sprite(false, {layer:foreground, x:d.x + 6, y:d.y + 6, w:6, h:6, color:"#f22", xv:3*d.xv, yv:3*d.yv});
+                        p.life = 50;
+                        evil_blobs.add(p);
+                        p.update();
+                    }
+                }
+            } else if(d.type=="lord") {
+                if(distance_player < 400 && Math.random() < 0.4) {
+                    var v = d.pointVelocityTo(scene.w/2 - d.x, scene.h/2 -d.y);
+                    if(distance_player < 300 && scene.ticker.currentTick % (30) == 0) {
+                        var p = scene.Sprite(false, {layer:foreground, x:d.x + 6, y:d.y + 6, w:6, h:6, color:"#2f2", xv:3*d.xv, yv:3*d.yv});
+                        p.life = 40;
+                        evil_blobs.add(p);
+                        p.update();
+                    }
+                }
+            } else {
+                if(distance_player < 300 && distance_player > 20 && Math.random() < 0.10) {
+                    var v = d.pointVelocityTo(scene.w/2 - d.x, scene.h/2 -d.y);
+                }
+            }
+
+            d.rotateVelocity((Math.random()-0.5) / 2);
+            d.move(-move.x, -move.y);
+            var monster_pos = {x:background.x + d.x + 12, y:background.y + d.y + 24}
+            if(available(monster_pos.x + d.xv, monster_pos.y))
+                d.applyXVelocity();
+            else
+                d.xv = -d.xv
+            if(available(monster_pos.x, monster_pos.y + d.yv))
+                d.applyYVelocity();
+            else
+                d.yv = -d.yv
+            d.update();
+        }
+
+        var eb;
+        while(eb = evil_blobs.iterate()) {
+            eb.move(-move.x, -move.y);
+            eb.applyVelocity();
+            eb.update();
+            var collide = eb.collidesWith(player);
+            if(collide) {
+                increase_health(-10);
+            }
+            eb.life -= 1;
+            if(eb.life <= 0 || collide) {
+                eb.remove();
+                evil_blobs.remove(eb);
+            }
+
+        }
+
+        var monster = player.collidesWithArray(monsters);
+        if(monster)
+            monster_attack(monster);
+
+        player.update();
+    }
+
+    scene.Ticker(25, paint).run();
+    scene.ticker.pause();
+    scene.dialog({html:"<h1>The invasion of the evil lords</h1><p>Our village is overwhelmed by demons. " +
+        "Plese help us!<br>The village seems to be the only remaining place where the deamons don't go " +
+        "but they are all around in the forest. Don't get lost and be careful if you want to survive.</p>" +
+        "<p><strong>Instructions: use arrows to move, and mouse to fire.</strong></p>",
+        buttons:[{text:"I understand", callback:function(){scene.ticker.resume();}}]})
+
+
+};
+
+scene.loadImages(['tiles.png', 'character.png', 'devil.png', 'devil2.png', 'devil3.png']);
+
+</script>
+<p id="credits">Graphic an code created by <a href="http://batiste.info/">Batiste Bieler</a> using <a href="https://github.com/batiste/sprite.js">the sprite.js library</a>.</p>
+</body>

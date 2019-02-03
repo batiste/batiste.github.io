@@ -1,0 +1,295 @@
+<html>
+<head>
+<title>
+CokeScript language, whitespace sensitive language that compile to JavaScript
+</title>
+<link rel="stylesheet" href="css/reboot.css">
+<link rel="stylesheet" href="css/main.css">
+
+</head>
+<body class="grid typography">
+
+<div class="jumbotron">
+  <div class="container">
+    <h1>CokeScript</h1>
+    <p>When CoffeeScript is not enough. <a href="https://github.com/batiste/CokeScript/" class="btn btn-lg btn-info">Github</a></p>
+  </div>
+</div>
+
+
+<p>CokeScript is a simple whitespace sensitive language that compile to JavaScript inspired by Python and Ruby. CokeScript doesn't try to be too smart and is mainly syntactic sugar around common JavasScript annoyances. Features:</p>
+
+<ol>
+<li>Significant whitespace</li>
+<li>String interpolation</li>
+<li>Multiline strings</li>
+<li>Shorter function declaration and lambda expression</li>
+<li>Function parameters can have a default and computed value</li>
+<li>Simple <strong>for</strong> loop syntax that works on Array or Object</li>
+<li>Sensible scoping rules unlike <a href="https://donatstudios.com/CoffeeScript-Madness">CoffeeScript</a></li>
+<li>Classes with "classical" inheritance</li>
+<li>Opiniated syntax rules that enforce a rigid coding style</li>
+<li>A quite good grammar parser that hints about what is wrong</li>
+<li><a href="#egDOM">Virtual Dom support</a> directly within the language</li>
+<li>A rather compact source code which is <strong>smaller than 1000 lines of code</strong></li>
+</ol>
+
+<p>More info on the github page <a href="https://github.com/batiste/CokeScript/">https://github.com/batiste/CokeScript/</a></p>
+
+<label><input type="checkbox" id="notrycatch"> Do not catch errors in the example.</label>
+
+<div class="pad-1 first-row">
+
+<div id="egClass" class="row">
+
+<div class="col-6">
+<h2>Classes</h2>
+<div style="position:relative">
+<textarea class="in form-control">
+class Animal
+  
+  def constructor(name="unknown", diet="grass")
+    this.name = name
+    this.diet = diet
+  
+  def eat()
+    return "#{this.name} eat #{this.diet}"
+
+class Cats(Animal)
+  def constructor(name)
+    Animal.call(this, name, "meat")
+
+class Tiger(Cats)
+  def constructor(name)
+    Cats.call(this, name)
+
+tiger = Tiger("Wilson")
+tiger.eat()
+</textarea>
+<pre class="error alert alert-danger" style=""></pre>
+</div>
+
+</div>
+
+<div class="col-6">
+  <h2>JavaScript Output <span class="percent"></span></h2>
+  <textarea class="code-output form-control"></textarea>
+  <button class="evalButton btn btn-primary">Eval</button>
+  <pre class="evalResult"></pre>
+</div>
+
+</div>
+
+
+
+
+<div id="egScope" class="row">
+<div class="col-6">
+<h2>Scope</h2>
+<textarea class="in form-control">
+a = "string 
+on multiple 
+lines"
+
+c = 1 + 1
+
+def testScope(b)
+  a = "does not erase the outer scope string"
+  b = "No var here because it's parameter of the function"
+  c := "Explicit assignment to parent scope variable with \":=\""
+  return a
+
+testScope()
+"#{a} , #{c}"
+</textarea>
+
+<pre class="error alert alert-danger" style=""></pre>
+
+</div>
+
+
+<div class="col-6">
+  <h2>JavaScript Output <span class="percent"></span></h2>
+  <textarea class="code-output form-control"></textarea>
+  <button class="evalButton btn btn-primary">Eval</button>
+  <pre class="evalResult"></pre>
+</div>
+
+</div>
+
+
+
+
+<div id="egFunction" class="row">
+<div class="col-6">
+<h2>Functions and Loops</h2>
+<textarea class="in form-control">
+memo = {}
+
+exist = def(n) memo[n] != undefined
+
+def fib(n)
+    if exist(n)
+      return memo[n]
+    if n < 2
+        return n
+    memo[n] = fib(n - 2) + fib(n - 1)
+    return memo[n]
+
+array = [1, 2, 3]
+fibo_square = array.map(def(i) fib(i * i))
+
+out = ""
+for key, value in memo
+   out += "fib(#{key}) = #{value}, "
+
+out
+</textarea>
+
+<pre class="error alert alert-danger" style=""></pre>
+
+</div>
+
+
+<div class="col-6">
+  <h2>JavaScript Output <span class="percent"></span></h2>
+  <textarea class="code-output form-control"></textarea>
+  <button class="evalButton btn btn-primary">Eval</button>
+  <pre class="evalResult"></pre>
+</div>
+
+</div>
+
+
+
+<div id="egDOM" class="row">
+<div class="row">
+  <div class="col-6">
+  <h2>Virtual DOM support</h2>
+
+  <p>CokeScript support the
+  <a href="https://github.com/Matt-Esch/virtual-dom#example---creating-a-vtree-using-virtual-hyperscript">
+  virtual-dom</a> library for React-Like features.<br>
+  </p>
+  </div>
+
+  <div class="col-6">
+  <h2>JavaScript Output <span class="percent"></span></h2>
+  </div>
+</div>
+
+<div class="col-6">
+<textarea class="in form-control">
+menu = {home: "Homepage", products: "Products"}
+
+# a function declared with the "dom" keyword
+# automatically return an array of DOM elements
+dom generateVirtualDom(links)
+  <h1>
+    ="Menu"
+  <ul className="nav">
+    for index, content in links
+      =listItem("cls#{index}", content)
+
+dom listItem(className, text)
+  <li className="#{className}">
+    =text
+
+virtual_dom = cokescript.h("div", generateVirtualDom(menu))
+
+real_dom = cokescript.create(virtual_dom)
+target = document.getElementById("domOut")
+target.innerHTML = ""
+target.appendChild(real_dom)
+
+# let's modify the menu
+menu = {home: "Homepage", products: "Products", contacts: "Contacts"}
+new_virtual_dom = cokescript.h("div", generateVirtualDom(menu))
+
+patches = cokescript.diff(virtual_dom, new_virtual_dom)
+
+cokescript.patch(real_dom, patches)
+
+</textarea>
+
+<pre class="error alert alert-danger" style=""></pre>
+
+</div>
+
+
+<div class="col-6">
+
+  <textarea class="code-output form-control"></textarea>
+  <button class="evalButton btn btn-primary">Eval</button>
+  <pre class="evalResult"></pre>
+
+  <div id="domOut"></div>
+</div>
+
+</div>
+
+</div>
+
+
+
+<script src='dist/cokescript.js'></script>
+<script>
+
+window.onload = function() {
+
+
+var elTC = document.getElementById('notrycatch');
+var notrycatch = localStorage.getItem("notrycatch") == "true";
+elTC.checked = notrycatch;
+elTC.onclick = function(e) {
+  notrycatch = this.checked;
+  localStorage.setItem('notrycatch', notrycatch);
+};
+
+function initExample(dom) {
+  function dGet(cls){ return dom.getElementsByClassName(cls)[0]; }
+  var din = dGet('in');
+  //var dout = dGet('out');
+  var code = dGet('code-output');
+
+  dGet('evalButton').onclick = function() {
+    var result = eval(code.value);
+    dGet('evalResult').textContent = result;
+  };
+
+
+  din.onkeyup = function() {
+    outit();
+  };
+
+  function outit() {
+    if(notrycatch) {
+      var result = cokescript.generateModule(din.value);
+      code.value = result.code;
+      dGet("error").textContent = "";
+    } else {
+      try {
+        var result = cokescript.generateModule(din.value);
+        code.value = result.code;
+        var percent = Math.round((result.code.length / din.value.length) * 100);
+        //dout.value = JSON.stringify(result.ast, false, 2);
+        dGet("percent").textContent = '(' + percent + '% of original)';
+        dGet("error").textContent = "";
+      } catch(e) {
+        dGet("error").textContent = String(e);
+        throw e;
+      }
+    }
+  }
+
+  outit();
+}
+
+initExample(document.getElementById('egClass'));
+initExample(document.getElementById('egFunction'));
+initExample(document.getElementById('egScope'));
+initExample(document.getElementById('egDOM'));
+
+};
+
+</script>

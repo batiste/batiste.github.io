@@ -1,0 +1,191 @@
+
+body{ 
+  font-family:sans-serif; 
+  line-height:1.6; 
+  margin:0;
+  padding:0; 
+  background:#fafafa;
+}
+
+body,table {
+    font-size:16px; 
+}
+
+#main{ 
+  margin:1% 4%;
+  max-width:1200px;
+}
+
+h2 {
+  padding-bottom:0.3em;
+  padding-top:1em;
+}
+
+#header h1
+{
+    margin-top:0em;
+    padding-top:1em;
+    font-weight:lighter;
+    font-family:Georgia;
+    font-size:2.0em;
+}
+
+#content
+{
+    padding:2em 0;
+    font-size:1em;
+}
+
+#content a:link
+{
+    color:#333;
+}
+
+#content a:visited
+{
+    color:#666;
+    text-decoration:none;
+}
+
+h2,h3,h4,{ margin:0;padding:0; }
+ul, ol{ margin:0;padding:0;margin-top:1em; }
+p{ margin:0;padding:0;margin-top:1em; }
+
+h2
+{
+    font-weight:lighter;
+    font-family:Georgia;
+    font-size:1.7em;
+}
+
+h3
+{
+    font-weight:lighter;
+    font-family:Georgia;
+    font-size:1.1em;
+}
+
+.period {
+  width:18%;
+}
+
+.old {
+    display:none;
+}
+
+table td {
+  vertical-align:top;
+  border-top:4px #eee solid;
+  border-right:4px #eee solid;
+  padding:2% 1% 2% 3%;
+ }
+ 
+ 
+table th {
+  font-size:18px;
+  font-weight:bold;
+  padding:0.5em;
+ }
+ 
+table td:last-child {
+    border-right:0px #eee solid;
+ }
+ 
+/*table tr:last-child td {
+    border-bottom:0px #eee solid;
+ }*/
+
+table td li {
+  list-style:disc;
+}
+
+.tech {
+   width:12em;
+ }
+ li {
+  padding:0.25em 0em;
+  list-style:none;
+ }
+
+.only-print {
+    display: none;
+}
+
+@media print {
+    body, table, table td {
+      font-size:12px; 
+    }
+    table th {
+        font-size:14px;
+    }
+    a {
+        text-decoration: none;
+    }
+
+    .only-print {
+        display: block;
+    }
+
+    .no-print {
+        display: none;
+    }
+
+    #more a:link:after, #more a:visited:after { content:" (" attr(href) ") "; }
+    
+    h1 {
+        font-size:20px;
+    }
+    h2 {
+        font-size:16px; 
+    }
+    #content {
+      padding:0;
+    }
+    #content a:link, #content a:visited
+    {
+        color:#000;
+    }
+}
+
+
+@media only screen and (max-width: 700px) {
+
+  body {
+      background-image:none;
+  }
+
+  #logo {
+    display:none;
+  }
+
+  table thead {
+    display:none;
+  }
+
+  .period {
+    width:100%;
+    font-weight:bold;
+  }
+  
+  .tech {
+    display:none;
+  }
+
+  body {
+    font-size:15px; 
+  }
+
+  table td {
+    font-size:14px;
+    display:block;
+    width:100%;
+    border:0;
+    margin-bottom:1em;
+    padding:0;
+  }
+
+ li {
+  list-style:none;
+ }
+
+}

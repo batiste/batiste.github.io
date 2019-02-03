@@ -1,0 +1,79 @@
+<!DOCTYPE html><html>
+<head>
+<title>Test 32 sprites in a cycle animation</title>
+<meta name = "viewport" content = "user-scalable=no, width=device-width">
+<style>
+body {
+    margin:0 auto;
+}
+#sjs {
+background:#f1f4fe;
+border:1px #333 solid;
+}
+</style>
+</head>
+<body>
+
+
+</body>
+<script src="sprite.js"></script>
+<script>
+
+window.onload = function() {
+
+    var game_height = 478;
+    var game_width = 518;
+    sjs.h = game_height;
+    sjs.w = game_width;
+
+
+    var block1 = new sjs.Sprite('terrain-grass-01.png');
+    block1.color = '#3b3';
+    block1.x = 0;
+    block1.y = 270;
+    block1.w = game_width;
+    block1.h = 32;
+    block1.update();
+
+    var block2 = new sjs.Sprite('terrain-dirt-01.png');
+    block2.color = '#3b3';
+    block2.x = 0;
+    block2.y = 302;
+    block2.w = game_width;
+    block2.h = 200;
+    block2.update();
+
+    var player = new sjs.Sprite('miner-24x32-v1.png');
+    player.x = 20;
+    player.y = 243;
+    player.size(24, 28);
+
+    var input  = new sjs.Input();
+
+    var xv = 0, yv = 0;
+
+    function paint() {
+
+        if(!input.keyboard.left && !input.keyboard.right && !input.keyboard.space) {
+            xv = 0;
+        }
+
+        if(input.keyboard.left) {
+            xv = Math.max(-4, xv-1);
+        }
+        if(input.keyboard.right) {
+            xv = Math.min(4, xv+1);
+        }
+
+        player.move(xv, yv);
+        player.update();
+        block1.update();
+        block2.update();
+    };
+
+    var ticker = new sjs.Ticker(25, paint);
+    ticker.run();
+
+};
+</script>
+</html>

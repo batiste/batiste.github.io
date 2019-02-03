@@ -1,0 +1,56 @@
+
+body {
+  font-family:sans-serif;
+  font-size:16px;
+  padding:1% 4%;
+  line-height:1.4;
+}
+
+h1{
+  font-size:32px;
+}
+
+h2 {
+  font-size:24px;
+}
+
+h3 {
+  font-size:20px;
+}
+
+h1, h2, h3 {
+  font-family: 'Roboto', sans-serif;
+  padding:0.5em 0;
+}
+
+em, strong { font-weight:bold }
+
+p, label, ul, pre, .html{ padding:0.6em 0; }
+
+.like-positive-number { width:6em; }
+
+.like-sum-table td, .like-sum-table th {
+  padding:6px 12px;
+}
+
+.like-sum-table .like-product-line {
+  border-bottom:2px #ccc solid;
+  border-top:2px #ccc solid;
+}
+
+li { padding:0.2em 0; }
+pre {
+  font-family: 'Ubuntu Mono', courrier, sans-serif;
+  word-wrap:break-word;
+}
+
+.like-bubble { 
+    padding:20px;
+    display:inline-block;
+    background:#aaf; 
+    border:2px solid #666;
+ }  
+
+.bubble-over {
+   background:#5b7; 
+}
