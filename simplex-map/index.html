@@ -6,36 +6,40 @@
 </p>
 <canvas id="can"></canvas>
 
-
 <script src="./simplex-noise.js"></script>
 
 <script>
 let simplex = new SimplexNoise('blop');
-var canvas = document.getElementById("can");
-const width = 800
+let canvas = document.getElementById("can");
+const width = 1200
 const height = 600
+const tilesetSize = 48
 canvas.width = width
 canvas.height = height
-var canvas = document.getElementById("can");
-var context = canvas.getContext("2d");
-var imagedata = context.createImageData(width, height);
+let context = canvas.getContext("2d");
+let imagedata = context.createImageData(width, height);
 
 let dx = 0;
 let dy = 0;
+let velocity = 4
 
 document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
-            dx = Math.max(dx -5, -20)
+            // left arrow
+            dx = Math.max(dx - velocity, -3 * velocity)
             break;
         case 38:
-            dy = Math.max(dy -5, -20)
+            // up arrow
+            dy = Math.max(dy - velocity, -3 * velocity)
             break;
         case 39:
-            dx = Math.min(dx + 5, 20)
+            // rigth arrow
+            dx = Math.min(dx + velocity, 3 * velocity)
             break;
         case 40:
-            dy = Math.min(dy + 5, 20)
+            // down arrow
+            dy = Math.min(dy + velocity, 3 * velocity)
             break;
     }
 };
@@ -53,38 +57,91 @@ let colorPalette = [
   [103,146,103],
   [103,146,125],
 ]
+
+let tilePalette = [
+  [0,0],
+  [2,1],
+  [0,3],
+  [3,3],
+  [4,4],
+  [5,5],
+  [7,5],
+  [8,5],
+]
+
 function color(value) {
   return colorPalette[Math.round((colorPalette.length - 1) * value)]
 }
+
+function tile(value) {
+  return tilePalette[Math.round((tilePalette.length - 1) * value)]
+}
+
 function colorForPos(x, y) {
   let scale1 = 0.01
-  let largedetails = 4 * (simplex.noise2D(scale1 * x, scale1 * y) + 1);
+  let largedetails = 10 * (simplex.noise2D(scale1 * x, scale1 * y) + 1);
   let scale2 = 0.1
   let smalldetails = simplex.noise2D(scale2 * x, scale2 * y) + 1;
-  return color((largedetails + smalldetails) / 10.0) 
+  return color((largedetails + smalldetails) / 22.0)
 }
+
+function tileForPos(x, y) {
+  let scale1 = 0.01
+  let largedetails = 10 * (simplex.noise2D(scale1 * x, scale1 * y) + 1);
+  let scale2 = 0.1
+  let smalldetails = simplex.noise2D(scale2 * x, scale2 * y) + 1;
+  return tile((largedetails + smalldetails) / 22.0)
+}
+
+context.font = "14px Arial";
 
 function drawBg() {
   x = x + dx
   y = y + dy
-  for(let i=0; i<=height; i++) {
-    for(let j=0; j<=width; j++) {
-      pixelindex = (i * width + j) * 4
-      let c = colorForPos(j + x, i + y);
-      imagedata.data[pixelindex] = c[0];
-      imagedata.data[pixelindex+1] = c[1];
-      imagedata.data[pixelindex+2] = c[2];
-      imagedata.data[pixelindex+3] = 255;
+
+  let verticalTiles = 1 + (height / tilesetSize);
+  let horizontalTiles = 1 + (width / tilesetSize);
+  let restX = x % tilesetSize;
+  let restY = y % tilesetSize;
+  let top = parseInt((y - restY) / tilesetSize, 10);
+  let left = parseInt((x - restX) / tilesetSize, 10);
+
+  for(let i=-1; i<=verticalTiles; i++) {
+    for(let j=-1; j<=horizontalTiles; j++) {
+      let tile = tileForPos(j - left, i - top);
+      context.drawImage(tileset,
+        tile[0] * tilesetSize, tile[1] * tilesetSize,
+        tilesetSize, tilesetSize, 
+        (j * tilesetSize) + restX, (i * tilesetSize) + restY,
+        tilesetSize, tilesetSize);
     }
     j = 0
   }
-  context.putImageData(imagedata, 0, 0);
+  context.fillText(`(left:${left}, top:${top})`, 10, 50);
+  context.fillText(`(x:${x}, y:${y})`, 10, 30);
+
+
+  // for(let i=0; i<=height; i++) {
+  //   for(let j=0; j<=width; j++) {
+  //     pixelindex = (i * width + j) * 4
+  //     let c = colorForPos(j + x, i + y);
+  //     imagedata.data[pixelindex] = c[0];
+  //     imagedata.data[pixelindex+1] = c[1];
+  //     imagedata.data[pixelindex+2] = c[2];
+  //     imagedata.data[pixelindex+3] = 255;
+  //   }
+  //   j = 0
+  // }
+  // context.putImageData(imagedata, 0, 0);
   window.requestAnimationFrame(
     drawBg
   )
 }
 
-drawBg()
-
+let tileset = new Image()
+tileset.onload = function() {
+  drawBg()
+}
+tileset.src = 'tileset.png'
 
 </script>
