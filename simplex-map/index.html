@@ -57,9 +57,9 @@ function color(value) {
   return colorPalette[Math.round((colorPalette.length - 1) * value)]
 }
 function colorForPos(x, y) {
-  let scale1 = 0.001
+  let scale1 = 0.01
   let largedetails = 4 * (simplex.noise2D(scale1 * x, scale1 * y) + 1);
-  let scale2 = 0.01
+  let scale2 = 0.1
   let smalldetails = simplex.noise2D(scale2 * x, scale2 * y) + 1;
   return color((largedetails + smalldetails) / 10.0) 
 }
