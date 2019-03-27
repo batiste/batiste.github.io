@@ -17,29 +17,34 @@ const tilesetSize = 48
 canvas.width = width
 canvas.height = height
 let context = canvas.getContext("2d");
+// context.imageSmoothingEnabled = false;
+// var ratio = window.devicePixelRatio || 1;
+
 let imagedata = context.createImageData(width, height);
 
 let dx = 0;
 let dy = 0;
 let velocity = 4
 
+// we will be using a north-south, west-east coordinate system
+
 document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
             // left arrow
-            dx = Math.max(dx - velocity, -3 * velocity)
+            dx = Math.max(dx - velocity, -5 * velocity)
             break;
         case 38:
             // up arrow
-            dy = Math.max(dy - velocity, -3 * velocity)
+            dy = Math.max(dy - velocity, -5 * velocity)
             break;
         case 39:
             // rigth arrow
-            dx = Math.min(dx + velocity, 3 * velocity)
+            dx = Math.min(dx + velocity, 5 * velocity)
             break;
         case 40:
             // down arrow
-            dy = Math.min(dy + velocity, 3 * velocity)
+            dy = Math.min(dy + velocity, 5 * velocity)
             break;
     }
 };
@@ -96,6 +101,7 @@ function tileForPos(x, y) {
 context.font = "14px Arial";
 
 function drawBg() {
+  let t0 = performance.now();
   x = x + dx
   y = y + dy
 
@@ -108,18 +114,20 @@ function drawBg() {
 
   for(let i=-1; i<=verticalTiles; i++) {
     for(let j=-1; j<=horizontalTiles; j++) {
-      let tile = tileForPos(j - left, i - top);
+      let tile = tileForPos(j + left, i + top);
       context.drawImage(tileset,
         tile[0] * tilesetSize, tile[1] * tilesetSize,
-        tilesetSize, tilesetSize, 
-        (j * tilesetSize) + restX, (i * tilesetSize) + restY,
+        tilesetSize, tilesetSize,
+        (j * tilesetSize) - restX, (i * tilesetSize) - restY,
         tilesetSize, tilesetSize);
     }
     j = 0
   }
   context.fillText(`(left:${left}, top:${top})`, 10, 50);
   context.fillText(`(x:${x}, y:${y})`, 10, 30);
-
+  let t1 = performance.now();
+  let FPS = Math.round(1000 / (t1 - t0));
+  context.fillText(`FPS: ${FPS}`, 10, 70);
 
   // for(let i=0; i<=height; i++) {
   //   for(let j=0; j<=width; j++) {
@@ -133,6 +141,7 @@ function drawBg() {
   //   j = 0
   // }
   // context.putImageData(imagedata, 0, 0);
+
   window.requestAnimationFrame(
     drawBg
   )
