@@ -1,0 +1,90 @@
+<html>
+<body>
+<h2>Simplex noise coloured map</h2>
+<p>Use arrows to move the canvas. This produce an
+  infinite scrollable map that is kinda interesting
+</p>
+<canvas id="can"></canvas>
+
+
+<script src="./simplex-noise.js"></script>
+
+<script>
+let simplex = new SimplexNoise('blop');
+var canvas = document.getElementById("can");
+const width = 800
+const height = 600
+canvas.width = width
+canvas.height = height
+var canvas = document.getElementById("can");
+var context = canvas.getContext("2d");
+var imagedata = context.createImageData(width, height);
+
+let dx = 0;
+let dy = 0;
+
+document.onkeydown = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            dx = Math.max(dx -5, -20)
+            break;
+        case 38:
+            dy = Math.max(dy -5, -20)
+            break;
+        case 39:
+            dx = Math.min(dx + 5, 20)
+            break;
+        case 40:
+            dy = Math.min(dy + 5, 20)
+            break;
+    }
+};
+
+let x = 0
+let y = 0
+let pixelindex = 0
+
+let colorPalette = [
+  [10,10,150],
+  [40,40,150],
+  [50,144,48],
+  [80,150,48],
+  [90,200,60],
+  [103,146,103],
+  [103,146,125],
+]
+function color(value) {
+  return colorPalette[Math.round((colorPalette.length - 1) * value)]
+}
+function colorForPos(x, y) {
+  let scale1 = 0.001
+  let largedetails = 4 * (simplex.noise2D(scale1 * x, scale1 * y) + 1);
+  let scale2 = 0.01
+  let smalldetails = simplex.noise2D(scale2 * x, scale2 * y) + 1;
+  return color((largedetails + smalldetails) / 10.0) 
+}
+
+function drawBg() {
+  x = x + dx
+  y = y + dy
+  for(let i=0; i<=height; i++) {
+    for(let j=0; j<=width; j++) {
+      pixelindex = (i * width + j) * 4
+      let c = colorForPos(j + x, i + y);
+      imagedata.data[pixelindex] = c[0];
+      imagedata.data[pixelindex+1] = c[1];
+      imagedata.data[pixelindex+2] = c[2];
+      imagedata.data[pixelindex+3] = 255;
+    }
+    j = 0
+  }
+  context.putImageData(imagedata, 0, 0);
+  window.requestAnimationFrame(
+    drawBg
+  )
+}
+
+drawBg()
+
+
+</script>
