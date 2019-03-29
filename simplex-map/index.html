@@ -7,20 +7,41 @@
 <canvas id="can"></canvas>
 
 <script src="./simplex-noise.js"></script>
+<script src="./pixi.js"></script>
 
 <script>
-let simplex = new SimplexNoise('blop');
-let canvas = document.getElementById("can");
 const width = 1200
 const height = 600
 const tilesetSize = 48
-canvas.width = width
-canvas.height = height
-let context = canvas.getContext("2d");
-// context.imageSmoothingEnabled = false;
-// var ratio = window.devicePixelRatio || 1;
+// The application will create a renderer using WebGL, if possible,
+// with a fallback to a canvas render. It will also setup the ticker
+// and the root stage PIXI.Container
+const app = new PIXI.Application(width, height, {backgroundColor : 0x1099bb});
 
-let imagedata = context.createImageData(width, height);
+// The application will create a canvas element for you that you
+// can then insert into the DOM
+document.body.appendChild(app.view);
+
+// app.stage.addChild(container);
+const spriteSheet = PIXI.BaseTexture.fromImage('tileset.png');
+
+let tilePalette = [
+  [0,0],
+  [2,1],
+  [0,3],
+  [3,3],
+  [4,4],
+  [5,5],
+  [7,5],
+  [8,5],
+]
+let textures = []
+for(let i=0; i<tilePalette.length; i++) {
+  textures.push(new PIXI.Texture(spriteSheet, new PIXI.Rectangle(
+    tilePalette[i][0] * 48, tilePalette[i][1] * 48, 48, 48)))
+}
+
+let simplex = new SimplexNoise('blop');
 
 let dx = 0;
 let dy = 0;
@@ -51,35 +72,9 @@ document.onkeydown = function(e) {
 
 let x = 0
 let y = 0
-let pixelindex = 0
-
-let colorPalette = [
-  [10,10,150],
-  [40,40,150],
-  [50,144,48],
-  [80,150,48],
-  [90,200,60],
-  [103,146,103],
-  [103,146,125],
-]
-
-let tilePalette = [
-  [0,0],
-  [2,1],
-  [0,3],
-  [3,3],
-  [4,4],
-  [5,5],
-  [7,5],
-  [8,5],
-]
-
-function color(value) {
-  return colorPalette[Math.round((colorPalette.length - 1) * value)]
-}
 
 function tile(value) {
-  return tilePalette[Math.round((tilePalette.length - 1) * value)]
+  return textures[Math.round((tilePalette.length - 1) * value)]
 }
 
 function colorForPos(x, y) {
@@ -98,10 +93,9 @@ function tileForPos(x, y) {
   return tile((largedetails + smalldetails) / 22.0)
 }
 
-context.font = "14px Arial";
+let spriteDrawList = []
 
-function drawBg() {
-  let t0 = performance.now();
+function drawBg(delta) {
   x = x + dx
   y = y + dy
 
@@ -114,43 +108,24 @@ function drawBg() {
 
   for(let i=-1; i<=verticalTiles; i++) {
     for(let j=-1; j<=horizontalTiles; j++) {
-      let tile = tileForPos(j + left, i + top);
-      context.drawImage(tileset,
-        tile[0] * tilesetSize, tile[1] * tilesetSize,
-        tilesetSize, tilesetSize,
-        (j * tilesetSize) - restX, (i * tilesetSize) - restY,
-        tilesetSize, tilesetSize);
+      let texture = tileForPos(j + left, i + top);
+      let sprite = new PIXI.Sprite(texture)
+      sprite.x = (j * tilesetSize) - restX
+      sprite.y = (i * tilesetSize) - restY
+      spriteDrawList.push(sprite)
+      app.stage.addChild(sprite);
     }
     j = 0
   }
-  context.fillText(`(left:${left}, top:${top})`, 10, 50);
-  context.fillText(`(x:${x}, y:${y})`, 10, 30);
-  let t1 = performance.now();
-  let FPS = Math.round(1000 / (t1 - t0));
-  context.fillText(`FPS: ${FPS}`, 10, 70);
-
-  // for(let i=0; i<=height; i++) {
-  //   for(let j=0; j<=width; j++) {
-  //     pixelindex = (i * width + j) * 4
-  //     let c = colorForPos(j + x, i + y);
-  //     imagedata.data[pixelindex] = c[0];
-  //     imagedata.data[pixelindex+1] = c[1];
-  //     imagedata.data[pixelindex+2] = c[2];
-  //     imagedata.data[pixelindex+3] = 255;
-  //   }
-  //   j = 0
-  // }
-  // context.putImageData(imagedata, 0, 0);
-
-  window.requestAnimationFrame(
-    drawBg
-  )
 }
 
-let tileset = new Image()
-tileset.onload = function() {
-  drawBg()
-}
-tileset.src = 'tileset.png'
+// Listen for animate update
+app.ticker.add(function(delta) {
+    for(let i=0; i<spriteDrawList.length; i++) {
+      app.stage.removeChild(spriteDrawList[i])
+    }
+    spriteDrawList = []
+    drawBg(delta)
+});
 
 </script>
