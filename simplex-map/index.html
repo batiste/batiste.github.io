@@ -94,8 +94,8 @@ function tileForPos(x, y) {
 let spriteDrawList = []
 
 function drawBg(delta) {
-  x = x + dx
-  y = y + dy
+  x = x + (dx * delta)
+  y = y + (dy * delta)
 
   let verticalTiles = 1 + (height / tilesetSize);
   let horizontalTiles = 1 + (width / tilesetSize);
