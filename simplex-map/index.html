@@ -176,8 +176,8 @@ function drawBg(delta) {
   x = x + (dx * delta)
   y = y + (dy * delta)
 
-  let verticalTiles = 1 + (height / tilesetSize);
-  let horizontalTiles = 1 + (width / tilesetSize);
+  let verticalTiles = 2 + (height / tilesetSize);
+  let horizontalTiles = 2 + (width / tilesetSize);
   let restX = x % tilesetSize;
   let restY = y % tilesetSize;
   let top = parseInt((y - restY) / tilesetSize, 10);
@@ -188,7 +188,7 @@ function drawBg(delta) {
   for(let i=0; i <= verticalTiles + 1; i++) {
     tiles.push([])
     for(let j=0; j<= horizontalTiles + 1; j++) {
-      tiles[i].push(tileForPos(j + left - 1, i + top - 1));
+      tiles[i].push(tileForPos(j + left - 2, i + top - 2));
     }
   }
 
@@ -197,8 +197,8 @@ function drawBg(delta) {
       let tile = tiles[i][j]
       let texture = textureForTile(tiles, i, j)
       let sprite = new PIXI.Sprite(texture)
-      sprite.x = ((j - 1) * tilesetSize) - restX
-      sprite.y = ((i - 1) * tilesetSize) - restY
+      sprite.x = ((j - 2) * tilesetSize) - restX
+      sprite.y = ((i - 2) * tilesetSize) - restY
       spriteDrawList.push(sprite)
       app.stage.addChild(sprite);
     }
