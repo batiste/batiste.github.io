@@ -1,15 +1,11 @@
 <html>
 <body>
-<h2>Simplex noise coloured map</h2>
-<p>Use arrows to move the canvas. This produce an
-  infinite scrollable map that is kinda interesting
-</p>
 <script src="./simplex-noise.js"></script>
 <script src="./pixi.js"></script>
 
 <script>
 const width = 1200
-const height = 600
+const height = 500
 const tilesetSize = 48
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 // PIXI.settings.RESOLUTION = 1 / window.devicePixelRatio;
@@ -69,6 +65,15 @@ const grassWaterWest = [
   [1, 17]
 ]
 const grassWaterWestText = mtextures(grassWaterWest)
+
+const grassWaterEast = [
+  [18, 15],
+  [18, 15],
+  [18, 16],
+  [18, 17]
+]
+const grassWaterEastText = mtextures(grassWaterEast)
+
 const grassWaterLeftTop = [[1, 14]]
 const grassWaterLeftTopText = mtextures(grassWaterLeftTop)
 
@@ -85,6 +90,7 @@ function textureForTile(tiles, y, x) {
     let waterTop = tiles[y - 1] && tiles[y - 1][x].type === 'water'
     let waterBottom = tiles[y + 1] && tiles[y + 1][x].type === 'water'
     let waterLeft = tiles[y][x - 1] && tiles[y][x - 1].type === 'water'
+    let waterRight = tiles[y][x + 1] && tiles[y][x + 1].type === 'water'
     if(waterLeft && waterTop) {
       return grassWaterLeftTopText[0]
     }
@@ -94,6 +100,10 @@ function textureForTile(tiles, y, x) {
     if(waterLeft) {
       let index = Math.round((10000000 * tile.value) % (grassWaterWestText.length - 1));
       return grassWaterWestText[index]
+    }
+    if(waterRight) {
+      let index = Math.round((10000000 * tile.value) % (grassWaterEastText.length - 1));
+      return grassWaterEastText[index]
     }
     return gText[Math.round((gText.length - 1) * tile.value)]
   }
