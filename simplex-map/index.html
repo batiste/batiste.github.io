@@ -51,11 +51,35 @@ const gText = mtextures(grassTiles)
 const grText = mtextures(groundTiles)
 
 const grassWaterSouth = [
-  [10, 19]
+  [3, 19],
+  [4, 19],
+  [5, 19],
+  [6, 19],
+  [7, 19],
+  [8, 19],
+  [9, 19],
+  [10, 19],
+  [11, 19],
+  [12, 19],
+  [13, 19],
+  [14, 19],
+  [15, 19],
 ]
 const grassWaterSouthText = mtextures(grassWaterSouth)
 const waterGrassNorth = [
-  [10, 20]
+  [3, 20],
+  [4, 20],
+  [5, 20],
+  [6, 20],
+  [7, 20],
+  [8, 20],
+  [9, 20],
+  [10, 20],
+  [11, 20],
+  [12, 20],
+  [13, 20],
+  [14, 20],
+  [15, 20],
 ]
 const waterGrassNorthText = mtextures(waterGrassNorth)
 const grassWaterWest = [
@@ -82,7 +106,8 @@ function textureForTile(tiles, y, x) {
   let tile = tiles[y][x]
   if(tile.type === 'water') {
     if(tiles[y - 1] && tiles[y - 1][x].type === 'grass') {
-      return waterGrassNorthText[0]
+      let index = Math.round((10000000 * tiles[y - 1][x].value) % (waterGrassNorthText.length - 1));
+      return waterGrassNorthText[index]
     }
     return wText[Math.round((wText.length - 1) * tile.value)]
   }
@@ -95,7 +120,8 @@ function textureForTile(tiles, y, x) {
       return grassWaterLeftTopText[0]
     }
     if(waterBottom) {
-      return grassWaterSouthText[0]
+      let index = Math.round((10000000 * tile.value) % (grassWaterSouthText.length - 1));
+      return grassWaterSouthText[index]
     }
     if(waterLeft) {
       let index = Math.round((10000000 * tile.value) % (grassWaterWestText.length - 1));
@@ -114,7 +140,7 @@ let simplex = new SimplexNoise('test6');
 
 let dx = 0;
 let dy = 0;
-let velocity = 4
+let velocity = 6
 
 // we will be using a north-south, west-east coordinate system
 
@@ -122,19 +148,40 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
             // left arrow
-            dx = Math.max(dx - velocity, -5 * velocity)
+            dx = -velocity
             break;
         case 38:
             // up arrow
-            dy = Math.max(dy - velocity, -5 * velocity)
+            dy = -velocity
             break;
         case 39:
             // rigth arrow
-            dx = Math.min(dx + velocity, 5 * velocity)
+            dx = velocity
             break;
         case 40:
             // down arrow
-            dy = Math.min(dy + velocity, 5 * velocity)
+            dy = velocity
+            break;
+    }
+};
+
+document.onkeyup = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            // left arrow
+            dx = 0
+            break;
+        case 38:
+            // up arrow
+            dy = 0
+            break;
+        case 39:
+            // rigth arrow
+            dx = 0
+            break;
+        case 40:
+            // down arrow
+            dy = 0
             break;
     }
 };
