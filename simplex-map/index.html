@@ -1,15 +1,11 @@
 <html>
 <body>
-<h2>Simplex noise coloured map</h2>
-<p>Use arrows to move the canvas. This produce an
-  infinite scrollable map that is kinda interesting
-</p>
 <script src="./simplex-noise.js"></script>
 <script src="./pixi.js"></script>
 
 <script>
 const width = 1200
-const height = 600
+const height = 500
 const tilesetSize = 48
 PIXI.settings.SCALE_MODE = PIXI.SCALE_MODES.NEAREST;
 // PIXI.settings.RESOLUTION = 1 / window.devicePixelRatio;
@@ -55,11 +51,35 @@ const gText = mtextures(grassTiles)
 const grText = mtextures(groundTiles)
 
 const grassWaterSouth = [
-  [10, 19]
+  [3, 19],
+  [4, 19],
+  [5, 19],
+  [6, 19],
+  [7, 19],
+  [8, 19],
+  [9, 19],
+  [10, 19],
+  [11, 19],
+  [12, 19],
+  [13, 19],
+  [14, 19],
+  [15, 19],
 ]
 const grassWaterSouthText = mtextures(grassWaterSouth)
 const waterGrassNorth = [
-  [10, 20]
+  [3, 20],
+  [4, 20],
+  [5, 20],
+  [6, 20],
+  [7, 20],
+  [8, 20],
+  [9, 20],
+  [10, 20],
+  [11, 20],
+  [12, 20],
+  [13, 20],
+  [14, 20],
+  [15, 20],
 ]
 const waterGrassNorthText = mtextures(waterGrassNorth)
 const grassWaterWest = [
@@ -69,6 +89,15 @@ const grassWaterWest = [
   [1, 17]
 ]
 const grassWaterWestText = mtextures(grassWaterWest)
+
+const grassWaterEast = [
+  [18, 15],
+  [18, 15],
+  [18, 16],
+  [18, 17]
+]
+const grassWaterEastText = mtextures(grassWaterEast)
+
 const grassWaterLeftTop = [[1, 14]]
 const grassWaterLeftTopText = mtextures(grassWaterLeftTop)
 
@@ -77,7 +106,8 @@ function textureForTile(tiles, y, x) {
   let tile = tiles[y][x]
   if(tile.type === 'water') {
     if(tiles[y - 1] && tiles[y - 1][x].type === 'grass') {
-      return waterGrassNorthText[0]
+      let index = Math.round((10000000 * tiles[y - 1][x].value) % (waterGrassNorthText.length - 1));
+      return waterGrassNorthText[index]
     }
     return wText[Math.round((wText.length - 1) * tile.value)]
   }
@@ -85,26 +115,32 @@ function textureForTile(tiles, y, x) {
     let waterTop = tiles[y - 1] && tiles[y - 1][x].type === 'water'
     let waterBottom = tiles[y + 1] && tiles[y + 1][x].type === 'water'
     let waterLeft = tiles[y][x - 1] && tiles[y][x - 1].type === 'water'
+    let waterRight = tiles[y][x + 1] && tiles[y][x + 1].type === 'water'
     if(waterLeft && waterTop) {
       return grassWaterLeftTopText[0]
     }
     if(waterBottom) {
-      return grassWaterSouthText[0]
+      let index = Math.round((10000000 * tile.value) % (grassWaterSouthText.length - 1));
+      return grassWaterSouthText[index]
     }
     if(waterLeft) {
       let index = Math.round((10000000 * tile.value) % (grassWaterWestText.length - 1));
       return grassWaterWestText[index]
+    }
+    if(waterRight) {
+      let index = Math.round((10000000 * tile.value) % (grassWaterEastText.length - 1));
+      return grassWaterEastText[index]
     }
     return gText[Math.round((gText.length - 1) * tile.value)]
   }
   return grText[Math.round((grText.length - 1) * tile.value)]
 }
 
-let simplex = new SimplexNoise('blop');
+let simplex = new SimplexNoise('test6');
 
 let dx = 0;
 let dy = 0;
-let velocity = 4
+let velocity = 6
 
 // we will be using a north-south, west-east coordinate system
 
@@ -112,19 +148,40 @@ document.onkeydown = function(e) {
     switch (e.keyCode) {
         case 37:
             // left arrow
-            dx = Math.max(dx - velocity, -5 * velocity)
+            dx = -velocity
             break;
         case 38:
             // up arrow
-            dy = Math.max(dy - velocity, -5 * velocity)
+            dy = -velocity
             break;
         case 39:
             // rigth arrow
-            dx = Math.min(dx + velocity, 5 * velocity)
+            dx = velocity
             break;
         case 40:
             // down arrow
-            dy = Math.min(dy + velocity, 5 * velocity)
+            dy = velocity
+            break;
+    }
+};
+
+document.onkeyup = function(e) {
+    switch (e.keyCode) {
+        case 37:
+            // left arrow
+            dx = 0
+            break;
+        case 38:
+            // up arrow
+            dy = 0
+            break;
+        case 39:
+            // rigth arrow
+            dx = 0
+            break;
+        case 40:
+            // down arrow
+            dy = 0
             break;
     }
 };
@@ -166,8 +223,8 @@ function drawBg(delta) {
   x = x + (dx * delta)
   y = y + (dy * delta)
 
-  let verticalTiles = 1 + (height / tilesetSize);
-  let horizontalTiles = 1 + (width / tilesetSize);
+  let verticalTiles = 2 + (height / tilesetSize);
+  let horizontalTiles = 2 + (width / tilesetSize);
   let restX = x % tilesetSize;
   let restY = y % tilesetSize;
   let top = parseInt((y - restY) / tilesetSize, 10);
@@ -178,7 +235,7 @@ function drawBg(delta) {
   for(let i=0; i <= verticalTiles + 1; i++) {
     tiles.push([])
     for(let j=0; j<= horizontalTiles + 1; j++) {
-      tiles[i].push(tileForPos(j + left - 1, i + top - 1));
+      tiles[i].push(tileForPos(j + left - 2, i + top - 2));
     }
   }
 
@@ -187,8 +244,8 @@ function drawBg(delta) {
       let tile = tiles[i][j]
       let texture = textureForTile(tiles, i, j)
       let sprite = new PIXI.Sprite(texture)
-      sprite.x = ((j - 1) * tilesetSize) - restX
-      sprite.y = ((i - 1) * tilesetSize) - restY
+      sprite.x = ((j - 2) * tilesetSize) - restX
+      sprite.y = ((i - 2) * tilesetSize) - restY
       spriteDrawList.push(sprite)
       app.stage.addChild(sprite);
     }
