@@ -1,0 +1,26 @@
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+
+  <title>Fisher Resize integration</title>
+  <meta name="description" content="Fisher Resize integration example">
+  <meta name="author" content="PriceHubble">
+
+  <style>
+    #fisher {
+      width: 100%;
+      min-height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 4em; font-size:13px; background: #ccc;">
+    <h2>Fisher Integration example</h2>
+    <iframe src="https://xfisher.pricehubble.net/" id="fisher" frameBorder="0"></iframe>
+  </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/iframe-resizer/4.1.1/iframeResizer.min.js"></script>
+  <script type="text/javascript">
+      iFrameResize({},'#fisher');
+  </script>
+</body>
+</html>
