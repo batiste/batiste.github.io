@@ -8,19 +8,17 @@
     <link href='http://fonts.googleapis.com/css?family=Droid+Serif&amp;subset=latin' rel='stylesheet' type='text/css'>
     <style>
     body, html {
-      font-family:arial, sans-serif;
+      font-family: 'Droid Serif', arial, serif; 
     }
     body {
-      color: rgba(255,255,255, 0.85);
-      padding:1% 2.5%;
-      font-size:15px;
-      line-height:1.3;
-      background: hsla(150,60%,5%,1);
-      text-shadow: 0px 0px 3px black;
+      color: #e4e4e4;
+      font-size: 14px;
+      line-height: 1.3;
+      background: rgb(18, 18, 18);
     }
 
     a, a:visited {
-      color:#8888ff;
+      color:#eee;
       text-decoration:none;
     }
 
@@ -28,29 +26,59 @@
       color:#fff;
     }
 
-    h1, h2 { font-family: 'Droid Serif', arial, serif; font-weight:normal; margin:0; padding:0.7em 0; font-size:25px; }
-    h1 {font-size:40px;}
+    h1, h2 { 
+      font-weight: normal; 
+      margin: 0;
+      padding: 0.6em 0;
+      font-size: 25px;
+      color: rgb(41, 118, 182);
+    }
+    h1 {font-size: 40px;}
     ul {margin:1em 0; padding:0 3em;}
     li {margin:0.2em 0}
   
     .container {
-      max-width: 960px;
-      margin: 20px auto;
+      margin: 200px 20px 20px 20px;
     }
 
-    .content--canvas canvas {
+    canvas {
       z-index: -1;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    input {
+      padding: 8px 16px;
+      background: transparent;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+      border: 1px transparent solid;
+      border-bottom: 1px rgba(255, 255, 255, 0.6) solid;
+    }
+
+    label {
+      padding: 8px 16px 8px 0;
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 16px;
+    }
+
+    input[type=text]:focus, textarea:focus {
+      background: #333;
+      box-shadow: 0 0 5px rgb(41, 118, 182);
+      border: 1px solid rgb(41, 118, 182);
     }
 
     </style>
 <body>
+<canvas width='1000' height='400' id='c'></canvas>
 
 <div class="container">
+<label>Title <input type="text" id="text" autofocus value="http://batiste.info" /></label>
 
 <h1>Batiste Bieler home page</h1>
 
-<p>Hi, I am batiste! I am a Software Engineer with a strong experience in Full stack Web development.</p>
-
+<p>Hi, I am Batiste! I am a Software Engineer with a strong experience in Full stack Web development.</p>
 
 <h2>Some of my projects and some fun things</h2>
 
@@ -94,9 +122,6 @@
 
 </div>
 
-<!-- cool canvas animation by https://github.com/crnacura/AmbientCanvasBackgrounds -->
-<div class="content content--canvas" style="z-index: -1"></div>
-
 </body>
 
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
@@ -115,8 +140,128 @@
   ga('send', 'pageview');
 </script>
 
-<script src="./home/utils.js"></script>
-<script src="./home/noise.min.js"></script>
-<script src="./home/swirl.js"></script>
+<script>
+  var text = document.querySelector('#text');
+  
+  function getColorIndice(x, y, width) {
+    return y * (width * 4) + x * 4;
+  }
+  
+  function getTextData(txt) {
+    ctx.fillStyle = 'rgb(200, 200, 200)';
+    ctx.font = "28px Arial";
+    ctx.fillText(txt, 10, 40);
+    return ctx.getImageData(10, 10, 400, 50);
+  }
+  
+  function shuffle(a) {
+    for (let i = a.length - 1; i > 0; i--) {
+      var j = Math.floor(Math.random() * (i + 1));
+      [a[i], a[j]] = [a[j], a[i]];
+    }
+    return a;
+  }
+  
+  var canvas = document.getElementById("c");
+  canvas.width = document.body.clientWidth;
+  var ctx = canvas.getContext("2d");
+  ctx.fillStyle = 'rgb(20, 20, 20)';
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
+  
+  var squares = [];
+  var d;
+  
+  function changeText(text) {
+    ctx.fillStyle = 'rgba(0, 0, 0, 1)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    var d = getTextData(text)
+    squares = createParticules(d)
+    shuffle(squares)
+  }
+  
+  changeText("http://batiste.info")
+  
+  function createParticules(d) {
+    squares = []
+    for(var i=0; i < d.height; i++) {
+      for(var j=0; j < d.width; j++) {
+        var r = d.data[getColorIndice(j, i, d.width) + 1]
+        // less than black counts
+        if(r > 10) {
+          squares.push({
+            x: j, y: i,
+            ox: j, oy: i,
+            rx: ((Math.random() - 0.5) / 1.0), 
+            ry: ((Math.random() - 0.5) / 1.0)
+          })
+        }
+      }
+    }
+    return squares
+  }
+  
+  text.addEventListener('keyup', function() {
+    changeText(text.value)
+    di = 0
+  })
+  
+  var di = 0
+  var margins = {left: 30, top: 30}
+  var phase = 0
+  
+  function draw() {
+    ctx.fillStyle = 'rgba(20, 20, 20, 0.2)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    cos = Math.cos(di / 2) / 5
+    sin = Math.sin(di / 2) / 5
+    ctx.lineWidth = 1;
+    for (var i=0; i < squares.length; i++) {
+      ctx.fillStyle = `rgb(${i % 255}, ${(i + 120) % 255}, ${(i+240) % 255})`;
+      var s = squares[i];
+      ctx.fillRect(margins.left + 4 * s.x, margins.top + 4 * s.y, 3, 3)
+      // still
+      if (phase == 1) {
+        s.x = s.ox
+        s.y = s.oy
+      }
+      // jiggles around
+      if (phase == 2) {
+        s.x = s.x + Math.cos(di / 3 + 4 * s.rx) / 3
+        s.y = s.y + Math.sin(di / 3 + 4 * s.rx) / 3
+      }
+      // expand
+      if (phase == 3) {
+        s.x = s.x + s.rx + Math.cos(di / 3 + 4 * s.rx) / 6
+        s.y = s.y + s.ry + Math.sin(di / 3 + 4 * s.rx) / 6
+      }
+      // comes back
+      if (phase == 4) {
+        s.x = s.x - s.rx + Math.cos(di / 3 + 4 * s.rx) / 6
+        s.y = s.y - s.ry + Math.sin(di / 3 + 4 * s.rx) / 6
+      }
+    }
+    var phaseDuration = 300
+    var nbOfPhases = 4
+    var nbByPhase = phaseDuration / nbOfPhases
+    phase = 1
+    if(di > nbByPhase) {
+      phase = 2
+    }
+    if(di > nbByPhase * 2) {
+      phase = 3
+    }
+    if(di > nbByPhase * 3) {
+      phase = 4
+    }
+    di++
+    if(di === phaseDuration + 1) {
+      di = 0
+    }
+    window.requestAnimationFrame(draw)
+  }
+  
+  draw()
+  
+  </script>
 
 </html>
