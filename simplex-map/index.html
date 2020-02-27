@@ -19,7 +19,10 @@ const app = new PIXI.Application(width, height, {backgroundColor : 0x1099bb});
 document.body.appendChild(app.view);
 
 // app.stage.addChild(container);
-const spriteSheet = PIXI.BaseTexture.fromImage('tileset.png');
+const tilesetSpriteSheet = PIXI.BaseTexture.fromImage('tileset.png');
+const playerSpriteSheet = PIXI.BaseTexture.fromImage('player.png');
+
+const playerTexture = new PIXI.Texture(playerSpriteSheet)
 
 let waterTiles = [
   [0,0],
@@ -41,7 +44,7 @@ let groundTiles = [
 function mtextures(tilePalette) {
   let textures = []
   for(let i=0; i<tilePalette.length; i++) {
-    textures.push(new PIXI.Texture(spriteSheet, new PIXI.Rectangle(
+    textures.push(new PIXI.Texture(tilesetSpriteSheet, new PIXI.Rectangle(
       tilePalette[i][0] * 48, tilePalette[i][1] * 48, 48, 48)))
   }
   return textures
@@ -217,9 +220,8 @@ function tileForPos(x, y) {
   return tile((largedetails + smalldetails) / 22.0)
 }
 
-let spriteDrawList = []
 
-function drawBg(delta) {
+function drawBg(delta, container) {
   x = x + (dx * delta)
   y = y + (dy * delta)
 
@@ -246,20 +248,30 @@ function drawBg(delta) {
       let sprite = new PIXI.Sprite(texture)
       sprite.x = ((j - 2) * tilesetSize) - restX
       sprite.y = ((i - 2) * tilesetSize) - restY
-      spriteDrawList.push(sprite)
-      app.stage.addChild(sprite);
+      container.addChild(sprite);
     }
   }
 
 }
 
+const bgContainer = new PIXI.Container();
+app.stage.addChild(bgContainer);
+
+let playerSprite = new PIXI.Sprite(playerTexture);
+const pContainer = new PIXI.Container();
+pContainer.addChild(playerSprite)
+app.stage.addChild(pContainer);
+
+
 // Listen for animate update
 app.ticker.add(function(delta) {
-    for(let i=0; i<spriteDrawList.length; i++) {
-      app.stage.removeChild(spriteDrawList[i])
+    for(let i=0; i<bgContainer.children.length; i++) {
+      bgContainer.removeChild(bgContainer.children[i])
     }
-    spriteDrawList = []
-    drawBg(delta)
+    drawBg(delta, bgContainer)
+    app.stage.addChild(playerSprite);
+    playerSprite.x = width / 2 - playerTexture.width / 2
+    playerSprite.y = height / 2 - playerTexture.height / 2
 });
 
 </script>
