@@ -27,7 +27,7 @@ index f28bc1a..581b8b5 100644
  For examples of what the framework offers:
  
 -http://batiste.dosimple.ch/sprite.js/tests/
-+http://batiste.info/sprite.js/tests/
++http://batiste.github.io/sprite.js/tests/
  
  
  Projects that uses sprite.js
@@ -35,11 +35,11 @@ index f28bc1a..581b8b5 100644
  
 -* `RPG-like example <http://batiste.dosimple.ch/sprite.js/tests/mapeditor/map_reader.html>`_ is a `Tiled editor <http://www.mapeditor.org/>`_ dynamic JSON map reader.
 -* `Steam <http://batiste.dosimple.ch/games/steam9/>`_ is a plateform game involving physic puzzle.
-+* `RPG-like example <http://batiste.info/sprite.js/tests/mapeditor/map_reader.html>`_ is a `Tiled editor <http://www.mapeditor.org/>`_ dynamic JSON map reader.
-+* `Steam <http://batiste.info/games/steam9/>`_ is a plateform game involving physic puzzle.
++* `RPG-like example <http://batiste.github.io/sprite.js/tests/mapeditor/map_reader.html>`_ is a `Tiled editor <http://www.mapeditor.org/>`_ dynamic JSON map reader.
++* `Steam <http://batiste.github.io/games/steam9/>`_ is a plateform game involving physic puzzle.
  * `Webattle.js <https://github.com/tadast/webattle.js>`_ is a multiplayer HTML5 game using nodejs.
 -* `"The invasion of the evil lords" <http://batiste.dosimple.ch/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
-+* `"The invasion of the evil lords" <http://batiste.info/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
++* `"The invasion of the evil lords" <http://batiste.github.io/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
  
 diff --git a/doc/source/api.rst b/doc/source/api.rst
 index 3496b0c..2d63c75 100644
@@ -100,7 +100,7 @@ index 68d227c..ff09466 100644
  =========================
  
 -To see examples of what the framework has to offer `have a look at the test files <http://batiste.dosimple.ch/sprite.js/tests/>`_.
-+To see examples of what the framework has to offer `have a look at the test files <http://batiste.info/sprite.js/tests/>`_.
++To see examples of what the framework has to offer `have a look at the test files <http://batiste.github.io/sprite.js/tests/>`_.
  
  Table of content
  ======================================
@@ -109,11 +109,11 @@ index 68d227c..ff09466 100644
  ==============================
  
 -* `Steam <http://batiste.dosimple.ch/games/steam9/>`_ is a platform game involving a physics puzzle.
-+* `Steam <http://batiste.info/games/steam9/>`_ is a platform game involving a physics puzzle.
++* `Steam <http://batiste.github.io/games/steam9/>`_ is a platform game involving a physics puzzle.
  * `Webattle.js <https://github.com/tadast/webattle.js>`_ is a multiplayer HTML5 game using node.js.
 -* `"The invasion of the evil lords" <http://batiste.dosimple.ch/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
 \ No newline at end of file
-+* `"The invasion of the evil lords" <http://batiste.info/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
++* `"The invasion of the evil lords" <http://batiste.github.io/games/rpg/game.html>`_. is a demo RPG with different creatures and a boss.
 \ No newline at end of file
 diff --git a/doc/source/introduction.rst b/doc/source/introduction.rst
 index b3bde47..aae1a62 100644
@@ -124,7 +124,7 @@ index b3bde47..aae1a62 100644
      });
  
 -If you want a more interactive demonstration of basic sprite manipulation, there is a good example in the tests: http://batiste.dosimple.ch/sprite.js/tests/visual_guide.html
-+If you want a more interactive demonstration of basic sprite manipulation, there is a good example in the tests: http://batiste.info/sprite.js/tests/visual_guide.html
++If you want a more interactive demonstration of basic sprite manipulation, there is a good example in the tests: http://batiste.github.io/sprite.js/tests/visual_guide.html
  
  
  Performance and different ways to draw

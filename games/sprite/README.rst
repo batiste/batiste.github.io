@@ -10,7 +10,7 @@ sprite.js has been tested on Chromium, Firefox, Android emulator, Opera and IE9.
 
 For an example of the what the framework offers, have a look at the test files:
 
-http://batiste.info/sprite.js/tests/
+http://batiste.github.io/sprite.js/tests/
 
 Example usage
 =================

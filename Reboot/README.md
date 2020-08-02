@@ -1,3 +1,3 @@
 # Reboot
 
-http://batiste.info/Reboot/
+http://batiste.github.io/Reboot/

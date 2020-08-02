@@ -11,9 +11,9 @@ http://www.vpri.org/pdf/tr2007002_packrat.pdf
 
 Indirect recursion is not implemented yet.
 
-Demo http://batiste.info/EPEG.js/
+Demo http://batiste.github.io/EPEG.js/
 
-Tests http://batiste.info/EPEG.js/tests/tests.html
+Tests http://batiste.github.io/EPEG.js/tests/tests.html
 
 EPEG.js is able to provide quite accurate grammar parsing error messages that are
 directly formatted.
