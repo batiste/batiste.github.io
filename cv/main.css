@@ -124,7 +124,7 @@ li {
     }
 
     .only-print {
-        display: block;
+        display: inline;
     }
 
     .no-print {
