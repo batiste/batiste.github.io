@@ -246,11 +246,16 @@
         var d = distance(coordinates[0], coordinates[1])
         if (d < 200) {
           var fear = 200 - d;
-          s.vx = ((coordinates[0] - x) / 300.) + (fear / 50.) * (Math.random() - 0.5)
-          s.vy = ((coordinates[1] - y) / 300.) + (fear / 50.) * (Math.random() - 0.5)
-        } else {
-          s.vx = (s.ox - s.x) / 20.
-          s.vy = (s.oy - s.y) / 20.
+          s.vx = (fear / 50.) * (Math.random() - 0.5)
+          s.vy = (fear / 50.) * (Math.random() - 0.5)
+        }
+        if (d < 150) {
+          s.vx += ((coordinates[0] - x) / 2600.)
+          s.vy += ((coordinates[1] - y) / 2600.)
+        }
+        if (d > 250) {
+          s.vx = (s.ox - s.x) / 40.
+          s.vy = (s.oy - s.y) / 40.
         }
       }
 
