@@ -1,0 +1,242 @@
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Della+Respira&family=Lobster+Two:wght@400;700&family=Oleo+Script+Swash+Caps&family=Pirata+One&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<style>
+    html {
+        background-color: rgb(26, 23, 23);
+    }
+    .card {
+        position: relative;
+        background-color: transparent;
+        width: 63mm;
+        height: 88mm;
+        float: left;
+        margin: 10px;
+        perspective: 1000px;
+    }
+
+    .inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    .card:hover .inner {
+        transform: rotateY(180deg);
+    }
+
+    .card .bg {
+        width: 63mm;
+        height: 88mm;
+        border-radius: 5px;
+    }
+    .card .fg {
+        width: 63mm;
+        height: 88mm;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity: 0.99;
+    }
+    .card .title {
+        font-family: 'Berkshire Swash', cursive;
+        font-family: 'Oleo Script Swash Caps', cursive;
+        font-family: 'Pirata One';
+        letter-spacing: 0.1px;
+        font-size: 16px;
+        position: absolute;
+        right:0;
+        top:54.2mm;
+        left:0;
+        color: #ECEAC2;
+        text-align: center;
+        text-shadow: 1px 1px black;
+    }
+    .card .text {
+        position: absolute;
+        font-family: 'Della Respira', serif;
+        font-size:11px;
+        right:6mm;
+        top:57mm;
+        left:6mm;
+        bottom:12mm;
+        color: #fff2ca;
+        text-align: center;
+        text-shadow: 0.5px 0.5px black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card .text span {
+        line-height:1em;
+    }
+
+    .prestige {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 12mm;
+        top: 77mm;
+        text-shadow: 1px 1px black;
+    }
+    .attack {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 54mm;
+        top: 77mm;
+        text-shadow: 1px 1px black;
+    }
+    .health {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 33mm;
+        top: 77mm;
+        text-shadow: 1px 1px black;
+    }
+
+    /* Position the front and back side */
+    .front, .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+
+    /* Style the back side */
+    .back {
+        transform: rotateY(180deg);
+    }
+    .back img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+
+    @media print {
+        @page {
+            size: 210mm 297mm;
+        }
+        @page {
+            size: 420mm 594mm;
+        }
+        body {
+            zoom: 2;
+        }
+        .back img {
+            display: none;
+        }
+    }
+
+</style>
+
+<body>
+    <div id="cards"></div>
+</body>
+
+<script>
+    var cards = [
+        {
+            'title': 'Lady Jackson',
+            'text': 'You can look at the first card of the monster action pile during your combat turn.',
+            'prestige': 9,
+            'hp': 7,
+            'img': 'img/duchess.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Old Sea Wolf',
+            'text': 'Once per expedition, play an extra action.',
+            'prestige': 8,
+            'hp': 8,
+            'img': 'img/captain.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Sword Master',
+            'text': 'Once per expedition one of you attacks can deal 4 damage instead of what it should be.',
+            'prestige': 6,
+            'hp': 7,
+            'img': 'img/pocahontas.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Traitor',
+            'text': 'Once per expedition one of your attacks can target another crew member.',
+            'prestige': 5,
+            'hp': 7,
+            'img': 'img/traitor.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Black Eye',
+            'text': 'The first crew member that dies gives you a card from his hand. If he has no cards you get nothing.',
+            'prestige': 4,
+            'hp': 7,
+            'img': 'img/black-eye.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Overgrown Ape',
+            'text': 'Has 3 actions.',
+            'hp': 7,
+            'img': 'img/ape.png',
+            'type': 'monster',
+            'attack': 2,
+        },
+    ]
+
+    all = []
+    cards.forEach((c) => {
+        var extra = ""
+        if(c['prestige']) {
+            extra += `<span class="prestige">${c['prestige']}</span>`
+        }
+        if(c['hp']) {
+            extra += `<span class="health">${c['hp']}</span>`
+        }
+        if(c['attack']) {
+            extra += `<span class="attack">${c['attack']}</span>`
+        }
+
+        var template = `<div class="card">
+            <div class="inner">
+                <div class="front"> 
+                    <img src="${c['img']}" class="bg" />
+                    <img src='${c['type']}-frame.svg' class="fg" />
+                    <span class="title">${c['title']}</span>
+                    <span class="text">${c['text']}</span>
+                    ${extra}
+                </div>
+                <div class="back">
+                    <img src="img/back.png" />
+                </div>
+            </div>
+        </div>`
+        all.push(template)
+    })
+
+    console.log(all.join(''))
+
+    document.getElementById('cards').innerHTML = all.join('')
+
+</script>
+
+
+</html>
