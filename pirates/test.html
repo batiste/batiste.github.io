@@ -47,6 +47,7 @@
         font-family: 'Berkshire Swash', cursive;
         font-family: 'Oleo Script Swash Caps', cursive;
         font-family: 'Pirata One';
+        font-family: 'Lobster Two', cursive;
         letter-spacing: 0.1px;
         font-size: 16px;
         position: absolute;
@@ -62,7 +63,7 @@
         font-family: 'Della Respira', serif;
         font-size:11px;
         right:6mm;
-        top:57mm;
+        top:58mm;
         left:6mm;
         bottom:12mm;
         color: #fff2ca;
@@ -74,7 +75,8 @@
     }
 
     .card .text span {
-        line-height:1em;
+        font-family: 'Lobster Two', cursive;
+        display: contents;
     }
 
     .prestige {
@@ -150,25 +152,25 @@
         {
             'title': 'Lady Jackson',
             'text': 'You can look at the first card of the monster action pile during your combat turn.',
-            'prestige': 9,
+            'prestige': 5,
             'hp': 7,
             'img': 'img/duchess.png',
             'type': 'crew'
         },
 
         {
-            'title': 'Old Sea Wolf',
-            'text': 'Once per expedition, play an extra action.',
-            'prestige': 8,
-            'hp': 8,
+            'title': "Old O'Malley",
+            'text': 'Once per expedition play an extra action.',
+            'prestige': 4,
+            'hp': 7,
             'img': 'img/captain.png',
             'type': 'crew'
         },
 
         {
             'title': 'Sword Master',
-            'text': 'Once per expedition one of you attacks can deal 4 damage instead of what it should be.',
-            'prestige': 6,
+            'text': 'Once per expedition your attack deal exactly 4 damages.',
+            'prestige': 3,
             'hp': 7,
             'img': 'img/pocahontas.png',
             'type': 'crew'
@@ -176,20 +178,187 @@
 
         {
             'title': 'Traitor',
-            'text': 'Once per expedition one of your attacks can target another crew member.',
-            'prestige': 5,
+            'text': 'Once per expedition your attack can target another crew.',
+            'prestige': 2,
             'hp': 7,
             'img': 'img/traitor.png',
             'type': 'crew'
         },
 
         {
-            'title': 'Black Eye',
-            'text': 'The first crew member that dies gives you a card from his hand. If he has no cards you get nothing.',
-            'prestige': 4,
+            'title': 'Snow Black',
+            'text': 'When somebody dies he put a card from his hand into yours.',
+            'prestige': 1,
             'hp': 7,
-            'img': 'img/black-eye.png',
+            'img': 'img/witch-doctor-2.png',
             'type': 'crew'
+        },
+
+        {
+            'title': 'Necromancer',
+            'text': 'Ghost restrictions do not apply to you. If you die you become the captain.',
+            'prestige': 0,
+            'hp': 7,
+            'img': 'img/necromancer.png',
+            'type': 'crew'
+        },
+
+        {
+            'title': 'Clumsy Strike',
+            'text': 'Deal 1 attack damage.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 1,
+        },
+
+        {
+            'title': 'Heal',
+            'text': 'Heal for 1.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Master Strike',
+            'text': 'Deal 2 attack damages.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 2,
+        },
+
+        {
+            'title': 'Backstab',
+            'text': 'Deal 1 attack damage.<br>This does not count as an action',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 1,
+        },
+
+        {
+            'title': 'Lucky Strike',
+            'text': 'Deal 3 attack damage. If that kills a monster discard this card.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 3,
+        },
+
+        {
+            'title': 'Unity',
+            'text': 'Play Unity when another player plays an attack. Adds 2 damages to this player\'s attack.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 2,
+        },
+
+        {
+            'title': 'Haste ',
+            'text': 'Deal 1 attack damage.<br>Draw an action from your deck.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 1,
+        },
+
+        {
+            'title': 'Combo',
+            'text': 'Deal 1 attack damage. If you played 2 attack this turn this attack do not count as an action.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 1,
+        },
+
+        {
+            'title': 'Channeling',
+            'text': 'Deal 1 attack damage. Deal 2 extra damage for each ghost.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+        },
+
+        {
+            'title': 'Parry',
+            'text': 'Play Parry when you receive damage. Prevent 1 damage and deal 1 attack damage back.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+        },
+
+        {
+            'title': 'Mutiny',
+            'text': 'Deal 1 attack damage to the captain.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+        },
+
+        {
+            'title': 'Counting Coins',
+            'text': 'Deal damages equal to the number of cards in your treasure.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "X",
+        },
+
+        {
+            'title': 'Cycle of Life',
+            'text': 'Draw a card and discard Cycle of Life.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Envy',
+            'text': 'Play Envy when a crew action is played. Put this action in your hand and discard envy.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        // {
+        //     'title': 'Voodoo Doll',
+        //     'text': 'Attach this card to a monster. At the beginning of its turn he takes 1 damage. When the monster dies deck Voodoo Doll.',
+        //     'img': 'crew-actions/spell.jpeg',
+        //     'type': 'crew-spell',
+        // },
+
+        // {
+        //     'title': 'Poison',
+        //     'text': 'Attach this card to a monster. Every time the monster attacks he takes 1 damage. When the monster dies deck Poison.',
+        //     'img': 'crew-actions/spell.jpeg',
+        //     'type': 'crew-spell',
+        // },
+
+        {
+            'title': 'Sabotage',
+            'text': 'Play Sabotage when a crew action is played. This action does nothing.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Madness',
+            'text': 'Play Madness when a player plays an attack. This attack targets the crew on this players left.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Poison the Soup',
+            'text': 'Deal 1 damage to all other players. Use Poison the Soup once per combat.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Smoke Bomb',
+            'text': 'Play Smoke Bomb when a monster plays an attack. This attack does no damage to you.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
+        },
+
+        {
+            'title': 'Shadow',
+            'text': 'If you become a ghost you draw a card each time a player dies including yourself. Deal 1 damage to yourself.',
+            'img': 'crew-actions/spell.jpeg',
+            'type': 'crew-spell',
         },
 
         {
@@ -200,18 +369,19 @@
             'type': 'monster',
             'attack': 2,
         },
+
     ]
 
     all = []
     cards.forEach((c) => {
         var extra = ""
-        if(c['prestige']) {
+        if(c['prestige'] != undefined) {
             extra += `<span class="prestige">${c['prestige']}</span>`
         }
-        if(c['hp']) {
+        if(c['hp'] != undefined) {
             extra += `<span class="health">${c['hp']}</span>`
         }
-        if(c['attack']) {
+        if(c['attack'] != undefined) {
             extra += `<span class="attack">${c['attack']}</span>`
         }
 
@@ -232,10 +402,7 @@
         all.push(template)
     })
 
-    console.log(all.join(''))
-
     document.getElementById('cards').innerHTML = all.join('')
-
 </script>
 
 
