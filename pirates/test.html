@@ -6,7 +6,10 @@
 <style>
     html {
         background-color: rgb(26, 23, 23);
+        -webkit-print-color-adjust: exact;
+        -webkit-filter: opacity(1);
     }
+
     .card {
         position: relative;
         background-color: transparent;
@@ -41,7 +44,7 @@
         position: absolute;
         top:0;
         left:0;
-        opacity: 0.99;
+        opacity: 0.01;
     }
     .card .title {
         font-family: 'Berkshire Swash', cursive;
@@ -74,6 +77,45 @@
         justify-content: center;
     }
 
+    .card .subtype {
+        font-family: 'Della Respira', serif;
+        font-size: 10px;
+        padding: 1px 0;
+        position: absolute;
+        right:23mm;
+        top:81mm;
+        left:23mm;
+        color: #ECEAC2;
+        text-align: center;
+        text-shadow: 1px 1px black;
+        background-color: rgba(17, 15, 13, 0.9);
+        border: 1px solid rgba(231, 185, 48, 0.9);
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70);
+    }
+
+    .card .frame {
+        position: absolute;
+        right:2.8mm;
+        top:52mm;
+        left:2.8mm;
+        bottom:3.2mm;
+        border-radius: 6px;
+        border: 1px solid rgba(231, 185, 48, 0.608);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .card .frame div {
+        position: absolute;
+        right:0.65mm;
+        top:0.65mm;
+        left:0.65mm;
+        bottom:0.65mm;
+        border-radius: 5px;
+        border: 1px solid rgba(231, 185, 48, 0.9);
+        background-color: rgba(14, 14, 13, 0.7);
+    }
+
     .card .adventure .text  {
         top:64mm;   
     }
@@ -83,12 +125,60 @@
         display: contents;
     }
 
+    .role .subtype {
+        right: 28mm;
+        left: 19mm;
+    }
+    .role .frame {
+        right:14mm;
+        top:44mm;
+    }
+    .role .title {
+        right: 10mm;
+        top: 47mm;
+    }
+    .role .text {
+        right: 17mm;
+        top: 50mm;
+    }
+
+    .card .life, .card .life-enemy {
+        font-family: 'Lobster Two', cursive;
+        font-size: 16px;
+        right:0;
+        top:0;
+        bottom:0;
+        position: absolute;
+        left:52mm;
+        color: #fff7d4;
+        text-align: center;
+        text-shadow: 1px 1px 1px black, 0px 0px 1px black;
+    }
+
+    .card .life-enemy {
+        left:0;
+        right:0;
+        display: flex;
+    }
+
+    .life-enemy span {
+        display: inline-block;
+        padding: 10.65px 0px;
+        width: 39.5px;
+    }
+
+    .life span {
+        display: block;
+        padding: 10.65px 13px;
+    }
+
+
     .prestige {
         font-family: 'Lobster Two', cursive;
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 12mm;
+        left: 54mm;
         top: 77mm;
         text-shadow: 1px 1px black;
     }
@@ -101,14 +191,85 @@
         top: 77mm;
         text-shadow: 1px 1px black;
     }
+    .attack-icon-state {
+        position:absolute;
+        left: 46.5mm;
+        top: 76.5mm;
+    }
+    .hook-icon {
+        position:absolute;
+        left: 47.5mm;
+        top: 76.5mm;
+    }
+    .shell-icon-1 {
+        position:absolute;
+        left: 4mm;
+        top: 49mm;
+    }
+    .shell-icon-2 {
+        position:absolute;
+        right: 4mm;
+        top: 49mm;
+    }
+    .attack-icon-1 {
+        position:absolute;
+        left: 5mm;
+        top: 49mm;
+    }
+    .attack-icon-2 {
+        position:absolute;
+        right: 5mm;
+        top: 49mm;
+    }
+    .spell-icon-1 {
+        position:absolute;
+        left: 5mm;
+        top: 49mm;
+    }
+    .spell-icon-2 {
+        position:absolute;
+        right: 5mm;
+        top: 49mm;
+    }
+
+    .react-icon-1 {
+        position:absolute;
+        left: 5mm;
+        top: 52mm;
+    }
+    .react-icon-2 {
+        position:absolute;
+        right: 5mm;
+        top: 52mm;
+    }
+
+    .tentacle-icon-1 {
+        position:absolute;
+        left: 5mm;
+        top: 46.4mm;
+        transform: scaleX(-1);
+        opacity: 0.90;
+    }
+    .tentacle-icon-2 {
+        position:absolute;
+        right: 5mm;
+        top: 46.4mm;
+        opacity: 0.90;
+    }
+
     .health {
         font-family: 'Lobster Two', cursive;
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 33mm;
+        left: 13mm;
         top: 77mm;
         text-shadow: 1px 1px black;
+    }
+    .health-icon {
+        position:absolute;
+        left: 6mm;
+        top: 76.6mm;
     }
 
     /* Position the front and back side */
@@ -158,58 +319,65 @@
 
 <script>
     var cards = [
-        {
-            'title': 'Lady Jackson',
-            'text': 'You can look at the first card of the monster action pile during your combat turn.',
+
+    {
+            'title': "Jack SeaWolf",
+            'text': 'Once per expedition play an extra action.',
             'prestige': 5,
             'hp': 7,
-            'img': 'img/duchess.png',
-            'type': 'crew'
+            'img': 'crew/Captain.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
-            'title': "Old O'Malley",
-            'text': 'Once per expedition play an extra action.',
+            'title': 'Lady Jackson',
+            'text': 'You can look at the first card of the enemy action pile during your combat turn.',
             'prestige': 4,
             'hp': 7,
-            'img': 'img/Captain.png',
-            'type': 'crew'
+            'img': 'crew/duchess.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
-            'title': 'Master Gunner',
+            'title': 'Sword Master',
             'text': 'Once per expedition your attack deal exactly 4 damages.',
             'prestige': 3,
             'hp': 7,
-            'img': 'img/pocahontas.png',
-            'type': 'crew'
+            'img': 'crew/pocahontas.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
-            'title': 'Surgeon',
+            'title': 'Waegu',
             'text': 'Once per expedition your attack can target another crew.',
             'prestige': 2,
             'hp': 7,
-            'img': 'img/traitor.png',
-            'type': 'crew'
+            'img': 'crew/traitor.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
             'title': 'Snow Black',
-            'text': 'When somebody dies he put a card from his hand into yours.',
+            'text': 'The first crew that dies puts a card from his hand into yours.',
             'prestige': 1,
             'hp': 7,
-            'img': 'img/witch-doctor-2.png',
-            'type': 'crew'
+            'img': 'crew/witch-doctor-2.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
-            'title': 'Necromancer',
-            'text': 'Ghost restrictions do not apply to you. If you die you become the Captain.',
+            'title': 'Cultist',
+            'text': 'As a Ghost you can enter combat.',
             'prestige': 0,
             'hp': 7,
-            'img': 'img/necromancer.png',
-            'type': 'crew'
+            'img': 'crew/necromancer.png',
+            'type': 'crew',
+            'subtype': 'Crew',
         },
 
         {
@@ -218,6 +386,7 @@
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 1,
+            'subtype': 'Attack',
         },
 
         {
@@ -225,14 +394,16 @@
             'text': 'Heal for 1.',
             'img': 'crew-actions/spell.jpeg',
             'type': 'crew-spell',
+            'subtype': 'Spell'
         },
 
         {
-            'title': 'Master Strike',
-            'text': 'Deal 2 attack damages.',
+            'title': 'Plan Ahead',
+            'text': 'Deal 1 attack damage. Next turn you can take an extra action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
-            'attack': 2,
+            'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
@@ -241,62 +412,134 @@
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
-            'title': 'Formation',
-            'text': 'Deal 1 attack for each living crew member.',
+            'title': 'One for All',
+            'text': 'Deal 1 attack damage for each living crew.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack'
         },
 
         {
-            'title': 'Lucky Strike',
-            'text': 'Deal 3 attack damage. If that kills a monster discard this card.',
+            'title': 'Master Strike',
+            'text': 'Deal 3 attack damage. If that kills a enemy discard this card.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 3,
+            'subtype': 'Attack'
         },
 
         {
-            'title': 'Straight to Victory',
-            'text': 'Deal 1 attack damage.<br>You can discard an action.',
+            'title': 'Double Blow ',
+            'text': 'Deal 1 attack damage.<br>Your first attack next turn deal double damage.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
-            'title': 'Unity',
-            'text': 'Play Unity when another player plays an attack. Adds 2 damages to this player\'s attack.',
+            'title': 'Precision Shot',
+            'text': 'Deal 1 attack damage.<br>Once per expedition you might discard another action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
-            'attack': 2,
+            'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
-            'title': 'Haste ',
+            'title': 'Haste',
             'text': 'Deal 1 attack damage.<br>Draw an action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
             'title': 'Combo',
-            'text': 'Deal 1 attack damage. If you played 2 attack this turn this attack do not count as an action.',
+            'text': 'Deal 1 attack damage. If you played 2 attacks this turn Combo does not count as an action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 2,
+            'subtype': 'Attack'
+        },
+
+        {
+            'title': 'Putsch',
+            'text': 'Deal 1 attack damage. Exchange your role with the Captain.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': 1,
+            'subtype': 'Attack'
         },
 
         {
             'title': 'Channeling',
-            'text': 'Deal 1 attack damage. Deal 2 extra damage for each ghost.',
+            'text': 'Deal 1 attack damage. Deal 2 extra damage for each Ghost.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "1",
+            'subtype': 'Attack'
+        },
+
+        {
+            'title': 'Friendly Fire',
+            'text': 'Deal 1 attack damage. Your first attack next turn can target a player.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+            'subtype': 'Attack',
+        },
+
+        {
+            'title': 'Headshot',
+            'text': 'Deal 1 attack damage. If that kills an enemy or a player you gain an action.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+            'subtype': 'Attack',
+        },
+
+        {
+            'title': 'Mutiny',
+            'text': 'Deal 1 attack damage to the Captain or the Quartermaster. You might discard Mutiny.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+            'subtype': 'Attack',
+        },
+
+        {
+            'title': 'The Plank',
+            'text': 'Deal 1 attack damage to the Deckhand or the Surgeon. You might discard The Plank.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "1",
+            'subtype': 'Attack',
+        },
+
+        {
+            'title': 'Counting Coins',
+            'text': 'Deal attack damages equal to the number of cards in your treasure. You might discard Counting Coins.',
+            'img': 'crew-actions/attack-0.jpg',
+            'type': 'crew-attack',
+            'attack': "X",
+            'subtype': 'Attack'
+        },
+
+        {
+            'title': 'Envy',
+            'text': `Play Envy when a crew action is played.
+                Pick this action and discard Envy.
+                The player that lost this action gains one.`,
+            'img': 'crew-actions/backstab.png',
+            'type': 'crew-react',
+            'subtype': 'Trap',
         },
 
         {
@@ -305,44 +548,7 @@
             'img': 'crew-actions/backstab.png',
             'type': 'crew-react',
             // 'attack': "1",
-        },
-
-        {
-            'title': 'Mutiny',
-            'text': 'Deal 1 attack damage to the Captain or the Quartermaster.',
-            'img': 'crew-actions/attack-0.jpg',
-            'type': 'crew-attack',
-            'attack': "1",
-        },
-
-        {
-            'title': 'The Plank',
-            'text': 'Deal 1 attack damage to the Deckhand or the Foreman.',
-            'img': 'crew-actions/attack-0.jpg',
-            'type': 'crew-attack',
-            'attack': "1",
-        },
-
-        {
-            'title': 'Counting Coins',
-            'text': 'Deal attack damages equal to the number of cards in your treasure.',
-            'img': 'crew-actions/attack-0.jpg',
-            'type': 'crew-attack',
-            'attack': "X",
-        },
-
-        {
-            'title': 'Cycle of Life',
-            'text': 'Gain an action and discard Cycle of Life.',
-            'img': 'crew-actions/spell.jpeg',
-            'type': 'crew-spell',
-        },
-
-        {
-            'title': 'Envy',
-            'text': 'Play Envy when a crew action is played. Put this action in your hand and discard Envy.',
-            'img': 'crew-actions/backstab.png',
-            'type': 'crew-react',
+            'subtype': 'Trap'
         },
 
         // {
@@ -364,44 +570,59 @@
             'text': 'Play Sabotage when a crew action is played. This action does nothing.',
             'img': 'crew-actions/backstab.png',
             'type': 'crew-react',
+            'subtype': 'Trap',
         },
 
         {
             'title': 'Madness',
-            'text': 'Play Madness when a player plays an attack. This attack targets the crew on this players left.',
+            'text': `Play Madness when a player plays an attack.
+            This attack targets the crew on this player\'s left.`,
             'img': 'crew-actions/backstab.png',
             'type': 'crew-react',
+            'subtype': 'Trap',
         },
+
+        {
+            'title': 'Smoke Bomb',
+            'text': 'Play Smoke Bomb when an attack is played. This attack deal no damage to you.',
+            'img': 'crew-actions/backstab.png',
+            'type': 'crew-react',
+            'subtype': 'Trap',
+        },
+
+        {
+            'title': 'Unity',
+            'text': 'Play Unity when another player plays an attack. This attack deals 2 extra damages.',
+            'img': 'crew-actions/backstab.png',
+            'type': 'crew-react',
+            'subtype': 'Trap'
+        },  
 
         {
             'title': 'Poison the Soup',
             'text': 'Deal 1 damage to all other players.',
             'img': 'crew-actions/spell.jpeg',
             'type': 'crew-spell',
+            'subtype': 'Spell',
         },
 
         {
-            'title': 'Smoke Bomb',
-            'text': 'Play Smoke Bomb when a monster plays an attack. This attack does no damage to you.',
-            'img': 'crew-actions/backstab.png',
-            'type': 'crew-react',
-        },
-
-        {
-            'title': 'Shadow',
-            'text': 'This expedition you suffer no ghost restrictions.<br>Deal 1 damage to yourself.',
+            'title': 'Play Dead',
+            'text': 'Heal for 1. This expedition you count as a Ghost when that suits you except for playing enemy actions.',
             'img': 'crew-actions/spell.jpeg',
             'type': 'crew-spell',
+            'subtype': 'Spell',
         },
 
         {
             'title': 'Grog',
-            'text': 'Heal 1. Playing this card do not count as an action',
+            'text': 'Heal for 1. That does not count as an action',
             'img': 'crew-actions/spell.jpeg',
             'type': 'crew-spell',
+            'subtype': 'Spell',
         },
 
-        // Monster attacks
+        // Enemy attacks
 
         {
             'title': 'Equality',
@@ -409,6 +630,7 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
@@ -417,21 +639,24 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "1",
+            'subtype': 'Attack',
         },
 
         {
             'title': 'Retreat',
-            'text': 'Heal 1 for each player. End the turn.',
+            'text': 'Heal 1 for each player.<br>End the turn.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-spell',
+            'subtype': 'Spell',
         },
 
         {
             'title': 'Cull the Strong',
-            'text': 'Deal attack damage +1 to the crew with the highest remaining life.',
+            'text': 'Deal attack damage to the crew with the highest remaining life.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
-            'attack': "X+1",
+            'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
@@ -440,6 +665,7 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
@@ -447,7 +673,8 @@
             'text': 'Deal attack damage to the Captain.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
-            'attack': "X",  
+            'attack': "X", 
+            'subtype': 'Attack', 
         },
 
         {
@@ -456,14 +683,16 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
             'title': 'Exterminate',
-            'text': 'Deal attack damage to the Foreman.',
+            'text': 'Deal attack damage to the Surgeon.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
@@ -472,14 +701,16 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
             'title': 'Separate',
-            'text': 'Deal attack damage to the Foreman and the Quartermaster.',
+            'text': 'Deal attack damage to the Surgeon and the Quartermaster.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
@@ -488,14 +719,16 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
+            'subtype': 'Attack',
         },
 
         {
             'title': 'Split',
-            'text': 'Deal 1 attack damage to the Foreman and the Captain.',
+            'text': 'Deal 1 attack damage to the Surgeon and the Captain.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "1",
+            'subtype': 'Attack',
         },
 
         {
@@ -504,6 +737,7 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "1",
+            'subtype': 'Attack',
         },
 
         {
@@ -512,6 +746,7 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "1",
+            'subtype': 'Attack',
         },
 
         {
@@ -519,26 +754,59 @@
             'text': 'Next turn, crews only have 1 action.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-spell',
+            'subtype': 'Spell',
         },
 
         // Adventures
 
         {
             'title': 'Overgrown Ape',
-            'text': 'Has 3 actions.',
+            'text': 'Takes 3 actions.',
             'hp': 7,
             'img': 'adventures/ape.png',
             'type': 'monster',
             'attack': 2,
+            'subtype': 'Enemy',
+        },
+
+        {
+            'title': 'From Below',
+            'text': 'Any damages dealt to From Below are reduced to 1.',
+            'hp': 8,
+            'img': 'adventures/giant-crab.png',
+            'type': 'monster',
+            'attack': 2,
+            'subtype': 'Enemy',
+        },
+
+        {
+            'title': 'The White',
+            'text': 'Players only draw 2 actions.',
+            'hp': 8,
+            'img': 'adventures/shark.png',
+            'type': 'monster',
+            'attack': 2,
+            'subtype': 'Enemy',
+        },
+
+        {
+            'title': 'Haunted Shipwreck',
+            'text': 'Has 3 attack if there is a Ghost.<br>+1 Loot.',
+            'hp': 8,
+            'img': 'adventures/haunted-shipwreck.png',
+            'type': 'monster',
+            'attack': 2,
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'Sea Snake',
-            'text': 'Heals for X at the end of its turn. X is the number of living crew.',
+            'text': 'Heals for 1 at the end of its turn for each living crew.',
             'hp': 8,
             'img': 'adventures/leviathan.jpeg',
             'type': 'monster',
             'attack': 2,
+            'subtype': 'Enemy',
         },
 
         {
@@ -548,92 +816,113 @@
             'img': 'adventures/skull.png',
             'type': 'monster',
             'attack': 2,
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'The One',
             'text': 'Players only have 1 action.<br>+1 Loot.',
-            'hp': 6,
+            'hp': 7,
             'img': 'adventures/the-one.png',
             'type': 'monster',
             'attack': 2,
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'Smugglers',
-            'text': 'Number of actions is the number of started expeditions.<br>+1 Loot.',
-            'hp': 7,
+            'text': 'Take an action for each started expeditions.<br>+1 Loot.',
+            'hp': 8,
             'img': 'adventures/pirate-sunset-2.png',
             'type': 'monster',
-            'attack': 3,
+            'attack': 2,
+            'subtype': 'Enemy',
         },
 
         {
-            'title': 'Rivals',
-            'text': 'Attack is X which is the number of started expeditions.',
+            'title': 'Mary Read',
+            'text': 'Attack value X is the number of started expeditions.',
             'hp': 9,
-            'img': 'adventures/pirate-sunset-2.png',
+            'img': 'adventures/ship-sea-calm.png',
             'type': 'monster',
             'attack': 'X',
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'The citadel',
-            'text': 'Take an action for each living crew member.',
-            'hp': 9,
+            'text': 'Take an action for each living crew.<br>+1 Loot.',
+            'hp': 8,
             'img': 'adventures/citadel.png',
             'type': 'monster',
             'attack': '2',
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'Tree Sentinel',
-            'text': 'Play an extra action for each ghosts.',
-            'hp': 10,
+            'text': 'Take an extra action for each Ghosts.',
+            'hp': 9,
             'img': 'adventures/wraith.png',
             'type': 'monster',
             'attack': '2',
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'The Governor',
-            'text': '+1 Loot.',
+            'text': '+1 Loot.<br>When The Governor is used as an action discard it.',
             'hp': 7,
             'img': 'adventures/governor.jpeg',
             'type': 'monster',
             'attack': '3',
+            'subtype': 'Enemy',
         },
 
         {
-            'title': 'Hook',
+            'title': 'John Hook',
             'text': 'Deal 1 damage back when attacked.',
             'hp': 7,
             'img': 'adventures/captain-undead.png',
             'type': 'monster',
             'attack': '1',
+            'subtype': 'Enemy',
         },
 
         {
-            'title': 'Lost Temple',
+            'title': 'Temple Guardian',
             'text': '+2 Loot.',
-            'hp': 11,
+            'hp': 10,
             'img': 'adventures/snake-guardian-2.png',
             'type': 'monster',
             'attack': '2',
+            'subtype': 'Enemy',
+        },
+
+        {
+            'title': 'Marial',
+            'text': 'The Surgeon\'s and the Quartermaster\'s first attacks target players on their right.',
+            'hp': 7,
+            'img': 'adventures/siren.png',
+            'type': 'monster',
+            'attack': '2',
+            'subtype': 'Enemy',
         },
 
         {
             'title': 'Celebrate the Dead',
-            'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Then ghosts are resurrected with 3 health points.',
+            'text': 'Each player might gain an action.<br>Each player might discard an action.<br>Then Ghosts are resurrected with 3 health points.',
             'img': 'adventures/drink-dead.jpeg',
             'type': 'adventure',
+            'subtype': 'Adventure',
         },
 
         {
             'title': 'Tropical Island',
-            'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Each player heal 1 life.',
+            'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Add an action to the expedition Loot.',
             'img': 'adventures/tropical-island-2.png',
             'type': 'adventure',
+            'subtype': 'Adventure',
         },
 
         {
@@ -641,8 +930,50 @@
             'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Each player lose 1 life.',
             'img': 'adventures/unplanned-stop.png',
             'type': 'adventure',
+            'subtype': 'Adventure',
         },
 
+        // Roles
+
+        {
+            'title': 'Captain',
+            'text': 'You decide where to sail the ship.',
+            'img': 'status-card.png',
+            'type': 'role',
+            'subtype': 'Role',
+        },
+
+        {
+            'title': 'Quartermaster',
+            'text': '...',
+            'img': 'status-card.png',
+            'type': 'role',
+            'subtype': 'Role',
+        },
+
+        {
+            'title': 'Surgeon',
+            'text': '...',
+            'img': 'status-card.png',
+            'type': 'role',
+            'subtype': 'Role',
+        },
+
+        {
+            'title': 'Deckhand',
+            'text': 'If the expedition fail pick a card from the expedition Loot and pass the rest to your left.',
+            'img': 'status-card.png',
+            'type': 'role',
+            'subtype': 'Role',
+        },
+
+        {
+            'title': 'Enemy',
+            'text': 'Too keep enemy health points',
+            'img': 'enemy-status-card.png',
+            'type': 'role',
+            'subtype': 'Role',
+        },
 
     ]
 
@@ -651,26 +982,74 @@
     cards.forEach((c) => {
         var extra = ""
         if(c['prestige'] != undefined) {
-            extra += `<span class="prestige">${c['prestige']}</span>`
+            extra += `<span class="prestige">${c['prestige']}</span>
+                <img class="hook-icon" src="icons/hook.svg" />`
         }
         if(c['hp'] != undefined) {
-            extra += `<span class="health">${c['hp']}</span>`
+            extra += `<span class="health">${c['hp']}</span>
+                <img class="health-icon" src="icons/health.svg" />`
         }
         if(c['attack'] != undefined) {
-            extra += `<span class="attack">${c['attack']}</span>`
+            extra += `<span class="attack">${c['attack']}</span>
+                <img class="attack-icon-state" src="icons/attack-white.svg" />`
         }
+
+        if(c['subtype'] != undefined) {
+            extra += `<span class="subtype">${c['subtype']}</span>`
+        }
+        if(c['type'] == "crew") {
+            extra += `<img class="shell-icon-1" src="icons/shell.svg" /><img class="shell-icon-2" src="icons/shell.svg" />`
+        }
+        if(c['type'] == "crew-attack" || c['type'] == "monster-attack") {
+            extra += `<img class="attack-icon-1" src="icons/attack.svg" /><img class="attack-icon-2" src="icons/attack.svg" />`
+        }
+        if(c['type'] == "crew-spell") {
+            extra += `<img class="spell-icon-1" src="icons/spell.svg" /><img class="spell-icon-2" src="icons/spell.svg" />`
+        }
+        if(c['type'] == "crew-react") {
+            extra += `<img class="react-icon-1" src="icons/trap.svg" /><img class="react-icon-2" src="icons/trap.svg" />`
+        }
+        if(c['type'] == "monster") {
+            extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" /><img class="tentacle-icon-2" src="icons/tentacle.svg" />`
+        }
+
+        if(c['type'] == "role") {
+            extra += `<div class="life">`
+            for(var i=7; i>0; i--) {
+                extra += `<span class='life-${i}'>${i}</span>`
+            }
+            extra += "</div>"
+        }
+
+        if(c['type'] == "role") {
+            extra += `<div class="life">`
+            for(var i=7; i>0; i--) {
+                extra += `<span class='life-${i}'>${i}</span>`
+            }
+            extra += "</div>"
+            if(c['title'] == "Enemy") {
+                extra += `<div class="life-enemy">`
+                for(var i=12; i>7; i--) {
+                    extra += `<span class='life-enemy-${i}'>${i}</span>`
+                }
+                extra += "</div>"
+            }
+        }
+
+        // <img src='frames/${c['type']}-frame.svg' class="fg" />
 
         var template = `<div class="card">
             <div class="inner">
                 <div class="front ${c['type']}"> 
+                    <div class="frame"><div></div></div>
                     <img src="${c['img']}" class="bg" />
-                    <img src='frames/${c['type']}-frame.svg' class="fg" />
+                    
                     <span class="title">${c['title']}</span>
                     <span class="text">${c['text']}</span>
                     ${extra}
                 </div>
                 <div class="back">
-                    <img src="img/back.png" />
+                    <img src="crew/back.png" />
                 </div>
             </div>
         </div>`
@@ -682,6 +1061,8 @@
     })
 
     document.getElementById('cards').innerHTML = all.join('')
+
+    console.log(cards.length)
 </script>
 
 
