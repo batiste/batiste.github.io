@@ -3,6 +3,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Della+Respira&family=Lobster+Two:wght@400;700&family=Oleo+Script+Swash+Caps&family=Pirata+One&family=Playfair+Display&display=swap" rel="stylesheet">
 
+<script src="html2canvas.js"></script>
+
 <style>
     html {
         background-color: rgb(26, 23, 23);
@@ -13,10 +15,10 @@
     .card {
         position: relative;
         background-color: transparent;
-        width: 63mm;
-        height: 88mm;
+        width: 69.088mm;
+        height: 93.98mm;
         float: left;
-        margin: 10px;
+        margin: 16px 10px;
         perspective: 1000px;
     }
 
@@ -29,15 +31,32 @@
         transform-style: preserve-3d;
     }
 
-    .card:hover .inner {
+    /* .card:hover .inner {
         transform: rotateY(180deg);
-    }
+    } */
 
     .card .bg {
-        width: 63mm;
-        height: 88mm;
-        border-radius: 5px;
+        width: 66.5mm;
+        height: 91mm;
+        margin-top: 1.5mm;
+        /* border-radius: 5px; */
     }
+
+    .card .mpc {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 69.088mm;
+        height: 93.98mm;
+        /* border-radius: 5px; */
+    }
+
+
+    .card .mpc img {
+        width: 69.088mm;
+        height: 93.98mm;
+    }
+
     .card .fg {
         width: 63mm;
         height: 88mm;
@@ -65,10 +84,10 @@
         position: absolute;
         font-family: 'Della Respira', serif;
         font-size:11px;
-        right:6mm;
-        top:58mm;
-        left:6mm;
-        bottom:12mm;
+        right:9mm;
+        top:56mm;
+        left:9mm;
+        bottom:10.5mm;
         color: #fff2ca;
         text-align: center;
         text-shadow: 0.5px 0.5px black;
@@ -80,11 +99,10 @@
     .card .subtype {
         font-family: 'Della Respira', serif;
         font-size: 10px;
-        padding: 1px 0;
         position: absolute;
-        right:23mm;
-        top:81mm;
-        left:23mm;
+        right:26mm;
+        top:84mm;
+        left:26mm;
         color: #ECEAC2;
         text-align: center;
         text-shadow: 1px 1px black;
@@ -92,14 +110,20 @@
         border: 1px solid rgba(231, 185, 48, 0.9);
         border-radius: 5px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70);
+        /* try to fix rendering bug */
+        padding-bottom: 2px;
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        height:1.3em;
     }
 
     .card .frame {
         position: absolute;
-        right:2.8mm;
+        right:6mm;
         top:52mm;
-        left:2.8mm;
-        bottom:3.2mm;
+        left:6mm;
+        bottom:6mm;
         border-radius: 6px;
         border: 1px solid rgba(231, 185, 48, 0.608);
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
@@ -116,60 +140,56 @@
         background-color: rgba(14, 14, 13, 0.7);
     }
 
-    .card .adventure .text  {
-        top:64mm;   
-    }
-
     .card .text span {
         font-family: 'Lobster Two', cursive;
         display: contents;
     }
 
     .role .subtype {
-        right: 28mm;
+        right: 30mm;
         left: 19mm;
     }
     .role .frame {
-        right:14mm;
+        right:18mm;
         top:44mm;
     }
     .role .title {
-        right: 10mm;
+        right: 12mm;
         top: 47mm;
     }
     .role .text {
-        right: 17mm;
+        right: 22mm;
         top: 50mm;
     }
 
     .card .life, .card .life-enemy {
         font-family: 'Lobster Two', cursive;
         font-size: 16px;
-        right:0;
-        top:0;
+        right: 17px;
+        top: 26px;
         bottom:0;
         position: absolute;
-        left:52mm;
+        left:51.5mm;
         color: #fff7d4;
         text-align: center;
-        text-shadow: 1px 1px 1px black, 0px 0px 1px black;
+        text-shadow: 1px 1px 2px black, 0px 0px 1px black;
     }
 
     .card .life-enemy {
-        left:0;
+        left:6.7mm;
         right:0;
         display: flex;
     }
 
     .life-enemy span {
         display: inline-block;
-        padding: 10.65px 0px;
-        width: 39.5px;
+        padding: 9px 0px;
+        width: 35.4px;
     }
 
     .life span {
         display: block;
-        padding: 10.65px 13px;
+        padding: 8.8px 13px;
     }
 
 
@@ -178,81 +198,82 @@
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 54mm;
-        top: 77mm;
+        left: 57.5mm;
+        top: 79.6mm;
         text-shadow: 1px 1px black;
     }
+
     .attack {
         font-family: 'Lobster Two', cursive;
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 54mm;
-        top: 77mm;
+        left: 57.5mm;
+        top: 79.6mm;
         text-shadow: 1px 1px black;
     }
     .attack-icon-state {
         position:absolute;
-        left: 46.5mm;
-        top: 76.5mm;
+        left: 50mm;
+        top: 79.5mm;
     }
     .hook-icon {
         position:absolute;
-        left: 47.5mm;
-        top: 76.5mm;
+        left: 51mm;
+        top: 79.3mm;
     }
     .shell-icon-1 {
         position:absolute;
-        left: 4mm;
+        left: 6mm;
         top: 49mm;
     }
     .shell-icon-2 {
         position:absolute;
-        right: 4mm;
+        right: 6mm;
         top: 49mm;
     }
     .attack-icon-1 {
         position:absolute;
-        left: 5mm;
+        left: 7mm;
         top: 49mm;
     }
     .attack-icon-2 {
         position:absolute;
-        right: 5mm;
+        right: 7mm;
         top: 49mm;
     }
     .spell-icon-1 {
         position:absolute;
-        left: 5mm;
+        left: 7mm;
         top: 49mm;
     }
     .spell-icon-2 {
         position:absolute;
-        right: 5mm;
+        right: 7mm;
         top: 49mm;
     }
 
     .react-icon-1 {
         position:absolute;
-        left: 5mm;
+        left: 7mm;
         top: 52mm;
     }
     .react-icon-2 {
         position:absolute;
-        right: 5mm;
+        right: 7mm;
         top: 52mm;
     }
 
     .tentacle-icon-1 {
         position:absolute;
-        left: 5mm;
+        left: 7mm;
         top: 46.4mm;
         transform: scaleX(-1);
         opacity: 0.90;
     }
     .tentacle-icon-2 {
         position:absolute;
-        right: 5mm;
+        right: 7mm;
         top: 46.4mm;
         opacity: 0.90;
     }
@@ -262,14 +283,14 @@
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 13mm;
-        top: 77mm;
+        left: 15.6mm;
+        top: 79.6mm;
         text-shadow: 1px 1px black;
     }
     .health-icon {
         position:absolute;
-        left: 6mm;
-        top: 76.6mm;
+        left: 9mm;
+        top: 79.3mm;
     }
 
     /* Position the front and back side */
@@ -283,6 +304,7 @@
 
     /* Style the back side */
     .back {
+        display: none;
         transform: rotateY(180deg);
     }
     .back img {
@@ -310,6 +332,17 @@
             display: none;
         }
     }
+
+    .preparePrint button {
+        display: none;
+    }
+    .preparePrint .mpc {
+        display: none;
+    }
+    .preparePrint.card .bg {
+        border-radius: 0;
+    }
+
 
 </style>
 
@@ -938,7 +971,7 @@
         {
             'title': 'Captain',
             'text': 'You decide where to sail the ship.',
-            'img': 'status-card.png',
+            'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
         },
@@ -946,7 +979,7 @@
         {
             'title': 'Quartermaster',
             'text': '...',
-            'img': 'status-card.png',
+            'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
         },
@@ -954,7 +987,7 @@
         {
             'title': 'Surgeon',
             'text': '...',
-            'img': 'status-card.png',
+            'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
         },
@@ -962,7 +995,7 @@
         {
             'title': 'Deckhand',
             'text': 'If the expedition fail pick a card from the expedition Loot and pass the rest to your left.',
-            'img': 'status-card.png',
+            'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
         },
@@ -970,7 +1003,7 @@
         {
             'title': 'Enemy',
             'text': 'Too keep enemy health points',
-            'img': 'enemy-status-card.png',
+            'img': 'enemy-status.png',
             'type': 'role',
             'subtype': 'Role',
         },
@@ -1037,6 +1070,11 @@
         }
 
         // <img src='frames/${c['type']}-frame.svg' class="fg" />
+        // 1
+
+        // html2canvas(document.body).then(function(canvas) {
+        //     document.body.appendChild(canvas);
+        // });
 
         var template = `<div class="card">
             <div class="inner">
@@ -1047,12 +1085,18 @@
                     <span class="title">${c['title']}</span>
                     <span class="text">${c['text']}</span>
                     ${extra}
+
+                    <div class="mpc">
+                        <img src="mpc.png" />
+                    </div>
                 </div>
                 <div class="back">
                     <img src="crew/back.png" />
                 </div>
             </div>
-        </div>`
+            <button onclick="downloadCard(this)">Download</button>
+        </div>
+        `
         all.push(template)
         i++;
         if(i % 9 == 0) {
@@ -1061,6 +1105,30 @@
     })
 
     document.getElementById('cards').innerHTML = all.join('')
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+".png"
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function downloadCard(e) {
+        console.log(this.target, e, e.parentNode)
+        e.parentNode.classList.add('preparePrint')
+        setTimeout(() => {
+            html2canvas(e.parentNode, {scale: 6.5, backgroundColor: '#000000'}).then(function(canvas) {
+                // canvas.width = 2220
+                // canvas.height = 1632
+                document.body.appendChild(canvas);
+                var title = e.parentNode.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
+                download(canvas.toDataURL("image/png"), title);
+                // canvas.remove()
+            })
+        }, 100)
+    }
 
     console.log(cards.length)
 </script>
