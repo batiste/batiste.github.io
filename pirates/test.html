@@ -354,19 +354,9 @@
     var cards = [
 
     {
-            'title': "Jack SeaWolf",
-            'text': 'Once per expedition play an extra action.',
-            'prestige': 5,
-            'hp': 7,
-            'img': 'crew/captain.png',
-            'type': 'crew',
-            'subtype': 'Crew',
-        },
-
-        {
             'title': 'Lady Jackson',
-            'text': 'You can look at the first card of the enemy action pile during your combat turn.',
-            'prestige': 4,
+            'text': 'At any time you can look at the first card of the enemy action pile.',
+            'prestige': 5,
             'hp': 7,
             'img': 'crew/duchess.png',
             'type': 'crew',
@@ -374,8 +364,18 @@
         },
 
         {
+            'title': "Jack SeaWolf",
+            'text': 'Once per expedition play an extra action.',
+            'prestige': 4,
+            'hp': 7,
+            'img': 'crew/captain.png',
+            'type': 'crew',
+            'subtype': 'Crew',
+        },
+
+        {
             'title': 'Sword Master',
-            'text': 'Once per expedition your attack deal exactly 4 damages.',
+            'text': 'Once per expedition 1 of your attack deal exactly 3 damages.',
             'prestige': 3,
             'hp': 7,
             'img': 'crew/pocahontas.png',
@@ -385,7 +385,7 @@
 
         {
             'title': 'Waegu',
-            'text': 'Once per expedition your attack can target another crew.',
+            'text': 'Once per combat round 1 of your attack can target another crew.',
             'prestige': 2,
             'hp': 7,
             'img': 'crew/traitor.png',
@@ -405,7 +405,7 @@
 
         {
             'title': 'Cultist',
-            'text': 'As a Ghost you can enter combat.',
+            'text': 'As a Ghost you can play attack actions.',
             'prestige': 0,
             'hp': 7,
             'img': 'crew/necromancer.png',
@@ -459,7 +459,7 @@
 
         {
             'title': 'Master Strike',
-            'text': 'Deal 3 attack damage. If that kills a enemy discard this card.',
+            'text': 'Deal 3 attack damage. If that kills a enemy bury this action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 3,
@@ -477,7 +477,7 @@
 
         {
             'title': 'Precision Shot',
-            'text': 'Deal 1 attack damage.<br>Once per expedition you might discard another action.',
+            'text': 'Deal 1 attack damage.<br>When you play this action, once per expedition you might bury another action.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': 1,
@@ -540,7 +540,7 @@
 
         {
             'title': 'Mutiny',
-            'text': 'Deal 1 attack damage to the Captain or the Quartermaster. You might discard Mutiny.',
+            'text': 'Deal 1 attack damage to the Captain or the Quartermaster. Once played you might discard Mutiny.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "1",
@@ -549,7 +549,7 @@
 
         {
             'title': 'The Plank',
-            'text': 'Deal 1 attack damage to the Deckhand or the Surgeon. You might discard The Plank.',
+            'text': 'Deal 1 attack damage to the Deckhand or the Surgeon. Once played you you might discard The Plank.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "1",
@@ -558,7 +558,7 @@
 
         {
             'title': 'Counting Coins',
-            'text': 'Deal attack damages equal to the number of cards in your treasure. You might discard Counting Coins.',
+            'text': 'Deal attack damages equal to the number of cards in your treasure but not more than 3.',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "X",
@@ -568,7 +568,7 @@
         {
             'title': 'Envy',
             'text': `Play Envy when a crew action is played.
-                Pick this action and discard Envy.
+                Sink this action and put Envy at the bottom of the crew action deck.
                 The player that lost this action gains one.`,
             'img': 'crew-actions/backstab.png',
             'type': 'crew-react',
@@ -663,15 +663,6 @@
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-attack',
             'attack': "X",
-            'subtype': 'Attack',
-        },
-
-        {
-            'title': 'Pity',
-            'text': 'If the living crew is 2 or less do nothing. Otherwise deal 1 damage to all.',
-            'img': 'crew-actions/monster-attack.jpg',
-            'type': 'crew-attack',
-            'attack': "1",
             'subtype': 'Attack',
         },
 
@@ -814,7 +805,7 @@
 
         {
             'title': 'The White',
-            'text': 'Players only draw 2 actions.',
+            'text': 'Players only draw 2 actions.<br>+1 Loot.',
             'hp': 8,
             'img': 'adventures/shark.png',
             'type': 'monster',
@@ -894,7 +885,7 @@
 
         {
             'title': 'Tree Sentinel',
-            'text': 'Take an extra action for each Ghosts.',
+            'text': 'Take an extra action for each Ghosts.<br>+1 Loot.',
             'hp': 9,
             'img': 'adventures/wraith.png',
             'type': 'monster',
@@ -904,7 +895,7 @@
 
         {
             'title': 'The Governor',
-            'text': '+1 Loot.<br>When The Governor is used as an action discard it.',
+            'text': '+1 Loot.<br>When The Governor is used as an action bury it.',
             'hp': 7,
             'img': 'adventures/governor.jpeg',
             'type': 'monster',
@@ -914,7 +905,7 @@
 
         {
             'title': 'John Hook',
-            'text': 'Deal 1 damage back when attacked.',
+            'text': 'Deal 1 damage back to the source when attacked.',
             'hp': 7,
             'img': 'adventures/captain-undead.png',
             'type': 'monster',
@@ -924,7 +915,7 @@
 
         {
             'title': 'Temple Guardian',
-            'text': '+2 Loot.',
+            'text': '+2 Loot.<br>Once defeated each living crew can bury an action.',
             'hp': 10,
             'img': 'adventures/snake-guardian-2.png',
             'type': 'monster',
@@ -934,7 +925,7 @@
 
         {
             'title': 'Marial',
-            'text': 'The Surgeon\'s and the Quartermaster\'s first attacks target players on their right.',
+            'text': 'The deckhand and the Foreman first attack action target players on their left.',
             'hp': 7,
             'img': 'adventures/siren.png',
             'type': 'monster',
@@ -944,7 +935,7 @@
 
         {
             'title': 'Celebrate the Dead',
-            'text': 'Each player might gain an action.<br>Each player might discard an action.<br>Then Ghosts are resurrected with 3 health points.',
+            'text': 'Each player might gain an action.<br>Each player might bury an action.<br>Then Ghosts are resurrected with 3 health points.',
             'img': 'adventures/drink-dead.jpeg',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -952,7 +943,7 @@
 
         {
             'title': 'Tropical Island',
-            'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Add an action to the expedition Loot.',
+            'text': 'Each player might gain an action.<br>Each player might bury an action.<br><br>Add an action to the expedition Loot.',
             'img': 'adventures/tropical-island-2.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -960,7 +951,7 @@
 
         {
             'title': 'Unplanned Stop',
-            'text': 'Each player might gain an action.<br>Each player might discard an action.<br><br>Each player lose 1 life.',
+            'text': 'Each player might gain an action.<br>Each player might bury an action.<br><br>Each player lose 1 life.',
             'img': 'adventures/unplanned-stop.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -994,7 +985,7 @@
 
         {
             'title': 'Deckhand',
-            'text': 'If the expedition fail pick a card from the expedition Loot and pass the rest to your left.',
+            'text': 'Cleaning the Black Swallow\'s deck is your duty',
             'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
