@@ -92,9 +92,10 @@
     </td>
     <td>
         <input type="number" class="percent" value=1 step=0.5 id="buyingFees"> %
+        (<span id="feesValue">-</span> CHF)
     </td>
     <td>
-        Fees such as notary fees, act of purchase, etc. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
+        Fees such as notary fees, act of purchase, transfer duties, etc. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
     </td>
 </tr>
 
@@ -317,7 +318,10 @@
         let objectPrice = getValue('price')
         const feesPercent = getValue('buyingFees') / 100.0
 
-        const price = objectPrice + (feesPercent * objectPrice)
+        const feesValue = (feesPercent * objectPrice)
+        setInner('feesValue', feesValue)
+
+        const price = objectPrice + feesValue
         const downPaymentPercent = getValue('downPayment') / 100.0
         const downPayment = Math.round(downPaymentPercent * price)
 
