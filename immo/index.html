@@ -75,19 +75,19 @@
 
 <tr>
     <td>
-        Buying fees
+        Buying fees (% of property price)
     </td>
     <td>
         <input type="number" class="percent" value="1" id="buyingFees"> %
     </td>
     <td>
-        Fees such as notary fees, act of purchase, etc.. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
+        Fees such as notary fees, act of purchase, etc. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
     </td>
 </tr>
 
 <tr>
     <td>
-        Down payment (in % of price)
+        Down payment (% of purchase price)
     </td>
     <td>
         <input type="number" class="percent" value="20" id="downPayment"> %
@@ -106,7 +106,7 @@
         <span id="downPaymentReal">-</span> CHF
     </td>
     <td>
-        Initial payment for credit.
+        Initial payment to obtain mortgage.
     </td>
 </tr>
 
@@ -119,26 +119,26 @@
         <span id="mortgage">-</span> CHF
     </td>
     <td>
-
+        What the bank lends you.
     </td>
 </tr>
 
 
 <tr>
     <td>
-        Net monthly rental value
+        Net monthly rental return
     </td>
     <td>
         <input type="number" value="1500" id="monthlyRentalValue"> CHF
     </td>
     <td>
-        Estimation of the net monthly rental value.
+        Estimation of the net monthly rental return.
     </td>
 </tr>
 
 <tr>
     <td>
-        Net yearly rental value
+        Net yearly rental return
     </td>
     <td>
         <span id="yearlyRental">-</span> CHF
@@ -234,7 +234,21 @@
         (<span id="propertyTaxValue">-</span> CHF)
     </td>
     <td>
-        On cadastral valuation (VD: 1,5‰, NE: 2,4‰ )
+        On cadastral valuation, depends on the canton. E.g. (VD: 1,5‰, NE: 2,4‰ )
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Taxes on rental revenue
+    </td>
+    <td>
+        <input type="number" class="percent" value="20" id="taxesRental"> %
+        (<span id="taxesRentalValue">-</span> CHF)
+    </td>
+    <td>
+        You will be taxed on your net yearly rental return minus - interest, even if you live there.<br>
+        Enter here you estimated revenue tax level.
     </td>
 </tr>
 
@@ -299,9 +313,10 @@
 
         const interest = getValue('interest') / 100.0
 
-        const chargeInterestPercent = (interest * mortgage) / downPayment;
+        const chargeInterest = interest * mortgage;
+        const chargeInterestPercent = chargeInterest / downPayment;
         setInner('chargeInterestPercent', round1Dec(chargeInterestPercent * 100))
-        setInner('chargeInterest', round1Dec(interest * mortgage))
+        setInner('chargeInterest', round1Dec(chargeInterest))
 
         const netReturnBeforeTaxes = intermediaryReturnValue - chargeInterestPercent
         setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
@@ -310,7 +325,13 @@
         propertyTaxValue = Math.round(propertyTax * price)
         setInner('propertyTaxValue', propertyTaxValue)
 
-        const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment)
+        const taxesRental = getValue('taxesRental') / 100.0
+
+        const taxableRentalValue = yearlyRental - chargeInterest
+        const taxesRentalValue = Math.round(taxesRental * taxableRentalValue)
+        setInner('taxesRentalValue', Math.round(taxesRental * taxableRentalValue))
+
+        const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment) - (taxesRentalValue / downPayment)
         setInner('netReturn', round1Dec(netReturn * 100))
     }
 
