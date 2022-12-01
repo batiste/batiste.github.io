@@ -395,7 +395,7 @@
 
         {
             'title': 'Snow Black',
-            'text': 'The first crew that dies puts a card from his hand into yours.',
+            'text': 'When the first crew dies you gain an action.',
             'prestige': 1,
             'hp': 7,
             'img': 'crew/witch-doctor-2.png',
@@ -450,7 +450,7 @@
 
         {
             'title': 'One for All',
-            'text': 'Deal 1 attack damage for each living crew.',
+            'text': 'Deal 1 attack damage for each living crew but not more than 3',
             'img': 'crew-actions/attack-0.jpg',
             'type': 'crew-attack',
             'attack': "X",
@@ -565,6 +565,7 @@
             'subtype': 'Attack'
         },
 
+        // too complex...
         {
             'title': 'Envy',
             'text': `Play Envy when a crew action is played.
@@ -606,9 +607,10 @@
             'subtype': 'Trap',
         },
 
+        // you can play it on yourself
         {
             'title': 'Madness',
-            'text': `Play Madness when a player plays an attack.
+            'text': `Play Madness when a player plays an attack
             This attack targets the crew on this player\'s left.`,
             'img': 'crew-actions/backstab.png',
             'type': 'crew-react',
@@ -641,7 +643,7 @@
 
         {
             'title': 'Play Dead',
-            'text': 'Heal for 1. This expedition you count as a Ghost when that suits you except for playing enemy actions.',
+            'text': 'Heal for 1. For actions and adventures you are a ghost until the end of expedition.',
             'img': 'crew-actions/spell.jpeg',
             'type': 'crew-spell',
             'subtype': 'Spell',
@@ -775,7 +777,7 @@
 
         {
             'title': 'Confusion',
-            'text': 'Next turn, crews only have 1 action.',
+            'text': 'This turn players only have 1 action.',
             'img': 'crew-actions/monster-attack.jpg',
             'type': 'crew-spell',
             'subtype': 'Spell',
@@ -796,7 +798,7 @@
         {
             'title': 'From Below',
             'text': 'Any damages dealt to From Below are reduced to 1.',
-            'hp': 8,
+            'hp': 7,
             'img': 'adventures/giant-crab.png',
             'type': 'monster',
             'attack': 2,
@@ -903,13 +905,14 @@
             'subtype': 'Enemy',
         },
 
+        // Kinda problematic
         {
             'title': 'John Hook',
-            'text': 'Deal 1 damage back to the source when attacked.',
+            'text': 'Deal 1 damage back when attacked. +1 Loot.',
             'hp': 7,
             'img': 'adventures/captain-undead.png',
             'type': 'monster',
-            'attack': '1',
+            'attack': '2',
             'subtype': 'Enemy',
         },
 
@@ -969,7 +972,7 @@
 
         {
             'title': 'Quartermaster',
-            'text': '...',
+            'text': 'Master fighter, cannon all blazing!',
             'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',
@@ -977,7 +980,7 @@
 
         {
             'title': 'Surgeon',
-            'text': '...',
+            'text': 'Clean the wounds of battle and distribute rum!',
             'img': 'status.png',
             'type': 'role',
             'subtype': 'Role',

@@ -1,0 +1,302 @@
+<html>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 4em;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            font-size: 0.9em;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr.result {
+            background-color: #4ac58c;
+            color: #fff;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        .percent {
+            width: 4em;
+        }
+        #netReturn {
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</html>
+
+<h1>Swiss Real Estate Return on Investment Calculator</h1>
+
+<p>
+    A rough quick calculator for calculating the ROI of an real estate investment.
+    Beware this does not take in account your salary, and the potential increase in 
+    revenue taxes a real estate property might incur if you rent it out.
+</p>
+
+<table class="styled-table">
+   
+<tr>
+    <th>Descriptions</th><th>Values</th><th>Notes</th>
+</tr>
+
+<tr>
+    <td>
+        Price of the property
+    </td>
+    <td>
+        <input type="number" value="500000" id="price"> CHF
+    </td>
+    <td>
+
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Down payment (in % of price)
+    </td>
+    <td>
+        <input type="number" class="percent" value="20" id="downPayment"> %
+    </td>
+    <td>
+        20% is the minimum (2022).
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Down payment
+    </td>
+    <td>
+        <span id="downPaymentReal">-</span> CHF
+    </td>
+    <td>
+        Initial payment for credit.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Mortgage
+    </td>
+    <td>
+        <span id="mortgage">-</span> CHF
+    </td>
+    <td>
+        With notary cost of 3.7% added.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Net monthly rental value
+    </td>
+    <td>
+        <input type="number" value="1500" id="monthlyRentalValue"> CHF
+    </td>
+    <td>
+        Estimation of the net monthly rental value.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Net yearly rental value
+    </td>
+    <td>
+        <span id="yearlyRental">-</span> CHF
+    </td>
+    <td>
+        Amount of rent net on a year.
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Gross return on investment
+    </td>
+    <td>
+        <span id="grossReturnValue">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Operating expenses
+    </td>
+    <td>
+        <span id="operatingExpense">-</span> CHF
+    </td>
+    <td>
+        1% of the property price: property insurance, maintenance fees, depreciation, etc.
+    </td>
+</tr>
+
+
+<tr class="result">
+    <td>
+        Return after operating expenses
+    </td>
+    <td>
+        <span id="intermediaryReturnValue">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Interest form the bank
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.5" id="interest"> %
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Charge of interest in % of down payment
+    </td>
+    <td>
+        <span id="chargeInterestPercent">-</span> %
+        (<span id="chargeInterest">-</span> CHF)
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Net return before taxes
+    </td>
+    <td>
+        <span id="netReturnBeforeTaxes">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Property tax (in ‰)
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.5" id="propertyTax"> ‰
+        (<span id="propertyTaxValue">-</span> CHF)
+    </td>
+    <td>
+        On cadastral valuation (VD: 1,5‰, NE: 2,4‰ )
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Net return
+    </td>
+    <td>
+        <span id="netReturn">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+
+</table>
+
+
+<script>
+    function get(id) {
+        return document.querySelector('#'+id)
+    }
+    function getValue(id, type="int") {
+        return parseFloat(get(id).value, 10)
+    }
+    function setInner(id, value) {
+        get(id).innerHTML = value
+    }
+    function round1Dec(num) {
+        return Math.round(num * 10) / 10
+    }
+
+    function recalculate() {
+        const price = getValue('price')
+        const downPaymentPercent = getValue('downPayment') / 100.0
+        const downPayment = Math.round(downPaymentPercent * price)
+
+        setInner('downPaymentReal', Math.round(price * (downPaymentPercent)))
+
+        const mortgage = Math.round((1 - (downPaymentPercent - 0.037)) * price)
+        setInner('mortgage', mortgage)
+
+        const monthlyRentalValue = getValue('monthlyRentalValue')
+        const yearlyRental = monthlyRentalValue * 12;
+        setInner('yearlyRental', yearlyRental)
+
+        const grossReturnValuePercent = yearlyRental / downPayment;
+        const grossReturnValue = round1Dec(grossReturnValuePercent * 100)
+        setInner('grossReturnValue', grossReturnValue)
+
+        const operatingExpense = price * 0.01
+        setInner('operatingExpense', operatingExpense)
+
+        const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
+        setInner('intermediaryReturnValue', round1Dec(intermediaryReturnValue * 100))
+
+        const interest = getValue('interest') / 100.0
+
+        const chargeInterestPercent = (interest * mortgage) / downPayment;
+        setInner('chargeInterestPercent', round1Dec(chargeInterestPercent * 100))
+        setInner('chargeInterest', round1Dec(interest * mortgage))
+
+        const netReturnBeforeTaxes = intermediaryReturnValue - chargeInterestPercent
+        setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
+
+        const propertyTax = getValue('propertyTax') / 1000.0
+        propertyTaxValue = Math.round(propertyTax * price)
+        setInner('propertyTaxValue', propertyTaxValue)
+
+        const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment)
+        setInner('netReturn', round1Dec(netReturn * 100))
+    }
+
+    setInterval(function() {
+        recalculate()
+    }, 1000)
+
+</script>
