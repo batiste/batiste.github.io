@@ -37,6 +37,9 @@
         .styled-table tbody tr:last-of-type {
             border-bottom: 2px solid #009879;
         }
+        table input {
+            width: 8em;
+        }
         .percent {
             width: 4em;
         }
@@ -44,6 +47,7 @@
             font-size: 20px;
             font-weight: bold;
         }
+
     </style>
 </html>
 
@@ -56,7 +60,7 @@
 <table class="styled-table">
    
 <tr>
-    <th>Descriptions</th><th>Values</th><th>Notes</th>
+    <th>Descriptions</th><th style="width: 12em">Values</th><th>Notes</th>
 </tr>
 
 <tr>
@@ -127,7 +131,7 @@
         Net monthly rental return
     </td>
     <td>
-        <input type="number" value="1500" id="monthlyRentalValue"> CHF
+        <input type="number" value="1500" id="monthlyRentalValue">CHF
     </td>
     <td>
         Estimation of the net monthly rental return.
@@ -246,7 +250,7 @@
     </td>
     <td>
         You will be taxed on the net yearly rental return - (interest + 10% of rental value).<br>
-        If you live in your own property, the yearly fictional rental value might be reduced (~70% of real) but not eliminated.
+        If you live in your own property, the yearly fictional rental value might be <br>reduced (~70% of real) but not eliminated.
         Enter here you estimated revenue tax level.
         <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
     </td>
