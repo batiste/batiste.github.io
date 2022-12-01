@@ -2,13 +2,22 @@
     <style>
         body {
             font-family: sans-serif;
-            padding: 4em;
+            padding: 3em;
+            font-size: 15px;
+        }
+
+        body, table, input {
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+
+        input {
+            padding: 4px 6px;
         }
 
         .styled-table {
             border-collapse: collapse;
             margin: 25px 0;
-            font-size: 0.9em;
             min-width: 400px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
         }
@@ -68,7 +77,7 @@
         Price of the property
     </td>
     <td>
-        <input type="number" value="500000" id="price"> CHF
+        <input type="number" value="500000" id="price" step=50000> CHF
     </td>
     <td>
         Buying price, without notary fees.
@@ -80,7 +89,7 @@
         Buying fees (% of property price)
     </td>
     <td>
-        <input type="number" class="percent" value="1" id="buyingFees"> %
+        <input type="number" class="percent" value=1 step=0.5 id="buyingFees"> %
     </td>
     <td>
         Fees such as notary fees, act of purchase, etc. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
@@ -92,7 +101,7 @@
         Down payment (% of purchase price)
     </td>
     <td>
-        <input type="number" class="percent" value="20" id="downPayment"> %
+        <input type="number" class="percent" value=20 step=1 id="downPayment"> %
     </td>
     <td>
         20% is the minimum (2022).
@@ -131,7 +140,7 @@
         Net monthly rental return
     </td>
     <td>
-        <input type="number" value="1500" id="monthlyRentalValue"> CHF
+        <input type="number" value="1500" step=100 id="monthlyRentalValue"> CHF
     </td>
     <td>
         Estimation of the net monthly rental return.
@@ -167,7 +176,7 @@
         Operating expenses (% of purchase price)
     </td>
     <td>
-        <input type="number" class="percent" value="1.0" id="operatingExpensePercent"> %
+        <input type="number" class="percent" value="1.0" step=0.5 id="operatingExpensePercent"> %
         (<span id="operatingExpense">-</span> CHF)
     </td>
     <td>
@@ -194,7 +203,7 @@
         Interest form the bank
     </td>
     <td>
-        <input type="number" class="percent" value="1.5" id="interest"> %
+        <input type="number" class="percent" value="1.5" step=0.1 id="interest"> %
         (<span id="chargeInterest">-</span> CHF)
     </td>
     <td>
@@ -232,7 +241,7 @@
         Property tax (in ‰)
     </td>
     <td>
-        <input type="number" class="percent" value="1.5" id="propertyTax"> ‰
+        <input type="number" class="percent" value="1.5" step=0.1 id="propertyTax"> ‰
         (<span id="propertyTaxValue">-</span> CHF)
     </td>
     <td>
@@ -245,7 +254,7 @@
         Taxes on rental revenue
     </td>
     <td>
-        <input type="number" class="percent" value="20" id="taxesRental"> %
+        <input type="number" class="percent" value="20" step=1 id="taxesRental"> %
         (<span id="taxesRentalValue">-</span> CHF)
     </td>
     <td>
