@@ -131,7 +131,7 @@
         Net monthly rental return
     </td>
     <td>
-        <input type="number" value="1500" id="monthlyRentalValue">CHF
+        <input type="number" value="1500" id="monthlyRentalValue"> CHF
     </td>
     <td>
         Estimation of the net monthly rental return.
@@ -288,12 +288,12 @@
     }
 
     function recalculate() {
-        let price = getValue('price')
-        const downPaymentPercent = getValue('downPayment') / 100.0
-        const downPayment = Math.round(downPaymentPercent * price)
+        let objectPrice = getValue('price')
         const feesPercent = getValue('buyingFees') / 100.0
 
-        price = price + (feesPercent * price)
+        const price = objectPrice + (feesPercent * objectPrice)
+        const downPaymentPercent = getValue('downPayment') / 100.0
+        const downPayment = Math.round(downPaymentPercent * price)
 
         setInner('downPaymentReal', Math.round(price * (downPaymentPercent)))
 
@@ -309,7 +309,7 @@
         setInner('grossReturnValue', grossReturnValue)
 
         const operatingExpensePercent = getValue('operatingExpensePercent') / 100.0
-        const operatingExpense = Math.round(price * operatingExpensePercent)
+        const operatingExpense = Math.round(objectPrice * operatingExpensePercent)
         setInner('operatingExpense', operatingExpense)
 
         const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
@@ -326,7 +326,7 @@
         setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
 
         const propertyTax = getValue('propertyTax') / 1000.0
-        propertyTaxValue = Math.round(propertyTax * price)
+        propertyTaxValue = Math.round(propertyTax * objectPrice)
         setInner('propertyTaxValue', propertyTaxValue)
 
         const taxesRental = getValue('taxesRental') / 100.0
