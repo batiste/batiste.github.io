@@ -69,7 +69,9 @@
 <table class="styled-table">
    
 <tr>
-    <th>Descriptions</th><th style="width: 12em">Values</th><th>Notes</th>
+    <th style="min-width: 16em">Descriptions</th>
+    <th style="min-width: 12em">Values</th>
+    <th>Notes</th>
 </tr>
 
 <tr>
@@ -86,7 +88,7 @@
 
 <tr>
     <td>
-        Buying fees (% of property price)
+        Buying fees in % of property price
     </td>
     <td>
         <input type="number" class="percent" value=1 step=0.5 id="buyingFees"> %
@@ -98,7 +100,7 @@
 
 <tr>
     <td>
-        Down payment (% of purchase price)
+        Down payment in % of purchase price
     </td>
     <td>
         <input type="number" class="percent" value=20 step=1 id="downPayment"> %
@@ -173,7 +175,7 @@
 
 <tr>
     <td>
-        Operating expenses (% of purchase price)
+        Operating expenses in % of purchase price
     </td>
     <td>
         <input type="number" class="percent" value="1.0" step=0.5 id="operatingExpensePercent"> %
@@ -200,14 +202,14 @@
 
 <tr>
     <td>
-        Interest form the bank
+        Interest of mortgage
     </td>
     <td>
         <input type="number" class="percent" value="1.5" step=0.1 id="interest"> %
         (<span id="chargeInterest">-</span> CHF)
     </td>
     <td>
-        
+        Secured interest with the bank
     </td>
 </tr>
 
@@ -226,7 +228,7 @@
 
 <tr class="result">
     <td>
-        Net return before taxes
+        Net return after interest payments
     </td>
     <td>
         <span id="netReturnBeforeTaxes">-</span> %
@@ -238,7 +240,7 @@
 
 <tr>
     <td>
-        Property tax (in ‰)
+        Property tax in ‰ of property price
     </td>
     <td>
         <input type="number" class="percent" value="1.5" step=0.1 id="propertyTax"> ‰
@@ -252,17 +254,31 @@
 
 <tr>
     <td>
-        Taxes on rental revenue
+        Taxable rental return
+    </td>
+    <td>
+        <span id="taxableRentalValue">-</span> CHF
+        <div style="margin-top:0.5em;">
+        <input type="checkbox" value="checked" id="liveHere" style="width:1em;display: inline-block;">I will live here 
+        </div>
+    </td>
+    <td>
+        The net yearly rental return - (interest + 10% of rental value).
+        If you live in your own property the taxable rental value might be further reduced (~70% of real).
+        <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Taxes on rental return
     </td>
     <td>
         <input type="number" class="percent" value="20" step=1 id="taxesRental"> %
         (<span id="taxesRentalValue">-</span> CHF)
     </td>
     <td>
-        You will be taxed on the net yearly rental return - (interest + 10% of rental value).<br>
-        If you live in your own property, the yearly fictional rental value might be <br>reduced (~70% of real) but not eliminated.
-        Enter here you estimated revenue tax level.
-        <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
+        Enter here your estimated revenue taxes.
     </td>
 </tr>
 
@@ -342,7 +358,13 @@
         const taxesRental = getValue('taxesRental') / 100.0
 
         
-        const taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
+        let taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
+
+        if (get('liveHere').checked) {
+            taxableRentalValue = taxableRentalValue * 0.7;
+        }
+
+        setInner('taxableRentalValue', Math.round(taxableRentalValue))
         const taxesRentalValue = Math.round(taxesRental * taxableRentalValue)
         setInner('taxesRentalValue', Math.round(taxesRental * taxableRentalValue))
 
