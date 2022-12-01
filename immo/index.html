@@ -69,7 +69,19 @@
         <input type="number" value="500000" id="price"> CHF
     </td>
     <td>
+        Buying price, without notary fees.
+    </td>
+</tr>
 
+<tr>
+    <td>
+        Buying fees
+    </td>
+    <td>
+        <input type="number" class="percent" value="1" id="buyingFees"> %
+    </td>
+    <td>
+        Fees such as notary fees, act of purchase, etc.. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
     </td>
 </tr>
 
@@ -107,7 +119,7 @@
         <span id="mortgage">-</span> CHF
     </td>
     <td>
-        With notary cost of 3.7% added.
+
     </td>
 </tr>
 
@@ -150,13 +162,15 @@
 
 <tr>
     <td>
-        Operating expenses
+        Operating expenses (% of purchase price)
     </td>
     <td>
-        <span id="operatingExpense">-</span> CHF
+        <input type="number" class="percent" value="1.0" id="operatingExpensePercent"> %
+        (<span id="operatingExpense">-</span> CHF)
     </td>
     <td>
-        1% of the property price: property insurance, maintenance fees, depreciation, etc.
+        Property insurance, maintenance, depreciation, <br>
+        administration, vacancy, etc.
     </td>
 </tr>
 
@@ -179,6 +193,7 @@
     </td>
     <td>
         <input type="number" class="percent" value="1.5" id="interest"> %
+        (<span id="chargeInterest">-</span> CHF)
     </td>
     <td>
         
@@ -192,7 +207,6 @@
     </td>
     <td>
         <span id="chargeInterestPercent">-</span> %
-        (<span id="chargeInterest">-</span> CHF)
     </td>
     <td>
         
@@ -232,7 +246,8 @@
         <span id="netReturn">-</span> %
     </td>
     <td>
-        Expressed in percent of down payment
+        Expressed in percent of down payment.<br>
+        Anything under 4% is not worth considering.
     </td>
 </tr>
 
@@ -255,13 +270,16 @@
     }
 
     function recalculate() {
-        const price = getValue('price')
+        let price = getValue('price')
         const downPaymentPercent = getValue('downPayment') / 100.0
         const downPayment = Math.round(downPaymentPercent * price)
+        const feesPercent = getValue('buyingFees') / 100.0
+
+        price = price + (feesPercent * price)
 
         setInner('downPaymentReal', Math.round(price * (downPaymentPercent)))
 
-        const mortgage = Math.round((1 - (downPaymentPercent - 0.037)) * price)
+        const mortgage = Math.round((1 - (downPaymentPercent)) * price)
         setInner('mortgage', mortgage)
 
         const monthlyRentalValue = getValue('monthlyRentalValue')
@@ -272,7 +290,8 @@
         const grossReturnValue = round1Dec(grossReturnValuePercent * 100)
         setInner('grossReturnValue', grossReturnValue)
 
-        const operatingExpense = price * 0.01
+        const operatingExpensePercent = getValue('operatingExpensePercent') / 100.0
+        const operatingExpense = Math.round(price * operatingExpensePercent)
         setInner('operatingExpense', operatingExpense)
 
         const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
