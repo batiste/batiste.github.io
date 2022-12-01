@@ -245,8 +245,10 @@
         (<span id="taxesRentalValue">-</span> CHF)
     </td>
     <td>
-        You will be taxed on your net yearly rental return minus - interest, even if you live there.<br>
+        You will be taxed on the net yearly rental return - (interest + 10% of rental value).<br>
+        If you live in your own property, the yearly fictional rental value might be reduced (~70% of real) but not eliminated.
         Enter here you estimated revenue tax level.
+        <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
     </td>
 </tr>
 
@@ -325,7 +327,8 @@
 
         const taxesRental = getValue('taxesRental') / 100.0
 
-        const taxableRentalValue = yearlyRental - chargeInterest
+        
+        const taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
         const taxesRentalValue = Math.round(taxesRental * taxableRentalValue)
         setInner('taxesRentalValue', Math.round(taxesRental * taxableRentalValue))
 
