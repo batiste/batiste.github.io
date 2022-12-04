@@ -291,8 +291,33 @@
         <span id="netReturn">-</span> %
     </td>
     <td>
-        Expressed in percent of down payment.<br>
-        Anything under 4% is not worth considering.
+        Expressed in percent of down payment.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Yearly speculative capital appreciation in % of purchase price
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.5" step=0.1 id="speculativeAppreciation"> %
+        (<span id="speculativeAppreciationValue">-</span> CHF)
+    </td>
+    <td>
+        Based on historical <a href="https://fred.stlouisfed.org/series/QCHR628BIS">Real Residential Property Prices</a>
+    </td>
+</tr>
+
+
+<tr class="result">
+    <td>
+        Net return with capital appreciation
+    </td>
+    <td>
+        <span id="netReturnWithAppreciation">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment.
     </td>
 </tr>
 
@@ -361,7 +386,6 @@
 
         const taxesRental = getValue('taxesRental') / 100.0
 
-        
         let taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
 
         if (get('liveHere').checked) {
@@ -374,6 +398,13 @@
 
         const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment) - (taxesRentalValue / downPayment)
         setInner('netReturn', round1Dec(netReturn * 100))
+
+        const speculativeAppreciation = getValue('speculativeAppreciation') / 100.0
+        const speculativeAppreciationValue = Math.round(speculativeAppreciation * objectPrice)
+        setInner('speculativeAppreciationValue', speculativeAppreciationValue)
+
+        const netReturnWithAppreciation = netReturn + (speculativeAppreciationValue / downPayment)
+        setInner('netReturnWithAppreciation', round1Dec(netReturnWithAppreciation * 100))
     }
 
     setInterval(function() {
