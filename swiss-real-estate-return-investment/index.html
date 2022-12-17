@@ -1,0 +1,431 @@
+<html>
+    <head>
+        <title>Swiss Real Estate Return on Investment Calculator</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Swiss Real Estate Return on Investment Calculator, 
+a quick way to get ROI from a apartment and determine if it is a sane investment in Switzerland">
+        <meta name="author" content="Batiste Bieler">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <style>
+        body {
+            font-family: sans-serif;
+            padding: 3em;
+            font-size: 15px;
+        }
+
+        body, table, input {
+            font-size: 15px;
+            font-family: sans-serif;
+        }
+
+        input {
+            padding: 4px 6px;
+        }
+
+        .styled-table {
+            border-collapse: collapse;
+            margin: 25px 0;
+            min-width: 400px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        }
+        .styled-table thead tr {
+            background-color: #009879;
+            color: #ffffff;
+            text-align: left;
+        }
+        .styled-table th,
+        .styled-table td {
+            padding: 12px 15px;
+        }
+        .styled-table tbody tr {
+            border-bottom: 1px solid #dddddd;
+        }
+
+        .styled-table tbody tr:nth-of-type(even) {
+            background-color: #f3f3f3;
+        }
+
+        .styled-table tbody tr.result {
+            background-color: #4ac58c;
+            color: #fff;
+        }
+
+        .styled-table tbody tr:last-of-type {
+            border-bottom: 2px solid #009879;
+        }
+        table input {
+            width: 8em;
+        }
+        .percent {
+            width: 4em;
+        }
+        #netReturn {
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+    </style>
+
+<body>
+
+<h1>Swiss Real Estate Return on Investment Calculator</h1>
+
+<p>
+    A quick calculator to get the return on investment of an real estate object in Switzerland base on purchase price and rental income.
+</p>
+
+<table class="styled-table">
+   
+<tr>
+    <th style="min-width: 16em">Descriptions</th>
+    <th style="min-width: 12em">Values</th>
+    <th>Notes</th>
+</tr>
+
+<tr>
+    <td>
+        Price of the property
+    </td>
+    <td>
+        <input type="number" value="500000" id="price" step=50000> CHF
+    </td>
+    <td>
+        Buying price, without notary fees.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Buying fees in % of property price
+    </td>
+    <td>
+        <input type="number" class="percent" value=1 step=0.5 id="buyingFees"> %
+        (<span id="feesValue">-</span> CHF)
+    </td>
+    <td>
+        Fees such as notary fees, act of purchase, transfer duties, etc. <a href="https://www.immoscout24.ch/fr/c/d/magazine-immobilier/quels-sont-les-frais-supplementaires-lors-de-l-achat-d-une-maison?a=5634">more infos</a>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Down payment in % of purchase price
+    </td>
+    <td>
+        <input type="number" class="percent" value=20 step=1 id="downPayment"> %
+    </td>
+    <td>
+        20% is the minimum (2022).
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Down payment
+    </td>
+    <td>
+        <span id="downPaymentReal">-</span> CHF
+    </td>
+    <td>
+        Down payment to obtain a mortgage. This is considered the investment value for further calculations.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Mortgage
+    </td>
+    <td>
+        <span id="mortgage">-</span> CHF
+    </td>
+    <td>
+        What the bank lends you.
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Net monthly rental return
+    </td>
+    <td>
+        <input type="number" value="1500" step=100 id="monthlyRentalValue"> CHF
+    </td>
+    <td>
+        Estimation of the net monthly rental return.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Net yearly rental return
+    </td>
+    <td>
+        <span id="yearlyRental">-</span> CHF
+    </td>
+    <td>
+        Amount of rent net on a year.
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Gross return on investment
+    </td>
+    <td>
+        <span id="grossReturnValue">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Operating expenses in % of purchase price
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.0" step=0.5 id="operatingExpensePercent"> %
+        (<span id="operatingExpense">-</span> CHF)
+    </td>
+    <td>
+        Property insurance, maintenance, depreciation, <br>
+        administration, vacancy, etc.
+    </td>
+</tr>
+
+
+<tr class="result">
+    <td>
+        Return after operating expenses
+    </td>
+    <td>
+        <span id="intermediaryReturnValue">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Interest of mortgage
+    </td>
+    <td>
+        <input type="number" class="percent" value="2" step=0.1 id="interest"> %
+        (<span id="chargeInterest">-</span> CHF)
+    </td>
+    <td>
+        Secured interest with the bank
+    </td>
+</tr>
+
+
+<tr>
+    <td>
+        Charge of interest in % of down payment
+    </td>
+    <td>
+        <span id="chargeInterestPercent">-</span> %
+    </td>
+    <td>
+        
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Net return after interest payments
+    </td>
+    <td>
+        <span id="netReturnBeforeTaxes">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Property tax in ‰ of property price
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.5" step=0.1 id="propertyTax"> ‰
+        (<span id="propertyTaxValue">-</span> CHF)
+    </td>
+    <td>
+        This tax depends on the canton, or even the commune. E.g. (VD: 1,5‰, NE: 2,4‰)<br>
+        ZH, SZ, GL, ZG, SO, BL et AG take no property taxes. <a href="https://www.estv.admin.ch/dam/estv/de/dokumente/estv/steuersystem/dossier-steuerinformationen/d/d-liegenschaftssteuer.pdf.download.pdf/d-liegenschaftssteuer.pdf">More infos</a>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Taxable rental return
+    </td>
+    <td>
+        <span id="taxableRentalValue">-</span> CHF
+        <div style="margin-top:0.5em;">
+        <input type="checkbox" value="checked" id="liveHere" style="width:1em;display: inline-block;">I will live here 
+        </div>
+    </td>
+    <td>
+        The net yearly rental return - (interest + 10% of rental value).
+        If you live in your own property the taxable rental value might be further reduced (~70% of real).
+        <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Taxes on rental return
+    </td>
+    <td>
+        <input type="number" class="percent" value="20" step=1 id="taxesRental"> %
+        (<span id="taxesRentalValue">-</span> CHF)
+    </td>
+    <td>
+        Enter here your estimated revenue taxes.
+    </td>
+</tr>
+
+<tr class="result" style="background-color:#348581">
+    <td>
+        Net return
+    </td>
+    <td>
+        <span id="netReturn">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment.
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Yearly speculative capital appreciation in % of purchase price
+    </td>
+    <td>
+        <input type="number" class="percent" value="1.5" step=0.1 id="speculativeAppreciation"> %
+        (<span id="speculativeAppreciationValue">-</span> CHF)
+    </td>
+    <td>
+        Based on historical <a href="https://fred.stlouisfed.org/series/QCHR628BIS">Real Residential Property Prices</a>.
+        Based on <a href="https://fred.stlouisfed.org/series/QCHN628BIS">Residential Property Prices (not CPI adjusted)</a> this value
+        is closer to 3.5%
+    </td>
+</tr>
+
+
+<tr class="result">
+    <td>
+        Net return with capital appreciation
+    </td>
+    <td>
+        <span id="netReturnWithAppreciation">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment.
+    </td>
+</tr>
+
+
+</table>
+
+
+<script>
+    function get(id) {
+        return document.querySelector('#'+id)
+    }
+    function getValue(id, type="int") {
+        return parseFloat(get(id).value, 10)
+    }
+    function setInner(id, value) {
+        get(id).innerHTML = value
+    }
+    function round1Dec(num) {
+        return Math.round(num * 10) / 10
+    }
+
+    function recalculate() {
+        let objectPrice = getValue('price')
+        const feesPercent = getValue('buyingFees') / 100.0
+
+        const feesValue = (feesPercent * objectPrice)
+        setInner('feesValue', feesValue)
+
+        const price = objectPrice + feesValue
+        const downPaymentPercent = getValue('downPayment') / 100.0
+        const downPayment = Math.round(downPaymentPercent * price)
+
+        setInner('downPaymentReal', Math.round(price * (downPaymentPercent)))
+
+        const mortgage = Math.round((1 - (downPaymentPercent)) * price)
+        setInner('mortgage', mortgage)
+
+        const monthlyRentalValue = getValue('monthlyRentalValue')
+        const yearlyRental = monthlyRentalValue * 12;
+        setInner('yearlyRental', yearlyRental)
+
+        const grossReturnValuePercent = yearlyRental / downPayment;
+        const grossReturnValue = round1Dec(grossReturnValuePercent * 100)
+        setInner('grossReturnValue', grossReturnValue)
+
+        const operatingExpensePercent = getValue('operatingExpensePercent') / 100.0
+        const operatingExpense = Math.round(objectPrice * operatingExpensePercent)
+        setInner('operatingExpense', operatingExpense)
+
+        const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
+        setInner('intermediaryReturnValue', round1Dec(intermediaryReturnValue * 100))
+
+        const interest = getValue('interest') / 100.0
+
+        const chargeInterest = interest * mortgage;
+        const chargeInterestPercent = chargeInterest / downPayment;
+        setInner('chargeInterestPercent', round1Dec(chargeInterestPercent * 100))
+        setInner('chargeInterest', round1Dec(chargeInterest))
+
+        const netReturnBeforeTaxes = intermediaryReturnValue - chargeInterestPercent
+        setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
+
+        const propertyTax = getValue('propertyTax') / 1000.0
+        propertyTaxValue = Math.round(propertyTax * objectPrice)
+        setInner('propertyTaxValue', propertyTaxValue)
+
+        const taxesRental = getValue('taxesRental') / 100.0
+
+        let taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
+
+        if (get('liveHere').checked) {
+            taxableRentalValue = taxableRentalValue * 0.7;
+        }
+
+        setInner('taxableRentalValue', Math.round(taxableRentalValue))
+        const taxesRentalValue = Math.round(taxesRental * taxableRentalValue)
+        setInner('taxesRentalValue', Math.round(taxesRental * taxableRentalValue))
+
+        const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment) - (taxesRentalValue / downPayment)
+        setInner('netReturn', round1Dec(netReturn * 100))
+
+        const speculativeAppreciation = getValue('speculativeAppreciation') / 100.0
+        const speculativeAppreciationValue = Math.round(speculativeAppreciation * objectPrice)
+        setInner('speculativeAppreciationValue', speculativeAppreciationValue)
+
+        const netReturnWithAppreciation = netReturn + (speculativeAppreciationValue / downPayment)
+        setInner('netReturnWithAppreciation', round1Dec(netReturnWithAppreciation * 100))
+    }
+
+    setInterval(function() {
+        recalculate()
+    }, 1000)
+
+</script>
+
+<p>Batiste Bieler, 2022, All right reserved. Do not copy without keeping authorship.</p>
+
+
+</body>
+</html>
