@@ -1,0 +1,630 @@
+<html>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Della+Respira&family=Lobster+Two:wght@400;700&family=Oleo+Script+Swash+Caps&family=Pirata+One&family=Playfair+Display&display=swap" rel="stylesheet">
+
+<script src="html2canvas.js"></script>
+
+<style>
+    html {
+        background-color: rgb(26, 23, 23);
+        -webkit-print-color-adjust: exact;
+        -webkit-filter: opacity(1);
+        color: #fff;
+        text-decoration: none;
+    }
+
+    .card {
+        position: relative;
+        background-color: transparent;
+        width: 69.088mm;
+        height: 93.98mm;
+        float: left;
+        margin: 16px 10px;
+        perspective: 1000px;
+    }
+
+    .inner {
+        position: relative;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+        transition: transform 0.8s;
+        transform-style: preserve-3d;
+    }
+
+    /* .card:hover .inner {
+        transform: rotateY(180deg);
+    } */
+
+    .card .bg {
+        width: 66.5mm;
+        height: 91mm;
+        margin-top: 1.5mm;
+        /* border-radius: 5px; */
+    }
+
+    .card .mpc {
+        position: absolute;
+        top:0;
+        left:0;
+        width: 69.088mm;
+        height: 93.98mm;
+        /* border-radius: 5px; */
+    }
+
+
+    .card .mpc img {
+        width: 69.088mm;
+        height: 93.98mm;
+    }
+
+    .card .fg {
+        width: 63mm;
+        height: 88mm;
+        position: absolute;
+        top:0;
+        left:0;
+        opacity: 0.01;
+    }
+    .card .title {
+        font-family: 'Berkshire Swash', cursive;
+        font-family: 'Oleo Script Swash Caps', cursive;
+        font-family: 'Pirata One';
+        font-family: 'Lobster Two', cursive;
+        letter-spacing: 0.1px;
+        font-size: 16px;
+        position: absolute;
+        right:0;
+        top:54.2mm;
+        left:0;
+        color: #ECEAC2;
+        text-align: center;
+        text-shadow: 1px 1px black;
+    }
+    .card .text {
+        position: absolute;
+        font-family: 'Della Respira', serif;
+        font-size:11px;
+        right:9mm;
+        top:56mm;
+        left:9mm;
+        bottom:10.5mm;
+        color: #fff2ca;
+        text-align: center;
+        text-shadow: 0.5px 0.5px black;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .card .subtype {
+        font-family: 'Della Respira', serif;
+        font-size: 10px;
+        position: absolute;
+        right:26mm;
+        top:84mm;
+        left:26mm;
+        color: #ECEAC2;
+        text-align: center;
+        text-shadow: 1px 1px black;
+        background-color: rgba(17, 15, 13, 0.9);
+        border: 1px solid rgba(231, 185, 48, 0.9);
+        border-radius: 5px;
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70);
+        /* try to fix rendering bug */
+        padding-bottom: 2px;
+        display: flex;
+        align-content: center;
+        flex-direction: column;
+        height:1.3em;
+    }
+
+    .card .frame {
+        position: absolute;
+        right:6mm;
+        top:52mm;
+        left:6mm;
+        bottom:6mm;
+        border-radius: 6px;
+        border: 1px solid rgba(231, 185, 48, 0.608);
+        box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
+    }
+
+    .card .frame div {
+        position: absolute;
+        right:0.65mm;
+        top:0.65mm;
+        left:0.65mm;
+        bottom:0.65mm;
+        border-radius: 5px;
+        border: 1px solid rgba(231, 185, 48, 0.9);
+        background-color: rgba(14, 14, 13, 0.7);
+    }
+
+    .card .text span {
+        font-family: 'Lobster Two', cursive;
+        display: contents;
+    }
+
+    .role .subtype {
+        right: 30mm;
+        left: 19mm;
+    }
+    .role .frame {
+        right:18mm;
+        top:44mm;
+    }
+    .role .title {
+        right: 12mm;
+        top: 47mm;
+    }
+    .role .text {
+        right: 22mm;
+        top: 50mm;
+    }
+
+    .card .life, .card .life-enemy {
+        font-family: 'Lobster Two', cursive;
+        font-size: 16px;
+        right: 17px;
+        top: 26px;
+        bottom:0;
+        position: absolute;
+        left:51.5mm;
+        color: #fff7d4;
+        text-align: center;
+        text-shadow: 1px 1px 2px black, 0px 0px 1px black;
+    }
+
+    .card .life-enemy {
+        left:6.7mm;
+        right:0;
+        display: flex;
+    }
+
+    .life-enemy span {
+        display: inline-block;
+        padding: 9px 0px;
+        width: 35.4px;
+    }
+
+    .life span {
+        display: block;
+        padding: 8.8px 13px;
+    }
+
+
+    .prestige {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 57.5mm;
+        top: 79.6mm;
+        text-shadow: 1px 1px black;
+    }
+
+    .attack {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 57.5mm;
+        top: 79.6mm;
+        text-shadow: 1px 1px black;
+    }
+    .attack-icon-state {
+        position:absolute;
+        left: 50mm;
+        top: 79.5mm;
+    }
+    .hook-icon {
+        position:absolute;
+        left: 51mm;
+        top: 79.3mm;
+    }
+    .shell-icon-1 {
+        position:absolute;
+        left: 6mm;
+        top: 49mm;
+    }
+    .shell-icon-2 {
+        position:absolute;
+        right: 6mm;
+        top: 49mm;
+    }
+    .attack-icon-1 {
+        position:absolute;
+        left: 7mm;
+        top: 49mm;
+    }
+    .attack-icon-2 {
+        position:absolute;
+        right: 7mm;
+        top: 49mm;
+    }
+    .spell-icon-1 {
+        position:absolute;
+        left: 7mm;
+        top: 49mm;
+    }
+    .spell-icon-2 {
+        position:absolute;
+        right: 7mm;
+        top: 49mm;
+    }
+
+    .react-icon-1 {
+        position:absolute;
+        left: 7mm;
+        top: 52mm;
+    }
+    .react-icon-2 {
+        position:absolute;
+        right: 7mm;
+        top: 52mm;
+    }
+
+    .tentacle-icon-1 {
+        position:absolute;
+        left: 7mm;
+        top: 46.4mm;
+        transform: scaleX(-1);
+        opacity: 0.90;
+    }
+    .tentacle-icon-2 {
+        position:absolute;
+        right: 7mm;
+        top: 46.4mm;
+        opacity: 0.90;
+    }
+
+    .health {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 15.6mm;
+        top: 79.6mm;
+        text-shadow: 1px 1px black;
+    }
+    .health-icon {
+        position:absolute;
+        left: 9mm;
+        top: 79.3mm;
+    }
+
+    /* Position the front and back side */
+    .front, .back {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        -webkit-backface-visibility: hidden; /* Safari */
+        backface-visibility: hidden;
+    }
+
+    /* Style the back side */
+    .back {
+        display: none;
+        transform: rotateY(180deg);
+    }
+    .back img {
+        width: 100%;
+        height: 100%;
+        border-radius: 5px;
+    }
+    .break {
+        width:100%;
+        height: 1px;
+        page-break-after: always;
+    }
+
+    @media print {
+        @page {
+            size: 210mm 297mm;
+        }
+        @page {
+            size: 420mm 594mm;
+        }
+        body {
+            zoom: 2;
+        }
+        .back img {
+            display: none;
+        }
+    }
+
+    .preparePrint button {
+        display: none;
+    }
+    .preparePrint .mpc {
+        display: none;
+    }
+    .preparePrint.card .bg {
+        border-radius: 0;
+    }
+
+
+</style>
+
+<body>
+    <h2>Pirate deck builder</h2>
+    <p>
+        Mise en place du jeu:       
+    </p>
+
+    <ol>
+        <li>
+            Chaque joueur reçois un deck de 2 Aventure et 3 Celebrate (5 cartes) mélangé.
+        </li>
+        <li>
+            Toutes les cartes restant sont mise face visible sur la table en tas de 4 par type (~4 de chaque?).
+        </li>
+    </ol>
+
+    <p>
+        Déroulement d'un tour jeu.
+    </p>
+
+    <ol>
+        <li>Chaque joueur défausse sa main et pioche 3 cartes.</li>
+        <li>Chaque joueur a 2 actions durant son tour</li>
+        <li>Jouer une carte ou acheter une carte est une action</li>
+        <li>Les cartes jouées ou achetées vont sur votre défausse</li>
+        <li>Quand votre deck est vide, mélanger votre défausse, c'est votre deck.</li>
+        <li>Les treasure sont des petits cubes qui vous permette d'acheter des cartes (cout de la carte en bas a droite)</li>
+    </ol>
+
+    <p>Le jeu se termine quand un joueur a 12 cartes dans son deck. Terminer le tour et comptez le nombre de crochets.</p>
+
+    <div id="cards"></div>
+</body>
+
+<script>
+    var cards = [
+
+    {
+            'title': 'Adventure',
+            'text': '+1 Treasure',
+            'img': 'adventures/ship-sea-calm.png',
+            'type': 'monster',
+            'subtype': 'Adventure',
+            'hp': '1'
+        },
+
+        {
+            'title': 'Celebrate',
+            'text': '+1 Card',
+            'img': 'adventures/drink-dead.jpeg',
+            'type': 'monster',
+            'subtype': 'Adventure',
+            'hp': '1'
+        },
+
+        {
+            'title': 'Raid',
+            'text': '+1 Treasure<br>+1 Action',
+            'img': 'adventures/pirate-sunset-2.png',
+            'type': 'monster',
+            'subtype': 'Attack',
+            'cost': 2,
+        },
+
+        // {
+        //     'title': 'Mary Read',
+        //     'text': 'Attack value X is the number of started expeditions.',
+        //     'img': 'adventures/ship-sea-calm.png',
+        //     'type': 'monster',
+        //     'subtype': 'Enemy',
+        // },
+
+        {
+            'title': 'Citadel',
+            'text': '+2 Action',
+            'img': 'adventures/citadel.png',
+            'type': 'monster',
+            'subtype': 'Structure',
+            'cost': '3',
+            'hp': '1'
+        },
+
+        {
+            'title': 'Pirate hideout',
+            'text': '+1 Treasure<br>+2 Cards',
+            'img': 'crew-actions/pirate-town.jpg',
+            'type': 'monster',
+            'subtype': 'Structure',
+            'cost': '2',
+            'hp': '1'
+        },
+
+        {
+            'title': 'Attack!',
+            'text': 'Take one treasure from another player.<br>+1 Action',
+            'img': 'adventures/governor.jpeg',
+            'type': 'monster',
+            'subtype': 'Attack',
+            'cost': '2'
+        },
+
+        {
+            'title': 'Market',
+            'text': '+2 Treasure',
+            'img': 'crew-actions/market.jpg',
+            'type': 'monster',
+            'subtype': 'Structure',
+            'cost': '1'
+        },
+
+        {
+            'title': 'Expedition',
+            'text': '+1 Treasure<br>Next purchase does not count as an action',
+            'img': 'adventures/snake-guardian-2.png',
+            'type': 'monster',
+            'subtype': 'Adventure',
+            'cost': '2'
+        },
+
+        {
+            'title': 'Going Ape',
+            'text': '+1 Action<br>Remove a card in your hand from your deck',
+            'img': 'adventures/ape.png',
+            'type': 'monster',
+            'subtype': 'Attack',
+            'hp': '2',
+            'cost': '2'
+        },
+
+        {
+            'title': 'Haunted Shipwreck',
+            'text': 'Each player discard an attack or gives you a Treasure',
+            'img': 'adventures/haunted-shipwreck.png',
+            'type': 'monster',
+            'subtype': 'Structure',
+            'hp': '3',
+            'cost': '3'
+        },
+
+        {
+            'title': 'Tree Guardian',
+            'text': 'If you have an attack: +1 Action<br>If you have a structure: +1 card<br>If you have an adventure: +1 Treasure',
+            'img': 'adventures/wraith.png',
+            'type': 'monster',
+            'subtype': 'Adventure',
+            'hp': '1',
+            'cost': '2'
+        },
+
+    ]
+
+    all = []
+    var i = 0;
+    cards.forEach((c) => {
+        var extra = ""
+        if(c['prestige'] != undefined) {
+            extra += `<span class="prestige">${c['prestige']}</span>
+                <img class="hook-icon" src="icons/hook.svg" />`
+        }
+        if(c['hp'] != undefined) {
+            extra += `<span class="health">${c['hp']}</span>
+                <img class="health-icon" src="icons/hook.svg" />`
+        }
+        if(c['attack'] != undefined) {
+            extra += `<span class="attack">${c['attack']}</span>
+                <img class="attack-icon-state" src="icons/attack-white.svg" />`
+        }
+
+        if(c['cost'] != undefined) {
+            extra += `<span class="attack">${c['cost']}</span>
+                <img class="attack-icon-state" src="icons/chest.svg" />`
+        }
+
+        if(c['subtype'] != undefined) {
+            extra += `<span class="subtype">${c['subtype']}</span>`
+        }
+        if(c['type'] == "crew") {
+            extra += `<img class="shell-icon-1" src="icons/shell.svg" /><img class="shell-icon-2" src="icons/shell.svg" />`
+        }
+        if(c['type'] == "crew-attack" || c['type'] == "monster-attack") {
+            extra += `<img class="attack-icon-1" src="icons/attack.svg" /><img class="attack-icon-2" src="icons/attack.svg" />`
+        }
+        if(c['type'] == "crew-spell") {
+            extra += `<img class="spell-icon-1" src="icons/spell.svg" /><img class="spell-icon-2" src="icons/spell.svg" />`
+        }
+        if(c['type'] == "crew-react") {
+            extra += `<img class="react-icon-1" src="icons/trap.svg" /><img class="react-icon-2" src="icons/trap.svg" />`
+        }
+        if(c['type'] == "monster") {
+            extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" /><img class="tentacle-icon-2" src="icons/tentacle.svg" />`
+        }
+
+        if(c['type'] == "role") {
+            extra += `<div class="life">`
+            for(var i=7; i>0; i--) {
+                extra += `<span class='life-${i}'>${i}</span>`
+            }
+            extra += "</div>"
+        }
+
+        if(c['type'] == "role") {
+            extra += `<div class="life">`
+            for(var i=7; i>0; i--) {
+                extra += `<span class='life-${i}'>${i}</span>`
+            }
+            extra += "</div>"
+            if(c['title'] == "Enemy") {
+                extra += `<div class="life-enemy">`
+                for(var i=12; i>7; i--) {
+                    extra += `<span class='life-enemy-${i}'>${i}</span>`
+                }
+                extra += "</div>"
+            }
+        }
+
+        // <img src='frames/${c['type']}-frame.svg' class="fg" />
+        // 1
+
+        // html2canvas(document.body).then(function(canvas) {
+        //     document.body.appendChild(canvas);
+        // });
+
+        var template = `<div class="card">
+            <div class="inner">
+                <div class="front ${c['type']}"> 
+                    <div class="frame"><div></div></div>
+                    <img src="${c['img']}" class="bg" />
+                    
+                    <span class="title">${c['title']}</span>
+                    <span class="text">${c['text']}</span>
+                    ${extra}
+
+                    <div class="mpc">
+                        <img src="mpc.png" />
+                    </div>
+                </div>
+                <div class="back">
+                    <img src="crew/back.png" />
+                </div>
+            </div>
+            <button onclick="downloadCard(this)">Download</button>
+        </div>
+        `
+        all.push(template)
+        i++;
+        if(i % 9 == 0) {
+            all.push('<div class="break"></div>')
+        }
+    })
+
+    document.getElementById('cards').innerHTML = all.join('')
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+".png"
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function downloadCard(e) {
+        console.log(this.target, e, e.parentNode)
+        e.parentNode.classList.add('preparePrint')
+        setTimeout(() => {
+            html2canvas(e.parentNode, {scale: 6.5, backgroundColor: '#000000'}).then(function(canvas) {
+                // canvas.width = 2220
+                // canvas.height = 1632
+                document.body.appendChild(canvas);
+                var title = e.parentNode.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
+                download(canvas.toDataURL("image/png"), title);
+                // canvas.remove()
+            })
+        }, 100)
+    }
+
+    console.log(cards.length)
+</script>
+
+
+</html>
