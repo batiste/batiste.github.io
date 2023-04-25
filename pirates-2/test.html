@@ -351,15 +351,17 @@
 <body>
     <h2>Pirate deck builder</h2>
     <p>
-        Mise en place du jeu:       
+        Mise en place du jeu en utilisant un jeu de carte classique. Attribuez chaque numéro de carte
+        A chaque type de carte. E.g. les 4 as sont les cartes Sail Away. Seulement Celebrate nécessite
+        6 cartes. Utiliser soit un autre jeux pour completez ou alors utiliser les jokers.
     </p>
 
     <ol>
         <li>
-            Chaque joueur reçois un deck de 2 Aventure et 3 Celebrate (5 cartes) mélangé.
+            Chaque joueur reçois un deck de 2 Sail Away (2 as) et 3 Celebrate (5 cartes en tout).
         </li>
         <li>
-            Toutes les cartes restant sont mise face visible sur la table en tas de 4 par type (~4 de chaque?).
+            Toutes les cartes restant sont mise face visible sur la table en tas de 4 par type.
         </li>
     </ol>
 
@@ -368,15 +370,18 @@
     </p>
 
     <ol>
-        <li>Commence par se défausser de sa main et pioche 3 cartes.</li>
+        <li>Le joueur commence par se défausser de sa main et pioche 3 cartes.</li>
         <li>Chaque joueur a 2 actions durant son tour</li>
         <li>Jouer une carte ou acheter une carte est une action</li>
         <li>Les cartes jouées ou achetées vont sur votre défausse</li>
         <li>Quand votre deck est vide, mélanger votre défausse, c'est votre deck.</li>
         <li>Les trésors sont des petits cubes qui vous permette d'acheter des cartes (cout de la carte en bas a droite)</li>
+        <li>+1 Card: piochez une carte</li>
+        <li>+1 Action: une action en plus</li>
+        <li>+1 Treasure: prenez un trésore de la banque</li>
     </ol>
 
-    <p>Le jeu se termine quand un joueur a 12 cartes dans son deck. Terminer alors le tour pour que chacun ai joué. 
+    <p>Le jeu se termine quand un joueur a 16 cartes dans son deck. Terminer alors le tour pour que chacun ai joué. 
         Comptez le nombre de crochets de chaque deck (en bas à gauche).
         Le joueur avec le plus de crochet gagne la partie.
     </p>
@@ -388,12 +393,13 @@
     var cards = [
 
     {
-            'title': 'Adventure',
+            'title': 'Sail away!',
             'text': '+1 Treasure',
             'img': 'adventures/ship-sea-calm.png',
             'type': 'monster',
             'subtype': 'Attack',
-            'hp': '0'
+            'hp': '0',
+            'cost': '1'
         },
 
         {
@@ -402,7 +408,8 @@
             'img': 'adventures/drink-dead.jpeg',
             'type': 'monster',
             'subtype': 'Adventure',
-            'hp': '1'
+            'hp': '1',
+            'cost': '1'
         },
 
         // {
@@ -427,12 +434,23 @@
 
         {
             'title': 'Raid',
-            'text': '+1 Treasure<br>+1 Action',
+            'text': '+1 Treasure<br>+1 Action if you have an attack',
             'img': 'adventures/pirate-sunset-2.png',
             'type': 'monster',
             'subtype': 'Attack',
-            'cost': 2,
+            'cost': 1,
             'hp': 1,
+        },
+
+
+        {
+            'title': 'Plunder!',
+            'text': 'Take a treasure from another player<br>OR +1 Treasure',
+            'img': 'adventures/governor.jpeg',
+            'type': 'monster',
+            'subtype': 'Attack',
+            'cost': '1',
+            'hp': '1',
         },
 
         // {
@@ -444,33 +462,13 @@
         // },
 
         {
-            'title': 'Citadel',
-            'text': '+2 Action',
-            'img': 'adventures/citadel.png',
-            'type': 'monster',
-            'subtype': 'Structure',
-            'cost': '3',
-            'hp': '2'
-        },
-
-        {
             'title': 'Pirate hideout',
-            'text': '+1 Treasure<br>+2 Cards',
+            'text': '+2 Cards<br>+1 Treasure',
             'img': 'crew-actions/pirate-town.jpg',
             'type': 'monster',
             'subtype': 'Structure',
             'cost': '2',
             'hp': '2'
-        },
-
-        {
-            'title': 'Plunder!',
-            'text': 'Take one treasure from another player.<br>+1 Action',
-            'img': 'adventures/governor.jpeg',
-            'type': 'monster',
-            'subtype': 'Attack',
-            'cost': '2',
-            'hp': '1',
         },
 
         {
@@ -495,7 +493,7 @@
 
         {
             'title': 'Going Ape',
-            'text': '+1 Action, +1 Card<br>You may remove a card in your hand from your deck',
+            'text': '+1 Action, +1 Card<br>You may remove a card in your hand from your deck to get Treasures equal to its cost',
             'img': 'adventures/ape.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -514,8 +512,18 @@
         },
 
         {
+            'title': 'Citadel',
+            'text': '+1 Card<br>+2 Actions',
+            'img': 'adventures/citadel.png',
+            'type': 'monster',
+            'subtype': 'Structure',
+            'cost': '3',
+            'hp': '2'
+        },
+
+        {
             'title': 'Voodoo ritual',
-            'text': '+3 Cards<br>Put a card from your hand on the top of your deck',
+            'text': '+2 Cards<br>Look at the 2 top card of target player deck: you can discard one of them.',
             'img': 'crew-actions/spell.jpeg',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -536,7 +544,7 @@
     ]
 
     all = []
-    var i = 0;
+    var j = 0;
     cards.forEach((c) => {
         var extra = ""
         if(c['prestige'] != undefined) {
@@ -624,12 +632,12 @@
                     <img src="crew/back.png" />
                 </div>
             </div>
-            <button onclick="downloadCard(this)">Download</button>
+            <button onclick="downloadCard(this)">Download #${j+1}</button>
         </div>
         `
         all.push(template)
-        i++;
-        if(i % 9 == 0) {
+        j++;
+        if(j % 9 == 0) {
             all.push('<div class="break"></div>')
         }
     })
