@@ -353,16 +353,16 @@
     <p>
         From 2 to 4 players.
         Set up the game using a classic deck of cards. Assign each card number
-        to each type of card. E.g. the 4 aces are the Sail Away cards. Only Celebrate requires
-        6 cards (for 2 players). Either use another deck to complete or use the jokers.
+        to each type of card. E.g. the 4 aces are the Sail Away cards, 2 are the celebrate cards. Etc.
     </p>
 
     <ol>
         <li>
             Each player receives a deck of 2 Sail Away and 3 Celebrate: 5 cards in all.
+            When you need more than 4 cards use another deck to complete or use the jokers.
         </li>
         <li>
-            All remaining cards are placed face up on the table in piles of 4 per type (all 3 goes in one pile, etc.).
+            All remaining cards are placed face up on the table in piles of 4 per type.
         </li>
     </ol>
 
@@ -371,11 +371,11 @@
     </p>
 
     <ol>
-        <li>The player begins by discarding his hand and drawing 3 cards</li>
-        <li>Each player has 2 actions during his turn</li>
-        <li>Playing a card or buying a card is an action</li>
-        <li>Played or purchased cards go to your discard pile</li>
-        <li>When your deck is empty, shuffle your discard pile, this is your deck</li>
+        <li>The player begins by discarding his hand and drawing 3 cards.</li>
+        <li>Each player has 2 actions during his turn.</li>
+        <li>Playing a card or buying a card is an action.</li>
+        <li>Played or purchased cards go to your discard pile.</li>
+        <li>When your deck is empty, shuffle your discard pile, this is your deck.</li>
     </ol>
 
     <p>
@@ -383,11 +383,11 @@
     </p>
 
     <ol>
-        <li>Treasures are small cubes that allow you to buy cards (cost of the card at the bottom right)</li>
-        <li>+1 Card: draw a card</li>
-        <li>+1 Action: one more action</li>
-        <li>+1 Treasure: take a treasure from the bank</li>
-        <li>The cards have 3 possible types: Attack, Structure, Adventure</li>
+        <li>Treasures are small cubes that allow you to buy cards (cost of the card at the bottom right).</li>
+        <li>+1 Card: draw a card.</li>
+        <li>+1 Action: one more action.</li>
+        <li>+1 Treasure: take a treasure from the bank.</li>
+        <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
         <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order.</li>
     </ol>
@@ -405,7 +405,7 @@
 
     {
             'title': 'Sail away!',
-            'text': '+1 Treasure',
+            'text': '+1 Treasure.<br><i>(Take a cube from the bank)</i>',
             'img': 'adventures/ship-sea-calm.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -415,7 +415,7 @@
 
         {
             'title': 'Celebrate',
-            'text': '+1 Card<br><i>(Draw a card)</i>',
+            'text': '+1 Card.<br><i>(Draw a card)</i>',
             'img': 'adventures/drink-dead.jpeg',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -484,7 +484,7 @@
 
         {
             'title': 'Market',
-            'text': '+2 Treasure',
+            'text': '+2 Treasures.',
             'img': 'crew-actions/market.jpg',
             'type': 'monster',
             'subtype': 'Structure',
