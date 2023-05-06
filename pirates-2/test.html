@@ -14,6 +14,10 @@
         text-decoration: none;
     }
 
+    a, a:visited {
+        color: #fff;
+    }
+
     .card {
         position: relative;
         background-color: transparent;
@@ -352,14 +356,14 @@
     <h2>Pirate Deck Builder Game</h2>
     <p>
         From 2 to 4 players.
-        Set up the game using a classic deck of cards. Assign each card number
-        to each type of card. E.g. the 4 aces are the Sail Away cards, 2 are the celebrate cards. Etc.
+        Set up the game using <a href="https://en.wikipedia.org/wiki/Standard_52-card_deck">a standard deck of cards</a>. Assign each card number
+        to each type of card. E.g. the 4 aces are the Sail Away cards, 2 are the Celebrate cards. Etc.
     </p>
 
     <ol>
         <li>
-            Each player receives a deck of 2 Sail Away and 3 Celebrate: 5 cards in all.
-            When you need more than 4 cards use another deck to complete or use the jokers.
+            Each player receives a deck of 2 Sail Away and 2 Celebrate: 4 cards in all.
+            When you need more than 4 cards of the same type use another deck to complete or use the jokers.
         </li>
         <li>
             All remaining cards are placed face up on the table in piles of 4 per type.
@@ -394,8 +398,8 @@
     </ol>
 
     <p>The game ends when a player has 16 cards in his or her deck. End the round so that everyone has played. 
-        Count the number of hooks in each deck (bottom left).
-        The player with the most points wins the game.
+       Count the number of hooks in each deck (bottom left) and to that the remaining treasure.
+       The player with the most points wins the game.
     </p>
 
     <div id="cards"></div>
@@ -405,7 +409,7 @@
     var cards = [
 
     {
-            'title': 'Sail away!',
+            'title': 'Sail Away',
             'text': '+1 Treasure.<br><i>(Take a cube from the bank)</i>',
             'img': 'adventures/ship-sea-calm.png',
             'type': 'monster',
