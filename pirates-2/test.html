@@ -387,6 +387,7 @@
         <li>+1 Card: draw a card.</li>
         <li>+1 Action: one more action.</li>
         <li>+1 Treasure: take a treasure from the bank.</li>
+        <li>+1 Buy: your next card this turn does not count as an action.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
         <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order.</li>
@@ -434,9 +435,9 @@
         // },
 
         {
-            'title': 'Tree Guardian',
+            'title': 'Tavern',
             'text': '+2 Card if you have an Adventure.<br>+1 Action if you have a Structure.',
-            'img': 'adventures/wraith.png',
+            'img': 'structures/tavern.png',
             'type': 'monster',
             'subtype': 'Adventure',
             'hp': '1',
@@ -444,9 +445,9 @@
         },
 
         {
-            'title': 'Raid',
+            'title': 'Quick Shot',
             'text': '+1 Treasure.<br>+1 Action if you have an Attack.',
-            'img': 'adventures/pirate-sunset-2.png',
+            'img': 'crew-actions/attack-0.jpg',
             'type': 'monster',
             'subtype': 'Attack',
             'cost': 1,
@@ -454,15 +455,15 @@
         },
 
 
-        {
-            'title': 'Plunder!',
-            'text': 'Take a treasure from another player.<br>OR +1 Treasure.',
-            'img': 'adventures/governor.jpeg',
-            'type': 'monster',
-            'subtype': 'Attack',
-            'cost': '1',
-            'hp': '1',
-        },
+        // {
+        //     'title': 'Plunder!',
+        //     'text': 'Take all treasures from another player.<br>OR +2 Treasure.',
+        //     'img': 'adventures/governor.jpeg',
+        //     'type': 'monster',
+        //     'subtype': 'Attack',
+        //     'cost': '3',
+        //     'hp': '2',
+        // },
 
         // {
         //     'title': 'Mary Read',
@@ -473,8 +474,8 @@
         // },
 
         {
-            'title': 'Pirate hideout',
-            'text': '+2 Cards, +1 Treasure.<br>You can discard this at any point to cancel an effect targeting you.',
+            'title': 'Pirate Hideout',
+            'text': '+2 Cards, +1 Treasure.<br> You may not discard this card at the start of your turn.',
             'img': 'crew-actions/pirate-town.jpg',
             'type': 'monster',
             'subtype': 'Structure',
@@ -484,7 +485,7 @@
 
         {
             'title': 'Harbor Market',
-            'text': '+2 Treasures.',
+            'text': '+2 Treasures OR<br>+1 Treasure, +1 Buy.',
             'img': 'structures/market-super-format.png',
             'type': 'monster',
             'subtype': 'Structure',
@@ -494,17 +495,17 @@
 
         {
             'title': 'Exploration',
-            'text': '+1 Card, +1 Treasure<br>+1 Action if you have an Adventure.',
+            'text': '+1 Action if you have an Adventure.<br>+1 Card, +1 Treasure.',
             'img': 'adventures/snake-guardian-2.png',
             'type': 'monster',
-            'subtype': 'Structure',
+            'subtype': 'Adventure',
             'cost': '2',
             'hp': '2',
         },
 
         {
             'title': 'Going Ape',
-            'text': '+1 Action, +1 Card.<br>You may put a card from your hand on a pile. Replace it with a card of equal cost.',
+            'text': '+1 Action, +1 Card.<br>You may replace a card in your hand with a card of equal cost.',
             'img': 'adventures/ape.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -517,7 +518,7 @@
             'text': '+2 Cards.<br>+1 Treasure for each Attack in your hand.',
             'img': 'adventures/haunted-shipwreck.png',
             'type': 'monster',
-            'subtype': 'Adventure',
+            'subtype': 'Attack',
             'hp': '2',
             'cost': '2'
         },
@@ -548,8 +549,8 @@
             'img': 'structures/skull.png',
             'type': 'monster',
             'subtype': 'Structure',
-            'hp': '4',
-            'cost': '5'
+            'hp': '3',
+            'cost': '4'
         },
 
     ]
