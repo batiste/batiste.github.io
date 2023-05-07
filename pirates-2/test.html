@@ -397,7 +397,7 @@
         <li>Text on the cards has to be applied in order.</li>
     </ol>
 
-    <p>The game ends when a player has 15 cards in his or her deck. End the round so that everyone has played. 
+    <p>The game ends when any player has 15 cards in his or her deck. End the round so that everyone has played. 
        Count the number of hooks in each deck (bottom left).
        The player with the most points wins the game.
     </p>
@@ -440,7 +440,7 @@
 
         {
             'title': 'Tavern',
-            'text': '+1 Treasure if you have an Attack.<br>+1 Card if you have an Adventure.<br>+1 Action if you have a Structure.',
+            'text': '+1 Card if you have an Adventure.<br>+1 Treasure if you have an Attack<br>+1 Action if you have a Structure.',
             'img': 'structures/tavern.png',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -519,17 +519,17 @@
 
         {
             'title': 'Haunted Shipwreck',
-            'text': '+2 Cards.<br>+1 Treasure for each Attack in your hand.',
+            'text': '+1 Card.<br>+1 Treasure for each Attack in your hand.',
             'img': 'adventures/haunted-shipwreck.png',
             'type': 'monster',
-            'subtype': 'Attack',
+            'subtype': 'Structure',
             'hp': '2',
             'cost': '2'
         },
 
         {
             'title': 'Lost Expedition',
-            'text': 'Put a card from any discard pile aside. When the deck is shuffled gain 2 Treasures and put the card back on the discard pile.',
+            'text': 'Put a card from any discard pile aside. When the deck is shuffled gain 2 Treasures and put the card back as the discard pile.',
             'img': 'adventures/tropical-island-2.png',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -539,7 +539,7 @@
 
         {
             'title': 'Seaside Citadel',
-            'text': '+1 Card, +2 Actions.<br>You cannot gain more than 4 Actions with Seaside Citadel per turn.',
+            'text': '+1 Card, +2 Actions.<br>You cannot gain more than 3 Actions with Seaside Citadel per turn.',
             'img': 'structures/citadel.png',
             'type': 'monster',
             'subtype': 'Structure',
@@ -566,6 +566,16 @@
             'hp': '3',
             'cost': '4'
         },
+
+        // {
+        //     'title': 'Leviathan',
+        //     'text': '',
+        //     'img': 'adventures/leviathan.jpeg',
+        //     'type': 'monster',
+        //     'subtype': 'All',
+        //     'hp': '4',
+        //     'cost': '4'
+        // },
 
     ]
 
