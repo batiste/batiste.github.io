@@ -89,7 +89,7 @@
     .card .text {
         position: absolute;
         font-family: 'Della Respira', serif;
-        font-size:11px;
+        font-size:10px;
         right:9mm;
         top:56mm;
         left:9mm;
@@ -366,7 +366,9 @@
             When you need more than 4 cards of the same type use another deck to complete or use the jokers.
         </li>
         <li>
-            All remaining cards are placed face up on the table in piles of 4 per type.
+            All remaining cards are shuffled and form the supply deck. Reveal 6 cards by putting them face up
+            in the center of the table, this is the supply.
+            There should always be 6 supply cards face up.
         </li>
     </ol>
 
@@ -376,9 +378,14 @@
 
     <ol>
         <li>The player begins by discarding his hand and drawing 3 cards.</li>
-        <li>Each player has 2 actions during his turn.</li>
-        <li>Playing a card or buying a card is an action.</li>
-        <li>Played or purchased cards go to your discard pile.</li>
+        <li>Each player has 2 actions during his turn. Possible actions are:
+            <ol>
+                <li>Playing a card.</li>
+                <li>Buying a card from the supply.</li>
+                <li>Refreshing a supply card.</li>
+            </ol>
+         </li>
+        <li>Played or purchased cards immediately go to your discard pile.</li>
         <li>When your deck is empty, immediately shuffle your discard pile, this is your deck.</li>
     </ol>
 
@@ -389,7 +396,8 @@
     <ol>
         <li>Treasures are small cubes that allow you to buy cards (cost of the card at the bottom right).</li>
         <li>+1 Card: draw a card.</li>
-        <li>+1 Action: one more action.</li>
+        <li>+1 Action: one more action of any kind.</li>
+        <li>+1 Supply refresh: change one supply card. Put the old one at the bottom of the supply deck.</li>
         <li>+1 Treasure: take a treasure from the bank.</li>
         <li>+1 Buy: you can buy a card without using an action.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
@@ -410,7 +418,7 @@
 
     {
             'title': 'Sail Away',
-            'text': '+1 Treasure.<br><i>(Take a cube from the bank)</i>',
+            'text': '+1 Treasure.',
             'img': 'adventures/ship-sea-calm.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -420,7 +428,7 @@
 
         {
             'title': 'Celebrate',
-            'text': '+1 Card.<br><i>(Draw a card)</i>',
+            'text': '+1 Card.<br>+1 Supply refresh.',
             'img': 'adventures/drink-dead.jpeg',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -460,7 +468,7 @@
 
         {
             'title': 'Harbor Market',
-            'text': '+2 Treasures OR<br>+1 Treasure, +1 Buy.',
+            'text': '+2 Treasures.<br>OR<br>+1 Treasure, +1 Buy.',
             'img': 'structures/market-super-format.png',
             'type': 'monster',
             'subtype': 'Structure',
@@ -480,7 +488,7 @@
 
         {
             'title': 'Going Ape',
-            'text': '+1 Action.<br>You may replace a card in your hand with a card of equal cost.',
+            'text': '+1 Action, +1 Supply refresh.<br>You may swap a card from your hand with a card of equal cost from the supply.',
             'img': 'adventures/ape.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -490,7 +498,7 @@
 
         {
             'title': 'Haunted Shipwreck',
-            'text': '+1 Card.<br>+1 Treasure for each Attack in your hand.',
+            'text': '+2 Card.<br>+1 Treasure for each Attack in your hand.',
             'img': 'adventures/haunted-shipwreck.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -500,7 +508,7 @@
 
         {
             'title': 'Lost Expedition',
-            'text': 'Put a card from any discard pile aside. When the deck is shuffled gain 2 Treasures and put the card back as your discard pile.',
+            'text': 'Put a card from any discard pile aside. When the discard pile is shuffled gain 1 Treasure and put the card back in the new discard pile.',
             'img': 'adventures/tropical-island-2.png',
             'type': 'monster',
             'subtype': 'Adventure',
@@ -529,19 +537,8 @@
         },
 
         {
-            'title': 'Skull island',
-            'text': 'Each player reveal the top card of their deck. You may replace any with one of equal or one less cost.',
-            'img': 'structures/skull.png',
-            'type': 'monster',
-            'subtype': 'Structure',
-            'hp': '3',
-            'cost': '4'
-        },
-
-
-        {
             'title': 'Bargaining <sup>(Extra)</sup>',
-            'text': '+1 Treasure.<br>+1 Buy.',
+            'text': '+1 Treasure, +1 Buy.<br>OR<br>+1 Treasure, +2 Supply refresh.',
             'img': 'adventures/bargaining.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -550,14 +547,25 @@
         },
 
         {
-            'title': 'Smuggler’s Cache <sup>(Extra)</sup>',
-            'text': '+1 Card<br>At the start of your turn before you discard, if this card is in your discard pile: +1 Treasure.',
-            'img': 'adventures/smugglers-cache.png',
+            'title': 'Skull island',
+            'text': 'Every player reveal the top card of their deck. You may swap one of those cards with another from the supply as long as the cost difference is less than 2.',
+            'img': 'structures/skull.png',
             'type': 'monster',
-            'subtype': 'Adventure',
-            'hp': '2',
-            'cost': '3'
+            'subtype': 'Structure',
+            'hp': '3',
+            'cost': '4'
         },
+
+
+        // {
+        //     'title': 'Smuggler’s Cache <sup>(Extra)</sup>',
+        //     'text': '+1 Card<br>At the start of your turn before you discard, if this card is in your discard pile: +1 Treasure.',
+        //     'img': 'adventures/smugglers-cache.png',
+        //     'type': 'monster',
+        //     'subtype': 'Adventure',
+        //     'hp': '2',
+        //     'cost': '3'
+        // },
 
     ]
 
