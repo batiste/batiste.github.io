@@ -377,13 +377,12 @@
     </p>
 
     <ol>
-        <li>Effects that happens at the beginning of turn happens.</li>
-        <li>Discard his hand and draws 3 cards.</li>
-        <li>The player has 2 actions during his turn. Possible actions are:
+        <li>Apply effects that happens at the beginning of turn.</li>
+        <li>Discard hand and draws 3 cards.</li>
+        <li>The player has 2 actions during his or her turn. Possible actions are:
             <ol>
                 <li>Playing a card.</li>
                 <li>Buying a card from the supply.</li>
-                <li>Refreshing a supply card.</li>
             </ol>
          </li>
         <li>Played or purchased cards immediately go to the player's discard pile.</li>
@@ -396,13 +395,13 @@
 
     <ol>
         <li>Treasures are small cubes that allow you to buy cards (cost of the card at the bottom right).</li>
-        <li>+1 Card: draw a card.</li>
+        <li>+1 Card: draw a card immediately.</li>
         <li>+1 Action: one more action of any kind.</li>
         <li>+1 Supply refresh: you may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
-        <li>+1 Treasure: take a treasure from the bank.</li>
+        <li>+1 Treasure: take a treasure from the bank immediately.</li>
         <li>+1 Buy: you can buy a card without using an action.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
-        <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
+        <li>Text that say "if you have an/a" checks immediately the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order.</li>
     </ol>
 
@@ -459,7 +458,7 @@
 
         {
             'title': 'Haggling',
-            'text': '+1 Supply refresh.<br>+1 Treasure.<br>+1 Buy.',
+            'text': '+1 Supply refresh.<br>+1 Treasure.<br>+1 Buy for a card that cost 2 or less.',
             'img': 'adventures/bargaining.png',
             'type': 'monster',
             'subtype': 'Attack',
@@ -579,7 +578,7 @@
 
         {
             'title': 'Skull island',
-            'text': 'Every player reveal the top card of their deck. You may swap one of those cards with another from the supply as long as the cost difference is less than 2.',
+            'text': 'Every player reveal the top card of their deck. You may swap one of those cards with another from the supply as long as the cost difference is one or less.',
             'img': 'structures/skull.png',
             'type': 'monster',
             'subtype': 'Structure',
