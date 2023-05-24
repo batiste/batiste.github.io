@@ -118,12 +118,10 @@
         border: 1px solid rgba(231, 185, 48, 0.9);
         border-radius: 5px;
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70);
-        /* try to fix rendering bug */
-        padding-bottom: 2px;
+        padding-bottom: 0.4mm;
         display: flex;
         align-content: center;
         flex-direction: column;
-        height:1.3em;
     }
 
     .card .frame {
@@ -133,6 +131,7 @@
         left:6mm;
         bottom:6mm;
         border-radius: 6px;
+        background-color: rgba(0, 0, 0, 0.1);
         border: 1px solid rgba(231, 185, 48, 0.608);
         box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
     }
@@ -145,7 +144,7 @@
         bottom:0.65mm;
         border-radius: 5px;
         border: 1px solid rgba(231, 185, 48, 0.9);
-        background-color: rgba(14, 14, 13, 0.7);
+        background-color: rgba(14, 14, 13, 0.6);
     }
 
     .card .text span {
@@ -340,6 +339,9 @@
     .preparePrint.card .bg {
         border-radius: 0;
     }
+    .preparePrint.card .subtype {
+        padding-bottom: 0.8mm;
+    }
 
 
 </style>
@@ -399,7 +401,7 @@
 
     <p>The game ends when any player has 15 cards in his or her deck. End the round so that everyone has played. 
        Count the number of hooks in each deck (bottom left).
-       The player with the most points wins the game.
+       The player with the most points wins the game. If there is equality, the player with the most treasure wins, then player with the most cards.
     </p>
 
     <div id="cards"></div>
