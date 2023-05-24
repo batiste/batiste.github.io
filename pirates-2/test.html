@@ -82,9 +82,11 @@
         right:0;
         top:54.2mm;
         left:0;
+        color: #DFC13F;
         color: #ECEAC2;
+        color: #ecdd9b;
         text-align: center;
-        text-shadow: 1px 1px black;
+        text-shadow: 1px 2px black;
     }
     .card .text {
         position: absolute;
@@ -228,6 +230,7 @@
         left: 51mm;
         top: 79.3mm;
     }
+
     .shell-icon-1 {
         position:absolute;
         left: 6mm;
@@ -238,36 +241,27 @@
         right: 6mm;
         top: 49mm;
     }
+
     .attack-icon-1 {
         position:absolute;
-        left: 7mm;
+        left: 8mm;
         top: 49mm;
     }
     .attack-icon-2 {
         position:absolute;
-        right: 7mm;
-        top: 49mm;
-    }
-    .spell-icon-1 {
-        position:absolute;
-        left: 7mm;
-        top: 49mm;
-    }
-    .spell-icon-2 {
-        position:absolute;
-        right: 7mm;
+        right: 8mm;
         top: 49mm;
     }
 
-    .react-icon-1 {
+    .structure-icon-1 {
         position:absolute;
         left: 7mm;
-        top: 52mm;
+        top: 47mm;
     }
-    .react-icon-2 {
+    .structure-icon-2 {
         position:absolute;
-        right: 7mm;
-        top: 52mm;
+        right: 6mm;
+        top: 47mm;
     }
 
     .tentacle-icon-1 {
@@ -275,13 +269,11 @@
         left: 7mm;
         top: 46.4mm;
         transform: scaleX(-1);
-        opacity: 0.90;
     }
     .tentacle-icon-2 {
         position:absolute;
         right: 7mm;
         top: 46.4mm;
-        opacity: 0.90;
     }
 
     .health {
@@ -420,7 +412,7 @@
             'title': 'Sail Away',
             'text': '+1 Treasure.',
             'img': 'adventures/ship-sea-calm.png',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '1',
             'cost': '1'
@@ -430,7 +422,7 @@
             'title': 'Celebrate',
             'text': '+1 Card.<br>+1 Supply refresh.',
             'img': 'adventures/drink-dead.jpeg',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'hp': '1',
             'cost': '1'
@@ -440,7 +432,7 @@
             'title': 'Tavern',
             'text': '+1 Card if you have an Adventure.<br>+1 Treasure if you have an Attack<br>+1 Action if you have a Structure.',
             'img': 'structures/tavern.png',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'hp': '1',
             'cost': '1'
@@ -450,7 +442,7 @@
             'title': 'Quick Shot',
             'text': '+1 Treasure.<br>+1 Action if you have an Attack.',
             'img': 'crew-actions/attack-0.jpg',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'cost': 1,
             'hp': 1,
@@ -460,7 +452,7 @@
             'title': 'Haggling',
             'text': '+1 Supply refresh.<br>+1 Treasure.<br>+1 Buy for a card that cost 2 or less.',
             'img': 'adventures/bargaining.png',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '1',
             'cost': '1'
@@ -470,7 +462,7 @@
             'title': 'Pirate Hideout',
             'text': '+2 Cards, +1 Treasure.<br> The first time you must discard this card from your hand, you may not.',
             'img': 'crew-actions/pirate-town.jpg',
-            'type': 'monster',
+            'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
             'hp': '2'
@@ -480,7 +472,7 @@
             'title': 'Harbor Market',
             'text': '+2 Treasures.<br>OR<br>+1 Treasure, +1 Buy.',
             'img': 'structures/market-super-format.png',
-            'type': 'monster',
+            'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
             'hp': '2',
@@ -490,7 +482,7 @@
             'title': 'Exploration',
             'text': '+1 Action if you have an Adventure.<br>+1 Card, +1 Treasure.',
             'img': 'adventures/snake-guardian-2.png',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'cost': '2',
             'hp': '2',
@@ -500,7 +492,7 @@
             'title': 'Going Ape',
             'text': '+1 Action, +1 Supply refresh.<br>You may swap a card from your hand with a card of equal cost from the supply.',
             'img': 'adventures/ape.png',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '2',
             'cost': '2'
@@ -510,7 +502,7 @@
             'title': 'Haunted Shipwreck',
             'text': '+2 Card.<br>+1 Treasure for each Attack in your hand.',
             'img': 'adventures/haunted-shipwreck.png',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '2',
             'cost': '2'
@@ -520,7 +512,7 @@
             'title': 'Lost Expedition',
             'text': 'Put a card from any discard pile aside with a Treasure on it. When the discard pile is shuffled take the Treasure and put the card back in the new discard pile.',
             'img': 'adventures/tropical-island-2.png',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'cost': '2',
             'hp': '2'
@@ -530,7 +522,7 @@
             'title': 'Seaside Citadel',
             'text': '+1 Card, +2 Actions.<br>You cannot gain more than 3 Actions with Seaside Citadel per turn.',
             'img': 'structures/citadel.png',
-            'type': 'monster',
+            'type': 'structure',
             'subtype': 'Structure',
             'cost': '3',
             'hp': '2'
@@ -540,7 +532,7 @@
             'title': 'Voodoo Curse',
             'text': 'Reveal the 2 top card of target player deck. Discard one then apply its effects as if you just played it.',
             'img': 'adventures/spell.png',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '2',
             'cost': '3'
@@ -550,7 +542,7 @@
             'title': 'Smuggler’s Cache <sup></sup>',
             'text': '+1 Treasure<br>At the start of your turn if this card is in your discard pile: +1 Treasure.',
             'img': 'adventures/smugglers-cache.png',
-            'type': 'monster',
+            'type': 'structure',
             'subtype': 'Structure',
             'hp': '2',
             'cost': '3'
@@ -560,7 +552,7 @@
             'title': 'Wind In Sails <sup></sup>',
             'text': '+1 Card<br>At the start of your turn if this card is in your discard pile: +1 Card.',
             'img': 'adventures/wind.png',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'hp': '2',
             'cost': '3'
@@ -570,7 +562,7 @@
             'title': 'Leviathan',
             'text': 'Steal 1 Treasure from any player.<br>OR<br>Put 1 card from any discard pile to the bottom of their deck.',
             'img': 'adventures/leviathan.jpg',
-            'type': 'monster',
+            'type': 'attack',
             'subtype': 'Attack',
             'hp': '3',
             'cost': '3'
@@ -580,7 +572,7 @@
             'title': 'Skull island',
             'text': 'Every player reveal the top card of their deck. You may swap one of those cards with another from the supply as long as the cost difference is one or less.',
             'img': 'structures/skull.png',
-            'type': 'monster',
+            'type': 'structure',
             'subtype': 'Structure',
             'hp': '3',
             'cost': '4'
@@ -590,7 +582,7 @@
             'title': 'Useless Totem',
             'text': 'You can reveal this card an chose a type. It keeps this type until you discard it. Doing this is not an action.',
             'img': 'structures/totem.png',
-            'type': 'monster',
+            'type': 'none',
             'subtype': 'None',
             'hp': '2',
             'cost': '1'
@@ -600,7 +592,7 @@
             'title': 'Shopping Fever',
             'text': '+2 Buy.<br>OR<br>+1 Treasure.',
             'img': 'adventures/shopping.png',
-            'type': 'monster',
+            'type': 'adventure',
             'subtype': 'Adventure',
             'hp': '2',
             'cost': '2'
@@ -620,10 +612,10 @@
             extra += `<span class="health">${c['hp']}</span>
                 <img class="health-icon" src="icons/hook.svg" />`
         }
-        if(c['attack'] != undefined) {
-            extra += `<span class="attack">${c['attack']}</span>
-                <img class="attack-icon-state" src="icons/attack-white.svg" />`
-        }
+        // if(c['attack'] != undefined) {
+        //     extra += `<span class="attack">${c['attack']}</span>
+        //         <img class="attack-icon-state" src="icons/attack-white.svg" />`
+        // }
 
         if(c['cost'] != undefined) {
             extra += `<span class="attack">${c['cost']}</span>
@@ -633,44 +625,48 @@
         if(c['subtype'] != undefined) {
             extra += `<span class="subtype">${c['subtype']}</span>`
         }
-        if(c['type'] == "crew") {
-            extra += `<img class="shell-icon-1" src="icons/shell.svg" /><img class="shell-icon-2" src="icons/shell.svg" />`
-        }
-        if(c['type'] == "crew-attack" || c['type'] == "monster-attack") {
+        // if(c['type'] == "crew") {
+        //     extra += `<img class="shell-icon-1" src="icons/shell.svg" /><img class="shell-icon-2" src="icons/shell.svg" />`
+        // }
+        if(c['type'] == "attack") {
             extra += `<img class="attack-icon-1" src="icons/attack.svg" /><img class="attack-icon-2" src="icons/attack.svg" />`
         }
-        if(c['type'] == "crew-spell") {
-            extra += `<img class="spell-icon-1" src="icons/spell.svg" /><img class="spell-icon-2" src="icons/spell.svg" />`
-        }
-        if(c['type'] == "crew-react") {
-            extra += `<img class="react-icon-1" src="icons/trap.svg" /><img class="react-icon-2" src="icons/trap.svg" />`
-        }
-        if(c['type'] == "monster") {
+        // if(c['type'] == "crew-spell") {
+        //     extra += `<img class="spell-icon-1" src="icons/spell.svg" /><img class="spell-icon-2" src="icons/spell.svg" />`
+        // }
+        // if(c['type'] == "crew-react") {
+        //     extra += `<img class="react-icon-1" src="icons/trap.svg" /><img class="react-icon-2" src="icons/trap.svg" />`
+        // }
+        if(c['type'] == "adventure") {
             extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" /><img class="tentacle-icon-2" src="icons/tentacle.svg" />`
         }
 
-        if(c['type'] == "role") {
-            extra += `<div class="life">`
-            for(var i=7; i>0; i--) {
-                extra += `<span class='life-${i}'>${i}</span>`
-            }
-            extra += "</div>"
+        if(c['type'] == "structure") {
+            extra += `<img class="structure-icon-1" src="icons/structure.svg" /><img class="structure-icon-2" src="icons/structure.svg" />`
         }
 
-        if(c['type'] == "role") {
-            extra += `<div class="life">`
-            for(var i=7; i>0; i--) {
-                extra += `<span class='life-${i}'>${i}</span>`
-            }
-            extra += "</div>"
-            if(c['title'] == "Enemy") {
-                extra += `<div class="life-enemy">`
-                for(var i=12; i>7; i--) {
-                    extra += `<span class='life-enemy-${i}'>${i}</span>`
-                }
-                extra += "</div>"
-            }
-        }
+        // if(c['type'] == "role") {
+        //     extra += `<div class="life">`
+        //     for(var i=7; i>0; i--) {
+        //         extra += `<span class='life-${i}'>${i}</span>`
+        //     }
+        //     extra += "</div>"
+        // }
+
+        // if(c['type'] == "role") {
+        //     extra += `<div class="life">`
+        //     for(var i=7; i>0; i--) {
+        //         extra += `<span class='life-${i}'>${i}</span>`
+        //     }
+        //     extra += "</div>"
+        //     if(c['title'] == "Enemy") {
+        //         extra += `<div class="life-enemy">`
+        //         for(var i=12; i>7; i--) {
+        //             extra += `<span class='life-enemy-${i}'>${i}</span>`
+        //         }
+        //         extra += "</div>"
+        //     }
+        // }
 
         // <img src='frames/${c['type']}-frame.svg' class="fg" />
         // 1
@@ -681,7 +677,7 @@
 
         var template = `<div class="card">
             <div class="inner">
-                <div class="front ${c['type']}"> 
+                <div class="front type-${c['type']}"> 
                     <div class="frame"><div></div></div>
                     <img src="${c['img']}" class="bg" />
                     
