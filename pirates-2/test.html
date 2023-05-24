@@ -152,62 +152,9 @@
         display: contents;
     }
 
-    .role .subtype {
-        right: 30mm;
-        left: 19mm;
-    }
-    .role .frame {
-        right:18mm;
-        top:44mm;
-    }
-    .role .title {
-        right: 12mm;
-        top: 47mm;
-    }
-    .role .text {
-        right: 22mm;
-        top: 50mm;
-    }
-
-    .card .life, .card .life-enemy {
-        font-family: 'Lobster Two', cursive;
-        font-size: 16px;
-        right: 17px;
-        top: 26px;
-        bottom:0;
-        position: absolute;
-        left:51.5mm;
-        color: #fff7d4;
-        text-align: center;
-        text-shadow: 1px 1px 2px black, 0px 0px 1px black;
-    }
-
-    .card .life-enemy {
-        left:6.7mm;
-        right:0;
-        display: flex;
-    }
-
-    .life-enemy span {
-        display: inline-block;
-        padding: 9px 0px;
-        width: 35.4px;
-    }
-
     .life span {
         display: block;
         padding: 8.8px 13px;
-    }
-
-
-    .prestige {
-        font-family: 'Lobster Two', cursive;
-        color: #fff2ca;
-        font-size: 15px;
-        position: absolute;
-        left: 57.5mm;
-        top: 79.6mm;
-        text-shadow: 1px 1px black;
     }
 
     .attack {
@@ -275,7 +222,7 @@
         top: 46.4mm;
     }
 
-    .health {
+    .hook {
         font-family: 'Lobster Two', cursive;
         color: #fff2ca;
         font-size: 15px;
@@ -284,7 +231,7 @@
         top: 79.6mm;
         text-shadow: 1px 1px black;
     }
-    .health-icon {
+    .hook-icon {
         position:absolute;
         left: 9mm;
         top: 79.3mm;
@@ -340,7 +287,7 @@
         border-radius: 0;
     }
     .preparePrint.card .subtype {
-        padding-bottom: 0.6mm;
+        padding-bottom: 0.5mm;
     }
 
 
@@ -622,8 +569,8 @@
                 <img class="hook-icon" src="icons/hook.svg" />`
         }
         if(c['hp'] != undefined) {
-            extra += `<span class="health">${c['hp']}</span>
-                <img class="health-icon" src="icons/hook.svg" />`
+            extra += `<span class="hook">${c['hp']}</span>
+                <img class="hook-icon" src="icons/hook.svg" />`
         }
 
         if(c['cost'] != undefined) {
