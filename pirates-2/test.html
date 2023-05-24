@@ -42,9 +42,9 @@
     } */
 
     .card .bg {
-        width: 66.5mm;
-        height: 91mm;
-        margin-top: 1.5mm;
+        width: 69mm;
+        height: 94mm;
+        margin-top: 0mm;
         /* border-radius: 5px; */
     }
 
@@ -520,7 +520,7 @@
 
         {
             'title': 'Seaside Citadel',
-            'text': '+1 Card, +2 Actions.<br>You can only gain 3 Actions per turn from any Seaside Citadel.',
+            'text': 'You cannot gain more than 3 Actions this turn.<br>+1 Card, +2 Actions.',
             'img': 'structures/citadel.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -589,7 +589,7 @@
         },
 
         {
-            'title': 'Shopping Fever',
+            'title': 'Extravagance',
             'text': '+2 Buy.<br>OR<br>+1 Treasure.',
             'img': 'adventures/shopping.png',
             'type': 'adventure',
@@ -600,7 +600,7 @@
 
         {
             'title': 'Shipyard',
-            'text': '+1 Action for each structure in your discard pile.<br>+1 Card.',
+            'text': 'You cannot gain more than 3 Actions this turn.<br> +1 Card. +1 Action for each structure in your discard pile.',
             'img': 'structures/shipyard.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -623,10 +623,6 @@
             extra += `<span class="health">${c['hp']}</span>
                 <img class="health-icon" src="icons/hook.svg" />`
         }
-        // if(c['attack'] != undefined) {
-        //     extra += `<span class="attack">${c['attack']}</span>
-        //         <img class="attack-icon-state" src="icons/attack-white.svg" />`
-        // }
 
         if(c['cost'] != undefined) {
             extra += `<span class="attack">${c['cost']}</span>
@@ -636,18 +632,11 @@
         if(c['subtype'] != undefined) {
             extra += `<span class="subtype">${c['subtype']}</span>`
         }
-        // if(c['type'] == "crew") {
-        //     extra += `<img class="shell-icon-1" src="icons/shell.svg" /><img class="shell-icon-2" src="icons/shell.svg" />`
-        // }
+
         if(c['type'] == "attack") {
             extra += `<img class="attack-icon-1" src="icons/attack.svg" /><img class="attack-icon-2" src="icons/attack.svg" />`
         }
-        // if(c['type'] == "crew-spell") {
-        //     extra += `<img class="spell-icon-1" src="icons/spell.svg" /><img class="spell-icon-2" src="icons/spell.svg" />`
-        // }
-        // if(c['type'] == "crew-react") {
-        //     extra += `<img class="react-icon-1" src="icons/trap.svg" /><img class="react-icon-2" src="icons/trap.svg" />`
-        // }
+
         if(c['type'] == "adventure") {
             extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" /><img class="tentacle-icon-2" src="icons/tentacle.svg" />`
         }
@@ -655,36 +644,6 @@
         if(c['type'] == "structure") {
             extra += `<img class="structure-icon-1" src="icons/structure.svg" /><img class="structure-icon-2" src="icons/structure.svg" />`
         }
-
-        // if(c['type'] == "role") {
-        //     extra += `<div class="life">`
-        //     for(var i=7; i>0; i--) {
-        //         extra += `<span class='life-${i}'>${i}</span>`
-        //     }
-        //     extra += "</div>"
-        // }
-
-        // if(c['type'] == "role") {
-        //     extra += `<div class="life">`
-        //     for(var i=7; i>0; i--) {
-        //         extra += `<span class='life-${i}'>${i}</span>`
-        //     }
-        //     extra += "</div>"
-        //     if(c['title'] == "Enemy") {
-        //         extra += `<div class="life-enemy">`
-        //         for(var i=12; i>7; i--) {
-        //             extra += `<span class='life-enemy-${i}'>${i}</span>`
-        //         }
-        //         extra += "</div>"
-        //     }
-        // }
-
-        // <img src='frames/${c['type']}-frame.svg' class="fg" />
-        // 1
-
-        // html2canvas(document.body).then(function(canvas) {
-        //     document.body.appendChild(canvas);
-        // });
 
         var template = `<div class="card">
             <div class="inner">
