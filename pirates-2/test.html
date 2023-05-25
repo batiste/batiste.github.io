@@ -342,8 +342,8 @@
         <li>+1 Treasure: take a treasure from the bank immediately.</li>
         <li>+1 Buy: you can buy a card without using an action.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
-        <li>Text that say "if you have an/a" checks immediately the cards currently in your hand.</li>
-        <li>Text on the cards has to be applied in order.</li>
+        <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
+        <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
     </ol>
 
     <p>The game ends when any player has 15 cards in his or her deck. End the round so that everyone has played. 
@@ -553,6 +553,17 @@
             'img': 'structures/shipyard.png',
             'type': 'structure',
             'subtype': 'Structure',
+            'hp': '2',
+            'cost': '2'
+        },
+
+
+        {
+            'title': 'The Plank',
+            'text': 'Put a card from your hand or discard pile at the bottom of the supply to get 3 Treasures.<br>OR<br>+1 Treasure.',
+            'img': 'attacks/plank.png',
+            'type': 'attack',
+            'subtype': 'Attack',
             'hp': '2',
             'cost': '2'
         },
