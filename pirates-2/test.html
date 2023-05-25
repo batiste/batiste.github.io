@@ -296,7 +296,7 @@
 <body>
     <h2>Pirate Deck Builder Game</h2>
     <p>
-        From 2 to 4 players.
+        From 2 to 4 players. <span id="nbCards"></span> cards.
         Set up the game using <a href="https://en.wikipedia.org/wiki/Standard_52-card_deck">a standard deck of cards</a>. Assign each card number
         to each type of card. E.g. the 4 aces are the Sail Away cards, 2 are the Celebrate cards. Etc.
     </p>
@@ -351,6 +351,8 @@
        The player with the most points wins the game. If there is equality, the player with the most treasure wins, then player with the most cards.
     </p>
 
+    <div id="distribution"></div>
+
     <div id="cards"></div>
 </body>
 
@@ -363,8 +365,9 @@
             'img': 'adventures/ship-sea-calm.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '1',
-            'cost': '1'
+            'victory': '1',
+            'cost': '1',
+            'amount': 2 * 4
         },
 
         {
@@ -373,8 +376,9 @@
             'img': 'adventures/drink-dead.jpeg',
             'type': 'adventure',
             'subtype': 'Adventure',
-            'hp': '1',
-            'cost': '1'
+            'victory': '1',
+            'cost': '1',
+            'amount': 2 * 4
         },
 
         {
@@ -383,8 +387,9 @@
             'img': 'structures/tavern.png',
             'type': 'adventure',
             'subtype': 'Adventure',
-            'hp': '1',
-            'cost': '1'
+            'victory': '1',
+            'cost': '1',
+            'amount': 4,
         },
 
         {
@@ -394,7 +399,8 @@
             'type': 'attack',
             'subtype': 'Attack',
             'cost': 1,
-            'hp': 1,
+            'victory': 1,
+            'amount': 4,
         },
 
         {
@@ -403,8 +409,9 @@
             'img': 'adventures/bargaining.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '1',
-            'cost': '1'
+            'victory': '1',
+            'cost': '1',
+            'amount': 3,
         },
 
         {
@@ -414,7 +421,8 @@
             'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
-            'hp': '2'
+            'victory': '2',
+            'amount': 3
         },
 
         {
@@ -424,7 +432,8 @@
             'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
-            'hp': '2',
+            'victory': '2',
+            'amount': 4
         },
 
         {
@@ -434,7 +443,8 @@
             'type': 'adventure',
             'subtype': 'Adventure',
             'cost': '2',
-            'hp': '2',
+            'victory': '2',
+            'amount': 4
         },
 
         {
@@ -443,8 +453,9 @@
             'img': 'adventures/ape.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '2',
-            'cost': '2'
+            'victory': '2',
+            'cost': '2',
+            'amount': 3
         },
 
         {
@@ -453,8 +464,9 @@
             'img': 'adventures/haunted-shipwreck.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '2',
-            'cost': '2'
+            'victory': '2',
+            'cost': '2',
+            'amount': 3
         },
 
         {
@@ -464,7 +476,8 @@
             'type': 'adventure',
             'subtype': 'Adventure',
             'cost': '2',
-            'hp': '2'
+            'victory': '2',
+            'amount': 3
         },
 
         {
@@ -474,7 +487,8 @@
             'type': 'structure',
             'subtype': 'Structure',
             'cost': '3',
-            'hp': '2'
+            'victory': '2',
+            'amount': 3
         },
 
         {
@@ -483,8 +497,9 @@
             'img': 'adventures/spell.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '2',
-            'cost': '3'
+            'victory': '2',
+            'cost': '3',
+            'amount': 3
         },
 
         {
@@ -493,8 +508,9 @@
             'img': 'adventures/smugglers-cache.png',
             'type': 'structure',
             'subtype': 'Structure',
-            'hp': '2',
-            'cost': '3'
+            'victory': '2',
+            'cost': '3',
+            'amount': 2
         },
 
         {
@@ -503,8 +519,9 @@
             'img': 'adventures/wind.png',
             'type': 'adventure',
             'subtype': 'Adventure',
-            'hp': '2',
-            'cost': '3'
+            'victory': '2',
+            'cost': '3',
+            'amount': 2
         },
 
         {
@@ -513,8 +530,9 @@
             'img': 'adventures/leviathan.jpg',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '3',
-            'cost': '3'
+            'victory': '3',
+            'cost': '3',
+            'amount': 2
         },
 
         {
@@ -523,18 +541,20 @@
             'img': 'structures/skull.png',
             'type': 'structure',
             'subtype': 'Structure',
-            'hp': '3',
-            'cost': '4'
+            'victory': '3',
+            'cost': '4',
+            'amount': 2
         },
 
         {
             'title': 'Useless Totem',
-            'text': 'You can reveal this card an chose a type. It keeps this type until you discard it. Doing this is not an action.',
+            'text': 'You can reveal this card and chose a type. It keeps this type until you discard it. Doing this is not an action.',
             'img': 'structures/totem.png',
             'type': 'none',
             'subtype': 'None',
-            'hp': '2',
-            'cost': '1'
+            'victory': '2',
+            'cost': '1',
+            'amount': 2
         },
 
         {
@@ -543,8 +563,9 @@
             'img': 'adventures/shopping.png',
             'type': 'adventure',
             'subtype': 'Adventure',
-            'hp': '2',
-            'cost': '2'
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
         },
 
         {
@@ -553,8 +574,9 @@
             'img': 'structures/shipyard.png',
             'type': 'structure',
             'subtype': 'Structure',
-            'hp': '2',
-            'cost': '2'
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
         },
 
 
@@ -564,8 +586,9 @@
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'hp': '2',
-            'cost': '2'
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
         },
 
 
@@ -573,14 +596,18 @@
 
     all = []
     var j = 0;
+    var amount = 0;
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 'none': 0}
+
     cards.forEach((c) => {
         var extra = ""
-        if(c['prestige'] != undefined) {
-            extra += `<span class="prestige">${c['prestige']}</span>
-                <img class="hook-icon" src="icons/hook.svg" />`
+        amount += c['amount'];
+        if(j>1) {
+            distribution[c['type']] += c['amount']
         }
-        if(c['hp'] != undefined) {
-            extra += `<span class="hook">${c['hp']}</span>
+
+        if(c['victory'] != undefined) {
+            extra += `<span class="hook">${c['victory']}</span>
                 <img class="hook-icon" src="icons/hook.svg" />`
         }
 
@@ -623,7 +650,7 @@
                     <img src="crew/back.png" />
                 </div>
             </div>
-            <button onclick="downloadCard(this)">Download #${j+1}</button>
+            <button onclick="downloadCard(this)">Download #${j+1}, copies: ${c['amount']}</button>
         </div>
         `
         all.push(template)
@@ -632,6 +659,9 @@
             all.push('<div class="break"></div>')
         }
     })
+
+    document.getElementById('nbCards').innerHTML = amount;
+    document.getElementById('distribution').innerHTML = JSON.stringify(distribution);
 
     document.getElementById('cards').innerHTML = all.join('')
 
