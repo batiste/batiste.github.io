@@ -417,7 +417,7 @@
         {
             'title': 'Pirate Hideout',
             'text': '+2 Cards, +1 Treasure.<br> The first time you must discard this card from your hand, you may not.',
-            'img': 'crew-actions/pirate-town.jpg',
+            'img': 'structures/pirate-town.jpg',
             'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
@@ -461,7 +461,7 @@
         {
             'title': 'Haunted Shipwreck',
             'text': '+2 Card.<br>+1 Treasure for each Attack in your hand.',
-            'img': 'adventures/haunted-shipwreck.png',
+            'img': 'attacks/haunted-shipwreck.png',
             'type': 'attack',
             'subtype': 'Attack',
             'victory': '2',
@@ -505,7 +505,7 @@
         {
             'title': 'Smuggler’s Cache <sup></sup>',
             'text': '+1 Treasure<br>At the start of your turn if this card is in your discard pile: +1 Treasure.',
-            'img': 'adventures/smugglers-cache.png',
+            'img': 'structures/smugglers-cache.png',
             'type': 'structure',
             'subtype': 'Structure',
             'victory': '2',
@@ -527,7 +527,7 @@
         {
             'title': 'Leviathan',
             'text': 'Steal 1 Treasure from any player.<br>OR<br>Put 1 card from any discard pile to the bottom of their deck.',
-            'img': 'adventures/leviathan.jpg',
+            'img': 'attacks/leviathan.jpg',
             'type': 'attack',
             'subtype': 'Attack',
             'victory': '3',
@@ -597,13 +597,14 @@
     all = []
     var j = 0;
     var amount = 0;
-    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 'none': 0}
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 'none': 0, 1: 0, 2: 0, 3: 0, 4: 0}
 
     cards.forEach((c) => {
         var extra = ""
         amount += c['amount'];
         if(j>1) {
             distribution[c['type']] += c['amount']
+            distribution[c['cost']] += c['amount']
         }
 
         if(c['victory'] != undefined) {
@@ -661,7 +662,7 @@
     })
 
     document.getElementById('nbCards').innerHTML = amount;
-    document.getElementById('distribution').innerHTML = JSON.stringify(distribution);
+    document.getElementById('distribution').innerHTML = '<pre>' + JSON.stringify(distribution, undefined, '\n') + '</pre>';
 
     document.getElementById('cards').innerHTML = all.join('')
 
