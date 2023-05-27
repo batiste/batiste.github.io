@@ -297,15 +297,13 @@
 <body>
     <h2>Pirate Deck Builder Game</h2>
     <p>
-        From 2 to 4 players. <span id="nbCards"></span> cards.
-        Set up the game using <a href="https://en.wikipedia.org/wiki/Standard_52-card_deck">a standard deck of cards</a>. Assign each card number
-        to each type of card. E.g. the 4 aces are the Sail Away cards, 2 are the Celebrate cards. Etc.
+        From 2 to 4 players. <span id="nbCards"></span> cards in the game.
     </p>
 
     <ol>
         <li>
             Each player receives a deck of 2 Sunset Plunder and 2 Celebrate: 4 cards in all.
-            When you need more than 4 cards of the same type use another deck to complete or use the jokers.
+            Remove all remaining Sunset Plunder and Celebrate from the game.
         </li>
         <li>
             All remaining cards are shuffled and form the supply deck. Reveal 6 cards by putting them face up
@@ -320,16 +318,14 @@
 
     <ol>
         <li>Apply effects that happens at the beginning of turn.</li>
-        <li>Discard hand and draws 3 cards.</li>
-        <li>The player has 2 actions during his or her turn. Possible actions are:
+        <li>Discard his/her hand and draws 3 cards.</li>
+        <li>The player can do 2 actions of any kind during his/her turn:
             <ol>
-                <li>Playing a card.</li>
-                <li>Buying a card from the supply.</li>
+                <li>Playing a card: Apply its effects first, then put it in his/her discard pile.</li>
+                <li>Buying a card from the supply: It goes in his/her discard pile.</li>
             </ol>
          </li>
-        <li>Played cards go to the player's discard pile after their immediate effects have been applied.</li>
-        <li>Purchased cards go to the player's discard pile.</li>
-        <li>When your deck is empty, immediately shuffle your discard pile: this is your deck.</li>
+        <li>When your deck is empty immediately shuffle your discard pile: this is your new deck.</li>
     </ol>
 
     <p>
@@ -348,9 +344,9 @@
         <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
     </ol>
 
-    <p>The game ends when any player has 15 cards in his or her deck. End the round so that everyone has played. 
-       Count the number of hooks in each deck (bottom left).
-       The player with the most points wins the game. If there is equality, the player with the most treasure wins, then player with the most cards.
+    <p>The game ends when any player has 16 cards in total. End the round so that everyone has played. 
+       Add the number of hooks in each deck. The player with the most hooks wins the game. 
+       If there is equality, the player with the most treasure wins, then player with the most cards.
     </p>
 
     <div id="distribution"></div>
@@ -495,7 +491,7 @@
 
         {
             'title': 'Voodoo Curse',
-            'text': 'Reveal the 2 top card of target player deck. Discard one then apply its effects as if you just played it.',
+            'text': 'Reveal the top 2 cards of target player\'s deck. Discard one then apply its effects as if you just played it.',
             'img': 'attacks/spell.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -550,10 +546,10 @@
 
         {
             'title': 'Useless Totem',
-            'text': 'You can reveal this card and chose a type. It keeps this type until you discard it. Doing this is not an action.',
+            'text': 'You can reveal this card and change its type. It keeps this new type until you discard it. Doing this is not an action.',
             'img': 'structures/totem.png',
-            'type': 'none',
-            'subtype': 'None',
+            'type': 'structure',
+            'subtype': 'Structure',
             'victory': '2',
             'cost': '1',
             'amount': 2
@@ -611,7 +607,7 @@
     all = []
     var j = 0;
     var amount = 0;
-    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 'none': 0, 1: 0, 2: 0, 3: 0, 4: 0, nb_cards_necessary_total:(16 * 4 + 6 + 2)}
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, nb_cards_necessary_total:(16 * 4 + 6 + 2)}
 
     cards.forEach((c) => {
         var extra = ""
