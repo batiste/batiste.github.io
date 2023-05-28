@@ -7,7 +7,7 @@
 
 <style>
     html {
-        background-color: rgb(26, 23, 23);
+        background-color: 2a2a2a;
         -webkit-print-color-adjust: exact;
         -webkit-filter: opacity(1);
         color: #fff;
@@ -28,6 +28,16 @@
         perspective: 1000px;
     }
 
+    .mask {
+        border: 7px solid #000000;
+        border-radius: 12px;
+        position: absolute;
+        top: 3mm;
+        left: 3mm;
+        bottom: 2.8mm;
+        right: 3mm;
+    }
+
     .inner {
         position: relative;
         width: 100%;
@@ -35,6 +45,7 @@
         text-align: center;
         transition: transform 0.8s;
         transform-style: preserve-3d;
+        background-color: #000;
     }
 
     .card:hover .inner {
@@ -42,9 +53,10 @@
     }
 
     .card .bg {
-        width: 69mm;
-        height: 94mm;
-        margin-top: 0mm;
+        /* 63 88 is poker size */
+        width: 61mm;
+        height: 86mm;
+        margin-top: 4mm;
         /* border-radius: 5px; */
     }
 
@@ -673,6 +685,7 @@
                     <div class="mpc">
                         <img src="mpc.png" />
                     </div>
+                    <div class="mask"></div>
                 </div>
                 <div class="back">
                     <img src="back.png" />
