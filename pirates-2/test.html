@@ -104,9 +104,9 @@
         font-family: 'Della Respira', serif;
         font-size:10px;
         right:9mm;
-        top:56mm;
+        top:55.5mm;
         left:9mm;
-        bottom:10.5mm;
+        bottom:10.9mm;
         color: #fff2ca;
         text-align: center;
         text-shadow: 0.5px 0.5px black;
@@ -121,7 +121,7 @@
         font-size: 10px;
         position: absolute;
         right:26mm;
-        top:84mm;
+        top:83.2mm;
         left:26mm;
         color: #ECEAC2;
         text-align: center;
@@ -141,7 +141,7 @@
         right:6.5mm;
         top:52mm;
         left:6.5mm;
-        bottom:6.5mm;
+        bottom:6.7mm;
         border-radius: 7px;
         background-color: rgba(0, 0, 0, 0.2);
         border: 0.8px solid rgba(231, 185, 48, 0.608);
@@ -164,19 +164,36 @@
         display: contents;
     }
 
-    .attack {
+    .cost {
         font-family: 'Lobster Two', cursive;
         color: #fff2ca;
         font-size: 15px;
         position: absolute;
-        left: 57.5mm;
+        left: 57.6mm;
         top: 79.6mm;
         text-shadow: 1px 1px black;
     }
-    .attack-icon-state {
+
+    .cost-icon {
         position:absolute;
-        left: 50mm;
-        top: 79.5mm;
+        left: 49.8mm;
+        top: 79.4mm;
+    }
+
+    .hook {
+        font-family: 'Lobster Two', cursive;
+        color: #fff2ca;
+        font-size: 15px;
+        position: absolute;
+        left: 16mm;
+        top: 79.6mm;
+        text-shadow: 1px 1px black;
+    }
+
+    .hook-icon {
+        position:absolute;
+        left: 9.6mm;
+        top: 79.1mm;
     }
 
     .attack-icon-1 {
@@ -213,21 +230,6 @@
         top: 46.4mm;
     }
 
-    .hook {
-        font-family: 'Lobster Two', cursive;
-        color: #fff2ca;
-        font-size: 15px;
-        position: absolute;
-        left: 16mm;
-        top: 79.6mm;
-        text-shadow: 1px 1px black;
-    }
-    .hook-icon {
-        position:absolute;
-        left: 9.5mm;
-        top: 79.3mm;
-    }
-
     /* Position the front and back side */
     .front, .back {
         position: absolute;
@@ -236,8 +238,6 @@
         -webkit-backface-visibility: hidden; /* Safari */
         backface-visibility: hidden;
     }
-
-    
 
     /* Style the back side */
     .back {
@@ -630,8 +630,8 @@
         }
 
         if(c['cost'] != undefined) {
-            extra += `<span class="attack">${c['cost']}</span>
-                <img class="attack-icon-state" src="icons/chest.svg" />`
+            extra += `<span class="cost">${c['cost']}</span>
+                <img class="cost-icon" src="icons/chest.svg" />`
         }
 
         if(c['subtype'] != undefined) {
