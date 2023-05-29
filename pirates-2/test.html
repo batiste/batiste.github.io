@@ -118,6 +118,28 @@
         line-height: 1.45;
     }
 
+    .rules {
+        font-family: 'Della Respira', serif;
+        font-size:13px;
+        color: #ffffff;
+        text-align: left;
+        line-height: 1.45;
+        max-width: 50%;
+        float:left
+    }
+
+    .card .rules ol {
+        margin: 0;
+        padding: 0;
+        padding-left: 1em;
+    }
+
+    .card .rules p {
+        margin: 0;
+        padding: 0;
+        margin-bottom: 8px;
+    }
+
     .card .subtype {
         font-family: 'Della Respira', serif;
         font-size: 10px;
@@ -296,9 +318,13 @@
 </head>
 
 <body>
-    <h2>Pirate Deck Builder Game</h2>
+
+<div class="rules">
+
+    <h2>Deckhand</h2>
+
     <p>
-        From 2 to 4 players. <span id="nbCards"></span> cards in the game.
+       A Pirate themed deck builder Game for 2 to 4 players. <span id="nbCards"></span> cards in the game.
     </p>
 
     <ol>
@@ -309,7 +335,9 @@
         <li>
             All remaining cards are shuffled and form the supply deck. Reveal 6 cards by putting them face up
             in the center of the table, this is the supply.
-            There should always be 6 supply cards face up.
+        </li>
+        <li>
+            There should always be 6 supply cards face up. Replace them as you go.
         </li>
     </ol>
 
@@ -319,22 +347,25 @@
 
     <ol>
         <li>Apply effects that happen at the beginning of turn.</li>
-        <li>Discard his/her hand and draw 3 cards.</li>
-        <li>The player can do 2 actions of any kind during his/her turn. Possible actions are:
+        <li>Discard your hand and draw 3 cards.</li>
+        <li>You can do 2 actions of any kind during your turn. Possible actions are:
             <ol>
-                <li>Playing a card: Apply its effects first, then put it in his/her discard pile.</li>
-                <li>Buying a card from the supply: It goes in his/her discard pile.</li>
+                <li>Playing a card: Apply its effects first, then put it in your discard pile.</li>
+                <li>Buying a card from the supply: It goes in your discard pile.</li>
             </ol>
          </li>
         <li>When your deck is empty immediately shuffle your discard pile: this is your new deck.</li>
     </ol>
 
+</div>
+<div class="rules">
+
     <p>
-        Game details:
+        Game details
     </p>
 
-    <ol>
-        <li>Treasures are the money that allow you to buy cards (cost of the card at the bottom right).</li>
+    <ul>
+        <li>Treasures are the money that allow you to buy cards (cost is the chest icon at the bottom right).</li>
         <li>+1 Card: Draw a card immediately.</li>
         <li>+1 Action: One more action of any kind during this turn.</li>
         <li>+1 Supply refresh: You may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
@@ -344,17 +375,27 @@
         <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
         <li>Discard piles are face up and can be inspected by anybody.</li>
-    </ol>
+    </ul>
 
-    <p>The game ends when any player has 16 cards in total. End the round so that everyone has played. 
-       Add the number of hooks in each deck. The player with the most hooks wins the game. 
+    <p>End of the game</p>
+
+    <p>The game ends when any player has more than 15 cards in total. End the round so that everyone has played. 
+       Add the number of hooks in each deck (hook icon at the bottom left). The player with the most hooks wins the game. 
        If there is equality, the player with the most Treasures wins, then the player with the most cards.
     </p>
 
-    <div id="distribution"></div>
-    <button id="genPDF">Create PDF</button>
+</div>
 
-    <div id="cards"></div>
+<div style="clear:both;padding-top:20px">
+
+<div id="distribution"></div>
+<button id="genPDF">Create PDF</button>
+
+</div>
+
+<div id="cards"></div>
+
+
 </body>
 
 <script>
