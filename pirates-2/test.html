@@ -349,6 +349,7 @@
     </p>
 
     <div id="distribution"></div>
+    <button id="genPDF">Create PDF</button>
 
     <div id="cards"></div>
 </body>
@@ -619,6 +620,7 @@
 
     cards.forEach((c) => {
         var extra = ""
+        c['id'] = j;
         amount += c['amount'];
         if(j>1) {
             distribution[c['type']] += c['amount']
@@ -651,7 +653,7 @@
             extra += `<img class="structure-icon-1" src="icons/structure.svg" /><img class="structure-icon-2" src="icons/structure.svg" />`
         }
 
-        var template = `<div class="card">
+        var template = `<div class="card" id="card-${j}">
             <div class="inner">
                 <div class="front type-${c['type']}"> 
                     <div class="frame"><div></div></div>
@@ -699,14 +701,20 @@
 
     function downloadCard(e) {
         console.log(this.target, e, e.parentNode)
-        e.parentNode.classList.add('preparePrint')
+        createImage(e.parentNode, (canvas, title) => {
+            download(canvas.toDataURL("image/png"), title);
+        })
+    }
+
+    function createImage(card, cb) {
+        card.classList.add('preparePrint')
         setTimeout(() => {
-            html2canvas(e.parentNode, {scale: 6.5, backgroundColor: '#000000'}).then(function(canvas) {
+            html2canvas(card, {scale: 6.5, backgroundColor: '#000000'}).then(function(canvas) {
                 // canvas.width = 2220
                 // canvas.height = 1632
                 document.body.appendChild(canvas);
-                var title = e.parentNode.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
-                download(canvas.toDataURL("image/png"), title);
+                var title = card.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
+                cb(canvas, title);
                 // canvas.remove()
             })
         }, 100)
@@ -715,5 +723,76 @@
     console.log(cards.length)
 </script>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<script>
+
+
+function bindImage(element, card, i) {
+    setTimeout(() => {
+        createImage(element, (canvas, title) => {
+            card['canvas'] = canvas
+        })
+    }, i * 50)
+}
+
+
+document.getElementById('genPDF').onclick = generatePDF
+
+function generatePDF(e) {
+    console.log(e.target)
+    e.target.disable = true;
+    e.target.innerHTML = 'Please wait'
+    var jsPDF = window.jspdf.jsPDF;
+    var doc = new jsPDF({
+        unit: "mm",
+        format: [69, 94],
+    });
+
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        var element = document.getElementById('card-'+card['id'])
+        bindImage(element, card, i)
+    }
+
+    e.target.innerHTML = 'Rendering... Wait 10 seconds to be sure everything is finished.'
+
+    setTimeout(() => {
+
+        e.target.innerHTML = 'Starting PDF rendering.'
+        firstPage = true;
+
+        for (i=0; i<cards.length; i++) {
+            var card = cards[i];
+            e.target.innerHTML = 'Rendering page ' + card['title'];
+            for (j=0; j<card.amount; j++) {
+                if (firstPage) {
+                    firstPage = false;
+                } else {
+                    doc.addPage()
+                }
+                doc.addImage(card['canvas'], "PNG", 0, 0, 69, 94, card['title'], "FAST", 0)
+                doc.addPage()
+                doc.addImage('back.png', "PNG", 0, 0, 69, 94, 'back', "FAST", 0)
+            }
+        }
+
+        doc.save("MB-Print.pdf");
+        e.target.innerHTML = 'Done!'
+    }, 5000)
+
+}
+
+// createImage(document.querySelector('.card'), (canvas, title) => {
+//     doc.addImage(canvas, "PNG", 0, 0, 69, 94, title, "MEDIUM", 0)
+//     doc.addPage()
+//     doc.addImage(canvas, "PNG", 0, 0, 69, 94, title, "MEDIUM", 0)
+//     doc.addPage()
+//     doc.addImage(canvas, "PNG", 0, 0, 69, 94, title, "MEDIUM", 0)
+//     doc.save("a4.pdf");
+// })
+
+
+</script>
 
 </html>
