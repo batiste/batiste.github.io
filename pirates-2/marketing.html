@@ -18,7 +18,8 @@
         
         h1, h2 {
             text-align: center;
-            color: #fbe09c;
+            color: #fbe2a3;
+            text-shadow: 3px 3px 3px #000;
         }
         
         #hand {
@@ -41,6 +42,16 @@
             transform-origin: bottom center;
             margin-right: -30px;
             box-shadow: 8px 8px 8px #171717;
+        }
+
+        .large-card {
+            width: 195px;
+            height: 270px;
+        }
+
+        .small-card {
+            width: 160px;
+            height: 225px;
         }
         
         .card img {
@@ -76,37 +87,44 @@
     </style>
 </head>
 <body>
-    <h1>Deckhand -)— A Pirate Deck Builder Game</h1>
+    <h1>DeckHand —  A Pirate Deck Builder Game</h1>
     
     <div id="hand">
-        <div class="card" id="card1"><img src="marketing/celebrate.png" alt="Card 1"></div>
+        <div class="card small-card" id="card1"><img src="marketing/celebrate.png" alt="Card 1"></div>
         <div class="card" id="card2"><img src="marketing/going-ape.png" alt="Card 2"></div>
-        <div class="card" id="card3"><img src="marketing/kraken.png" alt="Card 3"></div>
-        <div class="card" id="card4"><img src="marketing/quick-shot.png" alt="Card 4"></div>
-        <div class="card" id="card5"><img src="marketing/voodoo-curse.png" alt="Card 5"></div>
+        <div class="card large-card" id="card3"><img src="marketing/kraken.png" alt="Card 3"></div>
+        <div class="card" id="card4"><img src="marketing/voodoo-curse.png" alt="Card 4"></div>
+        <div class="card small-card" id="card5"><img src="marketing/quick-shot.png" alt="Card 5"></div>
     </div>
     
-    <h2>About Deckhand</h2>
+    <h2>About DeckHand</h2>
     <div id="game-info">
 
-        <p>Deckhand is an exciting card game that takes you on a swashbuckling adventure as a pirate.
-            Your objective is to outwit your opponents and build the most formidable deck you can.</p>
+        <p>Deckhand is an exciting card game that immerses you in a thrilling pirate adventure.
+            Your goal is to outsmart your opponents and construct the most formidable deck possible.</p>
 
-        <p>The game is simple to learn, fast, and can be played from 2 up to 4 players.
+        <p>This game is easy to learn, quick to play, and accommodates 2 to 4 players.</p>
             
         <p>
-            The deck of cards consist of only 72 cards, with 23 being complete unique designs.
-            Despite its apparent simplicity the game is difficult to master and every game is different 
-            due to the initial board state.
+            The game comprises 72 cards, including 23 distinct designs. 
+            Despite its apparent simplicity, the game offers a challenging mastery, 
+            with each game presenting unique dynamics based on the initial board state 
+            and player interactions.
         </p>
 
-        <p>Stay tuned for updates and additional game features!!!!</p>
+        <p>
+            Our design emphasis was on delivering enjoyable, fast-paced games that provide a 
+            sense of crafting something distinctive with every play.
+        </p>
+
+
     </div>
 
     <div id="hand">
-        <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Card 2"></div>
-        <div class="card" id="card3"><img src="marketing/useless-totem.png" alt="Card 3"></div>
-        <div class="card" id="card4"><img src="marketing/extravagance.png" alt="Card 4"></div>
+        <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Walk the Plank"></div>
+        <div class="card large-card" id="card3"><img src="marketing/useless-totem.png" alt="Useless Totem"></div>
+        <div class="card" id="card4"><img src="marketing/extravagance.png" alt="Extravagance"></div>
+        <div class="card small-card" id="card5"><img src="marketing/back.png" alt="Back"></div>
     </div>
     
     <!-- Add any additional sections, rules, or features here -->
