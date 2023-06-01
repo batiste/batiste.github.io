@@ -32,7 +32,7 @@
         .card {
             display: inline-block;
             width: 190px;
-            height: 260px;
+            height: 264px;
             background-color: rgb(58, 58, 58);
             color: black;
             border-radius: 8px;
@@ -48,7 +48,7 @@
         
         .large-card {
             width: 200px;
-            height: 275px;
+            height: 280px;
         }
 
         .small-card {
@@ -105,6 +105,18 @@
         button:hover {
             box-shadow: none;
             cursor: pointer;
+        }
+
+        @media only screen and (max-width: 950px) {
+            .card {
+                zoom: 0.8;
+            }
+        }
+
+        @media only screen and (max-width: 740px) {
+            .card {
+                zoom: 0.5;
+            }
         }
     </style>
 </head>
