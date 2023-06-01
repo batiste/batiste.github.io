@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Deckhand - A Pirate Card Game</title>
+    <style>
+        body {
+            font-family: "Berkshire Swash", cursive;
+            background-color: rgb(44, 44, 44);
+            color: rgb(255, 255, 255);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1, h2 {
+            text-align: center;
+            text-transform: uppercase;
+        }
+        
+        #hand {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            display: inline-block;
+            width: 160px;
+            height: 220px;
+            background-color: rgb(58, 58, 58);
+            color: black;
+            border-radius: 8px;
+            margin: 5px;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+            transform-origin: bottom center;
+            margin-right: -45px;
+            box-shadow: 8px 8px 8px #171717;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            /* object-position: 70% 15% */
+        }
+        
+        #card1 { transform: rotate(-20deg); margin-bottom: -20px; }
+        #card2 { transform: rotate(-10deg); }
+        #card4 { transform: rotate(10deg); }
+        #card5 { transform: rotate(20deg); margin-bottom: -20px; }
+        
+        #game-info {
+            margin: 0 auto;
+            max-width: 600px;
+        }
+        
+        p {
+            line-height: 1.5;
+            text-align: justify;
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Deckhand - A Pirate Card Game</h1>
+    
+    <div id="hand">
+        <h2>Your Hand</h2>
+        <div class="card" id="card1"><img src="marketing/celebrate.png" alt="Card 1"></div>
+        <div class="card" id="card2"><img src="marketing/going-ape.png" alt="Card 2"></div>
+        <div class="card"><img src="marketing/kraken.png" alt="Card 3"></div>
+        <div class="card" id="card4"><img src="marketing/quick-shot.png" alt="Card 4"></div>
+        <div class="card" id="card5"><img src="marketing/voodoo-curse.png" alt="Card 5"></div>
+    </div>
+    
+    <div id="game-info">
+        <h2>About Deckhand</h2>
+        <p>Deckhand is an exciting card game that takes you on a swashbuckling adventure as a pirate. Your objective is to outwit your opponents and build the most formidable crew.</p>
+        <p>Stay tuned for updates and additional game features!</p>
+    </div>
+    
+    <!-- Add any additional sections, rules, or features here -->
+    
+    <script>
+        // Add any JavaScript code here, if needed
+    </script>
+</body>
+</html>
