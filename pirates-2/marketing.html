@@ -108,6 +108,29 @@
             cursor: pointer;
         }
 
+        #email-popup {
+            width: 400px;
+            height: 300px;
+            background: #3f3f3f;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            padding: 20px;  
+        }
+
+        .container-popup {
+            position: relative;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,.8);
+        }
+
         @media only screen and (max-width: 950px) {
             .card {
                 zoom: 0.8;
@@ -158,9 +181,30 @@
             sense of crafting a distinctive deck with every play.
         </p>
 
-        <p style="display: flex; flex-direction: column; margin: 25px; align-items: center;">
-            <button>I am interested!</button>
-        </p>
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <img src="marketing/tuck-box.png" width="220">
+
+            <p style="display: flex; flex-direction: column; margin: 15px; align-items: center;">
+                <button>Order DeckHand</button>
+            </p>    
+        </div>
+
+        <!-- <div class="container-popup">
+            <div id="email-popup">
+                <h1>Login</h1>
+            
+                <label for="email">Email
+                    <input type="text" placeholder="Email" name="email" required>
+                </label>
+            
+                <label for="country">Country
+                    <input type="tet" placeholder="Country" name="country">
+                </label>
+            
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </div> -->
 
 
     </div>
