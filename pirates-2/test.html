@@ -368,9 +368,10 @@
         <li>Treasures are the money that allow you to buy cards (cost is the chest icon at the bottom right).</li>
         <li>+1 Card: Draw a card immediately from your deck.</li>
         <li>+1 Action: One more action of any kind during your turn.</li>
-        <li>+1 Supply refresh: You may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
         <li>+1 Treasure: Take a treasure from the bank immediately.</li>
         <li>+1 Buy: You may buy a card without using an action this turn.</li>
+        <li>+1 Supply refresh: You may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
+        <li>+1 Discard: Discard a card immediately.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
         <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
@@ -454,6 +455,17 @@
             'victory': '1',
             'cost': '1',
             'amount': 3,
+        },
+
+        {
+            'title': 'Storm / Tsunami',
+            'text': '+1 Card, +1 Discard. Everybody move a card from their discard pile or top deck to their left neighbors top deck.',
+            'img': 'adventures/storm.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 2,
         },
 
         {
