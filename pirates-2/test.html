@@ -321,17 +321,17 @@
 
 <div class="rules">
 
-    <h2>Deckhand (v0.9.4)</h2>
+    <h2>Deckhand (v0.9.5)</h2>
 
     <p>
-       Deckhand is pirate themed deck builder game for 2 to 4 players. There is <span id="nbCards"></span> cards in 
-       the game with <span id="nbDesign"></span>  unique design.
+       Deckhand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
+       the game with <span id="nbDesign"></span>  unique designs.
     </p>
 
     <h3>Preparations</h3>
 
     <ol>
-        <li>Create a bank with ~20 Treasure token. We recommend using beans.</li>
+        <li>Create a bank with ~20 Treasure tokens. We recommend using beans.</li>
         <li>
             Each player receives a deck of 2 Fist Fight and 2 Celebrate as well as  1 Treasure.
             Remove all remaining Fist Fight and Celebrate from the game.
@@ -376,7 +376,7 @@
         <li>+1 Supply refresh: You may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
         <li>+1 Discard: Discard a card immediately.</li>
         <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
-        <li>Text that say "if you have an/a" checks the cards currently in your hand.</li>
+        <li>Text that says "if you have an/a" checks the cards currently in your hand.</li>
         <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
         <li>Discard piles are face up and can be inspected by anybody.</li>
         <li>Reducing a deck to less than 4 cards is not allowed. Aside effects included.</li>
@@ -453,7 +453,7 @@
 
         {
             'title': 'Governor’s Wedding',
-            'text': '+1 Treasure.<br>On target players next turn he must give you a Treasure before his first buy.',
+            'text': '+1 Treasure.<br>On his next turn, target player gets +1 Buy and must give you a Treasure before his first buy.',
             'img': 'structures/wedding.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -519,7 +519,7 @@
 
         {
             'title': 'Going Ape',
-            'text': '+1 Action, +1 Supply refresh.<br>You may swap a card from your hand with a card of equal cost from the supply.',
+            'text': '+1 Action. Swap Going Ape or a card from your hand with a card of equal cost from the supply. The new card goes in your hand.',
             'img': 'attacks/silverback.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -621,7 +621,7 @@
 
         {
             'title': 'Crooked Merchant',
-            'text': 'Swap 2 cards between 2 discard pile as long as the cost difference is less than 2.<br>OR<br>+1 Treasure.',
+            'text': 'Swap 2 cards between 2 discard pile as long as the cost difference is less than 2.',
             'img': 'attacks/merchant.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -687,12 +687,12 @@
 
         {
             'title': 'Merfolk Mercenary',
-            'text': 'Pay 1 Treasure: Reveal the top 2 cards of the supply and put one in your discard pile.',
+            'text': 'Pay 1 Treasure: Reveal the top 2 cards of the supply and put one that cost less than 4 in your discard pile.',
             'img': 'adventures/merfolk-2.png',
             'type': 'adventure',
             'subtype': 'Adventure',
             'victory': '2',
-            'cost': '4',
+            'cost': '3',
             'amount': 2
         },
 
