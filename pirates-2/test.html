@@ -30,6 +30,50 @@
         perspective: 1000px;
     }
 
+    .booklet {
+        /* value with bleeding */
+        height: 133.01mm;
+        width: 95mm;
+        background: #140e07;
+        font-family: 'Della Respira', serif;
+        font-size:10px;
+        color: #000000;
+        text-align: left;
+        text-shadow: 0.6px 0.6px rgb(249, 249, 249);
+        margin: 10px;
+        zoom: 1.1;
+        display: flex;
+        background-image: url('marketing/booklet.png');
+        background-size: cover;
+    }
+
+    .innerBooklet {
+        padding: 3mm;
+        border: 1px dotted red; 
+        margin: calc(3mm - 1px);
+    }
+
+    .booklet ol, .booklet ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    .booklet li {
+        margin-left: 1.3em;
+    }
+
+    .booklet h3 {
+        margin-bottom: 0.4em;
+    }
+
+    .booklet p {
+        margin-top: 0em;
+    }
+
+    .booklet li {
+        margin-bottom: 0.2em;
+    }
+
     .mask {
         border: 2mm solid black;
         border-radius: 3mm;
@@ -311,86 +355,29 @@
         display: none;
     }
 
-    /* display: none; */
+    #illustration {
+        position:absolute;
+        left: 50%;
+        top: 75%
+    }
 
+    #illustration li {
+        float: left;
+    }
+
+    /* display: none; */
 
 </style>
 </head>
 
 <body>
 
-<div class="rules">
+<h2>Deckhand (v0.9.6)</h2>
 
-    <h2>Deckhand (v0.9.5)</h2>
-
-    <p>
-       Deckhand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
-       the game with <span id="nbDesign"></span>  unique designs.
-    </p>
-
-    <h3>Preparations</h3>
-
-    <ol>
-        <li>Create a bank with ~20 Treasure tokens. We recommend using beans.</li>
-        <li>
-            Each player receives a deck of 2 Fist Fight and 2 Celebrate as well as  1 Treasure.
-            Remove all remaining Fist Fight and Celebrate from the game.
-        </li>
-        <li>
-            All remaining cards are shuffled and form the supply deck. Put 6 supply cards face up
-            in the center of the table: this is the supply. There should always be 6 cards face up so replace them as you go.
-        </li>
-    </ol>
-
-    <h3>Unfolding of the game</h3>
-
-    <p>
-        A random player start, then each player in turn:
-    </p>
-
-    <ol>
-        <li>Apply effects that happen at the beginning of turn.</li>
-        <li>Discard your hand and draw 3 cards.</li>
-        <li>You can do 2 actions of any kind during your turn. Possible actions are:
-            <ol>
-                <li>Playing a card: Apply its effects first, then put it in your discard pile.</li>
-                <li>Buying a card from the supply: It goes in your discard pile.</li>
-            </ol>
-         </li>
-        <li>When your deck is empty immediately shuffle your discard pile: this is your new deck.</li>
-    </ol>
-
-</div>
-<div class="rules">
-
-    <h3>
-        General rules
-    </h3>
-
-    <ul>
-        <li>Treasures are the money that allow you to buy cards (cost is the chest icon at the bottom right).</li>
-        <li>+1 Card: Draw a card immediately from your deck.</li>
-        <li>+1 Action: One extra action of any kind during your turn.</li>
-        <li>+1 Treasure: Take a treasure from the bank immediately.</li>
-        <li>+1 Buy: You may buy a card without using an action this turn.</li>
-        <li>+1 Supply refresh: You may change one card from the supply. Put the old one at the bottom of the supply deck.</li>
-        <li>+1 Discard: Discard a card immediately.</li>
-        <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
-        <li>Text that says "if you have an/a" checks the cards currently in your hand.</li>
-        <li>Text on the cards has to be applied in order if it matters to the type checks.</li>
-        <li>Discard piles are face up and can be inspected by anybody.</li>
-        <li>Reducing a deck to less than 4 cards is not allowed. Aside effects included.</li>
-        <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
-    </ul>
-
-    <h3>End of the game</h3>
-
-    <p>The game ends immediately when any player has more than 15 cards in total. 
-       Add the number of hooks in each deck (hook icon at the bottom left). The player with the most hooks wins the game. 
-       If there is equality, the player with the most Treasures wins, then the player with the most cards.
-    </p>
-
-</div>
+<p>
+    Deckhand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
+    the game with <span id="nbDesign"></span>  unique designs.
+</p>
 
 <div style="clear:both;padding-top:20px">
 
@@ -399,7 +386,97 @@
 
 </div>
 
+<div style="display: flex;">
+    <div class="booklet">
+        <div class="innerBooklet">         
+            <h3 style="margin-top:0">
+                Preparations
+            </h3>
+            <p>DeckHand contains: 72 cards and this booklet.</p>
+         
+             <ol>
+                 <li>Gather about 20 Treasure tokens. We recommend using beans. Give a Treasure to each player.</li>
+                 <li>
+                     Each player receives a deck of 2 Fist Fight and 2 Celebrate.
+                     Remove all remaining Fist Fight and Celebrate from the game.
+                 </li>
+                 <li>
+                     Remaining cards are shuffled and form the supply deck. Put 6 supply cards face up
+                     in the center of the table: this is the supply. There should always be 6 cards face up. Replace them as you go.
+                 </li>
+             </ol>
+
+            <div style="margin-top: 12px; position: relative;">
+                <img src="marketing/board.png" width="100%" />
+                <ol id="illustration">
+                    <li>Supply deck and supply.</li>
+                    <li>Hand.</li>
+                    <li>Deck.</li>
+                    <li>Discard pile.</li>
+                </ul>
+            </div>
+
+             <h3>Unfolding of the game</h3>
+
+             <p>
+                 A random player start, then each player in turn:
+             </p>
+         
+             <ol>
+                 <li>Apply effects that happen at the beginning of turn.</li>
+                 <li>Discard your hand and draw 3 cards.</li>
+                 <li>You can do 2 actions of any kind during your turn. Possible actions are:
+                     <ol>
+                         <li>Playing a card: Apply its effects then put it in your discard pile.</li>
+                         <li>Buying a card from the supply: It goes in your discard pile.</li>
+                     </ol>
+                  </li>
+                 <li>When your deck is empty immediately shuffle your discard pile: this is your new deck.</li>
+             </ol>
+        </div>
+    </div>
+    <div class="booklet">
+        <div class="innerBooklet">
+            <h3 style="margin-top:0">
+                General rules
+            </h3>
+        
+            <ul>
+                <li>Treasures are the money that allow you to buy cards (cost is the chest icon at the bottom right).</li>
+                <li>+1 Card: Draw a card immediately from your deck.</li>
+                <li>+1 Action: One extra action of any kind during your turn.</li>
+                <li>+1 Treasure: Take a treasure from the bank immediately.</li>
+                <li>+1 Buy: You may buy a card without using an action this turn.</li>
+                <li>+1 Supply refresh: You may change one card from the supply this turn. Put the old one at the bottom of the supply deck.</li>
+                <li>+1 Discard: Discard a card immediately.</li>
+                <li>The cards have 3 possible types: Attack, Structure, Adventure.</li>
+                <li>Text that says "if you have an/a" checks the cards currently in your hand.</li>
+                <li>Effects have to be applied in order if it matters to the type checks.</li>
+                <li>Discard piles are face up and can be inspected by anybody. Number of cards in decks is public information.</li>
+                <li>Reducing a deck to less than 4 cards is not allowed. Aside effects included.</li>
+                <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
+            </ul>
+        
+            <h3>End of the game</h3>
+        
+            <p>The game ends immediately when any player has more than 15 cards in total. 
+               Add the number of hooks in each deck (hook icon at the bottom left). The player with the most hooks wins the game. 
+               If there is equality, the player with the most Treasures wins, then the player with the most cards.
+            </p>
+        </div>
+    </div>
+</div>
+
+
+
+<!-- <div style="clear: both;">
+    <img width="240" src="https://raw.githubusercontent.com/batiste/batiste.github.io/03451c0b33ddc125cb38a1750487a939a1397f1c/pirates-2/back.png">
+    <img src="./back.png" width="240">
+</div> -->
+
 <div id="cards"></div>
+
+
 
 
 </body>
