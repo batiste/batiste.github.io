@@ -51,6 +51,9 @@
         padding: 3mm;
         border: 1px dotted red; 
         margin: calc(3mm - 1px);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     .booklet ol, .booklet ul {
@@ -366,8 +369,18 @@
         float: left;
     }
 
-    /* display: none; */
-
+    .mpc {
+        display: none;
+    }
+    
+    .rule-icon {
+        display: inline-block;
+        width: 13px;
+        background: #000;
+        border-radius: 2px;
+         margin-top: -2px;
+        margin-bottom: -2px;
+    }
 </style>
 </head>
 
@@ -389,7 +402,8 @@
 
 <div style="display: flex;">
     <div class="booklet">
-        <div class="innerBooklet">         
+        <div class="innerBooklet">     
+            <div>
             <h3 style="margin-top:0">
                 Preparations
             </h3>
@@ -424,26 +438,28 @@
                   </li>
                  <li>When your deck is empty immediately shuffle your discard pile: this is your new deck.</li>
              </ol>
+            </div>
 
-             <div style="margin-top: 16px; position: relative;">
+             <div style="margin-bottom: 20px; position: relative;">
                 <img src="marketing/board.png" width="100%" />
                 <ol id="illustration">
                     <li>Supply deck and supply.</li>
-                    <li>Player’s hand.</li>
-                    <li>Player’s deck.</li>
-                    <li>Player’s discard pile.</li>
+                    <li>Your hand and Treasures.</li>
+                    <li>Your deck.</li>
+                    <li>Your discard pile.</li>
                 </ul>
             </div>
         </div>
     </div>
     <div class="booklet">
         <div class="innerBooklet">
+            <div>
             <h3 style="margin-top:0">
                 General rules
             </h3>
         
             <ul>
-                <li>Treasures are the money that allow you to buy cards from the supply. Card cost is the chest icon at the bottom right.</li>
+                <li>Treasures are the money that allow you to buy cards from the supply. Card cost is the chest icon <img class="rule-icon" src="icons/chest.svg" /> at the bottom right.</li>
                 <li>+1 Card: Draw a card immediately from your deck.</li>
                 <li>+1 Action: One extra action of any kind during your turn.</li>
                 <li>+1 Treasure: Take a treasure from the bank immediately.</li>
@@ -453,7 +469,7 @@
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
                 <li>Text that says "if you have" checks cards currently in your hand.</li>
                 <li>Effects have to be applied in order if it matters to the type checks.</li>
-                <li>Cards being played are not in your hand nor discard pile.</li>
+                <li>Cards being played are neither in your hand nor discard pile.</li>
                 <li>Discard piles are face up and can be inspected by anybody. Number of cards in decks is public information.</li>
                 <li>A deck with less than 4 cards is not allowed. Aside effects included.</li>
                 <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
@@ -462,11 +478,14 @@
             <h3>End of the game</h3>
         
             <p>The game ends immediately when any player has more than 15 cards in total. 
-               Add the number of hooks in each deck (hook icon at the bottom left). The player with the most hooks wins the game. 
+               Add the number of hooks <img class="rule-icon" src="icons/hook.svg" /> in each deck. The player with the most hooks wins the game. 
                If there is equality, the player with the most Treasures wins, then the player with the most cards.
             </p>
+            </div>
 
-            <p>More information: https://bit.ly/dk-h</p>
+            <div>
+                Information and update: https://bit.ly/dk-h<br>
+            </div>
         </div>
     </div>
 </div>
