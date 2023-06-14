@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Deckhand - A Pirate Card Game</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Berkshire+Swash&family=Della+Respira&family=Lobster+Two:wght@400;700&family=Oleo+Script+Swash+Caps&family=Pirata+One&family=Playfair+Display&display=swap" rel="stylesheet">
+    
+    <style>
+        body {
+            font-family: "Berkshire Swash", cursive;
+            background-color: rgb(44, 44, 44);
+            color: rgb(255, 255, 255);
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1, h2 {
+            text-align: center;
+            color: #ffeab4;
+            text-shadow: 3px 3px 3px #000;
+        }
+
+        h2 { font-size: 28px; }
+        
+        #hand {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            display: inline-block;
+            width: 190px;
+            height: 264px;
+            background-color: rgb(58, 58, 58);
+            color: black;
+            border-radius: 8px;
+            margin: 5px;
+            padding: 10px;
+            font-weight: bold;
+            font-size: 18px;
+            position: relative;
+            transform-origin: bottom center;
+            margin-right: -30px;
+            box-shadow: 12px 12px 9px #111111;
+        }
+        
+        .large-card {
+            width: 200px;
+            height: 280px;
+        }
+
+        .small-card {
+            width: 165px;
+            height: 230px;
+        }
+        
+        .card img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            margin: 0 auto;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            border-radius: 5px;
+            /* object-position: 70% 15% */
+        }
+        
+        #card1 { transform: rotate(-20deg); margin-bottom: -40px; }
+        #card2 { transform: rotate(-10deg); }
+        #card3 { margin-bottom: 20px; }
+        #card4 { transform: rotate(10deg); }
+        #card5 { transform: rotate(20deg); margin-bottom: -40px; }
+        
+        #game-info {
+            margin: 0 auto;
+            max-width: 700px;
+            font-family: sans-serif;
+            margin-bottom: 50px;
+        }
+        
+        p {
+            line-height: 1.5;
+            text-align: justify;
+        }
+
+        button {
+            color: #ffffff;
+            background-color: #a83121;
+            border: none;
+            border-radius: 6px;
+            padding: 12px 20px;
+            font-size: 1.3em;
+            font-weight: 500;
+            line-height: 22px;
+            display: flex;
+            align-items: center;
+            
+            box-shadow: 2px 7px 50px -2px rgb(237, 215, 154);
+        }
+
+        button:hover {
+            box-shadow: none;
+            cursor: pointer;
+        }
+
+        #email-popup {
+            width: 400px;
+            height: 300px;
+            background: #3f3f3f;
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            margin: auto;
+            padding: 20px;  
+        }
+
+        .container-popup {
+            position: relative;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background: rgba(0,0,0,.8);
+        }
+
+        @media only screen and (max-width: 950px) {
+            .card {
+                zoom: 0.8;
+            }
+        }
+
+        @media only screen and (max-width: 765px) {
+            .card {
+                zoom: 0.5;
+            }
+        }
+
+        @media only screen and (max-width: 500px) {
+            .card {
+                zoom: 0.4;
+            }
+        }
+    </style>
+</head>
+<body>
+    <h1>DeckHand —  A Pirate Deck Builder Game</h1>
+    
+    <div id="hand">
+        <div class="card small-card" id="card1"><img src="marketing/celebrate.png" alt="Celebrate"></div>
+        <div class="card" id="card2"><img src="marketing/going-ape.png" alt="Going Ape"></div>
+        <div class="card large-card" id="card3"><img src="marketing/kraken.png" alt="Kraken"></div>
+        <div class="card" id="card4"><img src="marketing/voodoo-curse.png" alt="Voodoo Curse"></div>
+        <div class="card small-card" id="card5"><img src="marketing/quick-shot.png" alt="Quick Shot"></div>
+    </div>
+    
+    <h2>About DeckHand</h2>
+    <div id="game-info">
+
+        <p>Deckhand is an exciting card game that immerses you in a thrilling pirate adventure.
+            Your goal is to outsmart your opponents and construct the most formidable deck possible.</p>
+
+        <p>This game is easy to learn, quick to play, and accommodates 2 to 4 players. 
+            It comprises 72 cards, including 23 distinct designs.</p>
+            
+        <p>
+            Despite its apparent simplicity, the game offers a challenging mastery, 
+            with each game presenting unique dynamics based on the initial board state 
+            and player interactions.
+        </p>
+
+        <p>
+            Our design emphasis is on delivering an enjoyable, fast-paced game that provide a 
+            sense of crafting a distinctive deck with every play.
+        </p>
+
+        <div style="display: flex; align-items: center; justify-content: center;">
+            <div id="tuck-box"></div>
+
+            <p style="display: flex; flex-direction: column; margin: 15px; align-items: center;">
+                <button>Order DeckHand  </button>
+            </p>    
+        </div>
+
+        <!-- <div class="container-popup">
+            <div id="email-popup">
+                <h1>Login</h1>
+            
+                <label for="email">Email
+                    <input type="text" placeholder="Email" name="email" required>
+                </label>
+            
+                <label for="country">Country
+                    <input type="tet" placeholder="Country" name="country">
+                </label>
+            
+                <button type="submit" class="btn">Send</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </div> -->
+
+
+    </div>
+
+    <div id="hand">
+        <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Walk the Plank"></div>
+        <div class="card small-card" id="card3"><img src="marketing/useless-totem.png" alt="Useless Totem"></div>
+        <div class="card" id="card4"><img src="marketing/extravagance.png" alt="Extravagance"></div>
+        <div class="card small-card" id="card5"><img src="marketing/back.png" alt="Back"></div>
+    </div>
+    
+    <br>
+    <br>
+    <br>
+    <!-- Add any additional sections, rules, or features here -->
+    
+
+
+<script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
+
+<script type="importmap">
+  {
+    "imports": {
+      "three": "https://unpkg.com/three@0.153.0/build/three.module.js",
+      "three/addons/": "https://unpkg.com/three@0.153.0/examples/jsm/"
+    }
+  }
+</script>
+
+<script type="module" src="./main.js"></script>
+</body>
+</html>
