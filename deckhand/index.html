@@ -88,7 +88,7 @@
             text-align: justify;
         }
 
-        button {
+        a.button {
             color: #ffffff;
             background-color: #a83121;
             border: none;
@@ -99,11 +99,12 @@
             line-height: 22px;
             display: flex;
             align-items: center;
+            text-decoration: none;
             
             box-shadow: 2px 7px 50px -2px rgb(237, 215, 154);
         }
 
-        button:hover {
+        .button:hover {
             box-shadow: none;
             cursor: pointer;
         }
@@ -155,7 +156,7 @@
     
     <div id="hand">
         <div class="card small-card" id="card1"><img src="marketing/celebrate.png" alt="Celebrate"></div>
-        <div class="card" id="card2"><img src="marketing/going-ape.png" alt="Going Ape"></div>
+        <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Walk the Plank"></div>
         <div class="card large-card" id="card3"><img src="marketing/kraken.png" alt="Kraken"></div>
         <div class="card" id="card4"><img src="marketing/voodoo-curse.png" alt="Voodoo Curse"></div>
         <div class="card small-card" id="card5"><img src="marketing/quick-shot.png" alt="Quick Shot"></div>
@@ -185,9 +186,14 @@
             <div id="tuck-box"></div>
 
             <p style="display: flex; flex-direction: column; margin: 15px; align-items: center;">
-                <button>Order DeckHand  </button>
+                <a class="button" href="mailto:batiste.bieler@gmail?subject=Contact%20me%20when%20ready!&body=Yes,%20I want to be contacted when the game is ready. No SPAM!">Order DeckHand</a>
             </p>    
+        
         </div>
+
+        <!-- <div id="emailForm" style="display: none;">
+            <iframe src="https://framaforms.org/deckhand-1686840231" width="100%" height="490" border="0"></iframe>
+        </div> -->
 
         <!-- <div class="container-popup">
             <div id="email-popup">
@@ -210,7 +216,7 @@
     </div>
 
     <div id="hand">
-        <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Walk the Plank"></div>
+        <div class="card" id="card2"><img src="marketing/crooked-merchant.png" alt="Crooked Merchant"></div>
         <div class="card small-card" id="card3"><img src="marketing/useless-totem.png" alt="Useless Totem"></div>
         <div class="card" id="card4"><img src="marketing/extravagance.png" alt="Extravagance"></div>
         <div class="card small-card" id="card5"><img src="marketing/back.png" alt="Back"></div>
@@ -221,6 +227,13 @@
     <br>
     <!-- Add any additional sections, rules, or features here -->
     
+<script>
+
+    // function showForm() {
+    //     console.log('oki')
+    //     document.getElementById('emailForm').style.display = 'block';
+    // }
+</script>
 
 
 <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
