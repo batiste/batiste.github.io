@@ -25,7 +25,7 @@
 
         h2 { font-size: 28px; }
         
-        #hand {
+        .hand {
             text-align: center;
             margin-bottom: 40px;
         }
@@ -78,7 +78,7 @@
         
         #game-info {
             margin: 0 auto;
-            max-width: 700px;
+            max-width: 800px;
             font-family: sans-serif;
             margin-bottom: 50px;
         }
@@ -132,6 +132,10 @@
             background: rgba(0,0,0,.8);
         }
 
+        #box-order {
+            display: flex; align-items: center; justify-content: center;
+        }
+
         @media only screen and (max-width: 950px) {
             .card {
                 zoom: 0.8;
@@ -142,6 +146,10 @@
             .card {
                 zoom: 0.5;
             }
+
+            #box-order {
+                flex-direction: column;
+            }
         }
 
         @media only screen and (max-width: 500px) {
@@ -149,12 +157,19 @@
                 zoom: 0.4;
             }
         }
+
+        @media only screen and (max-width: 420px) {
+            .hand {
+                margin-left:-50px;
+                margin-right:-50px;
+            }
+        }
     </style>
 </head>
 <body>
     <h1>DeckHand —  A Pirate Deck Builder Game</h1>
     
-    <div id="hand">
+    <div class="hand">
         <div class="card small-card" id="card1"><img src="marketing/celebrate.png" alt="Celebrate"></div>
         <div class="card" id="card2"><img src="marketing/walk-the-plank.png" alt="Walk the Plank"></div>
         <div class="card large-card" id="card3"><img src="marketing/kraken.png" alt="Kraken"></div>
@@ -182,7 +197,7 @@
             sense of crafting a distinctive deck with every play.
         </p>
 
-        <div style="display: flex; align-items: center; justify-content: center;">
+        <div id="box-order">
             <div id="tuck-box"></div>
 
             <p style="display: flex; flex-direction: column; margin: 15px; align-items: center;">
@@ -215,7 +230,7 @@
 
     </div>
 
-    <div id="hand">
+    <div class="hand">
         <div class="card" id="card2"><img src="marketing/crooked-merchant.png" alt="Crooked Merchant"></div>
         <div class="card small-card" id="card3"><img src="marketing/useless-totem.png" alt="Useless Totem"></div>
         <div class="card" id="card4"><img src="marketing/extravagance.png" alt="Extravagance"></div>
