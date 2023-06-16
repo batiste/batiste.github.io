@@ -3,8 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const scene = new THREE.Scene();
 scene.background = new THREE.Color( 0x2c2c2c );
-const w = 400
-const h = 480
+const w = 420
+const h = 490
 const camera = new THREE.PerspectiveCamera( 50, w/h, 1, 2000 );
 
 // THREE.ColorManagement.legacyMode = false;
@@ -15,13 +15,6 @@ document.querySelector("#tuck-box").appendChild( renderer.domElement );
 
 let noAnim = false;
 let resumeAnim;
-document.querySelector("#tuck-box").addEventListener('click', () => {
-    noAnim = true;
-    clearTimeout(resumeAnim)
-    resumeAnim = setTimeout(() => {
-        noAnim = false;
-    }, 5000)
-})
 
 renderer.outputColorSpace = THREE.SRGBColorSpace;
 
@@ -42,9 +35,21 @@ camera.position.y = -0.5;
 
 const controls = new OrbitControls( camera, renderer.domElement );
 controls.enablePan = false;
-controls.enableZoom = true;
+controls.enableZoom = false;
 controls.target.set( 0, 0, 0 );
+controls.maxDistance = 9;
+controls.minDistance = 4;
 controls.update();
+
+document.querySelector("#tuck-box").addEventListener('click', () => {
+    noAnim = true;
+    controls.enableZoom = true;
+    clearTimeout(resumeAnim)
+    resumeAnim = setTimeout(() => {
+        noAnim = false;
+        controls.enableZoom = false;
+    }, 6000)
+})
 
 // camera.add(new THREE.PointLight(0xffffff, 3, Infinity));
 
