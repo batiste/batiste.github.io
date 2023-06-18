@@ -11,10 +11,10 @@
 
 <body>
 
-<h2>Deckhand (v0.9.8)</h2>
+<h2>DeckHand (v0.9.8)</h2>
 
 <p>
-    Deckhand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
+    Deckand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
     the game with <span id="nbDesign"></span>  unique designs.
 </p>
 
@@ -62,7 +62,7 @@
                      </ol>
                   </li>
                  <li>When your deck is empty immediately shuffle your discard pile into a new deck. This takes precedence over
-                    any other effect.
+                    <b>any</b> other effect.
                  </li>
              </ol>
             </div>
@@ -87,26 +87,26 @@
         
             <ul>
                 <li>Treasures are the money that allow you to buy cards from the supply. Card cost is the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
-                <li><b>+1 Card:</b> Draw a card immediately from your deck.</li>
+                <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 Action:</b> One extra action of any kind during your turn.</li>
                 <li><b>+1 Treasure:</b> Take a treasure from the bank immediately.</li>
                 <li><b>+1 Buy:</b> You may buy a card without using an action this turn.</li>
                 <li>+1 Supply refresh: You may change one card from the supply this turn. Put the old one at the bottom of the supply deck.</li>
                 <li>+1 Discard: Discard a card immediately.</li>
+                <li>Effects on cards have to be applied <b>in order</b>.</li>
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
                 <li>Text that says "if you have" checks cards currently in your hand.</li>
-                <li>Effects have to be applied in order if it matters to the type checks.</li>
                 <li>Cards being played are neither in your hand nor discard pile.</li>
-                <li>Discard piles are face up and can be inspected by anybody. Number of cards in decks is public information.</li>
+                <li>Discard piles are face up and can be inspected by anybody. Number of cards owned by players is public information.</li>
                 <li>You cannot own less than 4 cards.</li>
                 <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
             </ul>
         
             <h3>End of the game</h3>
         
-            <p>The game ends when any player owns more than 15 cards in total. Each other player play a last turn but with only one starting action.
+            <p>The game ends when any player owns more than 15 cards. He finishes his turn and each other player play a last turn but with only one starting action.
                Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with the most hooks wins the game. 
-               If there is equality, the player with the most Treasures wins, then the player that finished the game.
+               If there is equality, the player with the most Treasures wins, then the player that ended the game.
             </p>
             </div>
 
@@ -199,7 +199,7 @@
 
         {
             'title': 'Whirlpool',
-            'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard pile or top deck to their left neighbors discard.',
+            'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard pile or a blind top deck to their left neighbors discard.',
             'img': 'adventures/tornado.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -320,9 +320,9 @@
 
         {
             'title': 'Kraken',
-            'text': 'Up to 2 times, pick one effect:<br>\
+            'text': 'Pick one effect, then pick one again:<br>\
             • Steal a Treasure from any players.<br>\
-            • Put up a card from any discard pile to the bottom of their owner’s deck.',
+            • Put up a card from any discard pile at the top or bottom of its owner’s deck.',
             'img': 'attacks/kraken.png',
             'type': 'attack',
             'subtype': 'Attack',
