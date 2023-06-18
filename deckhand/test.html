@@ -14,7 +14,7 @@
 <h2>DeckHand (v0.9.8)</h2>
 
 <p>
-    Deckand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
+    DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
     the game with <span id="nbDesign"></span>  unique designs.
 </p>
 
@@ -104,7 +104,7 @@
         
             <h3>End of the game</h3>
         
-            <p>The game ends when any player owns more than 15 cards. He finishes his turn and each other player play a last turn but with only one starting action.
+            <p>The game ends when any player owns more than 15 cards. He finishes his turn and each other player plays a last turn but with only one starting action.
                Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with the most hooks wins the game. 
                If there is equality, the player with the most Treasures wins, then the player that ended the game.
             </p>
@@ -188,7 +188,7 @@
 
         {
             'title': 'Haggling',
-            'text': '+1 Supply refresh, +1 Buy.<br>You next buy this turn cost 1 less.',
+            'text': '+1 Supply refresh, +1 Buy.<br>Your next buy this turn cost 1 less.',
             'img': 'attacks/haggling.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -198,7 +198,7 @@
         },
 
         {
-            'title': 'Whirlpool',
+            'title': 'Typhoon',
             'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard pile or a blind top deck to their left neighbors discard.',
             'img': 'adventures/tornado.png',
             'type': 'adventure',
@@ -243,7 +243,7 @@
 
         {
             'title': 'Going Ape',
-            'text': '+1 Action. Swap Going Ape or a card from your hand with a card of equal cost from the supply. The new card goes in your hand.',
+            'text': '+1 Action, +1 Supply Refresh.<br>Swap Going Ape or a card from your hand with a card of equal cost from the supply. The new card goes in your hand.',
             'img': 'attacks/silverback.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -287,7 +287,7 @@
 
         {
             'title': 'Voodoo Curse',
-            'text': 'Reveal the top 3 cards of target player’s deck. Discard one, then apply its effects as if you just played it.',
+            'text': 'Reveal the top 3 cards of the target player’s deck. Discard one, then apply its effects as if you just played it.',
             'img': 'attacks/spell.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -333,7 +333,7 @@
 
         {
             'title': 'Skull island',
-            'text': 'Every player reveal the top card of their deck. You may swap one of those cards with one from the supply as long as the cost difference is less than 3.',
+            'text': 'Every player reveals the top card of their deck. You may swap one of those cards with one from the supply as long as the cost difference is less than 3.',
             'img': 'structures/skull.png',
             'type': 'structure',
             'subtype': 'Structure',
