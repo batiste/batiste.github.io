@@ -11,7 +11,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.8)</h2>
+<h2>DeckHand (v0.9.10)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -53,11 +53,11 @@
              </p>
          
              <ol>
-                 <li>Apply effects that happen at the beginning of turn.</li>
+                 <li>Apply effects that happen at the beginning of turn <img class="rule-icon" src="icons/flag.svg" />.</li>
                  <li>Discard your hand and draw 3 cards.</li>
                  <li>You have 2 of any actions during your turn which are:
                      <ol>
-                         <li>Playing a card: Apply its effects then put it in your discard pile.</li>
+                         <li>Playing a card: Apply its effects <b>then</b> put it in your discard pile.</li>
                          <li>Buying a card from the supply: It goes in your discard pile.</li>
                      </ol>
                   </li>
@@ -99,6 +99,7 @@
                 <li>Cards being played are neither in your hand nor discard pile.</li>
                 <li>Discard piles are face up and can be inspected by anybody. Number of cards owned by players is public information.</li>
                 <li>You cannot own less than 4 cards.</li>
+                <!-- <li>The flag <img class="rule-icon" src="icons/flag.svg" /> indicates an effect at the beginning of turn.</li> -->
                 <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
             </ul>
         
@@ -156,7 +157,7 @@
         {
             'title': 'Tavern',
             'text': '+1 Card if you have an Adventure.<br>+1 Treasure if you have an Attack.<br>+1 Action if you have a Structure.',
-            'img': 'adventures/tavern-2.png',
+            'img': 'adventures/tavern-3.png',
             'type': 'adventure',
             'subtype': 'Adventure',
             'victory': '1',
@@ -198,6 +199,17 @@
         },
 
         {
+            'title': 'Useless Totem',
+            'text': 'Reveal this card: Change its type until you discard it. This is not an action. It can be done at any time and only once per turn.',
+            'img': 'structures/totem.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '2',
+            'cost': '1',
+            'amount': 2
+        },
+
+        {
             'title': 'Typhoon',
             'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard pile or a blind top deck to their left neighbors discard.',
             'img': 'adventures/tornado.png',
@@ -233,7 +245,7 @@
         {
             'title': 'Exploration',
             'text': '+1 Action if you have an Adventure.<br>+1 Card, +1 Treasure.',
-            'img': 'adventures/snake-guardian-2.png',
+            'img': 'adventures/exploration.png',
             'type': 'adventure',
             'subtype': 'Adventure',
             'cost': '2',
@@ -275,6 +287,51 @@
         },
 
         {
+            'title': 'Extravagance',
+            'text': '+2 Buy.<br>OR<br>+1 Treasure, +1 Buy.',
+            'img': 'adventures/extravagance-2.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
+        },
+
+        {
+            'title': 'Shipyard',
+            'text': '+1 Treasure. You can’t gain more than 3 extra actions this turn.<br>+1 Action for each structure in your discard pile.',
+            'img': 'structures/shipyard.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
+        },
+
+        {
+            'title': 'Walk the Plank',
+            'text': 'Put a card from your hand or discard pile at the bottom of the supply: +3 Treasures.<br>OR<br>+1 Treasure.',
+            'img': 'attacks/plank.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '2',
+            'cost': '2',
+            'amount': 2
+        },
+
+        {
+            'title': 'Wind in Sails',
+            'text': '+1 Card.<br>At the start of your turn if this card is in your discard pile: Draw an extra card during you initial draw.',
+            'img': 'adventures/wind.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            'discard': true,
+        },
+
+        {
             'title': 'Seaside Citadel',
             'text': 'You can’t gain more than 3 extra actions this turn.<br>+1 Card, +2 Actions.',
             'img': 'structures/citadel.png',
@@ -293,7 +350,7 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '3',
-            'amount': 3
+            'amount': 2
         },
 
         {
@@ -304,108 +361,18 @@
             'subtype': 'Structure',
             'victory': '2',
             'cost': '3',
-            'amount': 2
+            'amount': 2,
+            'discard': true,
         },
-
-        {
-            'title': 'Wind in Sails',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard pile: Draw an extra card during you normal draw.',
-            'img': 'adventures/wind.png',
-            'type': 'adventure',
-            'subtype': 'Adventure',
-            'victory': '2',
-            'cost': '3',
-            'amount': 2
-        },
-
-        {
-            'title': 'Kraken',
-            'text': 'Pick one effect, then pick one again:<br>\
-            • Steal a Treasure from any players.<br>\
-            • Put up a card from any discard pile at the top or bottom of its owner’s deck.',
-            'img': 'attacks/kraken.png',
-            'type': 'attack',
-            'subtype': 'Attack',
-            'victory': '3',
-            'cost': '4',
-            'amount': 2
-        },
-
-        {
-            'title': 'Skull island',
-            'text': 'Every player reveals the top card of their deck. You may swap one of those cards with one from the supply as long as the cost difference is less than 3.',
-            'img': 'structures/skull.png',
-            'type': 'structure',
-            'subtype': 'Structure',
-            'victory': '3',
-            'cost': '4',
-            'amount': 1
-        },
-
 
         {
             'title': 'Crooked Merchant',
-            'text': 'Swap 2 cards between 2 discard pile as long as the cost difference is less than 2.',
+            'text': 'Swap 2 cards between 2 discard pile as long as the cost difference is less than 2.<br>OR<br>+1 Treasure.',
             'img': 'attacks/merchant.png',
             'type': 'attack',
             'subtype': 'Attack',
             'victory': '2',
             'cost': '3',
-            'amount': 2
-        },
-
-        {
-            'title': 'Useless Totem',
-            'text': 'Reveal this card: Change its type until you discard it. This is not an action. It can be done at any time and only once per turn.',
-            'img': 'structures/totem.png',
-            'type': 'structure',
-            'subtype': 'Structure',
-            'victory': '2',
-            'cost': '1',
-            'amount': 2
-        },
-
-        {
-            'title': 'Extravagance',
-            'text': '+2 Buy.<br>OR<br>+1 Treasure, +1 Buy.',
-            'img': 'adventures/extravagance-2.png',
-            'type': 'adventure',
-            'subtype': 'Adventure',
-            'victory': '2',
-            'cost': '2',
-            'amount': 2
-        },
-
-        {
-            'title': 'Shipyard',
-            'text': 'You can’t gain more than 3 extra actions this turn.<br>+1 Card. +1 Action for each structure in your discard pile.',
-            'img': 'structures/shipyard.png',
-            'type': 'structure',
-            'subtype': 'Structure',
-            'victory': '2',
-            'cost': '2',
-            'amount': 2
-        },
-
-        {
-            'title': 'Walk the Plank',
-            'text': 'Put a card from your hand or discard pile at the bottom of the supply: +3 Treasures.<br>OR<br>+1 Treasure.',
-            'img': 'attacks/plank.png',
-            'type': 'attack',
-            'subtype': 'Attack',
-            'victory': '2',
-            'cost': '3',
-            'amount': 2
-        },
-
-        {
-            'title': 'Treasure Hunt',
-            'text': '+1 Action, +1 Buy,<br>+1 Card, +1 Treasure.',
-            'img': 'adventures/treasure-hunt.png',
-            'type': 'adventure',
-            'subtype': 'Adventure',
-            'victory': '3',
-            'cost': '4',
             'amount': 2
         },
 
@@ -420,12 +387,45 @@
             'amount': 2
         },
 
+        {
+            'title': 'Kraken',
+            'text': '+1 Action. Steal a Treasure from any players. Every player reveals the top card of their deck: you may discard any of them.',
+            'img': 'attacks/kraken.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '3',
+            'cost': '4',
+            'amount': 1
+        },
+
+        {
+            'title': 'Skull island',
+            'text': 'Every player reveals the top card of their deck: you may swap one with another from the supply as long as the cost difference is less than 3.',
+            'img': 'structures/skull.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '3',
+            'cost': '4',
+            'amount': 1
+        },
+
+        {
+            'title': 'Treasure Hunt',
+            'text': '+1 Action, +1 Buy,<br>+1 Card, +1 Treasure.',
+            'img': 'adventures/hunt.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '3',
+            'cost': '4',
+            'amount': 1
+        },
+
     ]
 
     all = []
     var j = 0;
     var amount = 0;
-    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, nb_cards_necessary_total:(16 * 4 + 6 + 2)}
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, nb_cards_necessary_total:(15 * 4 + 6 + 2)}
 
     cards.forEach((c) => {
         var extra = ""
@@ -448,6 +448,10 @@
 
         if(c['subtype'] != undefined) {
             extra += `<span class="subtype">${c['subtype']}</span>`
+        }
+
+        if(c['discard'] != undefined) {
+            extra += `<span class="discard"><img src="icons/flag.svg" /></span>`
         }
 
         if(c['type'] == "attack") {

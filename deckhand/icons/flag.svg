@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="6.4769mm" height="6.4769mm" viewBox="131.74338987389046 66.95357140395352 18.3596729528764 18.3596729528764" xml:space="preserve">
+<desc>Created with Fabric.js 5.3.0</desc>
+<defs>
+</defs>
+<g transform="matrix(0.0367861383 0 0 0.0367861383 140.9232263503 76.1334078804)" id="R05Fj8f9EyhYCjpezRBm-"  >
+<filter id="SVGID_11" y="-24.8053858%" height="149.6107716%" x="-24.8053858%" width="149.6107716%" >
+	<feGaussianBlur in="SourceAlpha" stdDeviation="4.252"></feGaussianBlur>
+	<feOffset dx="14.173" dy="14.173" result="oBlur" ></feOffset>
+	<feFlood flood-color="rgb(0,0,0)" flood-opacity="1"/>
+	<feComposite in2="oBlur" operator="in" />
+	<feMerge>
+		<feMergeNode></feMergeNode>
+		<feMergeNode in="SourceGraphic"></feMergeNode>
+	</feMerge>
+</filter>
+<path style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(223,193,63); fill-rule: nonzero; opacity: 1;filter: url(#SVGID_11);" vector-effect="non-scaling-stroke"  transform=" translate(-255.984, -258.39)" d="M 256 22.438 C 125.686 22.438 20.03 128.09199999999998 20.03 258.406 C 20.03 388.721 125.686 494.344 256 494.344 C 257.483 494.344 258.96 494.34 260.438 494.314 L 341.188 291.374 C 144.107 203.56 256.543 420.788 38.906 313.5 C 48.208 273.127 70.11099999999999 182.325 90.06299999999999 152.03 C 310.688 260.79200000000003 195.26799999999997 38.095 403.875 135.78 C 407.071 131.26 411.033 128.704 414.75 127.875 C 422.71 126.098 429.02 132.745 424.688 145.405 L 286.938 492.313 C 402.635 477.163 491.938 378.236 491.938 258.40599999999995 C 491.938 128.09199999999996 386.31399999999996 22.43599999999995 256 22.43599999999995 z M 395.625 154.468 C 359.515 171.411 337.657 238.38799999999998 348.345 273.313 L 395.625 154.469 z" stroke-linecap="round" />
+</g>
+</svg>

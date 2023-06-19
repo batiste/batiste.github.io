@@ -57,7 +57,7 @@ a, a:visited {
 }
 
 .booklet li {
-    margin-left: 1.3em;
+    margin-left: 1.20em;
     margin-bottom: 0.22em;
 }
 
@@ -182,7 +182,7 @@ a, a:visited {
 }
 
 .card .subtype {
-    font-family: 'Della Respira', serif;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size: 10px;
     position: absolute;
     right:26mm;
@@ -196,6 +196,21 @@ a, a:visited {
     border-radius: 5px;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.70);
     padding-bottom: 0.4mm;
+    display: flex;
+    align-content: center;
+    flex-direction: column;
+}
+
+.card .discard {
+    position: absolute;
+    background-color: rgba(17, 15, 13, 0.91);
+    top:5mm;
+    right:5mm;
+    padding: 1mm;
+    width: 16px;
+    height: 16px;
+    border-radius: 0 0 0 3px;
+    text-align: center;
     display: flex;
     align-content: center;
     flex-direction: column;
