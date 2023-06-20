@@ -11,7 +11,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.10)</h2>
+<h2>DeckHand (v0.9.11)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -53,15 +53,15 @@
              </p>
          
              <ol>
-                 <li>Apply effects that happen at the beginning of turn <img class="rule-icon" src="icons/flag.svg" />.</li>
+                 <li>Apply effects that happen at the beginning of turn <img class="rule-icon" src="icons/bookmark.svg" />.</li>
                  <li>Discard your hand and draw 3 cards.</li>
                  <li>You have 2 of any actions during your turn which are:
                      <ol>
-                         <li>Playing a card: Apply its effects <b>then</b> put it in your discard pile.</li>
-                         <li>Buying a card from the supply: It goes in your discard pile.</li>
+                         <li>Playing a card: Apply its effects <b>then</b> put it in your discard.</li>
+                         <li>Buying a card from the supply: It goes in your discard.</li>
                      </ol>
                   </li>
-                 <li>When your deck is empty immediately shuffle your discard pile into a new deck. This takes precedence over
+                 <li>When your deck is empty immediately shuffle your discard into a new deck. This takes precedence over
                     <b>any</b> other effect.
                  </li>
              </ol>
@@ -73,7 +73,7 @@
                     <li>Supply deck and supply.</li>
                     <li>Your hand and Treasures.</li>
                     <li>Your deck.</li>
-                    <li>Your discard pile.</li>
+                    <li>Your discard.</li>
                 </ul>
             </div>
         </div>
@@ -96,11 +96,12 @@
                 <li>Effects on cards have to be applied <b>in order</b>.</li>
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
                 <li>Text that says "if you have" checks cards currently in your hand.</li>
-                <li>Cards being played are neither in your hand nor discard pile.</li>
-                <li>Discard piles are face up and can be inspected by anybody. Number of cards owned by players is public information.</li>
+                <li>Cards being played are neither in your hand nor your discard.</li>
+                <li>You can only Discard cards in your hand.</li>
+                <li>Your discard is face up and can be inspected by anybody. The number of cards owned by players is public information.</li>
                 <li>You cannot own less than 4 cards.</li>
                 <!-- <li>The flag <img class="rule-icon" src="icons/flag.svg" /> indicates an effect at the beginning of turn.</li> -->
-                <li>When a deck/pile is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
+                <li>When a deck/discard/hand is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
             </ul>
         
             <h3>End of the game</h3>
@@ -177,6 +178,28 @@
         },
 
         {
+            'title': 'Poisoned Grog',
+            'text': '+1 Treasure.<br>If you Discard this card: +1 Treasure',
+            'img': 'attacks/poison.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'cost': 1,
+            'victory': 1,
+            'amount': 1,
+        },
+
+        {
+            'title': 'Beach Bum',
+            'text': '+2 Treasures if you are one of the player with the least amount of cards.',
+            'img': 'adventures/beach-bum.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 1
+        },
+
+        {
             'title': 'Governor’s Wedding',
             'text': '+1 Treasure.<br>On his next turn, target player gets +1 Buy and must give you a Treasure before his first buy.',
             'img': 'structures/wedding.png',
@@ -200,7 +223,7 @@
 
         {
             'title': 'Useless Totem',
-            'text': 'Reveal this card: Change its type until you discard it. This is not an action. It can be done at any time and only once per turn.',
+            'text': 'Reveal this card: Change its type until you Discard it. This is not an action. It can be done at any time and only once per turn.',
             'img': 'structures/totem.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -211,7 +234,7 @@
 
         {
             'title': 'Typhoon',
-            'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard pile or a blind top deck to their left neighbors discard.',
+            'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard or a blind top deck to their left neighbors discard.',
             'img': 'adventures/tornado.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -221,8 +244,19 @@
         },
 
         {
+            'title': 'Alchemist',
+            'text': 'Discard any number of cards, get that many Treasures.<br>+1 Card.',
+            'img': 'adventures/alchemist.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'cost': 2,
+            'victory': 2,
+            'amount': 1,
+        },
+
+        {
             'title': 'Hideout',
-            'text': '+2 Cards, +1 Treasure.<br> The first time you must discard this card from your hand, you may not.',
+            'text': '+2 Cards, +1 Treasure.<br>The first time you Discard Hideout you may not and still pretend it happened.',
             'img': 'structures/hideout.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -277,7 +311,7 @@
 
         {
             'title': 'Lost Expedition',
-            'text': 'Put a card from any discard pile aside with a Treasure on it. When the discard pile is shuffled take the Treasure and put the card back in the new discard pile.',
+            'text': 'Put a card from any discard aside with a Treasure on it. When the discard is shuffled take the Treasure and put the card back in the new discard.',
             'img': 'adventures/lost-expedition.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -299,7 +333,7 @@
 
         {
             'title': 'Shipyard',
-            'text': '+1 Treasure. You can’t gain more than 3 extra actions this turn.<br>+1 Action for each structure in your discard pile.',
+            'text': '+1 Treasure. You can’t gain more than 3 extra actions this turn.<br>+1 Action for each structure in your discard.',
             'img': 'structures/shipyard.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -310,7 +344,7 @@
 
         {
             'title': 'Walk the Plank',
-            'text': 'Put a card from your hand or discard pile at the bottom of the supply: +3 Treasures.<br>OR<br>+1 Treasure.',
+            'text': 'Put a card from your hand or discard at the bottom of the supply: +3 Treasures.<br>OR<br>+1 Treasure.',
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -321,7 +355,7 @@
 
         {
             'title': 'Wind in Sails',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard pile: Draw an extra card during you initial draw.',
+            'text': '+1 Card.<br>At the start of your turn if this card is in your discard: Draw an extra card during you initial draw.',
             'img': 'adventures/wind.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -344,7 +378,7 @@
 
         {
             'title': 'Voodoo Curse',
-            'text': 'Reveal the top 3 cards of the target player’s deck. Discard one, then apply its effects as if you just played it.',
+            'text': 'Reveal the top 3 cards of the target player’s deck. Put one in their discard, then apply its effects as if you just played it.',
             'img': 'attacks/spell.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -355,7 +389,7 @@
 
         {
             'title': 'Smuggler’s Cache',
-            'text': '+1 Treasure.<br>At the start of your turn if this card is in your discard pile: +1 Treasure.',
+            'text': '+1 Treasure.<br>At the start of your turn if this card is in your discard: +1 Treasure.',
             'img': 'structures/smugglers-cache.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -366,8 +400,20 @@
         },
 
         {
+            'title': 'Bank',
+            'text': '+2 Treasures.<br>If you discard this card: +1 Action.',
+            'img': 'structures/bank.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            // 'discard': true,
+        },
+
+        {
             'title': 'Crooked Merchant',
-            'text': 'Swap 2 cards between 2 discard pile as long as the cost difference is less than 2.<br>OR<br>+1 Treasure.',
+            'text': 'Swap 2 cards between 2 discard as long as the cost difference is less than 2.<br>OR<br>+1 Treasure.',
             'img': 'attacks/merchant.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -378,7 +424,7 @@
 
         {
             'title': 'Merfolk Mercenary',
-            'text': 'Pay 1 Treasure: Reveal the top 2 cards of the supply and put one that cost less than 4 in your discard pile.',
+            'text': 'Pay 1 Treasure: Reveal the top 2 cards of the supply and put one that cost less than 4 in your discard.',
             'img': 'adventures/merfolk-2.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -389,7 +435,7 @@
 
         {
             'title': 'Kraken',
-            'text': '+1 Action. Steal a Treasure from any players. Every player reveals the top card of their deck: you may discard any of them.',
+            'text': '+1 Action. Steal a Treasure from any players. Put up to 2 cards from any discard at the bottom of their owner’s deck.',
             'img': 'attacks/kraken.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -451,7 +497,7 @@
         }
 
         if(c['discard'] != undefined) {
-            extra += `<span class="discard"><img src="icons/flag.svg" /></span>`
+            extra += `<span class="discard"><img src="icons/bookmark-yello.svg" /></span>`
         }
 
         if(c['type'] == "attack") {

@@ -203,13 +203,15 @@ a, a:visited {
 
 .card .discard {
     position: absolute;
-    background-color: rgba(17, 15, 13, 0.91);
-    top:5mm;
-    right:5mm;
-    padding: 1mm;
-    width: 16px;
-    height: 16px;
-    border-radius: 0 0 0 3px;
+    background-color: rgba(0, 0, 0, 0.458);
+    top:5.1mm;
+    left:5mm;
+    padding: 1.1mm;
+    padding-bottom: 0.4mm;
+    padding-right: 0.8mm;
+    width: 15px;
+    height: 15px;
+    border-radius: 0 0 3px 0;
     text-align: center;
     display: flex;
     align-content: center;
@@ -378,7 +380,7 @@ a, a:visited {
 }
 
 .mpc {
-    display: none;
+    /* display: none; */
 }
 
 .rule-icon {
