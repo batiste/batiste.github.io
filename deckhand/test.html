@@ -26,7 +26,7 @@
 </div>
 
 <div style="display: flex;">
-    <div class="booklet">
+    <div class="booklet" id="face" title="booklet-face">
         <div class="innerBooklet">     
             <div>
             <h3 style="margin-top:0">
@@ -78,7 +78,7 @@
             </div>
         </div>
     </div>
-    <div class="booklet">
+    <div class="booklet" id="back"  title="booklet-back">
         <div class="innerBooklet">
             <div>
             <h3 style="margin-top:0">
@@ -118,6 +118,9 @@
         </div>
     </div>
 </div>
+
+<button onclick="downloadBookletFace()">Download booklet face</button>
+<button onclick="downloadBookletBack()">Download booklet back</button>
 
 
 
@@ -190,7 +193,7 @@
 
         {
             'title': 'Beach Bum',
-            'text': '+2 Treasures if you are one of the player with the least amount of cards.',
+            'text': '+2 Treasures if you are one of the player that owns the least amount of cards.',
             'img': 'adventures/beach-bum.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -355,7 +358,7 @@
 
         {
             'title': 'Wind in Sails',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard: Draw an extra card during you initial draw.',
+            'text': '+1 Card.<br>At the start of your turn if this card is in your discard: Draw an extra card during your initial draw.',
             'img': 'adventures/wind.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -363,6 +366,18 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
+        },
+
+        {
+            'title': 'Bank',
+            'text': '+2 Treasures.<br>If you discard this card: +1 Action.',
+            'img': 'structures/bank.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            // 'discard': true,
         },
 
         {
@@ -397,18 +412,6 @@
             'cost': '3',
             'amount': 2,
             'discard': true,
-        },
-
-        {
-            'title': 'Bank',
-            'text': '+2 Treasures.<br>If you discard this card: +1 Action.',
-            'img': 'structures/bank.png',
-            'type': 'structure',
-            'subtype': 'Structure',
-            'victory': '2',
-            'cost': '2',
-            'amount': 1,
-            // 'discard': true,
         },
 
         {
@@ -567,6 +570,18 @@
         })
     }
 
+    function downloadBookletFace(e) {
+        createImage(document.getElementById('face'), (canvas, title) => {
+            download(canvas.toDataURL("image/png"), title);
+        })
+    }
+
+    function downloadBookletBack(e) {
+        createImage(document.getElementById('back'), (canvas, title) => {
+            download(canvas.toDataURL("image/png"), title);
+        })
+    }
+
     function createImage(card, cb) {
         card.classList.add('preparePrint')
         setTimeout(() => {
@@ -574,14 +589,16 @@
                 // canvas.width = 2220
                 // canvas.height = 1632
                 document.body.appendChild(canvas);
-                var title = card.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
+                if(card.title) {
+                    var title = card.title;
+                } else {
+                    var title = card.querySelector('.title').textContent.toLocaleLowerCase().replace(' ', '-')
+                }
                 cb(canvas, title);
                 // canvas.remove()
             })
         }, 100)
     }
-
-    console.log(cards.length)
 </script>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
