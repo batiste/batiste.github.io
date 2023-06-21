@@ -3,8 +3,8 @@ import * as THREE from 'three';
 import { OrbitControls } from 'three/addons/controls/OrbitControls.js';
 const scene = new THREE.Scene();
 scene.background = new THREE.Color( 0x2c2c2c );
-const w = Math.min(document.body.clientWidth - 30, 400)
-const h = 490
+const w = Math.min(document.body.clientWidth - 30, 600)
+const h = 600
 const camera = new THREE.PerspectiveCamera( 50, w/h, 1, 2000 );
 
 // THREE.ColorManagement.legacyMode = false;
