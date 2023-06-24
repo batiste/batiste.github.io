@@ -128,6 +128,7 @@ a, a:visited {
     left:0;
     opacity: 0.01;
 }
+
 .card .title {
     font-family: 'Lobster Two', cursive;
     letter-spacing: 0.1px;
@@ -136,22 +137,20 @@ a, a:visited {
     right:0;
     top:56mm;
     left:0;
-    color: #DFC13F;
-    color: #ECEAC2;
-    color: #fff1b4;
+    color: #fff9d8;
     text-align: center;
-    text-shadow: 1px 2px black;
+    text-shadow: 1px 2px 1px black;
 }
+
 .card .text {
     position: absolute;
-    font-family: 'Della Respira', serif;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size:9.5px;
     right:9mm;
     top:56.5mm;
     left:9mm;
     bottom:10.5mm;
-    color: #fff3d0;
+    color: #fffdf2;
     text-align: center;
     text-shadow: 0.5px 0.5px black;
     display: flex;
@@ -189,9 +188,9 @@ a, a:visited {
     right:26mm;
     top:83.2mm;
     left:26mm;
-    color: #ECEAC2;
+    color: #fff9d8;
     text-align: center;
-    text-shadow: 1px 1px black;
+    text-shadow: 1px 1px 1px black;
     background-color: rgba(17, 15, 13, 0.91);
     border: 1px solid rgba(231, 185, 48, 0.9);
     border-radius: 5px;
