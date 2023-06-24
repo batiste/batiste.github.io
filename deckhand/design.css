@@ -378,6 +378,7 @@ a, a:visited {
 
 #illustration li {
     float: left;
+    margin-right: 5px;
 }
 
 .mpc {
