@@ -362,7 +362,7 @@ a, a:visited {
     border-radius: 0;
 }
 .preparePrint.card .subtype {
-    padding-bottom: 0.5mm;
+    padding-bottom: 1mm;
 }
 
 .preparePrint .back {
