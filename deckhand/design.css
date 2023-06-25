@@ -139,7 +139,7 @@ a, a:visited {
     left:0;
     color: #fff9d8;
     text-align: center;
-    text-shadow: 1px 2px 1px black;
+    text-shadow: 1.3px 1.4px black;
 }
 
 .card .text {
@@ -248,7 +248,7 @@ a, a:visited {
 
 .cost {
     font-family: 'Lobster Two', cursive;
-    color: #fff2ca;
+    color: #ffffff;
     font-size: 15px;
     position: absolute;
     left: 57.6mm;
@@ -264,7 +264,7 @@ a, a:visited {
 
 .hook {
     font-family: 'Lobster Two', cursive;
-    color: #fff2ca;
+    color: #ffffff;
     font-size: 15px;
     position: absolute;
     left: 16mm;

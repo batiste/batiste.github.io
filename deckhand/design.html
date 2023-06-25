@@ -41,8 +41,10 @@
                      Remove all remaining Fist Fight and Celebrate from the game.
                  </li>
                  <li>
-                     Remaining cards are shuffled and form the supply deck. Put 6 supply cards face up
-                     in the center of the table: this is the supply. There should always be 6 cards face up. Replace them as you go.
+                     Shuffle and take 11 cards per player to form the supply deck.
+                     The rest are the refresh deck.
+                     Put 6 cards from the refresh deck face up on the table as the supply. 
+                     Always maintain 6 face-up cards and replace them from the <b>supply</b> deck.
                  </li>
              </ol>
 
@@ -70,10 +72,12 @@
              <div style="margin-bottom: 20px; position: relative;">
                 <img src="marketing/board.png" width="105%" style="margin-left: -2.5%" />
                 <ol id="illustration">
-                    <li>Supply deck and supply.</li>
-                    <li>Your hand and Treasures.</li>
-                    <li>Your deck.</li>
-                    <li>Your discard.</li>
+                    <li>Supply deck</li>
+                    <li>Refresh deck</li>
+                    <li>Supply</li>
+                    <li>Hand + Treasures</li>
+                    <li>Your deck</li>
+                    <li>Your discard</li>
                 </ul>
             </div>
         </div>
@@ -89,16 +93,17 @@
                 <li>Treasures are the money that allow you to buy cards from the supply. Card cost is the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
                 <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 Action:</b> One extra action of any kind during your turn.</li>
-                <li><b>+1 Treasure:</b> Take a treasure from the bank immediately.</li>
+                <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
                 <li><b>+1 Buy:</b> You may buy a card without using an action this turn.</li>
-                <li>+1 Supply refresh: You may change one card from the supply this turn. Put the old one at the bottom of the supply deck.</li>
+                <li>+1 Supply refresh: You may put one supply at the bottom of the refresh deck this turn. 
+                    Replace it with a <b>refresh</b> deck card.</li>
                 <li>+1 Discard: Discard a card immediately.</li>
                 <li>Effects on cards have to be applied <b>in order</b>.</li>
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
                 <li>Text that says "if you have" checks cards currently in your hand.</li>
                 <li>Cards being played are neither in your hand nor your discard.</li>
                 <li>You can only Discard cards in your hand.</li>
-                <li>Your discard is face up and can be inspected by anybody. The number of cards owned by players is public information.</li>
+                <li>Your discard is face up and can be inspected by anybody.</li>
                 <li>You cannot own less than 4 cards.</li>
                 <!-- <li>The flag <img class="rule-icon" src="icons/flag.svg" /> indicates an effect at the beginning of turn.</li> -->
                 <li>When a deck/discard/hand is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
@@ -106,7 +111,7 @@
         
             <h3>End of the game</h3>
         
-            <p>The game ends when any player owns more than 15 cards. He finishes his turn and each other player plays a last turn but with only one starting action.
+            <p>The game ends immediately when the supply deck is empty.
                Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with the most hooks wins the game. 
                If there is equality, the player with the most Treasures wins, then the player that ended the game.
             </p>
@@ -347,7 +352,7 @@
 
         {
             'title': 'Walk the Plank',
-            'text': 'Put a card from your hand or discard at the bottom of the supply: +3 Treasures.<br>OR<br>+1 Treasure.',
+            'text': 'Remove a card from your hand or discard from the game: +3 Treasures.<br>OR<br>+1 Treasure.',
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',

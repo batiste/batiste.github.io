@@ -3096,6 +3096,7 @@
                     blur: ZERO_LENGTH
                 };
                 var c = 0;
+                console.log(values);
                 for (var i = 0; i < values.length; i++) {
                     var token = values[i];
                     if (isLength(token)) {
@@ -6754,7 +6755,8 @@
                                             _this.ctx.shadowColor = asString(textShadow.color);
                                             _this.ctx.shadowOffsetX = textShadow.offsetX.number * _this.options.scale;
                                             _this.ctx.shadowOffsetY = textShadow.offsetY.number * _this.options.scale;
-                                            _this.ctx.shadowBlur = textShadow.blur.number;
+                                            console.log(textShadow.blur.number, _this.options.scale)
+                                            _this.ctx.shadowBlur = textShadow.blur.number * _this.options.scale;
                                             _this.renderTextWithLetterSpacing(text, styles.letterSpacing, baseline);
                                         });
                                         _this.ctx.shadowColor = '';
