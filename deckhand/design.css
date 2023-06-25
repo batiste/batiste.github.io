@@ -39,7 +39,7 @@ a, a:visited {
 
 .innerBooklet {
     padding: 3mm;
-    /* border: 1px dotted red;  */
+    border: 1px dotted red;
     margin: calc(3mm - 1px);
     margin: 3mm;
     display: flex;
@@ -55,18 +55,18 @@ a, a:visited {
 .booklet ol ol {
     margin-top: 2px;
     margin-bottom: 3px;
-}
+}   
 
 .booklet li {
-    margin-left: 1.20em;
-    margin-bottom: 0.22em;
+    margin-left: 11px;
+    padding-top: 2px;
 }
 
 .booklet h3 {
     font-family: 'Lobster Two', cursive;
     font-size: 14px;
-    margin-bottom: 0.34em;
-    margin-top: 0.65em;
+    margin-bottom: 5px;
+    margin-top: 10px;
 }
 
 .booklet p {

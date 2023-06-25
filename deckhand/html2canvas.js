@@ -3096,7 +3096,6 @@
                     blur: ZERO_LENGTH
                 };
                 var c = 0;
-                console.log(values);
                 for (var i = 0; i < values.length; i++) {
                     var token = values[i];
                     if (isLength(token)) {
@@ -5482,6 +5481,7 @@
             var declaration = new CSSParsedPseudoDeclaration(this.context, style);
             var anonymousReplacedElement = document.createElement('html2canvaspseudoelement');
             copyCSSStyles(style, anonymousReplacedElement);
+            console.log('OKI')
             declaration.content.forEach(function (token) {
                 if (token.type === 0 /* STRING_TOKEN */) {
                     anonymousReplacedElement.appendChild(document.createTextNode(token.value));
@@ -5500,6 +5500,7 @@
                         }
                     }
                     else if (token.name === 'counter') {
+                        console.log('counter')
                         var _a = token.values.filter(nonFunctionArgSeparator), counter = _a[0], counterStyle = _a[1];
                         if (counter && isIdentToken(counter)) {
                             var counterState = _this.counters.getCounterValue(counter.value);
@@ -6250,6 +6251,7 @@
     var processListItems = function (owner, elements) {
         var numbering = owner instanceof OLElementContainer ? owner.start : 1;
         var reversed = owner instanceof OLElementContainer ? owner.reversed : false;
+        console.log('processListItems')
         for (var i = 0; i < elements.length; i++) {
             var item = elements[i];
             if (item.container instanceof LIElementContainer &&
@@ -6257,6 +6259,7 @@
                 item.container.value !== 0) {
                 numbering = item.container.value;
             }
+            console.log(numbering, item.container.styles.listStyleType)
             item.listValue = createCounterText(numbering, item.container.styles.listStyleType, true);
             numbering += reversed ? -1 : 1;
         }
@@ -6755,7 +6758,6 @@
                                             _this.ctx.shadowColor = asString(textShadow.color);
                                             _this.ctx.shadowOffsetX = textShadow.offsetX.number * _this.options.scale;
                                             _this.ctx.shadowOffsetY = textShadow.offsetY.number * _this.options.scale;
-                                            console.log(textShadow.blur.number, _this.options.scale)
                                             _this.ctx.shadowBlur = textShadow.blur.number * _this.options.scale;
                                             _this.renderTextWithLetterSpacing(text, styles.letterSpacing, baseline);
                                         });
@@ -6968,13 +6970,17 @@
                         case 18: return [3 /*break*/, 20];
                         case 19:
                             if (paint.listValue && container.styles.listStyleType !== -1 /* NONE */) {
+                                console.log('-->>',paint.listValue, styles)
                                 fontFamily = this.createFontStyle(styles)[0];
                                 this.ctx.font = fontFamily;
                                 this.ctx.fillStyle = asString(styles.color);
                                 this.ctx.textBaseline = 'middle';
                                 this.ctx.textAlign = 'right';
-                                bounds = new Bounds(container.bounds.left, container.bounds.top + getAbsoluteValue(container.styles.paddingTop, container.bounds.width), container.bounds.width, computeLineHeight(styles.lineHeight, styles.fontSize.number) / 2 + 1);
-                                this.renderTextWithLetterSpacing(new TextBounds(paint.listValue, bounds), styles.letterSpacing, computeLineHeight(styles.lineHeight, styles.fontSize.number) / 2 + 2);
+                                // BIG HACK
+                                var baselineRatio = 1.35
+                                var lineHeight = computeLineHeight(styles.lineHeight, styles.fontSize.number)
+                                bounds = new Bounds(container.bounds.left, container.bounds.top + getAbsoluteValue(container.styles.paddingTop, container.bounds.width), container.bounds.width, lineHeight);
+                                this.renderTextWithLetterSpacing(new TextBounds(paint.listValue, bounds), styles.letterSpacing, lineHeight / 2 + 2);
                                 this.ctx.textBaseline = 'bottom';
                                 this.ctx.textAlign = 'left';
                             }
