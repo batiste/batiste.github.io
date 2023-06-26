@@ -365,6 +365,14 @@ a, a:visited {
     padding-bottom: 1mm;
 }
 
+.preparePrint.card .title {
+    top: 55.7mm;
+}
+
+.preparePrint.card .text {
+    top: 56.0mm;
+}
+
 .preparePrint .back {
     display: none;
 }
