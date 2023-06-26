@@ -38,10 +38,10 @@ a, a:visited {
 }
 
 .innerBooklet {
-    padding: 3mm;
+    padding: 1mm;
     border: 1px dotted red;
     margin: calc(3mm - 1px);
-    margin: 3mm;
+    margin: 5mm;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -58,7 +58,7 @@ a, a:visited {
 }   
 
 .booklet li {
-    margin-left: 11px;
+    margin-left: 15px;
     padding-top: 2px;
 }
 
@@ -204,7 +204,7 @@ a, a:visited {
 .card .discard {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.458);
-    top:5.1mm;
+    top:5mm;
     left:5mm;
     padding: 1.1mm;
     padding-bottom: 0.4mm;
@@ -361,20 +361,12 @@ a, a:visited {
 .preparePrint.card .bg {
     border-radius: 0;
 }
-.preparePrint.card .subtype {
-    padding-bottom: 1mm;
-}
-
-.preparePrint.card .title {
-    top: 55.7mm;
-}
-
-.preparePrint.card .text {
-    top: 56.0mm;
-}
-
 .preparePrint .back {
     display: none;
+}
+
+.preparePrint .innerBooklet {
+    border: 0;
 }
 
 #illustration {
