@@ -1,3 +1,5 @@
+/* Batiste Bieler 2023 */
+
 html {
     background-color: 2a2a2a;
     -webkit-print-color-adjust: exact;
@@ -37,7 +39,7 @@ a, a:visited {
     margin: 10px;
     zoom: 1;
     display: flex;
-    background-image: url('marketing/booklet.png');
+    background-image: url('booklet.png');
     background-size: 100% 100%;
 }
 
