@@ -9,7 +9,7 @@ const camera = new THREE.PerspectiveCamera( 50, w/h, 1, 2000 );
 
 // THREE.ColorManagement.legacyMode = false;
 
-const renderer = new THREE.WebGLRenderer({ antialias: false });
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(w, h);
 document.querySelector("#tuck-box").appendChild( renderer.domElement );
 
@@ -73,7 +73,7 @@ function getMaterial(text) {
     text.anisotropy = renderer.capabilities.getMaxAnisotropy();
     text.colorSpace = THREE.SRGBColorSpace;
     text.magFilter = THREE.NearestFilter;
-    return new THREE.MeshStandardMaterial({ map: text, roughness: 0.3, metalness: 0.0, emissiveIntensity: 9 })
+    return new THREE.MeshStandardMaterial({ map: text, roughness: 0.35, metalness: 0.0, emissiveIntensity: 9 })
 }
 
 const frontMat = getMaterial(front)
