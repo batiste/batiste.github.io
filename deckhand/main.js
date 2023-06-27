@@ -22,11 +22,11 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 // hemiLight.position.set( 0, 20, 0 );
 // scene.add( hemiLight );
 
-const light1 = new THREE.DirectionalLight( 0xffffff, 0.8 );
+const light1 = new THREE.DirectionalLight( 0xffffff, 0.5 );
 light1.position.set( 1, 3, 4 );
 scene.add( light1 );
 
-const light2 = new THREE.DirectionalLight( 0xffffff, 0.8 );
+const light2 = new THREE.DirectionalLight( 0xffffff, 0.5 );
 light2.position.set( -1, -3, -4 );
 scene.add( light2 );
 
@@ -53,7 +53,7 @@ document.querySelector("#tuck-box").addEventListener('click', () => {
 
 // camera.add(new THREE.PointLight(0xffffff, 3, Infinity));
 
-const light = new THREE.AmbientLight( 0xffffff, 1.0 ); // soft white light
+const light = new THREE.AmbientLight( 0xffffff, 0.8 ); // soft white light
 scene.add( light );
 
 // White directional light at half intensity shining from the top.
@@ -63,7 +63,8 @@ scene.add( light );
 const loader = new THREE.TextureLoader();
 loader.setPath( 'marketing/box/' );
 const front = loader.load('front.png')
-const side = loader.load('side.png')
+const left = loader.load('left.png')
+const right = loader.load('right.png')
 const back = loader.load('back.png')
 const top = loader.load('top.png')
 const bottom = loader.load('bottom.png')
@@ -72,18 +73,19 @@ function getMaterial(text) {
     text.anisotropy = renderer.capabilities.getMaxAnisotropy();
     text.colorSpace = THREE.SRGBColorSpace;
     text.magFilter = THREE.NearestFilter;
-    return new THREE.MeshStandardMaterial({ map: text, roughness: 0.4, metalness: 0.0, emissiveIntensity: 10 })
+    return new THREE.MeshStandardMaterial({ map: text, roughness: 0.3, metalness: 0.0, emissiveIntensity: 9 })
 }
 
 const frontMat = getMaterial(front)
-const sideMat = getMaterial(side)
+const leftMat = getMaterial(left)
+const rightMat = getMaterial(right)
 const backMat = getMaterial(back)
 const topMat = getMaterial(top)
 const bottomMat = getMaterial(bottom)
 
 const cubeMaterials = [
-    sideMat, //right side
-    sideMat, //left side
+    rightMat, //right side
+    leftMat, //left side
     topMat, //top side
     bottomMat, //bottom side
     frontMat, //front side
