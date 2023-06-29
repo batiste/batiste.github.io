@@ -22,11 +22,11 @@ renderer.outputColorSpace = THREE.SRGBColorSpace;
 // hemiLight.position.set( 0, 20, 0 );
 // scene.add( hemiLight );
 
-const light1 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+const light1 = new THREE.DirectionalLight( 0xffffff, 0.55 );
 light1.position.set( 1, 3, 4 );
 scene.add( light1 );
 
-const light2 = new THREE.DirectionalLight( 0xffffff, 0.5 );
+const light2 = new THREE.DirectionalLight( 0xffffff, 0.55 );
 light2.position.set( -1, -3, -4 );
 scene.add( light2 );
 
@@ -53,7 +53,7 @@ document.querySelector("#tuck-box").addEventListener('click', () => {
 
 // camera.add(new THREE.PointLight(0xffffff, 3, Infinity));
 
-const light = new THREE.AmbientLight( 0xffffff, 0.8 ); // soft white light
+const light = new THREE.AmbientLight( 0xffffff, 0.9 ); // soft white light
 scene.add( light );
 
 // White directional light at half intensity shining from the top.

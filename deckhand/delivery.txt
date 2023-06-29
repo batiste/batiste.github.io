@@ -19,9 +19,21 @@ Spain:      €12,99	12-18 business days
 Slovenia:   €12,99	12-18 business days
 China:      €9,29	7-10 business days
 Iceland:    €12,99	19-22 business days
+Australia:  €12,99  10-18 business days
+Egypt:      €12,99	17-34 business days
+Turkey:     €12,99	17-34 business days
 
 
 
 1    package: 10$/p
 100  package: 1.5$/p
 1000 package: 0.8$/p
+
+
+France
+
+1    package: 12.99,  12.99/p
+2    package: 18.99,  9.49/p
+3    package: 27.99,  9.33/p
+5    package: 37,99,  7.59/p
+10   package: 49.99,  4.99/p
