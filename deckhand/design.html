@@ -195,6 +195,7 @@
             'cost': 1,
             'victory': 1,
             'amount': 1,
+            'discard': true,
         },
 
         {
@@ -393,7 +394,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'discard': true,
+            'start': true,
         },
 
         {
@@ -405,7 +406,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'discard': true,
+            'start': true,
         },
 
         {
@@ -417,6 +418,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
+            'discard': true,
         },
 
         {
@@ -450,7 +452,7 @@
             'victory': '2',
             'cost': '3',
             'amount': 2,
-            'discard': true,
+            'start': true,
         },
 
         {
@@ -473,7 +475,7 @@
             'victory': '2',
             'cost': '3',
             'amount': 1,
-            'discard': true,
+            'start': true,
         },
 
         {
@@ -572,8 +574,12 @@
             extra += `<span class="subtype">${c['subtype']}</span>`
         }
 
+        if(c['start'] != undefined) {
+            extra += `<span class="start"><img src="icons/bookmark-yellow.svg" /></span>`
+        }
+
         if(c['discard'] != undefined) {
-            extra += `<span class="discard"><img src="icons/bookmark-yellow.svg" /></span>`
+            extra += `<span class="discard"><img src="icons/card-discard-yellow.svg" /></span>`
         }
 
         if(c['type'] == "attack") {

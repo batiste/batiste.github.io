@@ -205,7 +205,7 @@ a, a:visited {
     flex-direction: column;
 }
 
-.card .discard {
+.card .discard, .card .start {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.458);
     top:5mm;
