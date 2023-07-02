@@ -173,6 +173,7 @@ a, a:visited {
     font-size:8px;
     font-style: italic;
     color: #dad8d0;
+    margin-bottom: -1px;
 }
 
 .card .separator {
