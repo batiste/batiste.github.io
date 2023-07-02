@@ -88,7 +88,7 @@
             </h3>
         
             <ol>
-                <li>Treasures are the money that allow you to buy cards from the supply. Card cost is the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
+                <li>Treasures are the currency for purchasing supply cards. Card cost is indicated by the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
                 <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 Action:</b> One extra action of any kind during your turn.</li>
                 <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
@@ -109,11 +109,14 @@
         
             <h3>End of the game</h3>
         
-            <p>The game ends immediately when the supply deck is empty.
-               Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with the most hooks wins the game. 
-               If there is equality, the player with the most Treasures wins, then the player that ended the game.
+            <p>The game ends when the supply deck is empty. The current player finishes their turn, and the others
+                take a final turn with only 1 starting action.
+               Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with 
+               the most hooks wins. In case of a tie, the one with the most Treasures wins, followed by the one who ended the game.
             </p>
             </div>
+
+            <p><b>Solo challenge</b>: Create a 22-card supply deck and remove one card each turn. Aim to achieve 30 victory points..</p>
 
             <div>
                 Information and update: https://bit.ly/dk-h<br>
@@ -414,7 +417,6 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            // 'discard': true,
         },
 
         {
@@ -482,7 +484,7 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '3',
-            'amount': 2
+            'amount': 1
         },
 
         {
