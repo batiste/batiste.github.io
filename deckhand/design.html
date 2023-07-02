@@ -99,9 +99,9 @@
                 <li>Effects on cards have to be applied <b>in order</b>.</li>
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
                 <li>Text that says "if you have" checks cards currently in your hand.</li>
-                <li>Cards being played are neither in your hand nor your discard.</li>
-                <li>You can only Discard cards in your hand.</li>
-                <li>Your discard is face up and can be inspected by anybody.</li>
+                <li>Cards being played are neither in your hand nor your discard. Playing a card is not a Discard.</li>
+                <li>You can only Discard cards from your hand.
+                    Arrange your discard pile face up to allow for examination at a glance.</li>
                 <li>You cannot own less than 4 cards.</li>
                 <!-- <li>The flag <img class="rule-icon" src="icons/flag.svg" /> indicates an effect at the beginning of turn.</li> -->
                 <li>When a deck/discard/hand is too small for an effect, you can still apply the effect for any amount that is not 0.</li>
@@ -410,7 +410,7 @@
 
         {
             'title': 'Bank',
-            'text': '+2 Treasures.<br>If you discard this card: +1 Action.',
+            'text': '+2 Treasures.<br>If you Discard this card: +1 Action.',
             'img': 'structures/bank.png',
             'type': 'structure',
             'subtype': 'Structure',
