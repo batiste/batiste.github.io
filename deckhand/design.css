@@ -222,6 +222,13 @@ a, a:visited {
     flex-direction: column;
 }
 
+.card .discard {
+    padding-top: 0.9mm;
+    padding-bottom: 0.7mm;
+    width: 14px;
+    height: 14px;
+}
+
 .card .frame {
     position: absolute;
     right:6.5mm;
