@@ -177,8 +177,8 @@ a, a:visited {
 }
 
 .card .separator {
-    margin-top: 3px;
-    border-top: 1px solid #555;
+    margin-top: 4px;
+    border-top: 1px solid #434343;
     margin-bottom: 2px;
     margin-left: 35%;
     margin-right: 35%;
