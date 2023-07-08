@@ -20,7 +20,9 @@
 <div style="clear:both;padding-top:20px">
 
 <div id="distribution"></div>
-<button id="genPDF">Create MB Print compatible PDF</button>
+<!-- <button id="genPDF">Create MB Print compatible PDF</button> -->
+<button id="genPDF-2">Create Print Sheet PDF</button>
+
 
 </div>
 
@@ -272,6 +274,7 @@
             'cost': 2,
             'victory': 2,
             'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -285,6 +288,7 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
+            'pdf': true,
         },
 
         {
@@ -424,6 +428,7 @@
             'cost': '2',
             'amount': 1,
             'start': true,
+            'pdf': true,
         },
 
         {
@@ -437,6 +442,7 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
+            'pdf': true,
         },
 
         {
@@ -486,6 +492,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -498,6 +505,7 @@
             'cost': '3',
             'amount': 1,
             'start': true,
+            'pdf': true,
         },
 
         {
@@ -509,7 +517,8 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '3',
-            'amount': 1
+            'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -545,7 +554,8 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '2',
-            'amount': 1
+            'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -574,13 +584,26 @@
         {
             'title': 'Treasure Hunt',
             'text': '+1 Action, +1 Buy,<br>+1 Card, +1 Treasure.',
-            'flavor': 'An isle shrouded in mystery holds the key to untold wealth.',
+            'flavor': 'An isle shrouded in mystery holds the key to immense wealth.',
             'img': 'adventures/hunt.png',
             'type': 'adventure',
             'subtype': 'Adventure',
             'victory': '3',
             'cost': '4',
             'amount': 1
+        },
+
+        {
+            'title': 'The Grand Council',
+            'text': '+1 Action, +1 Treasure. Players must seek your permission to buy cards until your next turn. You may refuse twice per player.',
+            'flavor': 'Contrary to expectations, pirates embrace order.',
+            'img': 'structures/grand-council.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'victory': '4',
+            'cost': '5',
+            'amount': 1,
+            'pdf': true,
         },
 
     ]
@@ -748,8 +771,7 @@
             var canvas = document.createElement('canvas');
             canvas.width = img.naturalWidth;
             canvas.height = img.naturalHeight;
-            document.body.appendChild(canvas)
-            console.log(canvas)
+            document.body.appendChild(canvas);
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0)
             var title = booklet.title.toLowerCase().replace(/\s/g, '-')
@@ -767,33 +789,110 @@
 
 <script>
 
+function createImage(card, cb) {
+
+    card.classList.add('preparePrint')
+
+    var h = `
+        <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="design.css">
+        <style>
+            html, body {margin:0; padding:0}
+            .card {zoom: 4; float: none; position: initial; margin: 0;}
+        </style>
+        
+        ${card.outerHTML}`
+
+    rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+        console.log(renderResult)
+        cb(renderResult.image);
+        card.classList.remove('preparePrint')
+    })
+}
 
 
 function bindImage(element, card, i) {
     setTimeout(() => {
-        createImage(element, (canvas, title) => {
+        createImage(element, (img) => {
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
             card['canvas'] = canvas
         })
     }, i * 50)
 }
 
 
-document.getElementById('genPDF').onclick = generatePDF
+// document.getElementById('genPDF').onclick = generatePDF
 
-function generatePDF(e) {
+// function generatePDF(e) {
+//     console.log(e.target)
+//     e.target.disable = true;
+//     e.target.innerHTML = 'Please wait'
+//     var jsPDF = window.jspdf.jsPDF;
+//     var doc = new jsPDF({
+//         unit: "mm",
+//         format: [69, 94],
+//     });
+
+//     for (i=0; i<cards.length; i++) {
+//         var card = cards[i];
+//         var element = document.getElementById('card-'+card['id'])
+//         bindImage(element, card, i)
+//     }
+
+//     e.target.innerHTML = 'Rendering... Wait 10 seconds to be sure everything is finished.'
+
+//     setTimeout(() => {
+
+//         e.target.innerHTML = 'Starting PDF rendering.'
+//         firstPage = true;
+
+//         for (i=0; i<cards.length; i++) {
+//             var card = cards[i];
+//             e.target.innerHTML = 'Rendering page ' + card['title'];
+//             for (j=0; j<card.amount; j++) {
+//                 if (firstPage) {
+//                     firstPage = false;
+//                 } else {
+//                     doc.addPage()
+//                 }
+//                 doc.addImage(card['canvas'], "PNG", 0, 0, 69, 94, card['title'], "FAST", 0)
+//                 doc.addPage()
+//                 doc.addImage('back.png', "PNG", 0, 0, 69, 94, 'back', "FAST", 0)
+//             }
+//         }
+
+//         doc.save("MB-Print.pdf");
+//         e.target.innerHTML = 'Done!'
+//     }, 5000)
+
+// }
+
+
+
+document.getElementById('genPDF-2').onclick = generatePDF2
+
+function generatePDF2(e) {
     console.log(e.target)
     e.target.disable = true;
     e.target.innerHTML = 'Please wait'
     var jsPDF = window.jspdf.jsPDF;
+    // A4
     var doc = new jsPDF({
         unit: "mm",
-        format: [69, 94],
+        format: [297, 210],
     });
 
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
-        var element = document.getElementById('card-'+card['id'])
-        bindImage(element, card, i)
+        if (card.pdf) {
+            console.log(card)
+            var element = document.getElementById('card-'+card['id'])
+            bindImage(element, card, i)
+        }
     }
 
     e.target.innerHTML = 'Rendering... Wait 10 seconds to be sure everything is finished.'
@@ -801,26 +900,30 @@ function generatePDF(e) {
     setTimeout(() => {
 
         e.target.innerHTML = 'Starting PDF rendering.'
-        firstPage = true;
 
+        var pageCounter = 0;
         for (i=0; i<cards.length; i++) {
             var card = cards[i];
+            if (!card.pdf) {
+                continue
+            }
             e.target.innerHTML = 'Rendering page ' + card['title'];
             for (j=0; j<card.amount; j++) {
-                if (firstPage) {
-                    firstPage = false;
-                } else {
-                    doc.addPage()
-                }
-                doc.addImage(card['canvas'], "PNG", 0, 0, 69, 94, card['title'], "FAST", 0)
+                var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
+                var x = (210 / 3.0) * (pageCounter % 3);
+                console.log(i, j, card['canvas'])
+                doc.addImage(card['canvas'], "PNG", x, y, 69, 94, card['title'], "FAST", 0)
+                pageCounter += 1;
+            }
+            if (pageCounter > 9) {
                 doc.addPage()
-                doc.addImage('back.png', "PNG", 0, 0, 69, 94, 'back', "FAST", 0)
+                pageCounter = 0;
             }
         }
 
-        doc.save("MB-Print.pdf");
+        doc.save("print.pdf");
         e.target.innerHTML = 'Done!'
-    }, 5000)
+    }, 15000)
 
 }
 
