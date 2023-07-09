@@ -203,6 +203,7 @@
             'victory': 1,
             'amount': 1,
             'discard': true,
+            'pdf': true,
         },
 
         {
@@ -214,7 +215,8 @@
             'subtype': 'Adventure',
             'victory': '1',
             'cost': '1',
-            'amount': 1
+            'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -227,6 +229,7 @@
             'cost': 1,
             'victory': 1,
             'amount': 2,
+            'pdf': true,
         },
 
         {
@@ -261,7 +264,8 @@
             'subtype': 'Adventure',
             'victory': '2',
             'cost': '2',
-            'amount': 2,
+            'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -323,7 +327,8 @@
             'subtype': 'Structure',
             'cost': '2',
             'victory': '2',
-            'amount': 1
+            'amount': 1,
+            'pdf': true,
         },
 
         {
@@ -392,7 +397,8 @@
             'subtype': 'Structure',
             'victory': '2',
             'cost': '2',
-            'amount': 2
+            'amount': 2,
+            'pdf': true,
         },
 
         {
@@ -408,7 +414,7 @@
 
         {
             'title': 'Wind in Sails',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard: Draw an extra card during your initial draw.',
+            'text': '+1 Card.<br>At the start of your turn, if this card is in your discard: Draw an extra card during your initial draw.',
             'img': 'adventures/wind.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -420,7 +426,7 @@
 
         {
             'title': 'End of the Rainbow',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard, as well as an Attack and a Structure: +1 Action.',
+            'text': '+1 Card.<br>At the start of your turn, if this card is in your discard, as well as an Attack and a Structure: +1 Action.',
             'img': 'adventures/rainbow.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -471,7 +477,7 @@
 
         {
             'title': 'Smuggler’s Cache',
-            'text': '+1 Card.<br>At the start of your turn if this card is in your discard: +1 Treasure.',
+            'text': '+1 Card.<br>At the start of your turn, if this card is in your discard: +1 Treasure.',
             'flavor': 'Few can chart the course to the forbidden spoils.',
             'img': 'structures/smugglers-cache.png',
             'type': 'structure',
@@ -497,7 +503,7 @@
 
         {
             'title': 'Unguarded Graveyard',
-            'text': '+1 Treasure.<br>At the start of your turn if this card is in your discard: you may put a card from you discard at the bottom of your deck.',
+            'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: you may put a card from you discard at the bottom of your deck.',
             'img': 'structures/grave-robbers.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -530,7 +536,8 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '3',
-            'amount': 2
+            'amount': 1,
+            'pdf': true
         },
 
         {
@@ -574,6 +581,7 @@
             'title': 'Skull island',
             'text': 'Every player reveals the top card of their deck: you may swap one with another from the supply as long as the cost difference is less than 3.',
             'img': 'structures/skull.png',
+            //'reduced-font-size': true,
             'type': 'structure',
             'subtype': 'Structure',
             'victory': '3',
@@ -595,8 +603,9 @@
 
         {
             'title': 'The Grand Council',
-            'text': '+1 Action, +1 Treasure. Players must seek your permission to buy cards until your next turn. You may refuse twice per player.',
-            'flavor': 'Contrary to expectations, pirates embrace order.',
+            'text': '+1 Action, +1 Treasure. Until your next turn players must seek your permission to buy cards. You may deny 2 cards per player. If allowed the buy must proceed.',
+            // 'reduced-font-size': true,
+            //'flavor': 'Arbitrary decisions serve as displays of power.',
             'img': 'structures/grand-council.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -661,6 +670,11 @@
             flavor = `<span class="separator"></span><span class="flavour">“${c['flavor']}”</span>`
         }
 
+        var textClass = ""
+        if (c['reduced-font-size']) {
+            textClass = "reduced-font-size"
+        }
+
 
         var template = `<div class="card" id="card-${j}" title="${c['title']}">
             <div class="inner">
@@ -669,7 +683,7 @@
                     <img src="${c['img']}" class="bg" />
                     
                     <span class="title">${c['title']}</span>
-                    <span class="text">${c['text']}${flavor}</span>
+                    <span class="text ${textClass}">${c['text']}${flavor}</span>
                     ${extra}
 
                     <div class="mpc">
@@ -728,7 +742,7 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0}
-                .card {zoom: 6.5; float: none; position: initial; margin: 0;}
+                .card {zoom: 4; float: none; position: initial; margin: 0;}
             </style>
             
             ${card.outerHTML}`
@@ -798,7 +812,7 @@ function createImage(card, cb) {
         <link rel="stylesheet" href="design.css">
         <style>
             html, body {margin:0; padding:0}
-            .card {zoom: 4; float: none; position: initial; margin: 0;}
+            .card {zoom: 3; float: none; position: initial; margin: 0;}
         </style>
         
         ${card.outerHTML}`
@@ -909,21 +923,22 @@ function generatePDF2(e) {
             }
             e.target.innerHTML = 'Rendering page ' + card['title'];
             for (j=0; j<card.amount; j++) {
+                if (pageCounter > 8) {
+                    doc.addPage()
+                    pageCounter = 0;
+                }
+
                 var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
                 var x = (210 / 3.0) * (pageCounter % 3);
-                console.log(i, j, card['canvas'])
+                console.log(i, j, card['canvas'], card)
                 doc.addImage(card['canvas'], "PNG", x, y, 69, 94, card['title'], "FAST", 0)
                 pageCounter += 1;
-            }
-            if (pageCounter > 9) {
-                doc.addPage()
-                pageCounter = 0;
             }
         }
 
         doc.save("print.pdf");
         e.target.innerHTML = 'Done!'
-    }, 15000)
+    }, 20000)
 
 }
 

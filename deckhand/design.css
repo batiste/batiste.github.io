@@ -163,6 +163,10 @@ a, a:visited {
     line-height: 1.4;
 }
 
+.card .reduced-font-size {
+    font-size:9.3px;
+}
+
 .OR {
     display: inline-block;
     font-size: 9px;
