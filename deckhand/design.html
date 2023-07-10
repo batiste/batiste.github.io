@@ -10,7 +10,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.17)</h2>
+<h2>DeckHand (v0.9.18)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -100,7 +100,7 @@
                 <li>+1 Discard: Discard a card immediately <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
                 <li>Effects on cards have to be applied <b>in order</b>.</li>
                 <li>Cards have 3 possible types: Attack, Structure, Adventure.</li>
-                <li>Text that says "if you have" checks cards currently in your hand.</li>
+                <li>Text that says "you have" checks cards residing in your hand.</li>
                 <li>Cards being played are neither in your hand nor your discard.</li>
                 <li>You can only Discard cards from your hand.
                     Arrange your discard pile face up to allow for examination at a glance.</li>
@@ -158,7 +158,7 @@
 
         {
             'title': 'Celebrate',
-            'text': '+1 Card.<br>+1 Supply refresh.',
+            'text': '+1 Card. +1 Supply refresh.<br>+1 Treasure for each Celebrate you have.',
             'flavor': 'They sweep into port to leave behind wild tales and memories of raucous revelry.',
             'img': 'adventures/celebrate.png',
             'type': 'adventure',
@@ -258,7 +258,9 @@
 
         {
             'title': 'Typhoon',
-            'text': '+1 Card, +1 Discard, +1 Treasure. Everybody move a card from their discard or a blind top deck to their left neighbors discard.',
+            'text': '+2 Cards, +1 Discard, +1 Treasure. Everyone move a discarded card or, if unable, top deck to their left neighbor’s discard.',
+            'flavor': 'A Swirling chaos! A navigational nightmare!',
+            'reduced-font-size': true,
             'img': 'adventures/tornado.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -504,7 +506,7 @@
 
         {
             'title': 'Desperate Chase',
-            'text': 'You and another player reveal the top 3 cards of their decks. If you have more Attacks, add a supply card to your discard.',
+            'text': 'You and another player reveal the top 3 cards of their decks. If you revealed more Attacks, add a supply card to your discard.',
             'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
             'img': 'attacks/chase-2.png',
             'type': 'attack',
@@ -544,7 +546,7 @@
 
         {
             'title': 'Bewitched Doll',
-            'text': '+1 Action.<br>On target player’s next turn you may play their first action.',
+            'text': '+1 Action. On target player’s next turn you may play their first action.<br>If you discard this card: +1 Action',
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
@@ -581,7 +583,7 @@
         },
 
         {
-            'title': 'Kraken\'s Fury',
+            'title': 'Kraken’s Fury',
             'text': '+1 Action. Steal a Treasure from any player. Put up to 2 cards from any discard at the bottom of their owner’s deck.',
             'flavor': 'Beware of the devourer of ships and souls.',
             'img': 'attacks/kraken.png',
