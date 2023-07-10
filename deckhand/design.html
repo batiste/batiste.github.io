@@ -208,7 +208,7 @@
 
         {
             'title': 'Beach Bum',
-            'text': '+2 Treasures if you are one of the player that owns the least amount of cards.',
+            'text': '+1 Treasure.<br>+1 Treasure if you are one of the player that owns the least amount of cards.',
             'flavor': 'Rumors have it that he is the richest man in town.',
             'img': 'adventures/beach-bum.png',
             'type': 'adventure',
@@ -427,6 +427,7 @@
         {
             'title': 'End of the Rainbow',
             'text': '+1 Card.<br>At the start of your turn, if this card is in your discard, as well as an Attack and a Structure: +1 Action.',
+            // 'flavor': 'A taunting mirage of unachievable dreams',
             'img': 'adventures/rainbow.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -502,6 +503,33 @@
         },
 
         {
+            'title': 'Desperate Chase',
+            'text': 'You and another player reveal the top 3 cards of their decks. If you have more Attacks, add a supply card to your discard.',
+            'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
+            'img': 'attacks/chase-2.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            'pdf': true,
+        },
+
+        // {
+        //     'title': 'Powder Keg',
+        //     'text': 'At the start of your turn, if this card is in your discard: put a treasure on it. ',
+        //     'img': 'attacks/powder-keg.png',
+        //     'reduced-font-size': true,
+        //     'type': 'attack',
+        //     'subtype': 'Attack',
+        //     'victory': '2',
+        //     'cost': '2',
+        //     'amount': 1,
+        //     'start': true,
+        //     'pdf': true,
+        // },
+
+        {
             'title': 'Unguarded Graveyard',
             'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: you may put a card from you discard at the bottom of your deck.',
             'img': 'structures/grave-robbers.png',
@@ -553,20 +581,7 @@
         },
 
         {
-            'title': 'Desperate Chase',
-            'text': 'You and another player reveal the top 3 cards of their decks. If you have more Attacks, add a supply card to your discard.',
-            'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
-            'img': 'attacks/chase-2.png',
-            'type': 'attack',
-            'subtype': 'Attack',
-            'victory': '2',
-            'cost': '2',
-            'amount': 1,
-            'pdf': true,
-        },
-
-        {
-            'title': 'The Kraken',
+            'title': 'Kraken\'s Fury',
             'text': '+1 Action. Steal a Treasure from any player. Put up to 2 cards from any discard at the bottom of their owner’s deck.',
             'flavor': 'Beware of the devourer of ships and souls.',
             'img': 'attacks/kraken.png',
@@ -603,13 +618,13 @@
 
         {
             'title': 'The Grand Council',
-            'text': '+1 Action, +1 Treasure. Until your next turn players must seek your permission to buy cards. You may deny 2 cards per player. If allowed the buy must proceed.',
+            'text': '+1 Action, +1 Treasure. Remove 3 supply cards from the game by flipping them face down. Restore them on your next turn.',
             // 'reduced-font-size': true,
-            //'flavor': 'Arbitrary decisions serve as displays of power.',
+            'flavor': 'Arbitrary decisions serve as displays of power.',
             'img': 'structures/grand-council.png',
             'type': 'structure',
             'subtype': 'Structure',
-            'victory': '4',
+            'victory': '5',
             'cost': '5',
             'amount': 1,
             'pdf': true,
