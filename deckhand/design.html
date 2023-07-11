@@ -10,7 +10,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.18)</h2>
+<h2>DeckHand (v0.9.19)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -158,8 +158,8 @@
 
         {
             'title': 'Celebrate',
-            'text': '+1 Card. +1 Supply refresh.<br>+1 Treasure for each Celebrate you have.',
-            'flavor': 'They sweep into port to leave behind wild tales and memories of raucous revelry.',
+            'text': '+1 Treasure for each Celebrate in your hand.<br>+1 Card. +1 Supply refresh.',
+            'flavor': 'Lonely grog or shared laughter?',
             'img': 'adventures/celebrate.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -246,21 +246,21 @@
 
         {
             'title': 'Useless Totem',
-            'text': 'Reveal this card: Change its type until you Discard it. This is not an action. It can be done at any time and only once per turn.',
+            'text': 'Reveal this card from your hand: Change its type until discarded. It is not an action. It can be done once per turn at any time.',
             'flavor': 'The futile trinket grins, seemingly mocking you.',
             'img': 'structures/totem.png',
             'type': 'structure',
             'subtype': 'Structure',
             'victory': '2',
             'cost': '1',
-            'amount': 2
+            'amount': 1
         },
 
         {
             'title': 'Typhoon',
             'text': '+2 Cards, +1 Discard, +1 Treasure. Everyone move a discarded card or, if unable, top deck to their left neighbor’s discard.',
             'flavor': 'A Swirling chaos! A navigational nightmare!',
-            'reduced-font-size': true,
+            'reduced-font-size': '9.3px',
             'img': 'adventures/tornado.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -311,7 +311,7 @@
 
         {
             'title': 'Harbor Market',
-            'text': '+2 Treasures.<span class="OR">OR</span>+1 Treasure, +1 Buy.',
+            'text': '+2 Treasures.:or:+1 Treasure, +1 Buy.',
             'flavor': 'Secrets and stolen treasures traded here.',
             'img': 'structures/market-super-format.png',
             'type': 'structure',
@@ -358,7 +358,7 @@
 
         {
             'title': 'Haunted Cave',
-            'text': '+1 Card.<br>+1 Treasure for each Attack in your hand.',
+            'text': '+2 Card.<br>+1 Treasure for each Attack in your hand.',
             'flavor': 'This place resonates with skeletal whispers. Fear not, for the pure-hearted and free of greed.',
             'img': 'attacks/infested-cave.png',
             'type': 'attack',
@@ -370,7 +370,7 @@
 
         {
             'title': 'Lost Expedition',
-            'text': 'Set aside a card from any discard with a bank Treasure on it. When the discard is shuffled, take the Treasure and return the card to the new discard.',
+            'text': 'Set aside a card from any discard with 2 bank Treasures on it. When the discard is shuffled, take the Treasures and return the card to the new discard.',
             'img': 'adventures/lost-expedition-2.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -381,7 +381,7 @@
 
         {
             'title': 'Extravagance',
-            'text': '+2 Buy<span class="OR">OR</span>+1 Treasure, +1 Buy.',
+            'text': '+2 Buy:or:+1 Treasure, +1 Buy.',
             'flavor': 'Only one way to spend: lavishly and flamboyantly!',
             'img': 'adventures/extravagance-2.png',
             'type': 'adventure',
@@ -405,7 +405,7 @@
 
         {
             'title': 'Walk the Plank',
-            'text': 'Remove a card from your hand or discard from the game: +3 Treasures.<span class="OR">OR</span>+1 Treasure.',
+            'text': 'Remove a card from your hand or discard from the game: +3 Treasures.:or:+1 Treasure.',
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -506,7 +506,8 @@
 
         {
             'title': 'Desperate Chase',
-            'text': 'You and another player reveal the top 3 cards of their decks. If you revealed more Attacks, add a supply card to your discard.',
+            'text': 'You and another player reveal the top 3 cards from your decks. If you revealed more Attacks, add a supply card to your discard.',
+            'reduced-font-size': '9.3px',
             'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
             'img': 'attacks/chase-2.png',
             'type': 'attack',
@@ -517,23 +518,23 @@
             'pdf': true,
         },
 
-        // {
-        //     'title': 'Powder Keg',
-        //     'text': 'At the start of your turn, if this card is in your discard: put a treasure on it. ',
-        //     'img': 'attacks/powder-keg.png',
-        //     'reduced-font-size': true,
-        //     'type': 'attack',
-        //     'subtype': 'Attack',
-        //     'victory': '2',
-        //     'cost': '2',
-        //     'amount': 1,
-        //     'start': true,
-        //     'pdf': true,
-        // },
+        {
+            'title': 'Improvised Grenade',
+            'text': '+1 Treasure, all players remove from the game a card from their hand or discard.<br>If you Discard this card through a card effect: apply its effects to all but you.',
+            'img': 'attacks/grenade.png',
+            // 'reduced-font-size': '9.2px',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            'discard': true,
+            'pdf': true,
+        },
 
         {
             'title': 'Unguarded Graveyard',
-            'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: you may put a card from you discard at the bottom of your deck.',
+            'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: you may put a card from you Discard at the bottom of your deck.',
             'img': 'structures/grave-robbers.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -546,7 +547,7 @@
 
         {
             'title': 'Bewitched Doll',
-            'text': '+1 Action. On target player’s next turn you may play their first action.<br>If you discard this card: +1 Action',
+            'text': '+1 Action. On target player’s next turn you may play their first action.<br>If you Discard this card: +1 Action.',
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
@@ -559,7 +560,7 @@
 
         {
             'title': 'Crooked Merchant',
-            'text': 'Swap 2 cards between 2 discard as long as the cost difference is less than 2.<span class="OR">OR</span>+1 Treasure.',
+            'text': 'Swap 2 cards between 2 discard as long as the cost difference is less than 2.:or:+1 Treasure.',
             // 'flavor': 'The lure of wealth lead to deceptive deals.',
             'img': 'attacks/merchant.png',
             'type': 'attack',
@@ -687,10 +688,16 @@
             flavor = `<span class="separator"></span><span class="flavour">“${c['flavor']}”</span>`
         }
 
-        var textClass = ""
+        var style = ""
         if (c['reduced-font-size']) {
-            textClass = "reduced-font-size"
+            style = `style="font-size: ${c['reduced-font-size']}"`
         }
+
+        c['text'] = c['text'].replace(':d:', '<img class="rule-icon" src="icons/card-discard-yellow.svg">')
+        c['text'] = c['text'].replace(':ms:', '<span class="mini-separator"></span>')
+        c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
+        c['text'] = c['text'].replace(':or:', '<span class="OR"><span class="or-line-left"></span>Or<span class="or-line-right"></span></span>')
+        
 
 
         var template = `<div class="card" id="card-${j}" title="${c['title']}">
@@ -700,7 +707,10 @@
                     <img src="${c['img']}" class="bg" />
                     
                     <span class="title">${c['title']}</span>
-                    <span class="text ${textClass}">${c['text']}${flavor}</span>
+                    <span class="text" ${style}>
+                        <span class="innerText">${c['text']}</span>
+                        ${flavor}
+                    </span>
                     ${extra}
 
                     <div class="mpc">
