@@ -10,7 +10,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.19)</h2>
+<h2>DeckHand (v0.9.20)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -406,6 +406,7 @@
         {
             'title': 'Walk the Plank',
             'text': 'Remove a card from your hand or discard from the game: +3 Treasures.:or:+1 Treasure.',
+            // 'flavor': 'A dance on the plank or a delayed sentence?',
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -434,7 +435,7 @@
             'type': 'adventure',
             'subtype': 'Adventure',
             'victory': '2',
-            'cost': '2',
+            'cost': '3',
             'amount': 1,
             'start': true,
             'pdf': true,
@@ -468,12 +469,12 @@
 
         {
             'title': 'Voodoo Curse',
-            'text': 'Reveal the top 3 cards of any player’s deck. Add one to their discard, then apply its effects as if you just played it.',
+            'text': 'Reveal the top 3 cards of any player’s deck. Put one in their discard, then apply its effects as if you just played it yourself.',
             'flavor': 'With every step, the curse tightens its grip.',
             'img': 'attacks/spell.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'victory': '2',
+            'victory': '3',
             'cost': '3',
             'amount': 2
         },
@@ -506,9 +507,10 @@
 
         {
             'title': 'Desperate Chase',
-            'text': 'You and another player reveal the top 3 cards from your decks. If you revealed more Attacks, add a supply card to your discard.',
-            'reduced-font-size': '9.3px',
-            'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
+            'text': 'You and another player reveal the top 3 cards from your decks. If you revealed more Attacks: \
+            put a supply card that cost less than 4 in your discard.',
+            //'reduced-font-size': '9.3px',
+            //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
             'img': 'attacks/chase-2.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -574,7 +576,7 @@
 
         {
             'title': 'Merfolk Mercenary',
-            'text': 'Pay 1 Treasure to reveal the top 2 cards of the supply deck. Add one to your discard.',
+            'text': 'Pay 1 Treasure to reveal the top 2 cards of the supply deck. Put one in your discard.',
             'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
             'img': 'adventures/merfolk-2.png',
             'type': 'adventure',
@@ -622,7 +624,7 @@
 
         {
             'title': 'The Grand Council',
-            'text': '+1 Action, +1 Treasure. Remove 3 supply cards from the game by flipping them face down. Restore them on your next turn.',
+            'text': '+2 Actions. At the end of your turn lock 4 supply cards by flipping them face down. Restore them on your next turn.',
             // 'reduced-font-size': true,
             'flavor': 'Arbitrary decisions serve as displays of power.',
             'img': 'structures/grand-council.png',
