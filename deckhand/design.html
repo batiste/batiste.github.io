@@ -158,7 +158,7 @@
 
         {
             'title': 'Celebrate',
-            'text': '+1 Treasure for each Celebrate in your hand.<br>+1 Card. +1 Supply refresh.',
+            'text': '+1 Treasure if you have a Celebrate.<br>+1 Card. +1 Supply refresh.',
             'flavor': 'Lonely grog or shared laughter?',
             'img': 'adventures/celebrate.png',
             'type': 'adventure',
@@ -221,7 +221,7 @@
 
         {
             'title': 'Governor’s Wedding',
-            'text': '+1 Treasure. On their next turn, another player gains +1 Buy and must give you a Treasure before their first buy.',
+            'text': '+1 Treasure. On their next turn, target enemy gains +1 Buy and must give you a Treasure before their first buy.',
             'flavor': 'A sumptuous gift secure favors and influence.',
             'img': 'structures/wedding.png',
             'type': 'structure',
@@ -370,7 +370,7 @@
 
         {
             'title': 'Lost Expedition',
-            'text': 'Set aside a card from any discard with 2 bank Treasures on it. When the discard is shuffled, take the Treasures and return the card to the new discard.',
+            'text': 'Set aside a card from target player\'s discard with 2 bank Treasures on it. When the discard is shuffled, take the Treasures and return the card to the new discard.',
             'img': 'adventures/lost-expedition-2.png',
             'type': 'adventure',
             'subtype': 'Adventure',
@@ -381,7 +381,7 @@
 
         {
             'title': 'Extravagance',
-            'text': '+2 Buy:or:+1 Treasure, +1 Buy.',
+            'text': '+2 Buy.:or:+1 Treasure, +1 Buy.',
             'flavor': 'Only one way to spend: lavishly and flamboyantly!',
             'img': 'adventures/extravagance-2.png',
             'type': 'adventure',
@@ -410,7 +410,7 @@
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'victory': '2',
+            'victory': '3',
             'cost': '3',
             'amount': 2
         },
@@ -469,7 +469,7 @@
 
         {
             'title': 'Voodoo Curse',
-            'text': 'Reveal the top 3 cards of any player’s deck. Put one in their discard, then apply its effects as if you just played it yourself.',
+            'text': 'Reveal the top 3 cards of target player’s deck. Put one in their discard, then apply its effects as if you just played it yourself.',
             'flavor': 'With every step, the curse tightens its grip.',
             'img': 'attacks/spell.png',
             'type': 'attack',
@@ -507,7 +507,7 @@
 
         {
             'title': 'Desperate Chase',
-            'text': 'You and another player reveal the top 3 cards from your decks. If you revealed more Attacks: \
+            'text': 'You and target enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
             put a supply card that cost less than 4 in your discard.',
             //'reduced-font-size': '9.3px',
             //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
@@ -549,21 +549,36 @@
 
         {
             'title': 'Bewitched Doll',
-            'text': '+1 Action. On target player’s next turn you may play their first action.<br>If you Discard this card: +1 Action.',
+            'text': 'On target enemy’s next turn you may play their first action.', // <br>If you Discard this card: +1 Action.
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
             'subtype': 'Attack',
-            'victory': '2',
+            'victory': '3',
             'cost': '3',
             'amount': 1,
-            'discard': true,
+            // 'discard': true,
+            'pdf': true,
+        },
+
+        {
+            'title': 'Namastê',
+            'text': 'When an effect targets you, discard Namaste to cancel the whole effect. The effect must use the <i>target</i> keyword.\
+            <br>If you discard this card: +1 Card.',
+            // 'reduced-font-size': '9.1px',
+            'img': 'adventures/namaste.png',
+            'type': 'adventures',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 1,
+            'discard': 1,
             'pdf': true,
         },
 
         {
             'title': 'Crooked Merchant',
-            'text': 'Swap 2 cards between 2 discard as long as the cost difference is less than 2.:or:+1 Treasure.',
+            'text': 'Swap a card between your discard and target player\'s discard as long as the cost difference is less than 2.',
             // 'flavor': 'The lure of wealth lead to deceptive deals.',
             'img': 'attacks/merchant.png',
             'type': 'attack',
@@ -588,8 +603,8 @@
 
         {
             'title': 'Kraken’s Fury',
-            'text': '+1 Action. Steal a Treasure from any player. Put up to 2 cards from any discard at the bottom of their owner’s deck.',
-            'flavor': 'Beware of the devourer of ships and souls.',
+            'text': '+1 Action. Steal a Treasure from target player. Apply this effect up to 2 time: put 1 card from target player\'s discard at the bottom of their owner’s deck.',
+            //'flavor': 'Beware of the devourer of ships and souls.',
             'img': 'attacks/kraken.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -624,9 +639,10 @@
 
         {
             'title': 'The Grand Council',
-            'text': '+2 Actions. At the end of your turn lock 4 supply cards by flipping them face down. Restore them on your next turn.',
+            'text': '+2 Actions. At the end of your turn, flip 4 supply cards face down.\
+            These cards are out of the game and are not replaced. Restore them on your next turn.',
             // 'reduced-font-size': true,
-            'flavor': 'Arbitrary decisions serve as displays of power.',
+            // 'flavor': 'Arbitrary decisions serve as displays of power.',
             'img': 'structures/grand-council.png',
             'type': 'structure',
             'subtype': 'Structure',
