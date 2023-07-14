@@ -4,6 +4,7 @@ html {
     -webkit-filter: opacity(1);
     color: #fff;
     text-decoration: none;
+    font-family: sans-serif;
 }
 
 a, a:visited {
@@ -15,9 +16,12 @@ a, a:visited {
     background-color: transparent;
     width: 69.088mm;
     height: 93.98mm;
-    float: left;
-    margin: 16px 10px;
     perspective: 1000px;
+}
+
+.card-container {
+    float: left;
+    margin: 5px;
 }
 
 /* .card * {
@@ -75,7 +79,7 @@ a, a:visited {
 
 .booklet p {
     margin-top: 0em;
-    margin-bottom: 0.6em;
+    margin-bottom: 0.4em;
 }
 
 .mask {
@@ -98,7 +102,7 @@ a, a:visited {
     background-color: #000;
 }
 
-.card:hover .inner {
+.card .inner:hover {
     transform: rotateY(180deg);
 }
 

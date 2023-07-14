@@ -10,7 +10,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.20)</h2>
+<h2>DeckHand (v0.9.21)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -177,7 +177,7 @@
             'subtype': 'Adventure',
             'victory': '1',
             'cost': '1',
-            'amount': 3,
+            'amount': 2,
         },
 
         {
@@ -189,12 +189,12 @@
             'subtype': 'Attack',
             'cost': 1,
             'victory': 1,
-            'amount': 3,
+            'amount': 2,
         },
 
         {
             'title': 'Poisoned Grog',
-            'text': '+1 Treasure.<br>If you Discard this card: +1 Treasure.', // , add condition, if you have not treasure if too strong 
+            'text': '+1 Treasure.<br>After you Discard this card: +1 Treasure.', // , add condition, if you have not treasure if too strong 
             'flavor': 'Sometimes, poison is slow-acting.',
             'img': 'attacks/pint.png',
             'type': 'attack',
@@ -216,6 +216,35 @@
             'victory': '1',
             'cost': '1',
             'amount': 1,
+            'pdf': true,
+        },
+
+        {
+            'title': 'Namastê',
+            'text': '+1 Action, +1 Card.<br>When an effect targets you directly, discard Namastê to cancel the whole card effect.\
+            <br>After you Discard this card: +1 Card.',
+            // 'reduced-font-size': '9.1px',
+            'img': 'adventures/namaste.png',
+            'type': 'adventures',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 1,
+            'discard': 1,
+            'pdf': true,
+        },
+
+        {
+            'title': 'Kung Fu Lessons',
+            'text': '+1 Treasure. Apply this effect up to 2 times: put 1 card from target player\'s discard at the bottom of their deck.',
+            // 'reduced-font-size': '9.1px',
+            'img': 'adventures/kung-fu.png',
+            'type': 'adventures',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 1,
+            // 'discard': 1,
             'pdf': true,
         },
 
@@ -285,7 +314,7 @@
 
         {
             'title': 'Card Mastery',
-            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>If you Discard this card: +1 Card.',
+            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>After you Discard this card: +1 Card.',
             'flavor': 'A flick of the wrist commands wonder and fear.',
             'img': 'adventures/magician.png',
             'type': 'adventure',
@@ -299,11 +328,12 @@
 
         {
             'title': 'Hideout',
-            'text': '+2 Cards, +1 Treasure.<br>The first time you Discard Hideout you may chose not to and pretend it happened.',
+            'text': '+2 Cards, +1 Treasure. After you Discard Hideout: put it back in your hand. That can be done only once per draw.',
             'flavor': 'A haven to open a rum bottle and see it through.',
             'img': 'structures/hideout.png',
             'type': 'structure',
             'subtype': 'Structure',
+            'discard': true,
             'cost': '2',
             'victory': '2',
             'amount': 2
@@ -318,7 +348,7 @@
             'subtype': 'Structure',
             'cost': '2',
             'victory': '2',
-            'amount': 3
+            'amount': 2
         },
 
         {
@@ -329,13 +359,13 @@
             'subtype': 'Structure',
             'cost': '2',
             'victory': '2',
-            'amount': 1,
+            'amount': 2,
             'pdf': true,
         },
 
         {
             'title': 'Exploration',
-            'text': '+1 Action if you have an Adventure.<br>+1 Card, +1 Treasure.',
+            'text': '+1 Card, +1 Treasure.<br>+1 Action if you have an Adventure.',
             'flavor': 'Set sail, but not without a compass in hand.',
             'img': 'adventures/exploration.png',
             'type': 'adventure',
@@ -405,8 +435,8 @@
 
         {
             'title': 'Walk the Plank',
-            'text': 'Remove a card from your hand or discard from the game: +3 Treasures.:or:+1 Treasure.',
-            // 'flavor': 'A dance on the plank or a delayed sentence?',
+            'text': 'Remove a card from your hand or discard from the game: Get Treasures equal to its cost. +2 Treasures.',
+            'flavor': 'A dance on the plank or a delayed sentence?',
             'img': 'attacks/plank.png',
             'type': 'attack',
             'subtype': 'Attack',
@@ -443,7 +473,7 @@
 
         {
             'title': 'Bank Fortress',
-            'text': '+2 Treasures.<br>If you Discard this card: +1 Action.',
+            'text': '+2 Treasures.<br>After you Discard this card: +1 Action.',
             'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
             'img': 'structures/bank-2.png',
             'type': 'structure',
@@ -522,7 +552,7 @@
 
         {
             'title': 'Improvised Grenade',
-            'text': 'Target player must remove from the game a card from their hand or discard.<br>If you Discard this card: apply this card effect to all players.',
+            'text': 'Target player must remove from the game a card from their hand or discard.<br>After you Discard this card: apply this card effect to all players.',
             'img': 'attacks/grenade.png',
             //  'reduced-font-size': '9.2px',
             'type': 'attack',
@@ -549,7 +579,7 @@
 
         {
             'title': 'Bewitched Doll',
-            'text': 'On target enemy’s next turn you may play their first action.', // <br>If you Discard this card: +1 Action.
+            'text': 'On target enemy’s next turn you play their first action. You make all the decisions arising from this action.', // <br>After you Discard this card: +1 Action.
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
@@ -558,21 +588,6 @@
             'cost': '3',
             'amount': 1,
             // 'discard': true,
-            'pdf': true,
-        },
-
-        {
-            'title': 'Namastê',
-            'text': 'When an effect targets you, discard Namaste to cancel the whole effect. The effect must use the <i>target</i> keyword.\
-            <br>If you discard this card: +1 Card.',
-            // 'reduced-font-size': '9.1px',
-            'img': 'adventures/namaste.png',
-            'type': 'adventures',
-            'subtype': 'Adventure',
-            'victory': '1',
-            'cost': '1',
-            'amount': 1,
-            'discard': 1,
             'pdf': true,
         },
 
@@ -603,7 +618,7 @@
 
         {
             'title': 'Kraken’s Fury',
-            'text': '+1 Action. Steal a Treasure from target player. Apply this effect up to 2 time: put 1 card from target player\'s discard at the bottom of their owner’s deck.',
+            'text': '+1 Action. Steal a Treasure from target player. Apply this effect up to 2 times: put 1 card from target player\'s discard at the bottom of their deck.',
             //'flavor': 'Beware of the devourer of ships and souls.',
             'img': 'attacks/kraken.png',
             'type': 'attack',
@@ -620,7 +635,7 @@
             //'reduced-font-size': true,
             'type': 'structure',
             'subtype': 'Structure',
-            'victory': '3',
+            'victory': '4',
             'cost': '4',
             'amount': 1
         },
@@ -657,7 +672,7 @@
     all = []
     var j = 0;
     var amount = 0;
-    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, nb_cards_necessary_total:(15 * 4 + 6 + 2)}
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, nb_cards_necessary_total:(15 * 4 + 6 + 2)}
 
     cards.forEach((c) => {
         var extra = ""
@@ -719,32 +734,36 @@
         
 
 
-        var template = `<div class="card" id="card-${j}" title="${c['title']}">
-            <div class="inner">
-                <div class="front type-${c['type']}"> 
-                    <div class="frame"><div></div></div>
-                    <img src="${c['img']}" class="bg" />
-                    
-                    <span class="title">${c['title']}</span>
-                    <span class="text" ${style}>
-                        <span class="innerText">${c['text']}</span>
-                        ${flavor}
-                    </span>
-                    ${extra}
+        var template = `
+        <div class="card-container">
+            <div class="card" id="card-${j}" title="${c['title']}">
+                <div class="inner">
+                    <div class="front type-${c['type']}"> 
+                        <div class="frame"><div></div></div>
+                        <img src="${c['img']}" class="bg" />
+                        
+                        <span class="title">${c['title']}</span>
+                        <span class="text" ${style}>
+                            <span class="innerText">${c['text']}</span>
+                            ${flavor}
+                        </span>
+                        ${extra}
 
-                    <div class="mpc">
-                        <img src="mpc.png" />
+                        <div class="mpc">
+                            <img src="mpc.png" />
+                        </div>
+                        <div class="mask"></div>
                     </div>
-                    <div class="mask"></div>
-                </div>
-                <div class="back">
-                    <img src="back.png" />
-                    <div class="mpc">
-                        <img src="mpc.png" />
+                    <div class="back">
+                        <img src="back.png" />
+                        <div class="mpc">
+                            <img src="mpc.png" />
+                        </div>
                     </div>
                 </div>
             </div>
-            <button onclick="downloadCard(this)">Download #${j+1}, copies: ${c['amount']}</button>
+            <button onclick="downloadCard(this)">Download #${j+1}, copies: ${c['amount']}</button><br>
+            <label><input type="checkbox" onclick="changePrintSelection(this)" data-card-id="${c['id']}"  ${c['pdf'] ? 'checked="true' : ''}">Part of print sheet</label>
         </div>
         `
         all.push(template)
@@ -765,6 +784,14 @@
         document.body.appendChild(a)
         a.click()
         a.remove()
+    }
+
+    function changePrintSelection(e) {
+        cards.forEach((card) => {
+            if(card.id == parseInt(e.dataset.cardId, 10)) {
+                card['pdf'] = e.checked
+            }
+        })
     }
 
     function downloadCard(e) {
@@ -936,7 +963,6 @@ function bindImage(element, card, i) {
 document.getElementById('genPDF-2').onclick = generatePDF2
 
 function generatePDF2(e) {
-    console.log(e.target)
     e.target.disable = true;
     e.target.innerHTML = 'Please wait'
     var jsPDF = window.jspdf.jsPDF;
@@ -949,7 +975,6 @@ function generatePDF2(e) {
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
         if (card.pdf) {
-            console.log(card)
             var element = document.getElementById('card-'+card['id'])
             bindImage(element, card, i)
         }
@@ -984,6 +1009,9 @@ function generatePDF2(e) {
 
         doc.save("print.pdf");
         e.target.innerHTML = 'Done!'
+        setTimeout(() => {
+            e.target.innerHTML = 'Done!'
+        })
     }, 20000)
 
 }
