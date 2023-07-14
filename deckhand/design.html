@@ -21,8 +21,6 @@
 
 <div id="distribution"></div>
 <!-- <button id="genPDF">Create MB Print compatible PDF</button> -->
-<button id="genPDF-2">Create Print Sheet PDF</button>
-
 
 </div>
 
@@ -137,6 +135,10 @@
     <img src="./back.png" width="240">
 </div> -->
 
+<p>
+    <button id="genPDF-2">Create Print Sheet PDF from selection</button>
+</p>
+
 <div id="cards"></div>
 
 </body>
@@ -194,7 +196,7 @@
 
         {
             'title': 'Poisoned Grog',
-            'text': '+1 Treasure.<br>After you Discard this card: +1 Treasure.', // , add condition, if you have not treasure if too strong 
+            'text': '+1 Treasure.<br>If you Discard this card: +1 Treasure.', // , add condition, if you have not treasure if too strong 
             'flavor': 'Sometimes, poison is slow-acting.',
             'img': 'attacks/pint.png',
             'type': 'attack',
@@ -203,7 +205,7 @@
             'victory': 1,
             'amount': 1,
             'discard': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -216,13 +218,13 @@
             'victory': '1',
             'cost': '1',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
             'title': 'Namastê',
             'text': '+1 Action, +1 Card.<br>When an effect targets you directly, discard Namastê to cancel the whole card effect.\
-            <br>After you Discard this card: +1 Card.',
+            <br>If you Discard this card: +1 Card.',
             // 'reduced-font-size': '9.1px',
             'img': 'adventures/namaste.png',
             'type': 'adventures',
@@ -231,12 +233,12 @@
             'cost': '1',
             'amount': 1,
             'discard': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
             'title': 'Kung Fu Lessons',
-            'text': '+1 Treasure. Apply this effect up to 2 times: put 1 card from target player\'s discard at the bottom of their deck.',
+            'text': '+1 Treasure, +1 Supply refresh.<br>Put 1 card from target player\'s discard at the bottom of their deck.',
             // 'reduced-font-size': '9.1px',
             'img': 'adventures/kung-fu.png',
             'type': 'adventures',
@@ -245,7 +247,7 @@
             'cost': '1',
             'amount': 1,
             // 'discard': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -258,7 +260,7 @@
             'cost': 1,
             'victory': 1,
             'amount': 2,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -287,15 +289,15 @@
 
         {
             'title': 'Council Hall',
-            'text': 'Target enemy take a card from the supply and put it in your discard.',
-            'flavor': 'Gold for a seat here is wealth wasted on whispers.',
+            'text': '+1 Supply refresh. Target enemy take a card from the supply and put it in your discard.',
+            'flavor': 'Gold for a seat is wealth wasted on whispers.',
             'img': 'structures/council-hall.png',
             'type': 'structure',
             'subtype': 'Structure',
             'cost': 2,
             'victory': 2,
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -309,7 +311,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -321,13 +323,13 @@
             'subtype': 'Adventure',
             'cost': 2,
             'victory': 2,
-            'amount': 1,
-            'pdf': true,
+            'amount': 2,
+            'pdf': false,
         },
 
         {
             'title': 'Card Mastery',
-            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>After you Discard this card: +1 Card.',
+            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>If you Discard this card: +1 Card.',
             'flavor': 'A flick of the wrist commands wonder and fear.',
             'img': 'adventures/magician.png',
             'type': 'adventure',
@@ -336,12 +338,25 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
-            'pdf': true,
+            'pdf': false,
+        },
+
+        {
+            'title': 'Spice Trade',
+            'text': '+1 Treasure.<br>If this card is in your discard, Structures cost 1 less to buy.',
+            //'flavor': 'A flick of the wrist commands wonder and fear.',
+            'img': 'adventures/spice-trade.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1,
+            'pdf': false,
         },
 
         {
             'title': 'Hideout',
-            'text': '+2 Cards, +1 Treasure. After you Discard Hideout: put it back in your hand. That can be done only once per draw.',
+            'text': '+2 Cards, +1 Treasure.<br>If you Discard Hideout: put it back in your hand. Do it only once per draw.',
             'flavor': 'A haven to open a rum bottle and see it through.',
             'img': 'structures/hideout.png',
             'type': 'structure',
@@ -373,7 +388,7 @@
             'cost': '2',
             'victory': '2',
             'amount': 2,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -431,7 +446,7 @@
             'subtype': 'Adventure',
             'victory': '2',
             'cost': '2',
-            'amount': 2
+            'amount': 1
         },
 
         {
@@ -443,7 +458,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -481,12 +496,12 @@
             'cost': '3',
             'amount': 1,
             'start': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
             'title': 'Bank Fortress',
-            'text': '+2 Treasures.<br>After you Discard this card: +1 Action.',
+            'text': '+2 Treasures.<br>If you Discard this card: +1 Action.',
             'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
             'img': 'structures/bank-2.png',
             'type': 'structure',
@@ -495,7 +510,7 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -531,7 +546,7 @@
             'subtype': 'Structure',
             'victory': '2',
             'cost': '3',
-            'amount': 2,
+            'amount': 1,
             'start': true,
         },
 
@@ -545,7 +560,7 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -560,12 +575,12 @@
             'victory': '2',
             'cost': '2',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
             'title': 'Improvised Grenade',
-            'text': 'Target player must remove from the game a card from their hand or discard.<br>After you Discard this card: apply this card effect to all players.',
+            'text': 'Target player must remove from the game a card from their discard.<br>If you Discard this card: apply this card effect to all players.',
             'img': 'attacks/grenade.png',
             //  'reduced-font-size': '9.2px',
             'type': 'attack',
@@ -574,7 +589,7 @@
             'cost': '2',
             'amount': 1,
             'discard': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -587,12 +602,12 @@
             'cost': '3',
             'amount': 1,
             'start': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
             'title': 'Bewitched Doll',
-            'text': 'On target enemy’s next turn you play their first action. You make all the decisions arising from this action.', // <br>After you Discard this card: +1 Action.
+            'text': 'On target enemy’s next turn you play their first action. You make all the decisions arising from this action.', // <br>If you Discard this card: +1 Action.
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
@@ -601,7 +616,7 @@
             'cost': '3',
             'amount': 1,
             // 'discard': true,
-            'pdf': true,
+            'pdf': false,
         },
 
         {
@@ -614,7 +629,7 @@
             'victory': '2',
             'cost': '3',
             'amount': 1,
-            'pdf': true
+            'pdf': false
         },
 
         {
@@ -677,7 +692,7 @@
             'victory': '5',
             'cost': '5',
             'amount': 1,
-            'pdf': true,
+            'pdf': false,
         },
 
     ]
@@ -898,7 +913,7 @@ function createImage(card, cb) {
         <link rel="stylesheet" href="design.css">
         <style>
             html, body {margin:0; padding:0}
-            .card {zoom: 3; float: none; position: initial; margin: 0;}
+            .card {zoom: 6.5; float: none; position: initial; margin: 0;}
         </style>
         
         ${card.outerHTML}`
