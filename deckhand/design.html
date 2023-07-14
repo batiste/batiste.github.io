@@ -823,7 +823,7 @@
     }
 
     function downloadCard(e) {
-        createCardImage(e.parentNode)
+        createCardImage(e.parentNode.querySelector('.card'))
     }
 
     function downloadBookletFace(e) {
@@ -913,7 +913,7 @@ function createImage(card, cb) {
         <link rel="stylesheet" href="design.css">
         <style>
             html, body {margin:0; padding:0}
-            .card {zoom: 6.5; float: none; position: initial; margin: 0;}
+            .card {zoom: 4; float: none; position: initial; margin: 0;}
         </style>
         
         ${card.outerHTML}`
