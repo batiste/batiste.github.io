@@ -225,7 +225,7 @@
             'title': 'Contemplation',
             'text': 'If an effect targets you: you may Discard this card to cancel the whole card effect.\
             <br>If you Discard this card: +1 Card.',
-            'flavor': 'Harmony, tranquility, peace is doing nothing!',
+            'flavor-no-quotes': '“Harmony! Serenity!” he shouted, after his nap.',
             // 'reduced-font-size': '9.1px',
             'img': 'adventures/namaste.png',
             'type': 'adventures',
@@ -266,9 +266,9 @@
         },
 
         {
-            'title': 'Powder Keg',
+            'title': 'Imperial Powder',
             'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s discard that cost 3 or less.',
-            'flavor': 'WARNING: does not travel well.',
+            'flavor': 'WARNING: does not roll, shock, or sway.',
             'img': 'structures/powder-keg.png',
             'type': 'structure',
             'subtype': 'Structure',
@@ -765,6 +765,9 @@
         var flavor = ""
         if(c['flavor']){
             flavor = `<span class="separator"></span><span class="flavour">“${c['flavor']}”</span>`
+        }
+        if(c['flavor-no-quotes']){
+            flavor = `<span class="separator"></span><span class="flavour">${c['flavor-no-quotes']}</span>`
         }
 
         var style = ""
