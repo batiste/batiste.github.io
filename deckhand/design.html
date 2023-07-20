@@ -136,7 +136,8 @@
 </div> -->
 
 <p>
-    <button id="genPDF-2">Create Print Sheet PDF from selection</button>
+    <button id="selectAll">Select All</button>
+    <button id="generatePrintSheet">Create Print Sheet PDF from selection</button>
 </p>
 
 <div id="cards"></div>
@@ -811,7 +812,7 @@
                 </div>
             </div>
             <button onclick="downloadCard(this)">Download #${j+1}, copies: ${c['amount']}</button><br>
-            <label><input type="checkbox" onclick="changePrintSelection(this)" data-card-id="${c['id']}"  ${c['pdf'] ? 'checked="true' : ''}">Part of print sheet</label>
+            <label><input type="checkbox" id="check-pdf-${c['id']}" onclick="changePrintSelection(this)" data-card-id="${c['id']}"  ${c['pdf'] ? 'checked="true' : ''}">Part of print sheet</label>
         </div>
         `
         all.push(template)
@@ -945,6 +946,7 @@ function createImage(card, cb) {
     })
 }
 
+var toRender = 0;
 
 function bindImage(element, card, i) {
     setTimeout(() => {
@@ -955,64 +957,26 @@ function bindImage(element, card, i) {
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0)
             card['canvas'] = canvas
+            toRender = toRender - 1;
         })
     }, i * 50)
 }
 
-
-// document.getElementById('genPDF').onclick = generatePDF
-
-// function generatePDF(e) {
-//     console.log(e.target)
-//     e.target.disable = true;
-//     e.target.innerHTML = 'Please wait'
-//     var jsPDF = window.jspdf.jsPDF;
-//     var doc = new jsPDF({
-//         unit: "mm",
-//         format: [69, 94],
-//     });
-
-//     for (i=0; i<cards.length; i++) {
-//         var card = cards[i];
-//         var element = document.getElementById('card-'+card['id'])
-//         bindImage(element, card, i)
-//     }
-
-//     e.target.innerHTML = 'Rendering... Wait 10 seconds to be sure everything is finished.'
-
-//     setTimeout(() => {
-
-//         e.target.innerHTML = 'Starting PDF rendering.'
-//         firstPage = true;
-
-//         for (i=0; i<cards.length; i++) {
-//             var card = cards[i];
-//             e.target.innerHTML = 'Rendering page ' + card['title'];
-//             for (j=0; j<card.amount; j++) {
-//                 if (firstPage) {
-//                     firstPage = false;
-//                 } else {
-//                     doc.addPage()
-//                 }
-//                 doc.addImage(card['canvas'], "PNG", 0, 0, 69, 94, card['title'], "FAST", 0)
-//                 doc.addPage()
-//                 doc.addImage('back.png', "PNG", 0, 0, 69, 94, 'back', "FAST", 0)
-//             }
-//         }
-
-//         doc.save("MB-Print.pdf");
-//         e.target.innerHTML = 'Done!'
-//     }, 5000)
-
-// }
+document.getElementById('selectAll').onclick = () => { 
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        card.pdf = true;
+        document.getElementById('check-pdf-'+card['id']).checked = true
+    }
+}
 
 
+document.getElementById('generatePrintSheet').onclick = generatePrintSheet
 
-document.getElementById('genPDF-2').onclick = generatePDF2
-
-function generatePDF2(e) {
+function generatePrintSheet(e) {
     e.target.disable = true;
     e.target.innerHTML = 'Please wait'
+    toRender = 0;
     var jsPDF = window.jspdf.jsPDF;
     // A4
     var doc = new jsPDF({
@@ -1020,19 +984,25 @@ function generatePDF2(e) {
         format: [297, 210],
     });
 
+
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
         if (card.pdf) {
+            toRender = toRender + 1;
             var element = document.getElementById('card-'+card['id'])
             bindImage(element, card, i)
         }
     }
 
-    e.target.innerHTML = 'Rendering... Wait 10 seconds to be sure everything is finished.'
+    e.target.innerHTML = 'Rendering...'
 
-    setTimeout(() => {
+    var inter = setInterval(() => {
 
-        e.target.innerHTML = 'Starting PDF rendering.'
+        if (toRender > 0) {
+            e.target.innerHTML = `Starting PDF rendering (${toRender}).`
+            return
+        }
+        clearInterval(inter);
 
         var pageCounter = 0;
         for (i=0; i<cards.length; i++) {
@@ -1049,7 +1019,6 @@ function generatePDF2(e) {
 
                 var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
                 var x = (210 / 3.0) * (pageCounter % 3);
-                console.log(i, j, card['canvas'], card)
                 doc.addImage(card['canvas'], "PNG", x, y, 69, 94, card['title'], "FAST", 0)
                 pageCounter += 1;
             }
@@ -1060,8 +1029,7 @@ function generatePDF2(e) {
         setTimeout(() => {
             e.target.innerHTML = 'Done!'
         })
-    }, 20000)
-
+    }, 1000)
 }
 
 </script>
