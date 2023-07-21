@@ -872,8 +872,9 @@
             } else {
                 img = canvas.toDataURL("image/jpeg", 0.9)
             }
-            cb && cb();
-            download(img, title)
+            download(img, title);
+            console.log('download', title);
+            cb && cb(title);
         })
     }
 
@@ -894,7 +895,7 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0}
-                .card {zoom: 6.5; float: none; position: initial; margin: 0;}
+                .card {zoom: 4.5; float: none; position: initial; margin: 0;}
             </style>
             
             ${card.outerHTML}`
@@ -907,13 +908,6 @@
             document.body.appendChild(canvas)
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0)
-            var title = card.title.toLowerCase().replace(/\s/g, '-')
-            var img
-            // if (format=='png') {
-            //     img = canvas.toDataURL();
-            // } else {
-            //     img = canvas.toDataURL("image/jpeg", 0.9)
-            // }
             card.classList.remove('preparePrint')
             canvas.parentNode.removeChild(canvas)
             cb && cb(canvas)
@@ -984,23 +978,37 @@ function downloadSelection(e) {
     e.disable = true;
     var previous = e.innerHTML
     toRender = 0;
+    cards_to_render = {}
 
     e.innerHTML = 'Rendering..., please wait, it might take a while.'
+
+    function wr(title) {
+        cards_to_render[card["title"]] = true
+    }
+
+    function debounceDownload(card, element) {
+        setTimeout(() => {
+            downloadCard(element, () => {
+                toRender = toRender - 1;
+                delete cards_to_render[card.title]
+            })
+        }, 10)
+    }
 
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
         if (card.pdf) {
             toRender = toRender + 1;
+            cards_to_render[card.title] = true
             var element = document.getElementById('card-'+card['id'])
-            downloadCard(element, () => {
-                toRender = toRender - 1;
-            })
+            debounceDownload(card, element)
         }
     }
 
     var inter = setInterval(() => {
         if (toRender > 0) {
-            e.innerHTML = `Starting PDF rendering (${toRender}).`
+            console.log(cards_to_render)
+            e.innerHTML = `Starting rendering of cards (${toRender}).`
             return
         }
         clearInterval(inter);
