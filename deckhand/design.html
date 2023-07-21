@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="design.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="./rasterizeHTML.allinone.js"></script>
 </head>
 
 <body>
@@ -128,6 +130,11 @@
 <button onclick="downloadBookletFace()">Download booklet face</button>
 <button onclick="downloadBookletBack()">Download booklet back</button>
 
+<div class="config">
+    General config
+    <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
+    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+</div>
 
 
 <!-- <div style="clear: both;">
@@ -136,8 +143,9 @@
 </div> -->
 
 <p>
-    <button id="selectAll">Select All</button>
-    <button id="generatePrintSheet">Create Print Sheet PDF from selection</button>
+    <button onclick="selectAll(this)">Select All</button>
+    <button onclick="generatePrintSheet(this)">Create Print Sheet PDF from selection</button>
+    <button onclick="downloadSelection(this)">Download selection</button>
 </p>
 
 <div id="cards"></div>
@@ -811,7 +819,7 @@
                     </div>
                 </div>
             </div>
-            <button onclick="downloadCard(this)">Download #${j+1}, copies: ${c['amount']}</button><br>
+            <button onclick="downloadCardButton(this)">Download #${j+1}, copies: ${c['amount']}</button><br>
             <label><input type="checkbox" id="check-pdf-${c['id']}" onclick="changePrintSelection(this)" data-card-id="${c['id']}"  ${c['pdf'] ? 'checked="true' : ''}">Part of print sheet</label>
         </div>
         `
@@ -826,10 +834,19 @@
 
     document.getElementById('cards').innerHTML = all.join('')
 
+    var format = 'png'
+    function updateFormat(e) {
+        if (e.checked) {
+            format = 'jpg'
+        } else {
+            format = 'png'
+        }
+    }
+
     function download(url, title) {
         var a = document.createElement('a')
         a.href=url
-        a.download=title+".png"
+        a.download=title+"."+format;
         document.body.appendChild(a)
         a.click()
         a.remove()
@@ -843,8 +860,21 @@
         })
     }
 
-    function downloadCard(e) {
-        createCardImage(e.parentNode.querySelector('.card'))
+    function downloadCardButton(e) {
+        downloadCard(e.parentNode.querySelector('.card'))
+    }
+
+    function downloadCard(card, cb) {
+        createCardImage(card, (canvas) => {
+            var title = card.title.toLowerCase().replace(/\s/g, '-')
+            if (format=='png') {
+                img = canvas.toDataURL();
+            } else {
+                img = canvas.toDataURL("image/jpeg", 0.9)
+            }
+            cb && cb();
+            download(img, title)
+        })
     }
 
     function downloadBookletFace(e) {
@@ -864,25 +894,29 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0}
-                .card {zoom: 4; float: none; position: initial; margin: 0;}
+                .card {zoom: 6.5; float: none; position: initial; margin: 0;}
             </style>
             
             ${card.outerHTML}`
 
         rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
-            console.log(renderResult)
             img = renderResult.image;
             var canvas = document.createElement('canvas');
             canvas.width = img.naturalWidth;
             canvas.height = img.naturalHeight;
             document.body.appendChild(canvas)
-            console.log(canvas)
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0)
             var title = card.title.toLowerCase().replace(/\s/g, '-')
-            download(canvas.toDataURL(), title);
+            var img
+            // if (format=='png') {
+            //     img = canvas.toDataURL();
+            // } else {
+            //     img = canvas.toDataURL("image/jpeg", 0.9)
+            // }
             card.classList.remove('preparePrint')
             canvas.parentNode.removeChild(canvas)
+            cb && cb(canvas)
         })
 
     }
@@ -902,7 +936,6 @@
             ${booklet.outerHTML}`
 
         rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
-            console.log(renderResult)
             img = renderResult.image;
             var canvas = document.createElement('canvas');
             canvas.width = img.naturalWidth;
@@ -918,37 +951,14 @@
 
     }
 
-</script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="./rasterizeHTML.allinone.js"></script>
-
-<script>
-
-function createImage(card, cb) {
-
-    card.classList.add('preparePrint')
-
-    var h = `
-        <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="design.css">
-        <style>
-            html, body {margin:0; padding:0}
-            .card {zoom: 4; float: none; position: initial; margin: 0;}
-        </style>
-        
-        ${card.outerHTML}`
-
-    rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
-        console.log(renderResult)
-        cb(renderResult.image);
-        card.classList.remove('preparePrint')
-    })
-}
 
 var toRender = 0;
 
 function bindImage(element, card, i) {
+    if (card['canvas']) {
+        toRender = toRender - 1;
+        return;
+    }
     setTimeout(() => {
         createImage(element, (img) => {
             var canvas = document.createElement('canvas');
@@ -962,7 +972,7 @@ function bindImage(element, card, i) {
     }, i * 50)
 }
 
-document.getElementById('selectAll').onclick = () => { 
+function selectAll() { 
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
         card.pdf = true;
@@ -970,12 +980,41 @@ document.getElementById('selectAll').onclick = () => {
     }
 }
 
+function downloadSelection(e) {
+    e.disable = true;
+    var previous = e.innerHTML
+    toRender = 0;
 
-document.getElementById('generatePrintSheet').onclick = generatePrintSheet
+    e.innerHTML = 'Rendering..., please wait, it might take a while.'
+
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        if (card.pdf) {
+            toRender = toRender + 1;
+            var element = document.getElementById('card-'+card['id'])
+            downloadCard(element, () => {
+                toRender = toRender - 1;
+            })
+        }
+    }
+
+    var inter = setInterval(() => {
+        if (toRender > 0) {
+            e.innerHTML = `Starting PDF rendering (${toRender}).`
+            return
+        }
+        clearInterval(inter);
+        e.innerHTML = 'Done!'
+        setTimeout(() => {
+            e.innerHTML = previous;
+        }, 1000)
+    }, 1000);
+}
 
 function generatePrintSheet(e) {
-    e.target.disable = true;
-    e.target.innerHTML = 'Please wait'
+    e.disable = true;
+    var previous = e.innerHTML
+    e.innerHTML = 'Please wait'
     toRender = 0;
     var jsPDF = window.jspdf.jsPDF;
     // A4
@@ -994,12 +1033,12 @@ function generatePrintSheet(e) {
         }
     }
 
-    e.target.innerHTML = 'Rendering...'
+    e.innerHTML = 'Rendering...'
 
     var inter = setInterval(() => {
 
         if (toRender > 0) {
-            e.target.innerHTML = `Starting PDF rendering (${toRender}).`
+            e.innerHTML = `Starting PDF rendering (${toRender}).`
             return
         }
         clearInterval(inter);
@@ -1010,7 +1049,7 @@ function generatePrintSheet(e) {
             if (!card.pdf) {
                 continue
             }
-            e.target.innerHTML = 'Rendering page ' + card['title'];
+            e.innerHTML = 'Rendering page ' + card['title'];
             for (j=0; j<card.amount; j++) {
                 if (pageCounter > 8) {
                     doc.addPage()
@@ -1025,10 +1064,10 @@ function generatePrintSheet(e) {
         }
 
         doc.save("print.pdf");
-        e.target.innerHTML = 'Done!'
+        e.innerHTML = 'Done!'
         setTimeout(() => {
-            e.target.innerHTML = 'Done!'
-        })
+            e.innerHTML = previous;
+        }, 1000)
     }, 1000)
 }
 

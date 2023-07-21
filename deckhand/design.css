@@ -82,6 +82,15 @@ a, a:visited {
     margin-bottom: 0.4em;
 }
 
+.config label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.config {
+    margin: 1em;
+}
+
 .mask {
     border: 2mm solid black;
     border-radius: 3mm;
