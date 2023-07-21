@@ -895,7 +895,7 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0}
-                .card {zoom: 4.5; float: none; position: initial; margin: 0;}
+                .card {zoom: 4; float: none; position: initial; margin: 0;}
             </style>
             
             ${card.outerHTML}`
@@ -979,6 +979,9 @@ function downloadSelection(e) {
     var previous = e.innerHTML
     toRender = 0;
     cards_to_render = {}
+    queue = []
+
+    rendering = {}
 
     e.innerHTML = 'Rendering..., please wait, it might take a while.'
 
@@ -986,28 +989,29 @@ function downloadSelection(e) {
         cards_to_render[card["title"]] = true
     }
 
-    function debounceDownload(card, element) {
-        setTimeout(() => {
-            downloadCard(element, () => {
-                toRender = toRender - 1;
-                delete cards_to_render[card.title]
-            })
-        }, 10)
-    }
-
     for (i=0; i<cards.length; i++) {
         var card = cards[i];
         if (card.pdf) {
             toRender = toRender + 1;
-            cards_to_render[card.title] = true
-            var element = document.getElementById('card-'+card['id'])
-            debounceDownload(card, element)
+            queue.push(card)
         }
     }
 
+    function render(card) {
+        rendering[card.title] = card
+        var e = document.getElementById('card-'+card['id'])
+        downloadCard(e, () => {
+            delete rendering[card.title];
+            toRender = toRender - 1;
+        })
+    }
+
     var inter = setInterval(() => {
-        if (toRender > 0) {
-            console.log(cards_to_render)
+        if (queue.length > 0) {
+            if (Object.keys(rendering).length == 0) {
+                c = queue.pop();
+                render(c)
+            }
             e.innerHTML = `Starting rendering of cards (${toRender}).`
             return
         }
@@ -1015,7 +1019,7 @@ function downloadSelection(e) {
         e.innerHTML = 'Done!'
         setTimeout(() => {
             e.innerHTML = previous;
-        }, 1000)
+        }, 500)
     }, 1000);
 }
 
