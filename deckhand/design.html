@@ -911,8 +911,9 @@
             card.classList.remove('preparePrint')
             canvas.parentNode.removeChild(canvas)
             cb && cb(canvas)
-        })
-
+        }, function error(e) {
+            console.log("Error on card", card.title)
+        });
     }
 
     function createBookletImage(booklet, cb) {
@@ -1019,7 +1020,7 @@ function downloadSelection(e) {
         e.innerHTML = 'Done!'
         setTimeout(() => {
             e.innerHTML = previous;
-        }, 500)
+        }, 2000)
     }, 1000);
 }
 
@@ -1079,7 +1080,7 @@ function generatePrintSheet(e) {
         e.innerHTML = 'Done!'
         setTimeout(() => {
             e.innerHTML = previous;
-        }, 1000)
+        }, 500)
     }, 1000)
 }
 
