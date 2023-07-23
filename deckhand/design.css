@@ -117,7 +117,8 @@ a, a:visited {
 
 .card .bg {
     /* 63 88 is poker size */
-    width: 59mm;
+    width: 59.08mm;
+    margin-left: -0.04mm;
     height: 84mm;
     margin-top: 5mm;
     /* border-radius: 5px; */
@@ -423,18 +424,20 @@ a, a:visited {
 .preparePrint button {
     display: none;
 }
-.preparePrint .mpc {
+.preparePrint .mpc, .preparePrintNotMPC .mpc {
     display: none;
 }
 .preparePrint.card .bg {
     border-radius: 0;
 }
-.preparePrint .back {
+.preparePrint .back, .preparePrintNotMPC .back {
     display: none;
 }
-
 .preparePrint .innerBooklet {
     border: 0;
+}
+.preparePrintNotMPC .inner {
+    background-color: transparent;
 }
 
 #illustration {

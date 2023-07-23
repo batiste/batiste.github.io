@@ -135,6 +135,7 @@
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
     <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
 </div>
 
 
@@ -877,6 +878,15 @@
         }
     }
 
+    var preparePrintClass = 'preparePrint';
+    function outputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrint';
+        } else { 
+            preparePrintClass = 'preparePrintNotMPC';
+        }
+    }
+
     function download(url, title) {
         var a = document.createElement('a')
         a.href=url
@@ -921,14 +931,14 @@
     }
 
     function createCardImage(card, cb) {
-        
-        card.classList.add('preparePrint')
+
+        card.classList.add(preparePrintClass)
 
         var h = `
             <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="design.css">
             <style>
-                html, body {margin:0; padding:0}
+                html, body {margin:0; padding:0; background-color: transparent;}
                 .card {zoom: 4; float: none; position: initial; margin: 0;}
             </style>
             
@@ -942,7 +952,7 @@
             document.body.appendChild(canvas)
             const ctx = canvas.getContext("2d");
             ctx.drawImage(img, 0, 0)
-            card.classList.remove('preparePrint')
+            card.classList.remove(preparePrintClass)
             canvas.parentNode.removeChild(canvas)
             cb && cb(canvas)
         }, function error(e) {
@@ -952,7 +962,7 @@
 
     function createBookletImage(booklet, cb) {
         
-        booklet.classList.add('preparePrint')
+        card.classList.add(preparePrintClass)
 
         var h = `
             <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -974,7 +984,7 @@
             ctx.drawImage(img, 0, 0)
             var title = booklet.title.toLowerCase().replace(/\s/g, '-')
             download(canvas.toDataURL(), title);
-            booklet.classList.remove('preparePrint')
+            booklet.classList.remove(preparePrintClass)
             canvas.parentNode.removeChild(canvas)
         })
 
