@@ -111,14 +111,15 @@
         
             <h3>End of the game</h3>
         
-            <p>The game ends when the supply deck is empty. The current player finishes their turn, and the others
+            <p>
+                The game ends when the supply deck is empty. The current player finishes their turn, and the others
                 take a final turn with only 1 starting action.
-               Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with 
-               the most hooks wins. In case of a tie, the one with the most Treasures wins, followed by the one who ended the game.
+                Count the number of hooks in each deck <img class="rule-icon" src="icons/hook.svg" />. The player with 
+                the most hooks wins. In case of a tie, the one with the most Treasures wins, followed by the one who ended the game.
             </p>
             </div>
 
-            <p><b>Solo challenge</b>: Create a 22-card supply deck and remove one card each turn. Aim to achieve 30 victory points.</p>
+            <!-- <p><b>Solo challenge</b>: Create a 22-card supply deck and remove one card each turn. Aim to achieve 30 victory points.</p> -->
 
             <div>
                 Information and update: https://bit.ly/dk-h<br>
@@ -205,7 +206,7 @@
 
         {
             'title': 'Poisoned Grog',
-            'text': '+1 Treasure.<br>If you Discard this card: +1 Treasure.', // , add condition, if you have not treasure if too strong 
+            'text': '+1 Treasure.<br>When Discarded: +1 Treasure.', // , add condition, if you have not treasure if too strong 
             'flavor': 'Sometimes, poison is slow-acting.',
             'img': 'attacks/pint.png',
             'type': 'attack',
@@ -233,7 +234,7 @@
         {
             'title': 'Contemplation',
             'text': 'If an effect targets you: you may Discard this card to cancel the whole card effect.\
-            <br>If you Discard this card: +1 Card.',
+            <br>When Discarded: +1 Card.',
             'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
             // 'reduced-font-size': '9.1px',
             'img': 'adventures/namaste.png',
@@ -366,7 +367,7 @@
 
         {
             'title': 'Card Mastery',
-            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>If you Discard this card: +1 Card.',
+            'text': '+1 Action.<br>Put a card from your discard in your hand.<br>When Discarded: +1 Card.',
             'flavor': 'A flick of the wrist commands wonder and fear.',
             'img': 'adventures/magician.png',
             'type': 'adventure',
@@ -448,7 +449,19 @@
             'subtype': 'Attack',
             'victory': '2',
             'cost': '2',
-            'amount': 2
+            'amount': 1
+        },
+
+        {
+            'title': 'Ghost Crew',
+            'text': '+1 Card, +1 Treasure, +1 Action if there is more than 2 Attacks on the supply. You may put this card on the top of your deck.',
+            'img': 'attacks/ghost-crew.png',
+            'flavor': 'Trade mortal life to seek eternal retribution.',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1
         },
 
         {
@@ -551,7 +564,7 @@
 
         {
             'title': 'Bank Fortress',
-            'text': '+2 Treasures.<br>If you Discard this card: +1 Action.',
+            'text': '+2 Treasures.<br>When Discarded: +1 Action.',
             'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
             'img': 'structures/bank-2.png',
             'type': 'structure',
@@ -630,7 +643,7 @@
 
         {
             'title': 'Improvised Grenade',
-            'text': 'Target player chose a card from their discard and remove it from the game.<br>If you Discard this card: apply this card effect to all players.',
+            'text': 'Target player chose a card from their discard and remove it from the game.<br>When Discarded: apply this card effect to all players.',
             'img': 'attacks/grenade.png',
             //  'reduced-font-size': '9.2px',
             'type': 'attack',
@@ -656,7 +669,7 @@
 
         {
             'title': 'Bewitched Doll',
-            'text': 'On target enemy’s next turn you play their first action. You make all the decisions arising from this action.', // <br>If you Discard this card: +1 Action.
+            'text': 'On target enemy’s next turn you play their first action. You make all the decisions arising from this action.', // <br>When Discarded: +1 Action.
             'flavor': "Destiny is a fickle concept.",
             'img': 'attacks/voodoo-doll.png',
             'type': 'attack',
