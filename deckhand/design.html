@@ -90,7 +90,7 @@
         
             <ol>
                 <li>Treasures are the currency for purchasing supply cards. Card cost is indicated by the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
-                <li>Icons at the top left are reminders of triggered effects: <img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /></li>
+                <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.</li>
                 <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 Action:</b> If it is your turn, you get to use 1 extra action.</li>
                 <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
@@ -107,7 +107,8 @@
                     Arrange your discard pile face up to allow for examination at a glance.
                 </li>
                 <li>If an effect lacks the "target" keyword, nothing is targeted.</li>
-                <li>If not stated otherwise, revealed cards return to their origin.</li>
+                <li>Unless specified, revealed cards return to their original place. 
+                    Revealing cards never empty a deck.</li>
                 <li>When a deck/discard/hand is too small for an effect, it applies to any nonzero amount. You cannot own fewer than 4 cards.</li>
             </ol>
         
@@ -420,14 +421,15 @@
 
         {
             'title': 'Gold Mine',
-            'text': '+3 Cards.<br>When Discarded: +1 Treasure.',
-            'flavor': 'Close beneath the soil, lies dreams and despair.',
+            'text': `A chosen enemy pick a number. +3 Cards. If the total cost of the drawn cards is not that number: 
+            reveal them, +1 Action.`,
+            'flavor': 'Beneath the soil, lies dreams and despair.',
             'img': 'structures/gold-mine.png',
             'type': 'structure',
             'subtype': 'Structure',
             'cost': '2',
             'victory': '2',
-            'discard': true,
+            //'discard': true,
             'amount': 1
         },
 
