@@ -98,7 +98,7 @@
                 <li><b>+1 Supply refresh</b>: You may put 1 supply card at the bottom of the refresh deck this turn. 
                     Replace it with a <b>refresh</b> deck card.</li>
                 <li>+1 Discard: Discard a card immediately <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
-                <li>Effects on cards have to be applied <b>in order</b>.</li>
+                <li>Apply card effects <b>in the written order</b>.</li>
                 <li>While being played, cards are not in your hand or discard.</li>
                 <!-- <li>Cards have 3 possible types: Attack, Structure, Adventure.</li> -->
                 <li>Text that says "you have" checks cards residing in your hand.</li>
@@ -237,7 +237,7 @@
 
         {
             'title': 'Reverie',
-            'text': '+1 Treasure.<br>When any effects from one card targets you: Discard this card to cancel those.',
+            'text': '+1 Treasure.<br>If you are targeted by any effects from one card: Discard this card to cancel them.',
             'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
             // 'reduced-font-size': '9.1px',
             'img': 'adventures/namaste.png',
@@ -531,7 +531,7 @@
 
         {
             'title': 'Extravagance',
-            'text': '+2 Buy, +1 Supply refresh.:or:+1 Treasure, +1 Buy, +1 Supply refresh.',
+            'text': '+2 Buy, +1 Supply refresh.:or:+1 Buy, +1 Treasure.',
             'flavor': 'Only one way to spend: lavishly and flamboyantly!',
             'img': 'adventures/extravagance-2.png',
             'type': 'adventure',
@@ -671,7 +671,7 @@
         {
             'title': 'Desperate Chase',
             'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
-            put a supply card that cost less than 4 in your discard.',
+            put a supply card that cost less than 5 in your discard.',
             //'reduced-font-size': '9.3px',
             //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
             'img': 'attacks/chase-2.png',
