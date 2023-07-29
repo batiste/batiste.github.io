@@ -47,8 +47,8 @@ a, a:visited {
 
 .innerBooklet {
     padding: 1mm;
-    border: 1px dotted red;
-    margin: calc(3mm - 1px);
+    /* border: 1px dotted red; */
+    margin: calc(3mm);
     margin: 5mm;
     display: flex;
     flex-direction: column;
