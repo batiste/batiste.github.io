@@ -11,7 +11,7 @@
     <style>
         body {
             font-family: "Open Sans", Arial, Helvetica, sans-serif;
-            background-color: rgb(44, 44, 44);
+            background-color: rgb(55, 55, 55);
             color: rgb(255, 255, 255);
             margin: 0;
             padding: 20px;
@@ -84,8 +84,7 @@
         
         #game-info {
             margin: 0 auto;
-            max-width: 800px;
-            font-family: sans-serif;
+            max-width: 1100px;
             margin-bottom: 50px;
         }
 
@@ -104,7 +103,6 @@
         
         p {
             line-height: 1.5;
-            text-align: justify;
         }
 
         .price-teaser {
@@ -175,6 +173,47 @@
             display: flex; align-items: center; justify-content: center;
         }
 
+        .card-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            margin-bottom: 15px;
+        }
+        .card-container .l-card {
+            background-color: #484848;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            width: 32%;
+            margin-bottom: 20px;
+            padding: 20px;
+            box-sizing: border-box;
+            background-image: url(marketing/texture.png);
+            background-size: cover;
+        }
+        .card-container .l-card h2 {
+            font-size: 18px;
+            font-family: "Open Sans", Arial, Helvetica, sans-serif;
+            margin: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 1), 1px 1px 3px rgba(0, 0, 0, 1);
+        }
+        .card-container .l-card p {
+            color: #ffffff;
+            margin-bottom: 0;
+        }
+        .card-container .l-card ul {
+            padding-left: 20px;
+        }
+        .card-container .l-card li {
+            list-style-type: disc;
+            margin-bottom: 5px;
+        }
+        .l-card .icon {
+            position: absolute;
+            margin-left:-20px;
+            margin-top:-30px;
+            font-size: 40px;
+        }
+
         @media only screen and (max-width: 950px) {
             .card {
                 zoom: 0.8;
@@ -189,11 +228,18 @@
             #box-order {
                 flex-direction: column;
             }
+
+            .card-container .l-card {
+                width: 48%;
+            }
         }
 
         @media only screen and (max-width: 500px) {
             .card {
                 zoom: 0.4;
+            }
+            .card-container .l-card {
+                width: 100%;
             }
         }
 
@@ -219,25 +265,67 @@
     <h2>DeckHand in Short</h2>
     <div id="game-info">
 
-        <p>
-            DeckHand is an exciting pirate-themed card game adventure where your goal is to outsmart 
-            opponents by constructing the most formidable deck imaginable!
-        </p>
-
-        <p>
-            Including 72 cards, featuring 50 unique designs, the game offers a varied dynamic 
-            experience that relies on the board state, player choices, and interactions. 
-            Our main focus is to provide an enjoyable and fast-paced experience, allowing you
-            to create a unique deck with each playthrough.
-        </p>
-
         <p class="nav">
+            <a href="#preorder">Pre-order</a> |
             <a href="#read-the-rules">Read the rules</a> |
+            <a href="#read-the-rules">Board</a> |
             <a href="#production-details">Production Details</a> |
             <a href="#print-preview">Print preview</a>
         </p>
 
+        <!-- <p>
+            DeckHand is an exciting pirate-themed card game adventure for 2 to 4 player! The game is self-contained
+            and focus on providing players interesting choices, and interactions. It is a fast-paced experience, allowing you
+            to create a unique deck with each playthrough.
+        </p> -->
+
+        <!-- <p>
+            Including 72 cards, featuring 50 unique designs, the game offers a varied dynamic 
+            experience that relies on the board state, player choices, and interactions. 
+            Our main focus is to provide an enjoyable and fast-paced experience, allowing you
+            to create a unique deck with each playthrough.
+        </p> -->
+
+        <div class="card-container">
+            <div class="l-card">
+                <!-- <span class="icon">🏴‍☠️</span> -->
+                <h2>Assemble a Formidable Deck</h2>
+                <p>Assemble a formidable deck from 72 cards and 50 unique designs. 
+                    Prepare for a dynamic experience that hinges on the board state, 
+                    your strategic choices, and thrilling interactions.</p>
+            </div>
+            <div class="l-card">
+                <h2>Easy Setup & Portable</h2>
+                <p>Enjoy swift setup with no additional game components, just cards! 
+                    Grasp the rules in less than 3 minutes, and DeckHand will have you immersed in 
+                    the action in no time, whether at home or on the go!</p>
+            </div>
+            <div class="l-card">
+                <h2>Short Games, Big Impact</h2>
+                <p>Short on time? No problem! DeckHand's 2-player game typically lasts just 30 minutes. 
+                    It strikes a balance between accessible 
+                    rules for casual gamers and engaging decision-making for strategy enthusiasts.
+                </p>
+            </div>
+            <div class="l-card">
+                <h2>No Life Points or Complicated Tokens</h2>
+                <p>Say goodbye to complex tracking mechanics! DeckHand focuses on a streamlined experience.</p>
+            </div>
+            <div class="l-card">
+                <h2>Each Card Matters</h2>
+                <p>Every card in DeckHand has a unique effect, 
+                   adding excitement and unpredictability to each playthrough.</p>
+            </div>
+            <div class="l-card">
+                <h2>Turn Luck to Your Advantage</h2>
+                <p>Cleverly use your cards to turn fortune in your favor. 
+                    Transform a seemingly dire situation into a victory!</p>
+            </div>
+          </div>
+
         <div id="box-order">
+            <h2 id="preorder">Pre-order</h2>
+
             <div id="tuck-box"></div>
 
             <p style="display: flex; flex-direction: column; margin: 15px; align-items: center;">
@@ -252,14 +340,21 @@
         
         </div>
 
+
         <div class="content centered">
             <h2 id="read-the-rules">Read the Rules</h2>
             <p>Rules have to be as short and as unambiguous as possible.</p>
             <a href="marketing/booklets.png"><img src="marketing/booklets.png" width="100%"></a>
         </div>
+    
+        <div class="content centered">
+            <h2 id="board">Board</h2>
+            <p>An example board state for one player.</p>
+            <a href="marketing/board.jpg"><img src="marketing/board.jpg" width="100%"></a>
+        </div>
 
 
-        <div>
+        <div class="content centered">
             <h2 id="production-details">Production Details</h2>
 
             <p>We aim for the very best quality print. Our cards are poker sized cards (MTG) with a matt surface.</p>
@@ -280,11 +375,11 @@
 
             <img src="marketing/print.jpg" width="100%">
 
-            <p>Second prototype with tuck box and rules.</p>
+            <p>Second prototype unboxing.</p>
             <iframe width="560" height="360" src="https://www.youtube.com/embed/dXHYfOlRKOg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-            <p>First prototype print.</p>
-            <iframe width="560" height="360" src="https://www.youtube.com/embed/NheWub_03sM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            <!-- <p>First prototype print.</p>
+            <iframe width="560" height="360" src="https://www.youtube.com/embed/NheWub_03sM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe> -->
         </div>
 
 
