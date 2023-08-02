@@ -62,10 +62,10 @@ scene.add( light );
 
 const loader = new THREE.TextureLoader();
 loader.setPath( 'marketing/box/' );
-const front = loader.load('front.png')
+const front = loader.load('front.jpg')
 const left = loader.load('left.png')
 const right = loader.load('right.png')
-const back = loader.load('back.png')
+const back = loader.load('back.jpg')
 const top = loader.load('top.png')
 const bottom = loader.load('bottom.png')
 
