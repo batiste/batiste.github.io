@@ -12,7 +12,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.25)</h2>
+<h2>DeckHand (v0.9.26)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -56,7 +56,7 @@
              </p>
          
              <ol>
-                 <li>Apply effects that happen at the beginning of turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
+                 <li>Apply effects that happen at the start of turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
                  <li>Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards.</li>
                  <li>You have 2 of any actions during your turn which are:
                      <ol>
@@ -448,6 +448,19 @@
         },
 
         {
+            'title': 'Eternal Archive',
+            'text': '+2 Treasures.<br>When discarded: you may shuffle your discard into your deck.',
+            'flavor': 'The indomitable will rises again, defying adversity.',
+            'img': '',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'cost': '2',
+            'victory': '2',
+            'amount': 2,
+            'discard': true,
+        },
+
+        {
             'title': 'Rum Factory',
             'text': '+2 Treasures. You may give a Treasure from the bank to everybody. If you do, everybody must Discard a card after their initial draw on their next turn.',
             'img': 'structures/rum-factory.png',
@@ -468,7 +481,19 @@
             'subtype': 'Adventure',
             'cost': '2',
             'victory': '2',
-            'amount': 2
+            'amount': 1
+        },
+
+        {
+            'title': 'Treasure Map',
+            'text': '+1 Treasure. Look at the top 3 cards of your deck. You may put any number of them into your discard and the rest on top of your deck in any order.',
+            //'flavor': 'Riches await the keen-eyed adventurer..',
+            'img': 'adventures/treasure-map.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'cost': '2',
+            'victory': '2',
+            'amount': 1
         },
 
         {
@@ -628,7 +653,19 @@
             'subtype': 'Structure',
             'cost': '3',
             'victory': '2',
-            'amount': 2
+            'amount': 1
+        },
+
+        {
+            'title': 'Architect\'s Workshop',
+            'text': '+1 Action, +1 Treasure. If you have a structure: +1 Buy.',
+            'flavor': 'Meticulous plans and skilled craftsmanship bring grand visions to life',
+            'img': 'structures/architect-workshop.png',
+            'type': 'structure',
+            'subtype': 'Structure',
+            'cost': '3',
+            'victory': '2',
+            'amount': 1
         },
 
         {
