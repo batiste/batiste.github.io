@@ -12,7 +12,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.26)</h2>
+<h2>DeckHand (v0.9.27)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -194,7 +194,19 @@
             'subtype': 'Adventure',
             'victory': '1',
             'cost': '1',
-            'amount': 2,
+            'amount': 1,
+        },
+
+        {
+            'title': 'Fortune Teller',
+            'text': 'Reveal 2 cards from any deck.<br>+1 Action for each Structure revealed.<br>+1 Treasure for each Attack revealed.<br>+1 Card for each Adventure revealed.',
+            //'flavor': 'The tavern unites thieves, rogues and scoundrels.',
+            'img': 'adventures/fortune-teller.png',
+            'type': 'adventure',
+            'subtype': 'Adventure',
+            'victory': '1',
+            'cost': '1',
+            'amount': 1,
         },
 
         {
@@ -533,7 +545,7 @@
 
         {
             'title': 'Unyielding Waves',
-            'text': '+1 Action. Move up to 3 cards from the discard of any number of target players to the bottom of their owner\'s deck.',
+            'text': '+1 Action. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
             'flavor': 'The forces of the roaring ocean cannot be fought.',
             'img': 'attacks/relentless-waves.png',
             'type': 'attack',
@@ -581,7 +593,7 @@
 
         {
             'title': 'Walk the Plank',
-            'text': 'Remove a card from your hand or discard from the game: Get Treasures equal to its cost. +2 Treasures.',
+            'text': ' +2 Treasures. You may remove a card from your hand or discard from the game: Get Treasures equal to its cost.',
             'flavor': 'A dance on the plank or a delayed sentence?',
             'img': 'attacks/plank-2.png',
             'type': 'attack',
@@ -657,7 +669,7 @@
         },
 
         {
-            'title': 'Architect\'s Workshop',
+            'title': 'Architect’s Workshop',
             'text': '+1 Action, +1 Treasure. If there at least 2 Structures on the supply: +1 Buy.',
             'flavor': 'Meticulous plans and skilled craftsmanship bring grand visions to life',
             'img': 'structures/architect-workshop.png',
