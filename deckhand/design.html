@@ -89,7 +89,9 @@
             </h3>
         
             <ol>
-                <li>Treasures are the currency for purchasing supply cards. Card cost is indicated by the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.</li>
+                <li>Treasures are the currency for purchasing supply cards. Card cost is indicated
+                    by the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.
+                    The hook icon on the bottom left <img class="rule-icon" src="icons/hook.svg" /> indicates the victory points.</li>
                 <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.</li>
                 <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 Action:</b> If it is your turn, you get to use 1 extra action.</li>
@@ -199,7 +201,7 @@
 
         {
             'title': 'Fortune Teller',
-            'text': 'Reveal 2 cards from any deck.<br>+1 Action for each Structure revealed.<br>+1 Treasure for each Attack revealed.<br>+1 Card for each Adventure revealed.',
+            'text': 'Reveal 2 cards from any deck.<br>+1 Card for each Adventure revealed.<br>+1 Treasure for each Attack revealed.<br>+1 Action for each Structure revealed.',
             //'flavor': 'The tavern unites thieves, rogues and scoundrels.',
             'img': 'adventures/fortune-teller.png',
             'type': 'adventure',
@@ -593,14 +595,26 @@
 
         {
             'title': 'Walk the Plank',
-            'text': ' +2 Treasures. You may remove a card from your hand or discard from the game: Get Treasures equal to its cost.',
+            'text': ' +2 Treasures. You may remove a card from your hand or discard from the game: Gain Treasures equal to the card’s cost.',
             'flavor': 'A dance on the plank or a delayed sentence?',
             'img': 'attacks/plank-2.png',
             'type': 'attack',
             'subtype': 'Attack',
             'victory': '3',
             'cost': '3',
-            'amount': 2
+            'amount': 1
+        },
+
+        {
+            'title': 'Monkey’s Bargain',
+            'text': 'Remove a card from your hand or discard from the game: Gain Treasures and Actions equal to the card’s victory points.',
+            'flavor': 'A monkey’s mischief is a pirate’s boon.',
+            'img': 'attacks/exchange.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '2',
+            'cost': '2',
+            'amount': 1
         },
 
         {
