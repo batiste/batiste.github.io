@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="design.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="./rasterizeHTML.allinone.js"></script>
+<script src="./cards.fr.js"></script>
 </head>
 
 <body>
@@ -897,7 +898,6 @@
             'amount': 1,
 
         },
-
     ]
 
     all = []
@@ -909,6 +909,13 @@
         var extra = ""
         c['id'] = j;
         amount += c['amount'];
+
+        // if(fr_translations[j]) {
+        //     c['title'] = fr_translations[j]['title']
+        //     c['text'] = fr_translations[j]['text']
+        //     c['flavor'] = fr_translations[j]['flavor']
+        // }
+
         if(j>1) {
             distribution[c['type']] += c['amount']
             distribution[c['cost']] += c['amount']
