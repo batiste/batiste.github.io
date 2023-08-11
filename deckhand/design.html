@@ -12,7 +12,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.27)</h2>
+<h2>DeckHand (v0.9.28)</h2>
 
 <p>
     DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
@@ -583,8 +583,8 @@
 
         {
             'title': 'Stealthy Observer',
-            'text': `Reveal the top 2 cards of target player’s deck. Put one in their discard and gain 
-                Treasures equal to its victory points.`,
+            'text': `Reveal the top 2 cards of target enemy\'s deck. Put one in their discard and gain 
+                Treasures equal to the card's victory points.`,
             'flavor': 'A vigilant eye  brings forth hidden truths.',
             'img': 'adventures/roof-thief.png',
             'type': 'adventure',
@@ -728,7 +728,19 @@
             'subtype': 'Attack',
             'victory': '3',
             'cost': '3',
-            'amount': 2
+            'amount': 1
+        },
+
+        {
+            'title': 'Abyssal Looter',
+            'text': '+1 Action. Swap a card from your hand with a card of same cost from an enemy discard.',
+            'flavor': 'Born of the deep, it claims more than possessions, it feasts on uncertainty.',
+            'img': 'attacks/sea-bug.png',
+            'type': 'attack',
+            'subtype': 'Attack',
+            'victory': '3',
+            'cost': '3',
+            'amount': 1
         },
 
         {
