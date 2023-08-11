@@ -177,6 +177,14 @@ a, a:visited {
     line-height: 1.4;
 }
 
+.lang-fr .card .text {
+    font-size:9.4px;
+}
+
+.lang-fr .card .flavour {
+    font-size:7.5px;
+}
+
 .card .reduced-font-size {
     font-size:9.3px;
 }
