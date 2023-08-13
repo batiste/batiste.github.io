@@ -1,31 +1,31 @@
 var fr_translations = [
   {
-    "title":"Bagarre",
+    "title":"Mêlée Rapprochée",
     "text":"+1 Trésor.",
     "flavor":"Les amitiés pirates commencent par une bagarre."
   },
   {
     "title":"Célébration",
-    "text":"+1 Trésor pour chaque Célébration que tu as.<br>+1 Recharge, tu peux piocher une carte.",
+    "text":"+1 Trésor par Célébration en main.<br>+1 Recharge, tu peux piocher une carte.",
     "flavor":"Grog solitaire ou rires partagés ?"
   },
   {
     "title":"Taverne",
-    "text":"+1 Carte si tu as une Aventure.<br>+1 Trésor si tu as une Attaque.<br>+1 Action si tu as une Structure.",
+    "text":"+1 Carte si tu as une Aventure en main.<br>+1 Trésor si tu as une Attaque en main.<br>+1 Action si tu as une Structure en main.",
     "flavor":"Elle rassemble voleurs, coquins et fripouilles."
   },
   {
-    "title":"Devineuse de Fortune",
+    "title":"Voyante",
     "text":"Révéle 2 cartes de n'importe quel deck.<br>+1 Carte par Aventure révélée.<br>+1 Trésor par Attaque révélée.<br>+1 Action par Structure révélée."
   },
   {
     "title":"Tir rapide",
-    "text":"+1 Trésor.<br>+1 Action si tu as une Attaque.",
-    "flavor-no-quotes": "\"Ne les laissez pas se regrouper !\" ordonne-t-elle, les pistolets crépitant."
+    "text":"+1 Trésor.<br>+1 Action si tu as une Attaque en main.",
+    "flavor-no-quotes": "« Ne les laissez pas se regrouper ! » ordonne-t-elle, les pistolets crépitant."
   },
   {
-    "title":"Maître de la Danse",
-    "text":"+1 Trésor par carte de coût 1 que tu as.<br>+1 Action par carte de coût 3 que tu as.",
+    "title": "Maître d'Épée",
+    "text":"+1 Trésor par carte de coût 1 en main.<br>+1 Action par carte de coût 3 en main.",
     "flavor":"Les tacticiens accomplis mêlent manœuvres subtiles et gestes grandioses."
   },
   {
@@ -39,13 +39,18 @@ var fr_translations = [
     "flavor":"Les rumeurs courent qu'il est le plus riche du village."
   },
   {
-    "title":"Rêverie",
-    "text":"+1 Trésor.<br>Si tu êtes ciblé par des effets d'une carte : Défausse Rêverie pour les annuler.",
-    "flavor-no-quotes": "\"Harmonie ! Sérénité !\" bâilla-t-il après sa sieste.",
+    'title': 'Paresse Karmique',
+    'text': 'Échange une carte de ta main ou de ta défausse contre une carte de la réserve qui coûte 1 de plus.',
+    'flavor-no-quotes': '« Harmonie ! Sérénité ! » bâilla-t-il, après sa sieste.'
   },
+  // {
+  //   "title":"Rêverie",
+  //   "text":"+1 Trésor.<br>Si tu es ciblé par des effets d'une carte : Défausse Rêverie pour les annuler.",
+  //   "flavor-no-quotes": "\"Harmonie ! Sérénité !\" bâilla-t-il après sa sieste.",
+  // },
   {
     "title":"Leçons de Kung Fu",
-    "text":"+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en dessous de son deck.",
+    "text":"+1 Trésor, +1 Card, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en dessous de son deck.",
     "flavor":"Les marées, utilises leur pouvoir à ton avantage !"
   },
   {
@@ -105,8 +110,8 @@ var fr_translations = [
     "flavor":"Épices dansantes, saveurs d'opulence."
   },
   {
-    "title":"Planque",
-    "text":"+2 Cartes, +1 Trésor. Quand défaussée : tu peux remettre Planque dans ta main. Ne le fait qu'une fois par pioche.",
+    "title":"Refuge",
+    "text":"+2 Cartes, +1 Trésor. Quand défaussée : tu peux remettre Refuge dans ta main. Ne le fait qu'une fois par pioche.",
     "flavor":"Un refuge pour ouvrir un flacon de rhum et le finir."
   },
   {
@@ -130,7 +135,7 @@ var fr_translations = [
   },
   {
     "title":"Exploration",
-    "text":"+1 Action si tu as une Aventure.<br>+1 Carte, +1 Trésor.",
+    "text":"+1 Action si tu as une Aventure en main.<br>+1 Carte, +1 Trésor.",
     "flavor":"Mettez les voiles, mais pas sans une boussole en main."
   },
   {
@@ -155,12 +160,12 @@ var fr_translations = [
   {
     "title": "Vagues Inflexibles",
     "text": "+1 Action. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés en dessous de leur deck.",
-    "flavor": "Les forces de l'océan ne peuvent être combattues."
+    "flavor": "Les forces de l'océan sont indomptables."
   },
   {
     "title": "Expédition Perdue",
-    "text": `Retire une carte de la défausse du joueur ciblé et pose 2 Trésors de la banque dessus. 
-    Après mélange de sa défausse, prends les Trésors et mets la carte dans la nouvelle défausse.`
+    "text": `Retire 1 carte de la défausse du joueur ciblé et pose 2 Trésors de la banque dessus. 
+    Après mélange de sa défausse, prends les Trésors et mets sa carte dans sa nouvelle défausse.`
   },
   {
     "title": "Observateur Furtif",
@@ -175,21 +180,21 @@ var fr_translations = [
   },
   {
     "title": "Chantier Naval",
-    "text": "+1 Trésor. Tu ne peux pas utiliser plus de 5 actions ce tour-ci.<br>+1 Action pour chaque Structure dans ta défausse."
+    "text": "+1 Trésor.<br>Tu ne peux pas utiliser plus de 5 actions ce tour-ci. +1 Action par Structure dans ta défausse."
   },
   {
     "title": "Sur la Planche",
     "text": "+2 Trésors. Tu peux retirer une carte de ta main ou de ta défausse du jeu : Gagne des Trésors équivalant au coût de la carte.",
-    "flavor": "Une danse sur la planche ou une sentence différée ?"
+    "flavor": "Une danse sur la planche ou un sursis ?"
   },
   {
     "title": "Marché de Singes",
-    "text": "Retire une carte de ta main ou défausse du jeu : Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
+    "text": "Retire 1 carte de ta main ou défausse du jeu : Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
     "flavor": "Les espiègleries de l'un sont l'aubaine d'un autre."
   },
   {
     "title": "Vent dans les Voiles",
-    "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse : Pioche une carte supplémentaire lors de ta pioche initiale."
+    "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse : Pioche une carte de plus lors de ta pioche initiale."
   },
   {
     "title": "Guilde des Aventuriers",
@@ -202,7 +207,7 @@ var fr_translations = [
   },
   {
     "title": "Banque Forteresse",
-    "text": "+2 Trésors.<br>Quand elle est défaussée : +1 Action.",
+    "text": "+2 Trésors.<br>Quand défaussée : +1 Action.",
     "flavor": "Fortifiée contre les pillards, la banque protège contre les tentations les plus puissantes."
   },
   {
@@ -241,7 +246,7 @@ var fr_translations = [
   },
   {
     "title": "Grenade Improvisée",
-    "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand elle est défaussée : applique cet effet de carte à tous les joueurs."
+    "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand défaussée : applique cet effet de carte à tous les joueurs."
   },
   {
     "title": "Cimetière Délaissé",

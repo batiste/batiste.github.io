@@ -1,19 +1,19 @@
 
-var cards = [{
-        'title': 'Fist Fight',
-        'text': '+1 Treasure.',
-        'flavor': 'Pirate friendships start with a fight.',
-        'img': 'attacks/fist-fight.png',
-        'type': 'attack',
-        'subtype': 'Attack',
-        'victory': '1',
-        'cost': '1',
-        'amount': 2 * 4
-    },
-
+var cards = [
+{
+    'title': 'Fist Fight',
+    'text': '+1 Treasure.',
+    'flavor': 'Pirate friendships start with a fight.',
+    'img': 'attacks/fist-fight.png',
+    'type': 'attack',
+    'subtype': 'Attack',
+    'victory': '1',
+    'cost': '1',
+    'amount': 2 * 4
+},
 {
     'title': 'Celebrate',
-    'text': '+1 Treasure for each Celebrate you have.<br>+1 Supply refresh, you may draw a card.',
+    'text': '+1 Treasure for each Celebrate in hand.<br>+1 Reload, you may draw a card.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -22,10 +22,9 @@ var cards = [{
     'cost': '1',
     'amount': 2 * 4
 },
-
 {
     'title': 'Tavern',
-    'text': '+1 Card if you have an Adventure.<br>+1 Treasure if you have an Attack.<br>+1 Action if you have a Structure.',
+    'text': '+1 Card if you have an Adventure in hand.<br>+1 Treasure if you have an Attack in hand.<br>+1 Action if you have a Structure in hand.',
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
     'type': 'adventure',
@@ -49,7 +48,7 @@ var cards = [{
 
 {
     'title': 'Quick Shot',
-    'text': '+1 Treasure.<br>+1 Action if you have an Attack.',
+    'text': '+1 Treasure.<br>+1 Action if you have an Attack in hand.',
     'flavor-no-quotes': '“Don’t let them regroup!” she commands, with pistols ablaze.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
@@ -60,8 +59,8 @@ var cards = [{
 },
 
 {
-    'title': 'Dance Master',
-    'text': '+1 Treasure for each 1 cost card you have.<br>+1 Action for each 3 cost card you have.',
+    'title': 'Sword Master',
+    'text': '+1 Treasure for each 1 cost card in hand.<br>+1 Action for each 3 cost card in hand.',
     'flavor': `Accomplished tacticians blend subtle manoeuver with grand gestures.`,
     'img': 'attacks/dance-master-2.png',
     'type': 'attack',
@@ -98,22 +97,9 @@ var cards = [{
 
 },
 
-{
-    'title': 'Reverie',
-    'text': '+1 Treasure.<br>If you are targeted by any effects from one card: Discard this card to cancel them.',
-    'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
-    // 'reduced-font-size': '9.1px',
-    'img': 'adventures/namaste.png',
-    'type': 'adventure',
-    'subtype': 'Adventure',
-    'victory': '1',
-    'cost': '1',
-    'amount': 1,
-},
-
 // {
-//     'title': 'Karmic Cycle',
-//     'text': 'Swap a card from your hand or discard for a card from the supply that cost 1 more.',
+//     'title': 'Reverie',
+//     'text': '+1 Treasure.<br>If you are targeted by any effects from one card: Discard this card to cancel them.',
 //     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
 //     // 'reduced-font-size': '9.1px',
 //     'img': 'adventures/namaste.png',
@@ -125,8 +111,21 @@ var cards = [{
 // },
 
 {
+    'title': 'Karmic Indolence',
+    'text': 'Swap a card from your hand or discard for a card from the supply that cost 1 more.',
+    'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
+    // 'reduced-font-size': '9.1px',
+    'img': 'adventures/namaste.png',
+    'type': 'adventure',
+    'subtype': 'Adventure',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+},
+
+{
     'title': 'Kung Fu Lessons',
-    'text': '+1 Treasure, +1 Supply refresh.<br>Put 1 card from target player’s discard at the bottom of their deck.',
+    'text': '+1 Treasure, +1 Card, +1 Reload.<br>Put 1 card from target player’s discard at the bottom of their deck.',
     'flavor': 'The tide, harness its power to your advantage!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -167,7 +166,7 @@ var cards = [{
 
 {
     'title': 'Haggling',
-    'text': '+1 Supply refresh, +1 Buy.<br>Your next buy this turn cost 1 less.',
+    'text': '+1 Reload, +1 Buy.<br>Your next buy this turn cost 1 less.',
     'flavor': 'At times, the tongue wields a sharper edge than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
@@ -179,7 +178,7 @@ var cards = [{
 
 {
     'title': 'Alley Thief',
-    'text': '+1 Treasure, +1 Supply refresh.:or:Steal a Treasure from target player.',
+    'text': '+1 Treasure, +1 Reload.:or:Steal a Treasure from target player.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
@@ -244,7 +243,7 @@ var cards = [{
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+1 Supply refresh. An chosen enemy select 3 supply cards. You may apply the effects of one as if you just played it.',
+    'text': '+1 Reload. An chosen enemy select 3 supply cards. You may apply the effects of one as if you just played it.',
     'flavor': 'In his royal hands, even your choices are illusion.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
@@ -349,7 +348,7 @@ var cards = [{
 
 {
     'title': 'Exploration',
-    'text': '+1 Action if you have an Adventure.<br>+1 Card, +1 Treasure.',
+    'text': '+1 Action if you have an Adventure in hand.<br>+1 Card, +1 Treasure.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
@@ -373,7 +372,7 @@ var cards = [{
 
 {
     'title': 'Going Ape',
-    'text': '+1 Action, +1 Supply Refresh. If played from your hand, swap Going Ape or a card from your hand with a card of equal cost from the supply. The new card joins your hand.',
+    'text': '+1 Action, +1 Reload. If played from your hand, swap Going Ape or a card from your hand with a card of equal cost from the supply. The new card joins your hand.',
     'img': 'attacks/silverback.png',
     'type': 'attack',
     'subtype': 'Attack',
@@ -384,7 +383,7 @@ var cards = [{
 
 {
     'title': 'Ghost Crew',
-    'text': '+1 Card, +1 Treasure. You may put this card on the top of its owner’s deck. +1 Action if there is 3 or more Attacks on the supply.',
+    'text': '+1 Card, +1 Treasure. You may put this card on the top of its owner’s deck. +1 Action if there is 3 or more Attacks in the supply.',
     'img': 'attacks/ghost-crew.png',
     'flavor': 'Trade your mortal life, enjoy eternal retribution.',
     'type': 'attack',
@@ -445,7 +444,7 @@ var cards = [{
 
 {
     'title': 'Extravagance',
-    'text': '+2 Buy, +1 Supply refresh.:or:+1 Buy, +1 Treasure.',
+    'text': '+2 Buy, +1 Reload.:or:+1 Buy, +1 Treasure.',
     'flavor': 'Only one way to spend: lavishly and flamboyantly!',
     'img': 'adventures/extravagance-2.png',
     'type': 'adventure',
@@ -505,7 +504,7 @@ var cards = [{
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 Treasure for each Adventure on the supply but no more than 4.',
+    'text': '+1 Treasure for each Adventure in the supply but no more than 4.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -558,7 +557,7 @@ var cards = [{
 
 {
     'title': 'Architect’s Workshop',
-    'text': '+1 Action, +1 Treasure. If there is 2 or more Structures on the supply: +1 Buy.',
+    'text': '+1 Action, +1 Treasure. If there is 2 or more Structures in the supply: +1 Buy.',
     'flavor': 'Meticulous plans and skilled craftsmanship bring grand visions to life',
     'img': 'structures/architect-workshop.png',
     'type': 'structure',
@@ -607,7 +606,7 @@ var cards = [{
 
 {
     'title': 'Gambling Addiction',
-    'text': '+2 Supply refresh. If the supply has 4 or more cards of the same type: +3 Treasures.',
+    'text': '+2 Reload. If the supply has 4 or more cards of the same type: +3 Treasures.',
     'flavor': 'The allure of easy riches sealed his downfall.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',

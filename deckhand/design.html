@@ -33,7 +33,7 @@
         <div class="innerBooklet">     
             <div>
             <h3 style="margin-top:0">
-                Set up <span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">DeckHand Rules 1/2</span>
+                Set up for 2 to 4 players<span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">DeckHand Rules 1/2</span>
             </h3>
          
              <ol>
@@ -99,13 +99,13 @@
                 <li><b>+1 Action:</b> If it is your turn, you get to use 1 extra action.</li>
                 <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
                 <li><b>+1 Buy:</b> You may buy a card without using an action this turn.</li>
-                <li><b>+1 Supply refresh</b>: You may put 1 supply card at the bottom of the refresh deck this turn. 
+                <li><b>+1 Reload</b>: You may put 1 supply card at the bottom of the refresh deck this turn. 
                     Replace it with a <b>refresh</b> deck card.</li>
                 <li>+1 Discard: Discard a card immediately <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
                 <li>Apply card effects <b>in the written order</b>.</li>
                 <li>While being played, cards are not in your hand or discard.</li>
                 <!-- <li>Cards have 3 possible types: Attack, Structure, Adventure.</li> -->
-                <li>Text that says "you have" checks cards residing in your hand.</li>
+                <!-- <li>Text that says "you have" checks cards residing in your hand.</li> -->
                 <li>You can only Discard cards from your hand.
                     <!-- Playing is not Discarding. -->
                     Arrange your discard pile face up to allow for examination at a glance.
@@ -138,6 +138,11 @@
 
 <button onclick="downloadBookletFace()">Download booklet face</button>
 <button onclick="downloadBookletBack()">Download booklet back</button>
+
+<p>
+    <a href="./design.html">English</a>
+    <a href="./design.html?lang=fr">French</a>    
+</p>
 
 <div class="config">
     General config
@@ -175,16 +180,24 @@
     var translations = cards.map(e => ({"title": e.title, "text": e.text, "flavor": e.flavor}))
     console.log(JSON.stringify(translations, null, 2))
 
+    var lang = false;
+    if (location.href.split('?').length > 1) {
+        params = new URLSearchParams(location.href.split('?')[1])
+        lang = params.get('lang')
+    }
+    var translation = {'fr': fr_translations}
+
     cards.forEach((c) => {
         var extra = ""
         c['id'] = j;
         amount += c['amount'];
 
-        if(fr_translations[j]) {
-            c['title'] = fr_translations[j]['title']
-            c['text'] = fr_translations[j]['text']
-            c['flavor'] = fr_translations[j]['flavor']
-            c['flavor-no-quotes'] = fr_translations[j]['flavor-no-quotes']
+        if (lang && translation[lang]) {
+            var t = translation[lang]
+            c['title'] = t[j]['title']
+            c['text'] = t[j]['text']
+            c['flavor'] = t[j]['flavor']
+            c['flavor-no-quotes'] = t[j]['flavor-no-quotes']
         }
 
         if(j>1) {
