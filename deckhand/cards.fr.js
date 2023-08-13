@@ -1,112 +1,278 @@
-
 var fr_translations = [
-    {
-      "title": "Bagarre",
-      "text": "+1 Trésor.",
-      "flavor": "Les amitiés pirates commencent par une bagarre."
-    },
-    {
-      "title": "Célébration",
-      "text": "+1 Trésor par Célébration que tu as.<br>+1 Recharge, tu peux piocher une carte.",
-      "flavor": "Grog solitaire ou rires partagés ?"
-    },
-    {
-      "title": "Taverne",
-      "text": "+1 Carte si tu as une Aventure.<br>+1 Trésor si tu as une Attaque.<br>+1 Action si tu as une Structure.",
-      "flavor": "Elle rassemble voleurs, coquins et fripouilles."
-    },
-    {
-      "title": "Devineuse de Fortune",
-      "text": "Révéle 2 cartes de n'importe quel deck.<br>+1 Carte par Aventure révélée.<br>+1 Trésor par Attaque révélée.<br>+1 Action par Structure révélée."
-    },
-    {
-      "title": "Tir rapide",
-      "text": "+1 Trésor.<br>+1 Action si tu as une Attaque."
-    },
-    {
-      "title": "Maître de la Danse",
-      "text": "+1 Trésor par carte de coût 1 que tu as.<br>+1 Action par carte de coût 3 que tu as.",
-      "flavor": "Les tacticiens accomplis mêlent manœuvres subtiles et gestes grandioses."
-    },
-    {
-      "title": "Grog Empoisonné",
-      "text": "+1 Trésor.<br>Quand défaussée : +1 Trésor.",
-      "flavor": "Parfois, le poison agit lentement."
-    },
-    {
-      "title": "Clochard de Plage",
-      "text": "+1 Trésor. +1 Trésor si tu es l'un des joueurs possédant le moins de cartes.",
-      "flavor": "Les rumeurs disent qu'il est le plus riche du village."
-    },
-    {
-      "title": "Rêverie",
-      "text": "+1 Trésor.<br>Si tu êtes ciblé par des effets d'une carte : Défausse Rêverie pour les annuler."
-    },
-    {
-      "title": "Leçons de Kung Fu",
-      "text": "+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en bas de son deck.",
-      "flavor": "Les marées, utilises leur pouvoir à ta avantage !"
-    },
-    {
-      "title": "Mariage du Gouverneur",
-      "text": "+1 Trésor. Au prochain tour de l'ennemi ciblé, il gagne +1 Achat et doit tu donner un Trésor avant son premier achat.",
-      "flavor": "Un somptueux cadeau assure des faveurs et de l'influence."
-    },
- {
-    "title": "L'alchimie",
-    "text": "Défausse un nombre quelconque de cartes, obtient autant de Trésors. +2 Cartes.",
-    "flavor": "Infusée de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
+  {
+    "title":"Bagarre",
+    "text":"+1 Trésor.",
+    "flavor":"Les amitiés pirates commencent par une bagarre."
   },
   {
-    "title": "Caprice de l'Empereur",
-    "text": "+1 Recharge. Un ennemi sélectionne 3 cartes de la réserve. Tu peux appliquer les effets de l'une d'entre elles comme si tu venais de la jouer.",
-    "flavor": "Dans ses mains royales, même vos choix sont illusoires."
+    "title":"Célébration",
+    "text":"+1 Trésor par Célébration que tu as.<br>+1 Recharge, tu peux piocher une carte.",
+    "flavor":"Grog solitaire ou rires partagés ?"
   },
   {
-    "title": "Maîtrise des Cartes",
-    "text": "+1 Action.<br>Mets une carte de ta défausse dans ta main.<br>Quand défaussée : +1 Carte.",
-    "flavor": "Un mouvement de poignet commande l'émerveillement et la peur."
+    "title":"Taverne",
+    "text":"+1 Carte si tu as une Aventure.<br>+1 Trésor si tu as une Attaque.<br>+1 Action si tu as une Structure.",
+    "flavor":"Elle rassemble voleurs, coquins et fripouilles."
   },
   {
-    "title": "Commerce d'Épices",
-    "text": "+1 Trésor.<br>Si cette carte est dans ta défausse, la première Structure que tu achètes chaque tour coûte 1 de moins.",
-    "flavor": "Les épices dansent et se mêlent, un goût d'opulence."
+    "title":"Devineuse de Fortune",
+    "text":"Révéle 2 cartes de n'importe quel deck.<br>+1 Carte par Aventure révélée.<br>+1 Trésor par Attaque révélée.<br>+1 Action par Structure révélée."
   },
   {
-    "title": "Planque",
-    "text": "+2 Cartes, +1 Trésor.<br>Quand défaussée : tu peux la remettre dans ta main. Ne le fait qu'une fois par pioche.",
-    "flavor": "Un refuge pour ouvrir une bouteille de rhum et la finir."
+    "title":"Tir rapide",
+    "text":"+1 Trésor.<br>+1 Action si tu as une Attaque."
   },
   {
-    "title": "Mine d'Or",
-    "text": "Un ennemi choisi choisit un nombre. +3 Cartes. Si le coût total des cartes piochées n'est pas ce nombre : révéle-les, +1 Action.",
-    "flavor": "Sous le sol, se cachent rêves et désespoir."
+    "title":"Maître de la Danse",
+    "text":"+1 Trésor par carte de coût 1 que tu as.<br>+1 Action par carte de coût 3 que tu as.",
+    "flavor":"Les tacticiens accomplis mêlent manœuvres subtiles et gestes grandioses."
   },
   {
-    "title": "Marché du Port",
-    "text": "+2 Trésors.:or:+1 Trésor, +1 Achat.",
-    "flavor": "Des secrets et des trésors volés sont échangés ici."
+    "title":"Grog Empoisonné",
+    "text":"+1 Trésor.<br>Quand défaussée : +1 Trésor.",
+    "flavor":"Parfois, le poison agit lentement."
   },
   {
-    "title": "Bibliothèque Antique",
-    "text": "+2 Trésors.<br>Quand défaussée : tu peux mélanger ta défausse dans ta deck.",
-    "flavor": "Chaque page dévoile un secret impérial."
+    "title":"Clochard de Plage",
+    "text":"+1 Trésor. +1 Trésor si tu es l'un des joueurs possédant le moins de cartes.",
+    "flavor":"Les rumeurs disent qu'il est le plus riche du village."
   },
   {
-    "title": "Usine de Rhum",
-    "text": "+2 Trésors. Tu peux donner un Trésor de la réserve à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
+    "title":"Rêverie",
+    "text":"+1 Trésor.<br>Si tu êtes ciblé par des effets d'une carte : Défausse Rêverie pour les annuler."
   },
   {
-    "title": "Exploration",
-    "text": "+1 Action si tu as une Aventure.<br>+1 Carte, +1 Trésor.",
-    "flavor": "Mettez les voiles, mais pas sans une boussole en main."
+    "title":"Leçons de Kung Fu",
+    "text":"+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en bas de son deck.",
+    "flavor":"Les marées, utilises leur pouvoir à ta avantage !"
   },
   {
-    "title": "Carte au Trésor",
-    "text": "+1 Trésor. Regarde les 3 cartes du dessus de ton deck. Tu peux en mettre autant que tu veux dans ta défausse et le reste sur le dessus de ton deck dans n'importe quel ordre. +1 Carte."
+    "title":"Mariage du Gouverneur",
+    "text":"+1 Trésor. Au prochain tour de l'ennemi ciblé, il gagne +1 Achat et doit tu donner un Trésor avant son premier achat.",
+    "flavor":"Un luxueux cadeau assure faveurs et influence."
   },
   {
-    "title": "Singe Malicieux",
-    "text": "+1 Action, +1 Recharge. Si joué depuis ta main, échange Singe Malicieux ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoint ta main."
+    "title":"Poudre Impériale",
+    "text":"+1 Trésor. Si tu perds possession de cette carte : retire du jeu une carte de la défausse de l'ennemi ciblé qui coûte 3 ou moins.",
+    "flavor":"ATTENTION : ne pas rouler, choquer ou vaciller."
+  },
+  {
+    "title":"Marchandage",
+    "text":"+1 Recharge, +1 Achat.<br>Ton prochain achat ce tour-ci coûte 1 de moins.",
+    "flavor":"Parfois, la langue est plus tranchante que l'épée."
+  },
+  {
+    "title":"Voleur de Ruelle",
+    "text":"+1 Trésor, +1 Recharge.:or:Vole un Trésor au joueur ciblé.",
+    "flavor":"Une ombre fugace, tes trésors disparaissent !"
+  },
+  {
+    "title":"Totem Inutile",
+    "text":"Le Totem Inutile est à la fois une Structure, une Attaque et une Aventure.",
+    "flavor":"Le trinket futile ricane, se moquant apparemment de toi."
+  },
+  {
+    "title":"Salle du Conseil",
+    "text":"Un ennemi choisi une carte de la réserve et la place dans ta défausse.",
+    "flavor":"De l'or pour un siège, une richesse gaspillée en chuchotements."
+  },
+  {
+    "title": "Typhon",
+    "text": "+2 Cartes, +1 Défausse, +1 Trésor. Tout le monde déplace une carte de sa défausse ou, si impossible, du dessus de son deck vers la défausse du voisin de gauche.",
+    "flavor": "",
+    // "flavor": "Un chaos tourbillonnant ! Un cauchemar!"
+  },
+  {
+    "title":"L'alchimie",
+    "text":"Défausse un nombre quelconque de cartes, obtient autant de Trésors. +2 Cartes.",
+    "flavor":"Infusée de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
+  },
+  {
+    "title":"Caprice de l'Empereur",
+    "text":"+1 Recharge. Un ennemi choisi 3 cartes de la réserve. Tu peux appliquer les effets de l'une d'entre elles.",
+    "flavor":"Dans ses mains royales vos choix sont illusoires."
+  },
+  {
+    "title":"Maîtrise des Cartes",
+    "text":"+1 Action. Mets une carte de ta défausse dans ta main.<br>Quand défaussée : +1 Carte.",
+    "flavor":"Un geste du poignet provoque surprise et frayeur."
+  },
+  {
+    "title":"Commerce d'Épices",
+    "text":"+1 Trésor. Si cette carte est dans ta défausse, la première Structure que tu achètes chaque tour coûte 1 de moins.",
+    "flavor":"Les épices dansent et se mêlent, un goût d'opulence."
+  },
+  {
+    "title":"Planque",
+    "text":"+2 Cartes, +1 Trésor.<br>Quand défaussée : tu peux la remettre Planque dans ta main. Ne le fait qu'une fois par pioche.",
+    "flavor":"Un refuge pour ouvrir un flacon de rhum et le finir."
+  },
+  {
+    "title":"Mine d'Or",
+    "text":"Un ennemi choisi un nombre. +3 Cartes. Si le coût total des cartes piochées n'est pas ce nombre : révéle-les, +1 Action.",
+    "flavor":"Sous le sol, se cachent rêves et désespoir."
+  },
+  {
+    "title":"Marché du Port",
+    "text":"+2 Trésors.:or:+1 Trésor, +1 Achat.",
+    "flavor":"Des secrets et des trésors volés sont échangés ici."
+  },
+  {
+    "title":"Bibliothèque Antique",
+    "text":"+2 Trésors.<br>Quand défaussée : tu peux mélanger ta défausse dans ton deck.",
+    "flavor":"Chaque page dévoile un secret impérial."
+  },
+  {
+    "title":"Usine de Rhum",
+    "text":"+2 Trésors. Tu peux donner un Trésor de la réserve à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
+  },
+  {
+    "title":"Exploration",
+    "text":"+1 Action si tu as une Aventure.<br>+1 Carte, +1 Trésor.",
+    "flavor":"Mettez les voiles, mais pas sans une boussole en main."
+  },
+  {
+    "title":"Carte au Trésor",
+    "text":"+1 Trésor. Regarde les 3 cartes du dessus de ton deck. Tu peux en mettre autant que tu veux dans ta défausse et le reste sur le dessus de ton deck dans n'importe quel ordre. +1 Carte."
+  },
+  {
+    "title":"Singe Malicieux",
+    "text":"+1 Action, +1 Recharge. Si joué depuis ta main, échange Singe Malicieux ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoint ta main."
+  },
+  {
+    "title": "Équipage Fantôme",
+    "text": "+1 Carte, +1 Trésor. Tu peux mettre cette carte sur le dessus de ton deck. +1 Action s'il y a 3 attaques ou plus dans la réserve.",
+    "flavor": "Ta vie mortelle contre une rétribution éternelle?"
+  },
+  {
+    "title": "Caverne Hantée",
+    "text": "+2 Cartes. +1 Trésor pour chaque Attaque dans ta main.",
+    "flavor": "Cet endroit résonne de cliquetis squelettiques. N'aie crainte, les cœurs purs sont en sécurité."
+  },
+  {
+    "title": "Vagues Inflexibles",
+    "text": "+1 Action. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés vers le bas de leur deck.",
+    "flavor": "Les forces de l'océan ne peuvent être combattues."
+  },
+  {
+    "title": "Expédition Perdue",
+    "text": "Retire une carte de la défausse du joueur ciblé et pose 2 Trésors de la banque dessus. Lorsque la défausse est mélangée, prends les Trésors et remets la carte dans la nouvelle défausse."
+  },
+  {
+    "title": "Observateur Furtif",
+    "text": "Révèle les 2 premières cartes du deck de l'ennemi ciblé. Place-en une dans sa défausse et gagne des Trésors équivalant aux points de victoire de la carte.",
+    // "flavor": "Un œil vigilant révèle les vérités cachées."
+    "flavor": ""
+  },
+  {
+    "title": "Extravagance",
+    "text": "+2 Achats, +1 Recharge.:or:+1 Achat, +1 Trésor.",
+    "flavor": "La dépense doit être faste et flayboyante!"
+  },
+  {
+    "title": "Chantier Naval",
+    "text": "+1 Trésor. Tu ne peux pas utiliser plus de 5 actions ce tour-ci.<br>+1 Action pour chaque Structure dans ta défausse."
+  },
+  {
+    "title": "Marche sur la Planche",
+    "text": "+2 Trésors. Tu peux retirer une carte de ta main ou de ta défausse du jeu : Gagne des Trésors équivalant au coût de la carte.",
+    "flavor": "Une danse sur la planche ou une sentence différée ?"
+  },
+  {
+    "title": "Marché de Singes",
+    "text": "Retire une carte de ta main ou défausse du jeu : Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
+    "flavor": "Les espiègleries de l'un sont l'aubaine d'un autre."
+  },
+  {
+    "title": "Vent dans les Voiles",
+    "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse : Pioche une carte supplémentaire lors de ta pioche initiale."
+  },
+  {
+    "title": "Guilde des Aventuriers",
+    "text": "+1 Trésor pour chaque Aventure disponible dans la réserve, mais pas plus de 4.",
+    "flavor": "Là où quêtes et bravoure convergent."
+  },
+  {
+    "title": "Fin de l'Arc-en-ciel",
+    "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse, ainsi qu'une Attaque et une Structure : +1 Action."
+  },
+  {
+    "title": "Forteresse Bancaire",
+    "text": "+2 Trésors.<br>Quand elle est défaussée : +1 Action.",
+    "flavor": "Fortifiée contre les pillards, la banque protège contre les tentations les plus puissantes."
+  },
+  {
+    "title": "Citadelle Côtière",
+    "text": "Tu ne peux pas utiliser plus de 5 actions ce tour-ci. +1 Carte, +2 Actions.",
+    "flavor": "Au bord de la mer, la citadelle appelle les intrépides à la recherche de fortunes."
+  },
+  {
+    "title": "Atelier de l'Architecte",
+    "text": "+1 Action, +1 Trésor. S'il y a 2 structures ou plus dans la réserve : +1 Achat.",
+    "flavor": "Des plans méticuleux et un artisanat habile donnent vie à de grandes visions."
+  },
+  {
+    "title": "Malédiction Vaudou",
+    "text": "Révéle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa défausse, puis applique ses effets.",
+    "flavor": "À chaque pas, la malédiction resserre son emprise."
+  },
+  {
+    "title": "Maraudeur des Abysses",
+    "text": "+1 Action. Échange une carte de ta main avec une carte du même coût de la défausse d'un ennemi.",
+    "flavor": "Né des profondeurs, il se nourrit des incertitudes."
+  },
+  {
+    "title": "Cachette du Contrebandier",
+    "text": "+1 Trésor.<br>Au début de ton tour, si cette carte est dans ta défausse : +1 Trésor.",
+    "flavor": "Peu nombreux sont ceux qui peuvent tracer la route vers les trésors interdits."
+  },
+  {
+    "title": "Addiction au Jeu",
+    "text": "+2 Recharges. Si la réserve contient 4 cartes ou plus du même type : +3 Trésors.",
+    "flavor": "L'attrait des richesses faciles a scellé sa chute."
+  },
+  {
+    "title": "Course Désespérée",
+    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d'Attaques : mets une carte de la réserve qui coûte 4 ou moins dans ta défausse."
+  },
+  {
+    "title": "Grenade Improvisée",
+    "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand elle est défaussée : applique cet effet de carte à tous les joueurs."
+  },
+  {
+    "title": "Cimetière Sans Garde",
+    "text": "+1 Trésor.<br>Au début de ton tour, si cette carte est dans ta défausse : tu peux mettre une carte de ta défausse en bas de ton deck."
+  },
+  {
+    "title": "Poupée Envoûtée",
+    "text": "Lors du prochain tour de l'ennemi ciblé, joue sa première action. Prends toutes les décisions découlant de cette action.",
+    "flavor": "Le destin est un concept fragile."
+  },
+  {
+    "title": "Marchand Malhonnête",
+    "text": "Échange une carte entre ta défausse et la défausse de l'ennemi ciblé tant que la différence de coût est de 1 ou moins. Donne un Trésor de la banque à l'ennemi."
+  },
+  {
+    "title": "Mercenaire des Néréides",
+    "text": "Paye 1 Trésor pour révéler les 2 premières cartes du deck de réserve. Mets-en une dans ta défausse.",
+    "flavor": "Est-ce rentable de négocier avec cette abomination ?"
+  },
+  {
+    "title": "Fureur du Kraken",
+    "text": "Tous les joueurs défaussent leur main. Applique les effets d'une carte de n'importe quelle défausse.",
+    "flavor": "Méfiez-vous du dévoreur de navires et d'âmes."
+  },
+  {
+    "title": "Île du Crâne",
+    "text": "Chaque joueur révèle la carte du dessus de son deck : tu peux en échanger une avec une autre de la réserve tant que la différence de coût est de 2 ou moins."
+  },
+  {
+    "title": "Chasse au Trésor",
+    "text": "+1 Action, +1 Achat,<br>+1 Carte, +1 Trésor.",
+    "flavor": "Une île enveloppée de mystère détient la clé d'une immense richesse."
+  },
+  {
+    "title": "Le Grand Conseil",
+    "text": "+2 Actions. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes n'existent pas. Restaure-les à tout moment lors de ton prochain tour."
   }
 ]
