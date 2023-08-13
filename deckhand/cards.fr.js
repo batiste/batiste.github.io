@@ -120,7 +120,7 @@ var fr_translations = [
     "flavor":"Sous le sol, se cachent rêves et désespoir."
   },
   {
-    "title":"Marché du Port",
+    "title":"Marché Portuaire",
     "text":"+2 Trésors.:or:+1 Trésor, +1 Achat.",
     "flavor":"Des secrets et des trésors volés sont échangés ici."
   },
@@ -131,7 +131,7 @@ var fr_translations = [
   },
   {
     "title":"Usine de Rhum",
-    "text":"+2 Trésors. Tu peux donner un Trésor de la réserve à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
+    "text":"+2 Trésors. Tu peux donner un Trésor de la banque à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
   },
   {
     "title":"Exploration",
@@ -188,7 +188,7 @@ var fr_translations = [
     "flavor": "Une danse sur la planche ou un sursis ?"
   },
   {
-    "title": "Marché de Singes",
+    "title": "Affaire de Singe",
     "text": "Retire 1 carte de ta main ou défausse du jeu : Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
     "flavor": "Les espiègleries de l'un sont l'aubaine d'un autre."
   },
