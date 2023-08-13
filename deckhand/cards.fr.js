@@ -34,9 +34,9 @@ var fr_translations = [
     "flavor":"Parfois, le poison agit lentement."
   },
   {
-    "title":"Clochard de Plage",
+    "title":"Flâneur de Plage",
     "text":"+1 Trésor. +1 Trésor si tu es l'un des joueurs possédant le moins de cartes.",
-    "flavor":"Les rumeurs disent qu'il est le plus riche du village."
+    "flavor":"Les rumeurs courent qu'il est le plus riche du village."
   },
   {
     "title":"Rêverie",
@@ -45,7 +45,7 @@ var fr_translations = [
   },
   {
     "title":"Leçons de Kung Fu",
-    "text":"+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en bas de son deck.",
+    "text":"+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en dessous de son deck.",
     "flavor":"Les marées, utilises leur pouvoir à ton avantage !"
   },
   {
@@ -154,12 +154,13 @@ var fr_translations = [
   },
   {
     "title": "Vagues Inflexibles",
-    "text": "+1 Action. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés vers le bas de leur deck.",
+    "text": "+1 Action. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés en dessous de leur deck.",
     "flavor": "Les forces de l'océan ne peuvent être combattues."
   },
   {
     "title": "Expédition Perdue",
-    "text": "Retire une carte de la défausse du joueur ciblé et pose 2 Trésors de la banque dessus. Lorsque la défausse est mélangée, prends les Trésors et remets la carte dans la nouvelle défausse."
+    "text": `Retire une carte de la défausse du joueur ciblé et pose 2 Trésors de la banque dessus. 
+    Après mélange de sa défausse, prends les Trésors et mets la carte dans la nouvelle défausse.`
   },
   {
     "title": "Observateur Furtif",

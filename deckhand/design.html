@@ -289,6 +289,19 @@
 
     document.getElementById('cards').innerHTML = all.join('')
 
+    // do that once all the font are loaded
+    setTimeout(() => {
+        document.querySelectorAll('.innerText').forEach((text) => {
+            // 5 lines
+            var fs = 9;
+            while(text.offsetHeight > 62.0) {
+                fs -= 0.02;
+                text.style['font-size'] = `${fs}px`
+            }
+        })
+    }, 2000)
+
+
     var format = 'png'
     function updateFormat(e) {
         if (e.checked) {
