@@ -223,7 +223,7 @@ var fr_translations = [
   },
   {
     "title": "Cachette du Contrebandier",
-    "text": "+1 Trésor.<br>Au début de ton tour, si cette carte est dans ta défausse : +1 Trésor.",
+    "text": "+1 Trésor. Au début de ton tour, si cette carte est dans ta défausse : +1 Trésor.",
     "flavor": "Peu nombreux sont ceux qui peuvent tracer la route vers les trésors interdits."
   },
   {
