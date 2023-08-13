@@ -6,7 +6,7 @@ var fr_translations = [
   },
   {
     "title":"Célébration",
-    "text":"+1 Trésor par Célébration que tu as.<br>+1 Recharge, tu peux piocher une carte.",
+    "text":"+1 Trésor pour chaque Célébration que tu as.<br>+1 Recharge, tu peux piocher une carte.",
     "flavor":"Grog solitaire ou rires partagés ?"
   },
   {
@@ -20,7 +20,8 @@ var fr_translations = [
   },
   {
     "title":"Tir rapide",
-    "text":"+1 Trésor.<br>+1 Action si tu as une Attaque."
+    "text":"+1 Trésor.<br>+1 Action si tu as une Attaque.",
+    "flavor-no-quotes": "\"Ne les laissez pas se regrouper !\" ordonne-t-elle, les pistolets crépitant."
   },
   {
     "title":"Maître de la Danse",
@@ -39,12 +40,13 @@ var fr_translations = [
   },
   {
     "title":"Rêverie",
-    "text":"+1 Trésor.<br>Si tu êtes ciblé par des effets d'une carte : Défausse Rêverie pour les annuler."
+    "text":"+1 Trésor.<br>Si tu êtes ciblé par des effets d'une carte : Défausse Rêverie pour les annuler.",
+    "flavor-no-quotes": "\"Harmonie ! Sérénité !\" bâilla-t-il après sa sieste.",
   },
   {
     "title":"Leçons de Kung Fu",
     "text":"+1 Trésor, +1 Recharge.<br>Mets 1 carte de la défausse d'un joueur ciblé en bas de son deck.",
-    "flavor":"Les marées, utilises leur pouvoir à ta avantage !"
+    "flavor":"Les marées, utilises leur pouvoir à ton avantage !"
   },
   {
     "title":"Mariage du Gouverneur",
@@ -69,11 +71,11 @@ var fr_translations = [
   {
     "title":"Totem Inutile",
     "text":"Le Totem Inutile est à la fois une Structure, une Attaque et une Aventure.",
-    "flavor":"Le trinket futile ricane, se moquant apparemment de toi."
+    "flavor":"Le bibelot futile semble ricaner d'un air moqueur."
   },
   {
     "title":"Salle du Conseil",
-    "text":"Un ennemi choisi une carte de la réserve et la place dans ta défausse.",
+    "text":"Un ennemi choisit une carte de la réserve et la place dans ta défausse.",
     "flavor":"De l'or pour un siège, une richesse gaspillée en chuchotements."
   },
   {
@@ -98,18 +100,18 @@ var fr_translations = [
     "flavor":"Un geste du poignet provoque surprise et frayeur."
   },
   {
-    "title":"Commerce d'Épices",
+    "title":"Négoce d'Épices",
     "text":"+1 Trésor. Si cette carte est dans ta défausse, la première Structure que tu achètes chaque tour coûte 1 de moins.",
-    "flavor":"Les épices dansent et se mêlent, un goût d'opulence."
+    "flavor":"Épices dansantes, saveurs d'opulence."
   },
   {
     "title":"Planque",
-    "text":"+2 Cartes, +1 Trésor.<br>Quand défaussée : tu peux la remettre Planque dans ta main. Ne le fait qu'une fois par pioche.",
+    "text":"+2 Cartes, +1 Trésor. Quand défaussée : tu peux remettre Planque dans ta main. Ne le fait qu'une fois par pioche.",
     "flavor":"Un refuge pour ouvrir un flacon de rhum et le finir."
   },
   {
     "title":"Mine d'Or",
-    "text":"Un ennemi choisi un nombre. +3 Cartes. Si le coût total des cartes piochées n'est pas ce nombre : révéle-les, +1 Action.",
+    "text":"Un ennemi choisi un nombre. +3 Cartes. Si le coût total des cartes piochées n'est pas ce nombre : révèle-les, +1 Action.",
     "flavor":"Sous le sol, se cachent rêves et désespoir."
   },
   {
@@ -133,11 +135,12 @@ var fr_translations = [
   },
   {
     "title":"Carte au Trésor",
-    "text":"+1 Trésor. Regarde les 3 cartes du dessus de ton deck. Tu peux en mettre autant que tu veux dans ta défausse et le reste sur le dessus de ton deck dans n'importe quel ordre. +1 Carte."
+    "text":`+1 Trésor. Regarde les 3 cartes du dessus de ton deck. Défausse-en autant que tu veux 
+    et mets le reste sur le dessus de ton deck dans n'importe quel ordre. +1 Carte.`
   },
   {
-    "title":"Singe Malicieux",
-    "text":"+1 Action, +1 Recharge. Si joué depuis ta main, échange Singe Malicieux ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoint ta main."
+    "title":"Frénésie Simiesque",
+    "text":"+1 Action, +1 Recharge. Si joué depuis ta main, échange Singe Malicieux ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoins ta main."
   },
   {
     "title": "Équipage Fantôme",
@@ -167,14 +170,14 @@ var fr_translations = [
   {
     "title": "Extravagance",
     "text": "+2 Achats, +1 Recharge.:or:+1 Achat, +1 Trésor.",
-    "flavor": "La dépense doit être faste et flayboyante!"
+    "flavor": "La dépense doit être grandiose et flamboyante!"
   },
   {
     "title": "Chantier Naval",
     "text": "+1 Trésor. Tu ne peux pas utiliser plus de 5 actions ce tour-ci.<br>+1 Action pour chaque Structure dans ta défausse."
   },
   {
-    "title": "Marche sur la Planche",
+    "title": "Sur la Planche",
     "text": "+2 Trésors. Tu peux retirer une carte de ta main ou de ta défausse du jeu : Gagne des Trésors équivalant au coût de la carte.",
     "flavor": "Une danse sur la planche ou une sentence différée ?"
   },
@@ -197,7 +200,7 @@ var fr_translations = [
     "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse, ainsi qu'une Attaque et une Structure : +1 Action."
   },
   {
-    "title": "Forteresse Bancaire",
+    "title": "Banque Forteresse",
     "text": "+2 Trésors.<br>Quand elle est défaussée : +1 Action.",
     "flavor": "Fortifiée contre les pillards, la banque protège contre les tentations les plus puissantes."
   },
@@ -207,13 +210,13 @@ var fr_translations = [
     "flavor": "Au bord de la mer, la citadelle appelle les intrépides à la recherche de fortunes."
   },
   {
-    "title": "Atelier de l'Architecte",
+    "title": "Atelier d'Architectes",
     "text": "+1 Action, +1 Trésor. S'il y a 2 structures ou plus dans la réserve : +1 Achat.",
-    "flavor": "Des plans méticuleux et un artisanat habile donnent vie à de grandes visions."
+    "flavor": "Des plans méticuleux et un artisanat habile donnent vie aux grandes visions."
   },
   {
     "title": "Malédiction Vaudou",
-    "text": "Révéle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa défausse, puis applique ses effets.",
+    "text": "Révèle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa défausse, puis applique ses effets.",
     "flavor": "À chaque pas, la malédiction resserre son emprise."
   },
   {
@@ -222,7 +225,7 @@ var fr_translations = [
     "flavor": "Né des profondeurs, il se nourrit des incertitudes."
   },
   {
-    "title": "Cachette du Contrebandier",
+    "title": "Grotte des Contrebandiers",
     "text": "+1 Trésor. Au début de ton tour, si cette carte est dans ta défausse : +1 Trésor.",
     "flavor": "Peu nombreux sont ceux qui peuvent tracer la route vers les trésors interdits."
   },
@@ -240,7 +243,7 @@ var fr_translations = [
     "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand elle est défaussée : applique cet effet de carte à tous les joueurs."
   },
   {
-    "title": "Cimetière Sans Garde",
+    "title": "Cimetière Délaissé",
     "text": "+1 Trésor.<br>Au début de ton tour, si cette carte est dans ta défausse : tu peux mettre une carte de ta défausse en bas de ton deck."
   },
   {
@@ -249,13 +252,13 @@ var fr_translations = [
     "flavor": "Le destin est un concept fragile."
   },
   {
-    "title": "Marchand Malhonnête",
+    "title": "Marchand Sournois",
     "text": "Échange une carte entre ta défausse et la défausse de l'ennemi ciblé tant que la différence de coût est de 1 ou moins. Donne un Trésor de la banque à l'ennemi."
   },
   {
     "title": "Mercenaire des Néréides",
     "text": "Paye 1 Trésor pour révéler les 2 premières cartes du deck de réserve. Mets-en une dans ta défausse.",
-    "flavor": "Est-ce rentable de négocier avec cette abomination ?"
+    "flavor": "Est-ce rentable de négocier avec cette atrocité ?"
   },
   {
     "title": "Fureur du Kraken",
