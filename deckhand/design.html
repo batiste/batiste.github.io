@@ -110,7 +110,7 @@
                     <!-- Playing is not Discarding. -->
                     Arrange your discard pile face up to allow for examination at a glance.
                 </li>
-                <li>If an effect lacks the "target" keyword, nothing is targeted.</li>
+                <!-- <li>If an effect lacks the "target" keyword, nothing is targeted.</li> -->
                 <li>Unless specified, revealed cards return to their original place <b>immediately</b>. 
                     Revealing cards never empties a deck.</li>
                 <li>When a deck/discard/hand is too small for an effect, it applies to any nonzero amount. 
@@ -138,6 +138,120 @@
 
 <button onclick="downloadBookletFace()">Download booklet face</button>
 <button onclick="downloadBookletBack()">Download booklet back</button>
+
+
+<div style="display: flex;">
+    <div class="booklet booklet-fr" id="face-fr" title="booklet-face">
+        <div class="innerBooklet">     
+            <div>
+            <h3 style="margin-top:0">
+                Mise en place pour 2 à 4 joueurs<span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">Règles de DeckHand 1/2</span>
+            </h3>
+            
+            <ol>
+                <li>Rassemble 20 jetons de Trésor dans une banque. Donne 1 Trésor à chaque joueur.</li>
+                <li>
+                    Chaque joueur reçoit un deck de 2 Bagarre et 2 Célébration.
+                    Retire toutes les autres cartes Bagarre et Célébration du jeu.
+                </li>
+                <li>
+                    Mélange et forme le deck de réserve avec 11 cartes par joueur (10 avec 4 joueurs). Les autres cartes forment le deck de recharge.
+                </li>
+                <li>
+                    Place 6 cartes du deck de recharge face visible sur la table comme réserve.
+                    À partir de maintenant, maintient 6 cartes face visible en les remplaçant depuis le deck de la <b>réserve</b>.
+                </li>
+            </ol>
+            
+            <h3>Déroulement du jeu</h3>
+            
+            <p>
+                Un joueur au hasard démarre, puis chaque joueur à tour de rôle :
+            </p>
+            
+            <ol>
+                <li>Applique les effets qui se produisent au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
+                <li>Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes.</li>
+                <li>Tu as 2 actions au cours de ton tour, qui sont :
+                    <ol>
+                        <li>Jouer une carte : Applique ses effets, puis défausse-la.</li>
+                        <li>Acheter une carte de la réserve : Elle va dans ta défausse.</li>
+                    </ol>
+                </li>
+                <li>Lorsque ton deck est vide, mélange immédiatement ta défausse pour former un nouveau deck, puis reprent tout effet en cours.
+                </li>
+            </ol>
+            </div>
+            
+            <div style="margin-bottom: 20px; position: relative;">
+                <img src="marketing/board.png" width="102%" style="margin-left: -1%" />
+                <p id="illustration">
+                    1. Deck réserve &nbsp;2. Deck recharge<br>
+                    3. Réserve &nbsp;
+                    4. Main + Trésors<br>
+                    5. Ton deck &nbsp;
+                    6. Ta défausse
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="booklet booklet-fr" id="back-fr"  title="booklet-back">
+        <div class="innerBooklet">
+            <div>
+                <h3 style="margin-top:0">
+                    Règles générales <span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">Règles de DeckHand 2/2</span>
+                </h3>
+            
+                <ol>
+                    <li>Les Trésors sont la monnaie pour acheter des cartes de la réserve. Le coût est indiqué
+                        par l'icône de coffre en bas à droite <img class="rule-icon" src="icons/chest.svg" />.
+                        L'icône de crochet en bas à gauche <img class="rule-icon" src="icons/hook.svg" /> indique les points de victoire.</li>
+                    <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+                        Les icônes en haut à gauche sont des effets déclenchés.</li>
+                    <li><b>+1 Carte :</b> Pioche immédiatement une carte de ton deck.</li>
+                    <li><b>+1 Action :</b> Si c'est ton tour, tu as droit à 1 action de plus.</li>
+                    <li><b>+1 Trésor :</b> Prend immédiatement 1 Trésor de la banque.</li>
+                    <li><b>+1 Achat :</b> Tu peux acheter 1 carte sans utiliser d'action ce tour-ci.</li>
+                    <li><b>+1 Recharge :</b> Tu peux mettre 1 carte de la réserve en bas du deck de recharge ce tour-ci.
+                        Remplace-la par 1 carte du <b>deck de recharge</b>.</li>
+                    <li>+1 Défausse : Défausse immédiatement une carte <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
+                    <li>Applique les effets des cartes <b>dans l'ordre écrit</b>.</li>
+                    <li>Durant son utilisation 1 carte n'est pas dans ta main ou défausse.</li>
+                    <!-- <li>Les cartes ont 3 types possibles : Attaque, Structure, Aventure.</li> -->
+                    <!-- <li>Le texte disant "vous avez" fait référence aux cartes se trouvant dans votre main.</li> -->
+                    <li>Tu ne peux défausser que des cartes de ta main.
+                        <!-- Jouer n'est pas Défausser. -->
+                        Dispose ta pile de défausse face visible pour permettre un examen rapide.</li>
+                    <!-- <li>Si un effet ne contient pas le mot clé "cible", rien n'est ciblé.</li> -->
+                    <li>Sauf spécification contraire, les cartes révélées retournent à leur place d'origine <b>immédiatement</b>.
+                        Révéler ne vide jamais un deck.</li>
+                    <li>Quand un deck/défausse/main est trop petit pour un effet, il s'applique à toute quantité non nulle.
+                        Tu ne peux pas posséder moins de 4 cartes.</li> <!-- ; tout effet tentant de le faire est annulé. -->
+                </ol>
+            
+                <h3>Fin du jeu</h3>
+            
+                <p>
+                    Le jeu se termine lorsque le deck de réserve est vide. Le joueur actuel termine son tour, et les autres joueurs
+                    effectuent un dernier tour avec seulement 1 action de départ.
+                    Comptez le nombre de crochets dans chaque deck <img class="rule-icon" src="icons/hook.svg" />. Le joueur avec
+                    le plus de crochets gagne. En cas d'égalité, celui ayant le plus de Trésors gagne, suivi de celui qui a mis fin au jeu.
+                </p>
+            </div>
+        
+            <!-- <p><b>Challenge en solo</b> : Créez un deck de réserve de 22 cartes et retirez une carte à chaque tour.
+                Visez à atteindre 30 points de victoire.</p> -->
+        
+            <div>
+                Informations et mises à jour : https://bit.ly/dk-h<br>
+            </div>
+        </div>
+    </div>
+</div>
+
+<button onclick="downloadBookletFace('face-fr')">Download booklet face</button>
+<button onclick="downloadBookletBack('back-fr')">Download booklet back</button>
+
 
 <p>
     <a href="./design.html">English</a>
@@ -273,6 +387,7 @@
                             ${flavor}
                         </span>
                         ${extra}
+                        <div class="proto">Prototype</div>
 
                         <div class="mpc">
                             <img src="mpc-no-border.png" />
@@ -368,12 +483,12 @@
         })
     }
 
-    function downloadBookletFace(e) {
-        createBookletImage(document.getElementById('face'))
+    function downloadBookletFace(id) {
+        createBookletImage(document.getElementById(id || 'face'))
     }
 
-    function downloadBookletBack(e) {
-        createBookletImage(document.getElementById('back'))
+    function downloadBookletBack(id) {
+        createBookletImage(document.getElementById(id || 'back'))
     }
 
     function createCardImage(card, cb) {

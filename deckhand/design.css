@@ -45,6 +45,10 @@ a, a:visited {
     background-size: 100% 100%;
 }
 
+.booklet-fr {
+    font-size:9.4px;   
+}
+
 .innerBooklet {
     padding: 1mm;
     /* border: 1px dotted red; */
@@ -187,6 +191,16 @@ a, a:visited {
 
 .card .reduced-font-size {
     font-size:9.3px;
+}
+
+.proto {
+    position: absolute;
+    top:5mm;
+    right:5mm;
+    background: #000000;
+    padding: 2px;
+    color: #fff;
+    font-size: 10px;
 }
 
 .OR {
