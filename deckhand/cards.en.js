@@ -59,10 +59,10 @@ var cards = [
 },
 
 {
-    'title': 'Sword Master',
+    'title': 'Blademaster',
     'text': '+1 Treasure for each 1 cost card in hand.<br>+1 Action for each 3 cost card in hand.',
     'flavor': `Accomplished tacticians blend subtle manoeuver with grand gestures.`,
-    'img': 'attacks/dance-master-2.png',
+    'img': 'attacks/dance-master-3.png',
     'type': 'attack',
     'subtype': 'Attack',
     'cost': 1,

@@ -24,7 +24,7 @@ var fr_translations = [
     "flavor-no-quotes": "« Ne les laissez pas se regrouper ! » ordonne-t-elle, les pistolets crépitant."
   },
   {
-    "title": "Maître d'Épée",
+    "title": "Maître d'Arme",
     "text":"+1 Trésor par carte de coût 1 en main.<br>+1 Action par carte de coût 3 en main.",
     "flavor":"Les tacticiens accomplis mêlent manœuvres subtiles et gestes grandioses."
   },
