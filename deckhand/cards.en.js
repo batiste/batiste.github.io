@@ -72,7 +72,7 @@ var cards = [
 
 {
     'title': 'Poisoned Grog',
-    'text': '+1 Treasure.<br>When Discarded: +1 Treasure.', // , add condition, if you have not treasure if too strong 
+    'text': '+1 Treasure, +1 Reload.<br>When Discarded: +1 Treasure.', // , add condition, if you have not treasure if too strong 
     'flavor': 'Sometimes, poison is slow-acting.',
     'img': 'attacks/pint.png',
     'type': 'attack',
@@ -407,7 +407,7 @@ var cards = [
 
 {
     'title': 'Unyielding Waves',
-    'text': '+1 Action. +1 Recharge. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
+    'text': '+1 Action. +1 Reload. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
     'flavor': 'The forces of the roaring ocean cannot be fought.',
     'img': 'attacks/relentless-waves.png',
     'type': 'attack',

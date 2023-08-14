@@ -30,7 +30,7 @@ var fr_translations = [
   },
   {
     "title":"Grog Empoisonné",
-    "text":"+1 Trésor.<br>Quand défaussée : +1 Trésor.",
+    "text":"+1 Trésor. +1 Recharge.<br>Quand défaussée : +1 Trésor.",
     "flavor":"Parfois, le poison agit lentement."
   },
   {
