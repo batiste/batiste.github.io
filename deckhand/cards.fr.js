@@ -1,6 +1,6 @@
 var fr_translations = [
   {
-    "title":"Mêlée Rapprochée",
+    "title":"Bagarre",
     "text":"+1 Trésor.",
     "flavor":"Les amitiés pirates commencent par une bagarre."
   },
@@ -189,7 +189,7 @@ var fr_translations = [
   },
   {
     "title": "Affaire de Singe",
-    "text": "Retire 1 carte de ta main ou défausse du jeu : Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
+    "text": "Retire 1 carte de ta main ou défausse du jeu&nbsp;: Gagne des Trésors et des Actions équivalant aux points de victoire de la carte.",
     "flavor": "Les espiègleries de l'un sont l'aubaine d'un autre."
   },
   {

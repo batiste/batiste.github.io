@@ -54,13 +54,13 @@
              <h3>Unfolding of the game</h3>
 
              <p>
-                 A random player start, then each player in turn:
+                 A random player start, then each player in turn and in order:
              </p>
          
              <ol>
                  <li>Apply effects that happen at the start of turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
                  <li>Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards.</li>
-                 <li>You have 2 of any actions during your turn which are:
+                 <li>During your turn, you have 2 actions, which can be:
                      <ol>
                          <li>Playing a card: Apply its effects <b>then</b> put it in your discard.</li>
                          <li>Buying a card from the supply: It goes in your discard.</li>
@@ -166,19 +166,19 @@
             <h3>Déroulement du jeu</h3>
             
             <p>
-                Un joueur au hasard démarre, puis chaque joueur à tour de rôle :
+                Un joueur débute au hasard, puis chacun son tour et dans l'ordre :
             </p>
             
             <ol>
                 <li>Applique les effets qui se produisent au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
                 <li>Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes.</li>
-                <li>Tu as 2 actions au cours de ton tour, qui sont :
+                <li>Tu disposes de 2 actions par tour, parmi lesquelles :
                     <ol>
-                        <li>Jouer une carte : Applique ses effets, puis défausse-la.</li>
-                        <li>Acheter une carte de la réserve : Elle va dans ta défausse.</li>
+                        <li>Jouer une carte : Active ses effets <b>puis</b> mets-la dans ta défausse.</li>
+                        <li>Acheter une carte de la réserve : Elle est mise dans ta défausse.</li>
                     </ol>
                 </li>
-                <li>Lorsque ton deck est vide, mélange immédiatement ta défausse pour former un nouveau deck, puis reprent tout effet en cours.
+                <li>Lorsque ton deck est vide, mélange <b>immédiatement</b> ta défausse pour former un nouveau deck, puis reprent tout effet en cours.
                 </li>
             </ol>
             </div>
@@ -210,13 +210,13 @@
                         Les icônes en haut à gauche sont des effets déclenchés.</li>
                     <li><b>+1 Carte :</b> Pioche immédiatement une carte de ton deck.</li>
                     <li><b>+1 Action :</b> Si c'est ton tour, tu as droit à 1 action de plus.</li>
-                    <li><b>+1 Trésor :</b> Prend immédiatement 1 Trésor de la banque.</li>
+                    <li><b>+1 Trésor :</b> Prends immédiatement 1 Trésor de la banque.</li>
                     <li><b>+1 Achat :</b> Tu peux acheter 1 carte sans utiliser d'action ce tour-ci.</li>
-                    <li><b>+1 Recharge :</b> Tu peux mettre 1 carte de la réserve en bas du deck de recharge ce tour-ci.
-                        Remplace-la par 1 carte du <b>deck de recharge</b>.</li>
+                    <li><b>+1 Recharge :</b> Tu peux mettre 1 carte de la réserve en bas du deck recharge ce tour-ci.
+                        Remplace-la par 1 carte du deck <b>recharge</b>.</li>
                     <li>+1 Défausse : Défausse immédiatement une carte <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
                     <li>Applique les effets des cartes <b>dans l'ordre écrit</b>.</li>
-                    <li>Durant son utilisation 1 carte n'est pas dans ta main ou défausse.</li>
+                    <li>Une carte étant jouée n'est ni en main ni en défausse.</li>
                     <!-- <li>Les cartes ont 3 types possibles : Attaque, Structure, Aventure.</li> -->
                     <!-- <li>Le texte disant "vous avez" fait référence aux cartes se trouvant dans votre main.</li> -->
                     <li>Tu ne peux défausser que des cartes de ta main.
@@ -228,13 +228,13 @@
                     <li>Quand un deck/défausse/main est trop petit pour un effet, il s'applique à toute quantité non nulle.
                         Tu ne peux pas posséder moins de 4 cartes.</li> <!-- ; tout effet tentant de le faire est annulé. -->
                 </ol>
-            
+                
                 <h3>Fin du jeu</h3>
-            
+                
                 <p>
                     Le jeu se termine lorsque le deck de réserve est vide. Le joueur actuel termine son tour, et les autres joueurs
                     effectuent un dernier tour avec seulement 1 action de départ.
-                    Comptez le nombre de crochets dans chaque deck <img class="rule-icon" src="icons/hook.svg" />. Le joueur avec
+                    Compte les crochets de chaque deck <img class="rule-icon" src="icons/hook.svg" />. Le joueur avec
                     le plus de crochets gagne. En cas d'égalité, celui ayant le plus de Trésors gagne, suivi de celui qui a mis fin au jeu.
                 </p>
             </div>
@@ -366,12 +366,15 @@
             style = `style="font-size: ${c['reduced-font-size']}"`
         }
 
+        var or_txt = 'Or'
+        if (lang == 'fr') {
+            or_txt = 'Ou'
+        }
+
         c['text'] = c['text'].replace(':d:', '<img class="rule-icon" src="icons/card-discard-yellow.svg">')
         c['text'] = c['text'].replace(':ms:', '<span class="mini-separator"></span>')
         c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
-        c['text'] = c['text'].replace(':or:', '<span class="OR"><span class="or-line-left"></span>Or<span class="or-line-right"></span></span>')
-        
-
+        c['text'] = c['text'].replace(':or:', `<span class="OR"><span class="or-line-left"></span>${or_txt}<span class="or-line-right"></span></span>`)
 
         var template = `
         <div class="card-container">
@@ -387,7 +390,7 @@
                             ${flavor}
                         </span>
                         ${extra}
-                        <div class="proto">Prototype</div>
+                        <div class="proto">Proto. 0.9.28</div>
 
                         <div class="mpc">
                             <img src="mpc-no-border.png" />
@@ -494,6 +497,10 @@
     function createCardImage(card, cb) {
 
         card.classList.add(preparePrintClass)
+        cls = ""
+        if (lang) {
+            cls = 'class="lang-fr"'
+        }
 
         var h = `
             <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
@@ -502,8 +509,9 @@
                 html, body {margin:0; padding:0; background-color: transparent;}
                 .card {zoom: 4; float: none; position: initial; margin: 0;}
             </style>
-            
-            ${card.outerHTML}`
+            <div ${cls}>
+                ${card.outerHTML}
+            </div>`
 
         rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
             img = renderResult.image;

@@ -46,7 +46,7 @@ a, a:visited {
 }
 
 .booklet-fr {
-    font-size:9.4px;   
+    font-size:9.6px;   
 }
 
 .innerBooklet {
@@ -70,7 +70,7 @@ a, a:visited {
 }   
 
 .booklet li {
-    margin-left: 15px;
+    margin-left: 13px;
     padding-top: 1.75px;
 }
 
@@ -200,7 +200,7 @@ a, a:visited {
     background: #000000;
     padding: 2px;
     color: #fff;
-    font-size: 10px;
+    font-size: 9px;
 }
 
 .OR {
