@@ -40,7 +40,7 @@ var fr_translations = [
   },
   {
     'title': 'Paresse Karmique',
-    'text': 'Échange une carte de ta main ou de ta défausse contre une carte de la réserve qui coûte 1 de plus.',
+    'text': 'Choisis une carte de ta main ou défausse. L\'ennemi sélectionné l\'échange avec une de la réserve coûtant 1 de plus.',
     'flavor-no-quotes': '« Harmonie ! Sérénité ! » bâilla-t-il, après sa sieste.'
   },
   // {
@@ -60,7 +60,7 @@ var fr_translations = [
   },
   {
     "title":"Poudre Impériale",
-    "text":"+1 Trésor. Si tu perds possession de cette carte : retire du jeu une carte de la défausse de l'ennemi ciblé qui coûte 3 ou moins.",
+    "text":"+1 Trésor. Si tu perds possession de cette carte : retire du jeu une carte de la défausse de l'ennemi ciblé coûtant 3 ou moins.",
     "flavor":"ATTENTION : ne pas rouler, choquer ou vaciller."
   },
   {
@@ -111,7 +111,7 @@ var fr_translations = [
   },
   {
     "title":"Refuge",
-    "text":"+2 Cartes, +1 Trésor. Quand défaussée : tu peux remettre Refuge dans ta main. Ne le fait qu'une fois par pioche.",
+    "text":"+2 Cartes, +1 Trésor.<br>Quand défaussée : tu peux remettre Refuge dans ta main. Ne le fait qu'une fois.",
     "flavor":"Un refuge pour ouvrir un flacon de rhum et le finir."
   },
   {
@@ -159,8 +159,8 @@ var fr_translations = [
   },
   {
     "title": "Vagues Inflexibles",
-    "text": "+1 Action. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés en dessous de leur deck.",
-    "flavor": "Les forces de l'océan sont indomptables."
+    "text": "+1 Action. +1 Recharge. Déplace jusqu'à 3 cartes de la défausse de n'importe quel nombre de joueurs ciblés en dessous de leur deck.",
+    // "flavor": "Les forces de l'océan sont indomptables."
   },
   {
     "title": "Expédition Perdue",
@@ -242,7 +242,7 @@ var fr_translations = [
   },
   {
     "title": "Course Désespérée",
-    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d'Attaques : mets une carte de la réserve qui coûte 4 ou moins dans ta défausse."
+    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d'Attaques : mets une carte de la réserve coûtant 4 ou moins dans ta défausse."
   },
   {
     "title": "Grenade Improvisée",

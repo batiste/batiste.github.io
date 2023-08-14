@@ -112,7 +112,7 @@ var cards = [
 
 {
     'title': 'Karmic Indolence',
-    'text': 'Swap a card from your hand or discard for a card from the supply that cost 1 more.',
+    'text': 'Chose a card from your hand or discard. A chosen enemy exchange it with one from the supply that cost 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -283,7 +283,7 @@ var cards = [
 
 {
     'title': 'Hideout',
-    'text': '+2 Cards, +1 Treasure.<br>When Discarded: you may put it back in your hand. Do it only once per draw.',
+    'text': '+2 Cards, +1 Treasure.<br>When Discarded: you may put it back in your hand. Do this only once.',
     'flavor': 'A haven to open a rum bottle and see it through.',
     'img': 'structures/hideout.png',
     'type': 'structure',
@@ -407,7 +407,7 @@ var cards = [
 
 {
     'title': 'Unyielding Waves',
-    'text': '+1 Action. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
+    'text': '+1 Action. +1 Recharge. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
     'flavor': 'The forces of the roaring ocean cannot be fought.',
     'img': 'attacks/relentless-waves.png',
     'type': 'attack',
