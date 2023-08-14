@@ -231,7 +231,7 @@ var cards = [
 {
     'title': 'Alchemy',
     'text': 'Discard any number of cards, get that many Treasures. +2 Card.',
-    'flavor': 'Infused with fire, bending fate. What could possibly go awry?',
+    'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
     'subtype': 'Adventure',

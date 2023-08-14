@@ -79,7 +79,7 @@ var fr_translations = [
     "flavor":"Le bibelot futile semble ricaner d'un air moqueur."
   },
   {
-    "title":"Salle du Conseil",
+    "title":"Hôtel du Conseil",
     "text":"Un ennemi choisit une carte de la réserve et la place dans ta défausse.",
     "flavor":"De l'or pour un siège, une richesse gaspillée en chuchotements."
   },
@@ -90,9 +90,9 @@ var fr_translations = [
     // "flavor": "Un chaos tourbillonnant ! Un cauchemar!"
   },
   {
-    "title":"L'alchimie",
+    "title":"Alchimie",
     "text":"Défausse un nombre quelconque de cartes, obtient autant de Trésors. +2 Cartes.",
-    "flavor":"Infusée de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
+    "flavor":"Imprégné de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
   },
   {
     "title":"Caprice de l'Empereur",
@@ -144,13 +144,13 @@ var fr_translations = [
     et mets le reste sur le dessus de ton deck dans n'importe quel ordre. +1 Carte.`
   },
   {
-    "title":"Frénésie Simiesque",
-    "text":"+1 Action, +1 Recharge. Si joué depuis ta main, échange Singe Malicieux ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoins ta main."
+    "title":"Rage Simiesque",
+    "text":"+1 Action, +1 Recharge. Si joué depuis ta main, échange Rage Simiesque ou une carte de ta main avec une carte de coût égal de la réserve. La nouvelle carte rejoins ta main."
   },
   {
     "title": "Équipage Fantôme",
-    "text": "+1 Carte, +1 Trésor. Tu peux mettre cette carte sur le dessus de ton deck. +1 Action s'il y a 3 attaques ou plus dans la réserve.",
-    "flavor": "Ta vie mortelle contre une rétribution éternelle?"
+    "text": "+1 Carte, +1 Trésor. Tu peux mettre cette carte au dessus du deck de son propriétaire. +1 Action s'il y a 3 attaques ou plus dans la réserve.",
+    // "flavor": "Ta vie mortelle contre une rétribution éternelle?"
   },
   {
     "title": "Caverne Hantée",
@@ -202,7 +202,7 @@ var fr_translations = [
     "flavor": "Là où quêtes et bravoure convergent."
   },
   {
-    "title": "Fin de l'Arc-en-ciel",
+    "title": "Pied de l'Arc-en-ciel",
     "text": "+1 Carte.<br>Au début de ton tour, si cette carte est dans ta défausse, ainsi qu'une Attaque et une Structure : +1 Action."
   },
   {
