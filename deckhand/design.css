@@ -285,7 +285,7 @@ a, a:visited {
 
 .top-left-icons-container {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.65);
     top:5mm;
     left:4.99mm;
     border-radius: 0 0 3px 0;
@@ -309,6 +309,7 @@ a, a:visited {
     padding-top: 0.8mm;
     padding-bottom: 0.75mm;
     padding-left: 0.9mm;
+    padding-right: 0.75mm;
     width: 14px;
     height: 14px;
 }
@@ -316,10 +317,10 @@ a, a:visited {
 .card .target {
     width: 14px;
     height: 14px;
-    padding-top: 0.7mm;
+    padding-top: 0.75mm;
     padding-left: 0.4mm;
     padding-right: 1.1mm;
-    padding-bottom: 0.7mm;
+    padding-bottom: 0.75mm;
 }
 
 .card .frame {
