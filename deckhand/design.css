@@ -234,9 +234,9 @@ a, a:visited {
 }
 
 .card .separator {
-    margin-top: 4px;
+    margin-top: 3px;
     border-top: 1px solid #434343;
-    margin-bottom: 2px;
+    margin-bottom: 1px;
     margin-left: 35%;
     margin-right: 35%;
 }
