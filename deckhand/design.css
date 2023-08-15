@@ -283,22 +283,26 @@ a, a:visited {
     flex-direction: column;
 }
 
-.card .discard, .card .start {
+.top-left-icons-container {
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.458);
+    background-color: rgba(0, 0, 0, 0.5);
     top:5mm;
     left:4.99mm;
+    border-radius: 0 0 3px 0;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+}
+
+.card .discard, .card .start, .card .target {
+    display: flex;
     padding: 1.1mm;
     padding-bottom: 0.4mm;
     padding-right: 0.8mm;
     padding-left: 1mm;
     width: 15px;
     height: 15px;
-    border-radius: 0 0 3px 0;
-    text-align: center;
-    display: flex;
-    align-content: center;
-    flex-direction: column;
 }
 
 .card .discard {
@@ -307,6 +311,15 @@ a, a:visited {
     padding-left: 0.9mm;
     width: 14px;
     height: 14px;
+}
+
+.card .target {
+    width: 14px;
+    height: 14px;
+    padding-top: 0.7mm;
+    padding-left: 0.4mm;
+    padding-right: 1.1mm;
+    padding-bottom: 0.7mm;
 }
 
 .card .frame {

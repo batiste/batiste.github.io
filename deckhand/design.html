@@ -333,12 +333,22 @@
             extra += `<span class="subtype">${c['subtype']}</span>`
         }
 
+        var top_left = '';
+
         if(c['start'] != undefined) {
-            extra += `<span class="start"><img src="icons/bookmark-yellow.svg" /></span>`
+            top_left += `<span class="start"><img src="icons/bookmark-yellow.svg" /></span>`
         }
 
         if(c['discard'] != undefined) {
-            extra += `<span class="discard"><img src="icons/card-discard-yellow.svg" /></span>`
+            top_left += `<span class="discard"><img src="icons/card-discard-yellow.svg" /></span>`
+        }
+
+        if(c['target'] != undefined) {
+            top_left += `<span class="target"><img src="icons/target.svg" /></span>`
+        }
+
+        if (top_left) {
+            extra += `<span class="top-left-icons-container">${top_left}</span>`
         }
 
         if(c['type'] == "attack") {

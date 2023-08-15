@@ -135,7 +135,7 @@ var cards = [
     'cost': '1',
     'amount': 1,
     // 'discard': 1,
-
+    'target': true,
 },
 
 {
@@ -148,7 +148,7 @@ var cards = [
     'cost': 1,
     'victory': 1,
     'amount': 1,
-
+    'target': true,
 },
 
 {
@@ -161,7 +161,7 @@ var cards = [
     'cost': 1,
     'victory': 1,
     'amount': 1,
-
+    'target': true,
 },
 
 {
@@ -186,6 +186,7 @@ var cards = [
     'victory': '1',
     'cost': '1',
     'amount': 1,
+    'target': true,
 },
 
 
@@ -225,7 +226,6 @@ var cards = [
     'victory': '2',
     'cost': '2',
     'amount': 1,
-
 },
 
 {
@@ -251,7 +251,6 @@ var cards = [
     'cost': 2,
     'victory': 2,
     'amount': 1,
-
 },
 
 {
@@ -265,7 +264,6 @@ var cards = [
     'cost': '3',
     'amount': 1,
     'discard': true,
-
 },
 
 {
@@ -343,7 +341,6 @@ var cards = [
     'cost': '2',
     'victory': '2',
     'amount': 1,
-
 },
 
 {
@@ -414,7 +411,8 @@ var cards = [
     'subtype': 'Attack',
     'victory': '2',
     'cost': '2',
-    'amount': 1
+    'amount': 1,
+    'target': true,
 },
 
 {
@@ -426,12 +424,13 @@ var cards = [
     'subtype': 'Adventure',
     'cost': '2',
     'victory': '2',
-    'amount': 1
+    'amount': 1,
+    'target': true,
 },
 
 {
     'title': 'Stealthy Observer',
-    'text': `Reveal the top 2 cards of target enemy\'s deck. Put one in their discard and gain 
+    'text': `Reveal the top 2 cards of target enemy’s deck. Put one in their discard and gain 
         Treasures equal to the card's victory points.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
@@ -439,7 +438,8 @@ var cards = [
     'subtype': 'Adventure',
     'cost': '2',
     'victory': '2',
-    'amount': 1
+    'amount': 1,
+    'target': true,
 },
 
 {
@@ -576,19 +576,21 @@ var cards = [
     'subtype': 'Attack',
     'victory': '3',
     'cost': '3',
-    'amount': 1
+    'amount': 1,
+    'target': true,
 },
 
 {
     'title': 'Abyss Marauder',
-    'text': '+1 Action. Swap a card from your hand with a card of same cost from an enemy discard.',
+    'text': '+1 Action. Swap a card from your hand with a card of same cost from target enemy discard.',
     'flavor': 'Born of the deep, it claims more than possessions, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
     'subtype': 'Attack',
     'victory': '3',
     'cost': '3',
-    'amount': 1
+    'amount': 1,
+    'target': true,
 },
 
 {
@@ -614,7 +616,6 @@ var cards = [
     'victory': '2',
     'cost': '2',
     'amount': 1,
-
 },
 
 {
@@ -629,7 +630,6 @@ var cards = [
     'victory': '2',
     'cost': '2',
     'amount': 1,
-
 },
 
 {
@@ -643,6 +643,7 @@ var cards = [
     'cost': '2',
     'amount': 1,
     'discard': true,
+    'target': true,
 },
 
 {
@@ -668,7 +669,7 @@ var cards = [
     'victory': '3',
     'cost': '3',
     'amount': 1,
-    // 'discard': true,
+    'target': true,
 },
 
 {
@@ -681,6 +682,7 @@ var cards = [
     'victory': '2',
     'cost': '3',
     'amount': 1,
+    'target': true,
 },
 
 {
