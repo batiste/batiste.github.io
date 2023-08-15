@@ -111,8 +111,8 @@ var cards = [
 // },
 
 {
-    'title': 'Karmic Indolence',
-    'text': 'Chose a card from your hand or discard. A chosen enemy exchange it with one from the supply that cost 1 more.',
+    'title': 'Karmic Lethargy',
+    'text': 'Chose a card from your hand or discard. Chose an enemy: he exchange your card with a supply card that cost 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',

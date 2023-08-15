@@ -39,8 +39,8 @@ var fr_translations = [
     "flavor":"Les rumeurs courent qu'il est le plus riche du village."
   },
   {
-    "title": "Paresse Karmique",
-    "text": "Choisis une carte de ta main ou défausse. Un ennemi choisi l’échange avec une de la réserve coûtant 1 de plus.",
+    "title": "Léthargie Karmique",
+    "text": "Choisis une carte de ta main ou défausse. Choisi un ennemi : il échange ta carte avec une de la réserve coûtant 1 de plus.",
     "flavor-no-quotes": "« Harmonie ! Sérénité ! » bâilla-t-il, après sa sieste."
   },
   // {
@@ -246,7 +246,7 @@ var fr_translations = [
   },
   {
     "title": "Grenade Improvisée",
-    "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand défaussée : applique cet effet de carte à tous les joueurs."
+    "text": "Le joueur ciblé choisit une carte de sa défausse et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs."
   },
   {
     "title": "Cimetière Délaissé",
