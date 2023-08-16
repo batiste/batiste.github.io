@@ -93,8 +93,11 @@
             <ol>
                 <li>Treasures are the currency for purchasing supply cards. Card cost is indicated
                     by the chest icon at the bottom right <img class="rule-icon" src="icons/chest.svg" />.
-                    The hook icon on the bottom left <img class="rule-icon" src="icons/hook.svg" /> indicates the victory points.</li>
-                <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.</li>
+                    The hook icon on the bottom left <img class="rule-icon" src="icons/hook.svg" /> indicates the victory points.
+                    </li>
+                <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.
+                    </li>
+                <li><img class="rule-icon" src="icons/target.svg" /> Indicates targeted effects that impact enemies.</li>
                 <li><b>+1 Card:</b> Draw a card from your deck <b>immediately</b>.</li>
                 <li><b>+1 Action:</b> If it is your turn, you get to use 1 extra action.</li>
                 <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
@@ -208,6 +211,7 @@
                         L'icône de crochet en bas à gauche <img class="rule-icon" src="icons/hook.svg" /> indique les points de victoire.</li>
                     <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
                         Les icônes en haut à gauche sont des effets déclenchés.</li>
+                    <li><img class="rule-icon" src="icons/target.svg" /> Indique des effets ciblés qui affectent les ennemis..</li>
                     <li><b>+1 Carte :</b> Pioche immédiatement une carte de ton deck.</li>
                     <li><b>+1 Action :</b> Si c'est ton tour, tu as droit à 1 action de plus.</li>
                     <li><b>+1 Trésor :</b> Prends immédiatement 1 Trésor de la banque.</li>
@@ -294,12 +298,24 @@
     var translations = cards.map(e => ({"title": e.title, "text": e.text, "flavor": e.flavor}))
     console.log(JSON.stringify(translations, null, 2))
 
-    var lang = false;
+    var lang = 'en';
     if (location.href.split('?').length > 1) {
         params = new URLSearchParams(location.href.split('?')[1])
         lang = params.get('lang')
     }
     var translation = {'fr': fr_translations}
+    var type_translation = {
+        'en': {
+            'attack': 'Attack',
+            'adventure': 'Adventure',
+            'structure': 'Structure',
+        },
+        'fr': {
+            'attack': 'Attaque',
+            'adventure': 'Aventure',
+            'structure': 'Structure',
+        }
+    }
 
     cards.forEach((c) => {
         var extra = ""
@@ -329,8 +345,8 @@
                 <img class="cost-icon" src="icons/chest.svg" />`
         }
 
-        if(c['subtype'] != undefined) {
-            extra += `<span class="subtype">${c['subtype']}</span>`
+        if(c['type'] != undefined) {
+            extra += `<span class="subtype">${type_translation[lang][c['type']]}</span>`
         }
 
         var top_left = '';

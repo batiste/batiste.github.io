@@ -254,7 +254,7 @@ var fr_translations = [
   },
   {
     "title": "Poupée Envoûtée",
-    "text": "Lors du prochain tour de l’ennemi ciblé, joue sa première action. Prends toutes les décisions découlant de cette action.",
+    "text": "Au prochain tour de l’ennemi ciblé, joue sa première action. Prends les décisions qui en découlent, y compris de nouvelles actions.",
     "flavor": "Le destin est un concept fragile."
   },
   {
