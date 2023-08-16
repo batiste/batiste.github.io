@@ -2,7 +2,7 @@ var fr_translations = [
   {
     "title":"Bagarre",
     "text":"+1 Trésor.",
-    "flavor":"Les amitiés pirates commencent par une bagarre."
+    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
   },
   {
     "title":"Célébration",
