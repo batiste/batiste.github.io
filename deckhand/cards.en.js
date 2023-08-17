@@ -224,7 +224,7 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+1 Reload. An chosen enemy select 3 supply cards. You may apply the effects of one as if you just played it.',
+    'text': '+2 Reload. An chosen enemy select 3 supply cards. You may apply the effects of one as if you just played it.',
     'flavor': 'In his royal hands, even your choices are illusion.',
     'img': 'attacks/emperor.png',
     'type': 'attack',

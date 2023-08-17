@@ -96,7 +96,7 @@ var fr_translations = [
   },
   {
     "title":"Caprice de l’Empereur",
-    "text":"+1 Recharge. Un ennemi choisi 3 cartes de la réserve. Tu peux appliquer les effets de l’une d’entre elles.",
+    "text":"+2 Recharge. Un ennemi choisi 3 cartes de la réserve. Tu peux appliquer les effets de l’une d’entre elles.",
     "flavor":"Dans ses mains royales vos choix sont illusoires."
   },
   {
