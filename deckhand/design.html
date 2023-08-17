@@ -416,7 +416,7 @@
                             ${flavor}
                         </span>
                         ${extra}
-                        <div class="proto">Proto. 0.9.29</div>
+                        
 
                         <div class="mpc">
                             <img src="mpc-no-border.png" />
@@ -435,6 +435,7 @@
             <label><input type="checkbox" id="check-pdf-${c['id']}" onclick="changePrintSelection(this)" data-card-id="${c['id']}"  ${c['pdf'] ? 'checked="true' : ''}">Part of print sheet</label>
         </div>
         `
+        //<div class="proto">Proto. 0.9.29</div>
         all.push(template)
         j++;
     })
