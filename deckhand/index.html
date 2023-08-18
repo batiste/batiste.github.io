@@ -107,7 +107,7 @@
         <div class="content centered">
             <h2 id="card-preview">Preview of Selected Cards</h2>
             <p>Explore a subset of the 58 cards showcasing intriguing facets of the game.</p>
-            <div style="width: 100%; text-align: center;">
+            <div style="width: 100%; text-align: center;" id="card-selection">
                 <input type="radio" name="position" />
                 <input type="radio" name="position" checked />
                 <input type="radio" name="position" />
@@ -118,18 +118,26 @@
                 <input type="radio" name="position" />
                 <input type="radio" name="position" />
                 <main id="carousel">
-                    <div class="item"><img src="marketing/cards/blademaster.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/monkeys-bargain.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/end-of-rainbow.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/voodoo-curse.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/adventures-guild.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/improvised-grenade.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/bank-fortress.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/desperate-chase.png" alt=""></div>
-                    <div class="item"><img src="marketing/cards/lost-expedition.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(0)"><img src="marketing/cards/blademaster.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(1)"><img src="marketing/cards/monkeys-bargain.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(2)"><img src="marketing/cards/end-of-rainbow.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(3)"><img src="marketing/cards/voodoo-curse.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(4)"><img src="marketing/cards/adventures-guild.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(5)"><img src="marketing/cards/improvised-grenade.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(6)"><img src="marketing/cards/bank-fortress.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(7)"><img src="marketing/cards/desperate-chase.png" alt=""></div>
+                    <div class="item" onclick="cardSelect(8)"><img src="marketing/cards/lost-expedition.png" alt=""></div>
                 </main>
             </div>
         </div>
+
+        <script>
+            function cardSelect(i) {
+                var inputs = document.querySelectorAll('#card-selection input')
+                inputs[i].click()
+                inputs[i].focus()
+            }
+        </script>
 
         <div class="content centered">
             <h2 id="read-the-rules">Understanding the Rules</h2>

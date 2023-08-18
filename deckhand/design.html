@@ -495,6 +495,11 @@
         })
     }
 
+    var zoom = 6.5
+    function updateZoom(e) {
+        zoom = parseFloat(e.value)
+    }
+
     function downloadCardButton(e) {
         downloadCard(e.parentNode.querySelector('.card'))
     }
@@ -534,7 +539,7 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0; background-color: transparent;}
-                .card {zoom: 6.5; float: none; position: initial; margin: 0;}
+                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
             </style>
             <div ${cls}>
                 ${card.outerHTML}
@@ -565,7 +570,7 @@
             <link rel="stylesheet" href="design.css">
             <style>
                 html, body {margin:0; padding:0}
-                .booklet {zoom: 6.5; float: none; position: initial; margin: 0;}
+                .booklet {zoom: ${zoom}; float: none; position: initial; margin: 0;}
             </style>
             
             ${booklet.outerHTML}`
