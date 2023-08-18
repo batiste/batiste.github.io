@@ -109,7 +109,7 @@ var cards = [
     'img': 'adventures/namaste.png',
     'type': 'adventure',
     'victory': '1',
-    'cost': '1',
+    'cost': '2',
     'amount': 1,
 },
 
