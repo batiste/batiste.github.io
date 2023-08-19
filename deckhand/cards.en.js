@@ -2,7 +2,7 @@
 var cards = [
 {
     'title': 'Fist Fight',
-    'text': '+1 Treasure.',
+    'text': '+1 <img class="rule-icon" src="icons/chest.svg" /> Treasure.',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -103,7 +103,7 @@ var cards = [
 
 {
     'title': 'Karmic Lethargy',
-    'text': 'Chose a card from your hand or discard. Chose an enemy: they exchange your card with a supply card that cost 1 more.',
+    'text': 'Chose a card from your hand or stash. Chose an enemy: they exchange your card with a supply card that cost 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -115,7 +115,7 @@ var cards = [
 
 {
     'title': 'Kung Fu Lessons',
-    'text': '+1 Treasure, +1 Card, +1 Reload.<br>Put 1 card from target player’s discard at the bottom of their deck.',
+    'text': '+1 Treasure, +1 Card, +1 Reload.<br>Put 1 card from target player’s stash at the bottom of their deck.',
     'flavor': 'The tide, harness its power to your advantage!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -141,7 +141,7 @@ var cards = [
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s discard that cost 3 or less.',
+    'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s stash that cost 3 or less.',
     'flavor': 'WARNING: does not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     'type': 'structure',
@@ -188,7 +188,7 @@ var cards = [
 
 {
     'title': 'Council Hall',
-    'text': 'A chosen enemy takes a card from the supply and puts it in your discard.',
+    'text': 'A chosen enemy takes a card from the supply and puts it in your stash.',
     'flavor': 'Gold for a seat is wealth wasted on whispers.',
     'img': 'structures/council-hall.png',
     'type': 'structure',
@@ -200,7 +200,7 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': '+2 Cards, +1 Discard, +1 Treasure. All players move a card from their discard or, if unable, top deck to their left neighbor’s discard.',
+    'text': '+2 Cards, +1 Discard, +1 Treasure. All players move a card from their stash or, if unable, top deck to their left neighbor’s stash.',
     'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -235,7 +235,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 Action.<br>Put a card from your discard in your hand.<br>When Discarded: +1 Card.',
+    'text': '+1 Action.<br>Put a card from your stash in your hand.<br>When Discarded: +1 Card.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -247,7 +247,7 @@ var cards = [
 
 {
     'title': 'Spice Trade',
-    'text': '+1 Treasure.<br>If this card is in your discard, the first Structure you buy each turn cost 1 less.',
+    'text': '+1 Treasure.<br>If this card is in your stash, the first Structure you buy each turn cost 1 less.',
     'flavor': 'Spices dance and blend, a taste of opulence.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
@@ -296,7 +296,7 @@ var cards = [
 
 {
     'title': 'Ancient Library',
-    'text': '+2 Treasures.<br>When discarded: you may shuffle your discard into your deck.',
+    'text': '+2 Treasures.<br>When discarded: you may shuffle your stash into your deck.',
     'flavor': 'Each page unravels an imperial secret.',
     'img': 'structures/archives.png',
     'type': 'structure',
@@ -329,7 +329,7 @@ var cards = [
 
 {
     'title': 'Treasure Map',
-    'text': '+1 Treasure. Look at the top 3 cards of your deck. You may put any number of them into your discard and the rest on top of your deck in any order. +1 Card.',
+    'text': '+1 Treasure. Look at the top 3 cards of your deck. You may put any number of them into your stash and the rest on top of your deck in any order. +1 Card.',
     //'flavor': 'Riches await the keen-eyed adventurer..',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -372,7 +372,7 @@ var cards = [
 
 {
     'title': 'Unyielding Waves',
-    'text': '+1 Action. +1 Reload. Move up to 3 cards from the discard of any number of target players to the bottom of their owner’s deck.',
+    'text': '+1 Action. +1 Reload. Move up to 3 cards from the stash of any number of target players to the bottom of their owner’s deck.',
     'flavor': 'The forces of the roaring ocean cannot be fought.',
     'img': 'attacks/relentless-waves.png',
     'type': 'attack',
@@ -384,7 +384,7 @@ var cards = [
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player’s discard and place 2 bank Treasures on it. When their discard is shuffled, take the Treasures and return the card to their new discard.',
+    'text': 'Remove a card from target player’s stash and place 2 bank Treasures on it. When their stash is shuffled, take the Treasures and return the card to their new stash.',
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -396,7 +396,7 @@ var cards = [
 
 {
     'title': 'Stealthy Observer',
-    'text': `Reveal the top 2 cards of target enemy’s deck. Put one in their discard and gain 
+    'text': `Reveal the top 2 cards of target enemy’s deck. Put one in their stash and gain 
         Treasures equal to the card's victory points.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
@@ -420,7 +420,7 @@ var cards = [
 
 {
     'title': 'Shipyard',
-    'text': '+1 Treasure.<br>You can’t use more than 5 actions this turn.<br>+1 Action for each Structure in your discard.',
+    'text': '+1 Treasure.<br>You can’t use more than 5 actions this turn.<br>+1 Action for each Structure in your stash.',
     'img': 'structures/shipyard.png',
     'type': 'structure',
     'victory': '2',
@@ -431,7 +431,7 @@ var cards = [
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 Treasures. You may remove a card from your hand or discard from the game: Gain Treasures equal to the card’s cost.',
+    'text': ' +2 Treasures. You may remove a card from your hand or stash from the game: Gain Treasures equal to the card’s cost.',
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -442,7 +442,7 @@ var cards = [
 
 {
     'title': 'Monkey’s Bargain',
-    'text': 'Remove a card from your hand or discard from the game: Gain Treasures and Actions equal to the card’s victory points.',
+    'text': 'Remove a card from your hand or stash from the game: Gain Treasures and Actions equal to the card’s victory points.',
     'flavor': 'A monkey’s mischief is a pirate’s boon.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
@@ -453,7 +453,7 @@ var cards = [
 
 {
     'title': 'Wind in Sails',
-    'text': '+1 Card.<br>At the start of your turn, if this card is in your discard: Draw an extra card during your initial draw.',
+    'text': '+1 Card.<br>At the start of your turn, if this card is in your stash: Draw an extra card during your initial draw.',
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
@@ -476,7 +476,7 @@ var cards = [
 
 {
     'title': 'End of the Rainbow',
-    'text': '+1 Card.<br>At the start of your turn, if this card is in your discard, as well as an Attack and a Structure: +1 Action.',
+    'text': '+1 Card.<br>At the start of your turn, if this card is in your stash, as well as an Attack and a Structure: +1 Action.',
     // 'flavor': 'A taunting mirage of unachievable dreams',
     'img': 'adventures/rainbow.png',
     'type': 'adventure',
@@ -524,7 +524,7 @@ var cards = [
 
 {
     'title': 'Voodoo Curse',
-    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their discard, then apply its effects.',
+    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their stash, then apply its effects.',
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
     'type': 'attack',
@@ -536,7 +536,7 @@ var cards = [
 
 {
     'title': 'Abyss Marauder',
-    'text': '+1 Action. Swap a card from your hand with a card of equal cost from the discard pile of a target enemy.',
+    'text': '+1 Action. Swap a card from your hand with a card of equal cost from the stash pile of a target enemy.',
     'flavor': 'Born of the deep, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -548,7 +548,7 @@ var cards = [
 
 {
     'title': 'Smuggler’s Cache',
-    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: +1 Treasure.',
+    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your stash: +1 Treasure.',
     'flavor': 'Few can chart the course to the forbidden spoils.',
     'img': 'structures/smugglers-cache.png',
     'type': 'structure',
@@ -572,7 +572,7 @@ var cards = [
 {
     'title': 'Desperate Chase',
     'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
-    put a supply card that cost 4 or less in your discard.',
+    put a supply card that cost 4 or less in your stash.',
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
@@ -584,7 +584,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chose a card from their discard and remove it from the game.<br>When Discarded: apply this card effect to all players.',
+    'text': 'Target player chose a card from their stash and remove it from the game.<br>When Discarded: apply this card effect to all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
@@ -597,7 +597,7 @@ var cards = [
 
 {
     'title': 'Unguarded Graveyard',
-    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your discard: you may put a card from your discard at the bottom of your deck.',
+    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your stash: you may put a card from your stash at the bottom of your deck.',
     'img': 'structures/grave-robbers.png',
     'type': 'structure',
     'victory': '2',
@@ -621,7 +621,7 @@ var cards = [
 
 {
     'title': 'Crooked Merchant',
-    'text': 'Swap a card between your discard and target enemy’s discard as long as the cost difference is 1 or less. Give a bank Treasure to the enemy.',
+    'text': 'Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less. Give a bank Treasure to the enemy.',
     // 'flavor': 'The lure of wealth lead to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
@@ -633,7 +633,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1 Treasure to reveal the top 2 cards of the supply deck. Put one in your discard.',
+    'text': 'Pay 1 Treasure to reveal the top 2 cards of the supply deck. Put one in your stash.',
     'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
@@ -644,7 +644,7 @@ var cards = [
 
 {
     'title': 'Kraken’s Fury',
-    'text': 'All players discard their hand. Apply the effects of a card from any discard.',
+    'text': 'All players Discard their hand. Apply the effects of a card from any stash.',
     'flavor': 'Beware of the devourer of ships and souls.',
     'img': 'attacks/kraken.png',
     'type': 'attack',
