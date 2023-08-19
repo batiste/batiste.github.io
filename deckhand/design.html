@@ -106,6 +106,7 @@
                 <li><b>+1 Reload</b>: You may put 1 supply card at the bottom of the refresh deck this turn. 
                     Replace it with a <b>refresh</b> deck card.</li>
                 <li>+1 Discard: Discard a card immediately <img class="rule-icon" src="icons/card-discard-yellow.svg" /> in your stash.</li>
+                <li>Pay 1: put 1 of your Treasure into the bank.</li>
                 <li>Apply card effects <b>in the written order</b>. You can only get and use Action, Buy or Reload during your turn.</li>
                 <li>While being played, cards are not in your hand or stash.</li>
                 <!-- <li>Cards have 3 possible types: Attack, Structure, Adventure.</li> -->
@@ -402,6 +403,12 @@
         c['text'] = c['text'].replace(':ms:', '<span class="mini-separator"></span>')
         c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
         c['text'] = c['text'].replace(':or:', `<span class="OR"><span class="or-line-left"></span>${or_txt}<span class="or-line-right"></span></span>`)
+
+        // c['text'] = c['text'].replace(/Treasures/g, `<img class="rule-icon" src="icons/chest.svg" />`)
+        // c['text'] = c['text'].replace(/Treasure/g, `<img class="rule-icon" src="icons/chest.svg" />`)
+
+        // c['text'] = c['text'].replace(/Cards/g, `<img class="rule-icon" src="icons/up-card.svg" />`)
+        // c['text'] = c['text'].replace(/Card/g, `<img class="rule-icon" src="icons/up-card.svg"" />`)
 
         var template = `
         <div class="card-container">

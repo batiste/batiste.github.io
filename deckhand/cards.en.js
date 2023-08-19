@@ -2,7 +2,7 @@
 var cards = [
 {
     'title': 'Fist Fight',
-    'text': '+1 <img class="rule-icon" src="icons/chest.svg" /> Treasure.',
+    'text': '+1 Treasure.',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -103,13 +103,13 @@ var cards = [
 
 {
     'title': 'Karmic Lethargy',
-    'text': 'Chose a card from your hand or stash. Chose an enemy: they exchange your card with a supply card that cost 1 more.',
+    'text': 'Pay 1, reveal a card from your hand. Choose an enemy: they swap the revealed card with a supply card that costs 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
     'type': 'adventure',
     'victory': '1',
-    'cost': '2',
+    'cost': '1',
     'amount': 1,
 },
 
@@ -141,7 +141,7 @@ var cards = [
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s stash that cost 3 or less.',
+    'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s stash that cost 2 or less.',
     'flavor': 'WARNING: does not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     'type': 'structure',
@@ -224,7 +224,7 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+2 Reload. An chosen enemy selects 3 supply cards. You may apply the effects of one as if you just played it.',
+    'text': '+2 Reload. A chosen enemy selects 3 supply cards. You may apply the effects of one as if you just played it.',
     'flavor': 'In his royal hands, even your choices are illusions.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
@@ -633,7 +633,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1 Treasure to reveal the top 2 cards of the supply deck. Put one in your stash.',
+    'text': 'Pay 1, to reveal the top 2 cards of the supply deck. Put one in your stash.',
     'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
