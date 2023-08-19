@@ -272,7 +272,7 @@ var cards = [
 {
     'title': 'Gold Mine',
     'text': `A chosen enemy pick a number. +3 Cards. If the total cost of the drawn cards is not that number: 
-    reveal them, +1 Action.`,
+    +1 Action and reveal the cards.`,
     'flavor': 'Beneath the soil, lies dreams and despair.',
     'img': 'structures/gold-mine.png',
     'type': 'structure',
@@ -308,7 +308,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 Treasures. You may give a Treasure from the bank to everybody. If you do, everybody must Discard a card after their initial draw on their next turn.',
+    'text': '+2 Treasures. You may give a Treasure from the bank to every player. If you do, every player must Discard a card after their initial draw on their next turn.',
     'img': 'structures/rum-factory.png',
     'type': 'structure',
     'cost': '2',
@@ -464,7 +464,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 Treasure for each Adventure in the supply but no more than 4.',
+    'text': '+1 Treasure for each Adventure in the supply, up to a maximum of 4 Treasures.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -524,7 +524,7 @@ var cards = [
 
 {
     'title': 'Voodoo Curse',
-    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their discard, then apply its effects as if you just played it.',
+    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their discard, then apply its effects.',
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
     'type': 'attack',
