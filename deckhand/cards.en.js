@@ -536,7 +536,7 @@ var cards = [
 
 {
     'title': 'Abyss Marauder',
-    'text': '+1 Action. Swap a card from your hand with a card of equal cost from target enemy discard.',
+    'text': '+1 Action. Swap a card from your hand with a card of equal cost from the discard pile of a target enemy.',
     'flavor': 'Born of the deep, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
