@@ -633,7 +633,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1, to reveal the top 2 cards of the supply deck. Put one in your stash.',
+    'text': 'Pay 1, reveal the top 2 cards of the supply deck. Put one in your stash.',
     'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
