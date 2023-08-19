@@ -655,7 +655,7 @@ var cards = [
 
 {
     'title': 'Skull island',
-    'text': 'All players reveals the top card of their deck: you may swap one with another from the supply as long as the cost difference is 2 or less.',
+    'text': 'All players reveal the top card of their deck: you may swap one with another from the supply as long as the cost difference is 2 or less.',
     'img': 'structures/skull.png',
     //'reduced-font-size': true,
     'type': 'structure',
