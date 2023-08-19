@@ -79,7 +79,7 @@ var cards = [
 
 {
     'title': 'Beach Bum',
-    'text': '+1 Treasure.<br>+1 Treasure if you are one of the player that owns the least amount of cards.',
+    'text': '+1 Treasure.<br>+1 Treasure if you are one of the players that owns the least amount of cards.',
     'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
@@ -103,7 +103,7 @@ var cards = [
 
 {
     'title': 'Karmic Lethargy',
-    'text': 'Chose a card from your hand or discard. Chose an enemy: he exchange your card with a supply card that cost 1 more.',
+    'text': 'Chose a card from your hand or discard. Chose an enemy: they exchange your card with a supply card that cost 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -188,7 +188,7 @@ var cards = [
 
 {
     'title': 'Council Hall',
-    'text': 'An chosen enemy take a card from the supply and put it in your discard.',
+    'text': 'A chosen enemy takes a card from the supply and puts it in your discard.',
     'flavor': 'Gold for a seat is wealth wasted on whispers.',
     'img': 'structures/council-hall.png',
     'type': 'structure',
@@ -200,7 +200,7 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': '+2 Cards, +1 Discard, +1 Treasure. All player move a card from their discard or, if unable, top deck to their left neighbor’s discard.',
+    'text': '+2 Cards, +1 Discard, +1 Treasure. All players move a card from their discard or, if unable, top deck to their left neighbor’s discard.',
     'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -224,8 +224,8 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+2 Reload. An chosen enemy select 3 supply cards. You may apply the effects of one as if you just played it.',
-    'flavor': 'In his royal hands, even your choices are illusion.',
+    'text': '+2 Reload. An chosen enemy selects 3 supply cards. You may apply the effects of one as if you just played it.',
+    'flavor': 'In his royal hands, even your choices are illusions.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
     'cost': 2,
