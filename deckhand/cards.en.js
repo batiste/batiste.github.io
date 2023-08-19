@@ -384,7 +384,7 @@ var cards = [
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player discard and lay 2 bank Treasures on it. When the discard is shuffled, take the Treasures and return the card to the new discard.',
+    'text': 'Remove a card from target player discard and lay 2 bank Treasures on it. When his discard is shuffled, take the Treasures and return the card to his new discard.',
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -644,7 +644,7 @@ var cards = [
 
 {
     'title': 'Kraken’s Fury',
-    'text': 'Everybody discard their hand. Apply the effects of a card from any discard.',
+    'text': 'All players discard their hand. Apply the effects of a card from any discard.',
     'flavor': 'Beware of the devourer of ships and souls.',
     'img': 'attacks/kraken.png',
     'type': 'attack',
