@@ -200,7 +200,7 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': '+2 Cards, +1 Discard, +1 Treasure. Everyone move a card from their discard or, if unable, top deck to their left neighbor’s discard.',
+    'text': '+2 Cards, +1 Discard, +1 Treasure. All player move a card from their discard or, if unable, top deck to their left neighbor’s discard.',
     'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -384,7 +384,7 @@ var cards = [
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player discard and lay 2 bank Treasures on it. When his discard is shuffled, take the Treasures and return the card to his new discard.',
+    'text': 'Remove a card from target player’s discard and place 2 bank Treasures on it. When their discard is shuffled, take the Treasures and return the card to their new discard.',
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -655,7 +655,7 @@ var cards = [
 
 {
     'title': 'Skull island',
-    'text': 'Every player reveals the top card of their deck: you may swap one with another from the supply as long as the cost difference is 2 or less.',
+    'text': 'All players reveals the top card of their deck: you may swap one with another from the supply as long as the cost difference is 2 or less.',
     'img': 'structures/skull.png',
     //'reduced-font-size': true,
     'type': 'structure',

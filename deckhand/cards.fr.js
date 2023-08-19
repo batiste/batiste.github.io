@@ -85,7 +85,7 @@ var fr_translations = [
   },
   {
     "title": "Typhon",
-    "text": "+2 Cartes, +1 Défausse, +1 Trésor. Tout le monde déplace une carte de sa défausse ou, si impossible, du dessus de son deck vers la défausse du voisin de gauche.",
+    "text": "+2 Cartes, +1 Défausse, +1 Trésor. Tout les joueurs déplace une carte de sa défausse ou, si impossible, du dessus de son deck vers la défausse du voisin de gauche.",
     "flavor": "",
     // "flavor": "Un chaos tourbillonnant ! Un cauchemar!"
   },
