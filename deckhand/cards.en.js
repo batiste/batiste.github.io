@@ -153,7 +153,7 @@ var cards = [
 
 {
     'title': 'Haggling',
-    'text': '+1 Reload, +1 Buy.<br>Your next buy this turn cost 1 less.',
+    'text': '+1 Reload, +1 Buy.<br>Your next buy this turn costs 1 less.',
     'flavor': 'At times, the tongue wields a sharper edge than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
@@ -247,7 +247,7 @@ var cards = [
 
 {
     'title': 'Spice Trade',
-    'text': '+1 Treasure.<br>If this card is in your stash, the first Structure you buy each turn cost 1 less.',
+    'text': '+1 Treasure.<br>If this card is in your stash, the first Structure you buy each turn costs 1 less.',
     'flavor': 'Spices dance and blend, a taste of opulence.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
@@ -271,7 +271,7 @@ var cards = [
 
 {
     'title': 'Gold Mine',
-    'text': `A chosen enemy pick a number. +3 Cards. If the total cost of the drawn cards is not that number: 
+    'text': `A chosen enemy picks a number. +3 Cards. If the total cost of the drawn cards is not that number: 
     +1 Action and reveal the cards.`,
     'flavor': 'Beneath the soil, lies dreams and despair.',
     'img': 'structures/gold-mine.png',
@@ -361,7 +361,7 @@ var cards = [
 
 {
     'title': 'Haunted Cave',
-    'text': '+2 Card.<br>+1 Treasure for each Attack in your hand.',
+    'text': '+2 Cards.<br>+1 Treasure for each Attack in your hand.',
     'flavor': 'This place resonates with skeletal clatters. Fear not, for the pure-hearted and free of greed.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
@@ -584,7 +584,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chooses a card from their stash and remove it from the game.<br>When Discarded: Apply this card effect to all players.',
+    'text': 'Target player chooses a card from their stash and removes it from the game.<br>When Discarded: Apply this card effect to all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
