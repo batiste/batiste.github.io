@@ -98,13 +98,13 @@
                 <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.
                     </li>
                 <li><img class="rule-icon" src="icons/target.svg" /> Indicates targeted effects that affect enemies.</li>
-                <li><b>+1 Treasure:</b> Take a Treasure from the bank immediately.</li>
-                <li><b>+1 Card:</b> Draw a card from your deck immediately.</li>
-                <li><b>+1 Action:</b> Gain an extra action to use this turn.</li>
-                <li><b>+1 Buy:</b> You may buy a card without using an action this turn.</li>
-                <li><b>+1 Reload</b>: You may put 1 supply card at the bottom of the reload deck this turn. 
+                <li><b>+1 <img class="rule-icon" src="icons/chest.svg" />:</b> Take a Treasure from the bank immediately.</li>
+                <li><b>+1 <img class="rule-icon" src="icons/card-draw-2.svg" />:</b> Draw a card from your deck immediately.</li>
+                <li><b>+1 <img class="rule-icon star" src="icons/star.svg" />:</b> Gain an extra action to use this turn.</li>
+                <li><b>+1 <img class="rule-icon star" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck this turn. 
                     Replace it with a <b>reload deck</b> card.</li>
-                <li>+1 Discard: Discard a card immediately <img class="rule-icon" src="icons/card-discard-yellow.svg" /> into your stash.</li>
+                <li><b>+1 Buy:</b> You may buy a card without using an action this turn.</li>
+                <li><b>+1 <img class="rule-icon star" src="icons/card-discard.svg" />:</b> Discard a card immediately into your stash.</li>
                 <li>Pay 1: Put one of your Treasure into the bank.</li>
                 <li>Apply card effects <b>in the written order</b>. If effects would trigger at the same time, you choose the order.
                     You can only get and use Action, Buy or Reload during your turn.</li>
@@ -401,20 +401,27 @@
         c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
         c['text'] = c['text'].replace(':or:', `<span class="OR"><span class="or-line-left"></span>${or_txt}<span class="or-line-right"></span></span>`)
 
-        // c['text'] = c['text'].replace(/Treasures/g, `<img class="rule-icon" src="icons/chest.svg" />`)
-        // c['text'] = c['text'].replace(/Treasure/g, `<img class="rule-icon" src="icons/chest.svg" />`)
+        c['text'] = c['text'].replace(/:Treasure:/g, `<img class="rule-icon chest" src="icons/chest.svg" />`)
+        // c['text'] = c['text'].replace(/Treasure/g, `<img class="rule-icon chest" src="icons/chest.svg" />`)
 
-        // c['text'] = c['text'].replace(/Cards/g, `<img class="rule-icon" src="icons/card-draw-2.svg" />`)
-        // c['text'] = c['text'].replace(/Card/g, `<img class="rule-icon" src="icons/card-draw-2.svg"" />`)
+        c['text'] = c['text'].replace(/:Card:/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
+        // c['text'] = c['text'].replace(/Card/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
 
-        // c['text'] = c['text'].replace(/Reloads/g, `<img class="rule-icon" src="icons/reload.svg" />`)
-        // c['text'] = c['text'].replace(/Reload/g, `<img class="rule-icon" src="icons/reload.svg"" />`)
+        // c['text'] = c['text'].replace(/Reloads/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
+        c['text'] = c['text'].replace(/:Reload:/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
 
-        // c['text'] = c['text'].replace(/Buys/g, `<img class="rule-icon" src="icons/buy.svg" />`)
-        // c['text'] = c['text'].replace(/Buy/g, `<img class="rule-icon" src="icons/buy.svg"" />`)
+        c['text'] = c['text'].replace(/:Action:/g, `<img class="rule-icon star" src="icons/star.svg" />`)
+        // c['text'] = c['text'].replace(/Action/g, `<img class="rule-icon star" src="icons/star.svg" />`)
 
-        // c['text'] = c['text'].replace(/Discards/g, `<img class="rule-icon" src="icons/card-discard.svg" />`)
-        // c['text'] = c['text'].replace(/Discard/g, `<img class="rule-icon" src="icons/card-discard.svg"" />`)
+        // c['text'] = c['text'].replace(/Buys/g, `<img class="rule-icon buy" src="icons/buy.svg" />`)
+        // c['text'] = c['text'].replace(/Buy/g, `<img class="rule-icon buy" src="icons/buy.svg" />`)
+
+        // c['text'] = c['text'].replace(/Discarded/g, `---`)
+
+        c['text'] = c['text'].replace(/:Discard:/g, `<img class="rule-icon discard-t" src="icons/card-discard.svg" />`)
+        // c['text'] = c['text'].replace(/Discard/g, `<img class="rule-icon discard-t" src="icons/card-discard.svg" />`)
+
+        // c['text'] = c['text'].replace(/---/g, `Discarded`)
 
         var template = `
         <div class="card-container">
@@ -571,7 +578,7 @@
             canvas.parentNode.removeChild(canvas)
             cb && cb(canvas)
         }, function error(e) {
-            console.log("Error on card", card.title)
+            console.log("Error on card", card.title, e)
         });
     }
 
