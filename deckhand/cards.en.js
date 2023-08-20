@@ -146,7 +146,7 @@ var cards = [
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 :Treasure:. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that cost 2 or less.',
+    'text': '+1 :Treasure:. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that costs 2 or less.',
     'flavor': 'WARNING: does not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     'type': 'structure',
@@ -205,8 +205,8 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': '+2 :Card:, +1 :Discard:, +1 :Treasure:. All players move a card from their stash or, if unable, top deck to their left neighbor’s stash.',
-    'flavor': 'A Swirling chaos! A navigational nightmare!',
+    'text': '+2 :Card:, +1 :Discard:, +1 :Treasure:. All players move a card simultaneously from their stash or, if unable, top deck to their left neighbor’s stash.',
+    //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
     'type': 'adventure',
@@ -577,7 +577,7 @@ var cards = [
 {
     'title': 'Desperate Chase',
     'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
-    Put a supply card that cost 4 or less in your stash.',
+    Put a supply card that costs 4 or less in your stash.',
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
