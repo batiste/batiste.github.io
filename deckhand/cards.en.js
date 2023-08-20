@@ -425,7 +425,7 @@ var cards = [
 
 {
     'title': 'Shipyard',
-    'text': '+1 :Treasure:.<br>You can’t use more than 5 :Action: this turn.<br>+1 :Action: for each Structure in your stash.',
+    'text': '+1 :Treasure:.<br>+1 :Action: for each Structure in your stash.<br>You can’t use more than 5 :Action: this turn.',
     'img': 'structures/shipyard.png',
     'type': 'structure',
     'victory': '2',
@@ -507,7 +507,7 @@ var cards = [
 
 {
     'title': 'Seaside Citadel',
-    'text': 'You can’t use more than 5 :Action: this turn.<br>+1 :Card:, +2 :Action:.',
+    'text': '+1 :Card:, +2 :Action:.<br>You can’t use more than 5 :Action: this turn.',
     'flavor': 'By the sea’s edge, the citadel beckons the intrepid in search of fortunes.',
     'img': 'structures/citadel-2.png',
     'type': 'structure',
