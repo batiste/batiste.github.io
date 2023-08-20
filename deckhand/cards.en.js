@@ -584,7 +584,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chose a card from their stash and remove it from the game.<br>When Discarded: Apply this card effect to all players.',
+    'text': 'Target player chooses a card from their stash and remove it from the game.<br>When Discarded: Apply this card effect to all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
