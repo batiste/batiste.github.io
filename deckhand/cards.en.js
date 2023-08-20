@@ -107,7 +107,7 @@ var cards = [
 // },
 
 {
-    'title': 'Karmic Raise',
+    'title': 'Karmic Elevation',
     'text': 'Pay 1 :Treasure:: Reveal a card from your hand. A chosen enemy pick a supply card that costs 1 more. Swap those 2 cards.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
@@ -401,8 +401,8 @@ var cards = [
 
 {
     'title': 'Stealthy Observer',
-    'text': `Reveal the top 2 cards of target enemy’s deck. Put one in their stash and gain 
-        Treasures equal to the card's victory points.`,
+    'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card in their stash and gain 
+        :Treasure: equal to its victory points.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
@@ -660,7 +660,8 @@ var cards = [
 
 {
     'title': 'Skull island',
-    'text': 'All players reveal the top card of their deck: You may swap one with another from the supply as long as the cost difference is 2 or less.',
+    'text': `All players reveal the top card of their deck: You may swap a revealed card with 
+            a card from the supply as long as the cost difference is 2 or less.`,
     'img': 'structures/skull.png',
     //'reduced-font-size': true,
     'type': 'structure',
