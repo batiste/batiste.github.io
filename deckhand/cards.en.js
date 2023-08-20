@@ -206,7 +206,7 @@ var cards = [
 {
     'title': 'Typhoon',
     'text': '+2 :Card:, +1 :Discard:, +1 :Treasure:. All players move a card from their stash or, if unable, top deck to their left neighbor’s stash.',
-    // 'flavor': 'A Swirling chaos! A navigational nightmare!',
+    'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
     'type': 'adventure',
@@ -217,7 +217,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard any number of cards, get that many :Treasure:. +2 :Card:.',
+    'text': 'Discard any number of cards,<br>get that many :Treasure:. +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -614,7 +614,7 @@ var cards = [
 
 {
     'title': 'Bewitched Doll',
-    'text': 'On target enemy’s next turn you play their first Action. You make all decisions that arise, including any extra Action.', // <br>When Discarded: +1 Action.
+    'text': 'On target enemy’s next turn you play their first :Action:. You make all decisions that arise from this :Action:, including any extra :Action:.', // <br>When Discarded: +1 Action.
     'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
