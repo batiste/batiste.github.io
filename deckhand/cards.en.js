@@ -129,7 +129,7 @@ var cards = [
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 Treasure. On their next turn, target enemy gains +1 Buy and must give you a Treasure before their first buy.',
+    'text': '+1 Treasure. On their next turn, target enemy gains +1 Buy and must give you a Treasure before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'structure',
@@ -153,7 +153,7 @@ var cards = [
 
 {
     'title': 'Haggling',
-    'text': '+1 Reload, +1 Buy.<br>Your next buy this turn costs 1 less.',
+    'text': '+1 Reload, +1 Buy.<br>Your next Buy this turn costs 1 less.',
     'flavor': 'At times, the tongue wields a sharper edge than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
@@ -201,7 +201,7 @@ var cards = [
 {
     'title': 'Typhoon',
     'text': '+2 Cards, +1 Discard, +1 Treasure. All players move a card from their stash or, if unable, top deck to their left neighbor’s stash.',
-    'flavor': 'A Swirling chaos! A navigational nightmare!',
+    // 'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
     'type': 'adventure',
@@ -224,7 +224,7 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+2 Reload. A chosen enemy selects 3 supply cards. You may apply the effects of one as if you just played it.',
+    'text': '+2 Reload. A chosen enemy selects 3 supply cards. You may apply the effects of one.',
     'flavor': 'In his royal hands, even your choices are illusions.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
@@ -247,7 +247,7 @@ var cards = [
 
 {
     'title': 'Spice Trade',
-    'text': '+1 Treasure.<br>If this card is in your stash, the first Structure you buy each turn costs 1 less.',
+    'text': '+1 Treasure.<br>If this card is in your stash, the first Structure you Buy each turn costs 1 less.',
     'flavor': 'Spices dance and blend, a taste of opulence.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
@@ -296,7 +296,7 @@ var cards = [
 
 {
     'title': 'Ancient Library',
-    'text': '+2 Treasures.<br>When discarded: You may shuffle your stash into your deck.',
+    'text': '+2 Treasures.<br>When Discarded: You may shuffle your stash into your deck.',
     'flavor': 'Each page unravels an imperial secret.',
     'img': 'structures/archives.png',
     'type': 'structure',

@@ -181,6 +181,10 @@ a, a:visited {
     line-height: 1.4;
 }
 
+.card .text .rule-icon {
+    background: transparent;
+}
+
 .lang-fr .card .text {
     font-size:9.4px;
 }
