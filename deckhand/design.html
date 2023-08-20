@@ -37,7 +37,8 @@
             </h3>
          
              <ol>
-                 <li>Gather about 20 Treasure tokens into a bank. We recommend using tokens instead of dice. Distribute 1 Treasure <img class="rule-icon" src="icons/chest.svg" /> to each player.</li>
+                 <li>Gather about 20 Treasure tokens into a bank. We recommend using tokens instead of dice. Distribute 1 Treasure 
+                    <img class="rule-icon" src="icons/chest-simplified.svg" /> to each player.</li>
                  <li>
                     Each player get a shuffled deck of 2 "Fist Fight" and 2 "Celebrate".
                     Remove all other "Fist Fight" and "Celebrate" from the game.
@@ -64,7 +65,7 @@
                  <li>During your turn, you have 2 Actions <img class="rule-icon star" src="icons/star.svg" />, which can be:
                      <ol>
                          <li>Playing a card: Apply its effects <b>then</b> put the card in your stash.</li>
-                         <li>Buying a card from the supply: Pay the cost <img class="rule-icon" src="icons/chest.svg" />
+                         <li>Buying a card from the supply: Pay the cost <img class="rule-icon" src="icons/chest-simplified.svg" />
                              indicated at the bottom right of the card and put it in your stash.</li>
                      </ol>
                   </li>
@@ -98,7 +99,7 @@
                 <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.
                     </li>
                 <li><img class="rule-icon" src="icons/target.svg" /> Indicates targeted effects that affect enemies.</li>
-                <li><b>+1 <img class="rule-icon" src="icons/chest.svg" />:</b> Take a Treasure from the bank immediately.</li>
+                <li><b>+1 <img class="rule-icon" src="icons/chest-simplified.svg" />:</b> Take a Treasure from the bank immediately.</li>
                 <li><b>+1 <img class="rule-icon" src="icons/card-draw-2.svg" />:</b> Draw a card from your deck immediately.</li>
                 <li><b>+1 <img class="rule-icon star" src="icons/star.svg" />:</b> Gain an extra Action to use this turn.</li>
                 <li><b>+1 <img class="rule-icon star" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck this turn. 
@@ -401,7 +402,7 @@
         c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
         c['text'] = c['text'].replace(':or:', `<span class="OR"><span class="or-line-left"></span>${or_txt}<span class="or-line-right"></span></span>`)
 
-        c['text'] = c['text'].replace(/:Treasure:/g, `<img class="rule-icon chest" src="icons/chest.svg" />`)
+        c['text'] = c['text'].replace(/:Treasure:/g, `<img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
         // c['text'] = c['text'].replace(/Treasure/g, `<img class="rule-icon chest" src="icons/chest.svg" />`)
 
         c['text'] = c['text'].replace(/:Card:/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)

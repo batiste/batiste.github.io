@@ -107,9 +107,9 @@ var cards = [
 // },
 
 {
-    'title': 'Karmic Lethargy',
-    'text': 'Pay 1: Reveal a card from your hand and choose an enemy. The chosen enemy swap the revealed card with a supply card that costs 1 more.',
-    // 'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
+    'title': 'Karmic Raise',
+    'text': 'Pay 1 :Treasure:: Reveal a card from your hand. A chosen enemy pick a supply card that costs 1 more. Swap those 2 cards.',
+    'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
     'type': 'adventure',
@@ -638,7 +638,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1: Reveal the top 2 cards of the supply deck and put one of them in your stash.',
+    'text': 'Pay 1 :Treasure:: Reveal the top 2 cards of the supply deck and put one in your stash.',
     'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
