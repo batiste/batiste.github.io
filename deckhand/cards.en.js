@@ -108,8 +108,8 @@ var cards = [
 
 {
     'title': 'Karmic Lethargy',
-    'text': 'Pay 1, reveal a card from your hand. Choose an enemy: They swap the revealed card with a supply card that costs 1 more.',
-    'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
+    'text': 'Pay 1: Reveal a card from your hand and choose an enemy. The chosen enemy swap the revealed card with a supply card that costs 1 more.',
+    // 'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
     'type': 'adventure',
@@ -436,7 +436,7 @@ var cards = [
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 :Treasure:. You may remove a card from your hand or stash from the game: +1 :Treasure: for each cost points of the removed card.',
+    'text': ' +2 :Treasure:. You may remove a card from your hand or stash from the game: Gain as many :Treasure: as the cost of the removed card.',
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -638,7 +638,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1, reveal the top 2 cards of the supply deck. Put one in your stash.',
+    'text': 'Pay 1: Reveal the top 2 cards of the supply deck and put one of them in your stash.',
     'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
