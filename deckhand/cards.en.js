@@ -264,7 +264,7 @@ var cards = [
 
 {
     'title': 'Hideout',
-    'text': '+2 :Card:, +1 :Treasure:.<br>When Discarded: You may put it back in your hand. Do this only once.',
+    'text': '+2 :Card:, +1 :Treasure:.<br>When Discarded: +1 :Card:',
     'flavor': 'A haven to open a rum bottle and see it through.',
     'img': 'structures/hideout.png',
     'type': 'structure',
@@ -313,7 +313,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Treasure:. You may give a Treasure from the bank to every player. If you do, every player must Discard a card after their initial draw on their next turn.',
+    'text': '+2 :Treasure:. You may give a :Treasure: from the bank to every player. If you do, every player must Discard a card after their initial draw on their next turn.',
     'img': 'structures/rum-factory.png',
     'type': 'structure',
     'cost': '2',
