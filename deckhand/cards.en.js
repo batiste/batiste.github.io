@@ -355,7 +355,7 @@ var cards = [
 
 {
     'title': 'Ghost Crew',
-    'text': '+1 :Card:, +1 :Treasure:. You may put this card on the top of its owner’s deck. +1 :Action: if there is 3 or more Attacks in the supply.',
+    'text': '+1 :Card:, +1 :Treasure:. You may put this card on the top of its owner’s deck. If there is 3 or more Attacks in the supply: +1 :Action:',
     'img': 'attacks/ghost-crew.png',
     'flavor': 'Trade your mortal life, enjoy eternal retribution.',
     'type': 'attack',
@@ -577,7 +577,7 @@ var cards = [
 {
     'title': 'Desperate Chase',
     'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
-    put a supply card that cost 4 or less in your stash.',
+    Put a supply card that cost 4 or less in your stash.',
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
