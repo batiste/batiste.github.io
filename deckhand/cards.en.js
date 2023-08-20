@@ -103,7 +103,7 @@ var cards = [
 
 {
     'title': 'Karmic Lethargy',
-    'text': 'Pay 1, reveal a card from your hand. Choose an enemy: they swap the revealed card with a supply card that costs 1 more.',
+    'text': 'Pay 1, reveal a card from your hand. Choose an enemy: They swap the revealed card with a supply card that costs 1 more.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -141,7 +141,7 @@ var cards = [
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 Treasure. If you lose ownership of this card: remove from the game a card from target enemy’s stash that cost 2 or less.',
+    'text': '+1 Treasure. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that cost 2 or less.',
     'flavor': 'WARNING: does not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     'type': 'structure',
@@ -259,7 +259,7 @@ var cards = [
 
 {
     'title': 'Hideout',
-    'text': '+2 Cards, +1 Treasure.<br>When Discarded: you may put it back in your hand. Do this only once.',
+    'text': '+2 Cards, +1 Treasure.<br>When Discarded: You may put it back in your hand. Do this only once.',
     'flavor': 'A haven to open a rum bottle and see it through.',
     'img': 'structures/hideout.png',
     'type': 'structure',
@@ -296,7 +296,7 @@ var cards = [
 
 {
     'title': 'Ancient Library',
-    'text': '+2 Treasures.<br>When discarded: you may shuffle your stash into your deck.',
+    'text': '+2 Treasures.<br>When discarded: You may shuffle your stash into your deck.',
     'flavor': 'Each page unravels an imperial secret.',
     'img': 'structures/archives.png',
     'type': 'structure',
@@ -536,7 +536,7 @@ var cards = [
 
 {
     'title': 'Abyss Marauder',
-    'text': '+1 Action. Swap a card from your hand with a card of equal cost from the stash pile of a target enemy.',
+    'text': '+1 Action. Swap a card from your hand with a card of equal cost from the stash of a target enemy.',
     'flavor': 'Born of the deep, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -584,7 +584,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chose a card from their stash and remove it from the game.<br>When Discarded: apply this card effect to all players.',
+    'text': 'Target player chose a card from their stash and remove it from the game.<br>When Discarded: Apply this card effect to all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
@@ -597,7 +597,7 @@ var cards = [
 
 {
     'title': 'Unguarded Graveyard',
-    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your stash: you may put a card from your stash at the bottom of your deck.',
+    'text': '+1 Treasure.<br>At the start of your turn, if this card is in your stash: You may put a card from your stash at the bottom of your deck.',
     'img': 'structures/grave-robbers.png',
     'type': 'structure',
     'victory': '2',
@@ -655,7 +655,7 @@ var cards = [
 
 {
     'title': 'Skull island',
-    'text': 'All players reveal the top card of their deck: you may swap one with another from the supply as long as the cost difference is 2 or less.',
+    'text': 'All players reveal the top card of their deck: You may swap one with another from the supply as long as the cost difference is 2 or less.',
     'img': 'structures/skull.png',
     //'reduced-font-size': true,
     'type': 'structure',

@@ -34,7 +34,7 @@ a, a:visited {
     width: 95mm;
     background: #140e07;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size:10px;
+    font-size:9.5px;
     color: #000000;
     text-align: left;
     text-shadow: 0.5px 0.5px 0.3px rgb(255, 255, 255);
@@ -66,7 +66,7 @@ a, a:visited {
 
 .booklet ol ol {
     margin-top: 2px;
-    margin-bottom: 3px;
+    margin-bottom: 0px;
 }   
 
 .booklet li {
@@ -77,13 +77,13 @@ a, a:visited {
 .booklet h3 {
     font-family: 'Lobster Two', cursive;
     font-size: 14px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
     margin-top: 10px;
 }
 
 .booklet p {
     margin-top: 0em;
-    margin-bottom: 0.4em;
+    margin-bottom: 0.3em;
 }
 
 .config label {
@@ -167,7 +167,7 @@ a, a:visited {
 .card .text {
     position: absolute;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size:9.5px;
+    font-size:9.6px;
     right:9mm;
     top:55.8mm;
     left:9mm;
