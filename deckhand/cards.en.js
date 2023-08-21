@@ -494,7 +494,7 @@ var cards = [
 
 {
     'title': 'Bank Fortress',
-    'text': '+2 :Treasure:.<br>When Discarded: +1 Action.',
+    'text': '+2 :Treasure:.<br>When Discarded: +1 :Action:.',
     'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
     'img': 'structures/bank-2.png',
     'type': 'structure',
@@ -614,7 +614,7 @@ var cards = [
 
 {
     'title': 'Bewitched Doll',
-    'text': 'On target enemy’s next turn you play their first :Action:. You make all decisions that arise from this :Action:, including any extra :Action:.', // <br>When Discarded: +1 Action.
+    'text': 'On target enemy’s next turn you play their first :Action:. You make all decisions that arise from this :Action:, including any extra :Action:.',
     'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
@@ -626,8 +626,8 @@ var cards = [
 
 {
     'title': 'Crooked Merchant',
-    'text': 'Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less. Give a bank Treasure to the enemy.',
-    // 'flavor': 'The lure of wealth lead to deceptive deals.',
+    'text': 'Pay 1 :Treasure:: Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less.',
+    'flavor': 'The lure of wealth lead to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
     'victory': '2',
