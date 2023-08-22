@@ -194,7 +194,7 @@ var cards = [
 {
     'title': 'Council Hall',
     'text': 'A chosen enemy takes a card from the supply and puts it in your stash.',
-    'flavor': 'Gold for a seat is wealth wasted on whispers.',
+    'flavor': 'Gold secured you a seat, yet your influence remain desperately elusive.',
     'img': 'structures/council-hall.png',
     'type': 'structure',
     'cost': 2,
@@ -663,11 +663,11 @@ var cards = [
 
 {
     'title': 'Kraken’s Fury',
-    'text': 'All players Discard their hand. Apply the effects of a card from any stash.',
+    'text': 'Apply the effects of a card from any stash.',
     'flavor': 'Beware of the devourer of ships and souls.',
     'img': 'attacks/kraken.png',
     'type': 'attack',
-    'victory': '3',
+    'victory': '4',
     'cost': '4',
     'amount': 1
 },
