@@ -35,7 +35,7 @@ var cards = [
 
 {
     'title': 'Fortune Teller',
-    'text': `Reveal 2 cards from any one deck.<br>
+    'text': `Reveal the 2 top cards from any one deck.<br>
         +1 :Card: for each Adventure revealed.<br>
         +1 :Treasure: for each Attack revealed.<br>
         +1 :Action: for each Structure revealed.`,
@@ -137,7 +137,7 @@ var cards = [
     'text': '+1 :Treasure:. On their next turn, target enemy gains +1 Buy and must give you 1 :Treasure: before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
-    'type': 'structure',
+    'type': 'attack',
     'cost': 1,
     'victory': 1,
     'amount': 1,
@@ -205,7 +205,8 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': '+2 :Card:, +1 :Discard:, +1 :Treasure:. All players move a card simultaneously from their stash or, if unable, top deck to their left neighbor’s stash.',
+    'text': `+2 :Card:, +1 :Discard:, +1 :Treasure:. All players simultaneously
+     move a card from their stash or the top card of their deck (no peeking) to their left neighbor’s stash.`,
     //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -313,8 +314,8 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Treasure:. You may give a :Treasure: from the bank to every player. If you do, every player must Discard a card after their initial draw on their next turn.',
-    'img': 'structures/rum-factory.png',
+    'text': '+2 :Treasure:. You may give a :Treasure: from the bank to each player. If you do, every player must Discard a card after their initial draw on their next turn.',
+    'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
     'victory': '2',
@@ -375,16 +376,28 @@ var cards = [
     'amount': 1
 },
 
+// {
+//     'title': 'Unyielding Waves',
+//     'text': '+1 :Treasure: for each different type of card in your stash (Structure, Adventure, Attack).',
+//     'flavor': 'The forces of the roaring ocean cannot be fought.',
+//     'img': 'attacks/relentless-waves.png',
+//     'type': 'attack',
+//     'victory': '2',
+//     'cost': '2',
+//     'amount': 1,
+//     // 'target': true,
+// },
+
 {
-    'title': 'Unyielding Waves',
-    'text': '+1 :Action:. +1 :Reload:. Move up to 3 cards from the stash of any number of target players to the bottom of their owner’s deck.',
-    'flavor': 'The forces of the roaring ocean cannot be fought.',
-    'img': 'attacks/relentless-waves.png',
-    'type': 'attack',
+    'title': 'Governor’s Jail',
+    'text': `+2 :Treasure:. Flip 1 supply card face down.
+    This card does not exist. Restore it at any time on your next turn.`,
+    'flavor': 'Dear guest, you’re truly at your best restrained.',
+    'img': 'structures/jail.png',
+    'type': 'structure',
     'victory': '2',
     'cost': '2',
     'amount': 1,
-    'target': true,
 },
 
 {
@@ -427,6 +440,7 @@ var cards = [
     'title': 'Shipyard',
     'text': '+1 :Treasure:.<br>+1 :Action: for each Structure in your stash.<br>You can’t use more than 5 :Action: this turn.',
     'img': 'structures/shipyard.png',
+    'flavor': 'Every plank aspires to endless horizons.',
     'type': 'structure',
     'victory': '2',
     'cost': '2',
@@ -469,7 +483,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 4 Treasures.',
+    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 4 :Treasure:.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -494,7 +508,7 @@ var cards = [
 
 {
     'title': 'Bank Fortress',
-    'text': '+2 :Treasure:.<br>When Discarded: +1 :Action:.',
+    'text': '+2 :Treasure:.<br>When Discarded: +1 Buy.',
     'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
     'img': 'structures/bank-2.png',
     'type': 'structure',
@@ -605,7 +619,7 @@ var cards = [
     'text': '+1 :Treasure:.<br>At the start of your turn, if this card is in your stash: You may put a card from your stash at the bottom of your deck.',
     'img': 'structures/grave-robbers.png',
     'type': 'structure',
-    'victory': '2',
+    'victory': '3',
     'cost': '3',
     'amount': 1,
     'start': true,

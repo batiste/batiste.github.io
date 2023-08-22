@@ -157,7 +157,7 @@ a, a:visited {
     font-size: 16px;
     position: absolute;
     right:0;
-    top:55.9mm;
+    top:55.8mm;
     left:0;
     color: #fff9d8;
     text-align: center;
@@ -169,7 +169,7 @@ a, a:visited {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size:9.6px;
     right:9mm;
-    top:55.8mm;
+    top:56mm;
     left:9mm;
     bottom:10.5mm;
     color: #fffdf2;
@@ -282,7 +282,7 @@ a, a:visited {
 }
 
 .card .separator {
-    margin-top: 3px;
+    margin-top: 2px;
     border-top: 1px solid #434343;
     margin-bottom: 1px;
     margin-left: 35%;
