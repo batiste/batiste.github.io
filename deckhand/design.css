@@ -96,8 +96,8 @@ a, a:visited {
 }
 
 .mask {
-    border: 2mm solid black;
-    border-radius: 3mm;
+    border: 2.6mm solid black;
+    border-radius: 3.5mm;
     position: absolute;
     top: 3.05mm;
     left: 3mm;
@@ -121,10 +121,10 @@ a, a:visited {
 
 .card .bg {
     /* 63 88 is poker size */
-    width: 59.08mm;
+    width: 59.0mm;
     margin-left: -0.04mm;
-    height: 84mm;
-    margin-top: 5mm;
+    height: 83.8mm;
+    margin-top: 5.2mm;
     /* border-radius: 5px; */
 }
 
@@ -334,8 +334,8 @@ a, a:visited {
 .top-left-icons-container {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.65);
-    top:5mm;
-    left:4.99mm;
+    top:5.5mm;
+    left:5.4mm;
     border-radius: 0 0 3px 0;
     text-align: center;
     display: flex;

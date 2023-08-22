@@ -628,7 +628,7 @@ var cards = [
 
 {
     'title': 'Bewitched Doll',
-    'text': 'On target enemy’s next turn you play their first :Action:. You make all decisions that arise from this :Action:, including any extra :Action:.',
+    'text': '+1 :Treasure:. On target enemy’s next turn you control their first :Action:. You make all decisions arising from this :Action:, including any extra :Action:.',
     'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
