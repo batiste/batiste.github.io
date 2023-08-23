@@ -619,7 +619,7 @@ var cards = [
     'text': '+1 :Treasure:.<br>At the start of your turn, if this card is in your stash: You may put a card from your stash at the bottom of your deck.',
     'img': 'structures/grave-robbers.png',
     'type': 'structure',
-    'victory': '3',
+    'victory': '2',
     'cost': '3',
     'amount': 1,
     'start': true,
