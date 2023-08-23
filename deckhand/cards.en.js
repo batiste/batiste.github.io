@@ -193,7 +193,7 @@ var cards = [
 
 {
     'title': 'Council Hall',
-    'text': 'A chosen enemy takes a card from the supply and puts it in your stash.',
+    'text': 'A chosen enemy takes a card from the supply and puts it into your stash.',
     'flavor': 'Gold secured you a seat, yet your influence remains desperately elusive.',
     'img': 'structures/council-hall.png',
     'type': 'structure',
@@ -378,7 +378,7 @@ var cards = [
 
 // {
 //     'title': 'Unyielding Waves',
-//     'text': '+1 :Treasure: for each different type of card in your stash (Structure, Adventure, Attack).',
+//     'text': '+1 :Treasure: for each different type of card into your stash (Structure, Adventure, Attack).',
 //     'flavor': 'The forces of the roaring ocean cannot be fought.',
 //     'img': 'attacks/relentless-waves.png',
 //     'type': 'attack',
@@ -591,7 +591,7 @@ var cards = [
 {
     'title': 'Desperate Chase',
     'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
-    Put a supply card that costs 4 or less in your stash.',
+    Put a supply card that costs 4 or less into your stash.',
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
@@ -652,8 +652,8 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1 :Treasure:: Reveal the top 2 cards of the supply deck and put one in your stash.',
-    'flavor': 'Though she secures priceless treasures, is this abomination worth the bargain?',
+    'text': 'Pay 1 :Treasure:: Reveal the top 2 cards of the supply deck. Put one revealed card that cost 3 or less into your stash.',
+    'flavor': 'Is this abomination worth the bargain?', // Though she secures priceless treasures, i
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
     'victory': '2',
