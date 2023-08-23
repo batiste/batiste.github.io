@@ -101,7 +101,7 @@
                     Or 5$ for the print at home version.
                 </span>
 
-                <a class="button" data-tf-popup="p7wfMXqa" data-tf-opacity="100" data-tf-size="70">Notify me when ready!</a>
+                <a class="button" id="pre-order">Notify me when ready!</a>
                 <span class="explanation">As soon as DeckHand is available you will be notified.</span>
             </p>    
         
@@ -207,6 +207,25 @@
     <!-- Add any additional sections, rules, or features here -->
 
 
+<div id="popup1" class="overlay">
+    <div class="popup">
+        <a id="closeP" class="close"  href="#close">×</a>
+        <iframe width="750px" height="680px" src="https://forms.office.com/Pages/ResponsePage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAMGOGg5UOFA0SU9BWjRUMVYzUkhNNjk4SUs2OUZYUy4u&embed=true" frameborder="0" marginwidth="0" marginheight="0" style="border: none; max-width:750px; max-height:100vh" allowfullscreen webkitallowfullscreen mozallowfullscreen msallowfullscreen> </iframe>
+    </div>
+</div>
+
+
+<script>
+    document.getElementById('pre-order').onclick = () => {
+        document.getElementById('popup1').style['display'] = 'block';
+    }
+    document.getElementById('closeP').onclick = () => {
+        document.getElementById('popup1').style['display'] = 'none';
+    }
+</script>
+
+    
+
 <script async src="https://unpkg.com/es-module-shims@1.6.3/dist/es-module-shims.js"></script>
 
 <script type="importmap">
@@ -231,7 +250,7 @@
 
 </script>
 
-<script src="//embed.typeform.com/next/embed.js"></script>
+<!-- <script src="//embed.typeform.com/next/embed.js"></script> -->
 
 </body>
 </html>
