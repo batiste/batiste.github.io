@@ -194,7 +194,7 @@ var cards = [
 {
     'title': 'Council Hall',
     'text': 'A chosen enemy takes a card from the supply and puts it in your stash.',
-    'flavor': 'Gold secured you a seat, yet your influence remain desperately elusive.',
+    'flavor': 'Gold secured you a seat, yet your influence remains desperately elusive.',
     'img': 'structures/council-hall.png',
     'type': 'structure',
     'cost': 2,
@@ -641,7 +641,7 @@ var cards = [
 {
     'title': 'Crooked Merchant',
     'text': 'Pay 1 :Treasure:: Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less.',
-    'flavor': 'The lure of wealth lead to deceptive deals.',
+    'flavor': 'The lures of wealth leads to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
     'victory': '2',
