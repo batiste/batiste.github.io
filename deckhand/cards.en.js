@@ -158,7 +158,7 @@ var cards = [
 
 {
     'title': 'Haggling',
-    'text': '+1 :Reload:, +1 Buy.<br>Your next Buy this turn costs 1 less.',
+    'text': '+1 Buy, +1 :Reload:.<br>Your next Buy this turn costs 1 less.',
     'flavor': 'At times, the tongue wields a sharper edge than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
@@ -472,7 +472,7 @@ var cards = [
 
 {
     'title': 'Wind in Sails',
-    'text': '+1 :Card:.<br>At the start of your turn, if this card is in your stash: Draw an extra card during your initial draw.',
+    'text': '+1 :Card:, +1 :Reload:.<br>At the start of your turn, if this card is in your stash: Draw an extra card during your initial draw.',
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
