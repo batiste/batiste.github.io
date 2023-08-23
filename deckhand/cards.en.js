@@ -653,7 +653,7 @@ var cards = [
 {
     'title': 'Merfolk Mercenary',
     'text': 'Pay 1 :Treasure:: Reveal the top 2 cards of the supply deck. Put one revealed card that cost 3 or less into your stash.',
-    'flavor': 'Is this abomination worth the bargain?', // Though she secures priceless treasures, i
+    'flavor': 'Is the bounty worth dealing with this abomination?', // Though she secures priceless treasures, i
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
     'victory': '2',
