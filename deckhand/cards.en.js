@@ -12,7 +12,7 @@ var cards = [
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Treasure: for each Celebrate in hand.<br>+1 :Reload:, you may draw a card.',
+    'text': '+1 :Card:, +1 :Reload:<br>+1 :Treasure: for each Celebrate in your hand.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -169,7 +169,7 @@ var cards = [
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Treasure:, +1 :Reload:.:or:Steal a :Treasure: from target player.',
+    'text': '+1 :Treasure:, +1 :Reload:.:or:Steal a Treasure from target player.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
@@ -324,7 +324,7 @@ var cards = [
 
 {
     'title': 'Exploration',
-    'text': 'If you have an Adventure in hand +1 :Action:. Then +1 :Card:, +1 :Treasure:.',
+    'text': 'If you have an Adventure in hand: +1 :Action:.<br>Then +1 :Card:, +1 :Treasure:.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',

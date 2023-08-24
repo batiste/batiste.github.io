@@ -178,7 +178,7 @@ a, a:visited {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    line-height: 1.45;
+    line-height: 1.47;
 }
 
 .card .text .rule-icon {
@@ -189,24 +189,25 @@ a, a:visited {
 }
 
 .card .text .chest {
-    height: 13px;
-    margin-bottom: -3.5px;
+    height: 11.5px;
+    margin-bottom: -3.0px;
     margin-left: -1px;
 }
 
 .card .text .star, .booklet .star {
-    height: 11.5px;
+    height: 11px;
     margin-top: -2px;
-    margin-bottom: -3px;
-    margin-left: -1px;
+    margin-bottom: -2.5px;
+    margin-left: -1.5px;
     padding-bottom: 1px;
+    margin-right: -1px;
 }
 
 .card .text .draw, .booklet .draw {
     height: 12px;
     margin-top: -3px;
     margin-bottom: -3.5px;
-    margin-left: -2px;
+    margin-left: -2.5px;
     padding: 1px 2px;
     margin-right: -1px;
 }
