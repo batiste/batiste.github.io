@@ -562,3 +562,11 @@ a, a:visited {
     margin-left: 45%;
     margin-right: 45%;
 }
+
+.text b {
+    font-weight: bold;
+    /* text-decoration: underline;
+    text-decoration-color: rgb(255, 255, 255);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 0.6px; */
+}
