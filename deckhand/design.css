@@ -373,10 +373,10 @@ a, a:visited {
 
 .card .frame {
     position: absolute;
-    right:6.5mm;
+    right:6.6mm;
     top:54mm;
-    left:6.5mm;
-    bottom:6.7mm;
+    left:6.6mm;
+    bottom:6.8mm;
     border-radius: 7px;
     background-color: rgba(0, 0, 0, 0.2);
     border: 0.8px solid rgba(231, 185, 48, 0.608);
@@ -404,15 +404,16 @@ a, a:visited {
     color: #ffffff;
     font-size: 15px;
     position: absolute;
-    left: 57.6mm;
+    right: 8.5mm;
     top: 79.6mm;
     text-shadow: 1px 1px black;
+    width: 20px;
 }
 
 .cost-icon {
     position:absolute;
-    left: 50mm;
-    top: 79.4mm;
+    left: 49.6mm;
+    top: 79.3mm;
 }
 
 .hook {
