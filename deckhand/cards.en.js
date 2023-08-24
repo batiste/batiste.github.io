@@ -22,9 +22,9 @@ var cards = [
 },
 {
     'title': 'Tavern',
-    'text': `+1 :Card: if you have an Adventure in hand.<br>
-        +1 :Treasure: if you have an Attack in hand.<br>
-        +1 :Action: if you have a Structure in hand.`,
+    'text': `If you have an Adventure in hand: +1 :Card:.<br>
+        if you have an Attack in hand: +1 :Treasure:.<br>
+        if you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
     'type': 'adventure',
@@ -49,7 +49,7 @@ var cards = [
 
 {
     'title': 'Quick Shot',
-    'text': '+1 :Treasure:.<br>+1 :Action: if you have an Attack in hand.',
+    'text': '+1 :Treasure:.<br>If you have an Attack in hand: +1 :Action: .',
     'flavor-no-quotes': '“Don’t let them regroup!” she commands, with pistols ablaze.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
@@ -84,7 +84,7 @@ var cards = [
 
 {
     'title': 'Beach Bum',
-    'text': '+1 :Treasure:.<br>+1 :Treasure: if you are one of the players that owns the least amount of cards.',
+    'text': '+1 :Treasure:.<br>If you are one of the players that owns the least amount of cards +1 :Treasure:.',
     'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
@@ -218,7 +218,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard any number of cards,<br>get that many :Treasure:. +2 :Card:.',
+    'text': 'Discard any number of cards, get<br>that many :Treasure:. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -230,7 +230,7 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+2 :Reload:. A chosen enemy selects 3 supply cards. You may apply the effects of one.',
+    'text': '+2 :Reload: then a chosen enemy selects 3 supply cards. You may apply the effects of one of the selected card.',
     'flavor': 'In his royal hands, even your choices are illusions.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
@@ -241,7 +241,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 :Action:.<br>Put a card from your stash in your hand.<br>When Discarded: +1 :Card:.',
+    'text': '+1 :Action: then put a card from your stash into your hand.<br>When Discarded: +1 :Card:.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -324,7 +324,7 @@ var cards = [
 
 {
     'title': 'Exploration',
-    'text': '+1 :Action: if you have an Adventure in hand.<br>+1 :Card:, +1 :Treasure:.',
+    'text': 'If you have an Adventure in hand +1 :Action:. Then +1 :Card:, +1 :Treasure:.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
@@ -415,7 +415,7 @@ var cards = [
 {
     'title': 'Stealthy Observer',
     'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card in their stash and gain 
-        :Treasure: equal to its victory points.`,
+        Treasures equal to its victory points.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
@@ -450,7 +450,7 @@ var cards = [
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 :Treasure:. You may remove a card from your hand or stash from the game: Gain as many :Treasure: as the cost of the removed card.',
+    'text': ' +2 :Treasure:. You may remove a card from your hand or stash from the game. Gain as many Treasures as the cost of the removed card.',
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -461,7 +461,7 @@ var cards = [
 
 {
     'title': 'Monkey’s Bargain',
-    'text': 'Remove a card from your hand or stash from the game: +1 :Treasure: and +1 :Action: for each victory points of the removed card.',
+    'text': 'Remove a card from your hand or stash from the game. For each victory points of the removed card: +1 :Treasure: and +1 :Action:',
     'flavor': 'A monkey’s mischief is a pirate’s boon.',
     'img': 'attacks/exchange.png',
     'type': 'attack',

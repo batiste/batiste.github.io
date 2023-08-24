@@ -182,7 +182,7 @@ a, a:visited {
 }
 
 .card .text .rule-icon {
-    /* background: transparent; */
+    background: transparent;
     height: 13px;
     margin-top: -2px;
     margin-bottom: -3px;
