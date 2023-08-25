@@ -590,7 +590,7 @@ var cards = [
 
 {
     'title': 'Desperate Chase',
-    'text': 'You and an enemy reveal the top 3 cards from your decks. If you revealed more Attacks: \
+    'text': 'You and an enemy reveal the top 3 cards from your decks. If you reveal more Attacks: \
     Put a supply card that costs 4 or less into your stash.',
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
@@ -641,7 +641,7 @@ var cards = [
 {
     'title': 'Crooked Merchant',
     'text': 'Pay 1 :Treasure:: Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less.',
-    'flavor': 'The lures of wealth leads to deceptive deals.',
+    'flavor': 'The lure of wealth leads to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
     'victory': '2',
