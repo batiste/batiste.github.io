@@ -12,7 +12,7 @@ var cards = [
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Card:, +1 :Reload:. Then +1 :Treasure: for each Celebrate in your hand.',
+    'text': '+1 :Card: <i>(You may draw a card.)</i><br>+1 :Reload: <i>(You may reload a supply card.)</i><br>Then +1 :Treasure: for each Celebrate in hand.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -182,7 +182,7 @@ var cards = [
 
 {
     'title': 'Useless Totem',
-    'text': 'Useless Totem is a Structure, an Attack, and an Adventure at all times.',
+    'text': 'Useless Totem is simultaneously a Structure, Attack, and Adventure.',
     'flavor': 'The futile trinket grins, seemingly mocking you.',
     'img': 'structures/totem.png',
     'type': 'structure',
