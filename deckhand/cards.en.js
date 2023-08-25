@@ -23,7 +23,7 @@ var cards = [
 {
     'title': 'Tavern',
     'text': `If you have an Adventure in hand: +1 :Card:.<br>
-        Then if you have an Attack in hand: +1 :Treasure:.<br>
+        If you have an Attack in hand: +1 :Treasure:.<br>
         If you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
@@ -628,7 +628,7 @@ var cards = [
 
 {
     'title': 'Bewitched Doll',
-    'text': '+1 :Treasure:. On target enemy’s next turn you control their first :Action:. You make all decisions arising from this :Action:, including any extra :Action:.',
+    'text': '+1 :Treasure:. On target enemy’s next turn you control their first Action. You make all decisions arising from this Action, including any extra Action.',
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
