@@ -367,7 +367,7 @@ var cards = [
 
 {
     'title': 'Haunted Cave',
-    'text': '+2 :Card:.<br>Then +1 :Treasure: for each Attack in hand.',
+    'text': '+2 :Card:. Then +1 :Treasure: for each Attack in hand, up to a maximum of 3 Treasures.',
     'flavor': 'This place resonates with skeletal clatters. Fear not, for the pure-hearted and free of greed.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
@@ -483,7 +483,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 4 Treasures.',
+    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 3 Treasures.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
