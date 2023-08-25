@@ -583,3 +583,7 @@ a, a:visited {
     text-underline-offset: 2px;
     text-decoration-thickness: 0.6px; */
 }
+
+ul {
+    list-style: disc;
+}
