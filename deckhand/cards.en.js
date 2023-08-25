@@ -2,7 +2,7 @@
 var cards = [
 {
     'title': 'Fist Fight',
-    'text': '+1 :Treasure: <i>(Take a Treasure from the bank.)</i>',
+    'text': '+1 :Treasure:<br><i>(Take a Treasure from the bank.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -23,7 +23,7 @@ var cards = [
 {
     'title': 'Tavern',
     'text': `If you have an Adventure in hand: +1 :Card:.<br>
-        If you have an Attack in hand: +1 :Treasure:.<br>
+        Then if you have an Attack in hand: +1 :Treasure:.<br>
         If you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
@@ -134,7 +134,7 @@ var cards = [
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 :Treasure:. On their next turn, target enemy gains +1 Buy and must give you 1 Treasure before their first Buy.',
+    'text': '+1 :Treasure:. On their next turn, target enemy gains +1 :Buy: and must give you 1 Treasure before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'attack',
@@ -158,7 +158,7 @@ var cards = [
 
 {
     'title': 'Haggling',
-    'text': '+1 Buy, +1 :Reload:.<br>Your next Buy this turn costs 1 less.',
+    'text': '+1 :Buy:, +1 :Reload:.<br>Your next Buy this turn costs 1 less.',
     'flavor': 'At times, the tongue wields a sharper edge than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
@@ -218,7 +218,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard any number of cards, get<br>that many Treasures. Then +2 :Card:.',
+    'text': 'Discard any number of cards to get that many Treasures. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -291,7 +291,7 @@ var cards = [
 
 {
     'title': 'Harbor Market',
-    'text': '+2 :Treasure:.:or:+1 :Treasure:, +1 Buy.',
+    'text': '+2 :Treasure:.:or:+1 :Treasure:, +1 :Buy:.',
     'flavor': 'Secrets and stolen treasures traded here.',
     'img': 'structures/market-super-format.png',
     'type': 'structure',
@@ -314,7 +314,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Treasure:. You may give a Treasure from the bank to each player. If you do, every player must Discard a card after their initial draw on their next turn.',
+    'text': '+2 :Treasure:. You may give a Treasure from the bank to every player. If you do, each player must Discard a card after their initial draw on their next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -367,7 +367,7 @@ var cards = [
 
 {
     'title': 'Haunted Cave',
-    'text': '+2 :Card:.<br>+1 :Treasure: for each Attack in your hand.',
+    'text': '+2 :Card:.<br>Then +1 :Treasure: for each Attack in hand.',
     'flavor': 'This place resonates with skeletal clatters. Fear not, for the pure-hearted and free of greed.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
@@ -427,7 +427,7 @@ var cards = [
 
 {
     'title': 'Extravagance',
-    'text': '+2 Buy, +1 :Reload:.:or:+1 :Buy:, +1 :Treasure:.',
+    'text': '+1 :Reload:, +2 :Buy:.:or:+1 :Treasure:, +1 :Buy:.',
     'flavor': 'Only one way to spend: lavishly and flamboyantly!',
     'img': 'adventures/extravagance-2.png',
     'type': 'adventure',
@@ -508,7 +508,7 @@ var cards = [
 
 {
     'title': 'Bank Fortress',
-    'text': '+2 :Treasure:.<br>When Discarded: +1 Buy.',
+    'text': '+2 :Treasure:.<br>When Discarded: +1 :Buy:.',
     'flavor': 'Fortified against raiders, the bank safeguards against the mightiest of temptations.',
     'img': 'structures/bank-2.png',
     'type': 'structure',
@@ -532,7 +532,7 @@ var cards = [
 
 {
     'title': 'Architect’s Workshop',
-    'text': '+1 :Action:, +1 :Treasure:. If there is 2 or more Structures in the supply: +1 Buy.',
+    'text': '+1 :Treasure:, +1 :Action:. If there is 2 or more Structures in the supply: +1 :Buy:.',
     'flavor': 'Meticulous plans and skilled craftsmanship bring grand visions to life',
     'img': 'structures/architect-workshop.png',
     'type': 'structure',
@@ -686,7 +686,7 @@ var cards = [
 
 {
     'title': 'Treasure Hunt',
-    'text': '+1 :Action:, +1 :Buy:,<br>+1 :Card:, +1 :Treasure:.',
+    'text': '+1 :Card:, +1 :Treasure:<br>+1 :Action:, +1 :Buy:.',
     'flavor': 'An isle shrouded in mystery holds the key to immense wealth.',
     'img': 'adventures/hunt.png',
     'type': 'adventure',
