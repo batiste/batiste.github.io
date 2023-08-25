@@ -2,7 +2,7 @@
 var cards = [
 {
     'title': 'Fist Fight',
-    'text': '+1 :Treasure:.',
+    'text': '+1 :Treasure: <i>(Take a Treasure from the bank.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -12,7 +12,7 @@ var cards = [
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Card:, +1 :Reload:<br>+1 :Treasure: for each Celebrate in your hand.',
+    'text': '+1 :Card:, +1 :Reload:. Then +1 :Treasure: for each Celebrate in your hand.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -23,8 +23,8 @@ var cards = [
 {
     'title': 'Tavern',
     'text': `If you have an Adventure in hand: +1 :Card:.<br>
-        if you have an Attack in hand: +1 :Treasure:.<br>
-        if you have a Structure in hand: +1 :Action:.`,
+        If you have an Attack in hand: +1 :Treasure:.<br>
+        If you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
     'type': 'adventure',
@@ -49,7 +49,7 @@ var cards = [
 
 {
     'title': 'Quick Shot',
-    'text': '+1 :Treasure:.<br>If you have an Attack in hand: +1 :Action: .',
+    'text': '+1 :Treasure:.<br>If you have an Attack in hand: +1 :Action:.',
     'flavor-no-quotes': '“Don’t let them regroup!” she commands, with pistols ablaze.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
@@ -134,7 +134,7 @@ var cards = [
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 :Treasure:. On their next turn, target enemy gains +1 Buy and must give you 1 :Treasure: before their first Buy.',
+    'text': '+1 :Treasure:. On their next turn, target enemy gains +1 Buy and must give you 1 Treasure before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'attack',
@@ -205,7 +205,7 @@ var cards = [
 
 {
     'title': 'Typhoon',
-    'text': `+2 :Card:, +1 :Discard:, +1 :Treasure:. All players simultaneously
+    'text': `+2 :Card:, +1 :Discard:, +1 :Treasure:. Then all players simultaneously
      move a card from their stash or the top card of their deck (no peeking) to their left neighbor’s stash.`,
     //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
@@ -218,7 +218,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard any number of cards, get<br>that many :Treasure:. Then +2 :Card:.',
+    'text': 'Discard any number of cards, get<br>that many Treasures. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -241,7 +241,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 :Action: then put a card from your stash into your hand.<br>When Discarded: +1 :Card:.',
+    'text': '+1 :Action:, put a card from your stash into your hand.<br>When Discarded: +1 :Card:.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -278,7 +278,7 @@ var cards = [
 {
     'title': 'Gold Mine',
     'text': `A chosen enemy picks a number. +3 :Card:. If the total cost of the drawn cards is not that number: 
-    Reveal the cards and +1 :Action:.`,
+    +1 :Action: and reveal them.`,
     'flavor': 'Beneath the soil, lies dreams and despair.',
     'img': 'structures/gold-mine.png',
     'type': 'structure',
@@ -314,7 +314,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Treasure:. You may give a :Treasure: from the bank to each player. If you do, every player must Discard a card after their initial draw on their next turn.',
+    'text': '+2 :Treasure:. You may give a Treasure from the bank to each player. If you do, every player must Discard a card after their initial draw on their next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -324,7 +324,7 @@ var cards = [
 
 {
     'title': 'Exploration',
-    'text': 'If you have an Adventure in hand: +1 :Action:.<br>Then +1 :Card:, +1 :Treasure:.',
+    'text': 'If you have an Adventure in<br>hand: +1 :Action:.<br>Then +1 :Card:, +1 :Treasure:.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
@@ -427,7 +427,7 @@ var cards = [
 
 {
     'title': 'Extravagance',
-    'text': '+2 Buy, +1 :Reload:.:or:+1 Buy, +1 :Treasure:.',
+    'text': '+2 Buy, +1 :Reload:.:or:+1 :Buy:, +1 :Treasure:.',
     'flavor': 'Only one way to spend: lavishly and flamboyantly!',
     'img': 'adventures/extravagance-2.png',
     'type': 'adventure',
@@ -438,7 +438,7 @@ var cards = [
 
 {
     'title': 'Shipyard',
-    'text': '+1 :Treasure:.<br>+1 :Action: for each Structure in your stash.<br>You can’t use more than 5 :Action: this turn.',
+    'text': '+1 :Treasure:.<br>+1 :Action: for each Structure in your stash. <i>(Do not use more than 5 Actions per turn.)</i>',
     'img': 'structures/shipyard.png',
     'flavor': 'Every plank aspires to endless horizons.',
     'type': 'structure',
@@ -483,7 +483,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 4 :Treasure:.',
+    'text': '+1 :Treasure: for each Adventure in the supply, up to a maximum of 4 Treasures.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -521,7 +521,7 @@ var cards = [
 
 {
     'title': 'Seaside Citadel',
-    'text': '+1 :Card:, +2 :Action:.<br>You can’t use more than 5 :Action: this turn.',
+    'text': '+1 :Card:, +2 :Action:.<br><i>(Do not use more than 5 Actions per turn.)</i>',
     'flavor': 'By the sea’s edge, the citadel beckons the intrepid in search of fortunes.',
     'img': 'structures/citadel-2.png',
     'type': 'structure',
@@ -629,7 +629,7 @@ var cards = [
 {
     'title': 'Bewitched Doll',
     'text': '+1 :Treasure:. On target enemy’s next turn you control their first :Action:. You make all decisions arising from this :Action:, including any extra :Action:.',
-    'flavor': "Destiny is a fickle concept.",
+    // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
     'victory': '3',
@@ -686,7 +686,7 @@ var cards = [
 
 {
     'title': 'Treasure Hunt',
-    'text': '+1 :Action:, +1 Buy,<br>+1 :Card:, +1 :Treasure:.',
+    'text': '+1 :Action:, +1 :Buy:,<br>+1 :Card:, +1 :Treasure:.',
     'flavor': 'An isle shrouded in mystery holds the key to immense wealth.',
     'img': 'adventures/hunt.png',
     'type': 'adventure',

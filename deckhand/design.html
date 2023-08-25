@@ -64,13 +64,13 @@
          
              <ol>
                  <li>Apply effects that happen at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
-                 <li>Discard your hand <img class="rule-icon star" src="icons/card-discard.svg" /> and draw 3 cards <img class="rule-icon" src="icons/card-draw-2.svg" />. 
+                 <li>Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards. 
                     Your discard pile is named the <b>stash</b>.</li>
-                 <li>During your turn, you have 2 Actions <img class="rule-icon star" src="icons/star.svg" />, which can be:
+                 <li>During your turn, you have 2 Actions, which can be:
                      <ol>
                          <li>Playing a card: Apply its effects <b>then</b> put the card in your stash.</li>
                          <li>Buying a card from the supply: Pay the cost <img class="rule-icon" src="icons/chest-simplified.svg" />
-                             indicated at the bottom right of the card and put it in your stash.</li>
+                             indicated at the bottom right of the card and put it into your stash.</li>
                      </ol>
                   </li>
                  <li>When your deck is empty, <b>immediately</b> shuffle your stash into a new deck, then resume any ongoing effect.
@@ -104,12 +104,12 @@
                     </li>
                 <li><img class="rule-icon" src="icons/target.svg" /> Indicates targeted effects that affect enemies.</li>
                 <li><b>+1 <img class="rule-icon" src="icons/chest-simplified.svg" />:</b> Take a Treasure from the bank immediately.</li>
-                <li><b>+1 <img class="rule-icon" src="icons/card-draw-2.svg" />:</b> You may draw a card from your deck immediately.</li>
-                <li><b>+1 <img class="rule-icon star" src="icons/star.svg" />:</b> Gain an extra Action to use later this turn.</li>
-                <li><b>+1 <img class="rule-icon star" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
+                <li><b>+1 Card:</b> You may draw a card from your deck immediately.</li>
+                <li><b>+1 Action:</b> Gain an extra Action to use later this turn. Do not use more than 5 Actions per turn.</li>
+                <li><b>+1 Reload:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
                     If you do replace it with a <b>reload deck</b> card.</li>
                 <li><b>+1 Buy:</b> Buy a card without using an Action later this turn.</li>
-                <li><b>+1 <img class="rule-icon star" src="icons/card-discard.svg" />:</b> Discard a card immediately into your stash.</li>
+                <li><b>+1 Discard:</b> Discard a card immediately into your stash.</li>
                 <li>Pay 1 <img class="rule-icon" src="icons/chest-simplified.svg" />: Put one of your Treasures into the bank.</li>
                 <li>While being played, cards are not in your hand or stash.</li>
                 <li>Apply card effects <b>in the written order</b>. If effects would trigger at the same time, the initiator of the first effect chooses the order.</li>
@@ -402,28 +402,45 @@
         c['text'] = c['text'].replace(':ms:', '<span class="mini-separator"></span>')
         c['text'] = c['text'].replace(':st:', '<img class="rule-icon" src="icons/bookmark-yellow.svg" />')
         c['text'] = c['text'].replace(':or:', `<span class="OR"><span class="or-line-left"></span>${or_txt}<span class="or-line-right"></span></span>`)
+        
 
-        c['text'] = c['text'].replace(/:Treasure:/g, `<img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
-        // c['text'] = c['text'].replace(/Treasure/g, `<img class="rule-icon chest" src="icons/chest.svg" />`)
+        function rep(key) {
+            c['text'] = c['text'].replace(new RegExp(`\\+2 :${key}:`, 'g'), `<span class="keyword">+2 ${key}s</span>`)
+            c['text'] = c['text'].replace(new RegExp(`\\+3 :${key}:`, 'g'), `<span class="keyword">+3 ${key}s</span>`)
+            c['text'] = c['text'].replace(new RegExp(`4 :${key}:`, 'g'), `4 <span class="keyword">${key}s</span>`)
+            c['text'] = c['text'].replace(new RegExp(`5 :${key}:`, 'g'), `5 <span class="keyword">${key}s</span>`)
+            c['text'] = c['text'].replace(new RegExp(`\\+1 :${key}:`, 'g'), `<span class="keyword">+1 ${key}</span>`)
+            c['text'] = c['text'].replace(new RegExp(`:${key}:`, 'g'), `<span class="keyword">${key}</span>`)
+        }
 
-        c['text'] = c['text'].replace(/:Card:/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
-        // c['text'] = c['text'].replace(/Card/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
+        c['text'] = c['text'].replace(/Pay 1 :Treasure:/g, `<span class="keyword">Pay 1</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
+        c['text'] = c['text'].replace(/\+1 :Buy:/g, `<span class="keyword">+1 Buy</span>`)
 
-        // c['text'] = c['text'].replace(/Reloads/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
-        c['text'] = c['text'].replace(/:Reload:/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
+        c['text'] = c['text'].replace(/\+1 :Treasure:/g, `<span class="keyword">+1</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
+        c['text'] = c['text'].replace(/\+2 :Treasure:/g, `<span class="keyword">+2</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
+        c['text'] = c['text'].replace(/\+3 :Treasure:/g, `<span class="keyword">+3</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
 
-        c['text'] = c['text'].replace(/:Action:/g, `<img class="rule-icon star" src="icons/star.svg" />`)
-        // c['text'] = c['text'].replace(/Action/g, `<img class="rule-icon star" src="icons/star.svg" />`)
+        rep('Card')
+        rep('Action')
+        rep('Discard')
+        rep('Reload')
 
-        // c['text'] = c['text'].replace(/Buys/g, `<img class="rule-icon buy" src="icons/buy.svg" />`)
-        // c['text'] = c['text'].replace(/Buy/g, `<img class="rule-icon buy" src="icons/buy.svg" />`)
+        // c['text'] = c['text'].replace(/:Card:/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
+        // c['text'] = c['text'].replace(/2 :Card:/g, `2 Cards`)
+        // c['text'] = c['text'].replace(/3 :Card:/g, `3 Cards`)
+        // c['text'] = c['text'].replace(/:Card:/g, `Card`)
 
-        // c['text'] = c['text'].replace(/Discarded/g, `---`)
+        // c['text'] = c['text'].replace(/:Reload:/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
+        // c['text'] = c['text'].replace(/:Reload:/g, `Reload`)
 
-        c['text'] = c['text'].replace(/:Discard:/g, `<img class="rule-icon discard-t" src="icons/card-discard.svg" />`)
-        // c['text'] = c['text'].replace(/Discard/g, `<img class="rule-icon discard-t" src="icons/card-discard.svg" />`)
+        // c['text'] = c['text'].replace(/:Action:/g, `<img class="rule-icon star" src="icons/star.svg" />`)
+        // c['text'] = c['text'].replace(/2 :Action:/g, `2 Actions`)
+        // c['text'] = c['text'].replace(/5 :Action:/g, `5 Actions`)
+        // c['text'] = c['text'].replace(/:Action:/g, `Action`)
 
-        // c['text'] = c['text'].replace(/---/g, `Discarded`)
+        // c['text'] = c['text'].replace(/:Discard:/g, `Discard`)
+        // c['text'] = c['text'].replace(/:Discard:/g, `<img class="rule-icon discard-t" src="icons/card-discard.svg" />`)
+
 
         var template = `
         <div class="card-container">

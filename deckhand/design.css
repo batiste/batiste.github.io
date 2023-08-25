@@ -283,7 +283,7 @@ a, a:visited {
 }
 
 .card .separator {
-    margin-top: 2px;
+    margin-top: 2.5px;
     border-top: 1px solid #434343;
     margin-bottom: 1px;
     margin-left: 35%;
@@ -566,6 +566,14 @@ a, a:visited {
 
 .text b {
     font-weight: bold;
+    /* text-decoration: underline;
+    text-decoration-color: rgb(255, 255, 255);
+    text-underline-offset: 2px;
+    text-decoration-thickness: 0.6px; */
+}
+
+.text .keyword {
+    font-weight: 600;
     /* text-decoration: underline;
     text-decoration-color: rgb(255, 255, 255);
     text-underline-offset: 2px;
