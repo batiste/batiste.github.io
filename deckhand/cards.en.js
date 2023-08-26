@@ -84,7 +84,7 @@ var cards = [
 
 {
     'title': 'Beach Bum',
-    'text': '+1 :Coin:.<br>If you are one of the players that owns the least amount of cards +1 :Coin:.',
+    'text': '+1 :Coin:.<br>If you are one of the players that owns <br>the least amount of cards +1 :Coin:.',
     'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
@@ -96,7 +96,7 @@ var cards = [
 
 {
     'title': 'Karmic Elevation',
-    'text': 'Pay 1 :Coin:: Reveal a card from your hand. A chosen enemy pick a supply card that costs 1 more. Swap those 2 cards.',
+    'text': 'Pay 1 :Coin:: Reveal a card from your hand.<br>A chosen enemy pick a supply card that costs 1 more. Swap those 2 cards.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -108,7 +108,7 @@ var cards = [
 
 {
     'title': 'Kung Fu Lessons',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Put 1 card from target player’s stash at the bottom of their deck.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Put 1 card from target player’s stash<br>at the bottom of their deck.',
     'flavor': 'The tide, harness its power to your advantage!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -147,7 +147,7 @@ var cards = [
 {
     'title': 'Haggling',
     'text': '+1 :Buy:, +1 :Reload:.<br>Your next Buy this turn costs 1 less.',
-    'flavor': 'At times, the tongue wields a sharper edge than the sword.',
+    'flavor': 'At times, the tongue wields a sharper edge <br>than the sword.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
     'victory': '1',
@@ -182,7 +182,7 @@ var cards = [
 {
     'title': 'Council Hall',
     'text': 'A chosen enemy takes a card from the supply and puts it into your stash.',
-    'flavor': 'Gold secured you a seat, yet your influence remains desperately elusive.',
+    'flavor': 'Gold secured you a seat, yet your influence <br>remains desperately elusive.',
     'img': 'structures/city-hall-2.png',
     'type': 'structure',
     'cost': 2,
@@ -207,7 +207,7 @@ var cards = [
 {
     'title': 'Alchemy',
     'text': 'Discard any number of cards to get that many Coins. Then +2 :Card:.',
-    'flavor': 'Imbued with fire, twisting fate. What could possibly go awry?',
+    'flavor': 'Imbued with fire, twisting fate. What could <br>possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
     'cost': 2,
@@ -229,7 +229,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 :Action:, put a card from your stash into your hand.<br>When Discarded: +1 :Card:.',
+    'text': '+1 :Action:, put a card from your stash<br> into your hand.<br>When Discarded: +1 :Card:.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -460,7 +460,7 @@ var cards = [
 
 {
     'title': 'Wind in Sails',
-    'text': '+1 :Card:, +1 :Reload:.<br>At the start of your turn, if this card is in your stash: Draw an extra card during your initial draw.',
+    'text': '+1 :Card:, +1 :Reload:.<br>At the start of your turn, if this card is in your stash: Draw an extra card during<br>your initial draw.',
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
@@ -471,7 +471,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 :Coin: for each Adventure in the supply, up to a maximum of 3 Coins.',
+    'text': '+1 :Coin: for each Adventure in the supply,<br>up to a maximum of 3 Coins.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -531,7 +531,7 @@ var cards = [
 
 {
     'title': 'Voodoo Curse',
-    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their stash, then apply its effects.',
+    'text': 'Reveal the top 3 cards of target player’s deck. Put one in their stash, then <br>apply its effects.',
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
     'type': 'attack',
@@ -555,7 +555,7 @@ var cards = [
 
 {
     'title': 'Smuggler’s Cache',
-    'text': '+1 :Coin:.<br>At the start of your turn, if this card is in your stash: +1 :Coin:.',
+    'text': '+1 :Coin:.<br>At the start of your turn, if this card is <br>in your stash: +1 :Coin:.',
     'flavor': 'Few can chart the course to the forbidden spoils.',
     'img': 'structures/smugglers-cache.png',
     'type': 'structure',
@@ -567,7 +567,7 @@ var cards = [
 
 {
     'title': 'Gambling Addiction',
-    'text': '+2 :Reload:. If the supply has 4 or more cards of the same type: +3 :Coin:.',
+    'text': '+2 :Reload:. If the supply has 4 or more cards <br>of the same type: +3 :Coin:.',
     'flavor': 'The allure of easy riches sealed his downfall.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',
@@ -591,7 +591,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chooses a card from their stash and removes it from the game.<br>When Discarded: Apply this card effect to all players.',
+    'text': 'Target player chooses a card from their stash and removes it from the game.<br>When Discarded: Apply this card effect to <br>all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
@@ -676,7 +676,7 @@ var cards = [
 {
     'title': 'Treasure Hunt',
     'text': '+1 :Card:, +1 :Coin:,<br>+1 :Action:, +1 :Buy:.',
-    'flavor': 'An isle shrouded in mystery holds the key to immense wealth.',
+    'flavor': 'An isle shrouded in mystery holds the <br>key to immense wealth.',
     'img': 'adventures/hunt.png',
     'type': 'adventure',
     'victory': '3',
@@ -687,7 +687,7 @@ var cards = [
 {
     'title': 'The Grand Council',
     'text': '+2 :Action:. Before the end of your turn, flip 4 supply cards face down.\
-    These cards do not exist. Restore them at any time on your next turn.',
+    These cards do not exist. Restore them at any time <br>on your next turn.',
     // 'reduced-font-size': true,
     // 'flavor': 'Arbitrary decisions serve as displays of power.',
     'img': 'structures/grand-council.png',
