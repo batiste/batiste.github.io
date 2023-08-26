@@ -50,7 +50,7 @@ var cards = [
 {
     'title': 'Quick Shot',
     'text': '+1 :Coin:.<br>If you have an Attack in hand: +1 :Action:.',
-    'flavor-no-quotes': '“Don’t let them regroup!” she commands, with pistols ablaze.',
+    'flavor-no-quotes': '“Don’t let them regroup!” she commands, <br>with pistols ablaze.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
     'cost': 1,
@@ -61,7 +61,7 @@ var cards = [
 {
     'title': 'Blademaster',
     'text': '+1 :Coin: for each 1 cost card in hand.<br>+1 :Action: for each 3 cost card in hand.',
-    'flavor': `Accomplished tacticians blend subtle manoeuver with grand gestures.`,
+    'flavor': `Accomplished tacticians blend subtle <br>manoeuver with grand gestures.`,
     'img': 'attacks/dance-master-3.png',
     'type': 'attack',
     'cost': 1,
@@ -207,7 +207,7 @@ var cards = [
 {
     'title': 'Alchemy',
     'text': 'Discard up to 3 cards, get that many Coins. Then +2 :Card:.',
-    'flavor': 'Imbued with fire, twisting fate. What could <br>possibly go awry?',
+    'flavor': 'Imbued with fire, twisting fate. What <br>could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
     'cost': 2,
@@ -254,7 +254,7 @@ var cards = [
 {
     'title': 'Hideout',
     'text': '+2 :Card:, +1 :Coin:.<br>When Discarded: +1 :Card:',
-    'flavor': 'A haven to open a rum bottle and see it through.',
+    'flavor': 'A haven to open a rum bottle <br>and see it through.',
     'img': 'structures/hideout.png',
     'type': 'structure',
     'discard': true,
@@ -355,8 +355,8 @@ var cards = [
 
 {
     'title': 'Haunted Cave',
-    'text': '+2 :Card:. Then +1 :Coin: for each Attack in hand, up to a maximum of 3 Coins.',
-    'flavor': 'This place resonates with skeletal clatters. Fear not, for the pure-hearted and free of greed.',
+    'text': '+2 :Card:. Then +1 :Coin: for each Attack in <br>hand, up to a maximum of 3 Coins.',
+    'flavor': 'This place resonates with skeletal clatters. Fear <br>not, for the pure-hearted and free of greed.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
     'victory': '2',
@@ -378,8 +378,8 @@ var cards = [
 
 {
     'title': 'Governor’s Jail',
-    'text': `+2 :Coin:. Flip 1 supply card face down.
-    This card does not exist. Restore it at any time on your next turn.`,
+    'text': `+2 :Coin:. Flip 1 supply card face down.<br>
+    This card does not exist. Restore it at <br>any time on your next turn.`,
     'flavor': 'Dear guest, you’re truly at your best restrained.',
     'img': 'structures/jail.png',
     'type': 'structure',
@@ -510,7 +510,7 @@ var cards = [
 {
     'title': 'Seaside Citadel',
     'text': '+1 :Card:, +2 :Action:.<br><i>(Do not use more than 5 Actions per turn.)</i>',
-    'flavor': 'By the sea’s edge, the citadel beckons the intrepid in search of fortunes.',
+    'flavor': 'By the sea’s edge, the citadel beckons the <br>  intrepid in search of fortunes.',
     'img': 'structures/citadel-2.png',
     'type': 'structure',
     'cost': '3',
@@ -543,7 +543,7 @@ var cards = [
 
 {
     'title': 'Abyss Marauder',
-    'text': '+1 :Action:. Swap a card from your hand with a card of equal cost from the stash of a target enemy.',
+    'text': '+1 :Action:. Swap a card from your hand <br>with a card of equal cost from the <br>stash of a target enemy.',
     'flavor': 'Born of the deep, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -578,8 +578,8 @@ var cards = [
 
 {
     'title': 'Desperate Chase',
-    'text': 'You and an enemy reveal the top 3 cards from your decks. If you reveal more Attacks: \
-    Put a supply card that costs 4 or less into your stash.',
+    'text': `You and an enemy reveal the top 3 cards from your decks. If you reveal more <br>Attacks:
+    Put a supply card that costs <br>4 or less into your stash.`,
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
@@ -591,7 +591,7 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chooses a card from their stash and removes it from the game.<br>When Discarded: Apply this card effect to <br>all players.',
+    'text': 'Target player chooses a card from their stash and removes it from the game.<br>When Discarded: Apply this card effect <br>to all players.',
     'img': 'attacks/grenade.png',
     //  'reduced-font-size': '9.2px',
     'type': 'attack',
@@ -663,8 +663,8 @@ var cards = [
 
 {
     'title': 'Skull island',
-    'text': `All players reveal the top card of their deck: You may swap a revealed card with 
-            a card from the supply as long as the cost difference is 2 or less.`,
+    'text': `All players reveal the top card of their <br>deck: You may swap a revealed card with 
+            <br>a card from the supply as long as the <br>cost difference is 2 or less.`,
     'img': 'structures/skull.png',
     //'reduced-font-size': true,
     'type': 'structure',
@@ -686,8 +686,8 @@ var cards = [
 
 {
     'title': 'The Grand Council',
-    'text': '+2 :Action:. Before the end of your turn, flip 4 supply cards face down.\
-    These cards do not exist. Restore them at any time <br>on your next turn.',
+    'text': `+2 :Action:. Before the end of your turn,<br> flip 4 supply cards face down.
+    These <br>cards do not exist. Restore them at any <br>time on your next turn.`,
     // 'reduced-font-size': true,
     // 'flavor': 'Arbitrary decisions serve as displays of power.',
     'img': 'structures/grand-council.png',
