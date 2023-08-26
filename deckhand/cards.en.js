@@ -323,7 +323,7 @@ var cards = [
 
 {
     'title': 'Treasure Map',
-    'text': '+1 :Coin:. Look at the top 3 cards of your deck. You may put any number of them into your stash and the rest on top of your deck in any order. +1 :Card:.',
+    'text': '+1 :Coin:. Look at the top 3 cards of your deck. You may put any number of them into your stash and the rest on top of your deck in any order. Then +1 :Card:.',
     //'flavor': 'Riches await the keen-eyed adventurer..',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -617,7 +617,7 @@ var cards = [
 {
     'title': 'Bewitched Doll',
     'text': `+1 :Coin:. On target enemy’s next turn, control their first Action 
-    making all decisions of this enemy, including Actions or Buys you may gain through this control.`,
+    making all decisions for this enemy, including Actions or Buys they may gain through this control.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
@@ -629,7 +629,7 @@ var cards = [
 
 {
     'title': 'Crooked Merchant',
-    'text': 'Pay 1 :Coin:: Swap a card between your stash and target enemy’s stash as long as the cost difference is 1 or less.',
+    'text': 'Pay 1 :Coin:: Swap a card between your <br>stash and target enemy’s stash as long as the cost difference is 1 or less.',
     'flavor': 'The lure of wealth leads to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
@@ -641,7 +641,7 @@ var cards = [
 
 {
     'title': 'Merfolk Mercenary',
-    'text': 'Pay 1 :Coin:: Reveal the top 2 cards of the supply deck. Put one revealed card that cost 3 or less into your stash.',
+    'text': 'Pay 1 :Coin:: Reveal the top 2 cards of the supply deck. Put one revealed card that <br>cost 3 or less into your stash.',
     'flavor': 'Is the bounty worth dealing with this abomination?', // Though she secures priceless treasures, i
     'img': 'adventures/merfolk-2.png',
     'type': 'adventure',
