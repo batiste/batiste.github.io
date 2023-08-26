@@ -617,7 +617,7 @@ var cards = [
 {
     'title': 'Bewitched Doll',
     'text': `+1 :Coin:. On target enemy’s next turn, control their first Action 
-    making all decisions of this enemy, including any extra Actions that may arise from it.`,
+    making all decisions of this enemy, including Actions or Buys you may gain through this control.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
