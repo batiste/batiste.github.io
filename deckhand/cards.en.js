@@ -170,7 +170,7 @@ var cards = [
 
 {
     'title': 'Useless Totem',
-    'text': 'Useless Totem is simultaneously a Structure, Attack, and Adventure.',
+    'text': 'Useless Totem is always a Structure,<br>Attack, and Adventure.',
     'flavor': 'The futile trinket grins, seemingly mocking you.',
     'img': 'structures/totem.png',
     'type': 'structure',
@@ -183,7 +183,7 @@ var cards = [
     'title': 'Council Hall',
     'text': 'A chosen enemy takes a card from the supply and puts it into your stash.',
     'flavor': 'Gold secured you a seat, yet your influence remains desperately elusive.',
-    'img': 'structures/council-hall.png',
+    'img': 'structures/city-hall-2.png',
     'type': 'structure',
     'cost': 2,
     'victory': 2,
