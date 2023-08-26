@@ -229,7 +229,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 :Action:, put a card from your stash<br> into your hand.<br>When Discarded: +1 :Card:.',
+    'text': '+1 :Action:, put a card from your <br>stash into your hand.<br>When Discarded: +1 :Card:.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -265,7 +265,7 @@ var cards = [
 
 {
     'title': 'Gold Mine',
-    'text': `A chosen enemy picks a number. +3 :Card:. If the total cost of the drawn cards is not that number: 
+    'text': `A chosen enemy picks a number. +3 :Card:. <br>If the total cost of the drawn cards is not that number: 
     +1 :Action: and reveal them.`,
     'flavor': 'Beneath the soil, lies dreams and despair.',
     'img': 'structures/gold-mine.png',
@@ -290,7 +290,7 @@ var cards = [
 
 {
     'title': 'Ancient Library',
-    'text': '+2 :Coin:.<br>When Discarded: You may shuffle your stash into your deck.',
+    'text': '+2 :Coin:.<br>When Discarded: You may shuffle <br>your stash into your deck.',
     'flavor': 'Each page unravels an imperial secret.',
     'img': 'structures/archives.png',
     'type': 'structure',
@@ -302,7 +302,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may give a Coin from the bank to every player. If you do, each player must Discard a card after their initial draw on their next turn.',
+    'text': '+2 :Coin:. You may give a Coin from the <br>bank to every player. If you do, each <br>player must Discard a card after their <br>initial draw on their next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -323,7 +323,7 @@ var cards = [
 
 {
     'title': 'Treasure Map',
-    'text': '+1 :Coin:. Look at the top 3 cards of your deck. You may put any number of them into your stash and the rest on top of your deck in any order. Then +1 :Card:.',
+    'text': '+1 :Coin:. Look at the top 3 cards of your <br>deck. You may put any number of them<br> into your stash and the rest on top of your deck in any order. Then +1 :Card:.',
     //'flavor': 'Riches await the keen-eyed adventurer..',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -344,7 +344,7 @@ var cards = [
 
 {
     'title': 'Ghost Crew',
-    'text': '+1 :Card:, +1 :Coin:. You may put this card on the top of its owner’s deck. If there is 3 or more Attacks in the supply: +1 :Action:',
+    'text': '+1 :Card:, +1 :Coin:. You may put this card on the top of its owner’s deck. If there is 3 or <br>more Attacks in the supply: +1 :Action:',
     'img': 'attacks/ghost-crew.png',
     'flavor': 'Trade your mortal life, enjoy eternal retribution.',
     'type': 'attack',
@@ -521,7 +521,7 @@ var cards = [
 {
     'title': 'Architect’s Workshop',
     'text': '+1 :Coin:, +1 :Action:. If there is 2 or more Structures in the supply: +1 :Buy:.',
-    'flavor': 'Meticulous plans and skilled craftsmanship bring grand visions to life',
+    'flavor': 'Meticulous plans and skilled craftsmanship <br>bring grand visions to life',
     'img': 'structures/architect-workshop.png',
     'type': 'structure',
     'cost': '3',
