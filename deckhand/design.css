@@ -86,6 +86,12 @@ a, a:visited {
     margin-bottom: 0.3em;
 }
 
+.booklet .coin {
+    width: 14px;
+    height: 12px;
+    padding: 1px;
+}
+
 .config label {
     display: block;
     margin: 0.5em 0;
@@ -193,8 +199,9 @@ a, a:visited {
 }
 
 .card .text .chest {
-    height: 11.5px;
-    margin-bottom: -3.0px;
+    height: 10.0px;
+    margin-top: -1px;
+    margin-bottom: -2.0px;
     margin-left: -1px;
 }
 

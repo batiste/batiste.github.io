@@ -37,8 +37,8 @@
             </h3>
          
              <ol>
-                <li>Gather about 20 Treasure tokens into a bank. We recommend using tokens instead of dice. Distribute 1 Treasure 
-                    <img class="rule-icon" src="icons/chest-simplified.svg" /> to each player.
+                <li>Gather about 20 Coins tokens into a bank. We recommend using tokens instead of dice. Distribute 1 Coin 
+                    <img class="rule-icon coin" src="icons/coins.svg" /> to each player.
                 </li>
                 <!-- <li>
                     To play a novice game (3 players max.), remove all card with the :Hard: from the game.
@@ -64,14 +64,16 @@
          
              <ol>
                 <li>Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
-                <li>Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" />. 
+                <li>Discard your hand <img class="rule-icon coin" src="icons/card-discard-yellow.svg" />. 
                     From now on, your discard pile is referred to as the <b>stash</b>. Draw 3 cards from your deck.
                 </li>
                 <li>You then have 2 Actions that you can use in the following ways:
                     <ul>
                         <li>Playing a card: Apply its effects <b>then</b> put the card in your stash.</li>
-                        <li>Buying a card from the supply: Pay the cost <img class="rule-icon" src="icons/chest-simplified.svg" />
-                             indicated at the bottom right of the card and put it into your stash.</li>
+                        <li>Buying a card from the supply: Pay the cost 
+                             indicated at the bottom right
+                             <img class="rule-icon" src="icons/chest-simplified.svg" /> 
+                             with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.</li>
                      </ul>
                 </li>
                 <li>When your deck is empty, <b>immediately</b> shuffle your stash into a new deck, then resume any ongoing effect.
@@ -104,14 +106,14 @@
                 <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> Icons at the top left are reminders of triggered effects.
                     </li>
                 <li><img class="rule-icon" src="icons/target.svg" /> Indicates targeted effects that affect enemies.</li>
-                <li><b>+1 <img class="rule-icon" src="icons/chest-simplified.svg" />:</b> Take a Treasure from the bank immediately.</li>
+                <li><b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take a Coin from the bank immediately.</li>
                 <li><b>+1 <img class="rule-icon" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.</li>
                 <li><b>+1 Action:</b> Gain 1 extra Action to use later this turn. Do not use more than 5 Actions per turn.</li>
                 <li><b>+1 <img class="rule-icon" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
                     If you do, replace it with a <b>reload deck</b> card.</li>
                 <li><b>+1 Buy:</b> Buy a card without using an Action later this turn.</li>
                 <li><b>+1 Discard:</b> Discard a card from your hand into your stash.</li>
-                <li>Pay 1 <img class="rule-icon" src="icons/chest-simplified.svg" />: Put one of your Treasures into the bank.</li>
+                <li>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />: Put one of your Coin into the bank.</li>
                 <li>While being played, cards are not in your hand or stash.</li>
                 <li>Apply card effects <b>in the written order</b>. If effects would trigger simultaneously, the initiator of the first effect decides the order.</li>
                 <!-- You may only gain and use <img class="rule-icon star" src="icons/star.svg" />, <img class="rule-icon star" src="icons/cycle-2.svg" /> or Buys during your turn. -->
@@ -200,6 +202,8 @@
             </div>
         </div>
     </div>
+
+    
     <div class="booklet booklet-fr" id="back-fr"  title="booklet-back">
         <div class="innerBooklet">
             <div>
@@ -244,9 +248,6 @@
                     le plus de crochets gagne. En cas d'égalité, celui ayant le plus de Trésors gagne, suivi de celui qui a mis fin au jeu.
                 </p>
             </div>
-        
-            <!-- <p><b>Challenge en solo</b> : Créez un deck de réserve de 22 cartes et retirez une carte à chaque tour.
-                Visez à atteindre 30 points de victoire.</p> -->
         
             <div>
                 Informations et mises à jour : https://bit.ly/dk-h<br>
@@ -414,24 +415,29 @@
             c['text'] = c['text'].replace(new RegExp(`:${key}:`, 'g'), `<span class="keyword">${key}</span>`)
         }
 
-        c['text'] = c['text'].replace(/Pay 1 :Treasure:/g, `<span class="keyword">Pay 1</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
+        c['text'] = c['text'].replace(/Pay 1 :Coin:/g, `<span class="keyword">Pay 1</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+1 :Buy:/g, `<span class="keyword">+1 Buy</span>`)
         c['text'] = c['text'].replace(/\+2 :Buy:/g, `<span class="keyword">+2 Buys</span>`)
 
-        c['text'] = c['text'].replace(/\+1 :Treasure:/g, `<span class="keyword">+1</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
-        c['text'] = c['text'].replace(/\+2 :Treasure:/g, `<span class="keyword">+2</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
-        c['text'] = c['text'].replace(/\+3 :Treasure:/g, `<span class="keyword">+3</span> <img class="rule-icon chest" src="icons/chest-simplified.svg" />`)
+        c['text'] = c['text'].replace(/\+1 :Coin:/g, `<span class="keyword">+1</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
+        c['text'] = c['text'].replace(/\+2 :Coin:/g, `<span class="keyword">+2</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
+        c['text'] = c['text'].replace(/\+3 :Coin:/g, `<span class="keyword">+3</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
 
         // rep('Card')
         rep('Action')
         rep('Discard')
         // rep('Reload')
 
+        c['text'] = c['text'].replace(/\+1 :Card:/g, `<span class="keyword">+1</span> <img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
+        c['text'] = c['text'].replace(/\+2 :Card:/g, `<span class="keyword">+2</span> <img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
+        c['text'] = c['text'].replace(/\+3 :Card:/g, `<span class="keyword">+3</span> <img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
         c['text'] = c['text'].replace(/:Card:/g, `<img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
         // c['text'] = c['text'].replace(/2 :Card:/g, `2 Cards`)
         // c['text'] = c['text'].replace(/3 :Card:/g, `3 Cards`)
         // c['text'] = c['text'].replace(/:Card:/g, `Card`)
 
+        c['text'] = c['text'].replace(/\+1 :Reload:/g, `<span class="keyword">+1</span> <img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
+        c['text'] = c['text'].replace(/\+2 :Reload:/g, `<span class="keyword">+2</span> <img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
         c['text'] = c['text'].replace(/:Reload:/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
         // c['text'] = c['text'].replace(/:Reload:/g, `Reload`)
 
