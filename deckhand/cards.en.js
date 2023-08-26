@@ -206,7 +206,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard any number of cards to get that many Coins. Then +2 :Card:.',
+    'text': 'Discard up to 3 cards, get that many Coins. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What could <br>possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
