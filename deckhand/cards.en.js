@@ -2,7 +2,7 @@
 var cards = [
 {
     'title': 'Fist Fight',
-    'text': '+1 :Coin:<br><i>(Take a Coin from the bank.)</i>',
+    'text': '+1 :Coin:<br><i>(Take a coin from the bank.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -122,7 +122,7 @@ var cards = [
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 :Coin:. On their next turn, target enemy gains +1 :Buy: and must give you 1 Coin before their first Buy.',
+    'text': '+1 :Coin:. On their next turn, target enemy gains +1 :Buy: and must give you 1 coin before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'attack',
@@ -157,7 +157,7 @@ var cards = [
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Coin:, +1 :Reload:.:or:Steal a Coin from target player.',
+    'text': '+1 :Coin:, +1 :Reload:.:or:Steal a coin from target player.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
@@ -206,7 +206,7 @@ var cards = [
 
 {
     'title': 'Alchemy',
-    'text': 'Discard up to 3 cards, get that many Coins. Then +2 :Card:.',
+    'text': 'Discard up to 3 cards, get that many coins. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What <br>could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -302,7 +302,7 @@ var cards = [
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may give a Coin from the <br>bank to every player. If you do, each <br>player must Discard a card after their <br>initial draw on their next turn.',
+    'text': '+2 :Coin:. You may give a coin from the <br>bank to every player. If you do, each <br>player must Discard a card after their <br>initial draw on their next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -355,7 +355,7 @@ var cards = [
 
 {
     'title': 'Haunted Cave',
-    'text': '+2 :Card:. Then +1 :Coin: for each Attack in <br>hand, up to a maximum of 3 Coins.',
+    'text': '+2 :Card:. Then +1 :Coin: for each Attack in <br>hand, up to a maximum of 3 coins.',
     'flavor': 'This place resonates with skeletal clatters. Fear <br>not, for the pure-hearted and free of greed.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
@@ -390,7 +390,7 @@ var cards = [
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player’s stash and place 2 bank Coins on it. When their stash is shuffled, take the Coins and return the card to their new stash.',
+    'text': 'Remove a card from target player’s stash and place 2 bank coins on it. When their stash is shuffled, take the coins and return the card to their new stash.',
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -403,7 +403,7 @@ var cards = [
 {
     'title': 'Stealthy Observer',
     'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card in their stash and gain 
-        Coins equal to its victory points.`,
+        coins equal to its victory points.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
@@ -438,7 +438,7 @@ var cards = [
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 :Coin:. You may remove a card from your hand or stash from the game. Gain as many Coins as the cost of the removed card.',
+    'text': ' +2 :Coin:. You may remove a card from your hand or stash from the game. Gain as many coins as the cost of the removed card.',
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -471,7 +471,7 @@ var cards = [
 
 {
     'title': 'Adventurer’s Guild',
-    'text': '+1 :Coin: for each Adventure in the supply,<br>up to a maximum of 3 Coins.',
+    'text': '+1 :Coin: for each Adventure in the supply,<br>up to a maximum of 3 coins.',
     'flavor': 'Where quests and bravery converge.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
