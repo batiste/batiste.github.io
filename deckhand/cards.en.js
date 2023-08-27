@@ -390,8 +390,8 @@ var cards = [
 
 {
     'title': 'Stealthy Observer',
-    'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card in their stash and gain 
-        coins equal to its victory points.`,
+    'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card into their stash and gain 
+        coins equal to its hooks :Hook:.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
@@ -437,7 +437,7 @@ var cards = [
 
 {
     'title': 'Monkey’s Bargain',
-    'text': 'Remove a card from your hand or stash from the game. For each victory points of the removed card: +1 :Coin: and +1 :Action:',
+    'text': 'Remove a card from your hand or stash from the game. For each hooks :Hook: of the removed card: +1 :Coin: and +1 :Action:',
     'flavor': 'A monkey’s mischief is a pirate’s boon.',
     'img': 'attacks/exchange.png',
     'type': 'attack',

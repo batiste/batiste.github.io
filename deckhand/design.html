@@ -143,7 +143,7 @@
             <p>
                 The game ends when the supply deck is empty. The current player finishes their turn, and the others
                 take a final turn with only 1 starting Action.
-                Count the number of hooks <img class="rule-icon" src="icons/hook.svg" /> in each deck. The player with the most
+                Count the number of hooks <img class="rule-icon" src="icons/hook-simplified.svg" /> in each deck. The player with the most
                 hooks wins. In the case of a tie, the player with the most coins wins, followed by the player who ended the game.
             </p>
 
@@ -453,6 +453,9 @@
         c['text'] = c['text'].replace(/\+1 :Reload:/g, `<span class="keyword">+1</span> <img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
         c['text'] = c['text'].replace(/\+2 :Reload:/g, `<span class="keyword">+2</span> <img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
         c['text'] = c['text'].replace(/:Reload:/g, `<img class="rule-icon cycle" src="icons/cycle-2.svg" />`)
+
+        c['text'] = c['text'].replace(/:Hook:/g, `<img class="rule-icon" src="icons/hook-simplified.svg" />`)
+
         // c['text'] = c['text'].replace(/:Reload:/g, `Reload`)
 
         // c['text'] = c['text'].replace(/:Action:/g, `<img class="rule-icon star" src="icons/star.svg" />`)
