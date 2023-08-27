@@ -218,7 +218,7 @@ var cards = [
 
 {
     'title': 'Emperor’s Caprice',
-    'text': '+2 :Reload: then a chosen enemy selects 3 supply cards. You may apply the effects of one of the selected card.',
+    'text': '+2 :Reload: then a chosen enemy selects 3<br>supply cards. You may apply the effects <br>of one of the selected card.',
     'flavor': 'In his royal hands, even your choices are illusions.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
@@ -229,7 +229,7 @@ var cards = [
 
 {
     'title': 'Card Mastery',
-    'text': '+1 :Action:, put a card from your <br>stash into your hand.<br>When Discarded: +1 :Card:.',
+    'text': '+1 :Action:, put a card from <br>your stash into your hand.<br>When Discarded: +1 :Card:.',
     'flavor': 'A flick of the wrist commands wonder and fear.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -312,7 +312,7 @@ var cards = [
 
 {
     'title': 'Exploration',
-    'text': 'If you have an Adventure in<br>hand: +1 :Action:.<br>Then +1 :Card:, +1 :Coin:.',
+    'text': 'If you have an Adventure in hand:<br>+1 :Action:.<br>Then +1 :Card:, +1 :Coin:.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
@@ -555,7 +555,7 @@ var cards = [
 
 {
     'title': 'Gambling Addiction',
-    'text': '+2 :Reload:. If the supply has 4 or more cards <br>of the same type: +3 :Coin:.',
+    'text': '+2 :Reload: then if the supply has 4 or more <br>cards of the same type: +3 :Coin:.',
     'flavor': 'The allure of easy riches sealed his downfall.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',
