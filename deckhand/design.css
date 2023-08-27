@@ -180,7 +180,7 @@ a, a:visited {
     font-size: 16px;
     position: absolute;
     right:0;
-    top:55.8mm;
+    top:55.7mm;
     left:0;
     color: #fff9d8;
     text-align: center;
@@ -192,7 +192,7 @@ a, a:visited {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size:9.6px;
     right:9mm;
-    top:56mm;
+    top:56.4mm;
     left:9mm;
     bottom:10.5mm;
     color: #fffdf2;
@@ -233,11 +233,15 @@ a, a:visited {
 }
 
 .card .text .draw {
-    height: 12px;
+    height: 11.8px;
     margin-top: -3px;
-    margin-bottom: -3.4px;
+    margin-bottom: -2.8px;
     margin-left: -2.5px;
     padding: 1px 2px;
+    margin-right: -1px;
+}
+
+.card .text .hook-text {
     margin-right: -1px;
 }
 

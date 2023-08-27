@@ -157,7 +157,7 @@ var cards = [
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Coin:, +1 :Reload:.:or:Steal a coin from target player, +1 :Reload:.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.:or:Steal a coin from target player, +1 :Card:.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
