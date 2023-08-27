@@ -556,14 +556,11 @@ a, a:visited {
 
 #illustration {
     position:absolute;
-    left: 50%;
-    top: 75%
+    left: 50.1%;
+    top: 75.4%;
+    column-count: 2;
 }
 
-#illustration li {
-    float: left;
-    margin-right: 5px;
-}
 
 .mpc {
     /* display: none; */
@@ -574,8 +571,8 @@ a, a:visited {
     height: 13px;
     background: #000;
     border-radius: 2px;
-    margin-top: -1px;
-    margin-bottom: -3.5px;
+    margin-top: -1.5px;
+    margin-bottom: -3.7px;
     padding: 0.5px 1px;
 }
 
