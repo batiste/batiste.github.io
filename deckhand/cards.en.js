@@ -84,7 +84,7 @@ var cards = [
 
 {
     'title': 'Beach Bum',
-    'text': '+1 :Coin:, +1 :Reload:.<br>If you are the player that owns the<br> least amount of cards: +1 Buy, +1 :Coin:.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>If you are the player that owns the<br> fewest cards: +1 :Buy:, +1 :Coin:.',
     'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
