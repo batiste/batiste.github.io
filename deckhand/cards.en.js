@@ -84,7 +84,7 @@ var cards = [
 
 {
     'title': 'Beach Bum',
-    'text': '+1 :Coin:.<br>If you are one of the players that owns <br>the least amount of cards +1 :Coin:.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>If you are the player that owns the<br> least amount of cards: +1 Buy, +1 :Coin:.',
     'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
@@ -157,7 +157,7 @@ var cards = [
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Coin:, +1 :Reload:.:or:Steal a coin from target player.',
+    'text': '+1 :Coin:, +1 :Reload:.:or:Steal a coin from target player, +1 :Reload:.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
