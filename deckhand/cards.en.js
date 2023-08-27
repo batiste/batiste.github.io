@@ -122,7 +122,7 @@ var cards = [
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 :Coin:. On their next turn, target enemy gains +1 :Buy: and must give you 1 coin before their first Buy.',
+    'text': '+1 :Coin:, +1 :Reload:. On their next turn, target enemy gains +1 :Buy: and must give you 1 coin before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'attack',
