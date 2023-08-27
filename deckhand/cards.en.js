@@ -324,7 +324,7 @@ var cards = [
 {
     'title': 'Treasure Map',
     'text': '+1 :Coin:. Look at the top 3 cards of your <br>deck. You may put any number of them<br> into your stash and the rest on top of your deck in any order. Then +1 :Card:.',
-    //'flavor': 'Riches await the keen-eyed adventurer..',
+    //'flavor': 'Riches await the keen-eyed adventurer.',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
     'cost': '2',
@@ -363,18 +363,6 @@ var cards = [
     'cost': '2',
     'amount': 1
 },
-
-// {
-//     'title': 'Unyielding Waves',
-//     'text': '+1 :Coin: for each different type of card into your stash (Structure, Adventure, Attack).',
-//     'flavor': 'The forces of the roaring ocean cannot be fought.',
-//     'img': 'attacks/relentless-waves.png',
-//     'type': 'attack',
-//     'victory': '2',
-//     'cost': '2',
-//     'amount': 1,
-//     // 'target': true,
-// },
 
 {
     'title': 'Governor’s Jail',
