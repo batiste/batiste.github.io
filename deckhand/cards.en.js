@@ -579,9 +579,9 @@ var cards = [
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player chooses a card from their stash that costs 2 or less and removes it from the game. When Discarded: Apply this card effect to all players.',
+    'text': 'Target player removes from the game a card from their stash that costs 2 or less.<br>When Discarded: Apply this card’s <br>effect to all players.',
     'img': 'attacks/grenade.png',
-    //  'reduced-font-size': '9.2px',
+    // 'reduced-font-size': '9.05px',
     'type': 'attack',
     'victory': '2',
     'cost': '2',
