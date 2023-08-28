@@ -3,14 +3,24 @@ var cards = [
 
 {
     'title': '1 Coin',
-    'text': `A coin <img class="rule-icon chest" src="icons/coins.svg" /> token to spend wisely.<br>
-    This token is not a card.`,
+    'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to spend wisely.`,
     'flavor': 'Pirates are notorious spenders.',
     'img': 'coins.png',
     'type': 'coin',
     // 'victory': '1',
     // 'cost': '1',
     'amount': 18
+},
+
+{
+    'title': '3 Coins',
+    'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to spend wisely.`,
+    'flavor': 'How did you come to possess such riches?',
+    'img': 'coins.png',
+    'type': 'coin',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 6
 },
 
 {
@@ -29,16 +39,16 @@ var cards = [
     'type': 'rule',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 18
+    'amount': 4
 },
 
 {
-    'title': 'Turn Steps',
+    'title': 'Player Turn Overview',
     'text': `
 1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards from your deck.<br>
 3. You then have 2 Actions that you can use in the following ways:<br>
-&nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash..<br>
+&nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash.<br>
 &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
 indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
 with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
@@ -50,7 +60,30 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
     'class': 'quick-ref',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 18
+    'amount': 4
+},
+
+
+{
+    'title': 'Card Quick Reference',
+    'text': `
+<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
+<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck.<br>
+<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
+        If you do, replace it with a <b>reload deck</b> card.<br>
+<b>+1 Action:</b> Gain 1 extra Action to use later this turn.<br>
+<b>+1 Buy:</b> You may Buy 1 card without using an Action later this turn.<br>
+<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
+<b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
+Apply card effects <b>in the written order</b>
+    `,
+    // 'flavor': 'Pirates are notorious spenders.',
+    'img': 'marketing/booklet.png',
+    'type': 'rule',
+    'class': 'quick-ref',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 4
 },
 
 

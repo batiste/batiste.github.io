@@ -104,7 +104,7 @@ a, a:visited {
     height: 12.5px;
 }
 
-.booklet .draw {
+.booklet .draw, .quick-ref .draw {
     height: 12.5px;
     margin-bottom: -3px;
 }
@@ -661,6 +661,27 @@ ul {
 }
 
 .card .quick-ref .text {
-    top: 10mm;
+    top: 12mm;
     text-align: left;
+}
+
+.card .quick-ref .rule-icon.coin {
+    width: 14px;
+    height: 12px;
+    padding: 0 1px;
+    margin-bottom: -2.5px;
+    margin-right: 1px;
+}
+
+.card .quick-ref .rule-icon.draw {
+    height: 12.5px;
+    margin-bottom: -3px;
+    padding: 0.5px 1px;
+    margin-right: 1px;
+    margin-left: 0.2px;
+    margin-top: 0.1px;
+}
+
+.card .quick-ref .rule-icon.reload {
+    margin-right: 1px;
 }
