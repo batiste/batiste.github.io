@@ -12,7 +12,7 @@ var cards = [
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Card: <i>(You may Draw a card.)</i><br>+1 :Reload: <i>(You may Reload a supply card.)</i><br>Then +1 :Coin: for each Celebrate in hand.',
+    'text': '+1 :Card: <i>(You may draw a card.)</i><br>+1 :Reload: <i>(You may Reload a supply card.)</i><br>Then +1 :Coin: for each Celebrate in hand.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
