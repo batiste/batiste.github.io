@@ -75,7 +75,9 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 <b>+1 Buy:</b> You may Buy 1 card without using an Action later this turn.<br>
 <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
 <b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
-Apply card effects <b>in the written order</b>
+<img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+are reminders of triggered effects<br>
+<img class="rule-icon" src="icons/target.svg" /> indicates targeted effects that affect enemies.
     `,
     // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
