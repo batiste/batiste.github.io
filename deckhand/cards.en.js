@@ -1,5 +1,59 @@
 
 var cards = [
+
+{
+    'title': '1 Coin',
+    'text': `A coin <img class="rule-icon chest" src="icons/coins.svg" /> token to spend wisely.<br>
+    This token is not a card.`,
+    'flavor': 'Pirates are notorious spenders.',
+    'img': 'coins.png',
+    'type': 'coin',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 18
+},
+
+{
+    'title': 'Card’s Anatomy',
+    'text': `
+    <div class="anatomy-list">
+        1. Reminder symbols
+        &nbsp;&nbsp;&nbsp; 2. Title<br>
+        3. Text <i>(effect)</i>
+        &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
+        5. Type 
+        &nbsp;&nbsp;&nbsp; 6. Cost in coins
+    </div>`,
+    // 'flavor': 'Pirates are notorious spenders.',
+    'img': 'marketing/card-anatomy.png',
+    'type': 'rule',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 18
+},
+
+{
+    'title': 'Turn Steps',
+    'text': `
+1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
+2. Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards from your deck.<br>
+3. You then have 2 Actions that you can use in the following ways:<br>
+&nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash..<br>
+&nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
+indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
+with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
+4. When your deck is empty, <b>immediately</b> shuffle your stash into a new deck, then resume any ongoing effect.
+    `,
+    // 'flavor': 'Pirates are notorious spenders.',
+    'img': 'marketing/booklet.png',
+    'type': 'rule',
+    'class': 'quick-ref',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 18
+},
+
+
 {
     'title': 'Fist Fight',
     'text': '+1 :Coin:<br><i>(Take a coin from the bank.)</i>',

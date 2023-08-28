@@ -572,7 +572,7 @@ a, a:visited {
     /* display: none; */
 }
 
-.rule-icon {
+.rule-icon, .card .quick-ref .rule-icon {
     display: inline-block;
     height: 13px;
     background: #000;
@@ -613,4 +613,54 @@ a, a:visited {
 
 ul {
     list-style: disc;
+}
+
+
+.card .type-coin .frame {
+    top:58mm;    
+}
+
+
+.card .type-coin .text {
+    top:61mm;    
+}
+
+.card .type-coin .title {
+    top:59.7mm;    
+}
+
+.card .type-rule .title {
+    top:10mm;
+    color: #000;
+    text-shadow: none;
+}
+
+
+.card .type-rule .frame {
+    color: #000;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.card .type-rule .frame div {
+    display: none;
+}
+
+.card .type-rule .text {
+    color: #000;
+    text-shadow: none;
+    top: 63mm;
+}
+
+.anatomy-list {
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    margin-left: 16px;
+}
+
+.card .quick-ref .text {
+    top: 10mm;
+    text-align: left;
 }

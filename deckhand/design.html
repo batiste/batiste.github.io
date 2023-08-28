@@ -326,6 +326,8 @@
             'attack': 'Attack',
             'adventure': 'Adventure',
             'structure': 'Structure',
+            'coin': 'Coin',
+            'rule': 'Rules',
         },
         'fr': {
             'attack': 'Attaque',
@@ -471,7 +473,7 @@
         <div class="card-container">
             <div class="card" id="card-${j}" title="${c['title']}">
                 <div class="inner">
-                    <div class="front type-${c['type']}"> 
+                    <div class="front type-${c['type']} ${c['class']}"> 
                         <div class="frame"><div></div></div>
                         <img src="${c['img']}" class="bg" />
                         
@@ -514,7 +516,10 @@
 
     // do that once all the font are loaded
     setTimeout(() => {
-        document.querySelectorAll('.innerText').forEach((text) => {
+
+        cards.forEach((c) => {
+            if (c.type == 'rule' || c.type == 'coin') { return }
+            var text = document.getElementById('card-'+c.id).querySelector('.innerText')
             // 5 lines
             var fs = 9;
             while(text.offsetHeight > 62.0) {
@@ -522,6 +527,7 @@
                 text.style['font-size'] = `${fs}px`
             }
         })
+
     }, 2000)
 
 
