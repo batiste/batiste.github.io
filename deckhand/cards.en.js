@@ -3,24 +3,26 @@ var cards = [
 
 {
     'title': '1 Coin',
-    'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to spend wisely.`,
+    'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
     'flavor': 'Pirates are notorious spenders.',
     'img': 'coins.png',
     'type': 'coin',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 18
+    'amount': 18,
+    'coin': 1,
 },
 
 {
     'title': '3 Coins',
-    'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to spend wisely.`,
+    'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
     'flavor': 'How did you come to possess such riches?',
     'img': 'coins.png',
     'type': 'coin',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 6
+    'amount': 6,
+    'coin': 3,
 },
 
 {
@@ -32,7 +34,7 @@ var cards = [
         3. Text <i>(effect)</i>
         &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
         5. Type 
-        &nbsp;&nbsp;&nbsp; 6. Cost in coins
+        &nbsp;&nbsp;&nbsp; 6. Cost <i>(to be paid in coins)</i>
     </div>`,
     // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/card-anatomy.png',
@@ -44,8 +46,7 @@ var cards = [
 
 {
     'title': 'Player Turn Overview',
-    'text': `
-1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
+    'text': `1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards from your deck.<br>
 3. You then have 2 Actions that you can use in the following ways:<br>
 &nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash.<br>
@@ -66,9 +67,8 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Card Quick Reference',
-    'text': `
-<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
-<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck.<br>
+    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
+<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
 <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
         If you do, replace it with a <b>reload deck</b> card.<br>
 <b>+1 Action:</b> Gain 1 extra Action to use later this turn.<br>
@@ -77,8 +77,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 <b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 are reminders of triggered effects<br>
-<img class="rule-icon" src="icons/target.svg" /> indicates targeted effects that affect enemies.
-    `,
+<img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
     // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
     'type': 'rule',
@@ -91,7 +90,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Fist Fight',
-    'text': '+1 :Coin:<br><i>(Take a coin from the bank.)</i>',
+    'text': '+1 :Coin:<br><i>(Take 1 coin from the bank.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -101,7 +100,7 @@ are reminders of triggered effects<br>
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Card: <i>(You may draw a card.)</i><br>+1 :Reload: <i>(You may Reload a supply card.)</i><br>Then +1 :Coin: for each Celebrate in hand.',
+    'text': '+1 :Card: <i>(You may draw 1 card.)</i><br>+1 :Reload: <i>(You may reload 1 supply card.)</i><br>Then +1 :Coin: for each Celebrate in hand.',
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -223,7 +222,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 :Coin:. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that costs 2 or less.',
+    'text': '+1 :Coin:, +1 :Reload:. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that costs 2 or less.',
     'flavor': 'WARNING: does not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     'type': 'structure',
@@ -655,8 +654,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Desperate Chase',
-    'text': `You and an enemy reveal the top 3 cards from your decks. If you reveal more <br>Attacks:
-    Put a supply card that costs <br>4 or less into your stash.`,
+    'text': `You and an enemy with at least 2 cards in deck reveal the top 3 cards from your decks. 
+            <br>If you reveal more Attacks, put a supply card that costs 4 or less into your stash.`,
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',

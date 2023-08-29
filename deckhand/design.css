@@ -204,6 +204,12 @@ a, a:visited {
     line-height: 1.47;
 }
 
+.top-left-icons-container {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size:9.6px;
+    line-height: 1.3;
+}
+
 .card .text i {
     font-size:8.8px;
 }
@@ -378,7 +384,7 @@ a, a:visited {
     flex-direction: row;
 }
 
-.card .discard, .card .start, .card .target {
+.card .discard, .card .start, .card .target, .card .coin-top-left {
     display: flex;
     padding: 1.1mm;
     padding-bottom: 0.4mm;
@@ -386,6 +392,10 @@ a, a:visited {
     padding-left: 1mm;
     width: 15px;
     height: 15px;
+}
+
+.card .coin-top-left {
+    width: auto;
 }
 
 .card .discard {
@@ -662,10 +672,11 @@ ul {
 
 .card .quick-ref .text {
     top: 12mm;
+    bottom: 7mm;
     text-align: left;
 }
 
-.card .quick-ref .rule-icon.coin {
+.card .quick-ref .rule-icon.coin, .coin-top-left img {
     width: 14px;
     height: 12px;
     padding: 0 1px;
@@ -673,15 +684,24 @@ ul {
     margin-right: 1px;
 }
 
+.coin-top-left img {
+    margin-left: 1.5px;
+}
+
 .card .quick-ref .rule-icon.draw {
     height: 12.5px;
-    margin-bottom: -3px;
+    margin-bottom: -2.6px;
     padding: 0.5px 1px;
     margin-right: 1px;
     margin-left: 0.2px;
-    margin-top: 0.1px;
+    margin-top: -0.2px;
 }
 
 .card .quick-ref .rule-icon.reload {
     margin-right: 1px;
+}
+
+.card .quick-ref .target {
+    height: 13px;
+    margin-top: 0.9px;
 }

@@ -385,6 +385,10 @@
             top_left += `<span class="target"><img src="icons/target.svg" /></span>`
         }
 
+        if(c['coin'] != undefined) {
+            top_left += `<span class="coin-top-left">${c['coin']}<img src="icons/coins.svg" /></span>`
+        }
+
         if (top_left) {
             extra += `<span class="top-left-icons-container">${top_left}</span>`
         }
