@@ -654,8 +654,9 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Desperate Chase',
-    'text': `You and an enemy with at least 2 cards in deck reveal the top 3 cards from your decks. 
-            <br>If you reveal more Attacks, put a supply card that costs 4 or less into your stash.`,
+    'text': `You and an enemy reveal the top 3 cards from your decks. 
+            You both must have at least 2 cards in deck.
+            If you reveal more Attacks, put a supply card that costs 4 or less into your stash.`,
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
