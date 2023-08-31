@@ -1,91 +1,91 @@
 
 var cards = [
 
-{
-    'title': '1 Coin',
-    'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
-    'flavor': 'Pirates are notorious spenders.',
-    'img': 'coins.png',
-    'type': 'coin',
-    // 'victory': '1',
-    // 'cost': '1',
-    'amount': 18,
-    'coin': 1,
-},
+// {
+//     'title': '1 Coin',
+//     'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
+//     'flavor': 'Pirates are notorious spenders.',
+//     'img': 'coins.png',
+//     'type': 'coin',
+//     // 'victory': '1',
+//     // 'cost': '1',
+//     'amount': 18,
+//     'coin': 1,
+// },
 
-{
-    'title': '3 Coins',
-    'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
-    'flavor': 'How did you come to possess such riches?',
-    'img': 'coins.png',
-    'type': 'coin',
-    // 'victory': '1',
-    // 'cost': '1',
-    'amount': 6,
-    'coin': 3,
-},
+// {
+//     'title': '3 Coins',
+//     'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
+//     'flavor': 'How did you come to possess such riches?',
+//     'img': 'coins.png',
+//     'type': 'coin',
+//     // 'victory': '1',
+//     // 'cost': '1',
+//     'amount': 6,
+//     'coin': 3,
+// },
 
-{
-    'title': 'Card’s Anatomy',
-    'text': `
-    <div class="anatomy-list">
-        1. Reminder symbols
-        &nbsp;&nbsp;&nbsp; 2. Title<br>
-        3. Text <i>(effect)</i>
-        &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
-        5. Type 
-        &nbsp;&nbsp;&nbsp; 6. Cost <i>(to be paid in coins)</i>
-    </div>`,
-    // 'flavor': 'Pirates are notorious spenders.',
-    'img': 'marketing/card-anatomy.png',
-    'type': 'rule',
-    // 'victory': '1',
-    // 'cost': '1',
-    'amount': 4
-},
+// {
+//     'title': 'Card’s Anatomy',
+//     'text': `
+//     <div class="anatomy-list">
+//         1. Reminder symbols
+//         &nbsp;&nbsp;&nbsp; 2. Title<br>
+//         3. Text <i>(effect)</i>
+//         &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
+//         5. Type 
+//         &nbsp;&nbsp;&nbsp; 6. Cost <i>(to be paid in coins)</i>
+//     </div>`,
+//     // 'flavor': 'Pirates are notorious spenders.',
+//     'img': 'marketing/card-anatomy.png',
+//     'type': 'rule',
+//     // 'victory': '1',
+//     // 'cost': '1',
+//     'amount': 4
+// },
 
-{
-    'title': 'Player Turn Overview',
-    'text': `1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
-2. Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards from your deck.<br>
-3. You then have 2 Actions that you can use in the following ways:<br>
-&nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash.<br>
-&nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
-indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
-with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
-4. When your deck is empty, <b>immediately</b> shuffle your stash into a new deck, then resume any ongoing effect.
-    `,
-    // 'flavor': 'Pirates are notorious spenders.',
-    'img': 'marketing/booklet.png',
-    'type': 'rule',
-    'class': 'quick-ref',
-    // 'victory': '1',
-    // 'cost': '1',
-    'amount': 4
-},
+// {
+//     'title': 'Player Turn Overview',
+//     'text': `1. Apply effects that might trigger at the start of your turn <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
+// 2. Discard your hand <img class="rule-icon" src="icons/card-discard-yellow.svg" /> and draw 3 cards from your deck.<br>
+// 3. You then have 2 Actions that you can use in the following ways:<br>
+// &nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside and apply its effects <b>then</b> put the card into your stash.<br>
+// &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
+// indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
+// with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
+// 4. When your deck is empty, <b>immediately</b> shuffle your stash into a new deck, then resume any ongoing effect.
+//     `,
+//     // 'flavor': 'Pirates are notorious spenders.',
+//     'img': 'marketing/booklet.png',
+//     'type': 'rule',
+//     'class': 'quick-ref',
+//     // 'victory': '1',
+//     // 'cost': '1',
+//     'amount': 4
+// },
 
 
-{
-    'title': 'Card Quick Reference',
-    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
-<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
-<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
-        If you do, replace it with a <b>reload deck</b> card.<br>
-<b>+1 Action:</b> Gain 1 extra Action to use later this turn.<br>
-<b>+1 Buy:</b> You may Buy 1 card without using an Action later this turn.<br>
-<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
-<b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
-<img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-are reminders of triggered effects<br>
-<img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
-    // 'flavor': 'Pirates are notorious spenders.',
-    'img': 'marketing/booklet.png',
-    'type': 'rule',
-    'class': 'quick-ref',
-    // 'victory': '1',
-    // 'cost': '1',
-    'amount': 4
-},
+// {
+//     'title': 'Card Quick Reference',
+//     'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
+// <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
+// <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
+//         If you do, replace it with a <b>reload deck</b> card.<br>
+// <b>+1 Action:</b> Gain 1 extra Action to use later this turn.<br>
+// <b>+1 Buy:</b> You may Buy 1 card without using an Action later this turn.<br>
+// <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
+// <b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
+// <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+// are reminders of triggered effects<br>
+// <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
+//     // 'flavor': 'Pirates are notorious spenders.',
+//     'img': 'marketing/booklet.png',
+//     'type': 'rule',
+//     'class': 'quick-ref',
+//     // 'victory': '1',
+//     // 'cost': '1',
+//     'amount': 4
+// },
 
 
 {
@@ -141,6 +141,17 @@ are reminders of triggered effects<br>
     'flavor-no-quotes': '“Don’t let them regroup!” she commands, <br>with pistols ablaze.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
+    'cost': 1,
+    'victory': 1,
+    'amount': 1,
+},
+
+{
+    'title': 'Mutiny',
+    'text': '+2 :Buy:, +1 :Coin:.<br>Use these buys only for cards that cost 1.',
+    'img': 'attacks/mutiny.png',
+    'type': 'attack',
+    'flavor': `Rising as one, we demand our rightful share!`,
     'cost': 1,
     'victory': 1,
     'amount': 1,
