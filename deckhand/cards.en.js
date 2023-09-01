@@ -148,7 +148,7 @@ var cards = [
 
 {
     'title': 'Mutiny',
-    'text': '+2 :Buy:, +1 :Coin:.<br>Use these buys only for cards that cost 1.',
+    'text': '+2 :Buy:, +1 :Coin:, +1 :Reload:.<br>Use these buys only for cards that cost 1.',
     'img': 'attacks/mutiny.png',
     'type': 'attack',
     'flavor': `Rising as one, we demand our rightful share!`,
