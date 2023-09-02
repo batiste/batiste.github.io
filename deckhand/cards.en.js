@@ -195,7 +195,7 @@ var cards = [
 
 {
     'title': 'Karmic Elevation',
-    'text': 'Pay 1 :Coin:: Reveal a card from your hand.<br>A chosen enemy pick a supply card that costs 1 more. Swap those 2 cards.',
+    'text': 'Pay 1 :Coin:: Reveal a card from your hand, then you may choose a supply card that costs 1 more and swap them.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -704,7 +704,7 @@ var cards = [
 {
     'title': 'Bewitched Doll',
     'text': `+1 :Coin:. On target enemy’s next turn, control their first Action 
-    making all decisions for this enemy, including Actions or Buys they may gain through this control.`,
+    making all decisions for this enemy. You may control Actions or Buys they may gain through this control.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
