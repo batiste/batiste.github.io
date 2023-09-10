@@ -256,7 +256,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.:or:Steal a coin from target player, +1 :Card:.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.:or:Steal a coin from target enemy, +1 :Card:.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
@@ -678,7 +678,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player selects and removes from the game a card from their stash costing 2 or less.<br>When Discarded: Apply this card’s effect <br>to all players.',
+    'text': 'Target player selects and removes from the game a card from their stash costing 2 or less.<br> When Discarded: Apply this card’s effect to all players with themselves as the target.',
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
     'type': 'attack',
