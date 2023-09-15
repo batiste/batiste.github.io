@@ -175,36 +175,36 @@
             </h3>
             
             <ol>
-                <li>Rassemble 20 jetons de Trésor dans une banque. Donne 1 Trésor à chaque joueur.</li>
+                <li>Rassemble 20 jetons de Pièce dans une banque. Donne 1 Pièce à chaque joueur.</li>
                 <li>
-                    Chaque joueur reçoit un deck de 2 Bagarre et 2 Célébration.
+                    Fourni un <b>deck</b> mélangé de 2 Bagarre et 2 Célébration à chacun.
                     Retire toutes les autres cartes Bagarre et Célébration du jeu.
                 </li>
                 <li>
-                    Mélange et forme le deck de réserve avec 11 cartes par joueur (10 avec 4 joueurs). Les autres cartes forment le deck de recharge.
+                    Mélange et forme le deck de <b>réserve</b> avec 11 cartes par joueur (10 avec 4 joueurs). Les autres cartes forment le deck de <b>recharge</b>.
                 </li>
                 <li>
                     Place 6 cartes du deck de recharge face visible sur la table comme réserve.
-                    À partir de maintenant, maintient 6 cartes face visible en les remplaçant depuis le deck de la <b>réserve</b>.
+                    À partir de maintenant, maintient 6 cartes face visible à tout moment en les remplaçant depuis le deck de la <b>réserve</b>.
                 </li>
             </ol>
             
             <h3>Déroulement du jeu</h3>
             
             <p>
-                Un joueur débute au hasard, puis chacun son tour et dans l'ordre :
+                Un joueur aléatoire démarre, puis chacun son tour, suit ces étapes:
             </p>
             
             <ol>
-                <li>Applique les effets qui se produisent au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
-                <li>Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes.</li>
+                <li>Résoud les effets qui peuvent se produire au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
+                <li>Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes. Ta défausse se nomme désormais <b>Planque</b></li>
                 <li>Tu disposes de 2 Actions par tour, parmi lesquelles :
                     <ol>
-                        <li>Jouer une carte : Active ses effets <b>puis</b> mets-la dans ta défausse.</li>
-                        <li>Acheter une carte de la réserve : Elle est mise dans ta défausse.</li>
+                        <li>Jouer une carte : Mets la carte de coté, active ses effets et conséquences <b>puis</b> mets-la dans ta Planque.</li>
+                        <li>Acheter une carte de la réserve : Elle est mise dans ta Planque.</li>
                     </ol>
                 </li>
-                <li>Lorsque ton deck est vide, mélange <b>immédiatement</b> ta défausse pour former un nouveau deck, puis reprent tout effet en cours.
+                <li>Lorsque ton deck est vide, mélange <b>immédiatement</b> ta Planque pour former un nouveau deck, puis reprent tout effet en cours.
                 </li>
             </ol>
             </div>
@@ -348,10 +348,12 @@
 
         if (lang && translation[lang]) {
             var t = translation[lang]
-            c['title'] = t[j]['title']
-            c['text'] = t[j]['text']
-            c['flavor'] = t[j]['flavor']
-            c['flavor-no-quotes'] = t[j]['flavor-no-quotes']
+            if(t[j]) {
+                c['title'] = t[j]['title']
+                c['text'] = t[j]['text']
+                c['flavor'] = t[j]['flavor']
+                c['flavor-no-quotes'] = t[j]['flavor-no-quotes']
+            }
         }
 
         if(j>1) {
@@ -441,6 +443,7 @@
         }
 
         c['text'] = c['text'].replace(/Pay 1 :Coin:/g, `<span class="keyword">Pay 1</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
+        c['text'] = c['text'].replace(/Paye 1 :Coin:/g, `<span class="keyword">Paye 1</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+1 :Buy:/g, `<span class="keyword">+1 Buy</span>`)
         c['text'] = c['text'].replace(/\+2 :Buy:/g, `<span class="keyword">+2 Buys</span>`)
 
