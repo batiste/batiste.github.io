@@ -618,7 +618,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Voodoo Curse',
-    'text': 'Reveal the top 3 cards of target player’s deck. Put one into their stash, then <br>apply its effects.',
+    'text': 'Reveal the top 3 cards of target player’s deck. Put one into their stash, then <br>apply its effects as if you had played it.',
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
     'type': 'attack',
