@@ -785,17 +785,17 @@ are reminders of triggered effects<br>
 
 },
 
-// {
-//     'title': 'Angry Mob',
-//     'text': `+1 :Coin:, +1 :Card:.<br>If this card is in your stash and you buy a 1 cost card: +1 :Coin:, +1 :Card:`,
-//     // 'reduced-font-size': true,
-//     // 'flavor': 'Arbitrary decisions serve as displays of power.',
-//     'img': 'attacks/angry-mob.png',
-//     'type': 'attack',
-//     'victory': '1',
-//     'cost': '1',
-//     'amount': 1,
-// }
+{
+    'title': 'Angry Mob',
+    'text': `+1 :Coin:, +1 :Card:.<br>If this card is in your stash and you <br>buy a 1 cost card: +1 :Coin:, +1 :Card:`,
+    // 'reduced-font-size': true,
+    // 'flavor': 'Arbitrary decisions serve as displays of power.',
+    'img': 'attacks/angry-mob.png',
+    'type': 'attack',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+}
 
 
 ]

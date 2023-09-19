@@ -75,12 +75,12 @@ var fr_translations = [
   },
   // {
   //   "title":"Rêverie",
-  //   "text":"+1 :Coin:.<br>Si tu es ciblé par des effets d’une carte : Planque Rêverie pour les annuler.",
+  //   "text":"+1 :Coin:.<br>Si tu es ciblé par des effets d’une carte : planque Rêverie pour les annuler.",
   //   "flavor-no-quotes": "\"Harmonie ! Sérénité !\" bâilla-t-il après sa sieste.",
   // },
   {
     "title":"Leçons de Kung Fu",
-    "text":"+1 :Coin:, +1 Card, +1 :Reload:.<br>Mets 1 carte de la Planque d’un joueur ciblé en dessous de son deck.",
+    "text":"+1 :Coin:, +1 Card, +1 :Reload:.<br>Mets 1 carte de la planque d’un joueur ciblé en dessous de son deck.",
     "flavor":"Les marées, utilises leur pouvoir à ton avantage !"
   },
   {
@@ -90,7 +90,7 @@ var fr_translations = [
   },
   {
     "title":"Poudre Impériale",
-    "text":"+1 :Coin:. Si tu perds possession de cette carte : retire du jeu une carte de la Planque de l’ennemi ciblé coûtant 2 ou moins.",
+    "text":"+1 :Coin:. Si tu perds possession de cette carte : retire du jeu une carte de la planque de l’ennemi ciblé coûtant 2 ou moins.",
     "flavor":"ATTENTION : ne pas rouler, choquer ou vaciller."
   },
   {
@@ -110,12 +110,12 @@ var fr_translations = [
   },
   {
     "title":"Hôtel du Conseil",
-    "text":"Un ennemi choisit une carte de la réserve et la place dans ta Planque.",
+    "text":"Un ennemi choisit une carte de la réserve et la place dans ta planque.",
     "flavor":"De l’or pour un siège, une richesse gaspillée en chuchotements."
   },
   {
     "title": "Typhon",
-    "text": "+2 :Card:, +1 Défausse, +1 :Coin:. Tout les joueurs déplace une carte de sa Planque ou, si impossible, du dessus de son deck vers la Planque du voisin de gauche.",
+    "text": "+2 :Card:, +1 Défausse, +1 :Coin:. Tout les joueurs déplace une carte de sa planque ou, si impossible, du dessus de son deck vers la planque du voisin de gauche.",
     "flavor": "",
     // "flavor": "Un chaos tourbillonnant ! Un cauchemar!"
   },
@@ -131,12 +131,12 @@ var fr_translations = [
   },
   {
     "title":"Maîtrise des Cartes",
-    "text":"+1 :Action:. Mets une carte de ta Planque dans ta main.<br>Quand défaussée : +1 :Card:.",
+    "text":"+1 :Action:. Mets une carte de ta planque dans ta main.<br>Quand défaussée : +1 :Card:.",
     "flavor":"Un geste du poignet provoque surprise et frayeur."
   },
   {
     "title":"Négoce d’Épices",
-    "text":"+1 :Coin:. Si cette carte est dans ta Planque, la première Structure que tu achètes chaque tour coûte 1 de moins.",
+    "text":"+1 :Coin:. Si cette carte est dans ta planque, la première Structure que tu achètes chaque tour coûte 1 de moins.",
     "flavor":"Épices dansantes, saveurs d’opulence."
   },
   {
@@ -156,7 +156,7 @@ var fr_translations = [
   },
   {
     "title":"Bibliothèque Antique",
-    "text":"+2 :Coin:.<br>Quand défaussée : tu peux mélanger ta Planque dans ton deck.",
+    "text":"+2 :Coin:.<br>Quand défaussée : tu peux mélanger ta planque dans ton deck.",
     "flavor":"Chaque page dévoile un secret impérial."
   },
   {
@@ -194,12 +194,12 @@ var fr_translations = [
   },
   {
     "title": "Expédition Perdue",
-    "text": `Retire 1 carte de la Planque du joueur ciblé et pose 2 Pièces de la banque dessus. 
-    Après mélange de sa Planque, prends les Pièces et mets sa carte dans sa nouvelle Planque.`
+    "text": `Retire 1 carte de la planque du joueur ciblé et pose 2 Pièces de la banque dessus. 
+    Après mélange de sa planque, prends les Pièces et mets sa carte dans sa nouvelle planque.`
   },
   {
     "title": "Observateur Furtif",
-    "text": "Révèle les 2 premières cartes du deck de l’ennemi ciblé. Place-en une dans sa Planque et gagne des Pièces équivalant aux crochets :Hook: de la carte.",
+    "text": "Révèle les 2 premières cartes du deck de l’ennemi ciblé. Place-en une dans sa planque et gagne des Pièces équivalant aux crochets :Hook: de la carte.",
     // "flavor": "Un œil vigilant révèle les vérités cachées."
     "flavor": ""
   },
@@ -210,21 +210,21 @@ var fr_translations = [
   },
   {
     "title": "Chantier Naval",
-    "text": "+1 :Coin:.<br>+1 :Action: par Structure dans ta Planque.<br><i>(N'utilise pas plus de 5 actions ce tour-ci.)</i>"
+    "text": "+1 :Coin:.<br>+1 :Action: par Structure dans ta planque.<br><i>(N'utilise pas plus de 5 actions ce tour-ci.)</i>"
   },
   {
     "title": "Sur la Planche",
-    "text": "+2 :Coin:. Tu peux retirer une carte de ta main ou de ta Planque du jeu : Gagne des Pièces équivalant au coût de la carte.",
+    "text": "+2 :Coin:. Tu peux retirer une carte de ta main ou de ta planque du jeu : Gagne des Pièces équivalant au coût de la carte.",
     "flavor": "Une danse sur la planche ou un sursis ?"
   },
   {
     "title": "Affaire de Singe",
-    "text": "Retire 1 carte de ta main ou Planque du jeu&nbsp;: Gagne des Pièces et des Actions équivalant aux crochets :Hook: de la carte.",
+    "text": "Retire 1 carte de ta main ou planque du jeu&nbsp;: Gagne des Pièces et des Actions équivalant aux crochets :Hook: de la carte.",
     "flavor": "Les espiègleries de l’un sont l’aubaine d’un autre."
   },
   {
     "title": "Vent dans les Voiles",
-    "text": "+1 :Card:.<br>Au début de ton tour, si cette carte est dans ta Planque : Pioche une carte de plus lors de ta pioche initiale."
+    "text": "+1 :Card:.<br>Au début de ton tour, si cette carte est dans ta planque : Pioche une carte de plus lors de ta pioche initiale."
   },
   {
     "title": "Guilde des Aventuriers",
@@ -233,7 +233,7 @@ var fr_translations = [
   },
   {
     "title": "Pied de l’Arc-en-ciel",
-    "text": "+1 :Card:.<br>Au début de ton tour, si cette carte est dans ta Planque, ainsi qu'une Attaque et une Structure : +1 :Action:."
+    "text": "+1 :Card:.<br>Au début de ton tour, si cette carte est dans ta planque, ainsi qu'une Attaque et une Structure : +1 :Action:."
   },
   {
     "title": "Banque Forteresse",
@@ -252,17 +252,17 @@ var fr_translations = [
   },
   {
     "title": "Malédiction Vaudou",
-    "text": "Révèle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa Planque, puis applique ses effets.",
+    "text": "Révèle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa planque, puis applique ses effets.",
     "flavor": "À chaque pas, la malédiction resserre son emprise."
   },
   {
     "title": "Maraudeur des Abysses",
-    "text": "+1 :Action:. Échange une carte de ta main avec une carte du même coût de la Planque d’un ennemi.",
+    "text": "+1 :Action:. Échange une carte de ta main avec une carte du même coût de la planque d’un ennemi.",
     "flavor": "Né des profondeurs, il se nourrit des incertitudes."
   },
   {
     "title": "Grotte des Contrebandiers",
-    "text": "+1 :Coin:. Au début de ton tour, si cette carte est dans ta Planque : +1 :Coin:.",
+    "text": "+1 :Coin:. Au début de ton tour, si cette carte est dans ta planque : +1 :Coin:.",
     "flavor": "Peu nombreux sont ceux qui peuvent tracer la route vers les trésors interdits."
   },
   {
@@ -272,15 +272,15 @@ var fr_translations = [
   },
   {
     "title": "Course Désespérée",
-    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d’Attaques : mets une carte de la réserve coûtant 4 ou moins dans ta Planque."
+    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d’Attaques : mets une carte de la réserve coûtant 4 ou moins dans ta planque."
   },
   {
     "title": "Grenade Improvisée",
-    "text": "Le joueur ciblé choisit une carte de sa Planque et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs." // avec eux-même comme cible
+    "text": "Le joueur ciblé choisit une carte de sa planque et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs." // avec eux-même comme cible
   },
   {
     "title": "Cimetière Délaissé",
-    "text": "+1 :Coin:.<br>Au début de ton tour, si cette carte est dans ta Planque : tu peux mettre une carte de ta Planque en bas de ton deck."
+    "text": "+1 :Coin:.<br>Au début de ton tour, si cette carte est dans ta planque : tu peux mettre une carte de ta planque en bas de ton deck."
   },
   {
     "title": "Poupée Envoûtée",
@@ -289,16 +289,16 @@ var fr_translations = [
   },
   {
     "title": "Marchand Sournois",
-    "text": "Paye 1 :Coin:: Échange une carte entre ta Planque et la Planque de l’ennemi ciblé tant que la différence de coût est de 1 ou moins."
+    "text": "Paye 1 :Coin:: Échange une carte entre ta planque et la planque de l’ennemi ciblé tant que la différence de coût est de 1 ou moins."
   },
   {
     "title": "Mercenaire des Néréides",
-    "text": "Paye 1 :Coin:: révéle les 2 premières cartes du deck de réserve. Mets-en une dans ta Planque.",
+    "text": "Paye 1 :Coin:: révéle les 2 premières cartes du deck de réserve. Mets-en une dans ta planque.",
     "flavor": "Est-ce rentable de négocier avec cette atrocité ?"
   },
   {
     "title": "Fureur du Kraken",
-    "text": "Applique les effets d’une carte de n’importe quelle Planque.",
+    "text": "Applique les effets d’une carte de n’importe quelle planque.",
     "flavor": "Méfiez-vous du dévoreur de navires et d’âmes."
   },
   {
