@@ -678,7 +678,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Improvised Grenade',
-    'text': 'Target player selects and removes from the game a card from their stash costing 2 or less.<br> When Discarded: Apply this card’s effect to all players with themselves as the target.',
+    'text': `Target player selects and removes from <br>the game a card from their stash costing <br>2 or less.<br>
+    When Discarded: +1 :Card:.`,
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
     'type': 'attack',
@@ -787,9 +788,9 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin:, +1 :Card:.<br>If this card is in your stash and you <br>buy a 1 cost card: +1 :Coin:, +1 :Card:`,
+    'text': `+1 :Coin: for each 1 cost card in the supply.`,
     // 'reduced-font-size': true,
-    // 'flavor': 'Arbitrary decisions serve as displays of power.',
+    'flavor': 'A single voice may go unheard, but a united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
     'victory': '1',
