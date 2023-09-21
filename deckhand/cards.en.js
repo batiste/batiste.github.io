@@ -9,7 +9,7 @@ var cards = [
     'type': 'coin',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 18,
+    'amount': 8,
     'coin': 1,
 },
 
@@ -21,7 +21,7 @@ var cards = [
     'type': 'coin',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 6,
+    'amount': 4,
     'coin': 3,
 },
 
@@ -41,7 +41,7 @@ var cards = [
     'type': 'rule',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 4
+    'amount': 1
 },
 
 {
@@ -61,7 +61,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
     'class': 'quick-ref',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 4
+    'amount': 1
 },
 
 
@@ -84,7 +84,7 @@ are reminders of triggered effects<br>
     'class': 'quick-ref',
     // 'victory': '1',
     // 'cost': '1',
-    'amount': 4
+    'amount': 1
 },
 
 
