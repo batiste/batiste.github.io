@@ -305,6 +305,7 @@
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
     <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
     <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
+    <label>PnP mask for easy cuts<input type="checkbox" onchange="PNPoutputFormat(this)"></label>
 </div>
 
 
@@ -514,7 +515,7 @@
                         
 
                         <div class="mpc">
-                            <img src="mpc-no-border.png" />
+                            <img src="pnp.png" />
                         </div>
                         <div class="mask"></div>
                     </div>
@@ -574,6 +575,14 @@
             preparePrintClass = 'preparePrint';
         } else { 
             preparePrintClass = 'preparePrintNotMPC';
+        }
+    }
+
+    function PNPoutputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrintPNP';
+        } else { 
+            preparePrintClass = 'preparePrint';
         }
     }
 
@@ -821,7 +830,7 @@ function generatePrintSheet(e) {
 
                 var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
                 var x = (210 / 3.0) * (pageCounter % 3);
-                doc.addImage(card.canvas, "PNG", x, y, 69, 94, card['title'], "FAST", 0)
+                doc.addImage(card.canvas, format , x, y, 69, 94, card['title'], "FAST", 0)
                 pageCounter += 1;
             }
         }

@@ -678,8 +678,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Improvised Grenade',
-    'text': `Target player selects and removes from <br>the game a card from their stash costing <br>2 or less.<br>
-    When Discarded: +1 :Card:.`,
+    'text': `Target player selects and removes from the game a card from their stash costing 2 or less.<br> 
+        When Discarded: Apply this card’s effect to all players with themselves as the target.`,
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
     'type': 'attack',
@@ -793,8 +793,34 @@ are reminders of triggered effects<br>
     'flavor': 'A single voice may go unheard, but a united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
+    'victory': '2',
+    'cost': '2',
+    'amount': 1,
+},
+
+{
+    'title': 'Tax Collector',
+    'text': `+1 :Card:, +1 :Coin: :or: +1 :Coin: for each Structure in an enemy's stash, up to a maximum of 3 coins.`,
+    // 'reduced-font-size': true,
+    //'flavor': 'A knock on the door, and you are poor.',
+    'img': 'adventures/tax-collector.png',
+    'type': 'adventure',
     'victory': '1',
     'cost': '1',
+    'amount': 1,
+},
+
+
+{
+    'title': 'Hidden Cove',
+    'text': `+1 :Coin: for each different card type in the supply. Then flip 2 supply cards face down.
+    These cards do not exist. Restore them at any time on your next turn.`,
+    // 'reduced-font-size': true,
+    //'flavor': 'A knock on the door, and you are poor.',
+    'img': 'structures/hidden-cove.png',
+    'type': 'structure',
+    'victory': '3',
+    'cost': '3',
     'amount': 1,
 }
 
