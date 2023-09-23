@@ -828,9 +828,15 @@ function generatePrintSheet(e) {
                     pageCounter = 0;
                 }
 
+                // do not expect a lot of saved space using JPG
+                var f = 'JPG'
+                if (format=='png') {
+                    f = 'PNG'
+                }
+
                 var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
                 var x = (210 / 3.0) * (pageCounter % 3);
-                doc.addImage(card.canvas, format , x, y, 69, 94, card['title'], "FAST", 0)
+                doc.addImage(card.canvas, f, x, y, 69.596, 94.996, card['title'], "FAST", 0)
                 pageCounter += 1;
             }
         }

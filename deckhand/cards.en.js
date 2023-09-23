@@ -754,7 +754,6 @@ are reminders of triggered effects<br>
     'text': `All players reveal the top card of their <br>deck: You may swap a revealed card with 
             <br>a card from the supply as long as the <br>cost difference is 2 or less.`,
     'img': 'structures/skull.png',
-    //'reduced-font-size': true,
     'type': 'structure',
     'victory': '4',
     'cost': '4',
@@ -776,8 +775,6 @@ are reminders of triggered effects<br>
     'title': 'The Grand Council',
     'text': `+2 :Action:. Before the end of your turn,<br> flip 4 supply cards face down.
     These <br>cards do not exist. Restore them at any <br>time on your next turn.`,
-    // 'reduced-font-size': true,
-    // 'flavor': 'Arbitrary decisions serve as displays of power.',
     'img': 'structures/grand-council.png',
     'type': 'structure',
     'victory': '5',
@@ -789,7 +786,6 @@ are reminders of triggered effects<br>
 {
     'title': 'Angry Mob',
     'text': `+1 :Coin: for each 1 cost card in the supply.`,
-    // 'reduced-font-size': true,
     'flavor': 'A single voice may go unheard, but a united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
@@ -801,8 +797,6 @@ are reminders of triggered effects<br>
 {
     'title': 'Tax Collector',
     'text': `+1 :Card:, +1 :Coin: :or: +1 :Coin: for each Structure in an enemy's stash, up to a maximum of 3 coins.`,
-    // 'reduced-font-size': true,
-    //'flavor': 'A knock on the door, and you are poor.',
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '1',
@@ -815,8 +809,6 @@ are reminders of triggered effects<br>
     'title': 'Hidden Cove',
     'text': `+1 :Coin: for each different card type in the supply. Then flip 2 supply cards face down.
     These cards do not exist. Restore them at any time on your next turn.`,
-    // 'reduced-font-size': true,
-    //'flavor': 'A knock on the door, and you are poor.',
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
     'victory': '3',
