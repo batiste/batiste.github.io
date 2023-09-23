@@ -834,8 +834,12 @@ function generatePrintSheet(e) {
                     f = 'PNG'
                 }
 
-                var y = (297 / 3.0) * Math.floor(pageCounter / 3.0)
-                var x = (210 / 3.0) * (pageCounter % 3);
+                // printer need 8 mm margins
+
+                
+
+                var y = 10 + ((297 - 20) / 3.0) * Math.floor(pageCounter / 3.0)
+                var x = 4 + ((210 - 10) / 3.0) * (pageCounter % 3);
                 doc.addImage(card.canvas, f, x, y, 69.596, 94.996, card['title'], "FAST", 0)
                 pageCounter += 1;
             }
