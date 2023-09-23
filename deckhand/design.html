@@ -121,9 +121,9 @@
                 <li>Resolve card effects <b>in the written order</b>. If effects would trigger simultaneously,
                     the initiator of the first effect decides the order.</li>
                 <!-- You may only gain and use <img class="rule-icon star" src="icons/star.svg" />, <img class="rule-icon star" src="icons/cycle-2.svg" /> or Buys during your turn. -->
-                <li>You can only discard cards from your hand. Revealing or looking at cards does not place them in your hand.</li>
-                <li>Unless specified, revealed cards return to their original position <b>immediately</b>. 
-                    Revealing cards never empties a deck.</li>
+                <li>You can only discard cards from your hand. Revealing or looking at 
+                    cards does not place them in your hand nor empties decks. Unless specified, revealed 
+                    cards return to their original position <b>immediately</b>.</li>
                 <li>If an effect cannot be fully applied, it still applies partially, to the extent possible.
                     However, you cannot choose effects or targets that are inapplicable.
                     You cannot own fewer than 4 cards.</li>
@@ -201,7 +201,10 @@
                 <li>Tu disposes de 2 Actions par tour, parmi lesquelles :
                     <ul>
                         <li>Jouer une carte : Mets la carte de coté, active ses effets et conséquences <b>puis</b> mets-la dans ta planque.</li>
-                        <li>Acheter une carte de la réserve : Elle est mise dans ta planque.</li>
+                        <li>Achète une carte de la réserve : Paie le coût indiqué par le 
+                            coffre <img class="rule-icon" src="icons/chest-simplified.svg" /> en bas à droite avec 
+                            des pièces <img class="rule-icon coin" src="icons/coins.svg" /> 
+                            et ajoute-la à ta planque.</li>
                     </ul>
                 </li>
                 <li>Lorsque ton deck est vide, mélange <b>immédiatement</b> ta planque pour former un nouveau deck, puis reprent tout effet en cours.
@@ -247,31 +250,24 @@
                 </h3>
             
                 <ol>
-                    <li>Les Trésors sont la monnaie pour acheter des cartes de la réserve. Le coût est indiqué
-                        par l'icône de coffre en bas à droite <img class="rule-icon" src="icons/chest.svg" />.
-                        L'icône de crochet en bas à gauche <img class="rule-icon" src="icons/hook.svg" /> indique les points de victoire.</li>
-                    <li><img class="rule-icon" src="icons/card-discard-yellow.svg" />&nbsp;<img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-                        Les icônes en haut à gauche sont des effets déclenchés.</li>
-                    <li><img class="rule-icon" src="icons/target.svg" /> Indique des effets ciblés qui affectent les ennemis..</li>
-                    <li><b>+1 Trésor :</b> Prends immédiatement 1 Trésor de la banque.</li>
-                    <li><b>+1 Carte :</b> Pioche immédiatement une carte de ton deck.</li>
-                    <li><b>+1 Action :</b> Tu as droit à 1 Action de plus ce tour-ci.</li>
-                    <li><b>+1 Achat :</b> Tu peux acheter 1 carte sans utiliser d'action ce tour-ci.</li>
-                    <li><b>+1 Recharge :</b> Tu peux mettre 1 carte de la réserve en bas du deck recharge ce tour-ci.
-                        Remplace-la par 1 carte du deck <b>recharge</b>.</li>
-                    <li>+1 Défausse : Défausse immédiatement une carte <img class="rule-icon" src="icons/card-discard-yellow.svg" />.</li>
-                    <li>Applique les effets des cartes <b>dans l'ordre écrit</b>. 
-                        Acquiers et utilise Action, Achat, ou Recharge seulement durant ton tour.</li>
-                    <li>Une carte étant jouée n'est ni en main ni en défausse.</li>
-                    <!-- <li>Les cartes ont 3 types possibles : Attaque, Structure, Aventure.</li> -->
-                    <!-- <li>Le texte disant "vous avez" fait référence aux cartes se trouvant dans votre main.</li> -->
-                    <li>Tu ne peux défausser que des cartes de ta main.
-                        <!-- Jouer n'est pas Défausser. -->
-                        Dispose ta pile de défausse face visible afin de permettre un examen rapide.</li>
-                    <!-- <li>Si un effet ne contient pas le mot clé "cible", rien n'est ciblé.</li> -->
-                    <li>Sauf spécification contraire, les cartes révélées retournent à leur place d'origine <b>immédiatement</b>.
-                        Révéler ne vide jamais un deck.</li>
-                    <li>Si le deck/main/défausse est trop petit pour un effet, applique-le à toute quantité non nulle. Tu ne peux pas avoir moins de 4 cartes.</li> <!-- ; tout effet tentant de le faire est annulé. -->
+                    <li>Aligne tes cartes de planque face vers le haut, permettant aux joueurs de les identifier rapidement.
+                        Fait de même avec tes pièces.
+                    </li>
+                    <li><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /> :</b> Prend immédiatement 1 pièce de la banque.</li>
+                    <li><b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" /> :</b> Tu peux immédiatement piocher 1 carte de ton deck.</li>
+                    <li><b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" /> :</b> Tu peux immédiatement placer 1 carte de la réserve en bas 
+                        du deck de recharge et la remplacer par une du <b>deck de recharge</b>.</li>
+                    <li><b>+1 Action :</b> Gagne 1 Action supplémentaire à utiliser plus tard ce tour. N'utilise pas plus de 5 Actions par tour.</li>
+                    <li><b>+1 Achat :</b> Achete 1 carte sans utiliser d'Action plus tard ce tour.</li>
+                    <li><b>Paye 1 <img class="rule-icon coin" src="icons/coins.svg" /> :</b> Place 1 de tes pièces dans la banque.</li>
+                    <li><b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta réserve.</li>
+                    <li>Résous l'effets des cartes <b>dans l'ordre écrit</b>. Si ils se déclenchent simultanément,
+                        l'initiateur du premier effet décide de l'ordre.</li>
+                    <li>Tu ne peux défausser que des cartes de ta main. Révéler ou regarder des cartes 
+                        ne les place pas dans ta main ni ne vide un deck. Sauf mention contraire, les cartes 
+                        révélées retournent à leur position d'origine <b>immédiatement</b>.</li>
+                    <li>Si un effet ne peut pas être pleinement appliqué, il s'applique autant que possible. Évite cependant les effets ou cibles inapplicables. 
+                        Tu ne peux pas posséder moins de 4 cartes.</li>
                 </ol>
 
                 <h3>Fin du jeu</h3>
