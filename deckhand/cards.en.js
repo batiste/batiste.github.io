@@ -47,7 +47,7 @@ var cards = [
 {
     'title': 'Player Turn Overview',
     'text': `1. Resolve any start-of-turn effects that might trigger <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
-2. Discard <img class="rule-icon" src="icons/card-discard-yellow.svg" /> your hand then draw 3 cards from your deck.<br>
+2. Discard <img class="rule-icon" src="icons/card-discard-yellow.svg" /> your hand, if any, then draw 3 cards from your deck.<br>
 3. You then have 2 Actions that you can use in the following ways:<br>
 &nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside, resolve its effects and consequences <b>then</b> put the card into your stash.<br>
 &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
