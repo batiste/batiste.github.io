@@ -53,7 +53,7 @@ var cards = [
 &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
 indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
 with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
-If at any point of the game your deck is empty, immediately shuffle your stash into a new deck, then resume any ongoing activity.
+If your deck is ever empty, immediately shuffle your stash into a new deck and resume any ongoing actions or effects.
     `,
     // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
