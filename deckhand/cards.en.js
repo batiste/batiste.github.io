@@ -785,8 +785,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin: for each 1 cost card in the supply.`,
-    'flavor': 'A single voice may go unheard, but a united roar shakes the foundations.',
+    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply <br>up to a maximum of 4 coins.`,
+    //'flavor': 'A united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
     'victory': '2',
@@ -796,7 +796,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Tax Collector',
-    'text': `+1 :Card:, +1 :Coin: :or: +1 :Coin: for each Structure in an enemy's stash, up to a maximum of 3 coins.`,
+    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: for each Structure in an enemy’s stash, up to a maximum of 3 coins.`,
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '1',
@@ -807,8 +807,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Hidden Cove',
-    'text': `+1 :Coin: for each different card type in the supply. Then flip 2 supply cards face down.
-    These cards do not exist. Restore them at any time on your next turn.`,
+    'text': `+1 :Coin: for each different card type in the supply. Then flip 1 supply cards face down.
+    This card do not exist. Restore it at any time on your next turn.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
     'victory': '3',
