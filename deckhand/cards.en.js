@@ -785,7 +785,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply <br>up to a maximum of 4 coins.`,
+    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply, <br>up to a maximum of 3 coins.`,
     //'flavor': 'A united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
@@ -807,11 +807,11 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Hidden Cove',
-    'text': `+1 :Coin: for each different card type in the supply. Then flip 1 supply cards face down.
-    This card do not exist. Restore it at any time on your next turn.`,
+    'text': `Flip 1 supply cards face down. This card do not exist. Restore it at any time on your next turn.
+    Then +1 :Coin: for each different card type in the supply.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
-    'victory': '3',
+    'victory': '2',
     'cost': '3',
     'amount': 1,
 }
