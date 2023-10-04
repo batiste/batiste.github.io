@@ -234,7 +234,7 @@ are reminders of triggered effects<br>
 {
     'title': 'Imperial Powder',
     'text': `+1 :Coin:, +1 :Reload:. If you lose ownership of this card: 
-    Select a card that costs 2 or less from the stash of target enemy and remove it from the game.`,
+    Select a card costing 2 or less from target enemy’s stash and remove it from the game.`,
     // 'flavor': 'WARNING: Do not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     // 'reduced-font-size': '9.0px',
