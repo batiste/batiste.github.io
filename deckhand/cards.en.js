@@ -233,9 +233,11 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Imperial Powder',
-    'text': '+1 :Coin:, +1 :Reload:. If you lose ownership of this card: Remove from the game a card from target enemy’s stash that costs 2 or less.',
+    'text': `+1 :Coin:, +1 :Reload:. If you lose ownership of this card: 
+    Remove from the game a card that costs 2 or less from the stash of target enemy.`,
     'flavor': 'WARNING: Do not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
+    'reduced-font-size': '9.0px',
     'type': 'structure',
     'cost': 1,
     'victory': 1,
@@ -401,7 +403,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may give a coin from the <br>bank to every player. If you do, each <br>player must Discard a card after their <br>initial draw on their next turn.',
+    'text': '+2 :Coin:. You may give a bank coin to every player. If you do, each player must Discard a card after their initial draw on their<br> next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -466,7 +468,7 @@ are reminders of triggered effects<br>
 {
     'title': 'Governor’s Jail',
     'text': `+2 :Coin:. Flip 1 supply card face down.<br>
-    This card does not exist. Restore it at <br>any time on your next turn.`,
+    This card is out of the game. Restore it at <br>any time on your next turn.`,
     'flavor': 'Dear guest, you’re truly at your best restrained.',
     'img': 'structures/jail.png',
     'type': 'structure',
@@ -525,7 +527,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 :Coin:. You may remove a card from your hand or stash from the game. Gain as many coins as the cost of the removed card.',
+    'text': ' +2 :Coin:. You may remove a card from your hand or stash from the game. Gain coins equal to the cost of the removed card.',
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -773,8 +775,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'The Grand Council',
-    'text': `+2 :Action:. Before the end of your turn,<br> flip 4 supply cards face down.
-    These <br>cards do not exist. Restore them at any <br>time on your next turn.`,
+    'text': `+2 :Action:. Before the end of your turn, flip 4 supply cards face down.
+    These cards are out of the game. Restore them at any time on your next turn.`,
     'img': 'structures/grand-council.png',
     'type': 'structure',
     'victory': '5',
@@ -807,7 +809,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Hidden Cove',
-    'text': `Flip 1 supply cards face down. This card do not exist. Restore it at any time on your next turn.
+    'text': `Flip 1 supply cards face down. This card is out of the game. Restore it at any time on your next turn.
     Then +1 :Coin: for each different card type in the supply.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
