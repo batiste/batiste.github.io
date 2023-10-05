@@ -307,7 +307,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Alchemy',
-    'text': 'Discard up to 3 cards, get that many coins. Then +2 :Card:.',
+    'text': 'Discard up to 3 cards. Get a coin for each discarded card. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What <br>could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
