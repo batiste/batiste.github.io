@@ -71,8 +71,8 @@ If your deck is ever empty, immediately shuffle your stash into a new deck and r
 <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
 <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
         If you do, replace it with a <b>reload deck</b> card.<br>
-<b>+1 Action:</b> Gain 1 extra Action to use later this turn.<br>
-<b>+1 Buy:</b> You may Buy 1 card without using an Action later this turn.<br>
+<b>+1 Action:</b> Gain an extra Action this turn.<br>
+<b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
 <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
 <b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
