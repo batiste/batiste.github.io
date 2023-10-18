@@ -111,7 +111,7 @@ are reminders of triggered effects<br>
 {
     'title': 'Tavern',
     'text': `If you have an Adventure in hand: +1 :Card:.<br>
-        If you have an Attack in hand: +1 :Coin:.<br>
+        Then if you have an Attack in hand: +1 :Coin:.<br>
         If you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
@@ -148,7 +148,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Mutiny',
-    'text': '+2 :Buy:, +1 :Coin:, +1 :Reload:.<br>Use these Buys only for cards that cost 1.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>Put a 1 cost supply card into your stash.',
     'img': 'attacks/mutiny.png',
     'type': 'attack',
     'flavor': `Rising as one, we demand our rightful share!`,
