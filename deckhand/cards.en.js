@@ -148,7 +148,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Mutiny',
-    'text': '+1 :Coin:, +1 :Reload:.<br>Put a 1 cost supply card into your stash.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>Put a 1-cost supply card into your stash.',
     'img': 'attacks/mutiny.png',
     'type': 'attack',
     'flavor': `Rising as one, we demand our rightful share!`,
@@ -159,7 +159,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Blademaster',
-    'text': '+1 :Coin: for each 1 cost card in hand.<br>+1 :Action: for each 3 cost card in hand.',
+    'text': '+1 :Coin: for each 1-cost card in hand.<br>+1 :Action: for each 3-cost card in hand.',
     'flavor': `Accomplished tacticians blend subtle <br>manoeuver with grand gestures.`,
     'img': 'attacks/dance-master-3.png',
     'type': 'attack',
@@ -787,7 +787,9 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply, <br>up to a maximum of 3 coins.`,
+    'text': `+1 :Coin: for each  1-cost card in the <br>supply, up to a maximum of 3 coins.<br>
+    If this card if in your stash, and you <br>buy a 1-cost card: +1 :Action:.
+    `,
     //'flavor': 'A united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
