@@ -787,12 +787,12 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply, <br>up to a maximum of 4 coins.`,
+    'text': `+1 :Coin:, +1 :Reload::or:+1 :Coin: for each 1 cost card in the supply, <br>up to a maximum of 3 coins.`,
     //'flavor': 'A united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
-    'victory': '1',
-    'cost': '1',
+    'victory': '2',
+    'cost': '2',
     'amount': 1,
 },
 
