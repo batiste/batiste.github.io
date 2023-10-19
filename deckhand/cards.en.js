@@ -457,7 +457,7 @@ are reminders of triggered effects<br>
 {
     'title': 'Haunted Cave',
     'text': '+2 :Card:. Then +1 :Coin: for each Attack in <br>hand, up to a maximum of 3 coins.',
-    'flavor': 'This place resonates with skeletal clatters. Fear <br>not, for the pure-hearted and free of greed.',
+    'flavor': 'Clattering bones pierce the haunting silence.',
     'img': 'attacks/infested-cave.png',
     'type': 'attack',
     'victory': '2',
