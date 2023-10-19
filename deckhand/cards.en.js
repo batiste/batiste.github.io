@@ -74,7 +74,7 @@ If your deck is ever empty, immediately shuffle your stash into a new deck and r
 <b>+1 Action:</b> Gain an extra Action this turn.<br>
 <b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
 <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
-<b>+1 Discard:</b> Discard 1 card from your hand into your stash.<br>
+<b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 are reminders of triggered effects<br>
 <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
