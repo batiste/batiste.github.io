@@ -36,7 +36,7 @@ var fr_translations = [
   },
   {
     "title":"Taverne",
-    "text":"+1 :Card: si tu as une Aventure en main.<br>+1 :Coin: si tu as une Attaque en main.<br>+1 :Action: si tu as une Structure en main.",
+    "text":"+1 :Card: si tu as une Aventure en main.<br>Puis +1 :Coin: si tu as une Attaque en main.<br>+1 :Action: si tu as une Structure en main.",
     "flavor":"Elle rassemble voleurs, coquins et fripouilles."
   },
   {
@@ -85,7 +85,7 @@ var fr_translations = [
   },
   {
     "title":"Mariage du Gouverneur",
-    "text":"+1 :Coin:. Au prochain tour de l’ennemi ciblé, il gagne +1 Achat et doit tu donner un Trésor avant son premier achat.",
+    "text":"+1 :Coin:. Au prochain tour de l’ennemi ciblé, il gagne +1 Achat et doit tu donner une pièce avant son premier achat.",
     "flavor":"Un luxueux cadeau assure faveurs et influence."
   },
   {
@@ -100,7 +100,7 @@ var fr_translations = [
   },
   {
     "title":"Voleur de Ruelle",
-    "text":"+1 :Coin:, +1 :Reload:, +1 :Card:.:or:Vole un Trésor au joueur ciblé, +1 :Card:.",
+    "text":"+1 :Coin:, +1 :Reload:, +1 :Card:.:or:Vole une pièce au joueur ciblé, +1 :Card:.",
     "flavor":"Une ombre fugace, tes trésors disparaissent !"
   },
   {
@@ -121,7 +121,7 @@ var fr_translations = [
   },
   {
     "title":"Alchimie",
-    "text":"Défausse jusqu'a 3 cartes, obtient autant de Trésors. +2 :Card:.",
+    "text":"Défausse jusqu'a 3 cartes, obtient autant de pièces. Puis +2 :Card:.",
     "flavor":"Imprégné de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
   },
   {
@@ -165,7 +165,7 @@ var fr_translations = [
   },
   {
     "title":"Exploration",
-    "text":"+1 :Action: si tu as une Aventure en main.<br>+1 :Card:, +1 :Coin:.",
+    "text":"+1 :Action: si tu as une Aventure en main.<br>Puis +1 :Card:, +1 :Coin:.",
     "flavor":"Mettez les voiles, mais pas sans une boussole en main."
   },
   {
@@ -184,8 +184,8 @@ var fr_translations = [
   },
   {
     "title": "Caverne Hantée",
-    "text": "+2 :Card:. +1 :Coin: pour chaque Attaque dans ta main, mais pas plus de 3.",
-    "flavor": "Cet endroit résonne de cliquetis squelettiques. N'aie crainte, les cœurs purs sont en sécurité."
+    "text": "+2 :Card:. Puis +1 :Coin: pour chaque Attaque dans ta main, mais pas plus de 3.",
+    "flavor": "Des cliquetis squelettiques perce le silence."
   },
   {
     "title": "Prison du Gouverneur",
@@ -293,7 +293,7 @@ var fr_translations = [
   },
   {
     "title": "Mercenaire des Néréides",
-    "text": "Paye 1 :Coin:: révéle les 2 premières cartes du deck de réserve. Mets-en une dans ta planque.",
+    "text": "Paye 1 :Coin:: révèle les 2 premières cartes du deck de réserve. Mets-en une dans ta planque.",
     "flavor": "Est-ce rentable de négocier avec cette atrocité ?"
   },
   {
@@ -312,6 +312,6 @@ var fr_translations = [
   },
   {
     "title": "Le Grand Conseil",
-    "text": "+2 :Action:s. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes n’existent pas. Restaure-les à tout moment lors de ton prochain tour."
+    "text": "+2 :Action:. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes n’existent pas. Restaure-les à tout moment lors de ton prochain tour."
   }
 ]
