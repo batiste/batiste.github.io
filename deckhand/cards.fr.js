@@ -1,37 +1,81 @@
 var fr_translations = [
   {
-    "title":"Bagarre",
-    "text":"+1 :Coin:.",
-    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
+    "title":"1 Pièce",
+    'text': `Un jeton pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
+    "flavor":"Un pirate dépense sans compter."
   },
   {
-    "title":"Bagarre",
-    "text":"+1 :Coin:.",
-    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
+    "title":"3 Pièces",
+    'text': `3 jetons pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
+    "flavor":"Comment avez-vous acquis de telles richesses ?"
   },
   {
-    "title":"Bagarre",
-    "text":"+1 :Coin:.",
-    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
+    'title': 'Anatomie d\'une Carte',
+    'text': `
+    <div class="anatomy-list">
+      1. Symboles de rappel
+      &nbsp;&nbsp;&nbsp; 2. Titre<br>
+      3. Texte <i>(effets)</i>
+      &nbsp;&nbsp; 4. Crochets <i>(points de victoire)</i><br>
+      5. Type 
+      &nbsp;&nbsp;&nbsp; 6. Coût <i>(à payer en pièces)</i>
+    </div>`,
+    // 'flavor': 'Pirates are notorious spenders.',
+    'img': 'marketing/card-anatomy.png',
+    'type': 'rule',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 1
   },
+
+  {
+    'title': 'Aperçu du Tour du Joueur',
+    'text': `1. Résous les effets qui peuvent se produire au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
+2. Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes.<br>
+3. Tu disposes de 2 Actions par tour, parmi lesquelles:<br>
+&nbsp;&nbsp;&nbsp; • Jouer une carte : Mets la carte de coté, résous ses effets et conséquences <b>puis</b> mets-la dans ta planque.<br>
+&nbsp;&nbsp;&nbsp; • Achète 1 carte de la réserve: Paie le coût en pièces <img class="rule-icon coin" src="icons/coins.svg" />  indiqué par le 
+coffre <img class="rule-icon" src="icons/chest-simplified.svg" /> en bas à droite
+puis mets-la dans ta planque.<br>
+Lorsque ton deck est vide, mélange <b>immédiatement</b> ta planque pour former un nouveau deck, puis reprends tout action ou effet en cours.
+    `,
+    // 'flavor': 'Pirates are notorious spenders.',
+    'img': 'marketing/booklet.png',
+    'type': 'rule',
+    'class': 'quick-ref',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 1
+},
+
+{
+  'title': 'Référence Rapide des Cartes',
+  'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Prends 1 pièce de la banque.<br>
+<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> Tu peux immédiatement piocher 1 carte de ton deck.<br>
+<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> Tu peux immédiatement placer 1 carte de la réserve en bas 
+du deck de recharge et la remplacer par une du <b>deck de recharge</b>.<br>
+<b>+1 Action:</b> Gagne 1 Action supplémentaire à utiliser plus tard ce tour.<br>
+<b>+1 Achat:</b> Achète 1 carte sans utiliser d'Action plus tard ce tour.<br>
+<b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque. Place 1 de tes pièces dans la banque.<br>
+<img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+sont des rappels d'effets déclenchés<br>
+<img class="rule-icon target" src="icons/target.svg" /> indique des effets ciblés qui affectent les ennemis.`,
+  'img': 'marketing/booklet.png',
+  'type': 'rule',
+  'class': 'quick-ref',
+  'amount': 1
+},
+
   {
     "title":"Bagarre",
-    "text":"+1 :Coin:.",
-    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
-  },
-  {
-    "title":"Bagarre",
-    "text":"+1 :Coin:.",
-    "flavor":"Les amitiés pirates débutent souvent par une bagarre."
-  },
-  {
-    "title":"Bagarre",
-    "text":"+1 :Coin:.",
+    "text":"+1 :Coin:<br><i>(Prend 1 pièce de la banque.)</i>",
     "flavor":"Les amitiés pirates débutent souvent par une bagarre."
   },
   {
     "title":"Célébration",
-    "text":"+1 :Reload:, +1 :Card:<br>.Puis +1 :Coin: par Célébration en main",
+    "text":`+1 :Card: <i>(Tu peux piocher 1 carte.)</i>
+    <br>+1 :Reload: <i>(Recharge 1 carte de la réserve.)</i>
+    <br>Puis +1 :Coin: par Célébration en main.`,
     "flavor":"Grog solitaire ou rires partagés ?"
   },
   {
@@ -50,7 +94,7 @@ var fr_translations = [
   },
   {
     'title': 'Mutinerie',
-    'text': '+2 Achat, +1 :Coin:, +1 :Reload:.<br>Utilise ces Achats pour des cartes coutant 1.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>Mets une carte de la réserve coûtant 1 dans ta planque.',
     'flavor': `Rising as one, we demand our rightful share!`,
   },
   {
@@ -99,7 +143,7 @@ var fr_translations = [
     "flavor":"Parfois, la langue est plus tranchante que l’épée."
   },
   {
-    "title":"Voleur de Ruelle",
+    "title":"Brigand",
     "text":"+1 :Coin:, +1 :Reload:, +1 :Card:.:or:Vole une pièce au joueur ciblé, +1 :Card:.",
     "flavor":"Une ombre fugace, tes trésors disparaissent !"
   },
@@ -115,13 +159,15 @@ var fr_translations = [
   },
   {
     "title": "Typhon",
-    "text": "+2 :Card:, +1 Défausse, +1 :Coin:. Tout les joueurs déplace une carte de sa planque ou, si impossible, du dessus de son deck vers la planque du voisin de gauche.",
+    "text": `+2 :Card:, +1 Défausse, +1 :Coin:. Puis tous les joueurs 
+    déplacent simultanément une carte de leur planque ou la carte supérieure de leur deck 
+    (sans regarder) dans la planque de leur voisin de gauche.`,
     "flavor": "",
     // "flavor": "Un chaos tourbillonnant ! Un cauchemar!"
   },
   {
     "title":"Alchimie",
-    "text":"Défausse jusqu'a 3 cartes, obtient autant de pièces. Puis +2 :Card:.",
+    "text":"Défausse jusqu'à 3 cartes. Gagne 1 pièce pour chaque carte défaussée. Puis, +2 :Card:.",
     "flavor":"Imprégné de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
   },
   {
@@ -160,7 +206,7 @@ var fr_translations = [
     "flavor":"Chaque page dévoile un secret impérial."
   },
   {
-    "title":"Usine de Rhum",
+    "title":"Fabrique de Rhum",
     "text":"+2 :Coin:. Tu peux donner une Pièce de la banque à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
   },
   {
@@ -185,11 +231,11 @@ var fr_translations = [
   {
     "title": "Caverne Hantée",
     "text": "+2 :Card:. Puis +1 :Coin: pour chaque Attaque dans ta main, mais pas plus de 3.",
-    "flavor": "Des cliquetis squelettiques perce le silence."
+    "flavor": "Des cliquetis squelettiques perce le silence hanté."
   },
   {
     "title": "Prison du Gouverneur",
-    "text": "+2 :Coin:. Retourne un carte de la réserve face cachée. Cette carte n'existe pas. Restaure-là lors de ton prochain tour.",
+    "text": "+2 :Coin:. Retourne un carte de la réserve face cachée. Cette carte est hors jeu. Restaure-là lors de ton prochain tour.",
     // "flavor": "Les forces de l’océan sont indomptables."
   },
   {
@@ -272,11 +318,12 @@ var fr_translations = [
   },
   {
     "title": "Course Désespérée",
-    "text": "Toi et un ennemi révélez les 3 premières cartes de vos decks. Si tu as révélé plus d’Attaques : mets une carte de la réserve coûtant 4 ou moins dans ta planque."
+    "text": `Toi et un ennemi devez avoir au moins 2 cartes dans vos decks. Révélez les 3 cartes supérieures de vos decks.
+    Si tu révèles plus d'Attaques que lui, place une carte de la réserve coûtant 4 pièces ou moins dans ta planque.`
   },
   {
     "title": "Grenade Improvisée",
-    "text": "Le joueur ciblé choisit une carte de sa planque et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs." // avec eux-même comme cible
+    "text": "Le joueur ciblé choisit une carte de sa planque coûtant 2 ou moins et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs avec eux-même comme cible." // 
   },
   {
     "title": "Cimetière Délaissé",
@@ -284,8 +331,9 @@ var fr_translations = [
   },
   {
     "title": "Poupée Envoûtée",
-    "text": "Au prochain tour de l’ennemi ciblé, joue sa première action. Prends les décisions qui en découlent, y compris de nouvelles actions.",
-    "flavor": "Le destin est un concept fragile."
+    "text": `Au tour suivant de l'ennemi ciblé, contrôle sa première Action, prenant toutes ses décisions. 
+    Tu peux aussi contrôler les Actions ou Achats qu'il pourrait obtenir grâce à ce contrôle.`,
+    // "flavor": "Le destin est un concept fragile."
   },
   {
     "title": "Marchand Sournois",
@@ -312,6 +360,6 @@ var fr_translations = [
   },
   {
     "title": "Le Grand Conseil",
-    "text": "+2 :Action:. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes n’existent pas. Restaure-les à tout moment lors de ton prochain tour."
+    "text": "+2 :Action:. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes sont hors jeu. Restaure-les à tout moment lors de ton prochain tour."
   }
 ]

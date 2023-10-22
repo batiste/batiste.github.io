@@ -7,8 +7,6 @@ var cards = [
     'flavor': 'Pirates are notorious spenders.',
     'img': 'coins.png',
     'type': 'coin',
-    // 'victory': '1',
-    // 'cost': '1',
     'amount': 8,
     'coin': 1,
 },
@@ -19,8 +17,6 @@ var cards = [
     'flavor': 'How did you come to possess such riches?',
     'img': 'coins.png',
     'type': 'coin',
-    // 'victory': '1',
-    // 'cost': '1',
     'amount': 4,
     'coin': 3,
 },
@@ -36,11 +32,8 @@ var cards = [
         5. Type 
         &nbsp;&nbsp;&nbsp; 6. Cost <i>(to be paid in coins)</i>
     </div>`,
-    // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
-    // 'victory': '1',
-    // 'cost': '1',
     'amount': 1
 },
 
@@ -55,12 +48,9 @@ indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /
 with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
 If your deck is ever empty, immediately shuffle your stash into a new deck and resume any ongoing actions or effects.
     `,
-    // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
     'type': 'rule',
     'class': 'quick-ref',
-    // 'victory': '1',
-    // 'cost': '1',
     'amount': 1
 },
 
@@ -78,12 +68,9 @@ If your deck is ever empty, immediately shuffle your stash into a new deck and r
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 are reminders of triggered effects<br>
 <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
-    // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
     'type': 'rule',
     'class': 'quick-ref',
-    // 'victory': '1',
-    // 'cost': '1',
     'amount': 1
 },
 
