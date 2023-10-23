@@ -774,7 +774,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+1 :Coin: for each  1-cost card in the <br>supply, up to a maximum of 3 coins.<br>
+    'text': `+2 :Coin:, +1 :Reload:.<br>
     If this card if in your stash, and you <br>buy a 1-cost card: +1 :Action:.
     `,
     //'flavor': 'A united roar shakes the foundations.',
