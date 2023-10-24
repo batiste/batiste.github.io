@@ -9,6 +9,7 @@ var cards = [
     'type': 'coin',
     'amount': 8,
     'coin': 1,
+    // 'flip': 3,
 },
 
 {
@@ -19,6 +20,7 @@ var cards = [
     'type': 'coin',
     'amount': 4,
     'coin': 3,
+    // 'flip': 1,
 },
 
 {
@@ -30,11 +32,12 @@ var cards = [
         3. Text <i>(effects)</i>
         &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
         5. Type 
-        &nbsp;&nbsp;&nbsp; 6. Cost <i>(to be paid in coins)</i>
+        &nbsp; 6. Cost <i>(paid in coins to the bank)</i>
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
-    'amount': 1
+    'amount': 1,
+    // 'flip': 1,
 },
 
 {
@@ -51,7 +54,8 @@ If your deck is ever empty, immediately shuffle your stash into a new deck and r
     'img': 'marketing/booklet.png',
     'type': 'rule',
     'class': 'quick-ref',
-    'amount': 1
+    'amount': 1,
+    // 'flip': 1,
 },
 
 
@@ -71,7 +75,8 @@ are reminders of triggered effects<br>
     'img': 'marketing/booklet.png',
     'type': 'rule',
     'class': 'quick-ref',
-    'amount': 1
+    'amount': 1,
+    'flip': 1,
 },
 
 
@@ -170,8 +175,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Beach Bum',
-    'text': '+1 :Coin:, +1 :Reload:.<br>If you are the player that owns the<br> fewest cards: +1 :Buy:, +1 :Coin:.',
-    'flavor': 'Rumors have it that he is the richest man in town.',
+    'text': '+2 :Coin:.<br>If this card is in your stash, any player <br>can buy it as if it were a supply card.<br>You receive what they paid.',
+    //'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
     'victory': '1',
@@ -774,7 +779,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Angry Mob',
-    'text': `+2 :Coin:, +1 :Reload:.<br>
+    'text': `+2 :Coin:.<br>
     If this card if in your stash, and you <br>buy a 1-cost card: +1 :Action:.
     `,
     //'flavor': 'A united roar shakes the foundations.',

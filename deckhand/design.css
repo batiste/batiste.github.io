@@ -204,7 +204,7 @@ a, a:visited {
     line-height: 1.47;
 }
 
-.top-left-icons-container {
+.top-left-icons-container, .top-right-icons-container {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
     font-size:9.6px;
     line-height: 1.3;
@@ -386,7 +386,19 @@ a, a:visited {
     flex-direction: row;
 }
 
-.card .discard, .card .start, .card .target, .card .coin-top-left {
+.top-right-icons-container {
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.65);
+    top:5.5mm;
+    right:5.4mm;
+    border-radius: 0 0 0 3px;
+    text-align: center;
+    display: flex;
+    align-content: center;
+    flex-direction: row;
+}
+
+.card .discard, .card .start, .card .target, .card .coin-top-left, .card .flip-top-right {
     display: flex;
     padding: 1.1mm;
     padding-bottom: 0.4mm;
@@ -396,7 +408,12 @@ a, a:visited {
     height: 15px;
 }
 
-.card .coin-top-left {
+.card .flip-top-right {
+    padding-left: 1mm;
+    padding-right: 0.3mm;
+}
+
+.card .coin-top-left, .card .flip-top-right {
     width: auto;
 }
 
@@ -575,7 +592,7 @@ a, a:visited {
 #illustration {
     position:absolute;
     left: 50.1%;
-    top: 75.4%;
+    top: 61.0%;
     column-count: 2;
 }
 
@@ -669,7 +686,7 @@ ul {
     text-align: left;
     margin: 0;
     padding: 0;
-    margin-left: 16px;
+    margin-left: 12px;
 }
 
 .card .quick-ref .text {
@@ -678,7 +695,7 @@ ul {
     text-align: left;
 }
 
-.card .quick-ref .rule-icon.coin, .coin-top-left img {
+.card .quick-ref .rule-icon.coin, .coin-top-left img, .flip-top-right img {
     width: 14px;
     height: 12px;
     padding: 0 1px;
@@ -686,7 +703,7 @@ ul {
     margin-right: 1px;
 }
 
-.coin-top-left img {
+.coin-top-left img, .flip-top-right img {
     margin-left: 1.5px;
 }
 
@@ -706,4 +723,10 @@ ul {
 .card .quick-ref .target {
     height: 13px;
     margin-top: 0.9px;
+}
+
+.flip-top-right img.right-arrow {
+    margin-top: 1.5px;
+    margin-left: -1px;
+    height: 10.5px;
 }

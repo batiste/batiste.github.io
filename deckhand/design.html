@@ -83,7 +83,7 @@
              </p>
             </div>
 
-             <div style="margin-bottom: 18px; position: relative;">
+             <div style="margin-bottom: -1px; position: relative;">
                 <img src="marketing/board.png" width="102%" style="margin-left: -1%;" />
                 <div id="illustration" style="width:140px">
                     <div style="width:67px">
@@ -396,6 +396,7 @@
         }
 
         var top_left = '';
+        var top_right = '';
 
         if(c['start'] != undefined) {
             top_left += `<span class="start"><img src="icons/bookmark-yellow.svg" /></span>`
@@ -413,8 +414,16 @@
             top_left += `<span class="coin-top-left">${c['coin']}<img src="icons/coins.svg" /></span>`
         }
 
+        if(c['flip'] != undefined) {
+            top_right += `<span class="flip-top-right">${c['flip']}<img src="icons/coins.svg" /><img src="icons/right-arrow.svg" class="right-arrow" /></span>`
+        }
+
         if (top_left) {
             extra += `<span class="top-left-icons-container">${top_left}</span>`
+        }
+
+        if (top_right) {
+            extra += `<span class="top-right-icons-container">${top_right}</span>`
         }
 
         if(c['type'] == "attack") {
