@@ -94,7 +94,7 @@ const cubeMaterials = [
 
 const textureMaterial = new THREE.MeshBasicMaterial( { color: 0xF0F0F0, envMap: cubeMaterials } );
 
-const geometry = new THREE.BoxGeometry( 3, 4, 1.5 ); 
+const geometry = new THREE.BoxGeometry( 3, 4, 1.4 ); 
 const cube = new THREE.Mesh( geometry, cubeMaterials ); 
 scene.add( cube );
 
