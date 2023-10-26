@@ -175,8 +175,8 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Beach Bum',
-    'text': '+2 :Coin:.<br>If this card is in your stash, any player <br>can buy it as if it were a supply card.<br>You receive what they paid.',
-    //'flavor': 'Rumors have it that he is the richest man in town.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>If you are the player that owns the<br> fewest cards: +1 :Buy:, +1 :Coin:.',
+    'flavor': 'Rumors have it that he is the richest man in town.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
     'victory': '1',
