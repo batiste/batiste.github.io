@@ -342,7 +342,7 @@ a, a:visited {
 }
 
 .rules {
-    font-family: 'Della Respira', serif;
+    /* font-family: 'Della Respira', serif; */
     font-size:13px;
     color: #ffffff;
     text-align: left;
@@ -601,7 +601,7 @@ a, a:visited {
 #illustration {
     position:absolute;
     left: 50.1%;
-    top: 61.0%;
+    top: 73.0%;
     column-count: 2;
 }
 
@@ -691,6 +691,7 @@ ul {
     top: 63mm;
 }
 
+
 .anatomy-list {
     text-align: left;
     margin: 0;
@@ -738,4 +739,87 @@ ul {
     margin-top: 1.5px;
     margin-left: -1px;
     height: 10.5px;
+}
+
+
+.card .type-indicator .title {
+    top:29mm;
+    color: #000;
+    text-shadow: none;
+}
+
+
+.card .type-indicator .frame {
+    color: #000;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.card .type-indicator .frame div {
+    display: none;
+}
+
+.card .type-indicator .text {
+    color: #000;
+    text-shadow: none;
+    top: 33mm;
+}
+
+.card .type-treasure .frame {
+    color: #000;
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+}
+
+.card .type-indicator .subtype {
+    display: none;  
+}
+
+.card .quick-ref-2 .text {
+    top: 29mm;
+}
+
+.card .quick-ref-2 .title {
+    top: 23mm;
+}
+
+
+
+.card .type-treasure .subtype {
+    display: none;  
+}
+
+/* .card .type-treasure .frame div {
+    display: none;
+} */
+
+.card .type-treasure .text {
+    color: #000;
+    top: 2mm;
+    bottom: 2mm;
+    right: 8mm;
+    left:52mm;
+}
+
+.treasure-coins {
+    margin:0;
+    padding:0;
+}
+
+.treasure-coins li {
+    font-family: 'Lobster Two', cursive;
+    display: block;
+    padding: 0.7px 10px;
+    margin-bottom:3.5px;
+    border-radius: 4px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    text-align: center;
+    color: #fff;
+    font-weight: bold;
+    font-size: 17px;
+    box-sizing: border-box;
+    background-image: url(marketing/texture.png);
+    background-size: cover;
 }

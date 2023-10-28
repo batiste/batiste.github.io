@@ -37,15 +37,13 @@
             </h3>
          
         <ol>
-            <li>Gather the 17 coin token cards into a bank. Distribute a 1 coin 
-                <img class="rule-icon coin" src="icons/coins.svg" /> token card 
-                to each player. From now on, let's call them coins.
+            <li>Give each player a "Coins" and a "Coins Indicator" and remove all other instances of "Coins" and "Coins Indicator" from the game.
             </li>
             <!-- <li>
                 To play a novice game (3 players max.), remove all card with the :Hard: from the game.
             </li> -->
             <li>
-                Provide a shuffled <b>deck</b> of 2 "Fist Fight" and 2 "Celebrate" to each player.
+                Provide a <b>shuffled deck</b> of 2 "Fist Fight" and 2 "Celebrate" to each player.
                 Remove all other "Fist Fight" and "Celebrate" from the game.
             </li>
             <li>
@@ -83,7 +81,7 @@
              </p>
             </div>
 
-             <div style="margin-bottom: -1px; position: relative;">
+             <div style="margin-bottom: 15px; position: relative;">
                 <img src="marketing/board.png" width="102%" style="margin-left: -1%;" />
                 <div id="illustration" style="width:140px">
                     <div style="width:67px">
@@ -108,7 +106,7 @@
             </h3>
         
             <p>Line up your stash cards facing upwards, allowing all players to quickly identify them.
-                Do the same with your coin tokens.
+                Do the same with your Coins card.
             </p>
             <p>Resolve a card’s effect completely and step by step before taking other actions.
                 If effects would trigger simultaneously, the initiator of 
@@ -122,13 +120,13 @@
 
             <p style="margin-top:3px;margin-bottom:3px"><b>Card text reference</b></p>
             
-            <p><b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank immediately.</p>
+            <p><b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.</p>
             <p><b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.</p>
             <p><b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
                 If you do, replace it with a <b>reload deck</b> card.</p>
             <p><b>+1 Action:</b> Gain 1 extra Action to use this turn. Do not use more than 5 Actions per turn.</p>
             <p><b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.</p>
-            <p><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.</p>
+            <p><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by one.</p>
             <p><b>+1 Discard:</b> You must discard 1 card from your hand into your stash.</p>
 
 
@@ -561,7 +559,7 @@
     setTimeout(() => {
 
         cards.forEach((c) => {
-            if (c.type == 'rule' || c.type == 'coin') { return }
+            if (c.type == 'rule' || c.type == 'coin' || c.type == "indicator" || c.type == "treasure") { return }
             var text = document.getElementById('card-'+c.id).querySelector('.innerText')
             // 5 lines
             var fs = 9;

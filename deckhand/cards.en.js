@@ -32,7 +32,7 @@ var cards = [
         3. Text <i>(effects)</i>
         &nbsp;&nbsp; 4. Hooks <i>(victory points)</i><br>
         5. Type 
-        &nbsp; 6. Cost <i>(paid in coins to the bank)</i>
+        &nbsp;&nbsp;&nbsp; 6. Cost <i>(paid in coins)</i>
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
@@ -41,18 +41,17 @@ var cards = [
 },
 
 {
-    'title': 'Player Turn Overview',
+    'title': 'Your turn',
     'text': `1. Resolve any start-of-turn effects that might trigger <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Discard <img class="rule-icon" src="icons/card-discard-yellow.svg" /> your hand, if any, then draw 3 cards from your deck.<br>
 3. You then have 2 Actions that you can use in the following ways:<br>
 &nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside, resolve its effects and consequences <b>then</b> put the card into your stash.<br>
 &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
 indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
-with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.<br>
-If your deck is ever empty, immediately shuffle your stash into a new deck and resume any ongoing actions or effects.
+with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.
     `,
     'img': 'marketing/booklet.png',
-    'type': 'rule',
+    'type': 'indicator',
     'class': 'quick-ref',
     'amount': 1,
     // 'flip': 1,
@@ -61,28 +60,51 @@ If your deck is ever empty, immediately shuffle your stash into a new deck and r
 
 {
     'title': 'Card Quick Reference',
-    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Take 1 coin from the bank.<br>
+    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
 <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
 <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
         If you do, replace it with a <b>reload deck</b> card.<br>
 <b>+1 Action:</b> Gain an extra Action this turn.<br>
 <b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
-<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Put 1 of your coins into the bank.<br>
+<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
 <b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 are reminders of triggered effects<br>
 <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
     'img': 'marketing/booklet.png',
-    'type': 'rule',
+    'type': 'indicator',
+    'class': 'quick-ref quick-ref-2',
+    'amount': 1,
+},
+
+{
+    'title': '',
+    'text': `<ul class="treasure-coins">
+    
+    <li>0</li>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+
+    </ul>
+    
+    `,
+    'img': 'coins.png',
+    'type': 'treasure',
     'class': 'quick-ref',
     'amount': 1,
-    'flip': 1,
 },
 
 
 {
     'title': 'Fist Fight',
-    'text': '+1 :Coin:<br><i>(Take 1 coin from the bank.)</i>',
+    'text': '+1 :Coin:<br><i>(Increase your coins by 1.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -299,7 +321,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Alchemy',
-    'text': 'Discard up to 3 cards. Get a coin for each discarded card. Then +2 :Card:.',
+    'text': 'Discard up to 3 cards. +1 :Coin: for each discarded card. Then +2 :Card:.',
     'flavor': 'Imbued with fire, twisting fate. What <br>could possibly go awry?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -395,7 +417,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may give a bank coin to every player. If you do, each player must Discard a card after their initial draw on their<br> next turn.',
+    'text': '+2 :Coin:. You may increase every player coins by 1. If you do, each player must Discard a card after their initial draw on their<br> next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -471,7 +493,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player’s stash and place 2 bank coins on it. When their stash is shuffled, take the coins and return the card to their new stash.',
+    'text': 'Remove a card from target player’s stash. When their stash is shuffled, you get +2 :Coin: and return the card to their new stash.',
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -792,7 +814,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Tax Collector',
-    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: for each Structure in an enemy’s stash, up to a maximum of 3 coins.`,
+    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: for each Structure in an enemy’s stash, up to a maximum of 4 coins.`,
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '2',
