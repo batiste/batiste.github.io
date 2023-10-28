@@ -1,27 +1,27 @@
 
 var cards = [
 
-{
-    'title': '1 Coin',
-    'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
-    'flavor': 'Pirates are notorious spenders.',
-    'img': 'coins.png',
-    'type': 'coin',
-    'amount': 8,
-    'coin': 1,
-    // 'flip': 3,
-},
+// {
+//     'title': '1 Coin',
+//     'text': `A coin token <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
+//     'flavor': 'Pirates are notorious spenders.',
+//     'img': 'coins.png',
+//     'type': 'coin',
+//     'amount': 8,
+//     'coin': 1,
+//     // 'flip': 3,
+// },
 
-{
-    'title': '3 Coins',
-    'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
-    'flavor': 'How did you come to possess such riches?',
-    'img': 'coins.png',
-    'type': 'coin',
-    'amount': 4,
-    'coin': 3,
-    // 'flip': 1,
-},
+// {
+//     'title': '3 Coins',
+//     'text': `3 coin tokens <img class="rule-icon chest" src="icons/coins.svg" /> to be spent wisely.`,
+//     'flavor': 'How did you come to possess such riches?',
+//     'img': 'coins.png',
+//     'type': 'coin',
+//     'amount': 4,
+//     'coin': 3,
+//     // 'flip': 1,
+// },
 
 {
     'title': 'Card’s Anatomy',
