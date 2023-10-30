@@ -417,7 +417,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may increase every player coins by 1. If you do, each player must Discard a card after their initial draw on their<br> next turn.',
+    'text': '+2 :Coin:. You may increase every player <br>coins by 1. If you do, each player must Discard a card after their initial draw on their next turn.',
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -832,7 +832,19 @@ are reminders of triggered effects<br>
     'victory': '2',
     'cost': '3',
     'amount': 1,
+},
+
+{
+    'title': 'One-Eyed Screecher',
+    'text': `+1 :Coin:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
+    into your hand.`,
+    'img': 'adventures/coco.png',
+    'type': 'adventure',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
 }
+
 
 
 ]
