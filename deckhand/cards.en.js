@@ -835,10 +835,10 @@ are reminders of triggered effects<br>
 },
 
 {
-    'title': 'One-Eyed Screecher',
+    'title': 'Crafty Coco',
     'text': `+1 :Coin:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
     into your hand.`,
-    'img': 'adventures/coco.png',
+    'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',
     'cost': '1',
