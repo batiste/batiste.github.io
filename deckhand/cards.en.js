@@ -836,7 +836,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Crafty Coco',
-    'text': `+1 :Coin:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
+    'text': `+1 :Buy:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
     into your hand.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
