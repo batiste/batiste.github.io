@@ -36,12 +36,12 @@ var cards = [
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
-    'amount': 1,
+    'amount': 8,
     // 'flip': 1,
 },
 
 {
-    'title': 'Your turn',
+    'title': 'Your Turn',
     'text': `1. Resolve any start-of-turn effects that might trigger <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Discard <img class="rule-icon" src="icons/card-discard-yellow.svg" /> your hand, if any, then draw 3 cards from your deck.<br>
 3. You then have 2 Actions that you can use in the following ways:<br>
@@ -58,48 +58,48 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 },
 
 
-{
-    'title': 'Card Quick Reference',
-    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
-<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
-<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
-        If you do, replace it with a <b>reload deck</b> card.<br>
-<b>+1 Action:</b> Gain an extra Action this turn.<br>
-<b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
-<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
-<b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
-<img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-are reminders of triggered effects<br>
-<img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
-    'img': 'marketing/booklet.png',
-    'type': 'indicator',
-    'class': 'quick-ref quick-ref-2',
-    'amount': 1,
-},
+// {
+//     'title': 'Card Quick Reference',
+//     'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
+// <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
+// <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
+//         If you do, replace it with a <b>reload deck</b> card.<br>
+// <b>+1 Action:</b> Gain an extra Action this turn.<br>
+// <b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
+// <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
+// <b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
+// <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+// are reminders of triggered effects<br>
+// <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
+//     'img': 'marketing/booklet.png',
+//     'type': 'indicator',
+//     'class': 'quick-ref quick-ref-2',
+//     'amount': 1,
+// },
 
-{
-    'title': '',
-    'text': `<ul class="treasure-coins">
+// {
+//     'title': '',
+//     'text': `<ul class="treasure-coins">
     
-    <li>0</li>
-    <li>1</li>
-    <li>2</li>
-    <li>3</li>
-    <li>4</li>
-    <li>5</li>
-    <li>6</li>
-    <li>7</li>
-    <li>8</li>
-    <li>9</li>
+//     <li>0</li>
+//     <li>1</li>
+//     <li>2</li>
+//     <li>3</li>
+//     <li>4</li>
+//     <li>5</li>
+//     <li>6</li>
+//     <li>7</li>
+//     <li>8</li>
+//     <li>9</li>
 
-    </ul>
+//     </ul>
     
-    `,
-    'img': 'coins.png',
-    'type': 'treasure',
-    'class': 'quick-ref',
-    'amount': 1,
-},
+//     `,
+//     'img': 'coins.png',
+//     'type': 'treasure',
+//     'class': 'quick-ref',
+//     'amount': 1,
+// },
 
 
 {
@@ -836,7 +836,7 @@ are reminders of triggered effects<br>
 
 {
     'title': 'Crafty Coco',
-    'text': `+1 :Buy:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
+    'text': `+1 :Action:, +1 :Reload:.<br>If this card is in your stash and you <br>buy a card: You may put the bought <br>card
     into your hand.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',

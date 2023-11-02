@@ -688,7 +688,7 @@ ul {
 .card .type-rule .text {
     color: #000;
     text-shadow: none;
-    top: 63mm;
+    top: 71mm;
 }
 
 
@@ -788,6 +788,10 @@ ul {
 
 
 .card .type-treasure .subtype {
+    display: none;  
+}
+
+.card .type-rule .subtype {
     display: none;  
 }
 
