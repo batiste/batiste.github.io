@@ -209,7 +209,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Karmic Elevation',
-    'text': 'Pay 1 :Coin:: Reveal a card from your hand, then you may choose a supply card that costs 1 more and swap them.',
+    'text': 'Pay 1 :Coin:: Reveal a card from your <br>hand, then choose a supply card that <br>costs 1 more and swap them.',
     'flavor-no-quotes': '“Harmony! Serenity!” he yawned, after his nap.',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
