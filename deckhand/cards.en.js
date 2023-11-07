@@ -825,7 +825,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Hidden Cove',
-    'text': `Flip 1 supply cards face down. This card is out of the game. Restore it at any time on your next turn.
+    'text': `Flip 1 supply card face down. This card is out of the game. Restore it at any time on your next turn.
     Then +1 :Coin: for each different card type in the supply.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
