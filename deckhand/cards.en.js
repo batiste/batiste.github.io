@@ -482,7 +482,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 {
     'title': 'Governor’s Jail',
     'text': `+2 :Coin:. Flip 1 supply card face down.<br>
-    This card is out of the game. Restore it at <br>any time on your next turn.`,
+    This card is out of the game. Restore it <br>at any time on your next turn.`,
     'flavor': 'Dear guest, you’re truly at your best restrained.',
     'img': 'structures/jail.png',
     'type': 'structure',
@@ -493,7 +493,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Lost Expedition',
-    'text': 'Remove a card from target player’s stash. When their stash is shuffled, you get +2 :Coin: and return the card to their new stash.',
+    'text': `Remove and set aside a card from target player’s stash. When their stash is shuffled, you get +2 :Coin: and return the card to their new stash.`,
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -658,7 +658,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Smuggler’s Cache',
-    'text': '+1 :Coin:.<br>At the start of your turn, if this card is <br>in your stash: +1 :Coin:.',
+    'text': '+1 :Coin:.<br>At the start of your turn, if this <br>card is in your stash: +1 :Coin:.',
     'flavor': 'Few can chart the course to the forbidden spoils.',
     'img': 'structures/smugglers-cache.png',
     'type': 'structure',
