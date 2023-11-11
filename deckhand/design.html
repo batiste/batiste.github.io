@@ -37,16 +37,16 @@
             </h3>
          
         <ol>
-            <li>Give each player a "Coins" and a "Coins Indicator" card. 
+            <li>Give each player 1 "Coins" and 1 "Coins Indicator" card and a <b>shuffled deck</b> of 2 "Fist Fight" and 2 "Celebrate". 
                 Remove all remaining instances of these cards from the game.
             </li>
             <!-- <li>
                 To play a novice game (3 players max.), remove all card with the :Hard: from the game.
             </li> -->
-            <li>
+            <!-- <li>
                 Give each player a <b>shuffled deck</b> of 2 "Fist Fight" and 2 "Celebrate". Remove all 
                 other "Fist Fight" and "Celebrate" from the game.
-            </li>
+            </li> -->
             <li>
                 Shuffle and create the <b>supply deck</b> with 11 cards per player. The remaining cards constitute the <b>reload deck</b>.
             </li>
@@ -58,7 +58,7 @@
 
              <h3>Unfolding of the game</h3>
 
-             <p>
+             <p style="margin-bottom: 4px;">
                 A random player starts. Each player takes turns, following these steps:
              </p>
          
@@ -76,13 +76,13 @@
                      </ul>
                 </li>
              </ol>
-             <p style="margin-top:4px">
+             <p style="margin-top:5px">
                 If your deck is ever empty during the game, <b>immediately</b> shuffle your stash 
                 into a new deck and resume any ongoing actions or effects.
              </p>
             </div>
 
-             <div style="margin-bottom: 15px; position: relative;">
+             <div style="margin-bottom: 18px; position: relative;">
                 <img src="marketing/board.png" width="102%" style="margin-left: -1%;" />
                 <div id="illustration" style="width:140px">
                     <div style="width:67px">
@@ -407,6 +407,10 @@
 
         if(c['target'] != undefined) {
             top_left += `<span class="target"><img src="icons/target.svg" /></span>`
+        }
+
+        if(c['fist'] != undefined) {
+            top_left += `<span class="fist"><img src="icons/fist.svg" /></span>`
         }
 
         if(c['coin'] != undefined) {

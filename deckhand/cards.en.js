@@ -58,24 +58,26 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 },
 
 
-// {
-//     'title': 'Card Quick Reference',
-//     'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
-// <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
-// <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
-//         If you do, replace it with a <b>reload deck</b> card.<br>
-// <b>+1 Action:</b> Gain an extra Action this turn.<br>
-// <b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
-// <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
-// <b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
-// <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-// are reminders of triggered effects<br>
-// <img class="rule-icon target" src="icons/target.svg" /> indicates targeted effects that affect enemies.`,
-//     'img': 'marketing/booklet.png',
-//     'type': 'indicator',
-//     'class': 'quick-ref quick-ref-2',
-//     'amount': 1,
-// },
+{
+    'title': 'Card Quick Reference',
+    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
+<b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
+<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
+        If you do, replace it with a <b>reload deck</b> card.<br>
+<b>+1 Action:</b> Gain an extra Action this turn.<br>
+<b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
+<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
+<b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
+<img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
+are reminders of triggered effects.<br>
+<img class="rule-icon target" src="icons/target.svg" /> targeted effect that affect enemies.<br>
+<img class="rule-icon target" src="icons/fist.svg" /> permanent effect while in your stash.
+`,
+    'img': 'marketing/booklet.png',
+    'type': 'indicator',
+    'class': 'quick-ref quick-ref-2',
+    'amount': 1,
+},
 
 // {
 //     'title': '',
@@ -363,7 +365,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
     'victory': '2',
     'cost': '2',
     'amount': 1,
-
+    'fist': true,
 },
 
 {
@@ -810,6 +812,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
     'victory': '2',
     'cost': '2',
     'amount': 1,
+    'fist': true,
 },
 
 {
@@ -843,6 +846,7 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
     'victory': '1',
     'cost': '1',
     'amount': 1,
+    'fist': true,
 }
 
 
