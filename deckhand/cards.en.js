@@ -847,7 +847,100 @@ are reminders of triggered effects.<br>
     'cost': '1',
     'amount': 1,
     'fist': true,
+},
+
+
+{
+    'title': 'The Zoologist',
+    'text': `Gain 1 :Hook: for each Animals your deck: Crafty Coco, Kraken's Fury, Merfolk Mercenary, Abyss Marauder, Monkey's Bargain, Going Ape, Exploration, Useless Totem.`,
+    'img': 'characters/zoologist.png',
+    'type': 'character',
+    'victory': '2',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Architect',
+    'text': `At the end of the game, gain 1 :Hook: for each Structure in your deck in excess of 2.`,
+    'img': 'characters/architect.png',
+    'type': 'character',
+    'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'Count Moonshade',
+    'text': `Gain 1 :Hook: for each Vampire in your deck: Tax Collector, Crooked Merchant, Gambling Addiction, Extravagance, Ghost Crew, Alley Thief, Blademaster.`,
+    'img': 'characters/count.png',
+    'type': 'character',
+    'victory': '2',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'Young Pirate',
+    'text': `At the end of the game, gain 1 :Hook: for each Attach in your deck in excess of 4.`,
+    'img': 'characters/blood.png',
+    'type': 'character',
+    'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Duchess',
+    'text': `At the end of the game, gain 1 :Hook: for each targeted card <img class="target" src="icons/target.svg" style="display:inline;margin-bottom: -4px;padding:0" /> in your deck.`,
+    'img': 'characters/markswoman.png',
+    'type': 'character',
+    'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Governor',
+    'text': `At the end of the game, gain 1 :Hook: for each card costing more than 2 in your deck.`,
+    'img': 'characters/governor.png',
+    'type': 'character',
+    'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Adventurer',
+    'text': `At the end of the game, gain 1 :Hook: for each Adventure card in excess of 4 in your deck.`,
+    'img': 'characters/explorator.png',
+    'type': 'character',
+    'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Engineer',
+    'text': `At the end of the game, gain 1 :Hook: for each start-of-turn 
+    <img class="rule-icon" style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> 
+    and permanent effect <img class="rule-icon target" src="icons/fist.svg"  style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> card in your deck.`,
+    'img': 'characters/engineer.png',
+    'type': 'character',
+    'victory': '2',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
 }
+
+
 
 
 
