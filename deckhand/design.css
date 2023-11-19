@@ -635,11 +635,11 @@ a, a:visited {
 
 .text .mini-separator {
     display: block;
-    margin-top: 1px;
+    margin-top: 3px;
     border-top: 1px solid #434343;
-    margin-bottom: 1px;
-    margin-left: 45%;
-    margin-right: 45%;
+    margin-bottom: 3px;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .text b {

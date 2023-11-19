@@ -852,10 +852,11 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Zoologist',
-    'text': `Gain 1 :Hook: for each Animals your deck: Crafty Coco, Kraken's Fury, Merfolk Mercenary, Abyss Marauder, Monkey's Bargain, Going Ape, Exploration, Useless Totem.`,
+    'text': `End game: :Hook: for each Animal in your deck. Crafty Coco, Kraken's Fury, 
+    Merfolk Mercenary, Abyss Marauder, Monkey's Bargain, Going Ape, Exploration and Useless Totem are Animals.`,
     'img': 'characters/zoologist.png',
     'type': 'character',
-    'victory': '2',
+    'victory': '1',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -863,21 +864,26 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Architect',
-    'text': `At the end of the game, gain 1 :Hook: for each Structure in your deck in excess of 2.`,
+    'text': `End game: :Hook: for each Structure in <br>your deck in excess of 3.<br>
+    :ms:
+    Reveal: +1 :Reload:.
+    `,
     'img': 'characters/architect.png',
     'type': 'character',
-    'victory': '1',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
 },
 
 {
-    'title': 'Count Moonshade',
-    'text': `Gain 1 :Hook: for each Vampire in your deck: Tax Collector, Crooked Merchant, Gambling Addiction, Extravagance, Ghost Crew, Alley Thief, Blademaster.`,
+    'title': 'Captain Bloodfang',
+    'text': `End game: :Hook: for each Vampire in your deck. Tax Collector, 
+    Crooked Merchant, Gambling Addiction, Extravagance, Ghost Crew, 
+    Alley Thief and Blademaster are Vampires.`,
     'img': 'characters/count.png',
     'type': 'character',
-    'victory': '2',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -885,10 +891,11 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Young Pirate',
-    'text': `At the end of the game, gain 1 :Hook: for each Attach in your deck in excess of 4.`,
+    'text': `End game: :Hook: for each Attack in <br>your deck in excess of 5.
+    :ms:Reveal: +1 :Coin:.`,
     'img': 'characters/blood.png',
     'type': 'character',
-    'victory': '1',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -896,10 +903,14 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Duchess',
-    'text': `At the end of the game, gain 1 :Hook: for each targeted card <img class="target" src="icons/target.svg" style="display:inline;margin-bottom: -4px;padding:0" /> in your deck.`,
+    'text': `End game: :Hook: for each targeted <br>card 
+    <img class="target" src="icons/target.svg" style="display:inline;margin-bottom: -4px;padding:0" /> in your deck.
+    :ms:
+    Reveal: +1 :Reload:, +1 :Coin:.
+    `,
     'img': 'characters/markswoman.png',
     'type': 'character',
-    'victory': '1',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -907,10 +918,11 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Governor',
-    'text': `At the end of the game, gain 1 :Hook: for each card costing more than 2 in your deck.`,
+    'text': `End game: :Hook: for each card costing <br>more than 3 in your deck.
+    :ms:Reveal: +1 :Coin:.`,
     'img': 'characters/governor.png',
     'type': 'character',
-    'victory': '1',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -918,10 +930,11 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Adventurer',
-    'text': `At the end of the game, gain 1 :Hook: for each Adventure card in excess of 4 in your deck.`,
+    'text': `End game: :Hook: for each Adventure card <br>in excess of 5 in your deck.:ms:
+    Reveal: +2 :Card:.`,
     'img': 'characters/explorator.png',
     'type': 'character',
-    'victory': '1',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
@@ -929,19 +942,31 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'The Engineer',
-    'text': `At the end of the game, gain 1 :Hook: for each start-of-turn 
+    'text': `End game: :Hook: for each start-of-turn 
     <img class="rule-icon" style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> 
-    and permanent effect <img class="rule-icon target" src="icons/fist.svg"  style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> card in your deck.`,
+    and permanent effect 
+    <img class="rule-icon target" src="icons/fist.svg" 
+    style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> card in your deck.
+    :ms:Reveal: +1 :Buy:.`,
     'img': 'characters/engineer.png',
     'type': 'character',
-    'victory': '2',
+    'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Chief Cook',
+    'text': `End game: :Hook: for each card costing 1 in your deck in excess of 7.
+    :ms:Reveal: Put a 1-cost supply card into your stash.`,
+    'img': 'characters/cook.png',
+    'type': 'character',
+    'victory': '0',
     // 'cost': '1',
     'amount': 1,
     // 'fist': true,
 }
-
-
-
 
 
 ]
