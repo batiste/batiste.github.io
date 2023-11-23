@@ -1,14 +1,14 @@
 var fr_translations = [
-  {
-    "title":"1 Pièce",
-    'text': `Un jeton pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
-    "flavor":"Un pirate dépense sans compter."
-  },
-  {
-    "title":"3 Pièces",
-    'text': `3 jetons pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
-    "flavor":"Comment avez-vous acquis de telles richesses ?"
-  },
+  // {
+  //   "title":"1 Pièce",
+  //   'text': `Un jeton pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
+  //   "flavor":"Un pirate dépense sans compter."
+  // },
+  // {
+  //   "title":"3 Pièces",
+  //   'text': `3 jetons pièce <img class="rule-icon chest" src="icons/coins.svg" /> à dépenser habilement.`,
+  //   "flavor":"Comment avez-vous acquis de telles richesses ?"
+  // },
   {
     'title': 'Anatomie d\'une Carte',
     'text': `
@@ -16,7 +16,7 @@ var fr_translations = [
       1. Symboles de rappel
       &nbsp;&nbsp;&nbsp; 2. Titre<br>
       3. Texte <i>(effets)</i>
-      &nbsp;&nbsp; 4. Crochets <i>(points de victoire)</i><br>
+      &nbsp; 4. Crochets <i>(points de V.)</i><br>
       5. Type 
       &nbsp;&nbsp;&nbsp; 6. Coût <i>(à payer en pièces)</i>
     </div>`,
@@ -31,13 +31,12 @@ var fr_translations = [
   {
     'title': 'Aperçu du Tour du Joueur',
     'text': `1. Résous les effets qui peuvent se produire au début du tour <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
-2. Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes.<br>
+2. Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes de ton deck.<br>
 3. Tu disposes de 2 Actions par tour, parmi lesquelles:<br>
 &nbsp;&nbsp;&nbsp; • Jouer une carte : Mets la carte de coté, résous ses effets et conséquences <b>puis</b> mets-la dans ta planque.<br>
 &nbsp;&nbsp;&nbsp; • Achète 1 carte de la réserve: Paie le coût en pièces <img class="rule-icon coin" src="icons/coins.svg" />  indiqué par le 
 coffre <img class="rule-icon" src="icons/chest-simplified.svg" /> en bas à droite
-puis mets-la dans ta planque.<br>
-Lorsque ton deck est vide, mélange <b>immédiatement</b> ta planque pour former un nouveau deck, puis reprends tout action ou effet en cours.
+puis mets-la dans ta planque.
     `,
     // 'flavor': 'Pirates are notorious spenders.',
     'img': 'marketing/booklet.png',
@@ -50,16 +49,17 @@ Lorsque ton deck est vide, mélange <b>immédiatement</b> ta planque pour former
 
 {
   'title': 'Référence Rapide des Cartes',
-  'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Prends 1 pièce de la banque.<br>
+  'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Augmente tes pièces de 1.<br>
 <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> Tu peux immédiatement piocher 1 carte de ton deck.<br>
-<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> Tu peux immédiatement placer 1 carte de la réserve en bas 
+<b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> Tu peux placer 1 carte de la réserve en bas 
 du deck de recharge et la remplacer par une du <b>deck de recharge</b>.<br>
-<b>+1 Action:</b> Gagne 1 Action supplémentaire à utiliser plus tard ce tour.<br>
+<b>+1 Action:</b> Gagne 1 Action ce tour.<br>
 <b>+1 Achat:</b> Achète 1 carte sans utiliser d'Action plus tard ce tour.<br>
 <b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque. Place 1 de tes pièces dans la banque.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 sont des rappels d'effets déclenchés<br>
-<img class="rule-icon target" src="icons/target.svg" /> indique des effets ciblés qui affectent les ennemis.`,
+<img class="rule-icon target" src="icons/target.svg" /> effets ciblés qui affectent les ennemis.<br>
+<img class="rule-icon target" src="icons/fist.svg" /> effet durable quand dans ta planque.`,
   'img': 'marketing/booklet.png',
   'type': 'rule',
   'class': 'quick-ref',
@@ -341,7 +341,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Mercenaire des Néréides",
-    "text": "Paye 1 :Coin:: révèle les 2 premières cartes du deck de réserve. Mets-en une dans ta planque.",
+    "text": "Paye 1 :Coin:: révèle les 2 premières cartes <br>du deck de réserve. Mets-en une dans ta planque.",
     "flavor": "Est-ce rentable de négocier avec cette atrocité ?"
   },
   {
@@ -361,5 +361,23 @@ sont des rappels d'effets déclenchés<br>
   {
     "title": "Le Grand Conseil",
     "text": "+2 :Action:. Avant la fin de ton tour, retourne 4 cartes de la réserve face cachée. Ces cartes sont hors jeu. Restaure-les à tout moment lors de ton prochain tour."
+  },
+  {
+    "title": "Foule en Colère",
+    "text": "+2 :Coin:.<br> Si cette carte est dans votre réserve et que tu achète une carte coûtant 1: +1 :Action:"
+  },
+  {
+    "title": "Collecteur d'Impôts",
+    "text": "+1 :Coin:, +1 :Card: :or: +1 :Coin: pour chaque Structure dans la réserve d'un ennemi, jusqu'à un maximum de 4 pièces."
+  },
+  {
+    "title": "Crique Cachée",
+    "text": `Retourne 1 carte de réserve face cachée. Cette carte est hors jeu. Restaure-la à tout moment lors de ton prochain tour.
+      Ensuite, +1 :Coin: pour chaque type de carte différent dans la réserve.`
+  },
+  {
+    "title": "Coco l'Astucieux",
+    "text": `+1 :Action:, +1 :Reload:.<br>Si cette carte est dans ta planque et que tu 
+    achètes une carte : Tu peux mettre la carte achetée dans ta main.`
   }
 ]
