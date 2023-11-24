@@ -34,7 +34,7 @@ var fr_translations = [
 2. Défausse ta main <img class="rule-icon" src="icons/card-discard-yellow.svg" /> et pioche 3 cartes de ton deck.<br>
 3. Tu disposes de 2 Actions par tour, parmi lesquelles:<br>
 &nbsp;&nbsp;&nbsp; • Jouer une carte : Mets la carte de coté, résous ses effets et conséquences <b>puis</b> mets-la dans ta planque.<br>
-&nbsp;&nbsp;&nbsp; • Achète 1 carte de la réserve: Paie le coût en pièces <img class="rule-icon coin" src="icons/coins.svg" />  indiqué par le 
+&nbsp;&nbsp;&nbsp; • Achète 1 carte de la réserve : Paie le coût en pièces <img class="rule-icon coin" src="icons/coins.svg" />  indiqué par le 
 coffre <img class="rule-icon" src="icons/chest-simplified.svg" /> en bas à droite
 puis mets-la dans ta planque.
     `,
@@ -55,7 +55,8 @@ puis mets-la dans ta planque.
 du deck de recharge et la remplacer par une du <b>deck de recharge</b>.<br>
 <b>+1 Action:</b> Gagne 1 Action ce tour.<br>
 <b>+1 Achat:</b> Achète 1 carte sans utiliser d'Action plus tard ce tour.<br>
-<b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque. Place 1 de tes pièces dans la banque.<br>
+<b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque.<br>
+<b>Paye 1 :</b> Diminue tes pièces de 1.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 rappels d'effets déclenchés<br>
 <img class="rule-icon target" src="icons/target.svg" /> effets ciblés qui affectent les ennemis.<br>
@@ -109,12 +110,12 @@ rappels d'effets déclenchés<br>
   },
   {
     "title":"Flâneur de Plage",
-    "text":"+1 :Coin:, +1 :Reload:<br>Si tu es le des joueur possédant <br>le moins de cartes : +1 :Buy:, +1 :Coin:.",
+    "text":"+1 :Coin:, +1 :Reload:<br>Si tu es le joueur possédant le moins<br> de cartes : +1 :Buy:, +1 :Coin:.",
     "flavor":"Les rumeurs disent qu'il est le plus riche du village."
   },
   {
     "title": "Léthargie Karmique",
-    "text": "Paye 1 :Coin:: Choisis une carte de ta main. Choisi une carte de la réserve coûtant 1 de plus. Échanges ces cartes",
+    "text": "Paye 1 :Coin: : Choisis une carte de ta main. Choisi une carte de la réserve coûtant 1 de plus. Échanges ces cartes",
     "flavor-no-quotes": "« Harmonie ! Sérénité ! » bâilla-t-il, après sa sieste."
   },
   // {
@@ -129,7 +130,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title":"Mariage du Gouverneur",
-    "text":"+1 :Coin:. Au prochain tour de l’ennemi ciblé, il gagne +1 Achat et doit tu donner une pièce avant son premier achat.",
+    "text":"+1 :Coin:. Au prochain tour de l’ennemi ciblé, il gagne +1 :Achat: et doit tu donner une pièce avant son premier achat.",
     "flavor":"Un luxueux cadeau assure faveurs et influence."
   },
   {
@@ -139,7 +140,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title":"Marchandage",
-    "text":"+1 :Reload:, +1 Achat.<br>Ton prochain achat ce tour-ci <br>coûte 1 de moins.",
+    "text":"+1 :Reload:, +1 :Achat:.<br>Ton prochain achat ce tour-ci <br>coûte 1 de moins.",
     "flavor":"Parfois, la langue est plus tranchante que l’épée."
   },
   {
@@ -192,12 +193,12 @@ rappels d'effets déclenchés<br>
   },
   {
     "title":"Mine d’Or",
-    "text":"Un ennemi choisi un nombre. +3 :Card:. Si le coût total des cartes piochées n’est pas ce nombre : révèle-les, +1 :Action:.",
+    "text":"Un ennemi choisi un nombre. +3 :Card:. Si le coût total des cartes piochées n’est pas ce nombre : Révèle-les, +1 :Action:.",
     "flavor":"Sous le sol, se cachent rêves et désespoir."
   },
   {
     "title":"Marché Portuaire",
-    "text":"+2 :Coin:.:or:+1 :Coin:, +1 Achat.",
+    "text":"+2 :Coin:.:or:+1 :Coin:, +1 :Achat:.",
     "flavor":"Des secrets et des trésors volés sont échangés ici."
   },
   {
@@ -217,7 +218,7 @@ rappels d'effets déclenchés<br>
   {
     "title":"Carte au Trésor",
     "text":`+1 :Coin:. Regarde les 3 cartes du dessus de ton deck. Défausse-en autant que tu veux 
-    et mets le reste sur le dessus de ton deck dans n’importe quel ordre. +1 :Card:.`
+    et mets le reste sur le dessus de ton deck dans n’importe quel ordre. Puis, +1 :Card:.`
   },
   {
     "title":"Rage Simiesque",
@@ -230,12 +231,12 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Caverne Hantée",
-    "text": "+2 :Card:. Puis +1 :Coin: pour chaque Attaque dans ta main, mais pas plus de 3.",
+    "text": "+2 :Card:. Puis +1 :Coin: pour chaque Attaque dans ta main, jusqu'à un maximum de 3 Pièces.",
     "flavor": "Des cliquetis squelettiques perce le silence hanté."
   },
   {
     "title": "Prison du Gouverneur",
-    "text": "+2 :Coin:. Retourne un carte de la réserve face cachée. Cette carte est hors jeu. Restaure-là lors de ton prochain tour.",
+    "text": "+2 :Coin:. Retourne une carte de la réserve face cachée. Cette carte est hors jeu. Restaure-la à tout moment lors de ton prochain tour.",
     // "flavor": "Les forces de l’océan sont indomptables."
   },
   {
@@ -251,12 +252,13 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Extravagance",
-    "text": "+2 Achats, +1 :Reload:.:or:+1 Achat, +1 :Coin:.",
+    "text": "+2 :Achat:, +1 :Reload:.:or:+1 :Achat:, +1 :Coin:.",
     "flavor": "La dépense doit être grandiose et flamboyante!"
   },
   {
     "title": "Chantier Naval",
-    "text": "+1 :Coin:.<br>+1 :Action: par Structure dans ta planque.<br><i>(N'utilise pas plus de 5 actions ce tour-ci.)</i>"
+    "text": "+1 :Coin:.<br>+1 :Action: par Structure dans ta planque.<br><i>(N'utilise pas plus de 5 actions ce tour-ci.)</i>",
+    "flavor": "Chaque planche rêve de lointains horizons."
   },
   {
     "title": "Sur la Planche",
@@ -274,7 +276,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Guilde des Aventuriers",
-    "text": "+1 :Coin: pour chaque Aventure disponible dans la réserve, mais pas plus de 3.",
+    "text": "+1 :Coin: pour chaque Aventure dans la réserve, jusqu'à un maximum de 3 Pièces.",
     "flavor": "Là où quêtes et bravoure convergent."
   },
   {
@@ -283,7 +285,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Banque Forteresse",
-    "text": "+2 :Coin:.<br>Quand défaussée : +1 :Action:.",
+    "text": "+2 :Coin:.<br>Quand défaussée : +1 :Achat:.",
     "flavor": "Fortifiée contre les pillards, la banque protège contre les tentations les plus puissantes."
   },
   {
@@ -293,7 +295,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Atelier d’Architectes",
-    "text": "+1 :Action:, +1 :Coin:. S'il y a 2 Structures ou plus dans la réserve : +1 Achat.",
+    "text": "+1 :Action:, +1 :Coin:. S'il y a 2 Structures ou plus dans la réserve : +1 :Achat:.",
     "flavor": "Des plans méticuleux et un artisanat habile donnent vie aux grandes visions."
   },
   {
@@ -303,7 +305,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Maraudeur des Abysses",
-    "text": "+1 :Action:. Échange une carte de ta main avec une carte du même coût de la planque d’un ennemi.",
+    "text": "+1 :Action:. Échange une carte de ta<br> main avec une carte du même coût de la planque d’un ennemi.",
     "flavor": "Né des profondeurs, il se nourrit des incertitudes."
   },
   {
@@ -318,16 +320,16 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Course Désespérée",
-    "text": `Toi et un ennemi devez avoir au moins 2 cartes dans vos decks. Révélez les 3 cartes supérieures de vos decks.
-    Si tu révèles plus d'Attaques que lui, place une carte de la réserve coûtant 4 pièces ou moins dans ta planque.`
+    "text": `Toi et un ennemi devez avoir au moins 2 cartes dans vos decks. Révélez les 3 cartes du haut de vos decks.
+    Si tu révèles plus d'Attaques que lui, place une carte de la réserve coûtant 4 ou moins dans ta planque.`
   },
   {
     "title": "Grenade Improvisée",
-    "text": "Le joueur ciblé choisit une carte de sa planque coûtant 2 ou moins et la retire du jeu.<br>Quand défaussée : applique l’effet de cette carte à tous les joueurs avec eux-même comme cible." // 
+    "text": "Le joueur ciblé choisit une carte de sa planque coûtant 2 ou moins et la retire du jeu.<br>Quand défaussée : Applique l’effet de cette carte à tous les joueurs avec eux-même comme cible." // 
   },
   {
     "title": "Cimetière Délaissé",
-    "text": "+1 :Coin:.<br>Au début de ton tour, si cette carte est dans ta planque : tu peux mettre une carte de ta planque en bas de ton deck."
+    "text": "+1 :Coin:.<br>Au début de ton tour, si cette carte est dans ta planque : Tu peux mettre une carte de ta planque en bas de ton deck."
   },
   {
     "title": "Poupée Envoûtée",
@@ -337,11 +339,12 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Marchand Sournois",
-    "text": "Paye 1 :Coin:: Échange une carte entre ta planque et la planque de l’ennemi ciblé tant que la différence de coût est de 1 ou moins."
+    "text": "Paye 1 :Coin: : Échange une carte entre ta planque et la planque de l’ennemi ciblé tant que la différence de coût est de 1 ou moins.",
+    "flavor": "Le vernis de l'abondance cache ses tromperies."
   },
   {
     "title": "Mercenaire des Néréides",
-    "text": "Paye 1 :Coin:: révèle les 2 premières cartes <br>du deck de réserve. Mets-en une dans ta planque.",
+    "text": "Paye 1 :Coin: : Révèle les 2 premières cartes <br>du deck de réserve. Mets-en une coûtant<br> 3 ou moins dans ta planque.",
     "flavor": "Est-ce rentable de négocier avec cette atrocité ?"
   },
   {
@@ -355,7 +358,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Chasse au Trésor",
-    "text": "+1 :Action:, +1 Achat,<br>+1 :Card:, +1 :Coin:.",
+    "text": "+1 :Action:, +1 :Achat:,<br>+1 :Card:, +1 :Coin:.",
     "flavor": "Une île enveloppée de mystère détient la clé d’une immense richesse."
   },
   {
@@ -364,7 +367,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Foule en Colère",
-    "text": "+2 :Coin:.<br> Si cette carte est dans ta réserve et que tu achètes une carte coûtant 1: +1 :Action:"
+    "text": "+2 :Coin:.<br> Si cette carte est dans ta réserve et que tu achètes une carte coûtant 1 : +1 :Action:"
   },
   {
     "title": "Collecteur d'Impôts",
