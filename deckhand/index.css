@@ -419,3 +419,11 @@ input:nth-of-type(9):checked ~ main#carousel {
         column-count: 2;
     }
 }
+
+.flag {
+    font-size: 1.7em;
+    display: contents;
+    line-height: 0.9;
+    /* position: absolute; */
+    margin-top: 2px;
+}
