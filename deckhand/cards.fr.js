@@ -57,7 +57,7 @@ du deck de recharge et la remplacer par une du <b>deck de recharge</b>.<br>
 <b>+1 Achat:</b> Achète 1 carte sans utiliser d'Action plus tard ce tour.<br>
 <b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque. Place 1 de tes pièces dans la banque.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-sont des rappels d'effets déclenchés<br>
+rappels d'effets déclenchés<br>
 <img class="rule-icon target" src="icons/target.svg" /> effets ciblés qui affectent les ennemis.<br>
 <img class="rule-icon target" src="icons/fist.svg" /> effet durable quand dans ta planque.`,
   'img': 'marketing/booklet.png',
@@ -68,7 +68,7 @@ sont des rappels d'effets déclenchés<br>
 
   {
     "title":"Bagarre",
-    "text":"+1 :Coin:<br><i>(Prend 1 pièce de la banque.)</i>",
+    "text":"+1 :Coin:<br><i>(Augmente tes pièces de 1.)</i>",
     "flavor":"Les amitiés pirates débutent souvent par une bagarre."
   },
   {
@@ -85,7 +85,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title":"Voyante",
-    "text":"Révéle 2 cartes de n’importe quel deck.<br>+1 :Card: par Aventure révélée.<br>+1 :Coin: par Attaque révélée.<br>+1 :Action: par Structure révélée."
+    "text":"Révèle 2 cartes de n’importe quel deck.<br>+1 :Card: par Aventure révélée.<br>+1 :Coin: par Attaque révélée.<br>+1 :Action: par Structure révélée."
   },
   {
     "title":"Tir Rapide",
@@ -94,12 +94,12 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     'title': 'Mutinerie',
-    'text': '+1 :Coin:, +1 :Reload:.<br>Mets une carte de la réserve coûtant 1 dans ta planque.',
-    'flavor': `Rising as one, we demand our rightful share!`,
+    'text': '+1 :Coin:, +1 :Reload:.<br>Mets une carte de la réserve coûtant 1 <br>dans ta planque.',
+    'flavor': `Tous ensemble, exigeons notre part légitime !`,
   },
   {
     "title": "Maître d’Arme",
-    "text":"+1 :Coin: par carte de coût 1 en main.<br>+1 :Action: par carte de coût 3 en main.",
+    "text":"+1 :Coin: par carte en main coûtant 1.<br>+1 :Action: par carte en main coûtant 3.",
     "flavor":"Les tacticiens accomplis mêlent manœuvres subtiles et gestes grandioses."
   },
   {
@@ -109,8 +109,8 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title":"Flâneur de Plage",
-    "text":"+1 :Coin:. +1 :Coin: si tu es l’un des joueurs possédant le moins de cartes.",
-    "flavor":"Les rumeurs courent qu'il est le plus riche du village."
+    "text":"+1 :Coin:, +1 :Reload:<br>Si tu es le des joueur possédant <br>le moins de cartes : +1 :Buy:, +1 :Coin:.",
+    "flavor":"Les rumeurs disent qu'il est le plus riche du village."
   },
   {
     "title": "Léthargie Karmique",
@@ -139,7 +139,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title":"Marchandage",
-    "text":"+1 :Reload:, +1 Achat.<br>Ton prochain achat ce tour-ci coûte 1 de moins.",
+    "text":"+1 :Reload:, +1 Achat.<br>Ton prochain achat ce tour-ci <br>coûte 1 de moins.",
     "flavor":"Parfois, la langue est plus tranchante que l’épée."
   },
   {
@@ -167,7 +167,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title":"Alchimie",
-    "text":"Défausse jusqu'à 3 cartes. Gagne 1 pièce pour chaque carte défaussée. Puis, +2 :Card:.",
+    "text":"Défausse jusqu'à 3 cartes. +1 :Coin: pour chaque carte défaussée. Puis, +2 :Card:.",
     "flavor":"Imprégné de feu, tordant le destin. Qu'est-ce qui pourrait mal tourner ?"
   },
   {
@@ -207,7 +207,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title":"Fabrique de Rhum",
-    "text":"+2 :Coin:. Tu peux donner une Pièce de la banque à tout le monde. Si tu le fait, tout le monde doit défausser une carte après leur pioche initiale lors de leur prochain tour."
+    "text":"+2 :Coin:. Tu peux augmenter les pièces de tous les joueurs de 1. Si tu le fais, tous les joueurs doivent défausser une carte après leur pioche initiale lors de leur prochain tour."
   },
   {
     "title":"Exploration",
@@ -240,8 +240,8 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Expédition Perdue",
-    "text": `Retire 1 carte de la planque du joueur ciblé et pose 2 Pièces de la banque dessus. 
-    Après mélange de sa planque, prends les Pièces et mets sa carte dans sa nouvelle planque.`
+    "text": `Enlève et mets de côté 1 carte de la planque du joueur ciblé. Quand sa
+    planque est mélangée, tu obtiens +2 :Coin: et retourne sa carte dans sa nouvelle planque.`
   },
   {
     "title": "Observateur Furtif",
@@ -260,12 +260,12 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Sur la Planche",
-    "text": "+2 :Coin:. Tu peux retirer une carte de ta main ou de ta planque du jeu : Gagne des Pièces équivalant au coût de la carte.",
+    "text": "+2 :Coin:. Tu peux retirer une carte de ta main ou de ta planque du jeu : Gagne des Pièces équivalant au coût de la carte retirée.",
     "flavor": "Une danse sur la planche ou un sursis ?"
   },
   {
     "title": "Affaire de Singe",
-    "text": "Retire 1 carte de ta main ou planque du jeu&nbsp;: Gagne des Pièces et des Actions équivalant aux crochets :Hook: de la carte.",
+    "text": "Retire 1 carte de ta main ou de ta planque du jeu. Pour chaque :Hook: de la carte retirée : +1 :Coin: et +1 :Action:.",
     "flavor": "Les espiègleries de l’un sont l’aubaine d’un autre."
   },
   {
@@ -293,7 +293,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Atelier d’Architectes",
-    "text": "+1 :Action:, +1 :Coin:. S'il y a 2 structures ou plus dans la réserve : +1 Achat.",
+    "text": "+1 :Action:, +1 :Coin:. S'il y a 2 Structures ou plus dans la réserve : +1 Achat.",
     "flavor": "Des plans méticuleux et un artisanat habile donnent vie aux grandes visions."
   },
   {
@@ -331,7 +331,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Poupée Envoûtée",
-    "text": `Au tour suivant de l'ennemi ciblé, contrôle sa première Action, prenant toutes ses décisions. 
+    "text": `+1 :Coin:. Au tour suivant de l'ennemi ciblé, contrôle sa première Action, prenant toutes ses décisions. 
     Tu peux aussi contrôler les Actions ou Achats qu'il pourrait obtenir grâce à ce contrôle.`,
     // "flavor": "Le destin est un concept fragile."
   },
@@ -364,7 +364,7 @@ sont des rappels d'effets déclenchés<br>
   },
   {
     "title": "Foule en Colère",
-    "text": "+2 :Coin:.<br> Si cette carte est dans votre réserve et que tu achète une carte coûtant 1: +1 :Action:"
+    "text": "+2 :Coin:.<br> Si cette carte est dans ta réserve et que tu achètes une carte coûtant 1: +1 :Action:"
   },
   {
     "title": "Collecteur d'Impôts",
