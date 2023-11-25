@@ -383,6 +383,11 @@ a, a:visited {
     flex-direction: column;
 }
 
+.card .extra-subtype {
+    left:19mm;
+    right:20.5mm;
+}
+
 .top-left-icons-container {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.65);
@@ -773,6 +778,10 @@ ul {
     color: #000;
     text-shadow: none;
     top: 33mm;
+}
+
+.card .type-character .text {
+    top: 59.5mm;
 }
 
 .card .type-treasure .frame {

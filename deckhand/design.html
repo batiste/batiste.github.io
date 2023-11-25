@@ -377,8 +377,17 @@
                 <img class="cost-icon" src="icons/chest.svg" />`
         }
 
+        var type_trans = type_translation[lang][c['type']]
+        if (c['extra_type']) {
+            type_trans += '&nbsp;&nbsp;' + type_translation[lang][c['extra_type']]
+        }
+
         if(c['type'] != undefined) {
-            extra += `<span class="subtype">${type_translation[lang][c['type']]}</span>`
+            var cls = "subtype"
+            if(c['extra_type']) {
+                cls += ' extra-subtype'
+            }
+            extra += `<span class="${cls}">${type_trans}</span>`
         }
 
         var top_left = '';
@@ -421,13 +430,26 @@
         }
 
         if(c['type'] == "adventure") {
-            extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" /><img class="tentacle-icon-2" src="icons/tentacle.svg" />`
+            extra += `<img class="tentacle-icon-1" src="icons/tentacle.svg" />`
+            if(!c['extra_type']) {
+                extra += `<img class="structure-icon-2" src="icons/tentacle.svg" />`
+            }
         }
 
         if(c['type'] == "structure") {
-            extra += `<img class="structure-icon-1" src="icons/structure.svg" /><img class="structure-icon-2" src="icons/structure.svg" />`
+            extra += `<img class="structure-icon-1" src="icons/structure.svg" />`
+            if(!c['extra_type']) {
+                extra += `<img class="structure-icon-2" src="icons/structure.svg" />`
+            }
         }
 
+        if(c['extra_type'] == 'adventure') {
+            extra += `<img class="tentacle-icon-2" src="icons/tentacle.svg" />`
+        }
+        if(c['extra_type'] == 'attack') {
+            extra += `<img class="tentacle-icon-2" src="icons/attack.svg" />`
+        }
+ 
         var flavor = ""
         if(c['flavor']){
             flavor = `<span class="separator"></span><span class="flavour">“${c['flavor']}”</span>`
@@ -471,6 +493,7 @@
         c['text'] = c['text'].replace(/\+1 :Coin:/g, `<span class="keyword">+1</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+2 :Coin:/g, `<span class="keyword">+2</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+3 :Coin:/g, `<span class="keyword">+3</span> <img class="rule-icon chest" src="icons/coins.svg" />`)
+        c['text'] = c['text'].replace(/:Coin:/g, `<img class="rule-icon chest" src="icons/coins.svg" />`)
 
         // rep('Card')
         rep('Action')
@@ -557,7 +580,12 @@
             var text = document.getElementById('card-'+c.id).querySelector('.innerText')
             // 5 lines
             var fs = 9;
-            while(text.offsetHeight > 62.0) {
+            var limit = 62.0;
+            if(c.type == 'character') {
+                limit = 69.0;
+            }
+
+            while(text.offsetHeight > limit) {
                 fs -= 0.02;
                 text.style['font-size'] = `${fs}px`
             }

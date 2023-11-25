@@ -48,7 +48,7 @@ var cards = [
 &nbsp;&nbsp;&nbsp; • Play a card from your hand: Set the card aside, resolve its effects and consequences <b>then</b> put the card into your stash.<br>
 &nbsp;&nbsp;&nbsp; • Buy a card from the supply: Pay the cost 
 indicated by the chest <img class="rule-icon" src="icons/chest-simplified.svg" /> at the bottom right
-with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into your stash.
+with coins :Coing: and put it into your stash.
     `,
     'img': 'marketing/booklet.png',
     'type': 'indicator',
@@ -60,13 +60,13 @@ with coins <img class="rule-icon coin" src="icons/coins.svg" /> and put it into 
 
 {
     'title': 'Card Quick Reference',
-    'text': `<b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Increase your coins by 1.<br>
+    'text': `<b>+1 :Coin::</b> Increase your coins by 1.<br>
 <b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> You may draw 1 card from your deck immediately.<br>
 <b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> You may put 1 supply card at the bottom of the reload deck immediately. 
         If you do, replace it with a <b>reload deck</b> card.<br>
 <b>+1 Action:</b> Gain an extra Action this turn.<br>
 <b>+1 Buy:</b> You may Buy 1 card without using an Action this turn.<br>
-<b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Decrease your coins by 1.<br>
+<b>Pay 1 :Coin::</b> Decrease your coins by 1.<br>
 <b>+1 Discard:</b> You must discard 1 card from your hand into your stash.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
 are reminders of triggered effects.<br>
@@ -850,137 +850,215 @@ are reminders of triggered effects.<br>
 },
 
 
-// {
-//     'title': 'Seance',
-//     'text': `+1 :Action:, +1 :Card:.<br>
-//     If this card is in your stash, and you play a 1 cost card: Look at the 2 top cards from any one deck.`,
-//     'img': 'ext/seance.png',
-//     'type': 'adventure',
-//     'victory': '1',
-//     'cost': '1',
-//     'amount': 1,
-//     // 'start': true,
-//     'fist': true,
-// },
+{
+    'title': 'Seance',
+    'text': `+1 :Action:, +1 :Coin:, +1 :Card:.<br>
+    If this card is in your stash, and you play a 1 cost card: Look at the 2 top cards from any one deck.`,
+    'img': 'ext/seance.png',
+    'type': 'adventure',
+    'victory': '2',
+    'cost': '3',
+    'amount': 1,
+    // 'start': true,
+    'fist': true,
+},
+
+{
+    'title': `Raider's Excavations`,
+    'text': `+1 :Coin:.<br>At the start of your turn, if this card is in your stash,
+    as well as 2 other Adventures: +1 :Coin:.`,
+    'img': 'ext/excavation.png',
+    'type': 'structure',
+    'extra_type': 'adventure',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+    'start': true,
+},
+
+{
+    'title': `Haunted Shipwreck`,
+    'text': `Name a card type and reveal the top 4 cards of an ennemies deck.
+    Put the cards of the named type into its stash, then +1 :Coin: for each remaining card.`,
+    'img': 'ext/shipwreck.png',
+    'type': 'structure',
+    'extra_type': 'adventure',
+    'victory': '3',
+    'cost': '3',
+    'amount': 1,
+    'target': true,
+},
 
 
-// {
-//     'title': 'The Zoologist',
-//     'text': `End game: :Hook: for each Animal in your deck. Crafty Coco, Kraken's Fury, 
-//     Merfolk Mercenary, Abyss Marauder, Monkey's Bargain, Going Ape, Exploration and Useless Totem are Animals.`,
-//     'img': 'characters/zoologist.png',
-//     'type': 'character',
-//     'victory': '1',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': `Bloodfang's Manor`,
+    'text': `+1 :Card:.<br>When you play your second Attack card each turn: +1 :Buy:.`,
+    'img': 'ext/manor.png',
+    'type': 'structure',
+    // 'extra_type': 'attack',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+    'fist': true,
+},
 
-// {
-//     'title': 'The Architect',
-//     'text': `End game: :Hook: for each Structure in <br>your deck in excess of 3.<br>
-//     :ms:
-//     Reveal: +1 :Reload:.
-//     `,
-//     'img': 'characters/architect.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': `Raid on Port Royal`,
+    'text': `+ :Reload:<br>At the start of your turn, if this card is in your stash: +1 :Buy:.`,
+    'img': 'ext/raid.png',
+    'type': 'adventure',
+    'extra_type': 'attack',
+    'victory': '2',
+    'cost': '3',
+    'amount': 1,
+    'start': true,
+},
 
-// {
-//     'title': 'Captain Bloodfang',
-//     'text': `End game: :Hook: for each Vampire in your deck. Tax Collector, 
-//     Crooked Merchant, Gambling Addiction, Extravagance, Ghost Crew, 
-//     Alley Thief and Blademaster are Vampires.`,
-//     'img': 'characters/count.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': `Jail Breaker`,
+    'text': `+1 :Action:, +1 :Card:, Restore any <br>number of face down supply card. <br>When discarded: +1 :Coin:.`,
+    'img': 'ext/breaker.png',
+    'type': 'adventure',
+    'extra_type': 'attack',
+    'victory': '3',
+    'cost': '2',
+    'amount': 1,
+    'discard': true,
+},
 
-// {
-//     'title': 'Young Pirate',
-//     'text': `End game: :Hook: for each Attack in <br>your deck in excess of 5.
-//     :ms:Reveal: +1 :Coin:.`,
-//     'img': 'characters/blood.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
 
-// {
-//     'title': 'The Duchess',
-//     'text': `End game: :Hook: for each targeted <br>card 
-//     <img class="target" src="icons/target.svg" style="display:inline;margin-bottom: -4px;padding:0" /> in your deck.
-//     :ms:
-//     Reveal: +1 :Reload:, +1 :Coin:.
-//     `,
-//     'img': 'characters/markswoman.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
 
-// {
-//     'title': 'The Governor',
-//     'text': `End game: :Hook: for each card costing <br>more than 3 in your deck.
-//     :ms:Reveal: +1 :Coin:.`,
-//     'img': 'characters/governor.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': 'The Zoologist',
+    'text': `End game: :Hook: for each Animal in your deck. Crafty Coco, Kraken's Fury, 
+    Merfolk Mercenary, Abyss Marauder, Monkey's Bargain, Going Ape, Exploration and Useless Totem are Animals.`,
+    'img': 'characters/zoologist.png',
+    'type': 'character',
+    // 'victory': '1',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
 
-// {
-//     'title': 'The Adventurer',
-//     'text': `End game: :Hook: for each Adventure card <br>in excess of 5 in your deck.:ms:
-//     Reveal: +2 :Card:.`,
-//     'img': 'characters/explorator.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': 'The Architect',
+    'text': `End game: :Hook: for each Structure in <br>your deck in excess of 3.<br>
+    :ms:
+    Reveal: +1 :Buy: if there is at least 2 Structures in the supply.
+    `,
+    'img': 'characters/architect.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
 
-// {
-//     'title': 'The Engineer',
-//     'text': `End game: :Hook: for each start-of-turn 
-//     <img class="rule-icon" style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> 
-//     and permanent effect 
-//     <img class="rule-icon target" src="icons/fist.svg" 
-//     style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> card in your deck.
-//     :ms:Reveal: +1 :Buy:.`,
-//     'img': 'characters/engineer.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// },
+{
+    'title': 'Captain Bloodfang',
+    'text': `End game: :Hook: for each Vampire in your deck. Tax Collector, 
+    Beach Bum, Gambling Addiction, Extravagance, Ghost Crew, 
+    Alley Thief and Blademaster are Vampires.`,
+    'img': 'characters/count.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
 
-// {
-//     'title': 'The Chief Cook',
-//     'text': `End game: :Hook: for each card costing 1 in your deck in excess of 7.
-//     :ms:Reveal: Put a 1-cost supply card into your stash.`,
-//     'img': 'characters/cook.png',
-//     'type': 'character',
-//     'victory': '0',
-//     // 'cost': '1',
-//     'amount': 1,
-//     // 'fist': true,
-// }
+{
+    'title': 'Young Pirate',
+    'text': `End game: :Hook: for each Attack in <br>your deck in excess of 5.
+    :ms:Reveal: +1 :Coin:.`,
+    'img': 'characters/blood.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Duchess',
+    'text': `End game: :Hook: for each targeted <br>card 
+    <img class="target" src="icons/target.svg" style="display:inline;margin-bottom: -4px;padding:0" /> in your deck in excess of 1.
+    :ms:
+    Reveal: +1 :Reload:, +1 :Coin:.
+    `,
+    'img': 'characters/markswoman.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Governor',
+    'text': `End game: :Hook: for each card costing <br>more than 2 in your deck in excess of 1.
+    :ms:Reveal: +1 :Coin:.`,
+    'img': 'characters/governor.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Adventurer',
+    'text': `End game: :Hook: for each Adventure card <br>in excess of 4 in your deck.:ms:
+    Reveal: +1 :Card:, +1 :Coin:.`,
+    'img': 'characters/adventurer.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Engineer',
+    'text': `End game: :Hook: for each start-of-turn 
+    <img class="rule-icon" style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> 
+    and permanent effect 
+    <img class="rule-icon target" src="icons/fist.svg" 
+    style="display:inline;margin-bottom: -4px;padding:0" src="icons/bookmark-yellow.svg" /> card in your deck.
+    :ms:Reveal: +1 :Buy:.`,
+    'img': 'characters/engineer.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Chief Cook',
+    'text': `End game: :Hook: for each card costing 1 in your deck in excess of 7.
+    :ms:Reveal: Put a 1-cost supply card into your stash.`,
+    'img': 'characters/cook.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+},
+
+{
+    'title': 'The Archeologist',
+    'text': `End game: :Hook: for each Adventure and Structure in your deck in excess of 6.
+    :ms:Reveal: +1 :Coin: for each Structure in the supply, up to a maximum of 2.`,
+    'img': 'characters/archeologist.png',
+    'type': 'character',
+    // 'victory': '0',
+    // 'cost': '1',
+    'amount': 1,
+    // 'fist': true,
+}
+
+
 
 
 ]
