@@ -114,7 +114,7 @@ rappels d'effets déclenchés<br>
     "flavor":"Les rumeurs disent qu'il est le plus riche du village."
   },
   {
-    "title": "Léthargie Karmique",
+    "title": "Élévation Karmique",
     "text": "Paye 1 :Coin: : Choisis une carte de ta main. Choisi une carte de la réserve coûtant 1 de plus. Échanges ces cartes",
     "flavor-no-quotes": "« Harmonie ! Sérénité ! » bâilla-t-il, après sa sieste."
   },
@@ -226,7 +226,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Équipage Fantôme",
-    "text": "+1 :Card:, +1 :Coin:. Tu peux mettre cette carte au dessus du deck de son propriétaire. +1 :Action: s'il y a 3 attaques ou plus dans la réserve.",
+    "text": "+1 :Card:, +1 :Coin:. Tu peux mettre cette carte au dessus du deck de son propriétaire.<br>+1 :Action: s'il y a 3 attaques ou plus dans la réserve.",
     // "flavor": "Ta vie mortelle contre une rétribution éternelle?"
   },
   {
