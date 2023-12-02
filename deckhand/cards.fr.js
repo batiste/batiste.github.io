@@ -58,7 +58,7 @@ du deck de recharge et la remplacer par une du <b>deck de recharge</b>.<br>
 <b>+1 Défausse :</b> Défausse 1 carte de ta main dans ta planque.<br>
 <b>Paye 1 :</b> Diminue tes pièces de 1.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
-rappels d'effets déclenchés<br>
+rappels d'effets déclenchés.<br>
 <img class="rule-icon target" src="icons/target.svg" /> effets ciblés qui affectent les ennemis.<br>
 <img class="rule-icon target" src="icons/fist.svg" /> effet durable quand dans ta planque.`,
   'img': 'marketing/booklet.png',
@@ -155,7 +155,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title":"Hôtel du Conseil",
-    "text":"Un ennemi choisit une carte de la réserve et la place dans ta planque.",
+    "text":"Un ennemi choisit une carte de la réserve <br>et la place dans ta planque.",
     "flavor":"De l’or pour un siège, une richesse gaspillée en chuchotements."
   },
   {
@@ -246,7 +246,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Observateur Furtif",
-    "text": "Révèle les 2 premières cartes du deck de l’ennemi ciblé. Place-en une dans sa planque et gagne des Pièces équivalant aux crochets :Hook: de la carte.",
+    "text": "Révèle les 2 premières cartes du deck de l’ennemi ciblé. Place-en une dans sa planque. Pour chaque :Hook: de la carte defaussée : +1 :Coin:.",
     // "flavor": "Un œil vigilant révèle les vérités cachées."
     "flavor": ""
   },
@@ -267,7 +267,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Affaire de Singe",
-    "text": "Retire 1 carte de ta main ou de ta planque du jeu. Pour chaque :Hook: de la carte retirée : +1 :Coin: et +1 :Action:.",
+    "text": "Retire 1 carte de ta main ou de ta planque du jeu. Pour chaque :Hook: de la carte <br>retirée : +1 :Coin: et +1 :Action:.",
     "flavor": "Les espiègleries de l’un sont l’aubaine d’un autre."
   },
   {
@@ -291,21 +291,21 @@ rappels d'effets déclenchés<br>
   {
     "title": "Citadelle Côtière",
     "text": "+1 :Card:, +2 :Action:.<br><i>(N'utilise pas plus de 5 actions ce tour-ci.)</i>",
-    "flavor": "Au bord de la mer, la citadelle appelle les intrépides à la recherche de fortunes."
+    "flavor": "Au bord de la mer, la citadelle appelle les <br>intrépides à la recherche de fortunes."
   },
   {
     "title": "Atelier d’Architectes",
     "text": "+1 :Action:, +1 :Coin:. S'il y a 2 Structures ou plus dans la réserve : +1 :Achat:.",
-    "flavor": "Des plans méticuleux et un artisanat habile donnent vie aux grandes visions."
+    "flavor": "Des plans méticuleux et une maîtrise sans faille donnent vie aux grandes visions."
   },
   {
     "title": "Malédiction Vaudou",
-    "text": "Révèle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa planque, puis applique ses effets.",
+    "text": "Révèle les 3 premières cartes du deck du joueur ciblé. Mets-en une dans sa <br>planque, puis applique ses effets.",
     "flavor": "À chaque pas, la malédiction resserre son emprise."
   },
   {
     "title": "Maraudeur des Abysses",
-    "text": "+1 :Action:. Échange une carte de ta<br> main avec une carte du même coût de la planque d’un ennemi.",
+    "text": "+1 :Action:. Échange une carte de ta<br> main avec une carte de même coût de la planque d’un ennemi.",
     "flavor": "Né des profondeurs, il se nourrit des incertitudes."
   },
   {
@@ -315,7 +315,7 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Addiction au Jeu",
-    "text": "+2 :Reload:. Si la réserve contient 4 cartes ou plus du même type : +3 :Coin:.",
+    "text": "+2 :Reload:. Si la réserve contient au moins <br>4 cartes du même type : +3 :Coin:.",
     "flavor": "L'attrait des richesses faciles a scellé sa chute."
   },
   {
@@ -367,16 +367,16 @@ rappels d'effets déclenchés<br>
   },
   {
     "title": "Foule en Colère",
-    "text": "+2 :Coin:.<br> Si cette carte est dans ta réserve et que tu achètes une carte coûtant 1 : +1 :Action:"
+    "text": "+2 :Coin:.<br> Si cette carte est dans ta planque et que tu achètes une carte coûtant 1 : +1 :Action:"
   },
   {
     "title": "Collecteur d'Impôts",
-    "text": "+1 :Coin:, +1 :Card: :or: +1 :Coin: pour chaque Structure dans la réserve d'un ennemi, jusqu'à un maximum de 4 pièces."
+    "text": "+1 :Coin:, +1 :Card:. :or: +1 :Coin: pour chaque Structure dans la réserve d'un ennemi, jusqu'à un maximum de 4 pièces."
   },
   {
     "title": "Crique Cachée",
     "text": `Retourne 1 carte de réserve face cachée. Cette carte est hors jeu. Restaure-la à tout moment lors de ton prochain tour.
-      Ensuite, +1 :Coin: pour chaque type de carte différent dans la réserve.`
+      Puis, +1 :Coin: pour chaque type de carte différent dans la réserve.`
   },
   {
     "title": "Coco l'Astucieux",

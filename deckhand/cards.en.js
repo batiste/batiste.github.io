@@ -817,7 +817,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Tax Collector',
-    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: for each Structure in an enemy’s stash, up to a maximum of 4 coins.`,
+    'text': `+1 :Coin:, +1 :Card:. :or: +1 :Coin: for each Structure in an enemy’s stash, up to a maximum of 4 coins.`,
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '2',
