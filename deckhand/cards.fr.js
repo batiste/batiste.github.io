@@ -315,7 +315,7 @@ rappels d'effets déclenchés.<br>
   },
   {
     "title": "Addiction au Jeu",
-    "text": "+2 :Reload:. Si la réserve contient au moins <br>4 cartes du même type : +3 :Coin:.",
+    "text": "+2 :Reload: puis, si la réserve contient au moins <br>4 cartes du même type : +3 :Coin:.",
     "flavor": "L'attrait des richesses faciles a scellé sa chute."
   },
   {
