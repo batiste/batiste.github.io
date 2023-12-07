@@ -103,8 +103,8 @@ a, a:visited {
 }
 
 .booklet .coin {
-    width: 15px;
-    height: 12px;
+    width: 15.5px;
+    height: 13px;
     padding: 0 1px;
     margin-bottom: -2.5px;
 }
@@ -248,12 +248,12 @@ a, a:visited {
 }
 
 .card .text .coin {
-    height: 11px;
+    height: 10.8px;
     margin-top: -2px;
     margin-bottom: -2.5px;
     margin-left: -1.5px;
     padding-bottom: 1px;
-    margin-right: -1px;
+    margin-right: -0.3px;
 }
 
 .card .text .draw {
