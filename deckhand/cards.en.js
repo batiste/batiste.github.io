@@ -804,7 +804,7 @@ are reminders of triggered effects.<br>
 {
     'title': 'Angry Mob',
     'text': `+2 :Coin:.<br>
-    If this card if in your stash, and you <br>buy a 1-cost card: +1 :Action:.
+    If this card is in your stash, and you <br>buy a 1-cost card: +1 :Action:.
     `,
     //'flavor': 'A united roar shakes the foundations.',
     'img': 'attacks/angry-mob.png',
