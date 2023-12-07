@@ -103,7 +103,7 @@ a, a:visited {
 }
 
 .booklet .coin {
-    width: 14px;
+    width: 15px;
     height: 12px;
     padding: 0 1px;
     margin-bottom: -2.5px;
@@ -239,6 +239,15 @@ a, a:visited {
 }
 
 .card .text .star {
+    height: 11px;
+    margin-top: -2px;
+    margin-bottom: -2.5px;
+    margin-left: -1.5px;
+    padding-bottom: 1px;
+    margin-right: -1px;
+}
+
+.card .text .coin {
     height: 11px;
     margin-top: -2px;
     margin-bottom: -2.5px;
@@ -720,7 +729,7 @@ ul {
 }
 
 .card .quick-ref .rule-icon.coin, .coin-top-left img, .flip-top-right img {
-    width: 14px;
+    width: 15px;
     height: 12px;
     padding: 0 1px;
     margin-bottom: -2.5px;
