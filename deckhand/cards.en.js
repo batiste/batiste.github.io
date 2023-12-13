@@ -914,17 +914,18 @@ are reminders of triggered effects.<br>
 //     'start': true,
 // },
 
-// {
-//     'title': `Jail Breaker`,
-//     'text': `+1 :Action:, +1 :Card:, Restore any <br>number of face down supply card. <br>When discarded: +1 :Coin:.`,
-//     'img': 'ext/breaker.png',
-//     'type': 'adventure',
-//     'extra_type': 'attack',
-//     'victory': '3',
-//     'cost': '2',
-//     'amount': 1,
-//     'discard': true,
-// },
+{
+    'title': `Jail Breaker`,
+    'text': `+1 :Coin:, +1 :Discard:, then +2 :Coin: if the discarded card has a discard effect.<br>
+    When discarded: +1 :Card: then +1 :Action: if discarded via a card effect.`,
+    'img': 'ext/breaker.png',
+    'type': 'adventure',
+    'extra_type': 'attack',
+    'victory': '3',
+    'cost': '2',
+    'amount': 1,
+    'discard': true,
+},
 
 
 
