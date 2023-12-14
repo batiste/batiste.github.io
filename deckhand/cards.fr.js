@@ -160,7 +160,7 @@ rappels d'effets déclenchés.<br>
   },
   {
     "title": "Typhon",
-    "text": `+2 :Card:, +1 Défausse, +1 :Coin:. Puis tous les joueurs 
+    "text": `+2 :Card:, +1 :Défausse:, +1 :Coin:. Puis tous les joueurs 
     déplacent simultanément une carte de leur planque ou la carte supérieure de leur deck 
     (sans regarder) dans la planque de leur voisin de gauche.`,
     "flavor": "",

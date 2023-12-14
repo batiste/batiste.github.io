@@ -10,6 +10,7 @@
 <script src="./rasterizeHTML.allinone.js"></script>
 <script src="./cards.fr.js"></script>
 <script src="./cards.en.js"></script>
+<script src="./cards.es.js"></script>
 </head>
 
 <body>
@@ -282,9 +283,137 @@
 <button onclick="downloadBookletBack('back-fr')">Download booklet back</button>
 
 
+
+<div style="display: flex;">
+    <div class="booklet" id="face-es" title="booklet-face">
+        <div class="innerBooklet">     
+            <div>
+            <h3 style="margin-top:0">
+               Preparación para 2 a 4 jugadores<span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">Reglas DeckHand 1/2</span>
+            </h3>
+         
+        <ol>
+            <li>Reparte 1 Moneda, una Carta Indicadora de Monedas y un <b>mazo mezclado</b> con 2 "Primer Combate" y 2 "Celebraciones" a cada jugador. 
+                Elimina el resto de estes dos tipo de cartas del juego.
+            </li>
+            <!-- <li>
+                To play a novice game (3 players max.), remove all card with the :Hard: from the game.
+            </li> -->
+            <!-- <li>
+                Give each player a <b>shuffled deck</b> of 2 "Fist Fight" and 2 "Celebrate". Remove all 
+                other "Fist Fight" and "Celebrate" from the game.
+            </li> -->
+            <li>
+                Mezcla y crea el <b>mazo de suministro</b> con 11 cartas por jugador. Las cartas restantes forma el <b>mazo de recarga</b>.
+            </li>
+            <li>
+                Coloca 6 cartas cara arriba del mazo de recarga para formar el <b>suministro</b>.
+                <b>Siempre</b> tiene que haber 6 cartas, se reponen del <b>mazo de suministros</b>.
+            </li>
+        </ol>
+
+             <h3>Desarrollo del Juego</h3>
+
+             <p style="margin-bottom: 4px;">
+                Comienza un jugador aleatorio. Los pasos en cada turno:
+             </p>
+         
+             <ol>
+                <li>Resuelve efectos que desencaden al inicio de turno <img class="rule-icon" src="icons/bookmark-yellow.svg" />.</li>
+                <li>Descarta <img class="rule-icon" src="icons/card-discard-yellow.svg" /> tu mano, si tienes, y roba 3 cartas de tu mazo.
+                    A partir de ahora, tu pila de descarte se denominará <b>alijo</b>.
+                </li>
+                <li>Luego tienes 2 acciones que puedes usar de las siguientes maneras:
+                    <ul>
+                        <li>Jugar una carta de tu mano: Pon la carta a un lado, resuelve sus efectos y consecuencias, y <b>entonces</b> colocala en tu alijo.</li>
+                        <li>Comprar una carta del suministro: Paga el coste 
+                             indicado en el cofre <img class="rule-icon" src="icons/chest-simplified.svg" /> abajo a la derecha
+                             con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y colocalá en tu alijo.</li>
+                     </ul>
+                </li>
+             </ol>
+             <p style="margin-top:5px">
+                Si tu mazo se agota durante el juego, <b>inmediatamente</b> mezcla el alijo 
+                para formar otra vez el mazo y reanudar cualquier acción o efecto en curso.
+             </p>
+            </div>
+
+             <div style="margin-bottom: 18px; position: relative;">
+                <img src="marketing/board.png" width="102%" style="margin-left: -1%;" />
+                <div id="illustration" style="width:140px;display:flex;">
+                    <div style="width:90px">
+                        1. Mazo Suministro<br>
+                        2. Mazo Recarga<br>
+                        3. Suministro
+                    </div>
+                    <div style="width:50px;">
+                        4. Tu Mano<br>
+                        5. Tu Mazo</br>
+                        6. Tu Alijo
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="booklet" id="back-es"  title="booklet-back">
+        <div class="innerBooklet">
+            <div>
+            <h3 style="margin-top:0">
+                Reglas Generales <span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">Reglas DeckHand 2/2</span>
+            </h3>
+        
+            <p>Coloca tus cartas de alijo cara arriba, permitiendo que todos las identifiquen rápidamente.
+                Haz lo mismo con tus cartas de Monedas.
+            </p>
+            <p>Resuelve el efecto de una carta por completo paso a paso antes de realizar otras acciones.
+                Si los efectos se desencadenaran simultáneamente, el iniciador de
+                el primer efecto decide el orden de resolución.</p>
+            <p>Sólo puedes descartar cartas de tu mano. Revelar o mirar cartas no
+                las agrega a tu mano o vacía los mazos. A menos que se especifique,
+                las cartas vuelven a su posición original inmediatamente.</p>
+            <p>Si un efecto no se puede aplicar en su totalidad, se aplica parcialmente, en la medida de lo posible.
+                Sin embargo, no puede seleccionar efectos u objetivos que no sean aplicables.
+                Siempre debes tener un mínimo de 4 cartas.</p>
+
+            <p style="margin-top:3px;margin-bottom:3px"><b>Referencia de texto en las Cartas</b></p>
+            
+            <p><b>+1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Incrementa tus monedas en 1.</p>
+            <p><b>+1 <img class="rule-icon draw" src="icons/card-draw-2.svg" />:</b> Roba una carta de tu mazo.</p>
+            <p><b>+1 <img class="rule-icon reload" src="icons/cycle-2.svg" />:</b> Coloca 1 carta de suministro en la parte inferior del mazo de recarga.
+                Si lo haces, reemplázala con una del <b>mazo de recarga</b>.</p>
+            <p><b>+1 Acción:</b> Gana una acción extra este turno. No puedes realizar más de 5 Acciones.</p>
+            <p><b>+1 Compra:</b> Compra una carta sin gastar una Acción este turno.</p>
+            <p><b>Paga 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Reduce tus monedas en 1.</p>
+            <p><b>+1 Descarte:</b> Descartar 1 carta de tu mano y ponla en tu Alijo.</p>
+        
+            <h3>Fin del Juego</h3>
+        
+            <p>
+                El juego finaliza al acabarse el mazo de suministro. 
+                El jugador actual finaliza su turno, y el resto realizan su turno solo con 1 Acción inicial.
+                Cuenta el número de Garfios <img class="rule-icon" src="icons/hook-simplified.svg" /> en cada mazo. El jugador con más
+                Garfios gana. En caso de empate, el jugador con más monedas gana, seguido por el jugador que finalizó el juego.
+            </p>
+
+            </div>
+
+            <div>
+                Como Jugar: https://bit.ly/dh-htp<br>
+                Noticias y Retos en Solitario: https://bit.ly/dk-h
+            </div>
+        </div>
+    </div>
+</div>
+
+<button onclick="downloadBookletFace('face-es')">Download booklet face</button>
+<button onclick="downloadBookletBack('back-es')">Download booklet back</button>
+
+
+
 <p>
     <a href="./design.html">English</a>
     <a href="./design.html?lang=fr">French</a>    
+    <a href="./design.html?lang=es">Spanish</a>    
 </p>
 
 <div class="config">
@@ -329,7 +458,7 @@
         params = new URLSearchParams(location.href.split('?')[1])
         lang = params.get('lang')
     }
-    var translation = {'fr': fr_translations}
+    var translation = {'fr': fr_translations, 'es': es_translations}
     var type_translation = {
         'en': {
             'attack': 'Attack',
@@ -344,6 +473,12 @@
             'adventure': 'Aventure',
             'structure': 'Structure',
             'character': 'Crew',
+        },
+        'es': {
+            'attack': 'Ataque',
+            'adventure': 'Aventura',
+            'structure': 'Estructura',
+            'character': 'Tripulación'
         }
     }
 
@@ -379,7 +514,7 @@
 
         var type_trans = type_translation[lang][c['type']]
         if (c['extra_type']) {
-            type_trans += '&nbsp;&nbsp;' + type_translation[lang][c['extra_type']]
+            type_trans += ' - ' + type_translation[lang][c['extra_type']]
         }
 
         if(c['type'] != undefined) {
@@ -467,6 +602,9 @@
         if (lang == 'fr') {
             or_txt = 'Ou'
         }
+        if (lang == 'es') {
+            or_txt = 'O'
+        }
 
         c['text'] = c['text'].replace(':d:', '<img class="rule-icon" src="icons/card-discard-yellow.svg">')
         c['text'] = c['text'].replace(':ms:', '<span class="mini-separator"></span>')
@@ -489,6 +627,14 @@
         c['text'] = c['text'].replace(/\+2 :Buy:/g, `<span class="keyword">+2 Buys</span>`)
         c['text'] = c['text'].replace(/\+1 :Achat:/g, `<span class="keyword">+1 Achat</span>`)
         c['text'] = c['text'].replace(/\+2 :Achat:/g, `<span class="keyword">+2 Achats</span>`)
+        c['text'] = c['text'].replace(/\+1 :Compra:/g, `<span class="keyword">+1 Compra</span>`)
+        c['text'] = c['text'].replace(/\+2 :Compra:/g, `<span class="keyword">+2 Compras</span>`)
+        c['text'] = c['text'].replace(/\+1 :Descarte:/g, `<span class="keyword">+1 Descarte</span>`)
+        c['text'] = c['text'].replace(/\+1 :Défausse:/g, `<span class="keyword">+1 Défausse</span>`)
+
+        c['text'] = c['text'].replace(/\+1 :Accion:/g, `<span class="keyword">+1 Acción</span>`)
+        c['text'] = c['text'].replace(/\+2 :Accion:/g, `<span class="keyword">+2 Acciones</span>`)
+        c['text'] = c['text'].replace(/:Accion:/g, `<span class="keyword">Acción</span>`)
 
         c['text'] = c['text'].replace(/\+1 :Coin:/g, `<span class="keyword">+1</span> <img class="rule-icon coin" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+2 :Coin:/g, `<span class="keyword">+2</span> <img class="rule-icon coin" src="icons/coins.svg" />`)
@@ -498,6 +644,8 @@
         // rep('Card')
         rep('Action')
         rep('Discard')
+        // rep('Défausse')
+        // rep('Descarte')
         // rep('Reload')
 
         c['text'] = c['text'].replace(/\+1 :Card:/g, `<span class="keyword">+1</span> <img class="rule-icon draw" src="icons/card-draw-2.svg" />`)
