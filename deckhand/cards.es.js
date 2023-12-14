@@ -6,7 +6,7 @@ var es_translations = [
     'text': `
     <div class="anatomy-list">
         1. Iconos Recordatorios
-        &nbsp;&nbsp;&nbsp; 2. Title<br>
+        &nbsp;&nbsp;&nbsp; 2. Título<br>
         3. Texto <i>(efectos)</i>
         &nbsp; 4. Ganchos <i>(puntos de v.)</i><br>
         5. Tipo 
