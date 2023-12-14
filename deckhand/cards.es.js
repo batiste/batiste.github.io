@@ -314,7 +314,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Capricho del Emperador',
-    'text': '+2 :Reload: despue un enemigo elige 3 cartas<br> de suministro. Tienes que aplicar los efectos uno por uno de las cartas.',
+    'text': `+2 :Reload: luego un enemigo elige 3 cartas<br> 
+    de suministro. Puedes aplicar los efectos de una de las cartas elegidas.`,
     'flavor': 'Bajo manos reales, tus elecciones son ilusiones.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
