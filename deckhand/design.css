@@ -728,6 +728,11 @@ ul {
     text-align: left;
 }
 
+.card .card-anat .text {
+    left: 7mm;
+    right: 7mm;
+}
+
 .card .quick-ref .rule-icon.coin, .coin-top-left img, .flip-top-right img {
     width: 15px;
     height: 12px;

@@ -36,6 +36,7 @@ var cards = [
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
+    'class': 'card-anat',
     'amount': 8,
     // 'flip': 1,
 },

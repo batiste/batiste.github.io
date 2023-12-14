@@ -8,14 +8,12 @@ var es_translations = [
         1. Iconos Recordatorios
         &nbsp;&nbsp;&nbsp; 2. Title<br>
         3. Texto <i>(efectos)</i>
-        &nbsp; 4. Garfios <i>(puntos de v.)</i><br>
+        &nbsp; 4. Ganchos <i>(puntos de v.)</i><br>
         5. Tipo 
         &nbsp;&nbsp;&nbsp; 6. Coste <i>(se paga con monedas)</i>
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
-    'amount': 8,
-    // 'flip': 1,
 },
 
 {
@@ -488,7 +486,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Observador Silencioso',
-    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su Alijo y gana monedas iguales a sus garfios :Hook:.`,
+    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su Alijo y gana monedas iguales a sus ganchos :Hook:.`,
     //'flavor': 'Un ojo vigilante saca a la luz verdades ocultas.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
