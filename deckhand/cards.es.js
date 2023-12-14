@@ -523,7 +523,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Caminar por la Tabla',
-    'text': ' +2 :Coin:. Retira una carta de tu mano o del Alijo. Gana monedas equivalentes al coste de la carta retirada.',
+    'text': `+2 :Coin:. Retira una carta de tu mano o del Alijo del juego. 
+    Gana monedas equivalentes al costo de la carta retirada.`,
     'flavor': '¿Un baile sobre la tabla o una sentencia retrasada?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -534,7 +535,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Pacto del Mono',
-    'text': 'Retira una carta de tu mano o Alijo. Para cada gancho :Hook: de la carta retirada +1 :Coin: y +1 :Accion:',
+    'text': 'Retira una carta de tu mano o Alijo del juego. Por cada gancho :Hook: de la carta retirada: +1 :Coin: y +1 :Accion:',
     'flavor': 'Las travesuras del mono, la bendición del pirata.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
@@ -545,7 +546,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Viento en Velas',
-    'text': `+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo: Roba una carta extra en el robo inicial.`,
+    'text': `+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo: Roba una carta extra en tu robo inicial.`,
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
