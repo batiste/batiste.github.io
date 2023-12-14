@@ -105,7 +105,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Taverna',
     'text': `+1 :Card: si tienes una Aventura en mano.<br>
-        +1 :Coin: si tienes un Ataque en mano.<br>
+        Luego +1 :Coin: si tienes un Ataque en mano.<br>
         +1 :Accion: si tienes una Estructura en mano.`,
     'flavor': 'La taberna atrae ladrones, rufianes y pícaros',
     'img': 'adventures/tavern-3.png',
@@ -191,7 +191,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Elevación Kármica',
     'text': 'Paga 1 :Coin:: revela una carta de tu mano, <br>elige una carta de suministro que <br> cueste 1 más e intercambialas.',
-    'flavor-no-quotes': '"¡Armonía! ¡Serenidad!" bostezó, después de su siesta.',
+    'flavor-no-quotes': 'Bostezó tras la siesta: "¡Armonía! ¡Serenidad!"',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
     'type': 'adventure',
@@ -243,7 +243,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Regateo',
     'text': '+1 :Compra:, +1 :Reload:.<br>Tu siguiente compra este turno cuesta 1 menos.',
-    'flavor': 'A veces, la lengua tiene un filo más afilado <br>que la espada.',
+    'flavor': 'La lengua tiene un filo más afilado que la espada.',
     'img': 'attacks/haggling.png',
     'type': 'attack',
     'victory': '1',
@@ -313,9 +313,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'El capricho del emperador',
-    'text': '+2 :Reload: y un enemigo elige 3 cartas<br> de suministro. Tienes que aplicar los efectos uno por uno de las cartas.',
-    'flavor': 'En sus manos Reales, incluso tus elecciones son ilusiones.',
+    'title': 'Capricho del Emperador',
+    'text': '+2 :Reload: despue un enemigo elige 3 cartas<br> de suministro. Tienes que aplicar los efectos uno por uno de las cartas.',
+    'flavor': 'Bajo manos reales, tus elecciones son ilusiones.',
     'img': 'attacks/emperor.png',
     'type': 'attack',
     'cost': 2,
@@ -325,7 +325,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Maestro de las Cartas',
-    'text': '+1 :Accion:, coloca una carta de <br>tu Alijo en tu mano.<br>Cuando se descarte: +1 :Card:.',
+    'text': '+1 :Accion:, coloca una carta de tu Alijo en tu mano. Cuando se descarte: +1 :Card:.',
     'flavor': 'Un movimiento de muñeca provoca asombro y miedo.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -337,8 +337,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Mercado de Especias',
-    'text': '+1 :Coin:.<br>Si esta carta está en tu Alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
-    'flavor': 'Las especias bailan y se mezclan, un sabor de opulencia.',
+    'text': '+1 :Coin:. Si esta carta está en tu Alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
+    'flavor': 'Las especias bailan, mezclándose en opulencia.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
     'victory': '2',
@@ -363,7 +363,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
     'title': 'Mina de Oro',
     'text': `El enemigo elegido escoge un número. <br>+3 :Card:. Si el total del coste de las cartas robadas no es igual: 
     +1 :Accion: y las revelas.`,
-    'flavor': 'Debajo del suelo, se encuentran sueños y desesperación.',
+    'flavor': 'Bajo el suelo, sueños y desesperación.',
     'img': 'structures/gold-mine.png',
     'type': 'structure',
     'cost': '2',
@@ -386,7 +386,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Biblioteca Antigua',
-    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que mezclar <br>tu Alijo en tu mazo.',
+    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que <br>mezclar tu Alijo en tu mazo.',
     'flavor': 'Cada página desvela un secreto imperial.',
     'img': 'structures/archives.png',
     'type': 'structure',
@@ -419,7 +419,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Mapa del Tesoro',
-    'text': '+1 :Coin:. Mira las 3 primeras cartas de tu <br>mazo. Puedes poner cualquier número de ellas en tu Alijo y el resto encima de tu mazo en cualquier orden. Si lo haces +1 :Card:.',
+    'text': `+1 :Coin:. Mira las 3 primeras cartas de tu mazo. 
+        Puedes poner cualquier número de ellas en tu Alijo y el resto encima de tu mazo en cualquier orden. Luego +1 :Card:.`,
     //'flavor': 'Riches await the keen-eyed adventurer.',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -440,9 +441,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Tripulación Fantasma',
-    'text': '+1 :Card:, +1 :Coin:. Pon esta carta en la parte superior del mazo de su propietario. Si hay 3 o más Ataques en el suministro: +1 :Accion:',
+    'text': '+1 :Card:, +1 :Coin:. <br>Pon esta carta en la parte superior del mazo de su propietario. +1 :Accion: si hay 3 o más Ataques en el suministro.',
     'img': 'attacks/ghost-crew.png',
-    'flavor': 'Cambia tu vida mortal, disfruta de la retribución eterna.',
+    // 'flavor': 'Transforma tu vida, goza de la retribución eterna.',
     'type': 'attack',
     'victory': '2',
     'cost': '2',
@@ -499,7 +500,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Extravagancia',
     'text': '+1 :Reload:, +2 :Compra:.:or:+1 :Coin:, +1 :Compra:.',
-    'flavor': 'Sólo hay una manera de gastar: ¡de manera lujosa y extravagante!',
+    'flavor': 'Solo gasta de manera lujosa y extravagante.',
     'img': 'adventures/extravagance-2.png',
     'type': 'adventure',
     'victory': '2',
@@ -531,9 +532,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'El Trato del Mono',
+    'title': 'Pacto del Mono',
     'text': 'Retira una carta de tu mano o Alijo. Para cada gancho :Hook: de la carta retirada +1 :Coin: y +1 :Accion:',
-    'flavor': 'Las travesuras de un mono son la bendición de un pirata.',
+    'flavor': 'Las travesuras del mono, la bendición del pirata.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
     'victory': '2',
@@ -543,7 +544,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Viento en Velas',
-    'text': '+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo:<br> Roba una carta extra en el robo inicial.',
+    'text': `+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo: Roba una carta extra en el robo inicial.`,
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
@@ -614,7 +615,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Maldición Vudú',
-    'text': 'Revela las 3 primeras cartas del mazo del jugador objetivo. Pon una en su alijo y luego <br>aplica sus efectos como si lo hubieras jugado.',
+    'text': `Revela las 3 primeras cartas del mazo del jugador objetivo. 
+    Pon una en su alijo, luego aplica sus efectos.`,
     'flavor': 'Con cada paso, la maldición se intensifica.',
     'img': 'attacks/spell.png',
     'type': 'attack',
@@ -626,8 +628,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Meroreador del Abismo',
-    'text': '+1 :Accion:. Cambia una carta de tu mano <br>con una carta del Alijo enemigo <br>con el mismo coste.',
-    'flavor': 'Nacido de las profundidades, se alimenta de la incertidumbre.',
+    'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del Alijo enemigo con el mismo coste.',
+    'flavor': 'De lo profundo nace la incertidumbre.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
     'victory': '3',
@@ -639,7 +641,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Alijo del Contrabandista',
     'text': '+1 :Coin:.<br>Al comienzo de tu turno, Si esta carta <br>está en tu alijo: +1 :Coin:.',
-    'flavor': 'Pocos pueden trazar el rumbo hacia el botín prohibido.',
+    'flavor': 'Pocos trazan el rumbo al botín prohibido.',
     'img': 'structures/smugglers-cache.png',
     'type': 'structure',
     'victory': '2',
@@ -651,7 +653,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Adicción al Juego',
     'text': '+2 :Reload: <br>Si el suministro tiene 4 o más cartas del mismo tipo: +3 :Coin:.',
-    'flavor': 'El atractivo de las riquezas fáciles sentenció su caída.',
+    'flavor': 'La seducción de riquezas fáciles selló su destino.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',
     'victory': '2',
@@ -713,8 +715,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Comerciante Corrupto',
-    'text': 'Paga 1 :Coin:: Cambia una carta entre <br> tu alijo y el alijo del enmemigo objetivo siempre y cuando la diferencia de costo sea 1 o menos.',
-    'flavor': 'El atractivo de la riqueza conduce a acuerdos engañosos.',
+    'text': `Paga 1 :Coin:: Cambia una carta entre tu alijo y el alijo
+         del enemigo objetivo, siempre que la diferencia de costo sea 1 o menos.`,
+    'flavor': 'La riqueza atrae a acuerdos engañosos.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
     'victory': '2',
@@ -736,7 +739,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Furia del Kraken',
-    'text': 'Aplica los efectos de una carta de cualquier alijo.',
+    'text': 'Aplica los efectos de una carta de <br>cualquier alijo.',
     'flavor': 'Cuidado con el devorador de barcos y almas.',
     'img': 'attacks/kraken.png',
     'type': 'attack',
@@ -807,7 +810,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Cala Oculta',
     'text': `Voltee 1 tarjeta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
-     +1: Moneda: para cada tipo de carta diferente en el suministro.`,
+     +1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
     'victory': '2',
@@ -817,7 +820,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Loro Astuto',
-    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en<br> tu Alijo y compras una carta:<br> Pon la carta comprada en tu mano.`,
+    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y compras una carta: Pon la carta comprada en tu mano.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',

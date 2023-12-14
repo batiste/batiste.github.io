@@ -334,7 +334,7 @@
              </ol>
              <p style="margin-top:5px">
                 Si tu mazo se agota durante el juego, <b>inmediatamente</b> mezcla el alijo 
-                para formar otra vez el mazo y reanudar cualquier acción o efecto en curso.
+                para formar otra vez el mazo y reanudar cualquier acción o efecto.
              </p>
             </div>
 
@@ -365,15 +365,15 @@
             <p>Coloca tus cartas de alijo cara arriba, permitiendo que todos las identifiquen rápidamente.
                 Haz lo mismo con tus cartas de Monedas.
             </p>
-            <p>Resuelve el efecto de una carta por completo paso a paso antes de realizar otras acciones.
+            <p>Resuelve el efecto de una carta completamente antes de otras acciones.
                 Si los efectos se desencadenaran simultáneamente, el iniciador de
                 el primer efecto decide el orden de resolución.</p>
             <p>Sólo puedes descartar cartas de tu mano. Revelar o mirar cartas no
                 las agrega a tu mano o vacía los mazos. A menos que se especifique,
                 las cartas vuelven a su posición original inmediatamente.</p>
-            <p>Si un efecto no se puede aplicar en su totalidad, se aplica parcialmente, en la medida de lo posible.
-                Sin embargo, no puede seleccionar efectos u objetivos que no sean aplicables.
-                Siempre debes tener un mínimo de 4 cartas.</p>
+            <p>Si un efecto no se aplica completamente, se hace parcialmente en la medida de lo posible. 
+                No puedes seleccionar efectos u objetivos no aplicables.
+                Debes tener siempre un mínimo de 4 cartas.</p>
 
             <p style="margin-top:3px;margin-bottom:3px"><b>Referencia de texto en las Cartas</b></p>
             
@@ -623,6 +623,7 @@
 
         c['text'] = c['text'].replace(/Pay 1 :Coin:/g, `<span class="keyword">Pay 1</span> <img class="rule-icon coin" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/Paye 1 :Coin:/g, `<span class="keyword">Paye 1</span> <img class="rule-icon coin" src="icons/coins.svg" />`)
+        c['text'] = c['text'].replace(/Paga 1 :Coin:/g, `<span class="keyword">Paga 1</span> <img class="rule-icon coin" src="icons/coins.svg" />`)
         c['text'] = c['text'].replace(/\+1 :Buy:/g, `<span class="keyword">+1 Buy</span>`)
         c['text'] = c['text'].replace(/\+2 :Buy:/g, `<span class="keyword">+2 Buys</span>`)
         c['text'] = c['text'].replace(/\+1 :Achat:/g, `<span class="keyword">+1 Achat</span>`)
