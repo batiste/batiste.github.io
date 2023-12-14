@@ -916,12 +916,12 @@ are reminders of triggered effects.<br>
 
 // {
 //     'title': `Jail Breaker`,
-//     'text': `+1 :Coin:, +1 :Discard:, then +2 :Coin: if the discarded card has a discard effect.<br>
-//     When discarded: +1 :Card:, then +1 :Action: if discarded through a card effect.`,
-//     'img': 'ext/breaker.png',
+//     'text': `+2 :Coin:, +1 :Discard:, then +1 :Action: if the discarded card has a discard effect.<br>
+//     When discarded: Put this card<br> at the bottom of your deck.`,
+//     'img': 'ext/jail-breaker.png',
 //     'type': 'adventure',
 //     'extra_type': 'attack',
-//     'victory': '3',
+//     'victory': '2',
 //     'cost': '2',
 //     'amount': 1,
 //     'discard': true,
