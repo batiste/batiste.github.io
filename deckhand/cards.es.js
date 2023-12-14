@@ -10,19 +10,19 @@ var es_translations = [
         3. Texto <i>(efectos)</i>
         &nbsp; 4. Ganchos <i>(puntos de v.)</i><br>
         5. Tipo 
-        &nbsp;&nbsp;&nbsp; 6. Coste <i>(se paga con monedas)</i>
+        &nbsp;&nbsp;&nbsp; 6. Costo <i>(se paga con monedas)</i>
     </div>`,
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
 },
 
 {
-    'title': 'Tu turno',
+    'title': 'Tu Turno',
     'text': `1. Resuelve cualquier efecto de inicio de turno que pueda desencadenar <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Descarta <img class="rule-icon" src="icons/card-discard-yellow.svg" /> tu mano, si la hay, luego roba 3 cartas de tu mazo.<br>
 3.Luego tienes 2 acciones que puedes usar de las siguientes maneras:<br>
 &nbsp;&nbsp;&nbsp; • Juega una carta de tu mano: Deja la carta a un lado, resuelve sus efectos y consecuencias <b>y luego</b> guárdala en tu Alijo.<br>
-&nbsp;&nbsp;&nbsp; • Compra una tarjeta de la oferta: Paga el coste 
+&nbsp;&nbsp;&nbsp; • Compra una tarjeta de la oferta: Paga el costo 
 indicado por el cofre <img class="rule-icon" src="icons/chest-simplified.svg" /> en la parte inferior derecha
 con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu Alijo.
     `,
@@ -114,7 +114,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Adivino',
+    'title': 'Vidente',
     'text': `Revela 2 cartas de cualquier mazo.<br>
         +1 :Card: por cada Aventura revelada.<br>
         +1 :Coin: por cada Ataque revelado.<br>
@@ -130,7 +130,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Tiro Rápido',
     'text': '+1 :Coin:.<br>Si tienes un Ataque en la mano: +1 :Accion:.',
-    'flavor-no-quotes': '“¡No dejes que se reagrupen!” —ordena ella, <br>con las pistolas en llamas.',
+    'flavor-no-quotes': '“¡No dejes que se reagrupen!” —ordena ella, con las pistolas en llamas.',
     'img': 'attacks/dual-pistol.png',
     'type': 'attack',
     'cost': 1,
@@ -140,7 +140,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Motín',
-    'text': '+1 :Coin:, +1 :Reload:.<br>Pon una carta del suministro que cueste 1 en tu Alijo.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>Pon una carta del suministro que <br>cueste 1 en tu Alijo.',
     'img': 'attacks/mutiny.png',
     'type': 'attack',
     'flavor': `Unidos, exigimos lo que nos corresponde.`,
@@ -360,7 +360,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Mina de Oro',
-    'text': `El enemigo elegido escoge un número. <br>+3 :Card:. Si el total del coste de las cartas robadas no es igual: 
+    'text': `El enemigo elegido escoge un número. <br>+3 :Card:. Si el total del costo de las cartas robadas no es igual: 
     +1 :Accion: y las revelas.`,
     'flavor': 'Bajo el suelo, sueños y desesperación.',
     'img': 'structures/gold-mine.png',
