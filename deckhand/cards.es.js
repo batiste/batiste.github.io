@@ -83,7 +83,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 
 {
-    'title': 'Primer Combate',
+    'title': 'Pelea a Puñetazos',
     'text': '+1 :Coin:<br><i>(Aumenta tus monedas en 1.)</i>',
     'flavor': 'Las amistades piratas comienzan con un combate.',
     'img': 'attacks/fist-fight.png',
