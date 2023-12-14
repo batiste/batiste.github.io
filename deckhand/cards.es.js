@@ -128,7 +128,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Tiro rápido',
+    'title': 'Tiro Rápido',
     'text': '+1 :Coin:.<br>Si tienes un Ataque en la mano: +1 :Accion:.',
     'flavor-no-quotes': '“¡No dejes que se reagrupen!” —ordena ella, <br>con las pistolas en llamas.',
     'img': 'attacks/dual-pistol.png',
@@ -161,7 +161,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Trago envenenado',
+    'title': 'Trago Envenenado',
     'text': '+1 :Coin:, +1 :Reload:.<br>Si es descartada: +1 :Coin:.', // , add condition, if you have not treasure if too strong 
     'flavor': 'A veces, el veneno actúa lentamente.',
     'img': 'attacks/pint.png',
@@ -174,7 +174,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Vagabundo de la playa',
+    'title': 'Vagabundo de la Playa',
     'text': `+1 :Coin:, +1 :Reload:.<br>Si eres el jugador
      que ha comprado la<br> carta más reciente: +1 :Compra:, +1 :Coin:.`,
     'flavor': 'Se rumorea que es el más rico de la ciudad.',
@@ -429,8 +429,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Volviendose Mono',
-    'text': '+1 :Accion:, +1 :Reload:. Si se juega de tu mano, cambia Volviendose Mono o una carta de tu mano por una carta del mismo valor de suministros. La nueva carta va a tu mano.',
+    'title': 'Volviéndose Mono',
+    'text': `+1 :Accion:, +1 :Reload:. Si se juega de tu mano, cambia Volviéndose Mono o 
+    una carta de tu mano por una carta del mismo valor de suministros. La nueva carta va a tu mano.`,
     'img': 'attacks/silverback.png',
     'type': 'attack',
     'victory': '2',
@@ -440,7 +441,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Tripulación Fantasma',
-    'text': '+1 :Card:, +1 :Coin:. <br>Pon esta carta en la parte superior del mazo de su propietario. +1 :Accion: si hay 3 o más Ataques en el suministro.',
+    'text': `+1 :Card:, +1 :Coin:. <br>Pon esta carta en la parte superior del mazo de
+    su propietario. +1 :Accion: si hay 3 o más Ataques en el suministro.`,
     'img': 'attacks/ghost-crew.png',
     // 'flavor': 'Transforma tu vida, goza de la retribución eterna.',
     'type': 'attack',
@@ -461,7 +463,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Cárcel del Governador',
+    'title': 'Cárcel del Gobernador',
     'text': `+2 :Coin:. Voltea una carta de suministro cara abajo.
     Esta carta está fuera de juego. Recupérala en cualquier momento en tu siguiente turno.`,
     //'flavor': 'Querido invitado: realmente estás en tu mejor condena.',
@@ -661,7 +663,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Persecución desesperada',
+    'title': 'Persecución Desesperada',
     'text': `Tú y un enemigo debéis tener al menos 2 cartas en el mazo. Revela las 3 cartas superiores de vuestros mazos.
     Si revelas más ataques que él, pon una carta de suministro que cueste 4 o menos en tu Alijo.`,
     //'reduced-font-size': '9.3px',
