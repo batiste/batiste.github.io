@@ -151,7 +151,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Espadachín',
-    'text': '+1 :Coin: por carta en mano que cueste 1.<br>+1 :Accion: por carta en mano que cueste 3',
+    'text': '+1 :Coin: por carta en mano que cueste 1.<br>+1 :Accion: por carta en mano que cueste 3.',
     'flavor': `Los estrategas consumados combinan maniobras sutiles con grandes gestos.`,
     'img': 'attacks/dance-master-3.png',
     'type': 'attack',

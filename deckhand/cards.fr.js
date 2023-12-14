@@ -226,7 +226,8 @@ rappels d'effets déclenchés.<br>
   },
   {
     "title": "Équipage Fantôme",
-    "text": "+1 :Card:, +1 :Coin:. Tu peux mettre cette carte au dessus du deck de son propriétaire.<br>+1 :Action: s'il y a 3 attaques ou plus dans la réserve.",
+    "text": `+1 :Card:, +1 :Coin:. Tu peux mettre cette carte au dessus du deck de son propriétaire.
+    <br>+1 :Action: s'il y a 3 attaques ou plus dans la réserve.`,
     // "flavor": "Ta vie mortelle contre une rétribution éternelle?"
   },
   {
