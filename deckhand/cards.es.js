@@ -300,7 +300,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Alquimia',
-    'text': 'Descarta hasta 3 cartas. +1 :Coin: por cada carta descartada. Si lo haces +2 :Card:.',
+    'text': 'Descarta hasta 3 cartas. +1 :Coin: por cada carta descartada. Luego +2 :Card:.',
     'flavor': 'Imbuido de fuego, modificando el destino. ¿Qué podría salir mal?',
     'img': 'adventures/alchemist-2.png',
     'type': 'adventure',
@@ -385,7 +385,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Biblioteca Antigua',
-    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que <br>mezclar tu Alijo en tu mazo.',
+    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que <br>barajar tu Alijo en tu mazo.',
     'flavor': 'Cada página desvela un secreto imperial.',
     'img': 'structures/archives.png',
     'type': 'structure',
