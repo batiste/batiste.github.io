@@ -8,7 +8,7 @@ var es_translations = [
         1. Iconos Recordatorios
         &nbsp;&nbsp;&nbsp; 2. Title<br>
         3. Texto <i>(efectos)</i>
-        &nbsp;&nbsp; 4. Garfios <i>(puntos de victoria)</i><br>
+        &nbsp; 4. Garfios <i>(puntos de v.)</i><br>
         5. Tipo 
         &nbsp;&nbsp;&nbsp; 6. Coste <i>(se paga con monedas)</i>
     </div>`,
@@ -809,8 +809,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cala Oculta',
-    'text': `Voltee 1 tarjeta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
-     +1 :Coin: para cada tipo de carta diferente en el suministro.`,
+    'text': `Gira 1 tarjeta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
+    <br>+1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
     'victory': '2',
@@ -820,7 +820,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Loro Astuto',
-    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y compras una carta: Pon la carta comprada en tu mano.`,
+    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y <br>compras una carta: Pon la carta <br>comprada en tu mano.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',
