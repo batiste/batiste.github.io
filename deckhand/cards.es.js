@@ -190,7 +190,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Elevación Kármica',
-    'text': 'Paga 1 :Coin:: revela una carta de tu mano, <br>elige una carta de suministro que <br> cueste 1 más e intercambialas.',
+    'text': 'Paga 1 :Coin:: revela una carta de tu mano, <br>elige una carta de suministro que <br> cueste 1 más e intercambiabas.',
     'flavor-no-quotes': 'Bostezó tras la siesta: "¡Armonía! ¡Serenidad!"',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
@@ -215,7 +215,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Boda del Governador',
+    'title': 'Boda del Gobernador',
     'text': '+1 :Coin:, +1 :Reload:. En su turno, el enemigo objetivo gana +1 :Compra: y tiene que darte 1 moneda antes de su compra.',
     'flavor': 'Un regalo suntuoso asegura favores e influencia.',
     'img': 'structures/wedding.png',
@@ -566,8 +566,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Final del Arcoiris',
-    'text': '+1 :Card:.<br>Al comienzo del tu turno, si esta carta está en tu Alijo, y tambien un Ataque y una Estructura: +1 :Accion:.',
+    'title': 'Final del Arcoíris',
+    'text': '+1 :Card:.<br>Al comienzo del tu turno, si esta carta está en tu Alijo, y también un Ataque y una Estructura: +1 :Accion:.',
     // 'flavor': 'A taunting mirage of unachievable dreams',
     'img': 'adventures/rainbow.png',
     'type': 'adventure',
@@ -627,7 +627,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Meroreador del Abismo',
+    'title': 'Merodeador del Abismo',
     'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del Alijo enemigo con el mismo coste.',
     'flavor': 'De lo profundo nace la incertidumbre.',
     'img': 'attacks/sea-bug.png',
@@ -773,7 +773,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'El Gran Consejo',
     'text': `+2 :Accion:. Antes del final de tu turno, gira 4 cartas de suministro cara abajo.
-    Estas cartas están fuera de juego. Restauralas en cualquier momento en tu próximo turno.`,
+    Estas cartas están fuera de juego. Restaurarlas en cualquier momento en tu próximo turno.`,
     'img': 'structures/grand-council.png',
     'type': 'structure',
     'victory': '5',
@@ -798,7 +798,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Recaudador de Impuestos',
-    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: por cada Estructura en Alijos enemigos, hasta un máximo de 4 monedas.`,
+    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: por cada Estructura en Alijo enemigo, hasta un máximo de 4 monedas.`,
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '2',
