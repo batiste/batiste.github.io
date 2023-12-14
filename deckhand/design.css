@@ -135,6 +135,7 @@ a, a:visited {
     left: 3mm;
     bottom: 3mm;
     right: 3mm;
+    display: none;
 }
 
 .inner {
@@ -157,7 +158,11 @@ a, a:visited {
     margin-left: -0.04mm;
     height: 83.8mm;
     margin-top: 5.2mm;
-    /* border-radius: 5px; */
+
+    width: 65mm;
+    margin-left: -0.04mm;
+    height: 89.8mm;
+    margin-top: 2.2mm;
 }
 
 .card .mpc {
@@ -400,9 +405,10 @@ a, a:visited {
 .top-left-icons-container {
     position: absolute;
     background-color: rgba(0, 0, 0, 0.65);
-    top:5.5mm;
-    left:5.4mm;
-    border-radius: 0 0 3px 0;
+    top:0mm;
+    left:6.5mm;
+    top: 5.5mm;
+    border-radius: 3px 3px 3px 3px;
     text-align: center;
     display: flex;
     align-content: center;
