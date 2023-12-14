@@ -326,8 +326,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Maestro de las Cartas',
-    'text': '+1 :Accion:, coloca una carta de tu Alijo en tu mano. Cuando se descarte: +1 :Card:.',
-    'flavor': 'Un movimiento de muñeca provoca asombro y miedo.',
+    'text': '+1 :Accion:, coloca una carta <br>de tu Alijo en tu mano.<br>Cuando se descarte: +1 :Card:.',
+    'flavor': 'Un movimiento de muñeca asombra y atemoriza.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
     'victory': '2',
@@ -338,8 +338,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Mercado de Especias',
-    'text': '+1 :Coin:. Si esta carta está en tu Alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
-    'flavor': 'Las especias bailan, mezclándose en opulencia.',
+    'text': '+1 :Coin:.<br>Si esta carta está en tu Alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
+    // 'flavor': 'Las especias bailan, mezclándose en opulencia.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
     'victory': '2',
@@ -409,7 +409,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Exploración',
-    'text': 'Si tienes una Aventura en la mano:<br>+1 :Accion:.<br>Luego +1 :Card:, +1 :Coin:.',
+    'text': 'Si tienes una Aventura en mano: +1 :Accion:.<br>Luego +1 :Card:, +1 :Coin:.',
     'flavor': 'Zarpa, pero no sin brújula en mano.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
@@ -488,7 +488,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Observador Silencioso',
-    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su Alijo y gana monedas iguales a sus ganchos :Hook:.`,
+    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su Alijo y gana monedas iguales a sus garfios :Hook:.`,
     //'flavor': 'Un ojo vigilante saca a la luz verdades ocultas.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
