@@ -630,7 +630,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Merodeador del Abismo',
-    'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del Alijo enemigo con el mismo coste.',
+    'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del Alijo enemigo con el mismo costo.',
     'flavor': 'De lo profundo nace la incertidumbre.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -753,7 +753,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Isla Calavera',
     'text': `Todos los jugadores revelan la carta superior de su mazo: puedes intercambiar 1 carta revelada con
-    una carta del suministro siempre que la diferencia de coste sea 2 o menos.`,
+    una carta del suministro siempre que la diferencia de costo sea 2 o menos.`,
     'img': 'structures/skull.png',
     'type': 'structure',
     'victory': '4',
@@ -787,8 +787,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Turba Enfurecida',
     'text': `+2 :Coin:.<br>
-    Si esta carta está en tu Alijo, y compras <br>una carta de coste 1: +1 :Accion:.
-    `,
+    Si esta carta está en tu Alijo, y compras <br>una carta de costo 1: +1 :Accion:.`,
     'flavor': 'Un rugido unido sacude los cimientos de la ciudad.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
