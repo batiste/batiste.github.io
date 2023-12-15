@@ -200,7 +200,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Lecciones de Kung Fu',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Pon 1 carta del Alijo del jugador<br> objetivo abajo de su mazo.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Coloca 1 carta del Alijo del jugador<br> objetivo abajo de su mazo.',
     'flavor': '¡La marea, aprovecha su poder a tu favor!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -618,7 +618,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Maldición Vudú',
     'text': `Revela las 3 primeras cartas del mazo del jugador objetivo. 
-    Pon una en su alijo, luego aplica sus efectos.`,
+    Coloca una en su alijo, luego aplica sus efectos.`,
     'flavor': 'Con cada paso, la maldición se intensifica.',
     'img': 'attacks/spell.png',
     'type': 'attack',
