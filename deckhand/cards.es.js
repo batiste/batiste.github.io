@@ -523,7 +523,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Caminar por la Tabla',
-    'text': `+2 :Coin:. Retira una carta de tu mano o del Alijo del juego. 
+    'text': `+2 :Coin:. Puedes retirar una carta de tu mano o Alijo del juego.
     Gana monedas equivalentes al costo de la carta retirada.`,
     'flavor': '¿Un baile sobre la tabla o una sentencia retrasada?',
     'img': 'attacks/plank-2.png',
@@ -595,7 +595,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Ciudadela Costera',
-    'text': '+1 :Card:, +2 :Accion:.<br><i>(No uses más de 5 acciones por turno..)</i>',
+    'text': '+1 :Card:, +2 :Accion:.<br><i>(No uses más de 5 acciones por turno.)</i>',
     'flavor': 'A la orilla del mar, la ciudadela atrae a los <br>intrépidos en busca de fortuna.',
     'img': 'structures/citadel-2.png',
     'type': 'structure',
