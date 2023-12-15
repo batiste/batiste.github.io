@@ -162,7 +162,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Trago Envenenado',
-    'text': '+1 :Coin:, +1 :Reload:.<br>Si es descartada: +1 :Coin:.', // , add condition, if you have not treasure if too strong 
+    'text': '+1 :Coin:, +1 :Reload:.<br>Cuando se descarta: +1 :Coin:.', // , add condition, if you have not treasure if too strong 
     'flavor': 'A veces, el veneno actúa lentamente.',
     'img': 'attacks/pint.png',
     'type': 'attack',
@@ -176,7 +176,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Vagabundo de la Playa',
     'text': `+1 :Coin:, +1 :Reload:.<br>Si eres el jugador
-     que ha comprado la<br> carta más reciente: +1 :Compra:, +1 :Coin:.`,
+    que posee menos cartas: +1 :Compra:, +1 :Coin:.`,
     'flavor': 'Se rumorea que es el más rico de la ciudad.',
     'img': 'adventures/beach-bum.png',
     'type': 'adventure',
@@ -200,7 +200,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Lecciones de Kung Fu',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Pon una carta del Alijo objetivo<br>abajo de su mazo.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Pon 1 carta del Alijo del jugador<br> objetivo abajo de su mazo.',
     'flavor': '¡La marea, aprovecha su poder a tu favor!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -275,7 +275,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Salón del Consejo',
-    'text': 'Un enemigo elegido toma una carta del suministro y la guarda en tu Alijo.',
+    'text': 'Un enemigo elegido toma una carta del suministro y la coloca en tu Alijo.',
     'flavor': 'El Oro le aseguró un asiento, pero su influencia sigue siendo desesperadamente esquiva.',
     'img': 'structures/city-hall-2.png',
     'type': 'structure',
