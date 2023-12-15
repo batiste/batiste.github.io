@@ -22,7 +22,7 @@ var es_translations = [
 2. Descarta <img class="rule-icon" src="icons/card-discard-yellow.svg" /> tu mano, si la hay, luego roba 3 cartas de tu mazo.<br>
 3.Luego tienes 2 acciones que puedes usar de las siguientes maneras:<br>
 &nbsp;&nbsp;&nbsp; • Juega una carta de tu mano: Deja la carta a un lado, resuelve sus efectos y consecuencias <b>y luego</b> guárdala en tu Alijo.<br>
-&nbsp;&nbsp;&nbsp; • Compra una tarjeta de la oferta: Paga el costo 
+&nbsp;&nbsp;&nbsp; • Compra una carta de la oferta: Paga el costo 
 indicado por el cofre <img class="rule-icon" src="icons/chest-simplified.svg" /> en la parte inferior derecha
 con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu Alijo.
     `,
@@ -557,7 +557,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Gremio de Aventureros',
-    'text': '+1 :Coin: por cada Aventura en el Suministro,<br>hasta un máximo de 3 monedas.',
+    'text': '+1 :Coin: por cada Aventura en el suministro,<br>hasta un máximo de 3 monedas.',
     'flavor': 'Donde convergen las misiones y la valentía.',
     'img': 'structures/adventurer-center.png',
     'type': 'structure',
@@ -811,7 +811,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cala Oculta',
-    'text': `Gira 1 tarjeta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
+    'text': `Gira 1 carta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
     <br>+1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
