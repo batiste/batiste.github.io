@@ -822,7 +822,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu a
 
 {
     'title': 'Loro Astuto',
-    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu alijo y compras <br>una carta: Puedes coloca la carta <br>comprada en tu mano.`,
+    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu alijo y compras <br>una carta: Puedes colocar la carta <br>comprada en tu mano.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',
