@@ -188,7 +188,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu a
 
 {
     'title': 'Elevación Kármica',
-    'text': 'Paga 1 :Coin:: revela una carta de tu mano, <br>elige una carta de suministro que <br> cueste 1 más e intercambiabas.',
+    'text': 'Paga 1 :Coin:: Revela una carta de tu mano, <br>elige una carta de suministro que <br> cueste 1 más e intercambiabas.',
     'flavor-no-quotes': 'Bostezó tras la siesta: "¡Armonía! ¡Serenidad!"',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/namaste.png',
