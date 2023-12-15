@@ -21,10 +21,10 @@ var es_translations = [
     'text': `1. Resuelve cualquier efecto de inicio de turno que pueda desencadenar <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Descarta <img class="rule-icon" src="icons/card-discard-yellow.svg" /> tu mano, si la hay, luego roba 3 cartas de tu mazo.<br>
 3.Luego tienes 2 acciones que puedes usar de las siguientes maneras:<br>
-&nbsp;&nbsp;&nbsp; • Juega una carta de tu mano: Deja la carta a un lado, resuelve sus efectos y consecuencias <b>y luego</b> guárdala en tu Alijo.<br>
+&nbsp;&nbsp;&nbsp; • Juega una carta de tu mano: Deja la carta a un lado, resuelve sus efectos y consecuencias <b>y luego</b> guárdala en tu alijo.<br>
 &nbsp;&nbsp;&nbsp; • Compra una carta de la oferta: Paga el costo 
 indicado por el cofre <img class="rule-icon" src="icons/chest-simplified.svg" /> en la parte inferior derecha
-con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu Alijo.
+con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu alijo.
     `,
     'img': 'marketing/booklet.png',
     'type': 'indicator',
@@ -43,11 +43,11 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 <b>+1 Acción:</b> Gana Acción extra este turno.<br>
 <b>+1 Compra:</b> Compra una carta sin gastar una Acción este turno.<br>
 <b>Paga 1 <img class="rule-icon coin" src="icons/coins.svg" />:</b> Reduce tus monedas en 1.<br>
-<b>+1 Descarte:</b> Descartar 1 carta de tu mano y ponla en tu Alijo.<br>
+<b>+1 Descarte:</b> Descartar 1 carta de tu mano y ponla en tu alijo.<br>
 <img class="rule-icon" src="icons/card-discard-yellow.svg" /> <img class="rule-icon" src="icons/bookmark-yellow.svg" /> 
  efectos desencadenados.<br>
 <img class="rule-icon target" src="icons/target.svg" /> efecto dirigido, afecta a enemigos.<br>
-<img class="rule-icon target" src="icons/fist.svg" /> efecto perma. mientras está en tu Alijo.
+<img class="rule-icon target" src="icons/fist.svg" /> efecto perma. mientras está en tu alijo.
 `,
     'img': 'marketing/booklet.png',
     'type': 'indicator',
@@ -140,7 +140,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Motín',
-    'text': '+1 :Coin:, +1 :Reload:.<br>Pon una carta del suministro que <br>cueste 1 en tu Alijo.',
+    'text': '+1 :Coin:, +1 :Reload:.<br>Pon una carta del suministro que <br>cueste 1 en tu alijo.',
     'img': 'attacks/mutiny.png',
     'type': 'attack',
     'flavor': `Unidos, exigimos lo que nos corresponde.`,
@@ -200,7 +200,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Lecciones de Kung Fu',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Coloca 1 carta del Alijo del jugador<br> objetivo abajo de su mazo.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Coloca 1 carta del alijo del jugador<br> objetivo abajo de su mazo.',
     'flavor': '¡La marea, aprovecha su poder a tu favor!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -227,7 +227,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Pólvora Imperial',
     'text': `+1 :Coin:, +1 :Reload:.<br>Si pierdes la propiedad de esta carta: 
-    Selecciona una carta que cueste 2 o menos del Alijo del enemigo objetivo y elimínala del juego.`,
+    Selecciona una carta que cueste 2 o menos del alijo del enemigo objetivo y elimínala del juego.`,
     // 'flavor': 'WARNING: Do not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     // 'reduced-font-size': '9.0px',
@@ -275,7 +275,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Salón del Consejo',
-    'text': 'Un enemigo elegido toma una carta del suministro y la coloca en tu Alijo.',
+    'text': 'Un enemigo elegido toma una carta del suministro y la coloca en tu alijo.',
     'flavor': 'El Oro le aseguró un asiento, pero su influencia sigue siendo desesperadamente esquiva.',
     'img': 'structures/city-hall-2.png',
     'type': 'structure',
@@ -288,7 +288,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Tifón',
     'text': `+2 :Card:, +1 :Descarte:, +1 :Coin:. Todos los jugadores mueven simultáneamente
-     una carta de su Alijo o la carta superior de su mazo (sin mirar) al Alijo de su vecino izquierdo.`,
+     una carta de su alijo o la carta superior de su mazo (sin mirar) al alijo de su vecino izquierdo.`,
     //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -324,7 +324,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Maestro de las Cartas',
-    'text': '+1 :Accion:, coloca una carta <br>de tu Alijo en tu mano.<br>Cuando se descarte: +1 :Card:.',
+    'text': '+1 :Accion:, coloca una carta <br>de tu alijo en tu mano.<br>Cuando se descarte: +1 :Card:.',
     'flavor': 'Un movimiento de muñeca asombra y atemoriza.',
     'img': 'adventures/magician.png',
     'type': 'adventure',
@@ -336,7 +336,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Mercado de Especias',
-    'text': '+1 :Coin:.<br>Si esta carta está en tu Alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
+    'text': '+1 :Coin:.<br>Si esta carta está en tu alijo, la primera Estructura que compres cada turno cuesta 1 menos.',
     // 'flavor': 'Las especias bailan, mezclándose en opulencia.',
     'img': 'adventures/spice-trade.png',
     'type': 'adventure',
@@ -385,7 +385,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Biblioteca Antigua',
-    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que <br>barajar tu Alijo en tu mazo.',
+    'text': '+2 :Coin:.<br>Cuando se descarta: Tienes que <br>barajar tu alijo en tu mazo.',
     'flavor': 'Cada página desvela un secreto imperial.',
     'img': 'structures/archives.png',
     'type': 'structure',
@@ -419,7 +419,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Mapa del Tesoro',
     'text': `+1 :Coin:. Mira las 3 primeras cartas de tu mazo. 
-        Puedes poner cualquier número de ellas en tu Alijo y el resto encima de tu mazo en cualquier orden. Luego +1 :Card:.`,
+        Puedes poner cualquier número de ellas en tu alijo y el resto encima de tu mazo en cualquier orden. Luego +1 :Card:.`,
     //'flavor': 'Riches await the keen-eyed adventurer.',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -464,8 +464,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cárcel del Gobernador',
-    'text': `+2 :Coin:. Gira una carta de suministro cara abajo.
-    Esta carta está fuera de juego. Restaurarla en cualquier momento en tu próximo turno.`,
+    'text': `+2 :Coin:. Voltea una carta de suministro cara abajo.
+    Esta carta está fuera de juego. Restáurala en cualquier momento en tu próximo turno.`,
     //'flavor': 'Querido invitado: realmente estás en tu mejor condena.',
     'img': 'structures/jail.png',
     'type': 'structure',
@@ -476,7 +476,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Expedición Perdida',
-    'text': `Retira y reserva una carta del Alijo del jugador objetivo. Cuando se baraje su Alijo, obtienes +2 :Coin: y devuelves la carta a su nuevo Alijo.`,
+    'text': `Retira y reserva una carta del alijo del jugador objetivo. Cuando se baraje su alijo, obtienes +2 :Coin: y devuelves la carta a su nuevo alijo.`,
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -488,7 +488,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Observador Silencioso',
-    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su Alijo y gana monedas iguales a sus ganchos :Hook:.`,
+    'text': `Revela las 2 primeras cartas del mazo del enemigo objetivo. Pon 1 carta revelada en su alijo y gana monedas iguales a sus ganchos :Hook:.`,
     //'flavor': 'Un ojo vigilante saca a la luz verdades ocultas.',
     'img': 'adventures/roof-thief.png',
     'type': 'adventure',
@@ -511,7 +511,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Astillero',
-    'text': '+1 :Coin:.<br>+1 :Accion: por cada Estructura en tu Alijo. <i>(No uses más de 5 acciones por turno.)</i>',
+    'text': '+1 :Coin:.<br>+1 :Accion: por cada Estructura en tu alijo. <i>(No uses más de 5 acciones por turno.)</i>',
     'img': 'structures/shipyard.png',
     'flavor': 'Cada tabla aspira a horizontes infinitos.',
     'type': 'structure',
@@ -523,7 +523,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Caminar por la Tabla',
-    'text': `+2 :Coin:. Puedes retirar una carta de tu mano o Alijo del juego.
+    'text': `+2 :Coin:. Puedes retirar una carta de tu mano o alijo del juego.
     Gana monedas equivalentes al costo de la carta retirada.`,
     'flavor': '¿Un baile sobre la tabla o una sentencia retrasada?',
     'img': 'attacks/plank-2.png',
@@ -535,7 +535,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Pacto del Mono',
-    'text': 'Retira una carta de tu mano o Alijo del juego. Por cada gancho :Hook: de la carta retirada: +1 :Coin: y +1 :Accion:',
+    'text': 'Retira una carta de tu mano o alijo del juego. Por cada gancho :Hook: de la carta retirada: +1 :Coin: y +1 :Accion:',
     'flavor': 'Las travesuras del mono, la bendición del pirata.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
@@ -546,7 +546,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Viento en Velas',
-    'text': `+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo: Roba una carta extra en tu robo inicial.`,
+    'text': `+1 :Card:, +1 :Reload:.<br>Al comienzo de tu turno, si esta carta está en tu alijo: Roba una carta extra en tu robo inicial.`,
     'img': 'adventures/wind.png',
     'type': 'adventure',
     'victory': '2',
@@ -569,7 +569,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Final del Arcoíris',
-    'text': '+1 :Card:.<br>Al comienzo del tu turno, si esta carta está en tu Alijo, y también un Ataque y una Estructura: +1 :Accion:.',
+    'text': '+1 :Card:.<br>Al comienzo del tu turno, si esta carta está en tu alijo, y también un Ataque y una Estructura: +1 :Accion:.',
     // 'flavor': 'A taunting mirage of unachievable dreams',
     'img': 'adventures/rainbow.png',
     'type': 'adventure',
@@ -630,7 +630,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Merodeador del Abismo',
-    'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del Alijo enemigo con el mismo costo.',
+    'text': '+1 :Accion:. Cambia una carta de tu mano con una carta del alijo enemigo con el mismo costo.',
     'flavor': 'De lo profundo nace la incertidumbre.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -665,8 +665,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Persecución Desesperada',
-    'text': `Tú y un enemigo debéis tener al menos 2 cartas en el mazo. Revela las 3 cartas superiores de vuestros mazos.
-    Si revelas más ataques que él, pon una carta de suministro que cueste 4 o menos en tu Alijo.`,
+    'text': `Tú y un enemigo deben tener al menos 2 cartas en el mazo. Revela las 3 cartas superiores de vuestros mazos.
+    Si revelas más ataques que él, pon una carta de suministro que cueste 4 o menos en tu alijo.`,
     //'reduced-font-size': '9.3px',
     //'flavor': 'Sails ablaze, cannons roar, a final duel in pursuit.',
     'img': 'attacks/chase-2.png',
@@ -679,7 +679,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Granada Improvisada',
     'text': `El jugador objetivo selecciona y retira del juego una carta de su alijo que cueste 2 o menos.
-    Cuando se descarta: aplica el efecto de esta carta a todos los jugadores que tienen a ellos mismos como objetivo.`,
+    Cuando se descarta: Aplica el efecto de esta carta a todos los jugadores que tienen con ellos mismos como objetivo.`,
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
     'type': 'attack',
@@ -692,7 +692,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cementerio Abandonado',
-    'text': '+1 :Coin:.<br>Al comienzo de tu turno, si esta carta está en tu Alijo: Puedes poner una carta de tu Alijo en la parte inferior de tu mazo.',
+    'text': '+1 :Coin:.<br>Al comienzo de tu turno, si esta carta está en tu alijo: Puedes poner una carta de tu alijo en la parte inferior de tu mazo.',
     'img': 'structures/grave-robbers.png',
     'type': 'structure',
     'victory': '2',
@@ -703,9 +703,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 },
 
 {
-    'title': 'Muñeca Embrujada',
+    'title': 'Muñeco Embrujado',
     'text': `+1 :Coin:. En el siguiente turno del enemigo objetivo, controla su primera acción y toma todas las decisiones por este enemigo. 
-    Puedes controlar las Acciones o Compras de su turno a través de este control.`,
+    Puedes controlar las Acciones o Compras obtenidas mediante este control.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
@@ -774,8 +774,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'El Gran Consejo',
-    'text': `+2 :Accion:. Antes del final de tu turno, gira 4 cartas de suministro cara abajo.
-    Estas cartas están fuera de juego. Restaurarlas en cualquier momento en tu próximo turno.`,
+    'text': `+2 :Accion:. Antes del final de tu turno, voltea 4 cartas de suministro cara abajo.
+    Estas cartas están fuera de juego. Restáuralas en cualquier momento en tu próximo turno.`,
     'img': 'structures/grand-council.png',
     'type': 'structure',
     'victory': '5',
@@ -787,7 +787,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Turba Enfurecida',
     'text': `+2 :Coin:.<br>
-    Si esta carta está en tu Alijo, y compras <br>una carta de costo 1: +1 :Accion:.`,
+    Si esta carta está en tu alijo, y compras <br>una carta de costo 1: +1 :Accion:.`,
     'flavor': 'Un rugido unido sacude los cimientos de la ciudad.',
     'img': 'attacks/angry-mob.png',
     'type': 'attack',
@@ -799,7 +799,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Recaudador de Impuestos',
-    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: por cada Estructura en Alijo enemigo, hasta un máximo de 4 monedas.`,
+    'text': `+1 :Coin:, +1 :Card: :or: +1 :Coin: por cada Estructura en alijo enemigo, hasta un máximo de 4 monedas.`,
     'img': 'adventures/tax-collector.png',
     'type': 'adventure',
     'victory': '2',
@@ -810,7 +810,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cala Oculta',
-    'text': `Gira 1 carta de suministros cara abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
+    'text': `Voltea 1 carta de suministros cara abajo. Esta carta está fuera del juego. 
+    Restáurala en cualquier momento en tu próximo turno.
     Luego +1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
@@ -821,7 +822,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Loro Astuto',
-    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y compras <br>una carta: Puedes coloca la carta <br>comprada en tu mano.`,
+    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu alijo y compras <br>una carta: Puedes coloca la carta <br>comprada en tu mano.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',
