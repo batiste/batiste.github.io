@@ -20,7 +20,7 @@ var es_translations = [
     'title': 'Tu Turno',
     'text': `1. Resuelve cualquier efecto de inicio de turno que pueda desencadenar <img class="rule-icon" src="icons/bookmark-yellow.svg" />.<br>
 2. Descarta <img class="rule-icon" src="icons/card-discard-yellow.svg" /> tu mano, si la hay, luego roba 3 cartas de tu mazo.<br>
-3.Luego tienes 2 acciones que puedes usar de las siguientes maneras:<br>
+3. Luego tienes 2 acciones que puedes usar de las siguientes maneras:<br>
 &nbsp;&nbsp;&nbsp; • Juega una carta de tu mano: Deja la carta a un lado, resuelve sus efectos y consecuencias <b>y luego</b> guárdala en tu alijo.<br>
 &nbsp;&nbsp;&nbsp; • Compra una carta de la oferta: Paga el costo 
 indicado por el cofre <img class="rule-icon" src="icons/chest-simplified.svg" /> en la parte inferior derecha
