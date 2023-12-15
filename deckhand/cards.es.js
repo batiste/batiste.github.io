@@ -464,8 +464,8 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cárcel del Gobernador',
-    'text': `+2 :Coin:. Voltea una carta de suministro cara abajo.
-    Esta carta está fuera de juego. Recupérala en cualquier momento en tu siguiente turno.`,
+    'text': `+2 :Coin:. Gira una carta de suministro cara abajo.
+    Esta carta está fuera de juego. Restaurarla en cualquier momento en tu próximo turno.`,
     //'flavor': 'Querido invitado: realmente estás en tu mejor condena.',
     'img': 'structures/jail.png',
     'type': 'structure',
