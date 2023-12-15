@@ -811,7 +811,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Cala Oculta',
-    'text': `Gira 1 carta de suministros boca abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
+    'text': `Gira 1 carta de suministros cara abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
     <br>+1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
