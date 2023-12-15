@@ -654,7 +654,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Adicción al Juego',
-    'text': '+2 :Reload: <br>Si el suministro tiene 4 o más cartas del mismo tipo: +3 :Coin:.',
+    'text': '+2 :Reload: luego si el suministro tiene 4 o más cartas del mismo tipo: +3 :Coin:.',
     'flavor': 'La seducción de riquezas fáciles selló su destino.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',
@@ -812,7 +812,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 {
     'title': 'Cala Oculta',
     'text': `Gira 1 carta de suministros cara abajo. Esta carta está fuera del juego. Restaurarla en cualquier momento en tu próximo turno.
-    <br>+1 :Coin: para cada tipo de carta diferente en el suministro.`,
+    Luego +1 :Coin: para cada tipo de carta diferente en el suministro.`,
     'img': 'structures/hidden-cove.png',
     'type': 'structure',
     'victory': '2',
@@ -822,7 +822,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu A
 
 {
     'title': 'Loro Astuto',
-    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y <br>compras una carta: Pon la carta <br>comprada en tu mano.`,
+    'text': `+1 :Accion:, +1 :Reload:.<br>Si esta carta está en tu Alijo y compras <br>una carta: Puedes coloca la carta <br>comprada en tu mano.`,
     'img': 'adventures/coco-alternate.png',
     'type': 'adventure',
     'victory': '1',

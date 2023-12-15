@@ -248,12 +248,16 @@ a, a:visited {
 }
 
 .card .text .coin {
-    height: 10.8px;
+    height: 10.4px;
     margin-top: -2px;
     margin-bottom: -2.5px;
     margin-left: -1.5px;
     padding-bottom: 1px;
     margin-right: -0.3px;
+}
+
+.card .text .auto-reduced-text .coin {
+    height: 10.0px;
 }
 
 .card .text .draw {

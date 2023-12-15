@@ -725,6 +725,9 @@
                 fs -= 0.02;
                 text.style['font-size'] = `${fs}px`
             }
+            if (fs != 9) {
+                text.classList.add('auto-reduced-text')
+            }
         })
 
     }, 2000)
