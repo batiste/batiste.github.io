@@ -1,0 +1,67 @@
+.mission .frame {
+    background: url(marketing/booklet.png);
+    background-size: cover;
+    right: 6mm;
+    top: 50mm;
+    left: 6mm;
+    bottom: 6mm;
+}
+.mission .text {
+    color: #000
+}
+.mission .innerText .rule-icon {
+    background-color: #000;
+}
+.mission .title {
+    color: #212121;
+    text-shadow: none;
+    top: 53mm;
+}
+.mission .text {
+    color: #212121;
+    text-shadow: none;
+    top: 51mm;
+    bottom: 0mm;
+}
+.mission .left, .mission .right {
+    text-align: left;
+    padding: 3.5px 8px;
+}
+.mission .right {
+    width: auto;
+    padding-left: 2px;
+}
+.mission .left {
+    width: 56%;
+    background: url(ext/actions.png);
+    background-size: cover;
+    background-position: right;
+    border-radius: 3px;
+}
+.actions {
+    display: flex;
+    border: 1px #a38030 solid;
+    background-color: rgba(144, 14, 0, 0.1);
+    border-radius: 3px;
+    margin-top: -1px;
+}
+.new-cost {
+    position:absolute;
+    right: 9mm;
+    bottom: 8mm;
+    display: flex;
+    height:30px;
+    color: #000;
+    align-items: center;
+    font-family: 'Lobster Two', cursive;
+    font-size: 15px;
+}
+.new-cost img {
+    margin: 4px;
+    margin-right: 4px;
+    margin-left: 9px;
+}
+.card .text .coin {
+    margin-left: 0px;
+    padding: 1px;
+}
