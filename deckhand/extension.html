@@ -72,19 +72,25 @@
         top: 42mm;
     }
     .mission .left, .mission .right {
-        width: 45%;
         text-align: left;
         padding: 3.5px 8px;
     }
     .mission .right {
         width: auto;
+        padding-left: 2px;
+    }
+    .mission .left {
+        width: 48%;
+        background: url(ext/actions.png);
+        background-size: cover;
+        background-position: right;
+        border-radius: 3px;
     }
     .actions {
         display: flex;
-        background: url(ext/actions.png);
-        background-size: contain;
-        height:20.5px;
-        margin-bottom: -1.5px;
+        border: 1px #a38030 solid;
+        border-radius: 3px;
+        margin-top: -1px;
     }
     .new-cost {
         position:absolute;
@@ -139,9 +145,8 @@
                 </span>
             </div>
         <div class="new-cost">
-            <img style="margin-top:-0.5px" src="icons/structure.svg"> 1
-            <img src="icons/attack.svg"> 2
             <img src="icons/tentacle.svg"> 4
+            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
         </div>
 
         </div>
@@ -178,9 +183,8 @@
                 </span>
             </div>
         <div class="new-cost">
-            <img src="icons/structure.svg"> 1
-            <img src="icons/tentacle.svg"> 1
             <img src="icons/attack.svg"> 4
+            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
         </div>
 
         </div>
@@ -209,7 +213,7 @@
                             <span class="right"><b>+2 <img class="rule-icon" src="icons/structure.svg" /></b></span>
                         </div>
                         <div class="actions">
-                            <span class="left"><b>+1 Discard</b></span>
+                            <span class="left"><b>Play 1 <img class="rule-icon" src="icons/structure.svg" /></b></span>
                             <span class="right"><b>+2 <img class="rule-icon cycle" src="icons/cycle-2.svg" /></b></span>
                         </div>
                         
@@ -217,9 +221,8 @@
                 </span>
             </div>
         <div class="new-cost">
-            <img src="icons/tentacle.svg"> 1
-            <img src="icons/attack.svg"> 2
             <img src="icons/structure.svg"> 2
+            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
         </div>
 
         </div>
@@ -250,7 +253,7 @@
                             <span class="right"><b>+1 Action</b></span>
                         </div>
                         <div class="actions">
-                            <span class="left"><b>2 <img class="rule-icon" src="icons/structure.svg" /> in stash</b></span>
+                            <span class="left"><b>3 <img class="rule-icon" src="icons/structure.svg" /></b></span>
                             <span class="right"><b>+1 Draw</b></span>
                         </div>
                         
@@ -258,9 +261,9 @@
                 </span>
             </div>
         <div class="new-cost">
-            <img src="icons/tentacle.svg"> 2
             <img src="icons/attack.svg"> 2
             <img src="icons/structure.svg"> 4
+            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 2
         </div>
 
         </div>
