@@ -54,6 +54,7 @@
 
 <div id="cards" class="lang-fr">
 
+<!--     
 <div class="card-container mission">
     <div class="card" id="card-3" title="Fist Fight">
         <div class="inner">
@@ -206,7 +207,7 @@
         </div>
     </div>
     <button onclick="downloadCardButton(this)">Download #4, copies: 8</button><br>
-</div>
+</div> -->
 
 
 <div class="card-container mission">
@@ -220,14 +221,20 @@
                 <span class="text">
                     <span class="innerText">
                         <div class="actions">
+                            <span class="left act"><b>Discard 1 <img class="rule-icon" src="icons/attack.svg" /></b></span>
+                            <span class="right"><b>+1 <img class="rule-icon" src="icons/cycle-2.svg" /></b></span>
+                        </div>
+                        <div class="actions">
                             <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                         <div class="actions">
-                            <span class="left"><b>6 <img class="rule-icon" src="icons/attack.svg" /> in stash</b></span>
+                            <span class="left"><b>7 <img class="rule-icon" src="icons/attack.svg" /> in stash</b></span>
                             <span class="right"><b>+1 Action</b></span>
                         </div>
-                        <p style="margin-bottom: 0;"><img class="rule-icon cycle" src="icons/hook-simplified.svg" /> for each <img class="rule-icon" src="icons/attack.svg" /> you own in excess of 8.</p>
+                        <!-- <p style="margin-bottom: 0;">
+                            <img class="rule-icon cycle" src="icons/hook-simplified.svg" /> 
+                            for each <img class="rule-icon" src="icons/attack.svg" /> you own in excess of 8.</p> -->
                     </span> 
                 </span>
                 <!-- <span class="subtype">Crew</span> -->
@@ -261,7 +268,7 @@
                 <span class="text">
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left"><b>+1 Discard</b></span>
+                            <span class="left act"><b>Discard 1</b></span>
                             <span class="right"><b>+1 <img class="rule-icon" src="icons/cycle-2.svg" /></b></span>
                         </div>
                         <div class="actions">
@@ -272,7 +279,9 @@
                             <span class="left"><b>3 <img class="rule-icon" src="icons/target.svg" /> in stash</b></span>
                             <span class="right"><b>+1 Action</b></span>
                         </div>
-                        <p style="margin-bottom: 0;"><img class="rule-icon cycle" src="icons/hook-simplified.svg" /> for each <img class="rule-icon" src="icons/target.svg" /> you own in excess of 3.</p>
+                        <!-- <p style="margin-bottom: 0;">
+                            <img class="rule-icon cycle" src="icons/hook-simplified.svg" />
+                             for each <img class="rule-icon" src="icons/target.svg" /> you own in excess of 3.</p> -->
                     </span> 
                 </span>
                 <!-- <span class="subtype">Crew</span> -->
@@ -308,7 +317,7 @@
                 <span class="text">
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                            <span class="left act"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                             <span class="right"><b>+1 Buy</b></span>
                         </div>
                         <div class="actions">
@@ -317,7 +326,7 @@
                         </div>
                         <div class="actions">
                             <span class="left"><b>Play 1 <img class="rule-icon" src="icons/fist.svg" /> and 1 <img class="rule-icon" src="icons/bookmark-yellow.svg" /></b></span>
-                            <span class="right"><b>+1 Action</b></span>
+                            <span class="right"><b>+1 Buy</b></span>
                         </div>
                     </span> 
                 </span>
@@ -354,7 +363,7 @@
                 <span class="title">The Governor</span>
                 <span class="text">
                     <span class="innerText">
-                        <p style="margin-top: 0;">Cards that cost more than 2 are called Majesties.</p>
+                        <p style="margin-top: 0;">Cards that cost more than 2 are Majesties.</p>
                         <div class="actions">
                             <span class="left"><b>Play 1 Majesty</b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -366,6 +375,10 @@
                         <div class="actions">
                             <span class="left"><b>Play 2 Majesties</b></span>
                             <span class="right"><b>+1 Action</b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>Buy 2 Majesties</b></span>
+                            <span class="right"><b>+2 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                     </span> 
                 </span>
@@ -405,6 +418,10 @@
                         <div class="actions">
                             <span class="left" style="width:56%"><b>Play 2 Scraps</b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left" style="width:56%"><b>Buy 2 Scraps</b></span>
+                            <span class="right"><b>+1 Buy</b></span>
                         </div>
                         <!-- <div class="actions">
                             <span class="left"><b>Play 2 fat card. <img class="rule-icon" src="icons/bookmark-yellow.svg" /></b></span>
@@ -447,7 +464,7 @@
                 <span class="text">
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left"><b>Discard 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
+                            <span class="left act"><b>Discard 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/card-draw-2.svg" /></b></span>
                         </div>
                         <div class="actions">
@@ -455,7 +472,7 @@
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                         <div class="actions">
-                            <span class="left"><b>8 <img class="rule-icon" src="icons/tentacle.svg" /> in stash</b></span>
+                            <span class="left"><b>7 <img class="rule-icon" src="icons/tentacle.svg" /> in stash</b></span>
                             <span class="right"><b>+1 Action</b></span>
                         </div>
                     </span> 
@@ -478,6 +495,104 @@
     </div>
     <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
     <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66" "="">Part of print sheet</label>
+</div>
+
+
+<div class="card-container mission">
+    <div class="card" id="card-66" title="The Engineer">
+        <div class="inner">
+            <div class="front"> 
+                <div class="frame"></div>
+                <img src="characters/architect.png" class="bg">
+                
+                <span class="title">The Architect</span>
+                <span class="text">
+                    <span class="innerText">
+                        <div class="actions">
+                            <span class="left act"><b>Discard 2 <img class="rule-icon struct-icon" src="icons/structure.svg" /></b></span>
+                            <span class="right"><b>+1 Action</b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>Buy 2 <img class="rule-icon struct-icon" src="icons/structure.svg" /></b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>Play 2 <img class="rule-icon struct-icon" src="icons/structure.svg" /></b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>5 <img class="rule-icon struct-icon" src="icons/structure.svg" /> in stash</b></span>
+                            <span class="right"><b>+1 Buy</b></span>
+                        </div>
+                    </span> 
+                </span>
+                <!-- <span class="subtype">Crew</span> -->
+                
+
+                <!-- <div class="mpc">
+                    <img src="mpc-no-border.png">
+                </div> -->
+                <div class="mask"></div>
+            </div>
+            <div class="back">
+                <img src="back.png">
+                <div class="mpc">
+                    <img src="mpc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
+    <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
+</div>
+
+
+<div class="card-container mission">
+    <div class="card" id="card-66" title="The Engineer">
+        <div class="inner">
+            <div class="front"> 
+                <div class="frame"></div>
+                <img src="characters/zoologist.png" class="bg">
+                
+                <span class="title">The Zoologist</span>
+                <span class="text">
+                    <span class="innerText">
+                        <div class="actions">
+                            <span class="left act"><b>Discard 1 <img class="rule-icon" src="icons/card-discard-yellow.svg" /></b></span>
+                            <span class="right"><b>+2 <img class="rule-icon coin" src="icons/card-draw-2.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>Play 1 <img class="rule-icon" src="icons/card-discard-yellow.svg" /></b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>3 <img class="rule-icon struct-icon" src="icons/card-discard-yellow.svg" /> in stash</b></span>
+                            <span class="right"><b>+1 Action</b></span>
+                        </div>
+                        <!-- <div class="actions">
+                            <span class="left"><b>Shuffle > 5</b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div> -->
+                    </span> 
+                </span>
+                <!-- <span class="subtype">Crew</span> -->
+                
+
+                <!-- <div class="mpc">
+                    <img src="mpc-no-border.png">
+                </div> -->
+                <div class="mask"></div>
+            </div>
+            <div class="back">
+                <img src="back.png">
+                <div class="mpc">
+                    <img src="mpc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
+    <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
 </div>
 
 
