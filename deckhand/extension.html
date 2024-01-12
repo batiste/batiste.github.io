@@ -23,6 +23,78 @@
     the game with <span id="nbDesign"></span>  unique designs.
 </p>
 
+<div style="display: flex;">
+    <div class="booklet" id="face" title="booklet-face">
+        <div class="innerBooklet">     
+            <div>
+            <h3 style="margin-top:0">
+                Crew Extension Setup<span style="float: right; font-size: 10px; margin-top: -4px; margin-right: -2px;">DeckHand Rules 3/3</span>
+            </h3>
+         
+            <p>Create a shuffled <b>Crew deck</b> with the 12 Crew cards and place the deck face-down. Then proceed with a normal setup.</p>
+
+            <h3>
+                New Rules
+            </h3>
+
+            <p>Now, there's a new action available during your Action phase: <b>Hire 1 Crew</b>. 
+                To do this, examine the top 3 cards of the Crew deck, 
+                place one face down in front of you, return one to the 
+                bottom of the deck, and put the remaining one back on top.</p>
+
+            <p>To activate a Crew, <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b> and flip it face-up.
+                This can be done at any time during your turn without using an action.</p>
+
+            <p>A Crew card provides 3 to 4 skills to choose from. 
+                You can use only 1 skill per turn and per Crew. 
+                Using a skill does not consume or cost an Action.
+                There are two types of skills:</p>
+            
+            <ol>
+                <li><b>Salary</b> (indicated with a red arrow): Carry out the left side as a cost.</li>
+                <li><b>Condition</b>: 
+                    The left side outlines a prerequisite condition based on this turn's events.</li>
+            </ol>
+
+            <p style="margin-top: 3px;">Once the skill used, you may gain the effect on the right side.</p>
+
+
+            <h3>New Keywords</h3>
+
+            <ol>
+                <li><b>Unearth 2:</b> Put 2 cards from your stash at the bottom of your deck.</li>
+                <li><b>Retire 1:</b> Remove 1 card from your stash from the game.</li>
+                <li><b>Hire 1 Crew:</b> Hire 1 Crew without using an action this turn.</li>
+            </ol>
+
+            <div style="margin-top:10px;display: flex;">
+
+                <style>
+                    .actions-expl li {
+                        margin-left: 5px;
+                    }
+                </style>
+                <div>
+                    <img src="marketing/actions.png" width="140">
+                </div>
+                <ol style="list-style: none;" class="actions-expl">
+                    <li>Discard 1 Adventure to Draw a card.</li>
+                    <li style="margin-top: 4px;">Pay 2 Coins to get a Buy restricted to Adventures.</li>
+                    <li style="margin-top: 1px;">Play at least  2 Adventures to unlock.</li>
+                    <li style="margin-top: 1px;">Get at least 6 Adventures in your stash to unlock.</li>
+                </ol>
+
+            </div>
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+<button onclick="downloadBookletFace()">Download booklet face</button>
+
+
 
 <div class="config">
     General config
@@ -225,6 +297,10 @@
                             <span class="right"><b>+1 <img class="rule-icon" src="icons/cycle-2.svg" /></b></span>
                         </div>
                         <div class="actions">
+                            <span class="left act" style="width: 70%;"><b>Retire 1 of your stash card</b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
                             <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
@@ -371,7 +447,7 @@
                 <span class="title">The Governor</span>
                 <span class="text">
                     <span class="innerText">
-                        <p style="margin-top: 0;">Cards that cost more than 2 are Wonders.</p>
+                        <p style="margin-top: 0;">Cards that cost more than 2 are <b>Wonders</b>.</p>
                         <div class="actions">
                             <span class="left"><b>Play 1 Wonder</b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -422,7 +498,7 @@
                 <span class="title">Chief Cook</span>
                 <span class="text">
                     <span class="innerText">
-                        <p style="margin-top: 0;">Cards that cost 1 are called Scraps.</p>
+                        <p style="margin-top: 0;">Cards that cost 1 are called <b>Scraps</b>.</p>
                         <div class="actions">
                             <span class="left" style="width:56%"><b>Play 2 Scraps</b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -677,7 +753,7 @@
                 
                 <span class="title">Captain Fang</span>
                 <span class="text">
-                    <p style="margin-top:0">X is the number of face-up crew you own.</p>
+                    <p style="margin-top:0"><b>X</b> is the number of face-up crew you own.</p>
                     <span class="innerText">
                         <div class="actions">
                             <span class="left act"><b>Pay 2 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -719,13 +795,13 @@
 
 
 <div class="card-container">
-    <div class="card mission" id="card-66" title="Coin Master">
+    <div class="card mission" id="card-66" title="Loot Keeper">
         <div class="inner">
             <div class="front"> 
                 <div class="frame"></div>
-                <img src="characters/count.png" class="bg">
+                <img src="characters/coin.png" class="bg">
                 
-                <span class="title">Coin Master</span>
+                <span class="title">Loot Guardian</span>
                 <span class="text">
                     <!-- <p style="margin-top:0">X is the number of face-up crew you own.</p> -->
                     <span class="innerText">
@@ -742,7 +818,7 @@
                             <span class="right"><b>+1 Buy</b></span>
                         </div>
                         <div class="actions">
-                            <span class="left"><b>Spend 6 coins</b></span>
+                            <span class="left"><b>Spend 5 coins</b></span>
                             <span class="right"><b>+1 Action</b></span>
                         </div>
                         <!-- <div class="actions">
@@ -770,6 +846,58 @@
     <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
     <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
 </div>
+
+
+
+<div class="card-container">
+    <div class="card mission" id="card-66" title="Saboteur">
+        <div class="inner">
+            <div class="front"> 
+                <div class="frame"></div>
+                <img src="characters/saboteur.png" class="bg">
+                
+                <span class="title">Saboteur</span>
+                <span class="text">
+                    <p style="margin-top:0">Any 2 same-cost, face-up cards are <b>Pairs</b>.</p>
+                    <span class="innerText">
+                        <div class="actions">
+                            <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
+                            <span class="right"><b>Swap a Pair</b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left"><b>Buy 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
+                            <span class="right"><b>Steal 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left" style="width: 32%"><b>Hire 1 Crew</b></span>
+                            <span class="right"><b>Flip 2 Crews face down</b></span>
+                        </div>
+                        <!-- <div class="actions">
+                            <span class="left"><b>Shuffle > 5</b></span>
+                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div> -->
+                    </span> 
+                </span>
+                <!-- <span class="subtype">Crew</span> -->
+                
+
+                <!-- <div class="mpc">
+                    <img src="mpc-no-border.png">
+                </div> -->
+                <div class="mask"></div>
+            </div>
+            <div class="back">
+                <img src="back.png">
+                <div class="mpc">
+                    <img src="mpc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
+    <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
+</div>s
+
 
 
 </div>

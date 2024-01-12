@@ -1,10 +1,11 @@
 .mission .frame {
-    background: url(marketing/booklet.png);
+    background: url(marketing/crew-bg.png);
     background-size: cover;
-    right: 6mm;
-    top: 50mm;
-    left: 6mm;
-    bottom: 6mm;
+    right: 5mm;
+    top: 49.3mm;
+    left: 5mm;
+    bottom: 5mm;
+    border: 0;
 }
 .mission .text {
     color: #000
@@ -13,9 +14,9 @@
     background-color: #000;
 }
 .mission .title {
-    color: #212121;
+    color: #161209;
     text-shadow: none;
-    top: 53mm;
+    top: 50.8mm;
 }
 .mission .text {
     color: #212121;
@@ -25,18 +26,25 @@
 }
 .mission .left, .mission .right {
     text-align: left;
-    padding: 3.5px 8px;
+    padding: 3.5px 7px;
 }
 .mission .right {
     width: auto;
     padding-left: 2px;
+    display: flex;
+    align-items: center;
+}
+.mission p {
+    margin-bottom: 3.5px;
 }
 .mission .left {
     width: 56%;
     background: url(ext/actions.png);
     background-size: cover;
     background-position: right;
-    border-radius: 3px;
+    border-radius: 2px;
+    display: flex;
+    align-items: center;
 }
 .mission .left.act {
     background-image: url(ext/actions-2.png);
@@ -47,6 +55,7 @@
     background-color: rgba(144, 14, 0, 0.1);
     border-radius: 3px;
     margin-top: -1px;
+    box-shadow: 2px 2px 2px #b7aa99;
 }
 .new-cost {
     position:absolute;
