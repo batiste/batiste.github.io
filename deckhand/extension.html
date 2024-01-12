@@ -16,12 +16,7 @@
 
 <body>
 
-<h2>DeckHand (v0.9.32)</h2>
-
-<p>
-    DeckHand is a pirate themed deck builder game for 2 to 4 players. There are <span id="nbCards"></span> cards in 
-    the game with <span id="nbDesign"></span>  unique designs.
-</p>
+<h2>DeckHand Crew Extension</h2>
 
 <div style="display: flex;">
     <div class="booklet" id="face" title="booklet-face">
@@ -42,12 +37,13 @@
                 place one face down in front of you, return one to the 
                 bottom of the deck, and put the remaining one back on top.</p>
 
-            <p>To activate a Crew, <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b> and flip it face-up.
-                This can be done at any time during your turn without using an action.</p>
+            <p>Face down Crews are inactive. During your turn, to activate a Crew,
+                <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b> and flip it face-up.
+                This doesn't use any Action.
 
-            <p>A Crew card provides 3 to 4 skills to choose from. 
+            <p>A Crew card, once activated, provides 3 to 4 skills to choose from. 
                 You can use only 1 skill per turn and per Crew. 
-                Using a skill does not consume or cost an Action.
+                Using a skill does not use an action.
                 There are two types of skills:</p>
             
             <ol>
@@ -63,7 +59,7 @@
 
             <ol>
                 <li><b>Unearth 2:</b> Put 2 cards from your stash at the bottom of your deck.</li>
-                <li><b>Retire 1:</b> Remove 1 card from your stash from the game.</li>
+                <li><b>Retire 1:</b> Remove 1 card that you own from the game.</li>
                 <li><b>Hire 1 Crew:</b> Hire 1 Crew without using an action this turn.</li>
             </ol>
 
@@ -126,161 +122,6 @@
 
 <div id="cards" class="lang-fr">
 
-<!--     
-<div class="card-container mission">
-    <div class="card" id="card-3" title="Fist Fight">
-        <div class="inner">
-            <div class="front type-attack"> 
-                <div class="frame"></div>
-                <img src="adventures/spice-trade.png" class="bg">
-                
-                <span class="title">Trade Routes</span>
-                <span class="text">
-                    <span class="innerText">
-                        <div style="margin-bottom: 5px">When you gain Sovereignty over Trade Route: <b>+1 Buy</b></div>
-                        <div class="actions">
-                            <span class="left"><b>+2 Discard</b></span>
-                            <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                            <span class="right"><b>+ 1 Buy</b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b></b></span>
-                            <span class="right"><b>+1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
-                        </div>
-                        
-                    </span>
-                </span>
-            </div>
-        <div class="new-cost">
-            <img src="icons/tentacle.svg"> 4
-            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
-        </div>
-
-        </div>
-    </div>
-    <button onclick="downloadCardButton(this)">Download #4, copies: 8</button><br>
-</div>
-
-
-<div class="card-container mission">
-    <div class="card" id="card-3" title="Fist Fight">
-        <div class="inner">
-            <div class="front type-attack"> 
-                <div class="frame"></div>
-                <img src="adventures/spice-trade.png" class="bg">
-                
-                <span class="title">Mercenaries</span>
-                <span class="text">
-                    <span class="innerText">
-                        <div style="margin-bottom: 5px"></div>
-                        <div class="actions">
-                            <span class="left"><b>Pay 2 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                            <span class="right"><b>+1 Action</b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
-                            <span class="right"><b>+2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>+1 Discard</b></span>
-                            <span class="right"><b>+1 <img class="rule-icon cycle" src="icons/cycle-2.svg" /></b></span>
-                        </div>
-                        
-                    </span>
-                </span>
-            </div>
-        <div class="new-cost">
-            <img src="icons/attack.svg"> 4
-            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
-        </div>
-
-        </div>
-    </div>
-    <button onclick="downloadCardButton(this)">Download #4, copies: 8</button><br>
-</div>
-
-
-<div class="card-container mission">
-    <div class="card" id="card-3" title="Fist Fight">
-        <div class="inner">
-            <div class="front type-attack"> 
-                <div class="frame"></div>
-                <img src="adventures/spice-trade.png" class="bg">
-                
-                <span class="title">Sawmill</span>
-                <span class="text">
-                    <span class="innerText">
-                        <div style="margin-bottom: 5px"></div>
-                        <div class="actions">
-                            <span class="left"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                            <span class="right"><b>+1 Buy</b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>+1 Discard</b></span>
-                            <span class="right"><b>+2 <img class="rule-icon" src="icons/structure.svg" /></b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>Play 1 <img class="rule-icon" src="icons/structure.svg" /></b></span>
-                            <span class="right"><b>+2 <img class="rule-icon cycle" src="icons/cycle-2.svg" /></b></span>
-                        </div>
-                        
-                    </span>
-                </span>
-            </div>
-        <div class="new-cost">
-            <img src="icons/structure.svg"> 2
-            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 1
-        </div>
-
-        </div>
-    </div>
-    <button onclick="downloadCardButton(this)">Download #4, copies: 8</button><br>
-</div>
-
-
-
-
-<div class="card-container mission">
-    <div class="card" id="card-3" title="Fist Fight">
-        <div class="inner">
-            <div class="front type-attack"> 
-                <div class="frame"></div>
-                <img src="adventures/spice-trade.png" class="bg">
-                
-                <span class="title">Imperial Reserve</span>
-                <span class="text">
-                    <span class="innerText">
-                        <div style="margin-bottom: 5px"></div>
-                        <div class="actions">
-                            <span class="left"><b>Pay 3 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                            <span class="right"><b>+4 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>Play 2 <img class="rule-icon" src="icons/structure.svg" /></b></span>
-                            <span class="right"><b>+1 Action</b></span>
-                        </div>
-                        <div class="actions">
-                            <span class="left"><b>3 <img class="rule-icon" src="icons/structure.svg" /></b></span>
-                            <span class="right"><b>+1 Draw</b></span>
-                        </div>
-                        
-                    </span>
-                </span>
-            </div>
-        <div class="new-cost">
-            <img src="icons/attack.svg"> 2
-            <img src="icons/structure.svg"> 4
-            <img src="icons/chest.svg" style="background-color: #000; border-radius: 3px; padding: 1px"> 2
-        </div>
-
-        </div>
-    </div>
-    <button onclick="downloadCardButton(this)">Download #4, copies: 8</button><br>
-</div> -->
-
 
 <div class="card-container">
     <div class="card mission" id="card-66" title="Young Pirate">
@@ -297,7 +138,7 @@
                             <span class="right"><b>+1 <img class="rule-icon" src="icons/cycle-2.svg" /></b></span>
                         </div>
                         <div class="actions">
-                            <span class="left act" style="width: 70%;"><b>Retire 1 of your stash card</b></span>
+                            <span class="left act"><b>Retire 1 stash card</b></span>
                             <span class="right"><b>+1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                         <div class="actions">
@@ -753,7 +594,7 @@
                 
                 <span class="title">Captain Fang</span>
                 <span class="text">
-                    <p style="margin-top:0"><b>X</b> is the number of face-up crew you own.</p>
+                    <p style="margin-top:0"><b>X</b> is the number of active crew you own.</p>
                     <span class="innerText">
                         <div class="actions">
                             <span class="left act"><b>Pay 2 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -762,6 +603,10 @@
                         <div class="actions">
                             <span class="left act"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                             <span class="right"><b>Hire 1 Crew</b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left act"><b>Retire 1 active Crew</b></span>
+                            <span class="right"><b>+3 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                         <div class="actions">
                             <span class="left"><b>Hire 1 Crew</b></span>
@@ -896,7 +741,7 @@
     </div>
     <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
     <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
-</div>s
+</div>
 
 
 
