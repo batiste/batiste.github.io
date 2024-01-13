@@ -49,7 +49,9 @@
             <ol>
                 <li><b>Salary</b> (indicated with a red arrow): Carry out the left side as a cost.</li>
                 <li><b>Condition</b>: 
-                    The left side outlines a prerequisite condition based on this turn's events.</li>
+                    The left side outlines a prerequisite condition based on the resolved state or actions 
+                    from the current turn.
+                </li>
             </ol>
 
             <p style="margin-top: 3px;">Once the skill used, you may gain the effect on the right side.</p>
@@ -592,9 +594,9 @@
                 <div class="frame"></div>
                 <img src="characters/count.png" class="bg">
                 
-                <span class="title">Captain Fang</span>
+                <span class="title">Crimson Captain</span>
                 <span class="text">
-                    <p style="margin-top:0"><b>X</b> is the number of active crew you own.</p>
+                    <p style="margin-top:0"><b>X</b> is the number of active Crew you own.</p>
                     <span class="innerText">
                         <div class="actions">
                             <span class="left act"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -638,17 +640,16 @@
     <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
 </div>
 
-
+<!-- 
 <div class="card-container">
-    <div class="card mission" id="card-66" title="Bullion Baron">
+    <div class="card mission" id="card-66" title="Gold Baron">
         <div class="inner">
             <div class="front"> 
                 <div class="frame"></div>
                 <img src="characters/coin.png" class="bg">
                 
-                <span class="title">Bullion Baron</span>
+                <span class="title">The Gold Baron</span>
                 <span class="text">
-                    <!-- <p style="margin-top:0">X is the number of face-up crew you own.</p> -->
                     <span class="innerText">
                         <div class="actions">
                             <span class="left"><b>Own 3 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
@@ -665,6 +666,47 @@
                         <div class="actions">
                             <span class="left"><b>Spend 5 coins</b></span>
                             <span class="right"><b>+1 Action</b></span>
+                        </div>
+                    </span> 
+                </span>
+                <div class="mask"></div>
+            </div>
+            <div class="back">
+                <img src="back.png">
+                <div class="mpc">
+                    <img src="mpc.png">
+                </div>
+            </div>
+        </div>
+    </div>
+    <button onclick="downloadCardButton(this)">Download #67, copies: 1</button><br>
+    <label><input type="checkbox" id="check-pdf-66" onclick="changePrintSelection(this)" data-card-id="66">Part of print sheet</label>
+</div> -->
+
+
+
+<div class="card-container">
+    <div class="card mission" id="card-66" title="Saboteur">
+        <div class="inner">
+            <div class="front"> 
+                <div class="frame"></div>
+                <img src="characters/saboteur.png" class="bg">
+                
+                <span class="title">Saboteur</span>
+                <span class="text">
+                    <p style="margin-top:0">Any 2 same-cost, face-up cards are <b>Pairs</b>.</p>
+                    <span class="innerText">
+                        <div class="actions">
+                            <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
+                            <span class="right"><b>Swap a Pair</b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left" style="width: 32%"><b>Buy 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
+                            <span class="right"><b>Steal 1 enemy's <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                        </div>
+                        <div class="actions">
+                            <span class="left" style="width: 32%"><b>Hire 1 Crew</b></span>
+                            <span class="right"><b>Flip 2 Crews face down</b></span>
                         </div>
                         <!-- <div class="actions">
                             <span class="left"><b>Shuffle > 5</b></span>
@@ -693,29 +735,28 @@
 </div>
 
 
-
 <div class="card-container">
-    <div class="card mission" id="card-66" title="Saboteur">
+    <div class="card mission" id="card-66" title="Voodoo Witch">
         <div class="inner">
             <div class="front"> 
                 <div class="frame"></div>
-                <img src="characters/saboteur.png" class="bg">
+                <img src="characters/witch.png" class="bg">
                 
-                <span class="title">Saboteur</span>
+                <span class="title">Voodoo Witch</span>
                 <span class="text">
-                    <p style="margin-top:0">Any 2 same-cost, face-up cards are <b>Pairs</b>.</p>
+                    <p style="margin-top:0;">Oracle X: Look at the top X card of any deck.</p>
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
-                            <span class="right"><b>Swap a Pair</b></span>
+                            <span class="left"><b>Play 1 <img class="rule-icon" src="icons/attack.svg" /></b></span>
+                            <span class="right"><b>Oracle 2</b></span>
                         </div>
                         <div class="actions">
                             <span class="left"><b>Buy 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
-                            <span class="right"><b>Steal 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                            <span class="right"><b>Unearth 1</b></span>
                         </div>
                         <div class="actions">
-                            <span class="left" style="width: 32%"><b>Hire 1 Crew</b></span>
-                            <span class="right"><b>Flip 2 Crews face down</b></span>
+                            <span class="left"><b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                            <span class="right"><b>Oracle 3 and put 1 at the bottom of the deck</b></span>
                         </div>
                         <!-- <div class="actions">
                             <span class="left"><b>Shuffle > 5</b></span>
@@ -725,7 +766,7 @@
                 </span>
                 <!-- <span class="subtype">Crew</span> -->
                 
-
+x
                 <!-- <div class="mpc">
                     <img src="mpc-no-border.png">
                 </div> -->
