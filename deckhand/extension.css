@@ -88,3 +88,15 @@
 .mission .text .rule-icon {
     background-color: #000;
 }
+
+.mask {
+    border-color: #ddc2c227;
+}
+
+.card .bg {
+    width: 63.1mm;
+    margin-left: -0.05mm;
+    height: 88.1mm;
+    margin-top: 3.1mm;
+    border-radius: 3mm;
+}
