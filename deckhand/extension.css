@@ -62,6 +62,9 @@
 .mission .left.act {
     background-image: url(ext/actions-2.png);
 }
+.mission .left.free {
+    background-image: url(ext/actions-3.png);
+}
 .actions {
     display: flex;
     border: 1px #a38030 solid;

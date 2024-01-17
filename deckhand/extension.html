@@ -36,7 +36,7 @@
                 In your Action phase, you can now <b>Hire 1 Crew</b>:
                 Look at the top 3 cards of the Crew deck, 
                 place one face down in front of you, return one to the 
-                bottom of the deck, and keep the remaining one on top. Face down Crews are inactive.
+                bottom of the deck, and keep the remaining one on top. Face down Crews are <b>inactive</b>.
             </p>
 
             <p>
@@ -46,14 +46,17 @@
 
                 Activated Crews provides 3 to 4 skills that you may use during your Action phase. 
                 Each Crew can use only 1 skill per turn, and using a skill does not use an action.
-                There are two types of skills:
+                There are 3 types of skills:
             </p>
         
             <ol>
-                <li><b>Salary</b> (indicated with a red arrow): Carry out the left side as a cost.</li>
+                <li><b>Salary</b> (red arrow): Carry out the left side as a cost.</li>
                 <li><b>Condition</b>: 
                     The left side outlines a prerequisite condition based on the resolved state or actions 
                     from the current turn.
+                </li>
+                <li><b>Free</b> (green arrow): 
+                    No conditions to use this skill.
                 </li>
             </ol>
 
@@ -63,7 +66,7 @@
             <h3>New Keywords</h3>
 
             <ol>
-                <li><b>Unearth 2:</b> Put 2 cards from your stash at the bottom of your deck.</li>
+                <li><b>Unearth 1:</b> Put 1 cards from your stash at the bottom of your deck.</li>
                 <li><b>Retire 1:</b> Remove 1 card that you own from the game.</li>
                 <li><b>Hire 1 Crew:</b> Hire 1 Crew without using an action this turn.</li>
             </ol>
@@ -79,10 +82,8 @@
                     <img src="marketing/actions.png" width="140">
                 </div>
                 <ol style="list-style: none;" class="actions-expl">
-                    <li>Discard 1 Adventure to Draw a card.</li>
-                    <li style="margin-top: 4px;">Pay 2 Coins to get a Buy restricted to Adventures.</li>
-                    <li style="margin-top: 1px;">Play at least  2 Adventures to unlock.</li>
-                    <li style="margin-top: 1px;">Get at least 6 Adventures in your stash to unlock.</li>
+                    <li style="margin-top: -2px;">Discard 1 Adventure to gain a Buy restricted to Adventures.</li>
+                    <li style="margin-top: 0px;">Get at least 6 Adventures in your stash to unlock an extra Action.</li>
                 </ol>
 
             </div>
@@ -265,7 +266,7 @@
                         </div>
                         <div class="actions">
                             <span class="left"><b>Play 1 <img class="rule-icon" src="icons/fist.svg" /> and 1 <img class="rule-icon" src="icons/bookmark-yellow.svg" /></b></span>
-                            <span class="right"><b>+1 Buy</b></span>
+                            <span class="right"><b>+1 Action</b></span>
                         </div>
                     </span> 
                 </span>
@@ -581,7 +582,7 @@
                     <!-- <p>Unearth: put a stash card at the bottom of your deck.</p> -->
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left" style="width:25%"><b></b></span>
+                            <span class="left free" style="width:25%"><b></b></span>
                             <span class="right"><b>Flip 1 supply card face up</b></span>
                         </div>
                         <div class="actions">
@@ -738,7 +739,7 @@
                     <p style="margin-top:0">Any 2 same-cost, face-up cards are <b>Pairs</b>.</p>
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left" style="width:7%"><b></b></span>
+                            <span class="left free" style="width:7%"><b></b></span>
                             <span class="right"><b>An enemy Unearth a 1-cost card</b></span>
                         </div>
                         <div class="actions">
