@@ -63,6 +63,7 @@
     background-image: url(ext/actions-2.png);
 }
 .mission .left.free {
+    width:0px;
     background-image: url(ext/actions-3.png);
 }
 .actions {

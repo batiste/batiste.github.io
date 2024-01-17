@@ -29,14 +29,14 @@
             <p>Create a shuffled <b>Crew deck</b> with the 12 Crew cards and place the deck face-down. Then proceed with a normal setup.</p>
 
             <h3>
-                New Rules for Crews
+                New Rules for Crew
             </h3>
 
             <p>
                 In your Action phase, you can now <b>Hire 1 Crew</b>:
                 Look at the top 3 cards of the Crew deck, 
                 place one face down in front of you, return one to the 
-                bottom of the deck, and keep the remaining one on top. Face down Crews are <b>inactive</b>.
+                bottom of the deck, and keep the remaining one on top. Face down Crew are <b>inactive</b>.
             </p>
 
             <p>
@@ -44,7 +44,7 @@
                 <b>Pay 1 <img class="rule-icon coin" src="icons/coins.svg" /></b> to flip 1 Crew face-up
                 without using an action. You can do this multiple times.
 
-                Activated Crews provides 3 to 4 skills that you may use during your Action phase. 
+                Activated Crew provides 3 to 4 skills that you may use during your Action phase. 
                 Each Crew can use only 1 skill per turn, and using a skill does not use an action.
                 There are 3 types of skills:
             </p>
@@ -52,8 +52,8 @@
             <ol>
                 <li><b>Salary</b> (red arrow): Carry out the left side as a cost.</li>
                 <li><b>Condition</b>: 
-                    The left side outlines a prerequisite condition based on the resolved state or actions 
-                    from the current turn.
+                    The left side describes a condition that needs to be met on this turn.
+                    It could be a situation or some actions.
                 </li>
                 <li><b>Free</b> (green arrow): 
                     No conditions to use this skill.
@@ -63,7 +63,7 @@
             <p style="margin-top: 3px;">Once the skill used, you may gain the effect on the right side.</p>
 
 
-            <h3>New Keywords</h3>
+            <h3>New Keywords and Examples</h3>
 
             <ol>
                 <li><b>Unearth 1:</b> Put 1 cards from your stash at the bottom of your deck.</li>
@@ -71,20 +71,27 @@
                 <li><b>Hire 1 Crew:</b> Hire 1 Crew without using an action this turn.</li>
             </ol>
 
-            <div style="margin-top:10px;display: flex;">
+            <div style="margin-top:10px;">
 
-                <style>
-                    .actions-expl li {
-                        margin-left: 5px;
-                    }
-                </style>
-                <div>
-                    <img src="marketing/actions.png" width="140">
-                </div>
-                <ol style="list-style: none;" class="actions-expl">
-                    <li style="margin-top: -2px;">Discard 1 Adventure to gain a Buy restricted to Adventures.</li>
-                    <li style="margin-top: 0px;">Get at least 6 Adventures in your stash to unlock an extra Action.</li>
-                </ol>
+            <style>
+                .ex {
+                    display: flex;
+                    align-items: center;
+                }
+                .ex img {
+                    margin-right: 5px;
+                }
+            </style>
+
+            <p class="ex">
+                <img src="ext/ex1.png" height="20px"> Discard 1 Adventure to gain a Buy restricted to Adventures.
+            </p>
+            <p class="ex">
+                <img src="ext/ex2.png" height="20px"> Get at least 6 Adventures in your stash to unlock.
+            </p>
+            <p class="ex">
+                <img src="ext/ex3.png" height="20px"> Play at least 2 Attacks this turn to unlock.
+            </p>
 
             </div>
 
@@ -582,7 +589,7 @@
                     <!-- <p>Unearth: put a stash card at the bottom of your deck.</p> -->
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left free" style="width:25%"><b></b></span>
+                            <span class="left free"></span>
                             <span class="right"><b>Flip 1 supply card face up</b></span>
                         </div>
                         <div class="actions">
@@ -739,20 +746,20 @@
                     <p style="margin-top:0">Any 2 same-cost, face-up cards are <b>Pairs</b>.</p>
                     <span class="innerText">
                         <div class="actions">
-                            <span class="left free" style="width:7%"><b></b></span>
-                            <span class="right"><b>An enemy Unearth a 1-cost card</b></span>
+                            <span class="left free"><b></b></span>
+                            <span class="right"><b>Target enemy Unearth a 1-cost card</b></span>
                         </div>
                         <div class="actions">
                             <span class="left"><b>Play 2 <img class="rule-icon" src="icons/attack.svg" /></b></span>
                             <span class="right"><b>Swap a Pair</b></span>
                         </div>
                         <div class="actions">
-                            <span class="left" style="width: 32%"><b>Buy 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
-                            <span class="right"><b>Steal 1 enemy's <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
+                            <span class="left"><b>Buy 1 <img class="rule-icon" src="icons/tentacle.svg" /></b></span>
+                            <span class="right"><b>Steal 1 <img class="rule-icon coin" src="icons/coins.svg" /></b></span>
                         </div>
                         <div class="actions">
                             <span class="left" style="width: 32%"><b>Hire 1 Crew</b></span>
-                            <span class="right"><b>Flip 2 Crews face down</b></span>
+                            <span class="right"><b>Flip 2 Crew face down</b></span>
                         </div>
                         <!-- <div class="actions">
                             <span class="left"><b>Shuffle > 5</b></span>
