@@ -128,7 +128,7 @@ are reminders of triggered effects.<br>
 {
     'title': 'Tavern',
     'text': `If you have an Adventure in hand: +1 :Card:.<br>
-        Then if you have an Attack in hand: +1 :Coin:.<br>
+        If you have an Attack in hand: +1 :Coin:.<br>
         If you have a Structure in hand: +1 :Action:.`,
     'flavor': 'The tavern unites thieves, rogues and scoundrels.',
     'img': 'adventures/tavern-3.png',
