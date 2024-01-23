@@ -546,7 +546,8 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Walk the Plank',
-    'text': ' +2 :Coin:. You may remove a card from your hand or stash from the game. Gain coins equal to the cost of the removed card.',
+    'text': `+2 :Coin:. You may remove from the game a card from your hand or stash.
+    Gain coins equal to the cost of the removed card.`,
     'flavor': 'A dance on the plank or a delayed sentence?',
     'img': 'attacks/plank-2.png',
     'type': 'attack',
@@ -557,7 +558,8 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Monkey’s Bargain',
-    'text': 'Remove from the game a card from your hand or stash. For each hooks :Hook: of the removed card: +1 :Coin: and +1 :Action:.',
+    'text': `Remove from the game a card from your hand or stash. 
+    For each hooks :Hook: of the removed card: +1 :Coin: and +1 :Action:.`,
     'flavor': 'A monkey’s mischief is a pirate’s boon.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
