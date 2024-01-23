@@ -421,7 +421,8 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Rum Factory',
-    'text': '+2 :Coin:. You may increase every player’s <br>coins by 1. If you do, on their next turn, each player must Discard a card after their initial draw.',
+    'text': `+2 :Coin:. You may increase every player’s coins by 1. 
+    If you do, on their next turn, each player must Discard a card after <br>their initial draw.`,
     'img': 'structures/rum3.png',
     'type': 'structure',
     'cost': '2',
@@ -639,7 +640,7 @@ are reminders of triggered effects.<br>
 {
     'title': 'Voodoo Curse',
     'text': `Reveal the top 3 cards of target player’s deck. Put one into their stash, 
-    then <br>apply its effects as if you had played it.`,
+    then apply <br>its effects as if you had played it.`,
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
     'type': 'attack',
