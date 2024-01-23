@@ -431,7 +431,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Exploration',
-    'text': 'If you have an Adventure in hand:<br>+1 :Action:.<br>Regardless +1 :Card:, +1 :Coin:.',
+    'text': 'If you have an Adventure in hand:<br>+1 :Action:.<br>Additionally, +1 :Card:, +1 :Coin:.',
     'flavor': 'Set sail, but not without a compass in hand.',
     'img': 'adventures/exploration.png',
     'type': 'adventure',
