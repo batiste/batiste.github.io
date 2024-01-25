@@ -702,7 +702,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Improvised Grenade',
-    'text': `Target player picks a card from their stash that costs 2 or less and remove it from the game.<br> 
+    'text': `Target player picks a card from their stash that costs 2 or less and removes it from the game.<br> 
         When Discarded: Apply this card’s effect to all players with themselves as the target.`,
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
