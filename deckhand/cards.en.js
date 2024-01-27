@@ -312,7 +312,8 @@ are reminders of triggered effects.<br>
 {
     'title': 'Typhoon',
     'text': `+2 :Card:, +1 :Discard:, +1 :Coin:. Then all players simultaneously
-     move a card from their stash or the top card of their deck (no peeking) to the stash of their left neighbor.`,
+     move a card from their stash or the top card of their deck (no peeking) 
+     to the stash of the player to their left`,
     //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
@@ -443,7 +444,9 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Treasure Map',
-    'text': '+1 :Coin:. Look at the top 3 cards of your <br>deck. You may put any number of them<br> into your stash and the rest on top of your deck in any order. Then +1 :Card:.',
+    'text': `+1 :Coin:. Look at the top 3 cards of your <br>deck. 
+    You may put any number of them<br> into your stash and the 
+    rest back on top of your deck in any order. Then +1 :Card:.`,
     //'flavor': 'Riches await the keen-eyed adventurer.',
     'img': 'adventures/treasure-map.png',
     'type': 'adventure',
@@ -559,7 +562,7 @@ are reminders of triggered effects.<br>
 {
     'title': 'Monkey’s Bargain',
     'text': `Remove from the game a card from your hand or stash. 
-    For each hooks :Hook: of the removed card: +1 :Coin: and +1 :Action:.`,
+    For each hook :Hook: of the removed card: +1 :Coin: and +1 :Action:.`,
     'flavor': 'A monkey’s mischief is a pirate’s boon.',
     'img': 'attacks/exchange.png',
     'type': 'attack',
@@ -728,8 +731,8 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Bewitched Doll',
-    'text': `+1 :Coin:. On target enemy’s next turn, control their first Action 
-    making all decisions for this enemy. You may control Actions or Buys they may gain through this control.`,
+    'text': `+1 :Coin:. On target enemy’s next turn, control their first Action, 
+    making all decisions for this enemy. You may control Actions or Buys they may gain through this.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
     'type': 'attack',
