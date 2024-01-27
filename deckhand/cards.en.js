@@ -313,7 +313,7 @@ are reminders of triggered effects.<br>
     'title': 'Typhoon',
     'text': `+2 :Card:, +1 :Discard:, +1 :Coin:. Then all players simultaneously
      move a card from their stash or the top card of their deck (no peeking) 
-     to the stash of the player to their left`,
+     to the stash of the player on their left`,
     //'flavor': 'A Swirling chaos! A navigational nightmare!',
     'reduced-font-size': '9.3px',
     'img': 'adventures/tornado.png',
