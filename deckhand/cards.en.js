@@ -224,7 +224,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Kung Fu Lessons',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Put 1 card from target player’s stash<br>at the bottom of their deck.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.<br>Put 1 card from a target player’s stash<br>at the bottom of their deck.',
     'flavor': 'The tide, harness its power to your advantage!',
     // 'reduced-font-size': '9.1px',
     'img': 'adventures/kung-fu.png',
@@ -238,7 +238,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Governor’s Wedding',
-    'text': '+1 :Coin:, +1 :Reload:. On their next turn, target enemy gains +1 :Buy: and must give you 1 coin before their first Buy.',
+    'text': '+1 :Coin:, +1 :Reload:. On their next turn, a target enemy gains +1 :Buy: and must give you 1 coin before their first Buy.',
     'flavor': 'A sumptuous gift secure favors and influence.',
     'img': 'structures/wedding.png',
     'type': 'attack',
@@ -251,7 +251,7 @@ are reminders of triggered effects.<br>
 {
     'title': 'Imperial Powder',
     'text': `+1 :Coin:, +1 :Reload:.<br>If you lose ownership of this card: 
-    Select a card costing 2 or less from target enemy’s stash and remove it from the game.`,
+    Select a card costing 2 or less from a target enemy’s stash and remove it from the game.`,
     // 'flavor': 'WARNING: Do not roll, shock, or sway.',
     'img': 'structures/powder-keg.png',
     // 'reduced-font-size': '9.0px',
@@ -275,7 +275,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Alley Thief',
-    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.:or:Steal a coin from target enemy, +1 :Card:.',
+    'text': '+1 :Coin:, +1 :Card:, +1 :Reload:.:or:Steal a coin from a target enemy, +1 :Card:.',
     'flavor': 'A fleeting shadow, your treasures vanish!',
     'img': 'attacks/thief.png',
     'type': 'attack',
@@ -501,7 +501,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Lost Expedition',
-    'text': `Remove and set aside a card from target player’s stash. When their stash is shuffled, you get +2 :Coin: and return the card to their new stash.`,
+    'text': `Remove and set aside a card from a target player’s stash. When their stash is shuffled, you get +2 :Coin: and return the card to their new stash.`,
     'img': 'adventures/lost-expedition-2.png',
     //'reduced-font-size': '9.0px',
     'type': 'adventure',
@@ -513,7 +513,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Stealthy Observer',
-    'text': `Reveal the top 2 cards of target enemy’s deck. Put 1 revealed card into their stash and gain 
+    'text': `Reveal the top 2 cards of a target enemy’s deck. Put 1 revealed card into their stash and gain 
         coins equal to its hooks :Hook:.`,
     'flavor': 'A vigilant eye  brings forth hidden truths.',
     'img': 'adventures/roof-thief.png',
@@ -644,7 +644,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Voodoo Curse',
-    'text': `Reveal the top 3 cards of target player’s deck. Put one into their stash, 
+    'text': `Reveal the top 3 cards of a target player’s deck. Put one into their stash, 
     then apply <br>its effects as if you had played it.`,
     'flavor': 'With every step, the curse tightens its grip.',
     'img': 'attacks/spell.png',
@@ -657,7 +657,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Abyss Marauder',
-    'text': `+1 :Action:. Swap a card from your hand<br> with a card of equal cost from target enemy’s stash.`,
+    'text': `+1 :Action:. Swap a card from your hand<br> with a card of equal cost from a target enemy’s stash.`,
     'flavor': 'Born of the deep, it feasts on uncertainty.',
     'img': 'attacks/sea-bug.png',
     'type': 'attack',
@@ -705,7 +705,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Improvised Grenade',
-    'text': `Target player picks a card from their stash that costs 2 or less and removes it from the game.<br> 
+    'text': `A target player picks a card from their stash that costs 2 or less and removes it from the game.<br> 
         When Discarded: Apply this card’s effect to all players with themselves as the target.`,
     'img': 'attacks/grenade.png',
     // 'reduced-font-size': '9.05px',
@@ -731,7 +731,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Bewitched Doll',
-    'text': `+1 :Coin:. On target enemy’s next turn, control their first Action, 
+    'text': `+1 :Coin:. On a target enemy’s next turn, control their first Action, 
     making all decisions for this enemy. You may control Actions or Buys they may gain through this.`,
     // 'flavor': "Destiny is a fickle concept.",
     'img': 'attacks/voodoo-doll.png',
@@ -744,7 +744,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Crooked Merchant',
-    'text': 'Pay 1 :Coin:: Swap a card between your <br>stash and target enemy’s stash as long as the cost difference is 1 or less.',
+    'text': 'Pay 1 :Coin:: Swap a card between your <br>stash and a target enemy’s stash as long as the cost difference is 1 or less.',
     'flavor': 'The lure of wealth leads to deceptive deals.',
     'img': 'attacks/merchant.png',
     'type': 'attack',
