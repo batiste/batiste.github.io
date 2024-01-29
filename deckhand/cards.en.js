@@ -117,7 +117,9 @@ are reminders of triggered effects.<br>
 },
 {
     'title': 'Celebrate',
-    'text': '+1 :Card: <i>(You may draw 1 card.)</i><br>+1 :Reload: <i>(You may reload 1 supply card.)</i><br>Then +1 :Coin: for each Celebrate in hand.',
+    'text': `+1 :Card: <i>(You may draw 1 card.)</i><br>
+    +1 :Reload: <i>(You may reload 1 supply card.)</i><br>
+    +1 :Coin: for each Celebrate in hand.`,
     'flavor': 'Lonely grog or shared laughter?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
