@@ -37,7 +37,7 @@ var cards = [
     'img': 'marketing/card-anatomy.png',
     'type': 'rule',
     'class': 'card-anat',
-    'amount': 8,
+    'amount': 0,
     // 'flip': 1,
 },
 
@@ -54,7 +54,7 @@ with coins :Coing: and put it into your stash.
     'img': 'marketing/booklet.png',
     'type': 'indicator',
     'class': 'quick-ref',
-    'amount': 1,
+    'amount': 0,
     // 'flip': 1,
 },
 
@@ -77,7 +77,7 @@ are reminders of triggered effects.<br>
     'img': 'marketing/booklet.png',
     'type': 'indicator',
     'class': 'quick-ref quick-ref-2',
-    'amount': 1,
+    'amount': 0,
 },
 
 // {
@@ -932,6 +932,7 @@ are reminders of triggered effects.<br>
     When discarded: +1 :Coin: and put this <br>card at the bottom of your deck.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/jail-breaker.png',
+    'flavor': 'Lousy rations fuel his hunger for adventures.',
     'type': 'adventure',
     'victory': '2',
     'cost': '2',
