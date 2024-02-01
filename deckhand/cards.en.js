@@ -113,7 +113,7 @@ are reminders of triggered effects.<br>
     'type': 'attack',
     'victory': '1',
     'cost': '1',
-    'amount': 2 * 4
+    'amount': 0
 },
 {
     'title': 'Celebrate',
@@ -125,7 +125,7 @@ are reminders of triggered effects.<br>
     'type': 'adventure',
     'victory': '1',
     'cost': '1',
-    'amount': 2 * 4
+    'amount': 0
 },
 {
     'title': 'Tavern',
@@ -861,32 +861,83 @@ are reminders of triggered effects.<br>
     'fist': true,
 },
 
-
 // {
-//     'title': `Raider's Excavations`,
-//     'text': `+1 :Coin:.<br>At the start of your turn, if this card is in your stash,
-//     as well as 2 other Adventures: +1 :Coin:.`,
-//     'img': 'ext/excavation.png',
-//     'type': 'structure',
-//     'extra_type': 'adventure',
-//     'victory': '1',
-//     'cost': '1',
+//     'title': 'Seance',
+//     'text': `+1 :Action:, +1 :Coin:, +1 :Card:.<br>
+//     If this card is in your stash, and you play a 1 cost card: Look at the 2 top cards from any one deck.`,
+//     'img': 'ext/seance.png',
+//     'type': 'adventure',
+//     'victory': '2',
+//     'cost': '3',
 //     'amount': 1,
-//     'start': true,
-// },
-
-
-// {
-//     'title': `Bloodfang's Manor`,
-//     'text': `+1 :Coin:.<br>When you play your second Attack each turn: +1 :Coin:.`,
-//     'img': 'ext/manor.png',
-//     'type': 'structure',
-//     // 'extra_type': 'attack',
-//     'victory': '1',
-//     'cost': '1',
-//     'amount': 1,
+//     // 'start': true,
 //     'fist': true,
 // },
+
+{
+    'title': `Raiders’ Excavation`,
+    'text': `+1 :Coin:.<br>If this card is in your stash
+    and you play your second Adventure this turn: +1 :Coin:.
+    <span class="extension-sign">e1</span>`,
+    'img': 'ext/excavation.png',
+    'type': 'structure',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+    'fist': true,
+},
+
+{
+    'title': `Haunted Shipwreck`,
+    'text': `Name a card type and reveal the top 3 cards of a target enemy’s deck. 
+    Put the cards of the named type into their stash, then +1 :Coin: for each remaining card.
+    <span class="extension-sign">e1</span>`,
+    'img': 'ext/shipwreck.png',
+    'type': 'structure',
+    'victory': '2',
+    'cost': '2',
+    'amount': 1,
+    'target': true,
+},
+
+
+{
+    'title': `Bloodfang’s Manor`,
+    'text': `+1 :Coin:, +1 :Reload:.<br>If this card is in your stash and an enemy buys a card that costs 3 or more: +1 :Coin:.
+    <span class="extension-sign">e1</span>`,
+    'img': 'ext/manor.png',
+    'type': 'structure',
+    // 'extra_type': 'attack',
+    'victory': '1',
+    'cost': '1',
+    'amount': 1,
+    'fist': true,
+},
+
+{
+    'title': `Raid on Port Royal`,
+    'text': `+1 :Coin:, + :Reload:<br>At the start of your turn, if there are at <br>least 4 Attacks in your stash: +1 :Action:.
+    <span class="extension-sign">e1</span>`,
+    'img': 'ext/raid.png',
+    'type': 'attack',
+    'victory': '3',
+    'cost': '4',
+    'amount': 1,
+    'start': true,
+},
+
+{
+    'title': `Jail Breaker`,
+    'text': `+1 :Coin:, +1 Buy restricted to Adventures.<br>
+    When discarded: +1 :Coin: and put this <br>card at the bottom of your deck.
+    <span class="extension-sign">e1</span>`,
+    'img': 'ext/jail-breaker.png',
+    'type': 'adventure',
+    'victory': '2',
+    'cost': '2',
+    'amount': 1,
+    'discard': true,
+},
 
 
 

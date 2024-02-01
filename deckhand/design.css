@@ -863,3 +863,16 @@ ul {
     background-image: url(marketing/texture.png);
     background-size: cover;
 }
+
+
+.extension-sign {
+    position:absolute;
+    right:-4.9px;
+    top:7px;
+    border: 1px solid rgba(231, 185, 48, 0.7);
+    border-right:0;
+    color: #ededed;
+    border-radius: 2px 0 0 2px;
+    padding: 0px 2px 0px 2px;
+    font-size: 9px;
+}
