@@ -683,7 +683,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Gambling Addiction',
-    'text': '+2 :Reload: then if the supply has 4 or more <br>cards of the same type: +3 :Coin:.',
+    'text': '+2 :Reload: then, if the supply has 4 or more <br>cards of the same type: +3 :Coin:.',
     'flavor': 'The allure of easy riches sealed his downfall.',
     'img': 'adventures/gambling.png',
     'type': 'adventure',
@@ -860,6 +860,33 @@ are reminders of triggered effects.<br>
     'amount': 1,
     'fist': true,
 },
+
+
+// {
+//     'title': `Raider's Excavations`,
+//     'text': `+1 :Coin:.<br>At the start of your turn, if this card is in your stash,
+//     as well as 2 other Adventures: +1 :Coin:.`,
+//     'img': 'ext/excavation.png',
+//     'type': 'structure',
+//     'extra_type': 'adventure',
+//     'victory': '1',
+//     'cost': '1',
+//     'amount': 1,
+//     'start': true,
+// },
+
+
+// {
+//     'title': `Bloodfang's Manor`,
+//     'text': `+1 :Coin:.<br>When you play your second Attack each turn: +1 :Coin:.`,
+//     'img': 'ext/manor.png',
+//     'type': 'structure',
+//     // 'extra_type': 'attack',
+//     'victory': '1',
+//     'cost': '1',
+//     'amount': 1,
+//     'fist': true,
+// },
 
 
 

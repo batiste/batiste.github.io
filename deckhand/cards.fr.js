@@ -76,12 +76,14 @@ rappels d'effets déclenchés.<br>
     "title":"Célébration",
     "text":`+1 :Card: <i>(Tu peux piocher 1 carte.)</i>
     <br>+1 :Reload: <i>(Recharge 1 carte de la réserve.)</i>
-    <br>Puis +1 :Coin: par Célébration en main.`,
+    <br>+1 :Coin: par Célébration en main.`,
     "flavor":"Grog solitaire ou rires partagés ?"
   },
   {
     "title":"Taverne",
-    "text":"+1 :Card: si tu as une Aventure en main.<br>Puis +1 :Coin: si tu as une Attaque en main.<br>+1 :Action: si tu as une Structure en main.",
+    "text": `+1 :Card: si tu as une Aventure en main.<br>
+    +1 :Coin: si tu as une Attaque en main.<br>
+    +1 :Action: si tu as une Structure en main.`,
     "flavor":"Elle rassemble voleurs, coquins et fripouilles."
   },
   {

@@ -129,3 +129,34 @@
 .card .bg img {
     width: 100%;
 }
+
+.card .card-rule.text {
+    top: 8mm;
+    left: 7.6mm;
+    right: 7.6mm;
+    font-size: 9.1px;
+}
+
+.card .card-rule.text p {
+    margin: 0;
+    margin-bottom: 3px;
+}
+
+.card .card-rule.text ul, .card .card-rule.text ol {
+    margin: 0;
+    padding: 0;
+}
+
+.card .card-rule.text li {
+    margin-left: 12px;
+    padding-top: 1.75px;
+}
+
+.arrow {
+    font-size: 16px;
+    display: inline-block;
+    line-height: 1;
+    position: absolute;
+    margin-top: -2.5px;
+    margin-left: 1px;
+}

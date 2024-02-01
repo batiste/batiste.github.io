@@ -92,7 +92,9 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu a
 },
 {
     'title': 'Celebración',
-    'text': '+1 :Card: <i>(Robar 1 carta.)</i><br>+1 :Reload: <i>(Recarga 1 carta de suministros.)</i><br>+1 :Coin: por cada Celebración en la mano.',
+    'text': `+1 :Card: <i>(Robar 1 carta.)</i><br>
+    +1 :Reload: <i>(Recarga 1 carta de suministros.)</i><br>
+    +1 :Coin: por cada Celebración en la mano.`,
     'flavor': '¿Un trago solitario o una risa compartida?',
     'img': 'adventures/celebrate.png',
     'type': 'adventure',
@@ -103,7 +105,7 @@ con monedas <img class="rule-icon coin" src="icons/coins.svg" /> y ponlo en tu a
 {
     'title': 'Taverna',
     'text': `+1 :Card: si tienes una Aventura en mano.<br>
-        Luego +1 :Coin: si tienes un Ataque en mano.<br>
+        +1 :Coin: si tienes un Ataque en mano.<br>
         +1 :Accion: si tienes una Estructura en mano.`,
     'flavor': 'La taberna atrae ladrones, rufianes y pícaros',
     'img': 'adventures/tavern-3.png',
