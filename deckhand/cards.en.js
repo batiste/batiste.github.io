@@ -907,6 +907,7 @@ are reminders of triggered effects.<br>
     <span class="extension-sign">e1</span>`,
     'img': 'ext/manor.png',
     'type': 'structure',
+    'flavor': 'Wealth and veins must flow – obey the Manor.',
     // 'extra_type': 'attack',
     'victory': '1',
     'cost': '1',
@@ -918,6 +919,7 @@ are reminders of triggered effects.<br>
     'title': `Raid on Port Royal`,
     'text': `+1 :Coin:, + :Reload:<br>At the start of your turn, if there are at <br>least 4 Attacks in your stash: +1 :Action:.
     <span class="extension-sign">e1</span>`,
+    'flavor': 'Sanctuary to cinders, memories to smoke.',
     'img': 'ext/raid.png',
     'type': 'attack',
     'victory': '3',
@@ -932,7 +934,7 @@ are reminders of triggered effects.<br>
     When discarded: +1 :Coin: and put this <br>card at the bottom of your deck.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/jail-breaker.png',
-    'flavor': 'Lousy rations fuel his hunger for adventures.',
+    'flavor': 'Lousy rations fuel my hunger for the sea.',
     'type': 'adventure',
     'victory': '2',
     'cost': '2',
