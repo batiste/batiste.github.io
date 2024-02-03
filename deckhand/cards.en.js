@@ -670,7 +670,7 @@ are reminders of triggered effects.<br>
 },
 
 {
-    'title': 'Smuggler’s Cache',
+    'title': 'Smugglers’ Cache',
     'text': '+1 :Coin:.<br>At the start of your turn, if this <br>card is in your stash: +1 :Coin:.',
     'flavor': 'Few can chart the course to the forbidden spoils.',
     'img': 'structures/smugglers-cache.png',
