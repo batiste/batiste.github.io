@@ -876,10 +876,11 @@ are reminders of triggered effects.<br>
 
 {
     'title': `Raiders’ Excavation`,
-    'text': `+1 :Coin:.<br>If this card is in your stash
+    'text': `+1 :Coin:, +1 :Card:.<br>If this card is in your stash
     and you play your second Adventure this turn: +1 :Coin:.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/excavation.png',
+    'flavor': 'Two pirates, the door surrenders, a glint of gold.',
     'type': 'structure',
     'victory': '1',
     'cost': '1',
