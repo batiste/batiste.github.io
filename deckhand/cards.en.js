@@ -908,7 +908,7 @@ are reminders of triggered effects.<br>
     <span class="extension-sign">e1</span>`,
     'img': 'ext/manor.png',
     'type': 'structure',
-    'flavor': 'Wealth and veins must flow – obey the Manor!',
+    'flavor': 'Wealth and veins must flow — obey the Manor!',
     // 'extra_type': 'attack',
     'victory': '1',
     'cost': '1',
