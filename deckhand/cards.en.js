@@ -634,7 +634,7 @@ are reminders of triggered effects.<br>
 },
 
 {
-    'title': 'Architect’s Workshop',
+    'title': 'Architects’ Workshop',
     'text': '+1 :Coin:, +1 :Action:. If there are 2 or more Structures in the supply: +1 :Buy:.',
     'flavor': 'Meticulous plans and skilled craftsmanship <br>bring grand visions to life.',
     'img': 'structures/architect-workshop.png',
