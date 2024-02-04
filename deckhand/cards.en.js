@@ -932,7 +932,7 @@ are reminders of triggered effects.<br>
 {
     'title': `Jail Breaker`,
     'text': `
-    <span style="display: inline-block; margin-bottom: 1px"><span class="keyword">+1 <img class="rule-icon" style="margin-bottom: -2px; padding-left: 0" src="icons/tentacle.svg" /> Buy</span>, +1 :Coin:.</span>
+    <span style="display: inline-block; margin-bottom: 1px"><span class="keyword">+1 <img class="rule-icon" style="margin-bottom: -2.5px; margin-left: -1px" src="icons/tentacle.svg" /> Buy</span>, +1 :Coin:.</span>
     <br>
     When discarded: +1 :Coin: and put this <br>card at the bottom of your deck.
     <span class="extension-sign">e1</span>`,
