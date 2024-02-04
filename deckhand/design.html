@@ -438,8 +438,13 @@
     all = []
     var j = 0;
     var amount = 0;
-    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0, 1: 0, 2: 0, 3: 0, 4: 0, 5: 0, nb_cards_necessary_total:(15 * 4 + 6 + 2)}
-
+    var distribution = {'attack': 0, 'structure': 0, 'adventure': 0,
+     1: 0, 2: 0, 3: 0, 4: 0, 5: 0,
+     'start-of-turn': 0,
+     'target': 0,
+     'rule-change': 0,
+     'discard': 0
+    }
     var translations = cards.map(e => ({"title": e.title, "text": e.text, "flavor": e.flavor}))
     console.log(JSON.stringify(translations, null, 2))
 
@@ -487,9 +492,21 @@
             }
         }
 
-        if(j>1) {
-            distribution[c['type']] += c['amount']
-            distribution[c['cost']] += c['amount']
+        if(j>4) {
+            distribution[c['type']] += 1
+            distribution[c['cost']] += 1
+            if (c['start']) {
+                distribution['start-of-turn'] += 1
+            }
+            if (c['fist']) {
+                distribution['rule-change'] += 1
+            }
+            if (c['target']) {
+                distribution['target'] += 1
+            }
+            if (c['discard']) {
+                distribution['discard'] += 1
+            }
         }
 
         if(c['victory'] != undefined) {
