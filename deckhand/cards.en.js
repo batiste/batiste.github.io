@@ -877,7 +877,7 @@ are reminders of triggered effects.<br>
 {
     'title': `Raiders’ Excavation`,
     'text': `+1 :Coin:, +1 :Card:.<br>If this card is in your stash
-    and you play your second Adventure this turn: +1 :Coin:.
+    and you play a second Adventure this turn: +1 :Coin:.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/excavation.png',
     'flavor': 'Two pirates, the door surrenders, a glint of gold.',
@@ -891,7 +891,7 @@ are reminders of triggered effects.<br>
 {
     'title': `Haunted Shipwreck`,
     'text': `Name a card type and reveal the top 3 cards of a target enemy’s deck. 
-    Put the cards of the named type into their stash, then +1 :Coin: for each remaining card.
+    Put the cards matching the named type into their stash, then +1 :Coin: for each remaining card.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/shipwreck.png',
     'type': 'structure',
@@ -931,7 +931,9 @@ are reminders of triggered effects.<br>
 
 {
     'title': `Jail Breaker`,
-    'text': `+1 :Coin:, +1 Buy restricted to Adventures.<br>
+    'text': `
+    <span style="display: inline-block; margin-bottom: 1px"><span class="keyword">+1 <img class="rule-icon" style="margin-bottom: -2px; padding-left: 0" src="icons/tentacle.svg" /> Buy</span>, +1 :Coin:.</span>
+    <br>
     When discarded: +1 :Coin: and put this <br>card at the bottom of your deck.
     <span class="extension-sign">e1</span>`,
     'img': 'ext/jail-breaker.png',
