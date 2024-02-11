@@ -24,7 +24,7 @@ var cards = [
 // },
 
 {
-    'title': 'Card’s Anatomy',
+    'title': 'Card Anatomy',
     'text': `
     <div class="anatomy-list">
         1. Reminder symbols
