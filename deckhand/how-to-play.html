@@ -40,25 +40,38 @@
             text-shadow: none;  
             font-size: 20px;
         }
+        .sticky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: #525b61;
+            padding: 8px;
+            box-shadow: 0px 3px 7px #252525;
+        }
+        .anchor {
+            padding-bottom: 20px;
+        }
     </style>
 </head>
 <body>
 
-    <h1>DeckHand — How To Play</h1>
+    <h1 style="margin-top: 1.5em;">DeckHand — How To Play</h1>
 
     <p style="margin: 10px; text-align: center;"><a href="/deckhand/#gameplay-preview">← Back to the main website</a></p>
 
-    <p style="margin: 10px; text-align: center;">
-        <a href="#simplified">Simplified Game</a>,
-        <a href="#ill">Game Board Illustration</a>,
-        <a href="#solo-challenges">Solo Challenges</a>,
-        <a href="#rules">Rules</a>,
+    <div style="text-align: center;" class="sticky">
+        <a href="#video">Video</a>&nbsp;&nbsp;
+        <a href="#simplified">Simplified Game</a>&nbsp;&nbsp;
+        <a href="#ill">Game Board Illustration</a>&nbsp;&nbsp;
+        <a href="#solo-challenges">Solo Challenges</a>&nbsp;&nbsp;
+        <a href="#rules">Rules</a>&nbsp;&nbsp;
         <a href="#details">Card Details</a>
-    </p>
+    </div>
     
     <div style="max-width: 900px; margin: 2em auto;">
 
-        <h2>Video</h2>
+        <h2 id="video">Video</h2>
 
         <p style="text-align: center;">
             A quick 10 minutes video to get you started.
@@ -137,7 +150,7 @@
             </div>
         </div>
 
-        <h2>Rules</h2>
+        <h2 id="rules">Rules</h2>
 
         <a href="./DeckHand Rules.pdf" style="display: flex; justify-content: center;">
             <img src="marketing/rules.jpg" style="width:100%; max-width: 760px;">
@@ -614,7 +627,6 @@
                 </p>
             </div>
         </div> -->
-
 
         <p style="text-align: center;"><a href="/deckhand/#gameplay-preview">← Back to the main website</a></p>
     </div>
