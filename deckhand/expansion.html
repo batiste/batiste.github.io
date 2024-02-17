@@ -60,13 +60,13 @@
             </p>
         
             <ol>
-                <li><b>Salary</b> (red arrow): Carry out the action(s) on the left side as a cost.</li>
+                <li><b>Free</b><b class="arrow" style="color: #218235;">▸</b>&nbsp;&nbsp;&nbsp;&nbsp;: 
+                    No conditions to use this skill.
+                </li>
+                <li><b>Salary</b><b class="arrow" style="color: #d2423c;">▸</b>&nbsp;&nbsp;&nbsp;&nbsp;: Carry out the action(s) on the left side as a cost.</li>
                 <li><b>Condition</b>: 
                     The left side describes a condition that needs to be met this turn.
                     It could be a situation or some actions.
-                </li>
-                <li><b>Free</b> (green arrow): 
-                    No conditions to use this skill.
                 </li>
             </ol>
 
@@ -94,7 +94,7 @@
             </style>
 
             <p class="ex">
-                <img src="ext/ex1.png" height="20px"> Discard 1 Adventure to gain a Buy restricted to Adventures.
+                <img src="ext/ex1.png" height="20px"> As a cost, instantly discard 1 Adventure to gain a Buy restricted to Adventures.
             </p>
             <p class="ex">
                 <img src="ext/ex2.png" height="20px"> Have at least 6 Adventures in your stash to unlock.
@@ -218,9 +218,9 @@
                     </p>
 
                     <ol>
-                        <li><b>Salary</b>
-                            <b class="arrow" style="color: rgb(212, 36, 23);">▸</b>&nbsp;&nbsp;&nbsp;&nbsp; 
-                            Carry out the left side as a cost.</li>
+                        <li><b>Free</b><b class="arrow" style="color: #218235;">▸</b>&nbsp;&nbsp;&nbsp;&nbsp;
+                            No conditions to use this skill.
+                        </li>
                     </ol>
 
                     </span>
@@ -242,7 +242,7 @@
         </div>
     </div>
     <button onclick="downloadCardButton(this)">Download #3, copies: 1</button><br>
-    <label><input type="checkbox" id="check-pdf-2" onclick="changePrintSelection(this)" data-card-id="2" "="">Part of print sheet</label>
+    <label><input type="checkbox" id="check-pdf-2" onclick="changePrintSelection(this)" data-card-id="2">Part of print sheet</label>
 </div>
 
 
@@ -257,12 +257,12 @@
                     <span class="innerText">
                         <span class="index-page">2/2</span>
                         <ol start="2">
+                            <li><b>Salary</b>
+                                <b class="arrow" style="color: #d2423c;">▸</b>&nbsp;&nbsp;&nbsp;&nbsp; 
+                                Carry out the left side as a cost.</li>
                             <li><b>Condition</b>: 
                                 The left side describes a condition that needs to be met this turn.
                                 It could be a situation or some actions.
-                            </li>
-                            <li><b>Free</b><b class="arrow" style="color: green;">▸</b>&nbsp;&nbsp;&nbsp;&nbsp;
-                                No conditions to use this skill.
                             </li>
                         </ol>
             
@@ -281,7 +281,7 @@
 
                         <p style="margin-top: 6px;">
                             <img src="ext/ex1.png" height="19px"><br>
-                            <span>Discard 1 Adventure to gain a Buy restricted to Adventures.</span>
+                            <span>As a cost, instantly discard 1 Adventure to gain a Buy restricted to Adventures.</span>
                         </p>
                         <p style="margin-top: 2px; display: flex; align-items: center;">
                             <img src="ext/ex2.png" height="19px" style="float: left; margin-right: 4px"> Have at least 6 Adventures in your stash to unlock.

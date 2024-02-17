@@ -159,6 +159,7 @@
     position: absolute;
     margin-top: -2.5px;
     margin-left: 1px;
+    text-shadow: 0.6px 0.6px 0px black;
 }
 
 .index-page {
