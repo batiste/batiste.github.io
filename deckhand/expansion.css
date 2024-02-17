@@ -115,10 +115,10 @@
 }
 
 .card .bg {
-    width: 63.1mm;
-    height: 88.1mm;
-    top: 3mm;
-    left: 3mm;
+    width: 67.1mm;
+    height: 92.1mm;
+    top: 1mm;
+    left: 1mm;
     border-radius: 3mm;
     z-index: -10;
     position: absolute;
@@ -171,5 +171,5 @@
 }
 
 .preparePrint.card .bg {
-    border-radius: 3px;
+    /* border-radius: 3px; */
 }
