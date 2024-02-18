@@ -173,3 +173,65 @@
 .preparePrint.card .bg {
     /* border-radius: 3px; */
 }
+
+.left-mirror {
+    margin-top: 0px;
+    position: absolute;
+    top: 0;
+    right: calc(100%);
+    margin-right: -8.5px;
+    -webkit-transform: scaleX(-1);
+}
+
+.right-mirror {
+    margin-top: 0px;
+    position: absolute;
+    top: 0;
+    left: calc(100%);
+    margin-left: -8.5px;
+    -webkit-transform: scaleX(-1);
+}
+
+.top-mirror {
+    margin-top: 0px;
+    position: absolute;
+    bottom: calc(100%);
+    margin-bottom: -8.5px;
+    -webkit-transform: scaleY(-1);
+    left: 8px;
+    width: 100%;
+}
+
+.card .bg img {
+    width: calc(100% - 16px);
+    margin-top: 8px;
+}
+
+.card .bg img.top-mirror {
+    width: 100%;
+    left:0
+}
+
+.card .bg {
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    border-radius: 0;
+    z-index: -10;
+    position: absolute;
+    margin: 0;
+    overflow: hidden;
+}
+
+.card .no-top.bg img{
+    margin-top: 0px;
+}
+
+.card .reduced-top.bg img {
+    margin-top: -6px;
+}
+
+.card .no-top.bg img.top-mirror {
+    display: none;
+}
