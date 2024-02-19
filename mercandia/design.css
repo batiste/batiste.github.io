@@ -65,7 +65,7 @@ a, a:visited {
     font-family: "Dangrek", sans-serif;
     font-weight: 400;
     font-style: normal;
-    line-height: 1.45;
+    line-height: 1.48;
 }
 
 .illustration {
@@ -101,12 +101,13 @@ a, a:visited {
 
 
 .quartile {
-    background-image: url("img/orange.png");
+    background-image: url("img/orange-start.png");
     background-repeat: no-repeat;
     background-size: cover;
-    width: 24px;
+    width: 22px;
     height: 21px;
     z-index: -10;
+    padding-left: 6px;
 }
 
 .money {
@@ -116,7 +117,7 @@ a, a:visited {
     width: 31px;
     height: 21px;
     z-index: -10;
-    margin-left: -2px;
+    margin-left: -1px;
     text-align: left;
     padding-left: 5px;
 }
@@ -133,14 +134,52 @@ a, a:visited {
     padding-left: 5px;
 }
 
+.positions {
+    font-size: 27px;
+    position: absolute;
+    margin-left: -0px;
+    margin-top: -4px;
+}
+
+.positions .txt {
+    margin-left: -2.9px;
+}
+
+.txt.pos-0 {
+    color: rgb(0, 0, 0);
+    color: #aa0000;
+}
+
+.defense {
+    background-image: url("img/red.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 31px;
+    height: 21px;
+    z-index: -10;
+    margin-left: -1px;
+    text-align: left;
+    padding-left: 5px;
+}
+
+.defense {
+    position: absolute;
+    right: 69px;
+    top: 26px;
+}
+
 .top-quartile {
     right:0;
     left: 66px;
     position: absolute;
-    width: 30px;
+    /* width: 30px; */
     top: 26px;
     height: 21px;
     display: flex;
+}
+
+.top-quartile .defense {
+    margin-left: 68px;
 }
 
 .rotate {
@@ -153,7 +192,7 @@ a, a:visited {
     display: flex;
     position: absolute;
     right: 42px;
-    top: 44px;
+    top: 55px;
 }
 
 .right-quartile .rotate-point {
@@ -199,7 +238,7 @@ a, a:visited {
     flex-direction: column;
     align-items: start;
     position: absolute;
-    left: 60px;
+    left: 64px;
     top: 200px;
     bottom: 70px;
     right: 60px;

@@ -38,7 +38,7 @@
 cards = [
     {
         "ill": "merchant.webp",
-        "cost": 4,
+        // "cost": 4,
         "quartile2": {
             "money": 2,
         },
@@ -48,7 +48,8 @@ cards = [
         },
         "quartile4": {
             "money": 6,
-            // "attack": 2
+            "attack": 1,
+            "attack-pos": [1, 1, 1]
         },
         "line1": ["down", ":", "tap", "fire"],
     },
@@ -64,7 +65,8 @@ cards = [
         },
         "quartile4": {
             "money": 6,
-            // "attack": 2
+            "attack": 1,
+            "attack-pos": [0, 0, 1]
         },
         "line1": ["down", ":", "tap"],
         "line2": ["fire", ":", "tap"],
@@ -98,7 +100,8 @@ cards = [
         },
         "quartile4": {
             "money": 4,
-            "attack": 1
+            "attack": 1,
+            "attack-pos": [0, 0, 1]
         },
         "line1": ["down", ":", "fire"],
         "line2": ["tap", ":", "fire"],
@@ -118,6 +121,7 @@ cards = [
             "attack": 2
         },
         "line1": ["down", ":", "tap", "fire"],
+        "line2": ["sword", ":", "fire"]
     },
     {
         "ill": "fireman.webp",
@@ -134,6 +138,7 @@ cards = [
             "attack": 2
         },
         "line1": ["down", ":", "tap", "fire", "fire"],
+        "line2": ["sword", ":", "fire"]
     },
     {
         "ill": "adventurer.webp",
@@ -150,10 +155,11 @@ cards = [
             "attack": 2
         },
         "line1": ["fire", ":", "tap"],
+        "line2": ["sword", ":", "down"]
     },
     {
         "ill": "tiefling.webp",
-        "cost": 4,
+        "cost": 3,
         "quartile2": {
             "money": 1,
         },
@@ -162,6 +168,8 @@ cards = [
         },
         "quartile4": {
             "money": 5,
+            "attack": 1,
+            "attack-pos": [0, 1, 0]
         },
         "line1": ["fire", ":", "tap"],
         "line2": ["fire", ":", "down"],
@@ -209,10 +217,13 @@ cards = [
         "quartile3": {
             "money": 2,
             "attack": 1,
+            "attack-pos": [1, 1, 1]
+
         },
         "quartile4": {
             "money": 4,
             "attack": 2,
+            "attack-pos": [1, 1, 0]
         },
         "line1": ["down", ":", "tap", "fire"],
         "line2": ["fire", ":", "target", "up"],
@@ -249,6 +260,7 @@ cards = [
             "attack": 1,
         },
         "line1": ["down", ":", "tap", "down"],
+        "line3": ["sword", ":", "target", "up", ",", "fire"]
         // "line2": ["fire", ":", "target", "up", "down"],
     },
     {
@@ -270,7 +282,8 @@ cards = [
     },
     {
         "ill": "archer-ruffian.webp",
-        "cost": 4,
+        "cost": 5,
+        "defense": 4,
         "quartile2": {
             "money": 1,
         },
@@ -284,6 +297,7 @@ cards = [
         },
         "line1": ["down", ":", "target", "tap", ",", "fire"],
         "line2": ["tap", ":", "target", "tap"],
+        "line3": ["sword", ":", "target", "tap"]
     },
     {
         "ill": "goblin-potion.webp",
@@ -297,14 +311,36 @@ cards = [
         },
         "quartile4": {
             "money": 6,
-            // "attack": 2,
+            "attack": 1,
+            "attack-pos": [0, 1, 1]
         },
         "line1": ["down", ":", "down"],
         "line2": ["fire", ":", "fire", "fire"],
     },
     {
         "ill": "barbarian.webp",
-        "cost": 4,
+        "cost": 3,
+        "quartile2": {
+            "attack": 1,
+            "attack-pos": [1, 1, 1]
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [1, 1, 0],
+            "money": 1,
+        },
+        "quartile4": {
+            "attack": 3,
+            "attack-pos": [1, 1, 0],
+            "money": 2,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "target", "tap"]
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "bear-dragon.webp",
+        "cost": 16,
         "quartile2": {
             "attack": 1,
         },
@@ -320,21 +356,147 @@ cards = [
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
-        "ill": "bear-dragon.webp",
-        "cost": 4,
+        "ill": "split-face.webp",
+        "cost": 16,
         "quartile2": {
-            "attack": 1,
+            "attack": 2,
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [1, 1, 0],
+            "money": 1,
+        },
+        "quartile4": {
+            "attack": 2,
+            "attack-pos": [1, 1, 0],
+            "money": 2,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "spider.webp",
+        "cost": 16,
+        "quartile2": {
+            "attack": 2,
         },
         "quartile3": {
             "attack": 2,
             "money": 1,
         },
         "quartile4": {
-            "attack": 3,
+            "attack": 2,
+            "attack-pos": [0, 1, 0],
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
         // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "snake.webp",
+        "cost": 15,
+        "quartile2": {
+            "attack": 2,
+        },
+        "quartile3": {
+            "attack": 2,
+            "money": 1,
+        },
+        "quartile4": {
+            "attack": 2,
+            "attack-pos": [0, 1, 0],
+            "money": 2,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "ice-skeleton.webp",
+        "cost": 16,
+        "defense": 3,
+        "quartile2": {
+            "attack": 3,
+            "attack-pos": [1, 0, 0],
+        },
+        "quartile3": {
+            "attack": 3,
+            "money": 1,
+        },
+        "quartile4": {
+            "attack": 3,
+            "attack-pos": [1, 1, 0],
+            "money": 2,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "tortoise.webp",
+        "cost": 16,
+        "defense": 5,
+        "quartile2": {
+            "attack": 1,
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            "money": 1,
+        },
+        "quartile4": {
+            "attack": 1,
+            "attack-pos": [1, 1, 0],
+            "money": 2,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "goblin-archer.webp",
+        "cost": 16,
+        "quartile2": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            // "defense": 1,
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            "money": 1,
+            // "defense": 1,
+        },
+        "quartile4": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            "money": 2,
+            // "defense": 1,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
+        // "line2": ["fire", ":", "fire", "fire"],
+    },
+    {
+        "ill": "rat.webp",
+        "cost": 17,
+        "defense": 4,
+        "quartile2": {
+            "attack": 2,
+            "attack-pos": [1, 1, 1],
+            // "defense": 1,
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [1, 0, 1],
+            "money": 1,
+            // "defense": 1,
+        },
+        "quartile4": {
+            "attack": 2,
+            "attack-pos": [1, 0, 1],
+            "money": 2,
+            // "defense": 1,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
     }
 ]
 
@@ -363,9 +525,28 @@ cards.forEach((card) => {
         </span>`
     }
 
-    function attack(m) {
-        if (!m) return '';
+    function attack(quartile) {
+        if (!quartile.attack) return '';
+        var pos = quartile["attack-pos"];
+        if (!pos) {
+            pos = [1, 1, 1]
+        }
+        var p = `
+            <span class="txt pos-${pos[0]}"><span class="txt-bg">.</span>.</span>
+            <span class="txt pos-${pos[1]}"><span class="txt-bg">.</span>.</span>
+            <span class="txt pos-${pos[2]}"><span class="txt-bg">.</span>.</span>
+        `
         return `<span class="attack">
+            <span class="positions">
+                ${p}
+            </span>
+            <span class="txt"><span class="txt-bg">${quartile.attack}</span>${quartile.attack}</span>
+        </span>`
+    }
+
+    function defense(m) {
+        if (!m) return '';
+        return `<span class="defense">
             <span class="txt"><span class="txt-bg">${m}</span>${m}</span>
         </span>`
     }
@@ -385,7 +566,8 @@ cards.forEach((card) => {
                     <span class="txt"><span class="txt-bg">2</span>2</span>
                 </span>
                 ${money(card.quartile2.money)}
-                ${attack(card.quartile2.attack)}
+                ${attack(card.quartile2)}
+                ${defense(card.quartile2.defense)}
             </div>
         </div>
     </div>`
@@ -394,10 +576,11 @@ cards.forEach((card) => {
         <div class="rotate-point">
             <div class="rotate">
                 <span class="quartile">
-                    <span class="txt"><span class="txt-bg">2</span>2</span>
+                    <span class="txt"><span class="txt-bg">3</span>3</span>
                 </span>
                 ${money(card.quartile3.money)}
-                ${attack(card.quartile3.attack)}
+                ${attack(card.quartile3)}
+                ${defense(card.quartile3.defense)}
             </div>
         </div>
     </div>`
@@ -406,10 +589,11 @@ cards.forEach((card) => {
         <div class="rotate-point">
             <div class="rotate">
                 <span class="quartile">
-                    <span class="txt"><span class="txt-bg">2</span>2</span>
+                    <span class="txt"><span class="txt-bg">4</span>4</span>
                 </span>
                 ${money(card.quartile4.money)}
-                ${attack(card.quartile4.attack)}
+                ${attack(card.quartile4)}
+                ${defense(card.quartile4.defense)}
             </div>
         </div>
     </div>`
@@ -435,7 +619,10 @@ cards.forEach((card) => {
         }
         if(el == "target" ) {
             return `<img class="icon target" src="img/target.png">`
-        }s
+        }
+        if(el == "sword" ) {
+            return `<img class="icon" src="img/sword.png">`
+        }
     }
 
     effects = "";
@@ -482,6 +669,7 @@ cards.forEach((card) => {
                             <span class="txt"><span class="txt-bg">1</span>1</span>
                         </span>
                     </div>
+                    ${defense(card.defense || 5)}
 
                     <div class="effects">
                         ${effects}
