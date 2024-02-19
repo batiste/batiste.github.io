@@ -50,7 +50,6 @@ a, a:visited {
     height: 92.1mm;
     top: 1mm;
     left: 1mm;
-    border-radius: 3mm;
     z-index: -10;
     position: absolute;
     margin:0;
@@ -122,10 +121,23 @@ a, a:visited {
     padding-left: 5px;
 }
 
+.attack {
+    background-image: url("img/blue.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 31px;
+    height: 21px;
+    z-index: -10;
+    margin-left: -1px;
+    text-align: left;
+    padding-left: 5px;
+}
+
 .top-quartile {
     right:0;
     left: 66px;
     position: absolute;
+    width: 30px;
     top: 26px;
     height: 21px;
     display: flex;
@@ -179,4 +191,44 @@ a, a:visited {
     position: absolute;
     -webkit-text-stroke: 3px #000;
     z-index: -5;
+}
+
+
+.effects {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    position: absolute;
+    left: 60px;
+    top: 200px;
+    bottom: 70px;
+    right: 60px;
+}
+
+.line {
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+    margin-bottom: 4px;
+}
+
+.line .txt {
+    margin-right: 6px;
+}
+
+.icon {
+    height: 25px;
+    margin-right: 5px;
+}
+
+.arrow {
+    width: 25px;  
+}
+
+.fire {
+    width: 25px;  
+}
+
+.up {
+    transform: rotate(-180deg);
 }
