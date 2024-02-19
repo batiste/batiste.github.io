@@ -229,6 +229,14 @@ a, a:visited {
     width: 25px;  
 }
 
+.target {
+    margin-right: 0px;
+}
+
 .up {
     transform: rotate(-180deg);
+}
+
+.comma {
+    margin-left: -2px;
 }
