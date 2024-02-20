@@ -109,6 +109,7 @@ cards = [
     {
         "ill": "archer.webp",
         "cost": 3,
+        "defense": 4,
         "quartile2": {
             "money": 2,
         },
@@ -131,11 +132,13 @@ cards = [
         },
         "quartile3": {
             "money": 4,
-            "attack": 1
+            "attack": 1,
+            "attack-pos": [1, 1, 0]
         },
         "quartile4": {
             "money": 6,
-            "attack": 2
+            "attack": 2,
+            "attack-pos": [1, 1, 0]
         },
         "line1": ["down", ":", "tap", "fire", "fire"],
         "line2": ["sword", ":", "fire"]
@@ -217,7 +220,7 @@ cards = [
         "quartile3": {
             "money": 2,
             "attack": 1,
-            "attack-pos": [1, 1, 1]
+            "attack-pos": [1, 1, 0]
 
         },
         "quartile4": {
@@ -260,7 +263,7 @@ cards = [
             "attack": 1,
         },
         "line1": ["down", ":", "tap", "down"],
-        "line3": ["sword", ":", "target", "up", ",", "fire"]
+        "line3": ["sword", ":", "down"]
         // "line2": ["fire", ":", "target", "up", "down"],
     },
     {
@@ -297,7 +300,7 @@ cards = [
         },
         "line1": ["down", ":", "target", "tap", ",", "fire"],
         "line2": ["tap", ":", "target", "tap"],
-        "line3": ["sword", ":", "target", "tap"]
+        // "line3": ["sword", ":", "target", "tap"]
     },
     {
         "ill": "goblin-potion.webp",
@@ -353,11 +356,13 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
         "ill": "split-face.webp",
-        "cost": 16,
+        "cost": 15,
+        "defense": 4,
         "quartile2": {
             "attack": 2,
         },
@@ -372,6 +377,8 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
+        "line3": ["fire", ":", "tap"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
@@ -390,6 +397,7 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
@@ -408,7 +416,8 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
-        // "line2": ["fire", ":", "fire", "fire"],
+        "line2": ["sword", ":", "fire"],
+        "line3": ["fire", ":", "tap"],
     },
     {
         "ill": "ice-skeleton.webp",
@@ -428,6 +437,7 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
@@ -448,36 +458,39 @@ cards = [
             "money": 2,
         },
         "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
         "ill": "goblin-archer.webp",
+        "defense": 4,
         "cost": 16,
         "quartile2": {
-            "attack": 2,
-            "attack-pos": [0, 1, 1],
+            "attack": 1,
+            "attack-pos": [1, 1, 1],
             // "defense": 1,
         },
         "quartile3": {
-            "attack": 2,
-            "attack-pos": [0, 1, 1],
+            "attack": 1,
+            "attack-pos": [1, 1, 1],
             "money": 1,
             // "defense": 1,
         },
         "quartile4": {
-            "attack": 2,
-            "attack-pos": [0, 1, 1],
+            "attack": 1,
+            "attack-pos": [1, 1, 1],
             "money": 2,
             // "defense": 1,
         },
         "line1": ["down", ":", "down", "fire"],
         "line2": ["sword", ":", "fire"],
+        "line3": ["fire", ":", "tap"],
         // "line2": ["fire", ":", "fire", "fire"],
     },
     {
         "ill": "rat.webp",
         "cost": 17,
-        "defense": 4,
+        "defense": 3,
         "quartile2": {
             "attack": 2,
             "attack-pos": [1, 1, 1],
@@ -497,14 +510,40 @@ cards = [
         },
         "line1": ["down", ":", "down", "fire"],
         "line2": ["sword", ":", "fire"],
+        "line3": ["fire", ":", "tap"],
+    },
+    {
+        "ill": "necro.webp",
+        "cost": 16,
+        "defense": 4,
+        "quartile2": {
+            "attack": 2,
+            "attack-pos": [0, 0, 1],
+            // "defense": 1,
+        },
+        "quartile3": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            "money": 1,
+            // "defense": 1,
+        },
+        "quartile4": {
+            "attack": 2,
+            "attack-pos": [0, 1, 1],
+            "money": 2,
+            // "defense": 1,
+        },
+        "line1": ["down", ":", "down", "fire"],
+        "line2": ["sword", ":", "fire"],
     }
 ]
 
 cardsTxt = ""
+i = 0;
 
 cards.forEach((card) => {
 
-
+    i = i + 1;
     console.log(card)
 
 
@@ -621,7 +660,7 @@ cards.forEach((card) => {
             return `<img class="icon target" src="img/target.png">`
         }
         if(el == "sword" ) {
-            return `<img class="icon" src="img/sword.png">`
+            return `<img class="icon sword" src="img/sword.png">`
         }
     }
 
@@ -652,7 +691,7 @@ cards.forEach((card) => {
 
     var cardTemplate = `
     <div class="card-container">
-        <div class="card" title="Young Pirate">
+        <div class="card" title="${i}">
             <div class="inner">
                 <div class="front"> 
                     <div class="bg">
@@ -675,6 +714,10 @@ cards.forEach((card) => {
                         ${effects}
                     </div>
                 </div>
+            </div>
+
+            <div class="mpc">
+                <img src="img/mpc.png">
             </div>
         </div>
         <button onclick="downloadCardButton(this)">Download</button><br>

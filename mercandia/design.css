@@ -46,10 +46,9 @@ a, a:visited {
 }
 
 .card .bg {
-    width: 67.1mm;
-    height: 92.1mm;
-    top: 1mm;
-    left: 1mm;
+    width: 100%;
+    top: 0mm;
+    left: 0mm;
     z-index: -10;
     position: absolute;
     margin:0;
@@ -72,8 +71,8 @@ a, a:visited {
     position: absolute;
     z-index: -20;
     top: 40px;
-    left: 45px;
-    width: 170px;
+    left: 42px;
+    width: 176px;
 }
 
 .illustration img {
@@ -84,8 +83,8 @@ a, a:visited {
     height: 21px;
     display: flex;
     position: absolute;
-    right: 33px;
-    top: 26px;
+    right: 26px;
+    top: 22px;
 }
 
 .cost-quartile {
@@ -164,16 +163,16 @@ a, a:visited {
 
 .defense {
     position: absolute;
-    right: 69px;
-    top: 26px;
+    right: 62px;
+    top: 21.5px;
 }
 
 .top-quartile {
     right:0;
-    left: 66px;
+    left: 62px;
     position: absolute;
     /* width: 30px; */
-    top: 26px;
+    top: 22px;
     height: 21px;
     display: flex;
 }
@@ -191,7 +190,7 @@ a, a:visited {
     height: 21px;
     display: flex;
     position: absolute;
-    right: 42px;
+    right: 34px;
     top: 55px;
 }
 
@@ -203,8 +202,8 @@ a, a:visited {
     height: 21px;
     display: flex;
     position: absolute;
-    right: 65px;
-    bottom: 42px;
+    right: 60px;
+    bottom: 21.6px;
 }
 
 .bottom-quartile  .rotate-point {
@@ -214,8 +213,8 @@ a, a:visited {
 .left-quartile {
     display: flex;
     position: absolute;
-    left: 31px;
-    bottom: 78px;
+    left: 26px;
+    bottom: 59px;
 }
 
 .left-quartile  .rotate-point {
@@ -239,7 +238,7 @@ a, a:visited {
     align-items: start;
     position: absolute;
     left: 64px;
-    top: 200px;
+    top: 204px;
     bottom: 70px;
     right: 60px;
 }
@@ -248,7 +247,7 @@ a, a:visited {
     display: flex;
     /* flex-direction: column; */
     align-items: center;
-    margin-bottom: 4px;
+    margin-bottom: 6px;
 }
 
 .line .txt {
@@ -268,6 +267,10 @@ a, a:visited {
     width: 25px;  
 }
 
+.sword {
+    margin-right: 6.8px;
+}
+
 .target {
     margin-right: 0px;
 }
@@ -278,4 +281,21 @@ a, a:visited {
 
 .comma {
     margin-left: -2px;
+}
+
+.mpc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mpc img {
+    width: 100%;
+}
+
+
+.preparePrint .mpc {
+    display: none;
 }
