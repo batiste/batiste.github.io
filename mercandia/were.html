@@ -34,6 +34,39 @@
 
 <script>
 
+var phases = [
+    [
+        "Werewolves have +1 power in street 1.",
+        "Humans have +1 power in street 2.",
+        "Base power on street 3 is 3."
+    ],
+    [
+        "Humans have +1 power in street 1.",
+        "Werewolves have +1 power in street 2.",
+        "Base power in street 3 is 2."
+    ],
+    [
+        "A lonely Human has +2 power in street 1.",
+        "A lonely Werewolf has +2 power in street 3.",
+        "Base power in street 2 is 2."
+    ],
+    [
+        "Play no more than 3 cards in street 1.",
+        "Play no more more than 3 cards in street 2.",
+        ""
+    ],
+    [
+        "Play only 1 Werewolf in street 1.",
+        "Play only 1 Human in street 1.",
+        ""
+    ],
+    [
+        "Lonely Werewolves have 3 base power.",
+        "Lonely Humans have 3 base power.",
+        ""
+    ]
+]
+
 cards = [
     {
         "wolf": {"text": "All werewolves here gain 1 power.", value: 3},
@@ -119,6 +152,14 @@ cards.forEach((card) => {
 
     var content = ""
 
+    var phase = phases[i % phases.length];
+    var phases_render = `<div class="phases">
+            <p>${phase[0]}</p>
+            <p>${phase[1]}</p>
+            <p class="last">${phase[2]}</p>
+        </ol>
+    </div>`
+
     var cardTemplate = `
     <div class="card-container">
         <div class="card" title="${i}">
@@ -127,6 +168,7 @@ cards.forEach((card) => {
                     <div class="bg">
                         <img src="werewolf.png">
                     </div>
+                    ${phases_render}
                     <div class="wolf">
                         <div class="text"><span>${card.wolf.text}</span></div>
                         <div class="value">${card.wolf.value}</div>

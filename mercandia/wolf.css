@@ -67,6 +67,41 @@ a, a:visited {
     line-height: 1.48;
 }
 
+.phases {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    height: 50px;
+    top: 25px;
+    left: 33px;
+    width: 183px;
+    padding: 0;
+    text-align: left;
+    color: #000;
+    /* background-color: rgba(255, 255, 255, 0.5); */
+}
+
+.phases ol {
+    display: block;
+    margin:0;
+    padding:0;
+}
+
+.phases p {
+    width: 100%;
+    margin: 0;
+    display: block;
+    padding: 4.8px 22px;
+    border-bottom: 1.2px #000 solid;
+}
+
+.phases p.last {
+    border-bottom: none;
+}
+
 
 .wolf .text {
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
