@@ -1,0 +1,434 @@
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="time.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="./rasterizeHTML.allinone.js"></script>
+<!-- <script src="./cards.fr.js"></script>
+<script src="./cards.en.js"></script>
+<script src="./cards.es.js"></script> -->
+</head>
+
+<body style="zoom:1.1">
+
+<h2>Time Spiral</h2>
+
+<div class="config">
+    General config
+    <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
+    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
+    <label>PnP mask for easy cuts<input type="checkbox" onchange="PNPoutputFormat(this)"></label>
+</div>
+
+
+<div id="cards" class="lang-en">
+</div>
+
+</body>
+
+<script>
+
+var phases = []
+
+cards = [
+    {
+        "title": "Industrial Revolution",
+        "ill": "time/machine.png",
+        "time-step": "time/machine-step.png",
+        "content": `When played: <b>+2</b> :time:.:sep:
+        When you move, you may spend any number of :time: to increase your base movement
+        by an equal amount.`,
+        "s2": "<b>+1</b> :time:",
+        "cost": 2,
+    },
+    {
+        "title": "Operation<br>Valkyrie",
+        "ill": "time/dolfi.webp",
+        "time-step": "time/red.png",
+        "content": `When played: <b>+1</b> :time:.:sep:
+        :work: or when played: Throw a dice and add your :time: to it. If the value is greater than 6 you get a free move.`,
+        "s2": ":work:",
+        "cost": 2,
+    },
+    {
+        "title": "Black Tuesday",
+        "ill": "time/crash.webp",
+        "time-step": "time/crash-step.png",
+        "content": `When played: <b>+1</b> :time:.:sep:
+        When you move, you may throw a dice. You base movement become this dice value unless the value is 6.`,
+        "s1": "<b>-2</b> :time:",
+        "s2": "<b>-1</b> :time:",
+        // "s3": ":work:",
+        "cost": 2,
+    },
+    {
+        "title": "Nuclear Power",
+        "ill": "time/nuclear-power.png",
+        "time-step": "time/nuclear-power-step.png",
+        "content": `When played: <b>+1</b> :time:.:sep:
+        When you pass over a time step, you may act as if you landed on it.`,
+        "s2": "<b>+1</b> :time:",
+        "cost": 2,
+    },
+    {
+        "title": "The Renaissance",
+        "ill": "time/renaissance.webp",
+        "time-step": "time/nuclear-power-step.png",
+        "content": `When played: <b>+1</b> :time:.:sep:
+        Your base movement is increased by 1.`,
+        "cost": 3,
+        "s3": "<b>+1</b> :time:",
+    },
+    {
+        "title": "Historical<br>Ripples",
+        "ill": "time/ripple.png",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: you may spend 3 :time: to swap this card with  another one in the timeline.`,
+        "cost": 2,
+        "s2": "<b>+2</b> :time:",
+    },
+    {
+        "title": "Cryptocurrencies",
+        "ill": "time/crypto.png",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: Throw a dice. If the value is 6 you gain 4 :time:.`,
+        "cost": 2,
+        "s1": "<b>-1</b> :time:",
+        "s2": "<b>-1</b> :time:",
+        "s3": "<b>-1</b> :time:",
+    },
+    {
+        "title": "The French Revolution",
+        "ill": "time/revo.webp",
+        "time-step": "time/ripple-step.png",
+        "content": `:work: or when played: Throw a dice. You may move by this dice amount disregarding you base movement.`,
+        "cost": 2,
+        "s2": "<b>+1</b> :time:",
+        "s3": ":work:",
+    },
+    {
+        "title": "Theocracy",
+        "ill": "time/theocracy.png",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: +3 :time:.`,
+        "cost": 2,
+        "s2": "<b>-1</b> :time:",
+    },
+    {
+        "title": "Communism",
+        "ill": "time/commu.png",
+        "layout": "extra",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: +1 :time:.
+        :sep:Moves starting from this card can be of value 2 maximum.`,
+        "cost": 2,
+        "s1": "<b>+1</b> :time:",
+    },
+    {
+        "title": "Global Warming",
+        "ill": "time/global.png",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: +2 :time:.
+        :sep:When play or you land on this card with only 1 :time:, you get +2 :time:.`,
+        "cost": 2,
+        // "s2": "<b>-1</b> :time:",
+    },
+    {
+        "title": "Berlin's Wall Fall",
+        "ill": "time/berlin.webp",
+        "time-step": "time/ripple-step.png",
+        "content": `:work: or when played: +1 :time: and you may take back one of your cards in your hand.
+        :sep:`,
+        "cost": 2,
+        "s1": ":work:",
+    },
+    {
+        "title": "Capitalism",
+        "ill": "time/capitalisme.webp",
+        "time-step": "time/ripple-step.png",
+        "content": `:work: or when played: +1 :time: and you may buy a card.
+        :sep:`,
+        "cost": 2,
+        "s1": ":work:",
+    },
+    {
+        "title": "Combustion Engine",
+        "ill": "time/engine.png",
+        "time-step": "time/ripple-step.png",
+        "content": `When played: +1 :time:.
+        :sep:
+        :work: or when played: you may move for free.`,
+        "cost": 2,
+        "s2": ":work:",
+    },
+
+    
+]
+
+
+cardsTxt = ""
+i = 0;
+
+cards.forEach((card) => {
+
+    i = i + 1;
+    console.log(card)
+
+    var content = ""
+
+    var phase = phases[i % phases.length];
+    var phases_render = ``
+
+    function step(c) {
+        if(!c) {
+            return '';
+        }
+        return `<span>${trans(c)}</span>`
+    }
+
+    time_cases = `
+        <div class="c0 time-connect"></div>
+        <div class="c1 time-connect"></div>
+        <div class="c2 time-connect"></div>
+        <div class="c3 time-connect"></div>
+        <div class="c4 time-connect"></div>
+        <div class="c5 time-connect"></div>
+        <div class="s1 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s1)}</div>
+        <div class="s2 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s2)}</div>
+        <div class="s3 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s3)}</div>
+    `
+    if (card.layout) {
+        time_cases +=
+        `
+        <div class="s4 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s2)}</div>
+        <div class="s5 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s3)}</div>`
+    }
+
+    function trans(c) {
+        c = c.replace(/:time:/g, `<img class="rule-icon" src="time/hourglass.svg" />`)
+        c = c.replace(/:sep:/g, `<div class="separator"></div>`)
+        return c.replace(/:work:/g, `<img class="rule-icon work" src="time/work.svg" />`)
+    }
+
+    content  = trans(card.content)
+
+    var cost = ""
+    if(card.cost) {
+        cost = `<div class="cost"><span>${card.cost} <img class="rule-icon" src="time/hourglass.svg" /></span></div>`;
+    }
+
+    var cardTemplate = `
+    <div class="card-container">
+        <div class="card ${card.layout}" title="${i}">
+
+            <div class="bg">
+                <img src="time/time.png">
+            </div>
+
+            ${time_cases}
+            
+            <div class="content">
+                <div class="title">${card.title}</div>
+                <div class="ill">
+                    <img src="${card.ill}">
+                </div>
+                <div class="text">${content}</div>
+            </div>
+
+            ${cost}
+
+            <div class="mpc">
+                <img src="time/mpc.png">
+            </div>
+
+        </div>
+        <button onclick="downloadCardButton(this)">Download</button><br>
+    </div>
+    `
+
+    cardsTxt += cardTemplate;
+
+})
+
+
+document.getElementById("cards").innerHTML = cardsTxt;
+
+
+</script>
+
+
+
+<script>
+
+    var lang = 'en';
+
+
+    var format = 'png'
+    function updateFormat(e) {
+        if (e.checked) {
+            format = 'jpg'
+        } else {
+            format = 'png'
+        }
+    }
+
+    var preparePrintClass = 'preparePrint';
+    function outputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrint';
+        } else { 
+            preparePrintClass = 'preparePrintNotMPC';
+        }
+    }
+
+    function PNPoutputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrintPNP';
+        } else { 
+            preparePrintClass = 'preparePrint';
+        }
+    }
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+"."+format;
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function changePrintSelection(e) {
+        cards.forEach((card) => {
+            if(card.id == parseInt(e.dataset.cardId, 10)) {
+                card['pdf'] = e.checked
+            }
+        })
+    }
+
+    var zoom = 6.5
+    function updateZoom(e) {
+        zoom = parseFloat(e.value)
+    }
+
+    function downloadCardButton(e) {
+        downloadCard(e.parentNode.querySelector('.card'))
+    }
+
+    function downloadCard(card, cb) {
+        createCardImage(card, (canvas) => {
+            var title = card.title.toLowerCase().replace(/\s/g, '-')
+            if (format=='png') {
+                img = canvas.toDataURL();
+            } else {
+                img = canvas.toDataURL("image/jpeg", 0.9)
+            }
+            download(img, title);
+            console.log('download', title);
+            cb && cb(title);
+        })
+    }
+
+    function downloadBookletFace(id) {
+        createBookletImage(document.getElementById(id || 'face'))
+    }
+
+    function downloadBookletBack(id) {
+        createBookletImage(document.getElementById(id || 'back'))
+    }
+
+    function createCardImage(card, cb) {
+
+        card.classList.add(preparePrintClass)
+        cls = ""
+        if (lang) {
+            cls = 'class="lang-fr"'
+        }
+
+        var h = `
+            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="time.css">
+            <style>
+                html, body {margin:0; padding:0; background-color: transparent;}
+                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            <div ${cls}>
+                ${card.outerHTML}
+            </div>`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas)
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            card.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+            cb && cb(canvas)
+        }, function error(e) {
+            console.log("Error on card", card.title, e)
+        });
+    }
+
+    function createBookletImage(booklet, cb) {
+        
+        booklet.classList.add(preparePrintClass)
+
+        var h = `
+            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="time.css">
+            <style>
+                html, body {margin:0; padding:0}
+                .booklet {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            
+            ${booklet.outerHTML}`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            var title = booklet.title.toLowerCase().replace(/\s/g, '-')
+            download(canvas.toDataURL(), title);
+            booklet.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+        })
+
+    }
+
+
+var toRender = 0;
+
+function bindImage(element, card, cb) {
+    if (card['canvas']) {
+        return cb();
+    }
+    createCardImage(element, (canvas) => {
+        card['canvas'] = canvas
+        cb();
+    })
+}
+
+function selectAll() { 
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        card.pdf = true;
+        document.getElementById('check-pdf-'+card['id']).checked = true
+    }
+}
+
+
+</script>
+</html>

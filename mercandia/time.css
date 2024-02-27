@@ -1,0 +1,266 @@
+html {
+    background-color: 2a2a2a;
+    -webkit-print-color-adjust: exact;
+    -webkit-filter: opacity(1);
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+.card {
+    font-family: "Playfair Display", serif;
+    /* font-family: "Libre Baskerville", serif; */
+    position: relative;
+    background-color: transparent;
+    height: 69.088mm;
+    width: 93.98mm;
+    overflow: hidden;
+    color: #000;
+}
+
+.card-container {
+    float: left;
+    margin: 5px;
+}
+
+.config label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.config {
+    margin: 1em;
+}
+
+.card .bg {
+    width: 100%;
+    top: 0mm;
+    left: 0mm;
+    z-index: -10;
+    position: absolute;
+    margin:0;
+    overflow: hidden;
+}
+
+.card .bg img {
+    width: 100%;
+}
+
+.time-step {
+    position: absolute;
+    /* display: flex; */
+    /* align-items: center;
+    justify-items: center; */
+    width: 55px;
+    height: 55px;
+    border: 2px #000000 solid;
+    border-radius: 4px;
+    background-image: url(time/machine-step.png);
+    background-size: contain;
+    box-shadow: 1px 1px 3px rgba(62, 58, 52, 0.82);
+    font-size: 11px;
+    color: #fff;
+    /* z-index: 10; */
+}
+
+.time-step span {
+    display: inline-block;
+    background-color: #ffffff;
+    /* background-image: url(time/time.png); */
+    color: #000;
+    padding: 0px 3px 2px 3px;
+    border-radius: 2px 3px 3px 3px;
+    border: 1.5px #000 solid;
+    border-left: 0;
+    border-top: 0;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 1.2;
+}
+
+.time-connect {
+    position: absolute;
+    height: 40px;
+    width: 4px;
+    left: 48px;
+    border: 1.5px #000000 solid;
+    background-color: #3ea2a9;
+    background-color: #e7774c;
+    box-shadow: 1px 1px 3px rgba(69, 64, 58, 0.766);
+    /* z-index: 5; */
+}
+
+.content {
+    position: absolute;
+    top: 0px;
+    left: 100px;
+    right: 0px;
+    bottom: 0px;
+    border: 1.5px #000000 solid;
+    box-shadow: -1px -1px 8px rgba(69, 64, 58, 0.766);
+    background: rgba(255,255,255, 0.20);
+}
+
+.extra .content {
+    left: 153px;
+}
+
+.title {
+    font-weight: bold;
+    position: absolute;
+    background: #fff;
+    margin-top: 24px;
+    padding: 0px 4px;
+}
+
+.rule-icon {
+    width: 7px;
+    display: inline-block;
+    margin-bottom: -1.5px;
+    padding: 0px 0.8px;
+    /* background-color: #fff;
+    padding: 1px;
+    border: 1px #000000 solid; */
+}
+
+.rule-icon.work {
+    width: 12px;
+    margin-bottom: -2px;
+    margin-top: 2px;
+}
+
+.time-step .rule-icon.work {
+    margin-bottom: 0px;
+}
+
+.text {
+    margin: 8px 9px 8px 9px;
+    margin-right: 26px;
+    font-size: 12.5px;
+}
+
+.separator {
+    margin-bottom: 8px;
+}
+ 
+.cost {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    padding-bottom: 23px;
+    padding-right: 23px;
+    border: 1.5px #000 solid;
+    padding-left: 5px;
+    border-radius: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.ill {
+    display: block;
+    height: 130px;
+    overflow: hidden;
+    border-bottom: 1px #000000 solid;
+}
+.ill img {
+    width: 100%;
+}
+
+.s1 {
+    top: 25px;
+    left: 22px;
+}
+
+.c0 {
+    top: -5px;
+}
+
+.c1 {
+    top: 70px;
+}
+
+.extra .c1 {
+    transform: rotate(-45deg);
+    left: 75px;
+    top: 44px;
+}
+
+.s2 {
+    left: 22px;
+    top: 102.5px;
+}
+
+.c2 {
+    top: 140px;
+}
+
+.extra .c2 {
+    transform: rotate(45deg);
+    left: 75px;
+    top: 170px;
+}
+
+
+.s3 {
+    left: 22px;
+    bottom: 25px;
+}
+
+.c3 {
+    bottom: -5px;
+}
+
+.s4 {
+    left: 91px;
+    bottom: 62px;
+}
+
+.c4, .c5 {
+    display: none;
+}
+
+.extra .c4 {
+    display: block;
+    transform: rotate(45deg);
+    left: 75px;
+    top: 96px;
+}
+
+.extra .c5 {
+    display: block;
+    transform: rotate(-45deg);
+    left: 75px;
+    top: 125px;
+}
+
+.s5 {
+    left: 91px;
+    top: 62px;
+}
+
+
+.mpc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mpc img {
+    width: 100%;
+}
+
+
+.preparePrint .mpc {
+    display: none;
+}
+
+button {
+    display: none;
+}
