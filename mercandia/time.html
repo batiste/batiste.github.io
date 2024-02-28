@@ -52,7 +52,7 @@ cards = [
         "ill": "time/dolfi.webp",
         "time-step": "time/red.png",
         "content": `:play:: <b>+1</b> :time:.:sep:
-        :play: or :work:: Throw a dice and add your :time: to it. If the value is greater than 6 you get a free move.`,
+        :play: or :work:: Throw a dice and add your :time: to it. If the total value is greater than 6 you may make 1 move for free.`,
         "s2": ":work:",
         "cost": 2,
     },
@@ -61,7 +61,7 @@ cards = [
         "ill": "time/crash.webp",
         "time-step": "time/crash-step.png",
         "content": `:play:: <b>+1</b> :time:.:sep:
-        When you move, you may throw a dice. You base movement become this dice value unless the value is 6.`,
+        When you move, you may throw a dice. Your base movement become this dice value unless the value is 6.`,
         "s1": "<b>-2</b> :time:",
         "s2": "<b>-1</b> :time:",
         // "s3": ":work:",
@@ -79,7 +79,7 @@ cards = [
     {
         "title": "The Renaissance",
         "ill": "time/renaissance.webp",
-        "time-step": "time/nuclear-power-step.png",
+        "time-step": "time/renai-step.png",
         "content": `:play:: <b>+1</b> :time:.:sep:
         Your base movement is increased by 1.`,
         "cost": 3,
@@ -97,18 +97,19 @@ cards = [
     {
         "title": "Cryptocurrencies",
         "ill": "time/crypto.png",
-        "time-step": "time/ripple-step.png",
-        "content": `:play:: Throw a dice. If the value is 6: +4 :time:.`,
+        "time-step": "time/crypto-step.png",
+        "content": `:play:: Throw a dice. If the dice value <br>is 6: +4 :time:.`,
         "cost": 2,
         "s1": "<b>-1</b> :time:",
         "s2": "<b>-1</b> :time:",
         "s3": "<b>-1</b> :time:",
+        "layout": "large-ill",
     },
     {
         "title": "The French Revolution",
         "ill": "time/revo.webp",
-        "time-step": "time/ripple-step.png",
-        "content": `:play: or :work:: Throw a dice. You may move by this dice amount disregarding you base movement.`,
+        "time-step": "time/revo-step.png",
+        "content": `:play: or :work:: Throw a dice. You may move by this dice value disregarding your base movement.`,
         "cost": 2,
         "s2": "<b>+1</b> :time:",
         "s3": ":work:",
@@ -116,7 +117,7 @@ cards = [
     {
         "title": "Theocracy",
         "ill": "time/theocracy.png",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/theocracy-step.png",
         "content": `:play:: +3 :time:.`,
         "cost": 2,
         "s2": "<b>-1</b> :time:",
@@ -125,7 +126,7 @@ cards = [
         "title": "Communism",
         "ill": "time/commu.png",
         "layout": "extra",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/communism-step.png",
         "content": `:play:: +1 :time:.
         :sep:Moves starting from this card can be of value 2 maximum.`,
         "cost": 2,
@@ -134,17 +135,17 @@ cards = [
     {
         "title": "Global Warming",
         "ill": "time/global.png",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/global-step.png",
         "content": `:play:: +2 :time:.
-        :sep:When play or you land on this card with only 1 :time:, you get +2 :time:.`,
+        :sep:When you play or land on this card with only 1 :time:, you get +2 :time:.`,
         "cost": 2,
         // "s2": "<b>-1</b> :time:",
     },
     {
         "title": "Berlin's Wall Fall",
         "ill": "time/berlin.webp",
-        "time-step": "time/ripple-step.png",
-        "content": `:play: or :work:: +1 :time: and you may take back one of your other cards in your hand.
+        "time-step": "time/berlin-step.png",
+        "content": `:play: or :work:: +1 :time: and you may return one of your other cards in your hand.
         :sep:`,
         "cost": 2,
         "s1": ":work:",
@@ -152,7 +153,7 @@ cards = [
     {
         "title": "Capitalism",
         "ill": "time/capitalisme.webp",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/capitalism-step.png",
         "content": `:play: or :work:: +1 :time: and you may buy a card.
         :sep:`,
         "cost": 2,
@@ -161,7 +162,7 @@ cards = [
     {
         "title": "Combustion Engine",
         "ill": "time/engine.png",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/engine-step.png",
         "content": `:play:: +1 :time:.
         :sep:
         :play: or :work:: you may make 1 move for free.`,
@@ -171,16 +172,16 @@ cards = [
     {
         "title": "Space Travel",
         "ill": "time/space-travel.webp",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/space-step.png",
         "content": `:work:: you may throw a dice. If the result is greater than 3, you may move to the 
-        first time step of any of your cards that is not the last in the timeline.`,
+        first time step of any of your cards.`,
         "cost": 2,
         "s2": ":work:",
     },
     {
         "title": "Telecommunication",
         "ill": "time/telecommunication.png",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/telec-step.png",
         "content": `:play:: +1 :time: and you may move 1 of your cards anywhere in the timeline. This card must be unoccupied.`,
         "cost": 2,
         "s3": "+1 :time:",
@@ -188,10 +189,10 @@ cards = [
     {
         "title": "World War 2",
         "ill": "time/ww2.png",
-        "time-step": "time/ripple-step.png",
+        "time-step": "time/ww2-step.png",
         "content": `:play:: +1 :time:
         :sep:
-        :play: or :work:: you may pay 2 :time: to move 4 forward.`,
+        :play: or :work:: you may pay 2 :time: to move 4.`,
         "layout": 'extra',
         "cost": 2,
         "s1": "+1 :time:",
@@ -203,19 +204,21 @@ cards = [
     {
         "title": "The Plague",
         "ill": "time/plague.webp",
-        "time-step": "time/ripple-step.png",
-        "content": `:play:: you may take up to 2 of your other cards in your hand and you may refresh 
-        time river completely`,
+        "time-step": "time/plague-step.png",
+        "content": `:play:: you may return up to 2 of your other cards in your hand and you may refresh 
+        the Temporal Breach.`,
         "s1": "-1 :time:",
         "s3": "-1 :time:",
         "cost": 2,
     },
     {
-        "title": "Temporal Breakthrough",
-        "ill": "time/temp.webp",
-        "time-step": "time/ripple-step.png",
-        "content": `This is the starting card.`,
+        "title": `Temporal Breach`,
+        "ill": "time/phone-booth.webp",
+        "time-step": "time/phone-booth-step.png",
+        "content": `Place your dice on the first time step with 3 as value. The first player
+        has 1 action.`,
         "s1": "+1 :time:",
+        "layout": "large-ill"
     },
 ]
 
@@ -251,7 +254,7 @@ cards.forEach((card) => {
         <div class="s2 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s2)}</div>
         <div class="s3 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s3)}</div>
     `
-    if (card.layout) {
+    if (card.layout && card.layout == 'extra') {
         time_cases +=
         `
         <div class="s4 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s4)}</div>
@@ -259,6 +262,7 @@ cards.forEach((card) => {
     }
 
     function trans(c) {
+        c = c.replace(/\-1 :time:/g, `<b>-1</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+1 :time:/g, `<b>+1</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+2 :time:/g, `<b>+2</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+3 :time:/g, `<b>+3</b> <img class="rule-icon" src="time/hourglass.svg" />`)
