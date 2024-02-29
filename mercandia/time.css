@@ -20,6 +20,7 @@ a, a:visited {
     width: 93.98mm;
     overflow: hidden;
     color: #000;
+    z-index: -50;
 }
 
 .card-container {
@@ -58,13 +59,21 @@ a, a:visited {
     width: 55px;
     height: 55px;
     border: 2px #000000 solid;
-    border-radius: 4px;
-    background-image: url(time/machine-step.png);
+    border-radius: 6px;
+    /* background-image: url(time/machine-step.png); */
     background-size: cover;
     box-shadow: 1px 1px 3px rgba(62, 58, 52, 0.82);
     font-size: 11px;
     color: #fff;
     /* z-index: 10; */
+    overflow: hidden;
+}
+
+.time-step-bg {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    z-index: -5;
 }
 
 .time-step span {
@@ -91,22 +100,31 @@ a, a:visited {
     background-color: #3ea2a9;
     background-color: #e7774c;
     box-shadow: 1px 1px 3px rgba(69, 64, 58, 0.766);
+    z-index: -10;
     /* z-index: 5; */
 }
 
 .content {
     position: absolute;
     top: 0px;
-    left: 100px;
+    /* left: 100px; */
     right: 0px;
     bottom: 0px;
     border: 1.5px #000000 solid;
+    border-right: 0;
+    border-top: 0;
+    border-bottom: 0;
     box-shadow: -1px -1px 8px rgba(69, 64, 58, 0.766);
     background: rgba(255,255,255, 0.20);
+
+    height: 69.088mm;
+    width: 255px;
+    /* position: relative; */
 }
 
 .extra .content {
-    left: 158px;
+    /* left: 158px; */
+    width: 195px;
 }
 
 .title {
@@ -134,18 +152,33 @@ a, a:visited {
     margin-bottom: -2.6px;
     margin-top: 2px;
     margin-top: 2px;
-    margin-right: 2px;
+    /* margin-right: 2px; */
 }
 
 .rule-icon.play {
     width: 13.5px;
-    margin-bottom: -1.5px;
     /*margin-top: 2px; */
+}
+
+.rule-icon.evil {
+    width: 16px;
+    margin-bottom: -2px;
+    /* margin-right: 2px; */
+}
+
+.rule-icon.peace {
+    width: 15px;
+    margin-bottom: -2.3 px;
+    /* margin-right: px; */
 }
 
 .time-step .rule-icon.work {
     margin-bottom: 0.3px;
     margin-right: 0px;
+}
+
+.preparePrint .time-step .rule-icon.work {
+    margin-bottom: -1.5px;
 }
 
 .text {
@@ -166,14 +199,15 @@ a, a:visited {
     position: absolute;
     bottom: 0;
     right: 0;
-    padding-bottom: 23px;
-    padding-right: 23px;
+    padding-bottom: 20px;
+    padding-right: 20px;
     border: 1.5px #000 solid;
     padding-left: 5px;
     border-radius: 4px;
     background: rgba(255, 255, 255, 0.8);
     font-size: 15px;
     font-weight: bold;
+    line-height: 1.15;
 }
 
 .ill {
@@ -210,11 +244,11 @@ a, a:visited {
 
 .s2 {
     left: 22px;
-    top: 102.5px;
+    top: 101px;
 }
 
 .c2 {
-    top: 140px;
+    top: 150px;
 }
 
 .extra .c2 {
@@ -279,6 +313,7 @@ a, a:visited {
     display: none;
 }
 
-button {
+.preparePrint button {
     display: none;
 }
+

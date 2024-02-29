@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<!-- <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet"> -->
 <link rel="stylesheet" href="time.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="./rasterizeHTML.allinone.js"></script>
@@ -41,27 +41,30 @@ cards = [
         "title": "Industrial Revolution",
         "ill": "time/machine.png",
         "time-step": "time/machine-step.png",
-        "content": `:play:: <b>+2</b> :time:.:sep:
-        When you move, you may spend any number of :time: to increase your base movement
+        "content": `:play: : <b>+2</b> :time:.:sep:
+        • When you move, you may spend any number of :time: to increase your move
         by an equal amount.`,
         "s2": "<b>+1</b> :time:",
         "cost": 2,
+        "peace": true,
     },
     {
         "title": "Operation<br>Valkyrie",
         "ill": "time/dolfi.webp",
         "time-step": "time/red.png",
-        "content": `:play:: <b>+1</b> :time:.:sep:
-        :play: or :work:: Throw a dice and add your :time: to it. If the total value is greater than 6 you may make 1 move for free.`,
+        "content": `:play: : <b>+2</b> :time:.:sep:
+        :play: or :work: : Roll a die. If the die value 
+        is less than your :time:, you get an extra action.`,
         "s2": ":work:",
         "cost": 2,
+        "peace": true,
     },
     {
         "title": "Black Tuesday",
         "ill": "time/crash.webp",
         "time-step": "time/crash-step.png",
-        "content": `:play:: <b>+1</b> :time:.:sep:
-        When you move, you may throw a dice. Your base movement become this dice value unless the value is 6.`,
+        "content": `:play: : <b>+1</b> :time:.:sep:
+        • When you move, you may roll a die. Increase your move by this die value if it is less than 4.`,
         "s1": "<b>-2</b> :time:",
         "s2": "<b>-1</b> :time:",
         // "s3": ":work:",
@@ -71,26 +74,50 @@ cards = [
         "title": "Nuclear Power",
         "ill": "time/nuclear-power.png",
         "time-step": "time/nuclear-power-step.png",
-        "content": `:play:: <b>+1</b> :time:.:sep:
-        When you pass over a time step, you may act as if you landed on it.`,
+        "content": `:play: : <b>+1</b> :time:.:sep:
+        • When you pass over a time step, you may collect the :time: as if you landed on it.`,
         "s2": "<b>+1</b> :time:",
+        "s3": "<b>+1</b> :time:",
         "cost": 2,
+        "peace": true,
+    },
+    {
+        "title": "Nuclear Bomb",
+        "ill": "time/nuke.webp",
+        "time-step": "time/nuclear-power-step.png",
+        "content": `:play: : <b>+2</b> :time:, you may return the cards adjacent to this card into their owners hand.`,
+        "s2": "<b>+1</b> :time:",
+        "layout": "large-ill",
+        "cost": 2,
+        "evil": true,
     },
     {
         "title": "The Renaissance",
         "ill": "time/renaissance.webp",
         "time-step": "time/renai-step.png",
-        "content": `:play:: <b>+1</b> :time:.:sep:
-        Your base movement is increased by 1.`,
+        "content": `:play: : <b>+1</b> :time:.:sep:
+        • Your move action is increased by 1.`,
         "cost": 3,
         "s3": "<b>+1</b> :time:",
+        "peace": true,
+    },
+    {
+        "title": "Green Revolution",
+        "ill": "time/green.png",
+        "time-step": "time/renai-step.png",
+        "content": `:play: : <b>+1</b> :time:.:sep:
+        • When an opponent plays a card or land on this card: +1 :time:.`,
+        "cost": 3,
+        "s3": "<b>+1</b> :time:",
+        "s1": "<b>+1</b> :time:",
+        "peace": true,
     },
     {
         "title": "Historical<br>Ripples",
         "ill": "time/ripple.png",
         "time-step": "time/ripple-step.png",
-        "content": `:play:: you may spend 3 :time: to swap this card with another one in the timeline. This card
-        can be occupied.`,
+        "content": `:play: : You may spend <b>3</b> :time: to swap this card with another one in the timeline.
+        The swapped card can be occupied.`,
         "cost": 2,
         "s2": "<b>+2</b> :time:",
     },
@@ -98,46 +125,53 @@ cards = [
         "title": "Cryptocurrencies",
         "ill": "time/crypto.png",
         "time-step": "time/crypto-step.png",
-        "content": `:play:: Throw a dice. If the dice value <br>is 6: +4 :time:.`,
+        "content": `:play: : Roll a die. If the die value is bigger than 4 you get +4 :time:.`,
         "cost": 2,
         "s1": "<b>-1</b> :time:",
         "s2": "<b>-1</b> :time:",
         "s3": "<b>-1</b> :time:",
         "layout": "large-ill",
+        "evil": true,
     },
     {
         "title": "The French Revolution",
         "ill": "time/revo.webp",
         "time-step": "time/revo-step.png",
-        "content": `:play: or :work:: Throw a dice. You may move by this dice value disregarding your base movement.`,
+        "content": `:play: or :work: : You may roll a die and make a move corresponding to the value of this die.`,
         "cost": 2,
         "s2": "<b>+1</b> :time:",
         "s3": ":work:",
+        "peace": true,
     },
     {
         "title": "Theocracy",
         "ill": "time/theocracy.png",
         "time-step": "time/theocracy-step.png",
-        "content": `:play:: +3 :time:.`,
+        "content": `:play: : +3 :time:.
+        :sep:
+        • When you move, for each step, you may decide to move backward.`,
         "cost": 2,
         "s2": "<b>-1</b> :time:",
+        "evil": true,
     },
     {
         "title": "Communism",
         "ill": "time/commu.png",
         "layout": "extra",
         "time-step": "time/communism-step.png",
-        "content": `:play:: +1 :time:.
-        :sep:Moves starting from this card can be of value 2 maximum.`,
+        "content": `:play: : +1 :time:.
+        :sep:
+        Moves starting from this card can be of value 2 maximum.`,
         "cost": 2,
         "s1": "<b>+1</b> :time:",
+        "evil": true,
     },
     {
         "title": "Global Warming",
         "ill": "time/global.png",
         "time-step": "time/global-step.png",
-        "content": `:play:: +2 :time:.
-        :sep:When you play or land on this card with only 1 :time:, you get +2 :time:.`,
+        "content": `:play: : +2 :time: and
+        you may erase an opponent card.`,
         "cost": 2,
         // "s2": "<b>-1</b> :time:",
     },
@@ -145,27 +179,29 @@ cards = [
         "title": "Berlin's Wall Fall",
         "ill": "time/berlin.webp",
         "time-step": "time/berlin-step.png",
-        "content": `:play: or :work:: +1 :time: and you may return one of your other cards in your hand.
+        "content": `:play: or :work: : +1 :time: and you may erase one of your other cards.
         :sep:`,
         "cost": 2,
         "s1": ":work:",
+        "peace": true,
     },
     {
         "title": "Capitalism",
         "ill": "time/capitalisme.webp",
         "time-step": "time/capitalism-step.png",
-        "content": `:play: or :work:: +1 :time: and you may buy a card.
+        "content": `:play: or :work: : +1 :time: and you may buy a card.
         :sep:`,
         "cost": 2,
         "s1": ":work:",
+        "evil": true,
     },
     {
         "title": "Combustion Engine",
         "ill": "time/engine.png",
         "time-step": "time/engine-step.png",
-        "content": `:play:: +1 :time:.
+        "content": `:play: : +1 :time:.
         :sep:
-        :play: or :work:: you may make 1 move for free.`,
+        :play: or :work: : your get an extra move action.`,
         "cost": 2,
         "s2": ":work:",
     },
@@ -173,26 +209,37 @@ cards = [
         "title": "Space Travel",
         "ill": "time/space-travel.webp",
         "time-step": "time/space-step.png",
-        "content": `:work:: you may throw a dice. If the result is greater than 3, you may move to the 
+        "content": `:work: : You may Roll a die. If the result is greater than 3, you may jump to the 
         first time step of any of your cards.`,
         "cost": 2,
         "s2": ":work:",
     },
     {
+        "title": "Moon Landing",
+        "ill": "time/moon.png",
+        "time-step": "time/space-step.png",
+        "content": `:play: : +1 :time:.:sep:
+        • Once per turn you may spend <b>1</b> :time: to get an extra action.`,
+        "cost": 3,
+        "s2": "+1 :time:",
+    },
+    {
         "title": "Telecommunication",
         "ill": "time/telecommunication.png",
         "time-step": "time/telec-step.png",
-        "content": `:play:: +1 :time: and you may move 1 of your cards anywhere in the timeline. This card must be unoccupied.`,
+        "content": `:play: : +1 :time: and you may move 1 of your cards anywhere in the timeline. 
+        The moved card must be unoccupied.`,
         "cost": 2,
         "s3": "+1 :time:",
+        "peace": true,
     },
     {
         "title": "World War 2",
         "ill": "time/ww2.png",
         "time-step": "time/ww2-step.png",
-        "content": `:play:: +1 :time:
+        "content": `:play: : +1 :time:
         :sep:
-        :play: or :work:: you may pay 2 :time: to move 4.`,
+        :play: or :work: : you may pay <b>2</b> :time: to move 4.`,
         "layout": 'extra',
         "cost": 2,
         "s1": "+1 :time:",
@@ -200,23 +247,25 @@ cards = [
         "s3": "+1 :time:",
         "s4": ":work:",
         "s5": ":work:",
+        "evil": true,
     },
     {
         "title": "The Plague",
         "ill": "time/plague.webp",
         "time-step": "time/plague-step.png",
-        "content": `:play:: you may return up to 2 of your other cards in your hand and you may refresh 
-        the Temporal Breach.`,
+        "content": `:play: : You may erase up to 2 of your other cards and you may put 
+        up to 2 of the Divergence cards at the bottom of the deck.`,
         "s1": "-1 :time:",
         "s3": "-1 :time:",
         "cost": 2,
+        "evil": true,
     },
     {
         "title": `Temporal Breach`,
         "ill": "time/phone-booth.webp",
         "time-step": "time/phone-booth-step.png",
-        "content": `Place your dice on the first time step with 3 as value. The first player
-        has 1 action.`,
+        "content": `<b>←</b> Place your die on the first time step with a value of 3. 
+        The starting player only has one action.`,
         "s1": "+1 :time:",
         "layout": "large-ill"
     },
@@ -229,7 +278,6 @@ i = 0;
 cards.forEach((card) => {
 
     i = i + 1;
-    console.log(card)
 
     var content = ""
 
@@ -243,6 +291,8 @@ cards.forEach((card) => {
         return `<span>${trans(c)}</span>`
     }
 
+    var image = `<img class="time-step-bg" src="${card["time-step"]}">`
+
     time_cases = `
         <div class="c0 time-connect"></div>
         <div class="c1 time-connect"></div>
@@ -250,23 +300,24 @@ cards.forEach((card) => {
         <div class="c3 time-connect"></div>
         <div class="c4 time-connect"></div>
         <div class="c5 time-connect"></div>
-        <div class="s1 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s1)}</div>
-        <div class="s2 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s2)}</div>
-        <div class="s3 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s3)}</div>
+        <div class="s1 time-step">${image}${step(card.s1)}</div>
+        <div class="s2 time-step">${image}${step(card.s2)}</div>
+        <div class="s3 time-step">${image}${step(card.s3)}</div>
     `
     if (card.layout && card.layout == 'extra') {
-        time_cases +=
-        `
-        <div class="s4 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s4)}</div>
-        <div class="s5 time-step" style="background-image: url('${card["time-step"]}')">${step(card.s5)}</div>`
+        time_cases += `
+        <div class="s4 time-step">${image}${step(card.s4)}</div>
+        <div class="s5 time-step">${image}${step(card.s5)}</div>`
     }
 
     function trans(c) {
         c = c.replace(/\-1 :time:/g, `<b>-1</b> <img class="rule-icon" src="time/hourglass.svg" />`)
+        c = c.replace(/\-2 :time:/g, `<b>-2</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+1 :time:/g, `<b>+1</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+2 :time:/g, `<b>+2</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+3 :time:/g, `<b>+3</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/\+4 :time:/g, `<b>+4</b> <img class="rule-icon" src="time/hourglass.svg" />`)
+        c = c.replace(/\+5 :time:/g, `<b>+5</b> <img class="rule-icon" src="time/hourglass.svg" />`)
         c = c.replace(/:time:/g, `<img class="rule-icon hourglass" src="time/hourglass.svg" />`)
         c = c.replace(/:play:/g, `<img class="rule-icon play" src="time/play.svg" />`)
         
@@ -277,9 +328,22 @@ cards.forEach((card) => {
     content  = trans(card.content)
 
     var cost = ""
+    console.log(card.evil)
     if(card.cost) {
-        cost = `<div class="cost"><span>${card.cost} <img class="rule-icon" src="time/hourglass.svg" /></span></div>`;
+        cost += `<div class="cost">`
+
+        if (card.evil) {
+            cost += `<span><img class="rule-icon evil" src="time/evil.svg" /> | </span>`
+        }
+
+        if (card.peace) {
+            cost += `<span><img class="rule-icon peace" src="time/peace.svg" /> | </span>`
+        }
+
+        cost += `<span>${card.cost} <img class="rule-icon" src="time/hourglass.svg" /></span>`
+        cost += `</div>`;
     }
+
 
     var cardTemplate = `
     <div class="card-container">
@@ -393,36 +457,26 @@ document.getElementById("cards").innerHTML = cardsTxt;
         })
     }
 
-    function downloadBookletFace(id) {
-        createBookletImage(document.getElementById(id || 'face'))
-    }
-
-    function downloadBookletBack(id) {
-        createBookletImage(document.getElementById(id || 'back'))
-    }
-
     function createCardImage(card, cb) {
 
+        console.log(preparePrintClass)
         card.classList.add(preparePrintClass)
-        cls = ""
-        if (lang) {
-            cls = 'class="lang-fr"'
-        }
 
         var h = `
-            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="time.css">
             <style>
-                html, body {margin:0; padding:0; background-color: transparent;}
-                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+                html, body {margin:0; padding:0; background-color: transparent; height: auto;}
+                .card {zoom: ${zoom};float: none; position: initial; margin: 0;}
             </style>
-            <div ${cls}>
-                ${card.outerHTML}
-            </div>`
+            ${card.outerHTML}
+        `
 
+        console.log(h)
         rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
             img = renderResult.image;
             var canvas = document.createElement('canvas');
+            console.log(img.naturalWidth, img.naturalHeight)
             canvas.width = img.naturalWidth;
             canvas.height = img.naturalHeight;
             document.body.appendChild(canvas)
@@ -434,36 +488,6 @@ document.getElementById("cards").innerHTML = cardsTxt;
         }, function error(e) {
             console.log("Error on card", card.title, e)
         });
-    }
-
-    function createBookletImage(booklet, cb) {
-        
-        booklet.classList.add(preparePrintClass)
-
-        var h = `
-            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="time.css">
-            <style>
-                html, body {margin:0; padding:0}
-                .booklet {zoom: ${zoom}; float: none; position: initial; margin: 0;}
-            </style>
-            
-            ${booklet.outerHTML}`
-
-        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
-            img = renderResult.image;
-            var canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            document.body.appendChild(canvas);
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0)
-            var title = booklet.title.toLowerCase().replace(/\s/g, '-')
-            download(canvas.toDataURL(), title);
-            booklet.classList.remove(preparePrintClass)
-            canvas.parentNode.removeChild(canvas)
-        })
-
     }
 
 
