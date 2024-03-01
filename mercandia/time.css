@@ -166,10 +166,17 @@ a, a:visited {
     /* margin-right: 2px; */
 }
 
+.rule-icon.growth {
+    transform: rotate(-62deg);
+    width: 13.5px;
+    margin-bottom: -3.5px;
+    margin-top: -2px;
+    margin-right: -1px;
+}
+
 .rule-icon.skull {
     width: 12.5px;
     margin-bottom: -2px;
-    /* margin-right: 2px; */
 }
 
 .rule-icon.peace {
