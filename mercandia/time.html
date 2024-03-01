@@ -45,7 +45,7 @@ cards = [
         • When you move, you may spend any number of :time: to increase your move
         by an equal amount.`,
         "s2": "<b>+1</b> :time:",
-        "cost": 2,
+        "cost": 3,
         "peace": true,
     },
     {
@@ -54,9 +54,9 @@ cards = [
         "time-step": "time/red.png",
         "content": `:play: : <b>+2</b> :time:.:sep:
         :play: or :work: : Roll a die. If the die value 
-        is less than your :time:, you get an extra action.`,
+        is less than your :time:, you gain an action.`,
         "s2": ":work:",
-        "cost": 2,
+        "cost": 3,
         "peace": true,
     },
     {
@@ -68,17 +68,18 @@ cards = [
         "s1": "<b>-2</b> :time:",
         "s2": "<b>-1</b> :time:",
         // "s3": ":work:",
-        "cost": 2,
+        "cost": 3,
+        "disaster": true,
     },
     {
         "title": "Nuclear Power",
         "ill": "time/nuclear-power.png",
         "time-step": "time/nuclear-power-step.png",
         "content": `:play: : <b>+1</b> :time:.:sep:
-        • When you pass over a time step, you may collect the :time: as if you landed on it.`,
+        • When you move over a time step, you may collect the :time: as if you landed on it.`,
         "s2": "<b>+1</b> :time:",
         "s3": "<b>+1</b> :time:",
-        "cost": 2,
+        "cost": 3,
         "peace": true,
     },
     {
@@ -88,8 +89,8 @@ cards = [
         "content": `:play: : <b>+2</b> :time:, you may return the cards adjacent to this card into their owners hand.`,
         "s2": "<b>+1</b> :time:",
         "layout": "large-ill",
-        "cost": 2,
-        "evil": true,
+        "cost": 3,
+        "disaster": true,
     },
     {
         "title": "The Renaissance",
@@ -118,7 +119,7 @@ cards = [
         "time-step": "time/ripple-step.png",
         "content": `:play: : You may spend <b>3</b> :time: to swap this card with another one in the timeline.
         The swapped card can be occupied.`,
-        "cost": 2,
+        "cost": 3,
         "s2": "<b>+2</b> :time:",
     },
     {
@@ -126,19 +127,20 @@ cards = [
         "ill": "time/crypto.png",
         "time-step": "time/crypto-step.png",
         "content": `:play: : Roll a die. If the die value is bigger than 4 you get +4 :time:.`,
-        "cost": 2,
+        "cost": 3,
         "s1": "<b>-1</b> :time:",
         "s2": "<b>-1</b> :time:",
         "s3": "<b>-1</b> :time:",
         "layout": "large-ill",
         "evil": true,
+        "disaster": true,
     },
     {
         "title": "The French Revolution",
         "ill": "time/revo.webp",
         "time-step": "time/revo-step.png",
         "content": `:play: or :work: : You may roll a die and make a move corresponding to the value of this die.`,
-        "cost": 2,
+        "cost": 3,
         "s2": "<b>+1</b> :time:",
         "s3": ":work:",
         "peace": true,
@@ -147,10 +149,8 @@ cards = [
         "title": "Theocracy",
         "ill": "time/theocracy.png",
         "time-step": "time/theocracy-step.png",
-        "content": `:play: : +3 :time:.
-        :sep:
-        • When you move, for each step, you may decide to move backward.`,
-        "cost": 2,
+        "content": `:play: : +2 :time: and you may roll a die. If you do jump backward by the value of this die.`,
+        "cost": 3,
         "s2": "<b>-1</b> :time:",
         "evil": true,
     },
@@ -162,7 +162,7 @@ cards = [
         "content": `:play: : +1 :time:.
         :sep:
         Moves starting from this card can be of value 2 maximum.`,
-        "cost": 2,
+        "cost": 3,
         "s1": "<b>+1</b> :time:",
         "evil": true,
     },
@@ -172,8 +172,9 @@ cards = [
         "time-step": "time/global-step.png",
         "content": `:play: : +2 :time: and
         you may erase an opponent card.`,
-        "cost": 2,
-        // "s2": "<b>-1</b> :time:",
+        "cost": 3,
+        "s2": "<b>-1</b> :time:",
+        "disaster": true,
     },
     {
         "title": "Berlin's Wall Fall",
@@ -181,7 +182,7 @@ cards = [
         "time-step": "time/berlin-step.png",
         "content": `:play: or :work: : +1 :time: and you may erase one of your other cards.
         :sep:`,
-        "cost": 2,
+        "cost": 3,
         "s1": ":work:",
         "peace": true,
     },
@@ -189,10 +190,11 @@ cards = [
         "title": "Capitalism",
         "ill": "time/capitalisme.webp",
         "time-step": "time/capitalism-step.png",
-        "content": `:play: or :work: : +1 :time: and you may buy a card.
+        "content": `:play: or :work: : you may buy a card by paying an extra <b>1</b> :time:. If you do you do not go back to
+        the Temporal Breach.
         :sep:`,
-        "cost": 2,
-        "s1": ":work:",
+        "cost": 3,
+        "s2": ":work:",
         "evil": true,
     },
     {
@@ -201,8 +203,8 @@ cards = [
         "time-step": "time/engine-step.png",
         "content": `:play: : +1 :time:.
         :sep:
-        :play: or :work: : your get an extra move action.`,
-        "cost": 2,
+        :play: or :work: : you get an extra action.`,
+        "cost": 3,
         "s2": ":work:",
     },
     {
@@ -211,7 +213,7 @@ cards = [
         "time-step": "time/space-step.png",
         "content": `:work: : You may Roll a die. If the result is greater than 3, you may jump to the 
         first time step of any of your cards.`,
-        "cost": 2,
+        "cost": 3,
         "s2": ":work:",
     },
     {
@@ -219,7 +221,7 @@ cards = [
         "ill": "time/moon.png",
         "time-step": "time/space-step.png",
         "content": `:play: : +1 :time:.:sep:
-        • Once per turn you may spend <b>1</b> :time: to get an extra action.`,
+        • Once per turn you may spend <b>2</b> :time: to gain an action.`,
         "cost": 3,
         "s2": "+1 :time:",
     },
@@ -229,7 +231,7 @@ cards = [
         "time-step": "time/telec-step.png",
         "content": `:play: : +1 :time: and you may move 1 of your cards anywhere in the timeline. 
         The moved card must be unoccupied.`,
-        "cost": 2,
+        "cost": 3,
         "s3": "+1 :time:",
         "peace": true,
     },
@@ -241,13 +243,14 @@ cards = [
         :sep:
         :play: or :work: : you may pay <b>2</b> :time: to move 4.`,
         "layout": 'extra',
-        "cost": 2,
+        "cost": 3,
         "s1": "+1 :time:",
         "s2": "-1 :time:",
         "s3": "+1 :time:",
         "s4": ":work:",
         "s5": ":work:",
         "evil": true,
+        "disaster": true,
     },
     {
         "title": "The Plague",
@@ -257,8 +260,35 @@ cards = [
         up to 2 of the Divergence cards at the bottom of the deck.`,
         "s1": "-1 :time:",
         "s3": "-1 :time:",
-        "cost": 2,
-        "evil": true,
+        "cost": 3,
+        "disaster": true,
+    },
+    {
+        "title": `The Silk Road`,
+        "ill": "time/silk-road.webp",
+        "time-step": "time/phone-booth-step.png",
+        "content": `:play: +1 :time:.
+        :sep:
+        • When an opponent gains a :time: on this card, you also gain the same amount.`,
+        "s1": "+1 :time:",
+        "s2": "+1 :time:",
+        "s3": "+1 :time:",
+        "cost": 3,
+        // "layout": "large-ill"
+    },
+    {
+        "title": `The Civil <br>Rights<br> Movement`,
+        "ill": "time/rights.webp",
+        "time-step": "time/phone-booth-step.png",
+        "content": `:play: +1 :time:.
+        :sep:
+        • When an opponent buys a card: +2 :time:.<br>
+        • Once per turn, you may spend <b>2</b> :time: to gain a move action.`,
+        "s1": "+1 :time:",
+        "s3": "+1 :time:",
+        "peace": true,
+        "cost": 3,
+        // "layout": "large-ill"
     },
     {
         "title": `Temporal Breach`,
@@ -334,6 +364,10 @@ cards.forEach((card) => {
 
         if (card.evil) {
             cost += `<span><img class="rule-icon evil" src="time/evil.svg" /> | </span>`
+        }
+
+        if (card.disaster) {
+            cost += `<span><img class="rule-icon skull" src="time/skull.svg" /> | </span>`
         }
 
         if (card.peace) {

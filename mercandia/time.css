@@ -166,6 +166,12 @@ a, a:visited {
     /* margin-right: 2px; */
 }
 
+.rule-icon.skull {
+    width: 12.5px;
+    margin-bottom: -2px;
+    /* margin-right: 2px; */
+}
+
 .rule-icon.peace {
     width: 15px;
     margin-bottom: -2.3 px;
