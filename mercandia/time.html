@@ -18,6 +18,8 @@
 
 <h2>Time Spiral</h2>
 
+<p>The illustrations here are simply placeholders</p>
+
 <div class="config">
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
@@ -119,10 +121,10 @@ cards = [
         "title": "Historical<br>Ripples",
         "ill": "time/ripple.png",
         "time-step": "time/ripple-step.png",
-        "content": `:play: : You may spend <b>3</b> :time: to swap this card with another one in the timeline.
+        "content": `:play: : +1 :time: and you may swap 2 adjacents cards on the timeline.
         The swapped card can be occupied.`,
         "cost": 3,
-        "s2": "<b>+2</b> :time:",
+        "s2": "<b>+1</b> :time:",
     },
     {
         "title": "Cryptocurrencies",
@@ -164,7 +166,7 @@ cards = [
         "time-step": "time/communism-step.png",
         "content": `:play: : +1 :time:.
         :sep:
-        Moves starting from this card can be of value 2 maximum.`,
+        Moves starting from this card can be of value 2 maximum unless you pay 1 :time:.`,
         "cost": 3,
         "s1": "<b>+1</b> :time:",
         "evil": true,
@@ -327,6 +329,21 @@ cards = [
         "cost": 3,
         // "layout": "large-ill"
     },
+    // {
+    //     "title": `Fork`,
+    //     "ill": "time/cuban-missile.webp",
+    //     "time-step": "time/phone-booth-step.png",
+    //     "content": `
+    //     • When you play a card, you might slide its timeline part under Fork. Its effects
+    //     are added to Fork. They all count as 1 card. If Fork is erased, so are the other cards, but 1 may remain.`,
+    //     "s2": ":work:",
+    //     // "s3": "-1 :time:",
+    //     // "s3": "+1 :time:",
+    //     // "evil": true,
+    //     // "disaster": true,
+    //     "cost": 3,
+    //     // "layout": "large-ill"
+    // },
     {
         "title": `Temporal Breach`,
         "ill": "time/phone-booth.webp",
