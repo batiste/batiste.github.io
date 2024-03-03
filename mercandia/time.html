@@ -55,7 +55,7 @@ cards = [
         "time-step": "time/red.png",
         "content": `:play: : <b>+2</b> :time:.:sep:
         :play: or :work: : Roll a die. If this die value 
-        is less than your :time:, you gain an action.`,
+        is less than your :time:, you gain 1 action.`,
         "s2": ":work:",
         "cost": 3,
         "peace": true,
@@ -195,7 +195,7 @@ cards = [
         "title": "Capitalism",
         "ill": "time/capitalisme.webp",
         "time-step": "time/capitalism-step.png",
-        "content": `:play: or :work: : you may buy a card by paying an extra <b>1</b> :time:. If you do, you do not go back to
+        "content": `:work: : you may buy a card by paying an extra <b>2</b> :time:. If you do, you do not go back to
         the Temporal Breach.
         :sep:`,
         "cost": 3,
@@ -217,14 +217,15 @@ cards = [
         "s2": ":work:",
     },
     {
-        "title": "Space Travel",
+        "title": "Space Race",
         "ill": "time/space-travel.webp",
         "time-step": "time/space-step.png",
-        "content": `:work: : You may Roll a die. If the result is greater than 3, you may jump to the 
+        "content": `:work: : You may pay 1 :time: to jump to the 
         first time step of any of your cards.`,
         "cost": 3,
         "s2": ":work:",
         "growth": true,
+        "evil": true,
     },
     {
         "title": "Moon Landing",
@@ -312,6 +313,19 @@ cards = [
         "growth": true,
         "cost": 3,
         "layout": "large-ill"
+    },
+    {
+        "title": `Cuban Missile Crisis`,
+        "ill": "time/cuban-missile.webp",
+        "time-step": "time/phone-booth-step.png",
+        "content": `:play: : +1 :time: and the player with the lowest :time: erases all their cards.  In case of a tie, you choose which tied player erases their cards.`,
+        "s2": "-1 :time:",
+        "s3": "-1 :time:",
+        // "s3": "+1 :time:",
+        "evil": true,
+        "disaster": true,
+        "cost": 3,
+        // "layout": "large-ill"
     },
     {
         "title": `Temporal Breach`,
