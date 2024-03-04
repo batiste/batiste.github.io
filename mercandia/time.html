@@ -43,7 +43,7 @@ cards = [
         "title": "Industrial Revolution",
         "ill": "time/machine.png",
         "time-step": "time/machine-step.png",
-        "content": `:play: : <b>+2</b> :time:.:sep:
+        "content": `:play: : <b>+1</b> :time:.:sep:
         • When you move, you may spend any number of :time: to increase your move
         by an equal amount.`,
         "s2": "<b>+1</b> :time:",
@@ -143,7 +143,9 @@ cards = [
         "title": "The French Revolution",
         "ill": "time/revo.webp",
         "time-step": "time/revo-step.png",
-        "content": `:play: or :work: : You may roll a die and make a move corresponding to the value of this die.`,
+        "content": `
+        :play: : +1 :time: :sep:
+        :play: or :work: : You may roll a die and make a move corresponding to the value of this die.`,
         "cost": 3,
         "s2": "<b>+1</b> :time:",
         "s3": ":work:",
@@ -153,7 +155,9 @@ cards = [
         "title": "Theocracy",
         "ill": "time/theocracy.png",
         "time-step": "time/theocracy-step.png",
-        "content": `:play: : +2 :time: and you may roll a die. If you do jump backward by the value of this die.`,
+        "content": `:play: : +2 :time:
+        :sep:
+        When you move, you may decide to move backward.`,
         "cost": 3,
         "s2": "<b>-1</b> :time:",
         "s3": "<b>-1</b> :time:",
@@ -222,7 +226,7 @@ cards = [
         "title": "Space Race",
         "ill": "time/space-travel.webp",
         "time-step": "time/space-step.png",
-        "content": `:work: : You may pay 1 :time: to jump to the 
+        "content": `:work: : You may pay 2 :time: to jump to the 
         first time step of any of your cards.`,
         "cost": 3,
         "s2": ":work:",
@@ -325,6 +329,21 @@ cards = [
         "s3": "-1 :time:",
         // "s3": "+1 :time:",
         "evil": true,
+        "disaster": true,
+        "cost": 3,
+        // "layout": "large-ill"
+    },
+    {
+        "title": `Fall of Constantinople`,
+        "ill": "time/const.jpeg",
+        "time-step": "time/phone-booth-step.png",
+        "content": `:play: or :work: : you may erase the card above this one.
+        :sep:
+        • Once per turn you pay <b>2</b> :time: to erase the card above this one.`,
+        "s2": ":work:",
+        // "s3": "-1 :time:",
+        // "s3": "+1 :time:",
+        // "evil": true,
         "disaster": true,
         "cost": 3,
         // "layout": "large-ill"
