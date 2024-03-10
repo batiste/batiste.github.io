@@ -1,0 +1,370 @@
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montez&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="cauldron.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="./rasterizeHTML.allinone.js"></script>
+<!-- <script src="./cards.fr.js"></script>
+<script src="./cards.en.js"></script>
+<script src="./cards.es.js"></script> -->
+</head>
+
+<body style="zoom:1">
+
+<h2>Cauldron</h2>
+
+<div class="config">
+    General config
+    <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
+    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
+    <label>PnP mask for easy cuts<input type="checkbox" onchange="PNPoutputFormat(this)"></label>
+</div>
+
+
+<div id="cards" class="lang-en">
+</div>
+
+</body>
+
+<script>
+
+
+cards = [
+    {
+        back: {1: "bat", 2: "coal", 3: "eye", 4: "bat"},
+        cost: {bat: 2, mushroom: 2, eye: 2},
+        title: `Overspill`,
+        text: `Take any 1 ingredient into your hand.`,
+    },
+    {
+        "back": {1: "coal", 2: "ogre", 3: "bat", 4: "coal"},
+        cost: {coal: 3, mushroom: 1, blood: 1, uni: 1},
+        title: `Explosive Reaction`,
+        text: `Take any 2 ingredients, and shuffle them back into the deck.`,
+    },
+    {
+        "back": {1: "eye", 2: "ogre", 3: "mushroom", 4: "eye"},
+        cost: {bat: 2, coal: 2, ogre: 1, newt: 1},
+        title: `Stir the Potion`,
+        text: `Move 1 ingredient anywhere in the cauldron.`,
+    },
+    {
+        "back": {1: "ogre", 2: "mushroom", 3: "eye", 4: "ogre"},
+        cost: {mushroom: 2, ogre: 1, newt: 2, uni: 1},
+        title: `Foul ingredient`,
+        text: `Your opponent chose one of his completed recipe and shuffle it into the deck.`,
+    },
+    {
+        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "bat"},
+        cost: {bat: 3, mushroom: 1, eye: 2},
+        title: `Vapor Visions`,
+        text: `Look at the first 3 cards of the deck and put 1 in your hand.`,
+    },
+    {
+        "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
+        cost: {coal: 4, ogre: 2},
+        title: `Surprise Delivery`,
+        text: `Draw 2 cards.`,
+    },
+    {
+        "back": {1: "bat", 2: "mushroom", 3: "coal", 4: "newt"},
+        "front": {"text": "", value: 5},
+    },
+    {
+        "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
+        "front": {"text": "", value: 5},
+    },
+    {
+        "back": {1: "mushroom", 2: "newt", 3: "uni", 4: "bat"},
+        "front": {"text": "", value: 5},
+    },
+]
+
+cardsTxt = ""
+i = 0;
+var counts = {}
+
+cards.forEach((card) => {
+
+    i = i + 1;
+    console.log(card)
+
+    var content = ""
+
+    var back = card.back
+
+    counts[back["1"]] = (counts[back["1"]] || 0) + 1
+    counts[back["2"]] = (counts[back["2"]] || 0) + 1
+    counts[back["3"]] = (counts[back["3"]] || 0) + 1
+    counts[back["4"]] = (counts[back["4"]] || 0) + 1
+
+    function c(t, cost) {
+        var d = ''
+        var i = cost[t];
+        for(var j=0; j<i; j++) {
+            d += `<img src="cauldron/${t}.png" />`
+        }
+        return d
+    }
+
+
+    var cost = ""
+    if(card.cost && card.cost.bat) {
+        cost += c(`bat`, card.cost)
+    }
+    if(card.cost && card.cost.coal) {
+        cost += c(`coal`, card.cost)
+    }
+    if(card.cost && card.cost.mushroom) {
+        cost += c(`mushroom`, card.cost)
+    }
+    if(card.cost && card.cost.eye) {
+        cost += c(`eye`, card.cost)
+    }
+    if(card.cost && card.cost.ogre) {
+        cost += c(`ogre`, card.cost)
+    }
+    if(card.cost && card.cost.blood) {
+        cost += c(`blood`, card.cost)
+    }
+    if(card.cost && card.cost.newt) {
+        cost += c(`newt`, card.cost)
+    }
+    if(card.cost && card.cost.uni) {
+        cost += c(`uni`, card.cost)
+    }
+
+
+
+
+    var cardTemplate = `
+    <div class="card-container">
+        <div class="card" title="${i}">
+            <div class="front">
+                <div class="cost">
+                    ${cost}
+                </div>
+                <div class="title">
+                    ${card.title}
+                </div>
+                <div class="text">
+                    ${card.text}
+                </div>
+            </div>
+
+            <div class="mpc">
+                <img src="img/mpc.png">
+            </div>
+        </div>
+        <button onclick="downloadCardButton(this)">Download</button><br>
+    </div>
+
+    <div class="card-container">
+        <div class="card" title="${i}">
+            <div class="back">
+                <div class="line1"> 
+                <img src="cauldron/${back["1"]}.png" class="${back["1"]}" />
+                <img src="cauldron/${back["2"]}.png" class="${back["1"]}" />
+                </div>
+                <div>
+                <img src="cauldron/${back["3"]}.png" class="${back["1"]}" />
+                <img src="cauldron/${back["4"]}.png" class="${back["1"]}" />
+                </div>
+                <div class="orientation"></div>
+            </div>
+
+            <div class="mpc">
+                <img src="img/mpc.png">
+            </div>
+        </div>
+        <button onclick="downloadCardButton(this)">Download</button><br>
+    </div>
+    `
+
+    cardsTxt += cardTemplate;
+
+})
+
+
+document.getElementById("cards").innerHTML = cardsTxt;
+
+
+</script>
+
+
+
+<script>
+
+    var lang = 'en';
+
+
+    var format = 'png'
+    function updateFormat(e) {
+        if (e.checked) {
+            format = 'jpg'
+        } else {
+            format = 'png'
+        }
+    }
+
+    var preparePrintClass = 'preparePrint';
+    function outputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrint';
+        } else { 
+            preparePrintClass = 'preparePrintNotMPC';
+        }
+    }
+
+    function PNPoutputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrintPNP';
+        } else { 
+            preparePrintClass = 'preparePrint';
+        }
+    }
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+"."+format;
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function changePrintSelection(e) {
+        cards.forEach((card) => {
+            if(card.id == parseInt(e.dataset.cardId, 10)) {
+                card['pdf'] = e.checked
+            }
+        })
+    }
+
+    var zoom = 6.5
+    function updateZoom(e) {
+        zoom = parseFloat(e.value)
+    }
+
+    function downloadCardButton(e) {
+        downloadCard(e.parentNode.querySelector('.card'))
+    }
+
+    function downloadCard(card, cb) {
+        createCardImage(card, (canvas) => {
+            var title = card.title.toLowerCase().replace(/\s/g, '-')
+            if (format=='png') {
+                img = canvas.toDataURL();
+            } else {
+                img = canvas.toDataURL("image/jpeg", 0.9)
+            }
+            download(img, title);
+            console.log('download', title);
+            cb && cb(title);
+        })
+    }
+
+    function downloadBookletFace(id) {
+        createBookletImage(document.getElementById(id || 'face'))
+    }
+
+    function downloadBookletBack(id) {
+        createBookletImage(document.getElementById(id || 'back'))
+    }
+
+    function createCardImage(card, cb) {
+
+        card.classList.add(preparePrintClass)
+        cls = ""
+        if (lang) {
+            cls = 'class="lang-fr"'
+        }
+
+        var h = `
+            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="cauldron.css">
+            <style>
+                html, body {margin:0; padding:0; background-color: transparent;}
+                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            <div ${cls}>
+                ${card.outerHTML}
+            </div>`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas)
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            card.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+            cb && cb(canvas)
+        }, function error(e) {
+            console.log("Error on card", card.title, e)
+        });
+    }
+
+    function createBookletImage(booklet, cb) {
+        
+        booklet.classList.add(preparePrintClass)
+
+        var h = `
+            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="cauldron.css">
+            <style>
+                html, body {margin:0; padding:0}
+                .booklet {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            
+            ${booklet.outerHTML}`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas);
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            var title = booklet.title.toLowerCase().replace(/\s/g, '-')
+            download(canvas.toDataURL(), title);
+            booklet.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+        })
+
+    }
+
+
+var toRender = 0;
+
+function bindImage(element, card, cb) {
+    if (card['canvas']) {
+        return cb();
+    }
+    createCardImage(element, (canvas) => {
+        card['canvas'] = canvas
+        cb();
+    })
+}
+
+function selectAll() { 
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        card.pdf = true;
+        document.getElementById('check-pdf-'+card['id']).checked = true
+    }
+}
+
+
+</script>
+</html>

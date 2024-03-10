@@ -1,0 +1,143 @@
+html {
+    background-color: 2a2a2a;
+    -webkit-print-color-adjust: exact;
+    -webkit-filter: opacity(1);
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+.card {
+    position: relative;
+    background-color: transparent;
+    width: 69.088mm;
+    height: 93.98mm;
+    perspective: 1000px;
+}
+
+.card-container {
+    float: left;
+    margin: 5px;
+}
+
+.config label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.config {
+    margin: 1em;
+}
+
+.back {
+    position: absolute;
+    padding-left: 24px;
+    padding-top: 30px;
+    background-color: #fff;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+.front {
+    position: absolute;
+    padding-left: 24px;
+    padding-top: 30px;
+    background-color: #fff;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+
+
+.back img {
+    width: 70px;
+    height: 70px;
+    padding: 39px 19px;
+}
+
+.back div {
+    display: flex;
+}
+
+.orientation {
+    position: absolute;
+    right: -6px;
+    top: 162.5px;
+    background-color: #acacac;
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    border: 2px #e8e8e8 solid;
+}
+
+.cost {
+    position: absolute;
+    left: 29px;
+    right: 20px;
+    top: 30px;
+}
+
+.cost img {
+    width: 28px;
+    height: 28px;
+    margin-right: 7px;
+}
+
+.back img:nth-child(1) {
+    border-right: 2px #e8e8e8 solid;
+}
+
+.line1 img {
+    border-bottom: 2px #e8e8e8 solid;
+}
+
+.text {
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    text-align: left;
+    color: #000;
+    top: 180px;
+    left: 30px;
+    right: 30px;
+}
+
+.title {
+    font-family: "Montez", cursive;
+    font-size: 28px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    position: absolute;
+    text-align: left;
+    color: #000;
+    top: 80px;
+    left: 30px;
+    right: 30px;
+}
+
+.mpc {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.mpc img {
+    width: 100%;
+}
+
+
+.preparePrint .mpc {
+    display: none;
+}
