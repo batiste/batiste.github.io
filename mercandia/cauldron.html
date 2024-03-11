@@ -4,9 +4,6 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montez&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="cauldron.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 <script src="./rasterizeHTML.allinone.js"></script>
@@ -38,31 +35,31 @@
 
 cards = [
     {
-        back: {1: "bat", 2: "coal", 3: "eye", 4: "bat"},
+        back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
         cost: {bat: 2, mushroom: 2, eye: 2},
         title: `Overspill`,
         text: `Take any 1 ingredient into your hand.`,
     },
     {
-        "back": {1: "coal", 2: "ogre", 3: "bat", 4: "coal"},
+        "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
         cost: {coal: 3, mushroom: 1, blood: 1, uni: 1},
         title: `Explosive Reaction`,
         text: `Take any 2 ingredients, and shuffle them back into the deck.`,
     },
     {
-        "back": {1: "eye", 2: "ogre", 3: "mushroom", 4: "eye"},
+        "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
         cost: {bat: 2, coal: 2, ogre: 1, newt: 1},
         title: `Stir the Potion`,
         text: `Move 1 ingredient anywhere in the cauldron.`,
     },
     {
-        "back": {1: "ogre", 2: "mushroom", 3: "eye", 4: "ogre"},
+        "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
         cost: {mushroom: 2, ogre: 1, newt: 2, uni: 1},
         title: `Foul ingredient`,
-        text: `Your opponent chose one of his completed recipe and shuffle it into the deck.`,
+        text: `Your opponent chose one of his completed potion and shuffle it into the deck.`,
     },
     {
-        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "bat"},
+        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
         cost: {bat: 3, mushroom: 1, eye: 2},
         title: `Vapor Visions`,
         text: `Look at the first 3 cards of the deck and put 1 in your hand.`,
@@ -74,22 +71,84 @@ cards = [
         text: `Draw 2 cards.`,
     },
     {
-        "back": {1: "bat", 2: "mushroom", 3: "coal", 4: "newt"},
-        "front": {"text": "", value: 5},
+        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
+        cost: {bat: 1, coal: 3, ogre: 1, uni:1},
+        title: `Bat Hunger Curse`,
+        text: `Your opponent potions now costs 1 extra bat.`,
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        "front": {"text": "", value: 5},
+        cost: {bat: 3, mushroom: 1, eye:1, newt:1},
+        title: `Creative Liberties`,
+        text: `At any point, you may discard a card to make up an ingredient of your choice.`,
     },
     {
-        "back": {1: "mushroom", 2: "newt", 3: "uni", 4: "bat"},
-        "front": {"text": "", value: 5},
+        "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
+        cost: {mushroom: 2, blood:2, newt:2},
+        title: `Unicorn Collector`,
+        text: `This Potion score you an extra VP for each unicorn horn on the surface in the Cauldron.`,
+    },
+    // --------
+    {
+        back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
+        cost: {bat: 3, ogre: 2, blood: 1},
+        title: `Culinary Excellence`,
+        text: `Before deciding the final position of an ingredient, you may already draw your new card.`,
+    },
+    {
+        "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
+        cost: {coal: 3, mushroom: 1, blood: 1, uni: 1},
+        title: `2`,
+        text: `Take any 2 ingredients, and shuffle them back into the deck.`,
+    },
+    {
+        "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
+        cost: {mushroom: 2, eye: 3, uni: 1},
+        title: `Bubbles`,
+        text: `After you create another potion, you may move an ingredient anywhere in the Cauldron.`,
+    },
+    {
+        "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
+        cost: {mushroom: 2, ogre: 1, newt: 2, uni: 1},
+        title: `4`,
+        text: `Your opponent chose one of his completed potion and shuffle it into the deck.`,
+    },
+    {
+        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
+        cost: {bat: 3, mushroom: 1, eye: 2},
+        title: `5`,
+        text: `Look at the first 3 cards of the deck and put 1 in your hand.`,
+    },
+    {
+        "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
+        cost: {coal: 4, ogre: 2},
+        title: `6`,
+        text: `Draw 2 cards.`,
+    },
+    {
+        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
+        cost: {bat: 1, coal: 3, ogre: 1, uni:1},
+        title: `7`,
+        text: `Your opponent potions now costs 1 extra bat.`,
+    },
+    {
+        "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
+        cost: {bat: 3, mushroom: 1, eye:1, newt:1},
+        title: `8`,
+        text: `At any point, you may discard a card to make up an ingredient of your choice.`,
+    },
+    {
+        "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
+        cost: {mushroom: 2, blood:2, newt:2},
+        title: `9`,
+        text: `This Potion score you an extra VP for each unicorn horn on the surface in the Cauldron.`,
     },
 ]
 
 cardsTxt = ""
 i = 0;
 var counts = {}
+var ingredients_count = {}
 
 cards.forEach((card) => {
 
@@ -108,6 +167,8 @@ cards.forEach((card) => {
     function c(t, cost) {
         var d = ''
         var i = cost[t];
+        ingredients_count[t] = ingredients_count[t] || 0
+        ingredients_count[t] += i;
         for(var j=0; j<i; j++) {
             d += `<img src="cauldron/${t}.png" />`
         }

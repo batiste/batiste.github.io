@@ -82,6 +82,8 @@ a, a:visited {
     left: 29px;
     right: 20px;
     top: 30px;
+    /* border-bottom: 2px #e8e8e8 solid;
+    padding-bottom: 5px; */
 }
 
 .cost img {
@@ -106,21 +108,22 @@ a, a:visited {
     position: absolute;
     text-align: left;
     color: #000;
-    top: 180px;
+    top: 111px;
+    height: 211px;
     left: 30px;
     right: 30px;
 }
 
 .title {
-    font-family: "Montez", cursive;
-    font-size: 28px;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 20px;
     font-weight: bold;
     display: flex;
     align-items: center;
     position: absolute;
     text-align: left;
     color: #000;
-    top: 80px;
+    top: 90px;
     left: 30px;
     right: 30px;
 }
