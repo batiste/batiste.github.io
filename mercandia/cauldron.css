@@ -53,6 +53,8 @@ a, a:visited {
     top: 0;
     left: 0;
     right: 0;
+    background-image: url(cauldron/parchemin.png);
+    background-size: cover;
 }
 
 
@@ -79,17 +81,24 @@ a, a:visited {
 
 .cost {
     position: absolute;
-    left: 29px;
-    right: 20px;
+    left: 0px;
+    right: 0px;
     top: 30px;
-    /* border-bottom: 2px #e8e8e8 solid;
-    padding-bottom: 5px; */
+    padding: 2px 29px;
+    background-color: #fff;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    border-top: 1px #adadad solid;
+    border-bottom: 1px #7b7b7b solid;
 }
 
 .cost img {
     width: 28px;
     height: 28px;
     margin-right: 7px;
+}
+
+.cost img:nth-child(6) {
+    margin-right: 0px;
 }
 
 .back img:nth-child(1) {
@@ -101,8 +110,8 @@ a, a:visited {
 }
 
 .text {
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-family: "Inter", sans-serif;
+    font-size: 16px;
     display: flex;
     align-items: center;
     position: absolute;
@@ -115,17 +124,24 @@ a, a:visited {
 }
 
 .title {
-    font-family: "Open Sans", Arial, Helvetica, sans-serif;
-    font-size: 20px;
-    font-weight: bold;
+    font-family: "Inter", sans-serif;
+    font-size: 19px;
+    font-weight: 500;
     display: flex;
     align-items: center;
     position: absolute;
     text-align: left;
     color: #000;
     top: 90px;
-    left: 30px;
-    right: 30px;
+    left: 0px;
+    right: 0px;
+    padding: 2px 29px;
+    background-color: #3e9b4d;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    border-top: 1px #adadad solid;
+    border-bottom: 1px #7b7b7b solid;
+    color: #fff;
+    line-height: 1.6;
 }
 
 .mpc {
