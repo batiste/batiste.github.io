@@ -44,7 +44,7 @@ cards = [
         "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
         cost: {coal: 3, mushroom: 1, blood: 1, uni: 1},
         title: `Explosive Reaction`,
-        text: `Take any 2 ingredients, and shuffle them back into the deck.`,
+        text: `Take any 3 ingredients from the Cauldron and shuffle them back into the deck. One of them should be yours.`,
     },
     {
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
@@ -56,7 +56,7 @@ cards = [
         "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
         cost: {mushroom: 2, ogre: 1, newt: 2, uni: 1},
         title: `Foul ingredient`,
-        text: `Your opponent chose one of his completed potion and shuffle it into the deck.`,
+        text: `Your opponent chose one of his completed Potion and shuffle it into the deck.`,
     },
     {
         "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
@@ -68,7 +68,7 @@ cards = [
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
         cost: {coal: 4, ogre: 2},
         title: `Surprise Delivery`,
-        text: `Draw 2 cards.`,
+        text: `Draw one extra card.`,
     },
     {
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
@@ -80,13 +80,13 @@ cards = [
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
         cost: {bat: 3, mushroom: 1, eye:1, newt:1},
         title: `Creative Liberties`,
-        text: `At any point, you may discard a card to make up an ingredient of your choice.`,
+        text: `At any point, you may shuffle one of your card into the deck to make up an ingredient of your choice.`,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
         cost: {mushroom: 2, blood:2, newt:2},
         title: `Unicorn Collector`,
-        text: `This Potion score you an extra VP for each unicorn horn on the surface in the Cauldron.`,
+        text: `This Potion score you an extra VP for each unicorn horn at the surface of the Cauldron.`,
     },
     // --------
     {
@@ -99,13 +99,13 @@ cards = [
         "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
         cost: {ogre: 2, eye: 3, uni: 1},
         title: `Bubbles`,
-        text: `When you create another potion, you may move an ingredient anywhere in the Cauldron.`,
+        text: `When you create another Potion, you may move an ingredient anywhere in the Cauldron.`,
     },
     {
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
         cost: {blood: 2, bat: 3, newt: 1},
         title: `Newt Affinity`,
-        text: `When you create a potion with a Newt, you may draw an extra card.`,
+        text: `When you create a Potion with a Newt, you may draw a card.`,
     },
     {
         "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
@@ -116,32 +116,32 @@ cards = [
     {
         "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
         cost: {blood: 1, coal: 3, eye: 1, ogre: 1},
-        title: `Skim the Top`,
-        text: `Shuffle any ingredients back into the deck until there is only 3 ingredients left.`,
+        title: `Skim the Surface`,
+        text: `Take 2 ingredients from the Cauldron that are not covered by anything and shuffle them back into the deck.`,
     },
     {
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
+        cost: {coal: 3, mushroom: 3},
+        title: `Mushroom Poisoning`,
+        text: `Your opponent shuffle a card of his hand into the deck.`,
+    },
+    {
+        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
         cost: {bat: 3, eye: 2, uni: 1},
         title: `Peeking Over`,
         text: `When you play an ingredient with an eye, you may look at your opponent hand.`,
     },
     {
-        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
-        cost: {coal: 3, mushroom: 3},
-        title: `Mushroom Poisoning`,
-        text: `Your opponent discard a card.`,
-    },
-    {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        cost: {eye: 1, ogre: 3, newt: 1},
-        title: `8`,
-        text: ``,
+        cost: {eye: 2, ogre: 3, newt: 1},
+        title: `Switcheroo`,
+        text: `Once a turn, your may exchange one card from your hand with the top card of the deck.`,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
-        cost: {},
-        title: `9`,
-        text: ``,
+        cost: {blood: 1, mushroom: 2, ogre: 1, bat: 1, coal: 1},
+        title: `Failed Recipe`,
+        text: `Shuffle your hand into the deck, and draw that many card.`,
     },
 ]
 
