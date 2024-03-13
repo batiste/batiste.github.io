@@ -137,11 +137,14 @@ a, a:visited {
     right: 0px;
     padding: 2px 29px;
     background-color: #3e9b4d;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
-    border-top: 1px #adadad solid;
-    border-bottom: 1px #7b7b7b solid;
+    /* background-image: url(cauldron/brew.png); */
+    background-size: cover;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.6);
+    border-top: 1px #7e7e7e solid;
+    border-bottom: 1px #5f5f5f solid;
     color: #fff;
     line-height: 1.6;
+    text-shadow: 1px 1px 2px #2e7739;
 }
 
 .mpc {
