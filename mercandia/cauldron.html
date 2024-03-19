@@ -44,7 +44,7 @@ cards = [
         back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
         cost: {bat: 2, mushroom: 1, eye: 2, uni: 1},
         title: `Overflowing Foam`,
-        text: `Pick any 1 ingredient and put it in your hand.`,
+        text: `Pick any 1 ingredient and put it in your hand. You don't draw an additional card this turn.`,
         type: 1,
     },
     {
@@ -58,8 +58,8 @@ cards = [
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
         cost: {bat: 2, coal: 2, ogre: 1, newt: 1},
         title: `Stir the Cauldron`,
-        text: ` You may move 1 ingredient.<br>From now one, when you toss an ingredient you 
-        may cover 2 quartiles.`,
+        text: `When you toss or move an ingredient you 
+        may cover 2 quartiles.<br>You may move 1 ingredient.`,
         type: 1,
     },
     {
@@ -75,7 +75,8 @@ They shuffle both cards into the deck.`,
         "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
         cost: {bat: 2, mushroom: 1, eye: 2, blood: 1},
         title: `Vapor Visions`,
-        text: `Look at the first 3 cards of the deck and put 1 in your hand.`,
+        text: `Look at the first 3 cards of the deck and put 1 in your hand. 
+        You don't draw an additional card this turn.`,
         type: 1,
     },
     {
@@ -96,14 +97,15 @@ They shuffle both cards into the deck.`,
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
         cost: {bat: 3, mushroom: 1, eye:1, newt:1},
         title: `Crafty Substitution`,
-        text: `When brewing a potion, you may shuffle one of your cards into the deck to replace a missing ingredient.`,
+        text: `When brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
         type: 3,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
-        cost: {mushroom: 2, blood:1, newt:2, coal: 1},
+        cost: {mushroom: 2, blood:1, newt:1, coal: 2},
         title: `Unicorn Collector`,
-        text: `You earn an additional victory point for each visible unicorn horn in the cauldron.`,
+        text: `Gain 1 extra victory point if there is 2 visible unicorn 
+        horns in the cauldron. Gain one more for 3 or more unicorn horns.`,
         type: 1,
     },
     // --------
@@ -131,19 +133,19 @@ They shuffle both cards into the deck.`,
     {
         "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
         cost: {uni: 1, coal: 2, mushroom: 1, eye: 1, bat: 1},
-        title: `Blood Thirst`,
-        text: `When your opponent brew a potion with dragon blood, you may move an ingredient.`,
+        title: `Love Potion`,
+        text: `You gain a extra victory point for each pair of touching ogre ear in the cauldron.`,
         type: 2,
     },
     {
         "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
-        cost: {blood: 1, coal: 3, eye: 1, ogre: 1},
+        cost: {blood: 1, coal: 2, eye: 1, ogre: 1, mushroom: 1},
         title: `Skim the Surface`,
         text: `Choose an ingredient that isn't covered by any others, shuffle it back into the deck, and repeat this process a second time.`,
     },
     {
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
-        cost: {coal: 3, mushroom: 3},
+        cost: {coal: 3, mushroom: 2, newt: 1},
         title: `Mushroom Poisoning`,
         text: `The coal in your opponent's potion must now be brewed with mushrooms instead.`,
         type: 2,
@@ -152,13 +154,13 @@ They shuffle both cards into the deck.`,
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
         cost: {bat: 3, eye: 2, uni: 1},
         title: `Watchful Gaze`,
-        text: `When tossing an ingredient with an eye, you may peek at your opponent's hand.`,
+        text: `When tossing an ingredient with an eye, you may look at your opponent's hand.`,
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
         cost: {eye: 2, ogre: 3, newt: 1},
-        title: `Chaotic Hand`,
-        text: `Once per turn, you may swap one card from your hand with the top card of the deck.`,
+        title: `Unstable Hand`,
+        text: `Once per turn, you may swap a card from your hand with the top card of the deck.`,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
@@ -240,8 +242,8 @@ cards.forEach((card) => {
 
 
     var cardTemplate = `
-    <div class="card-container ${typeP()}">
-        <div class="card" title="${i}">
+    <div class="card-container">
+        <div class="card ${typeP()}" title="${i}">
             <div class="front">
                 <div class="cost">
                     ${cost}
@@ -394,6 +396,8 @@ document.getElementById("cards").innerHTML = cardsTxt;
                 ${card.outerHTML}
             </div>`
 
+        console.log(card.outerHTML)
+
         rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
             img = renderResult.image;
             var canvas = document.createElement('canvas');
@@ -408,36 +412,6 @@ document.getElementById("cards").innerHTML = cardsTxt;
         }, function error(e) {
             console.log("Error on card", card.title, e)
         });
-    }
-
-    function createBookletImage(booklet, cb) {
-        
-        booklet.classList.add(preparePrintClass)
-
-        var h = `
-            <link href="https://fonts.googleapis.com/css2?family=Dangrek&display=swap" rel="stylesheet">
-            <link rel="stylesheet" href="cauldron.css">
-            <style>
-                html, body {margin:0; padding:0}
-                .booklet {zoom: ${zoom}; float: none; position: initial; margin: 0;}
-            </style>
-            
-            ${booklet.outerHTML}`
-
-        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
-            img = renderResult.image;
-            var canvas = document.createElement('canvas');
-            canvas.width = img.naturalWidth;
-            canvas.height = img.naturalHeight;
-            document.body.appendChild(canvas);
-            const ctx = canvas.getContext("2d");
-            ctx.drawImage(img, 0, 0)
-            var title = booklet.title.toLowerCase().replace(/\s/g, '-')
-            download(canvas.toDataURL(), title);
-            booklet.classList.remove(preparePrintClass)
-            canvas.parentNode.removeChild(canvas)
-        })
-
     }
 
 

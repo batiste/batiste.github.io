@@ -86,7 +86,7 @@ a, a:visited {
     top: 0px;
     padding: 24px 29px 2px 29px;
     background-color: #fff;
-    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.5);
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.373);
     border-top: 1px #00000099 solid;
     border-bottom: 1px #00000099 solid;
 }
@@ -102,11 +102,11 @@ a, a:visited {
 }
 
 .back img:nth-child(1) {
-    border-right: 2px #c5c5c5 solid;
+    border-right: 2px #878787 solid;
 }
 
 .line1 img {
-    border-bottom: 2px #c5c5c5 solid;
+    border-bottom: 2px #878787 solid;
 }
 
 .text {
@@ -117,7 +117,7 @@ a, a:visited {
     position: absolute;
     text-align: left;
     color: #000;
-    top: 111px;
+    top: 100px;
     height: 211px;
     left: 30px;
     right: 30px;
@@ -141,6 +141,7 @@ a, a:visited {
     box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.4);
     color: #fff;
     border-top: 1px #00000099 solid;
+    text-shadow: 1px 1px 2px #000000af;
 }
 
 .title {
@@ -153,7 +154,7 @@ a, a:visited {
     position: absolute;
     text-align: center;
     color: #000;
-    top: 90px;
+    top: 75px;
     left: 0px;
     right: 0px;
     padding: 2px 29px;
@@ -165,7 +166,7 @@ a, a:visited {
     border-bottom: 1px #00000099 solid;
     color: #fff;
     line-height: 1.6;
-    text-shadow: 1px 1px 2px #2e7739;
+    text-shadow: 1px 1px 2px #000000af;
     text-transform: capitalize;
 }
 
