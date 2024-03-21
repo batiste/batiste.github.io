@@ -49,22 +49,22 @@ cards = [
     },
     {
         "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
-        cost: {coal: 3, mushroom: 1, blood: 1, uni: 1},
+        cost: {coal: 3, mushroom: 2, uni: 1},
         title: `Muted Reaction`,
         text: `Do not shuffle one of your ingredient in the deck after brewing this potion.`,
         type: 3,
     },
     {
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
-        cost: {bat: 2, coal: 2, ogre: 1, newt: 1},
+        cost: {bat: 2, coal: 2, ogre: 1, blood: 1},
         title: `Stir the Cauldron`,
-        text: `When you toss or move an ingredient you 
-        may cover 2 quartiles.<br>You may move 1 ingredient.`,
+        text: `You may move 1 ingredient.<br>• When you toss or move an ingredient you 
+        may cover 2 quartiles.`,
         type: 1,
     },
     {
         "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
-        cost: {mushroom: 2, ogre: 2, newt: 1, uni: 1},
+        cost: {mushroom: 2, ogre: 2, newt: 1, bat: 1},
         title: `Fouled Brew`,
         text: `
 Your opponent chooses one of their potions and one of your ingredients. 
@@ -81,60 +81,60 @@ They shuffle both cards into the deck.`,
     },
     {
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
-        cost: {coal: 3, mushroom:1, ogre: 2},
+        cost: {coal: 3, ogre: 2, blood: 1},
         title: `Dark Transmutation`,
-        text: `You may use coals as they were bat wings to brew your potions.`,
+        text: `• You may use coals as they were bat wings to brew your potions.`,
         type: 2,
     },
     {
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
         cost: {bat: 1, coal: 3, ogre: 1, uni:1},
         title: `Winged Appetite`,
-        text: `Your opponent potions now costs 1 extra bat to complete.`,
+        text: `• Your opponent potions now costs 1 extra bat to complete.`,
         type: 2,
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
         cost: {bat: 3, mushroom: 1, eye:1, newt:1},
         title: `Crafty Substitution`,
-        text: `When brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
+        text: `• When brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
         type: 3,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
-        cost: {mushroom: 2, blood:1, newt:1, coal: 2},
+        cost: {mushroom: 3, blood:1, coal: 2},
         title: `Unicorn Collector`,
-        text: `Gain 1 extra victory point if there is 2 visible unicorn 
+        text: `• Gain 1 extra victory point if there is 2 visible unicorn 
         horns in the cauldron. Gain one more for 3 or more unicorn horns.`,
         type: 1,
     },
     // --------
     {
         back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
-        cost: {bat: 3, ogre: 2, blood: 1},
+        cost: {bat: 3, ogre: 2, newt: 1},
         title: ` Masterful Blend`,
-        text: `Before finalizing the position of an ingredient, you may draw your new card already.`,
+        text: `• Before finalizing the position of an ingredient, you may draw your new card already.`,
         type: 1,
     },
     {
         "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
         cost: {ogre: 2, eye: 3, uni: 1},
         title: `Effervescent Brew`,
-        text: `When brewing another potion, you may move an ingredient.`,
+        text: `• When brewing another potion, you may move an ingredient.`,
         type: 2,
     },
     {
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
-        cost: {blood: 1, bat: 3, newt: 1, eye: 1},
+        cost: {bat: 3, newt: 1, eye: 2},
         title: `Newt Affinity`,
-        text: `When brewing a potion, you may substitute one and only one ingredient by a newt.`,
+        text: `• When brewing a potion, you may substitute one and only one ingredient by a newt.`,
         type: 1,
     },
     {
         "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
         cost: {uni: 1, coal: 2, mushroom: 1, eye: 1, bat: 1},
         title: `Love Potion`,
-        text: `You gain a extra victory point for each pair of touching ogre ear in the cauldron.`,
+        text: `• You gain a extra victory point for each pair of touching ogre ear in the cauldron.`,
         type: 2,
     },
     {
@@ -147,20 +147,20 @@ They shuffle both cards into the deck.`,
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
         cost: {coal: 3, mushroom: 2, newt: 1},
         title: `Mushroom Poisoning`,
-        text: `The coal in your opponent's potion must now be brewed with mushrooms instead.`,
+        text: `• The coals in your opponent's potions must now be brewed with mushrooms instead.`,
         type: 2,
     },
     {
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
         cost: {bat: 3, eye: 2, uni: 1},
         title: `Watchful Gaze`,
-        text: `When tossing an ingredient with an eye, you may look at your opponent's hand.`,
+        text: `• When tossing an ingredient with an eye, you may look at your opponent's hand.`,
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        cost: {eye: 2, ogre: 3, newt: 1},
+        cost: {coal: 1, eye: 2, ogre: 2, newt: 1},
         title: `Unstable Hand`,
-        text: `Once per turn, you may swap a card from your hand with the top card of the deck.`,
+        text: `• Once per turn, you may swap a card from your hand with the top card of the deck.`,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
@@ -275,7 +275,7 @@ cards.forEach((card) => {
                 <img src="cauldron/${back["3"]}.png" class="${back["1"]}" />
                 <img src="cauldron/${back["4"]}.png" class="${back["1"]}" />
                 </div>
-                <div class="orientation"></div>
+                <div class="orientation"><span class="a1"></span><span class="a2"></span></div>
             </div>
 
             <div class="mpc">
