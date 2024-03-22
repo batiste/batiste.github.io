@@ -42,7 +42,7 @@
 cards = [
     {
         back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
-        cost: {bat: 2, mushroom: 1, eye: 2, uni: 1},
+        cost: {bat: 2, mushroom: 1, eye: 2, newt: 1},
         title: `Overflowing Foam`,
         text: `Pick any 1 ingredient and put it in your hand. You don't draw for brewing this potion.`,
         type: 3,
@@ -67,7 +67,7 @@ cards = [
         cost: {mushroom: 2, ogre: 2, newt: 1, bat: 1},
         title: `Fouled Brew`,
         text: `
-        • Choose one of your opponent's potions. It loses its permanent effects.`,
+        • Choose one of your opponent's potions. It loses its effects forever.`,
         type: 2,
     },
     {
@@ -94,7 +94,7 @@ cards = [
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        cost: {bat: 1, coal: 1, mushroom: 1, eye:1, ogre:1, newt:1},
+        cost: {bat: 2, mushroom: 1, eye:1, ogre:1, blood:1},
         title: `Crafty Substitution`,
         text: `• When brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
         type: 3,
@@ -103,8 +103,7 @@ cards = [
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
         cost: {mushroom: 3, blood:1, coal: 2},
         title: `Unicorn Collector`,
-        text: `• Gain 1 extra victory point if there is 2 visible unicorn 
-        horns in the cauldron. Gain one more for 3 or more unicorn horns.`,
+        text: `• Gain 1  victory point if there is 2 visible unicorns. Gain 2 instead for 3 or more visible unicorns.`,
         type: 1,
     },
     // --------
@@ -117,7 +116,7 @@ cards = [
     },
     {
         "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
-        cost: {ogre: 2, eye: 3, uni: 1},
+        cost: {ogre: 2, eye: 2, uni: 1, coal: 1},
         title: `Effervescent Brew`,
         text: `• When brewing another potion, you may move an ingredient.`,
         type: 2,
@@ -138,27 +137,27 @@ cards = [
     },
     {
         "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
-        cost: {blood: 1, coal: 2, eye: 1, ogre: 1, mushroom: 1},
+        cost: {uni: 1, coal: 2, eye: 1, ogre: 1, mushroom: 1},
         title: `Skim the Surface`,
         text: `Choose an ingredient that isn't covered by any others and shuffle it back into the deck.`,
     },
     {
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
-        cost: {coal: 3, mushroom: 2, newt: 1},
+        cost: {coal: 1, mushroom: 3, newt: 1, eye: 1},
         title: `Mushroom Poisoning`,
         text: `• The coals in your opponent's potions must now be brewed with mushrooms instead.`,
         type: 2,
     },
     {
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
-        cost: {bat: 3, eye: 2, uni: 1},
-        title: `Watchful Gaze`,
+        cost: {bat: 2, coal:1,  eye: 2, uni: 1},
+        title: `Indiscret Gaze`,
         text: `• When tossing an ingredient with an eye, you may look at your opponent's hand.`,
         type: 1,
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        cost: {coal: 1, mushroom: 2, eye: 1, newt: 1, ogre: 1},
+        cost: {coal: 2, mushroom: 1, eye: 1, newt: 1, ogre: 1},
         title: `Unstable Hand`,
         text: `• Once per turn, you may swap a card from your hand with the top card of the deck.`,
     },
@@ -166,8 +165,7 @@ cards = [
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
         cost: {blood: 1, mushroom: 1, ogre: 1, bat: 1, coal: 2},
         title: `Botched Incantations`,
-        text: `You may shuffle 
-        your hand into the deck and draw an equal number of cards.`,
+        text: `After drawing your card for this potion, you may shuffle your hand into the deck and draw the same number of cards.`,
     },
 ]
 
@@ -175,6 +173,7 @@ cardsTxt = ""
 i = 0;
 var counts = {}
 var ingredients_count = {}
+var pairs = {}
 
 cards.forEach((card) => {
 
@@ -201,6 +200,46 @@ cards.forEach((card) => {
         return d
     }
 
+    var back_type = 'nope'
+    if(card.back[1] == 'uni') {
+        back_type = 'uni'
+    }
+    if(card.back[2] == 'uni') {
+        back_type = 'uni'
+    }
+    if(card.back[3] == 'uni') {
+        back_type = 'uni'
+    }
+    if(card.back[4] == 'uni') {
+        back_type = 'uni'
+    }
+    if(card.back[1] == 'newt') {
+        back_type = 'newt'
+    }
+    if(card.back[2] == 'newt') {
+        back_type = 'newt'
+    }
+    if(card.back[3] == 'newt') {
+        back_type = 'newt'
+    }
+    if(card.back[4] == 'newt') {
+        back_type = 'newt'
+    }
+    if(card.back[1] == 'blood') {
+        back_type = 'blood'
+    }
+    if(card.back[2] == 'blood') {
+        back_type = 'blood'
+    }
+    if(card.back[3] == 'blood') {
+        back_type = 'blood'
+    }
+    if(card.back[4] == 'blood') {
+        back_type = 'blood'
+    }
+
+
+
 
     var cost = ""
     if(card.cost && card.cost.bat) {
@@ -220,12 +259,15 @@ cards.forEach((card) => {
     }
     if(card.cost && card.cost.blood) {
         cost += c(`blood`, card.cost)
+        pairs['blood_'+back_type] = 1 + (pairs['blood_'+back_type] || 0)
     }
     if(card.cost && card.cost.newt) {
         cost += c(`newt`, card.cost)
+        pairs['newt_'+back_type] = 1 + (pairs['newt_'+back_type] || 0)
     }
     if(card.cost && card.cost.uni) {
         cost += c(`uni`, card.cost)
+        pairs['uni_'+back_type] = 1 + (pairs['uni_'+back_type] || 0)
     }
 
 
