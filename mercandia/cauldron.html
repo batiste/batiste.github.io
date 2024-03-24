@@ -38,32 +38,42 @@
 
 <script>
 
+var c1 = {1: "bat", 2: "blood", 3: "eye", 4: "coal"}
+var c2 = {1: "blood", 2: "ogre", 3: "bat", 4: "mushroom"}
+var c3 = {1: "uni", 2: "coal", 3: "mushroom", 4: "eye"}
+var c4 = {1: "ogre", 2: "eye", 3: "blood", 4: "coal"}
+var c5 = {1: "newt", 2: "bat", 3: "mushroom", 4: "ogre"}
+var c6 = {1: "coal", 2: "bat", 3: "eye", 4: "uni"}
+var c7 = {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"}
+var c8 = {1: "mushroom", 2: "uni", 3: "coal", 4: "ogre"}
+var c9 = {1: "eye", 2: "newt", 3: "ogre", 4: "bat"}
+
 
 cards = [
     {
-        back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
+        back: c1,
         cost: {bat: 2, mushroom: 1, eye: 2, newt: 1},
         title: `Frothy Fiasco`,
         text: `Pick any 1 ingredient and put it in your hand. You don't draw for brewing this potion.`,
         type: 3,
     },
     {
-        "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
+        "back": c2,
         cost: {coal: 3, mushroom: 2, uni: 1},
         title: `Harmony Elixir`,
         text: `• Get an extra victory point for each set of three touching identical ingredients in the cauldron.`,
         type: 1,
     },
     {
-        "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
+        "back": c3,
         cost: {bat: 2, coal: 2, ogre: 1, blood: 1},
-        title: `Turbulent Soup`,
-        text: `Move 1 ingredient.<br>• When you toss or move an ingredient you 
-        may cover 2 quartiles.`,
+        title: `Wing Cover`,
+        text: `• When you toss an ingredient with a bat you 
+        may now cover 2 quartiles.`,
         type: 3,
     },
     {
-        "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
+        "back": c4,
         cost: {mushroom: 2, ogre: 2, newt: 1, bat: 1},
         title: `Corrupted Brew`,
         text: `
@@ -71,7 +81,7 @@ cards = [
         type: 2,
     },
     {
-        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
+        "back": c5,
         cost: {bat: 2, mushroom: 1, eye: 2, blood: 1},
         title: `Vapor Visions`,
         text: `Look at the first 3 cards of the deck and put 1 in your hand. 
@@ -79,28 +89,28 @@ cards = [
         type: 1,
     },
     {
-        "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
+        "back": c6,
         cost: {coal: 3, ogre: 2, blood: 1},
         title: `Dark Transmutation`,
         text: `• You may use coals in the cauldron as they were bat wings to brew your potions.`,
         type: 2,
     },
     {
-        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
+        "back": c7,
         cost: {bat: 3, ogre: 2, uni:1},
         title: `Winged Appetite`,
         text: `• Your opponent potions now costs 1 extra bat to complete.`,
         type: 2,
     },
     {
-        "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
+        "back": c8,
         cost: {coal: 2, mushroom: 1, eye:1, ogre:1, blood:1},
         title: `Crafty Substitution`,
         text: `• Before brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
         type: 3,
     },
     {
-        "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
+        "back": c9,
         cost: {mushroom: 3, blood:1, bat: 2},
         title: `Unicorn Collector`,
         text: `• Gain 1 victory point for each pair of visible unicorns in the cauldron.`,
@@ -108,61 +118,61 @@ cards = [
     },
     // --------
     {
-        back: {1: "bat", 2: "coal", 3: "eye", 4: "blood"},
+        back: c1,
         cost: {bat: 3, ogre: 2, newt: 1},
         title: ` Masterful Blend`,
         text: `• Before finalizing the position of an ingredient, you may draw your new card already.`,
         type: 1,
     },
     {
-        "back": {1: "blood", 2: "ogre", 3: "bat", 4: "coal"},
+        "back": c2,
         cost: {ogre: 1, eye: 2, uni: 1, coal: 2},
         title: `Effervescent Brew`,
         text: `• When brewing another potion, you may move an ingredient.`,
         type: 2,
     },
     {
-        "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
+        "back": c3,
         cost: {bat: 3, newt: 1, eye: 2},
         title: `Newt Affinity`,
         text: `• When brewing another potion, you may substitute one and only one ingredient by a newt.`,
         type: 1,
     },
     {
-        "back": {1: "ogre", 2: "mushroom", 3: "blood", 4: "eye"},
+        "back": c4,
         cost: {uni: 1, coal: 1, ogre: 2, eye: 2},
         title: `Love Potion`,
         text: `• Get an extra victory point for every pair of touching eyes in the cauldron. Each eye can only be part of one pair.`,
         type: 2,
     },
     {
-        "back": {1: "newt", 2: "coal", 3: "mushroom", 4: "ogre"},
+        "back": c5,
         cost: {uni: 1, coal: 2, eye: 1, ogre: 1, mushroom: 1},
         title: `Skim the Surface`,
         text: `Choose an ingredient that isn't covered by any others and shuffle it back into the deck.`,
     },
     {
-        "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
+        "back": c6,
         cost: {bat: 1, mushroom: 3, newt: 1, eye: 1},
         title: `Mushroom Poisoning`,
-        text: `• The coals in your opponent's potions must now be brewed with mushrooms instead.`,
+        text: `• The first coal in your opponent's potions must now be brewed with a mushroom instead.`,
         type: 2,
     },
     {
-        "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
+        "back": c7,
         cost: {bat: 1, coal:2,  eye: 2, uni: 1},
         title: `Indiscret Gaze`,
         text: `• When tossing an ingredient with an eye, you may look at your opponent's hand.`,
         type: 1,
     },
     {
-        "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
+        "back": c8,
         cost: {coal: 2, mushroom: 1, eye: 1, newt: 1, ogre: 1},
-        title: `Unstable Hand`,
-        text: `• After you tossed an ingredient, you may swap a card from your hand with the top card of the deck.`,
+        title: `Sooty Hand`,
+        text: `• After you tossed an ingredient with coal, you may swap a card from your hand with the top card of the deck.`,
     },
     {
-        "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
+        "back": c9,
         cost: {blood: 1, mushroom: 1, ogre: 1, bat: 1, coal: 2},
         title: `Botched Incantations`,
         text: `After drawing your card for this potion, you may shuffle your hand into the deck and draw the same number of cards.`,
@@ -172,6 +182,9 @@ cards = [
 cardsTxt = ""
 i = 0;
 var counts = {}
+var countss = {}
+var left_right = {}
+var top_bottom = {}
 var ingredients_count = {}
 var pairs = {}
 
@@ -184,10 +197,49 @@ cards.forEach((card) => {
 
     var back = card.back
 
-    counts[back["1"]] = (counts[back["1"]] || 0) + 1
-    counts[back["2"]] = (counts[back["2"]] || 0) + 1
-    counts[back["3"]] = (counts[back["3"]] || 0) + 1
-    counts[back["4"]] = (counts[back["4"]] || 0) + 1
+    function ts (n) {
+        return n + ':' + back[n]
+    }
+
+    counts[ts(1)] = (counts[ts(1)] || 0) + 1
+    counts[ts(2)] = (counts[ts(2)] || 0) + 1
+    counts[ts(3)] = (counts[ts(3)] || 0) + 1
+    counts[ts(4)] = (counts[ts(4)] || 0) + 1
+
+    function tss (n) {
+        return back[n]
+    }
+
+    countss[tss(1)] = (countss[tss(1)] || 0) + 1
+    countss[tss(2)] = (countss[tss(2)] || 0) + 1
+    countss[tss(3)] = (countss[tss(3)] || 0) + 1
+    countss[tss(4)] = (countss[tss(4)] || 0) + 1
+
+    function _left_right (n) {
+        if (n == 1 || n == 3) {
+            return 'left:' + back[n]
+        } else {
+            return 'right:' + back[n]
+        }
+    }
+
+    left_right[_left_right(1)] = (left_right[_left_right(1)] || 0) + 1
+    left_right[_left_right(2)] = (left_right[_left_right(2)] || 0) + 1
+    left_right[_left_right(3)] = (left_right[_left_right(3)] || 0) + 1
+    left_right[_left_right(4)] = (left_right[_left_right(4)] || 0) + 1
+
+    function _top_bottom (n) {
+        if (n == 1 || n == 2) {
+            return 'top:' + back[n]
+        } else {
+            return 'bottom:' + back[n]
+        }
+    }
+
+    top_bottom[_top_bottom(1)] = (top_bottom[_top_bottom(1)] || 0) + 1
+    top_bottom[_top_bottom(2)] = (top_bottom[_top_bottom(2)] || 0) + 1
+    top_bottom[_top_bottom(3)] = (top_bottom[_top_bottom(3)] || 0) + 1
+    top_bottom[_top_bottom(4)] = (top_bottom[_top_bottom(4)] || 0) + 1
 
     function c(t, cost) {
         var d = ''
