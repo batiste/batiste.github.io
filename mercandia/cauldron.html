@@ -82,7 +82,7 @@ cards = [
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
         cost: {coal: 3, ogre: 2, blood: 1},
         title: `Dark Transmutation`,
-        text: `• You may use coals as they were bat wings to brew your potions.`,
+        text: `• You may use coals in the cauldron as they were bat wings to brew your potions.`,
         type: 2,
     },
     {
@@ -94,16 +94,16 @@ cards = [
     },
     {
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
-        cost: {bat: 2, mushroom: 1, eye:1, ogre:1, blood:1},
+        cost: {coal: 2, mushroom: 1, eye:1, ogre:1, blood:1},
         title: `Crafty Substitution`,
-        text: `• When brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
+        text: `• Before brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
         type: 3,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
-        cost: {mushroom: 3, blood:1, coal: 2},
+        cost: {mushroom: 3, blood:1, bat: 2},
         title: `Unicorn Collector`,
-        text: `• Gain 1  victory point if there is 2 visible unicorns. Gain 2 instead for 3 or more visible unicorns.`,
+        text: `• Gain 1 victory point for each pair of visible unicorns in the cauldron.`,
         type: 1,
     },
     // --------
@@ -125,7 +125,7 @@ cards = [
         "back": {1: "uni", 2: "eye", 3: "mushroom", 4: "bat"},
         cost: {bat: 3, newt: 1, eye: 2},
         title: `Newt Affinity`,
-        text: `• When brewing a potion, you may substitute one and only one ingredient by a newt.`,
+        text: `• When brewing another potion, you may substitute one and only one ingredient by a newt.`,
         type: 1,
     },
     {
@@ -143,14 +143,14 @@ cards = [
     },
     {
         "back": {1: "bat", 2: "coal", 3: "eye", 4: "uni"},
-        cost: {coal: 1, mushroom: 3, newt: 1, eye: 1},
+        cost: {bat: 1, mushroom: 3, newt: 1, eye: 1},
         title: `Mushroom Poisoning`,
         text: `• The coals in your opponent's potions must now be brewed with mushrooms instead.`,
         type: 2,
     },
     {
         "back": {1: "coal", 2: "mushroom", 3: "bat", 4: "newt"},
-        cost: {bat: 2, coal:1,  eye: 2, uni: 1},
+        cost: {bat: 1, coal:2,  eye: 2, uni: 1},
         title: `Indiscret Gaze`,
         text: `• When tossing an ingredient with an eye, you may look at your opponent's hand.`,
         type: 1,
@@ -159,7 +159,7 @@ cards = [
         "back": {1: "eye", 2: "uni", 3: "coal", 4: "ogre"},
         cost: {coal: 2, mushroom: 1, eye: 1, newt: 1, ogre: 1},
         title: `Unstable Hand`,
-        text: `• Once per turn, you may swap a card from your hand with the top card of the deck.`,
+        text: `• After you tossed an ingredient, you may swap a card from your hand with the top card of the deck.`,
     },
     {
         "back": {1: "mushroom", 2: "newt", 3: "ogre", 4: "bat"},
