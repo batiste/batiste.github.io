@@ -54,22 +54,24 @@ cards = [
         back: c1,
         cost: {bat: 2, mushroom: 1, eye: 2, newt: 1},
         title: `Frothy Fiasco`,
-        text: `Pick any 1 ingredient and put it in your hand. You don't draw for brewing this potion.`,
+        text: `Pick any 1 ingredient and put it in your hand, 
+        then discard one card from your hand.`,
         type: 3,
     },
     {
         "back": c2,
         cost: {coal: 3, mushroom: 2, uni: 1},
         title: `Harmony Elixir`,
-        text: `• Get an extra victory point for each set of three touching identical ingredients in the cauldron.`,
+        text: `• Get a victory point for each triplet of identical adjacent ingredients. Diagonal count
+        as adjacent for this potion.`,
         type: 1,
     },
     {
         "back": c3,
         cost: {bat: 2, coal: 2, ogre: 1, blood: 1},
-        title: `Wing Cover`,
+        title: `Bat Barrier`,
         text: `• When you toss an ingredient with a bat you 
-        may now cover 2 quartiles.`,
+        may cover 2 sections instead of 1.`,
         type: 3,
     },
     {
@@ -84,8 +86,8 @@ cards = [
         "back": c5,
         cost: {bat: 2, mushroom: 1, eye: 2, blood: 1},
         title: `Vapor Visions`,
-        text: `Look at the first 3 cards of the deck and put 1 in your hand. 
-        You don't draw for brewing this potion. `,
+        text: `Look at the first 3 cards of the deck and put 1 in your hand,
+        then discard a card from your hand.`,
         type: 1,
     },
     {
@@ -106,7 +108,7 @@ cards = [
         "back": c8,
         cost: {coal: 2, mushroom: 1, eye:1, ogre:1, blood:1},
         title: `Crafty Substitution`,
-        text: `• Before brewing a potion, you may shuffle a card from your hand into the deck to replace a missing ingredient.`,
+        text: `• Before brewing a potion, you may discard a card from your hand to replace a missing ingredient.`,
         type: 3,
     },
     {
@@ -121,39 +123,39 @@ cards = [
         back: c1,
         cost: {bat: 3, ogre: 2, newt: 1},
         title: ` Masterful Blend`,
-        text: `• Before finalizing the position of an ingredient, you may draw your new card already.`,
+        text: `• Triplets of 3 different potions type gives you an extra victory point.`,
         type: 1,
     },
     {
         "back": c2,
         cost: {ogre: 1, eye: 2, uni: 1, coal: 2},
         title: `Effervescent Brew`,
-        text: `• When brewing another potion, you may move an ingredient.`,
+        text: `• After brewing another potion, you may move an ingredient.`,
         type: 2,
     },
     {
         "back": c3,
-        cost: {bat: 3, newt: 1, eye: 2},
+        cost: {bat: 1, newt: 1, eye: 2, ogre: 2},
         title: `Newt Affinity`,
         text: `• When brewing another potion, you may substitute one and only one ingredient by a newt.`,
         type: 1,
     },
     {
         "back": c4,
-        cost: {uni: 1, coal: 1, ogre: 2, eye: 2},
+        cost: {uni: 1, eye: 2, bat: 3},
         title: `Love Potion`,
-        text: `• Get an extra victory point for every pair of touching eyes in the cauldron. Each eye can only be part of one pair.`,
+        text: `• Get an extra victory point for every pair of adjacent eyes in the cauldron. Each eye can only be part of one pair.`,
         type: 2,
     },
     {
         "back": c5,
         cost: {uni: 1, coal: 2, eye: 1, ogre: 1, mushroom: 1},
         title: `Skim the Surface`,
-        text: `Choose an ingredient that isn't covered by any others and shuffle it back into the deck.`,
+        text: `Choose an ingredient that isn't covered by any others and discard it.`,
     },
     {
         "back": c6,
-        cost: {bat: 1, mushroom: 3, newt: 1, eye: 1},
+        cost: {bat: 1, mushroom: 2, newt: 1, eye: 1, ogre: 1},
         title: `Mushroom Poisoning`,
         text: `• The first coal in your opponent's potions must now be brewed with a mushroom instead.`,
         type: 2,
@@ -167,15 +169,15 @@ cards = [
     },
     {
         "back": c8,
-        cost: {coal: 2, mushroom: 1, eye: 1, newt: 1, ogre: 1},
+        cost: {coal: 2, mushroom: 2, eye: 1, newt: 1},
         title: `Sooty Hand`,
         text: `• After you tossed an ingredient with coal, you may swap a card from your hand with the top card of the deck.`,
     },
     {
         "back": c9,
-        cost: {blood: 1, mushroom: 1, ogre: 1, bat: 1, coal: 2},
+        cost: {blood: 1, mushroom: 1, ogre: 1, coal: 3},
         title: `Botched Incantations`,
-        text: `After drawing your card for this potion, you may shuffle your hand into the deck and draw the same number of cards.`,
+        text: `You may discard your hand and draw the same number of cards.`,
     },
 ]
 
@@ -187,6 +189,7 @@ var left_right = {}
 var top_bottom = {}
 var ingredients_count = {}
 var pairs = {}
+var triplets = {}
 
 cards.forEach((card) => {
 
@@ -295,9 +298,15 @@ cards.forEach((card) => {
 
     var cost = ""
     if(card.cost && card.cost.bat) {
+        if (card.cost.bat > 2) {
+            triplets['bat'] = 1 + (triplets['bat'] || 0)
+        }
         cost += c(`bat`, card.cost)
     }
     if(card.cost && card.cost.coal) {
+        if (card.cost.coal > 2) {
+            triplets['coal'] = 1 + (triplets['bat'] || 0)
+        }
         cost += c(`coal`, card.cost)
     }
     if(card.cost && card.cost.mushroom) {
