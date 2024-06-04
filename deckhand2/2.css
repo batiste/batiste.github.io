@@ -1,0 +1,181 @@
+
+html {
+    background-color: #404040;
+    -webkit-print-color-adjust: exact;
+    -webkit-filter: opacity(1);
+    color: #fff;
+    text-decoration: none;
+    font-family: sans-serif;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+.card {
+    background-color: transparent;
+    width: 69.088mm;
+    height: 94.2mm;
+}
+
+.card .inner {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+
+.config label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.config {
+    margin: 1em;
+}
+
+/* --- */
+
+.card .bg {
+    width: 100%;
+}
+
+.card .bg img {
+    width: 100%;
+}
+
+.bottom {
+    position: absolute;
+    top: 230px;
+    left:0;
+    right:0;
+    bottom: 0;
+    background-image: url(img/bg-bottom.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    border-top: 1px #000 solid;
+    box-shadow: 0px 0px 10px #000 ;
+    padding: 8px 26px;
+}
+
+.bottom .type {
+    border-top: 1px #0d0b0b solid;
+    height: 55px;
+    position: absolute;
+    right: 0px;
+    left: 0px;
+    bottom: 0px;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+.wild .type {
+    background-color: rgba(39, 162, 55, 0.8); 
+}
+
+.military .type {
+    background-color: rgba(199, 21, 21, 0.8); 
+}
+
+.resource {
+    display: flex;
+    justify-content: center;
+}
+
+.resource img {
+    width: 30px;
+    height: 30px;
+    border-radius: 50px;
+    padding: 2px;
+    border: 1px #1c1c1c solid;
+    background-color: #9eaebb;
+    background-color: #f6e2c4;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
+    margin: 0 6px;
+}
+
+.type .resource img {
+    width: 30px;
+}
+
+
+.card .top-bar {
+    width: 100%;
+    height: 47px;
+    background-image: url(img/top.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 24px;
+    left: 0px;
+}
+
+.price-tag {
+    width: 35px;
+    /* height: 100px; */
+    background-image: url(img/price-tag.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 55px;
+    left: 22px;
+    rotate: -2deg;
+    padding-top: 20px;
+    padding-bottom: 10px;
+    background-position: bottom;
+}
+
+/* .price-tag img {
+    width: 100%;
+} */
+
+.price-tag .resource img {
+    width: 20px;
+    height: 20px;
+    border-radius: 0;
+    border: 0;
+    background:none;
+    box-shadow: none;
+}
+
+
+.card .title {
+    font-family: 'Lobster Two', cursive;
+    letter-spacing: 0.1px;
+    font-size: 16px;
+    position: absolute;
+    right: 0;
+    top:37px;
+    left:16px;
+    color: #000000;
+    text-align: center;
+    rotate: -2deg;
+    /* text-shadow: 1.3px 1.4px black; */
+}
+
+.card .coin-value {
+    font-family: 'Lobster Two', cursive;
+    letter-spacing: 0.1px;
+    font-size: 18px;
+    position: absolute;
+    top: 6px;
+    left: 27px;
+    width: 16px;
+    rotate: 2deg;
+    color: #000000;
+    text-align: center;
+    /* text-shadow: 1.3px 1.4px black; */
+}
+
+
+.card .mpc {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 69.088mm;
+    height: 93.98mm;
+    background-image: url(img/mpc.png);
+    background-size: cover;
+    /* display: none; */
+    /* border-radius: 5px; */
+}

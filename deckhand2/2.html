@@ -1,0 +1,329 @@
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="2.css">
+<script src="./cards.en.js"></script>
+<script src="../deckhand/rasterizeHTML.allinone.js"></script>
+</head>
+
+<body>
+
+<h2>DeckHand 2</h2>
+
+
+<div class="config">
+    General config
+    <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
+    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
+</div>
+
+
+<!-- <div style="clear: both;">
+    <img width="240" src="https://raw.githubusercontent.com/batiste/batiste.github.io/03451c0b33ddc125cb38a1750487a939a1397f1c/pirates-2/back-character.jpg">
+    <img src="./back-character.jpg" width="240">
+</div> -->
+
+<p>
+    <button onclick="selectAll(this)">Select All</button>
+    <button onclick="downloadSelection(this)">Download selection</button>
+</p>
+
+
+<!-- class="lang-fr" -->
+
+<style>
+
+
+
+</style>
+
+
+<div id="cards" class="lang-fr">
+
+</div>
+
+
+
+
+</div>
+
+</body>
+
+<script>
+
+
+var i = 1;
+var cards_total = "";
+var res = (t) => `
+    <div class="resource">
+        <img src="img/${t}.png">
+    </div>
+    `
+
+cards.forEach((c) => {
+
+    cost = "";
+
+    c.cost.forEach((co) => {
+        if (co == "p") {
+            cost += res("parrot")
+        }
+        if (co == "c") {
+            cost += res("coin")
+        }
+        if (co == "g") {
+            cost += res("gun")
+        }
+    })
+    if (cost) {
+        cost = `<div class="price-tag">${cost}</div>`
+    }
+
+    build = "";
+    if (c.build) {
+        c.build.forEach((b) => {
+            if (b == "p") {
+                build += res("parrot")
+            }
+            if (b == "c") {
+                build += res("coin")
+            }
+            if (b == "g") {
+                build += res("gun")
+            }
+        })
+        if (build) {
+            build = `<div class="type">${build}</div>`
+        }
+    }
+
+
+    var card_template = `
+    <div>
+        <div class="card ${c.type || ""}" title="${c.title}">
+            <div class="inner">
+                ${cost}
+
+                <div class="top-bar">
+                    <span class="coin-value">${c.coin}</span>
+                </div>
+
+                <div class="bg">
+                    <img src="${c.img}">
+                </div>
+
+                <div class="bottom">
+                    <span class="resource">
+                        <img src="img/parrot.png">
+                    </span>
+
+                    ${build}
+                </div>
+                
+                <div class="mpc"></div>
+                <span class="title">${c.title}</span>
+            </div>
+        </div>
+        <button onclick="downloadCardButton(this)">Download #${i}</button><br>
+        <label><input type="checkbox" id="check-pdf-${i}" 
+                onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>
+    </div>
+    `
+
+    cards_total += card_template;
+
+    i++;
+})
+
+document.getElementById('cards').innerHTML = cards_total;
+
+</script>
+
+
+
+<script>
+
+    var lang = 'en';
+
+
+    var format = 'png'
+    function updateFormat(e) {
+        if (e.checked) {
+            format = 'jpg'
+        } else {
+            format = 'png'
+        }
+    }
+
+    var preparePrintClass = 'preparePrint';
+    function outputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrint';
+        } else { 
+            preparePrintClass = 'preparePrintNotMPC';
+        }
+    }
+
+    function PNPoutputFormat(e) {
+        if (e.checked) { 
+            preparePrintClass = 'preparePrintPNP';
+        } else { 
+            preparePrintClass = 'preparePrint';
+        }
+    }
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+"."+format;
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function changePrintSelection(e) {
+        cards.forEach((card) => {
+            if(card.id == parseInt(e.dataset.cardId, 10)) {
+                card['pdf'] = e.checked
+            }
+        })
+    }
+
+    var zoom = 3.16
+    function updateZoom(e) {
+        zoom = parseFloat(e.value)
+    }
+
+    function downloadCardButton(e) {
+        downloadCard(e.parentNode.querySelector('.card'))
+    }
+
+    function downloadCard(card, cb) {
+        createCardImage(card, (canvas) => {
+            var title = card.title.toLowerCase().replace(/\s/g, '-')
+            if (format=='png') {
+                img = canvas.toDataURL();
+            } else {
+                img = canvas.toDataURL("image/jpeg", 0.9)
+            }
+            download(img, title);
+            console.log('download', title);
+            cb && cb(title);
+        })
+    }
+
+    function downloadBookletFace(id) {
+        createBookletImage(document.getElementById(id || 'face'))
+    }
+
+    function downloadBookletBack(id) {
+        createBookletImage(document.getElementById(id || 'back'))
+    }
+
+    function createCardImage(card, cb) {
+
+        card.classList.add(preparePrintClass)
+        cls = ""
+        if (lang) {
+            cls = 'class="lang-fr"'
+        }
+
+        var h = `
+            <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+            <link rel="stylesheet" href="2.css">
+            <style>
+                html, body {margin:0; padding:0; background-color: transparent;}
+                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            <div ${cls}>
+                ${card.outerHTML}
+            </div>`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas)
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            card.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+            cb && cb(canvas)
+        }, function error(e) {
+            console.log("Error on card", card.title, e)
+        });
+    }
+
+var toRender = 0;
+
+function bindImage(element, card, cb) {
+    if (card['canvas']) {
+        return cb();
+    }
+    createCardImage(element, (canvas) => {
+        card['canvas'] = canvas
+        cb();
+    })
+}
+
+function selectAll() { 
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        card.pdf = true;
+        document.getElementById('check-pdf-'+card['id']).checked = true
+    }
+}
+
+function downloadSelection(e) {
+    e.disable = true;
+    var previous = e.innerHTML
+    toRender = 0;
+    cards_to_render = {}
+    queue = []
+    rendering = {}
+
+    e.innerHTML = 'Rendering..., please wait, it might take a while.'
+
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        if (card.pdf) {
+            toRender = toRender + 1;
+            queue.push(card)
+        }
+    }
+
+    function render(card) {
+        rendering[card.title] = card
+        var e = document.getElementById('card-'+card['id'])
+        downloadCard(e, () => {
+            delete rendering[card.title];
+            toRender = toRender - 1;
+        })
+    }
+
+    var inter = setInterval(() => {
+        if (queue.length > 0) {
+            if (queue.length > 0 || Object.keys(rendering).length > 0) {
+                c = queue.pop();
+                render(c)
+            }
+            e.innerHTML = `Starting rendering of cards (${toRender}).`
+            return
+        }
+        clearInterval(inter);
+        e.innerHTML = 'Done!'
+        setTimeout(() => {
+            e.innerHTML = previous;
+        }, 2000)
+    }, 1000);
+}
+
+
+</script>
+</html>
