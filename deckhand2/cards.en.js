@@ -8,7 +8,9 @@ var cards = [
         "cost": ['p', 'p', 'c'],
         "img": "cards/parrot.png",
         "type": "wild",
-        "build": ['p', 'p']
+        "build": ['p', 'p'],
+        "play_text": `Draw a card.`,
+        "build_text": "Something short.",
     },
     {
         "title": "Cannoneer's Guild",
@@ -17,7 +19,7 @@ var cards = [
         "img": "cards/military.png",
         "type": "military",
         "play_text": `<img src="img/gun.png" class="gun">`,
-        "build_text": "Guns in the building cost of your bids are counted in the total bid.",
+        "build_text": "Guns in the building cost of your bids are added to the bid.",
         "build": ['g']
     }
 

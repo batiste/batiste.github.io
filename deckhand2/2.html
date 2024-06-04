@@ -98,19 +98,24 @@ cards.forEach((c) => {
                 build += res("gun")
             }
         })
-        if (build) {
-            build = `<div class="type">${build}</div>`
-        }
-    }
 
-    var build_text = c.build_text || ""
-    if (build_text) {
-        build_text = `<div class="text build_text"><img src="img/hammer.png" class="hammer"> <b>:</b> ${build_text}</div>`
+        if (build) {
+            var build_text = c.build_text || ""
+            if (build_text) {
+                build_text = `
+                    <div class="build_text">${build_text}</div>
+                `
+            }
+            build = `<div class="type line">
+                ${build_text}
+                <div class="resources">${build}</div>
+            </div>`
+        }
     }
 
     var play_text = c.play_text || ""
     if (play_text) {
-        play_text = `<div class="text play_text"><img src="img/bolt.png" class="hammer"> <b>:</b> ${play_text}</div>`
+        play_text = `<div class="line play_text"><img src="img/bolt.png" class="hammer"> <b>:</b> ${play_text}</div>`
     }
 
     var card_template = `
@@ -128,10 +133,7 @@ cards.forEach((c) => {
                 </div>
 
                 <div class="bottom">
-                    <div class="texts">
-                        ${play_text}
-                        ${build_text}
-                    </div>
+                    ${play_text}
                     ${build}
                 </div>
                 
