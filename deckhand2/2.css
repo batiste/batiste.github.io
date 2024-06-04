@@ -5,7 +5,9 @@ html {
     -webkit-filter: opacity(1);
     color: #fff;
     text-decoration: none;
-    font-family: sans-serif;
+    font-family: "PT Sans", "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
 }
 
 a, a:visited {
@@ -45,7 +47,7 @@ a, a:visited {
 
 .bottom {
     position: absolute;
-    top: 230px;
+    top: 210px;
     left:0;
     right:0;
     bottom: 0;
@@ -54,7 +56,10 @@ a, a:visited {
     background-repeat: no-repeat;
     border-top: 1px #000 solid;
     box-shadow: 0px 0px 10px #000 ;
-    padding: 8px 26px;
+    /* padding: 8px 26px; */
+    display: flex;
+    /* justify-items: flex-end; */
+    flex-direction: column;
 }
 
 .bottom .type {
@@ -69,12 +74,51 @@ a, a:visited {
     justify-content: center;
 }
 
+.bottom .text {
+    color: #000;
+    font-size: 13px;
+    text-rendering: geometricPrecision;
+    padding: 8px 26px;
+    /* text-shadow: 0.2px 0.2px #646464; */
+}
+
+.texts {
+    height: 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.play_text {
+    background-color: rgba(255, 196, 0, 0.5);
+    border-bottom: 1px rgba(210, 161, 0, 0.8) solid;
+}
+
+.build_text {
+    /* background-color: rgba(73, 51, 0, 0.5) */
+}
+
+.hammer {
+    width: 17px;
+    display: inline-flex;
+    margin-right: 0px;
+    margin-bottom: -4px;
+}
+
+.gun {
+    width: 17px;
+    display: inline-flex;
+    margin-right: 0px;
+    margin-bottom: -4px;
+    margin-left: 2px;
+}
+
 .wild .type {
-    background-color: rgba(39, 162, 55, 0.8); 
+    background-color: rgb(60, 90, 180, 0.9); 
 }
 
 .military .type {
-    background-color: rgba(199, 21, 21, 0.8); 
+    background-color: rgb(173, 55, 55, 0.9); 
 }
 
 .resource {
@@ -83,10 +127,14 @@ a, a:visited {
 }
 
 .resource img {
+
+}
+
+.type .resource {
     width: 30px;
     height: 30px;
     border-radius: 50px;
-    padding: 2px;
+    padding: 3px;
     border: 1px #1c1c1c solid;
     background-color: #9eaebb;
     background-color: #f6e2c4;
@@ -95,7 +143,8 @@ a, a:visited {
 }
 
 .type .resource img {
-    width: 30px;
+    width: 29px;
+    height: 29px;
 }
 
 
@@ -130,12 +179,13 @@ a, a:visited {
 } */
 
 .price-tag .resource img {
-    width: 20px;
-    height: 20px;
+    width: 21px;
+    height: 21px;
     border-radius: 0;
     border: 0;
     background:none;
     box-shadow: none;
+    padding: 2px 0;
 }
 
 
@@ -146,10 +196,11 @@ a, a:visited {
     position: absolute;
     right: 0;
     top:37px;
-    left:16px;
+    left:70px;
+    right: 60px;
     color: #000000;
     text-align: center;
-    rotate: -2deg;
+    rotate: -1deg;
     /* text-shadow: 1.3px 1.4px black; */
 }
 

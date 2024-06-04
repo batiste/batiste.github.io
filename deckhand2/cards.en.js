@@ -11,13 +11,14 @@ var cards = [
         "build": ['p', 'p']
     },
     {
-        "title": "Military Power",
+        "title": "Cannoneer's Guild",
         "coin": 3,
         "cost": ['c', 'c', 'c', 'g'],
         "img": "cards/military.png",
         "type": "military",
-        "text": "",
-        "build": ['g', 'g']
+        "play_text": `<img src="img/gun.png" class="gun">`,
+        "build_text": "Guns in the building cost of your bids are counted in the total bid.",
+        "build": ['g']
     }
 
 

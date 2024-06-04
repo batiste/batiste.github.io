@@ -5,6 +5,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="2.css">
 <script src="./cards.en.js"></script>
 <script src="../deckhand/rasterizeHTML.allinone.js"></script>
@@ -102,6 +103,15 @@ cards.forEach((c) => {
         }
     }
 
+    var build_text = c.build_text || ""
+    if (build_text) {
+        build_text = `<div class="text build_text"><img src="img/hammer.png" class="hammer"> <b>:</b> ${build_text}</div>`
+    }
+
+    var play_text = c.play_text || ""
+    if (play_text) {
+        play_text = `<div class="text play_text"><img src="img/bolt.png" class="hammer"> <b>:</b> ${play_text}</div>`
+    }
 
     var card_template = `
     <div>
@@ -118,10 +128,10 @@ cards.forEach((c) => {
                 </div>
 
                 <div class="bottom">
-                    <span class="resource">
-                        <img src="img/parrot.png">
-                    </span>
-
+                    <div class="texts">
+                        ${play_text}
+                        ${build_text}
+                    </div>
                     ${build}
                 </div>
                 
