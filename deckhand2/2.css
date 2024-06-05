@@ -14,6 +14,12 @@ a, a:visited {
     color: #fff;
 }
 
+#cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
 .card {
     background-color: transparent;
     width: 69.088mm;
@@ -68,9 +74,13 @@ a, a:visited {
     left: 0px;
     bottom: 0px; */
     /* padding: 5px; */
-    padding-bottom: 24px;
+    /* padding-bottom: 24px; */
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
+}
+
+.bottom >*:last-child {
+    padding-bottom: 27px; 
 }
 
 .bottom {
@@ -84,7 +94,7 @@ a, a:visited {
 }
 
 .line {
-    padding: 8px 26px;
+    padding: 7px 26px;
     /* text-shadow: 0.2px 0.2px #646464; */
 }
 
@@ -96,7 +106,7 @@ a, a:visited {
 }
 
 .play_text {
-    background-color: rgba(255, 196, 0, 0.5);
+    background-color: rgba(255, 196, 0, 0.4);
     border-bottom: 1px rgba(210, 161, 0, 0.8) solid;
 }
 
@@ -121,12 +131,24 @@ a, a:visited {
     margin-left: 2px;
 }
 
+.coin {
+    width: 21px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -6px;
+    margin-left: 2px; 
+}
+
 .wild .type {
     background-color: rgb(60, 90, 180, 0.9); 
 }
 
 .military .type {
     background-color: rgb(173, 55, 55, 0.9); 
+}
+
+.merchant .type {
+    background-color: rgba(132, 84, 20, 0.9); 
 }
 
 .resource {
@@ -163,7 +185,7 @@ a, a:visited {
     background-size:contain;
     background-repeat: no-repeat;
     position: absolute;
-    top: 24px;
+    top: 23px;
     left: 0px;
 }
 
@@ -197,14 +219,14 @@ a, a:visited {
 }
 
 
-.card .title {
+.title {
     font-family: 'Lobster Two', cursive;
     letter-spacing: 0.1px;
-    font-size: 16px;
+    font-size: 15.5px;
     position: absolute;
     right: 0;
-    top:37px;
-    left:70px;
+    top:38.5px;
+    left:74px;
     right: 60px;
     color: #000000;
     text-align: center;
@@ -212,14 +234,37 @@ a, a:visited {
     /* text-shadow: 1.3px 1.4px black; */
 }
 
-.card .coin-value {
+.title span:first-child {
+    rotate: 2deg;
+    display: inline-flex;
+}
+
+.title span:last-child {
+    rotate: -2deg;
+    display: inline-flex;
+}
+
+.large_title {
+    top:38px;
+}
+
+.large_title span:first-child {
+    rotate: 3deg;
+}
+
+.large_title span:last-child {
+    rotate: -3deg;
+}
+
+
+.coin-value {
     font-family: 'Lobster Two', cursive;
     letter-spacing: 0.1px;
-    font-size: 18px;
+    font-size: 19px;
     position: absolute;
-    top: 6px;
+    top: 5px;
     left: 27px;
-    width: 16px;
+    width: 17px;
     rotate: 2deg;
     color: #000000;
     text-align: center;

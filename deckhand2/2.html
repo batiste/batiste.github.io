@@ -66,37 +66,37 @@ var res = (t) => `
     </div>
     `
 
+var get_res = (r) => {
+    if (r == "p") {
+        return res("parrot")
+    }
+    if (r == "c") {
+        return res("coin")
+    }
+    if (r == "g") {
+        return res("gun")
+    }
+    if (r == "r") {
+        return res("rum")
+    }
+}
+
 cards.forEach((c) => {
 
     cost = "";
-
-    c.cost.forEach((co) => {
-        if (co == "p") {
-            cost += res("parrot")
+    if (c.cost) {
+        c.cost.forEach((co) => {
+            cost += get_res(co)
+        })
+        if (cost) {
+            cost = `<div class="price-tag">${cost}</div>`
         }
-        if (co == "c") {
-            cost += res("coin")
-        }
-        if (co == "g") {
-            cost += res("gun")
-        }
-    })
-    if (cost) {
-        cost = `<div class="price-tag">${cost}</div>`
     }
 
     build = "";
     if (c.build) {
         c.build.forEach((b) => {
-            if (b == "p") {
-                build += res("parrot")
-            }
-            if (b == "c") {
-                build += res("coin")
-            }
-            if (b == "g") {
-                build += res("gun")
-            }
+            build += get_res(b)
         })
 
         if (build) {
@@ -118,6 +118,21 @@ cards.forEach((c) => {
         play_text = `<div class="line play_text"><img src="img/bolt.png" class="hammer"> <b>:</b> ${play_text}</div>`
     }
 
+    var bid_text = c.bid_text || ""
+    if (bid_text) {
+        bid_text = `<div class="line bid_text"><img src="img/hammer.png" class="hammer"> <b>:</b> ${bid_text}</div>`
+    }
+
+    var title_class = "";
+    var split_title = c.title;
+    if (split_title.length > 14) {
+        title_class = "large_title"
+    }
+    if (split_title.split(" ").length > 1) {
+        split_title = "<span>" + c.title.split(" ").join("</span> <span>") + "</span>"
+    }
+
+
     var card_template = `
     <div>
         <div class="card ${c.type || ""}" title="${c.title}">
@@ -134,11 +149,12 @@ cards.forEach((c) => {
 
                 <div class="bottom">
                     ${play_text}
+                    ${bid_text}
                     ${build}
                 </div>
                 
                 <div class="mpc"></div>
-                <span class="title">${c.title}</span>
+                <span class="title ${title_class}">${split_title}</span>
             </div>
         </div>
         <button onclick="downloadCardButton(this)">Download #${i}</button><br>
