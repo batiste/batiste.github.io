@@ -15,7 +15,7 @@ var cards = [
     {
         "title": "Cannoneer's Guild",
         "coin": 3,
-        "cost": ['g', 'r', 'c', 'c'],
+        "cost": ['g', 'r', 'r', 'c', 'c', 'c'],
         "img": "cards/military.png",
         "type": "military",
         "play_text": `<img src="img/gun.png" class="gun"> <img src="img/gun.png" class="gun">`,
@@ -52,6 +52,18 @@ var cards = [
         "type": "merchant",
         // "play_text": `<img src="img/coin.png" class="coin"> for each <img src="img/parrot.png" class="gun"> built.`,
         "bid_text": `If you win a bid with this card, draw a card.`,
+        // "build_text": "Guns in the building cost of your bids are added to the bid.",
+        "build": ['r']
+    },
+
+    {
+        "title": "Rum Merchant",
+        "coin": 2,
+        "cost": ['c', 'c'],
+        "img": "cards/merchant2.png",
+        "type": "merchant",
+        "play_text": `<img src="img/coin.png" class="coin"> <img src="img/rum.png" class="hammer">.`,
+        // "bid_text": `If you win a bid with this card, draw a card.`,
         // "build_text": "Guns in the building cost of your bids are added to the bid.",
         "build": ['r']
     }
