@@ -123,6 +123,13 @@ a, a:visited {
     margin-bottom: -4px;
 }
 
+.bolt {
+    width: 19px;
+    display: inline-flex;
+    margin-right: 0px;
+    margin-bottom: -4px;   
+}
+
 .gun {
     width: 17px;
     display: inline-flex;
@@ -132,10 +139,18 @@ a, a:visited {
 }
 
 .coin {
-    width: 21px;
+    width: 23px;
     display: inline-flex;
     margin-right: 1px;
     margin-bottom: -6px;
+    margin-left: 2px; 
+}
+
+.parrot {
+    width: 20px;
+    display: inline-flex;
+    margin-right: 2px;
+    margin-bottom: -5px;
     margin-left: 2px; 
 }
 
@@ -144,7 +159,7 @@ a, a:visited {
     display: inline-flex;
     margin-right: 1px;
     margin-bottom: -4px;
-    margin-left: 0px; 
+    margin-left: -1px; 
 }
 
 .wild .type {

@@ -81,6 +81,19 @@ var get_res = (r) => {
     }
 }
 
+var icon = (t) => {
+    return `<img src="img/${t}.png" class="${t}">`
+}
+
+var replace_icons = (txt) => {
+    txt = txt.replace(/:hammer:/g, icon('hammer'))
+    txt = txt.replace(/:gun:/g, icon('gun'))
+    txt = txt.replace(/:parrot:/g, icon('parrot'))
+    txt = txt.replace(/:rum:/g, icon('rum'))
+    txt = txt.replace(/:coin:/g, icon('coin'))
+    return txt
+}
+
 cards.forEach((c) => {
 
     cost = "";
@@ -101,6 +114,7 @@ cards.forEach((c) => {
 
         if (build) {
             var build_text = c.build_text || ""
+            build_text = replace_icons(build_text)
             if (build_text) {
                 build_text = `
                     <div class="build_text"><div>${build_text}</div></div>
@@ -114,11 +128,13 @@ cards.forEach((c) => {
     }
 
     var play_text = c.play_text || ""
+    play_text = replace_icons(play_text)
     if (play_text) {
-        play_text = `<div class="line play_text"><img src="img/bolt.png" class="hammer"> <b>:</b> ${play_text}</div>`
+        play_text = `<div class="line play_text"><img src="img/bolt.png" class="bolt"> <b>:</b> ${play_text}</div>`
     }
 
     var bid_text = c.bid_text || ""
+    bid_text = replace_icons(bid_text)
     if (bid_text) {
         bid_text = `<div class="line bid_text"><img src="img/hammer.png" class="hammer"> <b>:</b> ${bid_text}</div>`
     }
