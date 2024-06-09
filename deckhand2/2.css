@@ -86,6 +86,7 @@ a, a:visited {
 .bottom {
     color: #000;
     font-size: 13px;
+    line-height: 1.4;
     text-rendering: geometricPrecision;
 }
 
@@ -99,7 +100,7 @@ a, a:visited {
 }
 
 .texts {
-    height: 64px;
+    /* height: 64px; */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -117,33 +118,64 @@ a, a:visited {
 }
 
 .hammer {
-    width: 17px;
-    display: inline-flex;
-    margin-right: 0px;
-    margin-bottom: -4px;
-}
-
-.bolt {
     width: 19px;
     display: inline-flex;
-    margin-right: 0px;
-    margin-bottom: -4px;   
+    margin-bottom: -4px;
+    width: 19px;
+    display: inline-flex; 
+    border: 1.5px solid #392f05c5;
+    padding: 2px;
+    border-radius: 3px;
+    background-color: #e7d6a2e0;
+    float: left;
+    margin-right: 2px;
+    margin-top: -2px;
+    margin-bottom: -3px;
+}
+    
+.bolt {
+    width: 19px;
+    display: inline-flex; 
+    border: 1.5px solid #3d3303cb;
+    padding: 2px;
+    border-radius: 3px;
+    background-color: #ffd000e0;
+    float: left;
+    margin-right: 2px;
+    margin-top: -2px;
+    margin-bottom: -3px;
 }
 
 .gun {
-    width: 17px;
+    width: 19px;
     display: inline-flex;
-    margin-right: 0px;
+    margin-right: 2px;
     margin-bottom: -4px;
     margin-left: 2px;
 }
 
 .coin {
-    width: 23px;
+    width: 22px;
     display: inline-flex;
     margin-right: 1px;
     margin-bottom: -6px;
     margin-left: 2px; 
+}
+
+.arrow {
+    width: 22px;
+    display: inline-flex;
+    margin-right: 2px;
+    margin-bottom: -6px;
+    margin-left: 2px; 
+}
+
+.draw-1, .draw-2 {
+    width: 22px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -5px;
+    margin-left: 1px; 
 }
 
 .parrot {
@@ -155,11 +187,11 @@ a, a:visited {
 }
 
 .rum {
-    width: 21px;
+    width: 20px;
     display: inline-flex;
     margin-right: 1px;
     margin-bottom: -4px;
-    margin-left: -1px; 
+    margin-left: 1px; 
 }
 
 .wild .type {

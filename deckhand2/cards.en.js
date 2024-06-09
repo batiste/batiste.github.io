@@ -9,37 +9,19 @@ var cards = [
         "img": "cards/parrot.png",
         "type": "wild",
         "build": ['p'],
-        "play_text": `:parrot: and draw a card.`,
-    },
-    {
-        "title": "Cannoneer's Guild",
-        "coin": 3,
-        "cost": ['g', 'r', 'r', 'c', 'c'],
-        "img": "cards/military.png",
-        "type": "military",
-        "play_text": `:gun: :gun:`,
-        "build_text": `:hammer: <b>:</b> :gun: <b>=</b> :coin:`,
-        "build": ['g']
+        "play_text": `:parrot::draw-1:`,
     },
 
     {
-        "title": "Walk the Plank",
+        "title": "Blue Parrot",
         "coin": 1,
-        "cost": ['c', 'c'],
-        "img": "cards/walk.png",
-        "type": "military",
-        "play_text": `:gun: and draw a card.`,
-        "build": ['g']
-    },
-
-    {
-        "title": "Plunder",
-        "coin": 2,
-        "cost": ['c', 'g'],
-        "img": "cards/plunder.png",
-        "type": "military",
-        "play_text": `Draw 2 cards.`,
-        "build": ['g']
+        "cost": ['p'],
+        "img": "cards/parrot-2.png",
+        "type": "wild",
+        // "play_text": `:coin::coin:`,
+        "build": ['p'],
+        "play_text": ':parrot::parrot:',
+        "build_text": `:parrot::trans::draw-1:`
     },
 
     {
@@ -48,8 +30,42 @@ var cards = [
         "cost": ['p', 'p', 'c'],
         "img": "cards/sanctuary.png",
         "type": "wild",
-        "play_text": `:parrot: <b>=</b> :coin:.`,
+        "play_text": `:parrot::coin:`,
         "build": ['p', 'p']
+    },
+
+    {
+        "title": "Grand Escape",
+        "coin": 2,
+        "cost": ['p', 'c'],
+        "img": "cards/freed_monkeys.jpeg",
+        "type": "wild",
+        "play_text": `:gun::rum:`,
+        // "bid_text": `If you win a bid with this card, draw a card.`,
+        "build": ['p', 'r']
+    },
+
+    {
+        "title": "Armed Orangutan",
+        "coin": 2,
+        "cost": ['r', 'p', 'g'],
+        "img": "cards/armed-orangutan.jpeg",
+        "type": "wild",
+        "bid_text": `:gun::trans::coin:`,
+        "build_text": `:gun::trans::coin::coin::coin:`,
+        "build": ['p'],
+    },
+
+
+    {
+        "title": "Wild Winds",
+        "coin": 2,
+        "cost": ['p', 'g', 'r', 'c'],
+        "img": "cards/wind.png",
+        "type": "merchant",
+        // "play_text": `:coin::coin:`,
+        "build": ['r'],
+        "build_text": `:rum::coin::trans::draw-1:`
     },
 
     {
@@ -58,7 +74,7 @@ var cards = [
         "cost": ['r', 'c'],
         "img": "cards/merchant.jpeg",
         "type": "merchant",
-        "bid_text": `If you win the bid, draw a card.`,
+        "bid_text": `If you win the bid: :draw-1:`,
         "build": ['r']
     },
 
@@ -68,30 +84,9 @@ var cards = [
         "cost": ['c', 'c'],
         "img": "cards/merchant2.png",
         "type": "merchant",
-        "play_text": `:coin: :rum:`,
+        "play_text": `:coin::rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
         "build": ['r']
-    },
-
-    {
-        "title": "Grand Escape",
-        "coin": 2,
-        "cost": ['p', 'c'],
-        "img": "cards/freed_monkeys.jpeg",
-        "type": "wild",
-        "play_text": `:gun: :rum:`,
-        // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build": ['p', 'r']
-    },
-
-    {
-        "title": "Amazon Warrior",
-        "coin": 2,
-        "cost": ['g', 'p'],
-        "img": "cards/warrior.jpeg",
-        "type": "military",
-        "bid_text": `:parrot: <b>=</b> :coin: `,
-        "build": ['g']
     },
 
     {
@@ -111,19 +106,8 @@ var cards = [
         "img": "cards/animal_market.png",
         "type": "merchant",
         "play_text": `:parrot::coin:`,
-        "build_text": `:coin: <b>=</b> :parrot:`,
+        "build_text": `:coin::trans::parrot:`,
         "build": ['r']
-    },
-
-    {
-        "title": "Wild Winds",
-        "coin": 2,
-        "cost": ['p', 'g', 'r', 'c'],
-        "img": "cards/wind.png",
-        "type": "wild",
-        // "play_text": `:coin::coin:`,
-        "build": ['p'],
-        "build_text": `Draw an extra card at cleanup`
     },
 
     {
@@ -132,19 +116,71 @@ var cards = [
         "cost": ['r', 'p'],
         "img": "cards/loaded.png",
         "type": "merchant",
-        "bid_text": `:rum: <b>=</b> :coin:`,
-        "build_text": `:rum: <b>=</b> :coin:`,
+        "bid_text": `:rum::trans::coin:`,
+        "build_text": `:rum::trans::coin::coin:`,
         "build": ['r'],
     },
 
     {
-        "title": "Armed Orangutan",
+        "title": "Sneak Attack",
         "coin": 2,
-        "cost": ['r', 'p', 'g'],
-        "img": "cards/armed-orangutan.jpeg",
-        "type": "wild",
-        "bid_text": `:parrot::gun: <b>=</b> :coin:`,
-        "build_text": `:parrot::gun: <b>=</b> :coin::coin::coin:`,
-        "build": ['p'],
-    }
+        "cost": ['r', 'g', 'g'],
+        "img": "cards/sneak_attack.png",
+        "type": "military",
+        "play_text": `:gun::coin::coin:`,
+        "build_text": `:gun::coin::trans::draw-1:`,
+        "build": ['g'],
+    },
+
+    {
+        "title": "Skeleton Crew",
+        "coin": 2,
+        "cost": ['g', 'g', 'c'],
+        "img": "cards/skeleton-crew.png",
+        "type": "military",
+        "play_text": `if you have no cards in hand: :coin::draw-2:&nbsp;`,
+        // "build_text": ``,
+        "build": ['g'],
+    },
+
+    {
+        "title": "Cannoneer's Guild",
+        "coin": 3,
+        "cost": ['g', 'r', 'r', 'c', 'c'],
+        "img": "cards/military.png",
+        "type": "military",
+        "play_text": `:gun: :gun:`,
+        "build_text": `:hammer: :gun::trans::coin:`,
+        "build": ['g']
+    },
+
+    {
+        "title": "Walk the Plank",
+        "coin": 1,
+        "cost": ['c', 'c'],
+        "img": "cards/walk.png",
+        "type": "military",
+        "play_text": `:gun::draw-1:.`,
+        "build": ['g']
+    },
+
+    {
+        "title": "Plunder",
+        "coin": 2,
+        "cost": ['c', 'g'],
+        "img": "cards/plunder.png",
+        "type": "military",
+        "play_text": `:draw-2:`,
+        "build": ['g']
+    },
+
+    {
+        "title": "Amazon Warrior",
+        "coin": 2,
+        "cost": ['g', 'p'],
+        "img": "cards/warrior.jpeg",
+        "type": "military",
+        "bid_text": `:parrot::trans::coin: `,
+        "build": ['g']
+    },
 ]
