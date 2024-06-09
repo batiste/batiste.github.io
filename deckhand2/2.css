@@ -108,7 +108,7 @@ a, a:visited {
 
 .play_text {
     background-color: rgba(255, 196, 0, 0.4);
-    border-bottom: 1px rgba(210, 161, 0, 0.8) solid;
+    border-bottom: 1px rgba(210, 161, 0, 0.7) solid;
 }
 
 .build_text {
@@ -126,7 +126,7 @@ a, a:visited {
     border: 1.5px solid #392f05;
     padding: 2px;
     border-radius: 3px;
-    background-color: #e7d6a2;
+    background-color: #f6e2c4;
     float: left;
     margin-right: 4px;
     margin-top: -2px;
@@ -139,7 +139,7 @@ a, a:visited {
     border: 1.5px solid #3d3303;
     padding: 2px;
     border-radius: 3px;
-    background-color: #ffd000;
+    background-color: #f6e2c4;
     float: left;
     margin-right: 4px;
     margin-top: -2px;
@@ -205,13 +205,19 @@ a, a:visited {
 }
 
 .merchant .type {
-    background-color: rgba(97, 59, 8, 0.9); 
+    background-color: rgba(103, 64, 13, 0.871); 
+}
+
+.dark .type {
+    background-color: rgba(17, 30, 57, 0.9); 
 }
 
 .resource {
     display: flex;
     justify-content: center;
 }
+
+
 
 .resource img {
 
@@ -223,7 +229,6 @@ a, a:visited {
     border-radius: 50px;
     padding: 3px;
     border: 1px #1c1c1c solid;
-    background-color: #9eaebb;
     background-color: #f6e2c4;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
     margin-left: 6px;

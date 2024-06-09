@@ -10,6 +10,7 @@ var cards = [
         "type": "wild",
         "build": ['p'],
         "play_text": `:parrot::draw-1:`,
+        "build_text": `:parrot::trans::coin::coin:`,
     },
 
     {
@@ -27,7 +28,7 @@ var cards = [
     {
         "title": "Animal Sanctuary",
         "coin": 3,
-        "cost": ['p', 'p', 'c'],
+        "cost": ['p', 'c'],
         "img": "cards/sanctuary.png",
         "type": "wild",
         "play_text": `:parrot::coin:`,
@@ -81,7 +82,7 @@ var cards = [
     {
         "title": "Wild Winds",
         "coin": 2,
-        "cost": ['p', 'g', 'r', 'c'],
+        "cost": ['p', 'r', 'c'],
         "img": "cards/wind.png",
         "type": "merchant",
         // "play_text": `:coin::coin:`,
@@ -96,7 +97,8 @@ var cards = [
         "img": "cards/merchant.jpeg",
         "type": "merchant",
         "bid_text": `If you win the bid: :draw-1:`,
-        "build": ['r']
+        "build": ['r'],
+        "build_text": `:rum::coin::trans::draw-1:`,
     },
 
     {
@@ -107,7 +109,8 @@ var cards = [
         "type": "merchant",
         "play_text": `:coin::rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build": ['r']
+        "build": ['r'],
+        "build_text": `:coin::trans::rum::rum:`,
     },
 
     {
@@ -191,7 +194,8 @@ var cards = [
         "cost": ['c', 'c'],
         "img": "cards/walk.png",
         "type": "military",
-        "play_text": `:gun::draw-1:.`,
+        "play_text": `:gun::draw-1:`,
+        "build_text": `:gun::trans::gun::coin:`,
         "build": ['g']
     },
 
@@ -202,6 +206,7 @@ var cards = [
         "img": "cards/plunder.png",
         "type": "military",
         "play_text": `:draw-2:`,
+        "build_text": `:gun::trans::gun::coin:`,
         "build": ['g']
     },
 
@@ -216,12 +221,13 @@ var cards = [
     },
 
     {
-        "title": "Brawl On Deck",
+        "title": "Brawl",
         "coin": 1,
         "cost": ['g'],
         "img": "cards/brawl.png",
         "type": "military",
         "play_text": `:gun::trans::draw-2: `,
+        "build_text": `:gun::trans::gun::coin:`,
         "build": ['g']
     },
 ]
