@@ -110,36 +110,36 @@ cards.forEach((c) => {
     }
 
     build = "";
-    if (c.build) {
+    if (c.build || c.build_text) {
         c.build.forEach((b) => {
             build += get_res(b)
         })
 
-        if (build) {
-            var build_text = c.build_text || ""
-            build_text = replace_icons(build_text)
-            if (build_text) {
-                build_text = `
-                    <div class="build_text"><div>${build_text}</div></div>
-                `
-            }
-            build = `<div class="type line">
-                ${build_text}
-                <div class="resources">${build}</div>
-            </div>`
+        // if (build) {
+        var build_text = c.build_text || ""
+        build_text = replace_icons(build_text)
+        if (build_text) {
+            build_text = `
+                <div class="build_text"><div>${build_text}</div></div>
+            `
         }
+        build = `<div class="type line">
+            ${build_text}
+            <div class="resources">${build}</div>
+        </div>`
+        // }
     }
 
     var play_text = c.play_text || ""
     play_text = replace_icons(play_text)
     if (play_text) {
-        play_text = `<div class="line play_text"><img src="img/bolt.png" class="bolt">&nbsp;${play_text}</div>`
+        play_text = `<div class="line play_text"><img src="img/bolt.png" class="bolt">${play_text}</div>`
     }
 
     var bid_text = c.bid_text || ""
     bid_text = replace_icons(bid_text)
     if (bid_text) {
-        bid_text = `<div class="line bid_text"><img src="img/hammer.png" class="hammer">&nbsp;${bid_text}</div>`
+        bid_text = `<div class="line bid_text"><img src="img/hammer.png" class="hammer">${bid_text}</div>`
     }
 
     var title_class = "";

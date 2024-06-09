@@ -56,6 +56,27 @@ var cards = [
         "build": ['p'],
     },
 
+    {
+        "title": "Deep Sea Horror",
+        "coin": 1,
+        "cost": ['g'],
+        "img": "cards/deep-sea-horror.png",
+        "type": "wild",
+        "bid_text": `:coin:`,
+        "build_text": `:hammer::parrot::trans::coin:`,
+        "build": ['p'],
+    },
+
+    {
+        "title": "Giant Crab",
+        "coin": 2,
+        "cost": ['g', 'p'],
+        "img": "cards/crab.png",
+        "type": "wild",
+        "play_text": `:parrot::trans::coin::coin::coin:`,
+        "build": ['p', 'c'],
+    },
+
 
     {
         "title": "Wild Winds",
@@ -65,7 +86,7 @@ var cards = [
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r'],
-        "build_text": `:rum::coin::trans::draw-1:`
+        "build_text": `:rum::trans::draw-1:`
     },
 
     {
@@ -92,11 +113,21 @@ var cards = [
     {
         "title": "Rich Pirate",
         "coin": 1,
-        "cost": ['c', 'c', 'c'],
+        "cost": ['c', 'p'],
         "img": "cards/rich.png",
         "type": "merchant",
         "play_text": `:coin::coin:`,
         "build": ['c']
+    },
+
+    {
+        "title": "Water Bank",
+        "coin": 2,
+        "cost": ['c', 'c', 'c', 'r'],
+        "img": "cards/water-bank.png",
+        "type": "merchant",
+        "bid_text": `:parrot::rum::gun:`,
+        "build": ['c', 'c']
     },
 
     {
@@ -106,7 +137,7 @@ var cards = [
         "img": "cards/animal_market.png",
         "type": "merchant",
         "play_text": `:parrot::coin:`,
-        "build_text": `:coin::trans::parrot:`,
+        "build_text": `:coin::trans::parrot::parrot:`,
         "build": ['r']
     },
 
@@ -128,17 +159,17 @@ var cards = [
         "img": "cards/sneak_attack.png",
         "type": "military",
         "play_text": `:gun::coin::coin:`,
-        "build_text": `:gun::coin::trans::draw-1:`,
+        "build_text": `:gun::trans::draw-1:`,
         "build": ['g'],
     },
 
     {
         "title": "Skeleton Crew",
         "coin": 2,
-        "cost": ['g', 'g', 'c'],
+        "cost": ['g'],
         "img": "cards/skeleton-crew.png",
         "type": "military",
-        "play_text": `if you have no cards in hand: :coin::draw-2:&nbsp;`,
+        "play_text": `if you have no cards <br>in hand: :coin::draw-2:`,
         // "build_text": ``,
         "build": ['g'],
     },
@@ -146,7 +177,7 @@ var cards = [
     {
         "title": "Cannoneer's Guild",
         "coin": 3,
-        "cost": ['g', 'r', 'r', 'c', 'c'],
+        "cost": ['g', 'r', 'c'],
         "img": "cards/military.png",
         "type": "military",
         "play_text": `:gun: :gun:`,
@@ -181,6 +212,16 @@ var cards = [
         "img": "cards/warrior.jpeg",
         "type": "military",
         "bid_text": `:parrot::trans::coin: `,
+        "build": ['g']
+    },
+
+    {
+        "title": "Brawl On Deck",
+        "coin": 1,
+        "cost": ['g'],
+        "img": "cards/brawl.png",
+        "type": "military",
+        "play_text": `:gun::trans::draw-2: `,
         "build": ['g']
     },
 ]
