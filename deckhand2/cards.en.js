@@ -78,6 +78,54 @@ var cards = [
         "build": ['p', 'c'],
     },
 
+    {
+        "title": "Sidekick",
+        "coin": 1,
+        "cost": ['g', 'p'],
+        "img": "cards/sidekick.png",
+        "type": "wild",
+        "bid_text": `:rum::trans::coin:`,
+        "play_text": `:coin::gun:`,
+        "build": ['p'],
+    },
+
+    {
+        "title": "Drunk Marmosets",
+        "coin": 2,
+        "cost": ['r', 'p', 'p'],
+        "img": "cards/marmosets.png",
+        "type": "wild",
+        "bid_text": `if you lose the bid: :draw-1:`,
+        "build_text": `:parrot::rum::trans::draw-1:`,
+        "build": ['p'],
+    },
+
+    {
+        "title": "Smuggler",
+        "coin": 1,
+        "cost": ['p', 'r'],
+        "img": "cards/scruf.png",
+        "type": "merchant",
+        // "play_text": `:coin::coin:`,
+        "build": ['r'],
+        // "play_text": `:parrot::rum:`,
+        "bid_text": `:parrot::rum:`,
+        "build_text": `:parrot::trans::draw-1:`
+    },
+
+
+    {
+        "title": "Bustling Market",
+        "coin": 2,
+        "cost": ['p', 'r', 'c'],
+        "img": "cards/busy.png",
+        "type": "merchant",
+        // "play_text": `:coin::coin:`,
+        "build": ['r', 'c'],
+        // "play_text": `:parrot::rum:`,
+        "bid_text": `:rum::coin:`,
+        "build_text": `:coin::trans::parrot::rum:`
+    },
 
     {
         "title": "Wild Winds",
@@ -229,5 +277,29 @@ var cards = [
         "play_text": `:gun::trans::draw-2: `,
         "build_text": `:gun::trans::gun::coin:`,
         "build": ['g']
+    },
+
+    {
+        "title": "Locksmith",
+        "coin": 1,
+        "cost": ['g', 'r'],
+        "img": "cards/locksmith.png",
+        "type": "military",
+        // "bid_text": `:coin: in settled cards count.`,
+        "play_text": `:coin::coin:`,
+        "build_text": `:hammer::coin::trans::coin:`,
+        "build": ['g'],
+    },
+
+    {
+        "title": "Haunted Cave",
+        "coin": 2,
+        "cost": ['g', 'g', 'c'],
+        "img": "cards/haunted.png",
+        "type": "military",
+        // "bid_text": `:coin: in settled cards count.`,
+        "play_text": `:coin::coin::gun:`,
+        // "build_text": `:hammer::coin::trans::coin:`,
+        "build": ['g', 'g'],
     },
 ]
