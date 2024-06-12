@@ -469,7 +469,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Ghost Crew',
-    'text': '+1 :Card:, +1 :Coin:. You may put this card on the top of its owner’s deck. If there are 3 or <br>more Attacks in the supply: +1 :Action:',
+    'text': '+1 :Card:, +1 :Coin:. You may put this card on the top of its owner’s deck. If there are 3 or <br>more Attacks in the supply: +1 :Action:.',
     'img': 'attacks/ghost-crew.png',
     'flavor': 'Trade your mortal life, enjoy eternal retribution.',
     'type': 'attack',
