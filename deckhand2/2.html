@@ -20,7 +20,6 @@
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
     <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
-    <label>MPC image format<input type="checkbox" checked onchange="outputFormat(this)"></label>
 </div>
 
 
@@ -154,7 +153,7 @@ cards.forEach((c) => {
 
     var card_template = `
     <div>
-        <div class="card ${c.type || ""}" title="${c.title}">
+        <div class="card ${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 ${cost}
 
@@ -183,7 +182,7 @@ cards.forEach((c) => {
     `
 
     cards_total += card_template;
-
+    c.id = i;
     i++;
 })
 
@@ -208,21 +207,6 @@ document.getElementById('cards').innerHTML = cards_total;
     }
 
     var preparePrintClass = 'preparePrint';
-    function outputFormat(e) {
-        if (e.checked) { 
-            preparePrintClass = 'preparePrint';
-        } else { 
-            preparePrintClass = 'preparePrintNotMPC';
-        }
-    }
-
-    function PNPoutputFormat(e) {
-        if (e.checked) { 
-            preparePrintClass = 'preparePrintPNP';
-        } else { 
-            preparePrintClass = 'preparePrint';
-        }
-    }
 
     function download(url, title) {
         var a = document.createElement('a')
@@ -279,9 +263,11 @@ document.getElementById('cards').innerHTML = cards_total;
         if (lang) {
             cls = 'class="lang-fr"'
         }
+        console.log(card.outerHTML)
 
         var h = `
             <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="2.css">
             <style>
                 html, body {margin:0; padding:0; background-color: transparent;}

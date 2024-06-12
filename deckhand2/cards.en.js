@@ -4,7 +4,7 @@ var cards = [
 
     {
         "title": "Wild Parrot",
-        "coin": 2,
+        "coin": 3,
         "cost": ['p', 'c'],
         "img": "cards/parrot.png",
         "type": "wild",
@@ -15,7 +15,7 @@ var cards = [
 
     {
         "title": "Blue Parrot",
-        "coin": 1,
+        "coin": 2,
         "cost": ['p'],
         "img": "cards/parrot-2.png",
         "type": "wild",
@@ -27,7 +27,7 @@ var cards = [
 
     {
         "title": "Animal Sanctuary",
-        "coin": 3,
+        "coin": 4,
         "cost": ['p', 'c'],
         "img": "cards/sanctuary.png",
         "type": "wild",
@@ -37,7 +37,7 @@ var cards = [
 
     {
         "title": "Grand Escape",
-        "coin": 2,
+        "coin": 3,
         "cost": ['p', 'c'],
         "img": "cards/freed_monkeys.jpeg",
         "type": "wild",
@@ -48,29 +48,29 @@ var cards = [
 
     {
         "title": "Armed Orangutan",
-        "coin": 2,
+        "coin": 3,
         "cost": ['r', 'p', 'g'],
         "img": "cards/armed-orangutan.jpeg",
         "type": "wild",
-        "bid_text": `:gun::trans::coin:`,
+        // "bid_text": `:gun::trans::coin:`,
         "build_text": `:gun::trans::coin::coin::coin:`,
         "build": ['p'],
     },
 
     {
         "title": "Deep Sea Horror",
-        "coin": 1,
+        "coin": 2,
         "cost": ['g'],
         "img": "cards/deep-sea-horror.png",
         "type": "wild",
-        "bid_text": `:coin:`,
-        "build_text": `:hammer::parrot::trans::coin:`,
+        // "bid_text": `:coin:`,
+        // "build_text": `:hammer::parrot::trans::coin:`,
         "build": ['p'],
     },
 
     {
         "title": "Giant Crab",
-        "coin": 2,
+        "coin": 3,
         "cost": ['g', 'p'],
         "img": "cards/crab.png",
         "type": "wild",
@@ -80,56 +80,56 @@ var cards = [
 
     {
         "title": "Sidekick",
-        "coin": 1,
+        "coin": 2,
         "cost": ['g', 'p'],
         "img": "cards/sidekick.png",
         "type": "wild",
-        "bid_text": `:rum::trans::coin:`,
+        // "bid_text": `:rum::trans::coin:`,
         "play_text": `:coin::gun:`,
         "build": ['p'],
     },
 
     {
         "title": "Drunk Marmosets",
-        "coin": 2,
+        "coin": 3,
         "cost": ['r', 'p', 'p'],
         "img": "cards/marmosets.png",
         "type": "wild",
-        "bid_text": `if you lose the bid: :draw-1:`,
+        // "bid_text": `if you lose the bid: :draw-1:`,
         "build_text": `:parrot::rum::trans::draw-1:`,
         "build": ['p'],
     },
 
     {
         "title": "Smuggler",
-        "coin": 1,
+        "coin": 2,
         "cost": ['p', 'r'],
         "img": "cards/scruf.png",
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r'],
         // "play_text": `:parrot::rum:`,
-        "bid_text": `:parrot::rum:`,
+        // "bid_text": `:parrot::rum:`,
         "build_text": `:parrot::trans::draw-1:`
     },
 
 
     {
         "title": "Bustling Market",
-        "coin": 2,
+        "coin": 3,
         "cost": ['p', 'r', 'c'],
         "img": "cards/busy.png",
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r', 'c'],
         // "play_text": `:parrot::rum:`,
-        "bid_text": `:rum::coin:`,
+        // "bid_text": `:rum::coin:`,
         "build_text": `:coin::trans::parrot::rum:`
     },
 
     {
         "title": "Wild Winds",
-        "coin": 2,
+        "coin": 3,
         "cost": ['p', 'r', 'c'],
         "img": "cards/wind.png",
         "type": "merchant",
@@ -140,18 +140,18 @@ var cards = [
 
     {
         "title": "Spice Merchant",
-        "coin": 1,
+        "coin": 2,
         "cost": ['r', 'c'],
         "img": "cards/merchant.jpeg",
         "type": "merchant",
-        "bid_text": `If you win the bid: :draw-1:`,
+        // "bid_text": `If you win the bid: :draw-1:`,
         "build": ['r'],
         "build_text": `:rum::coin::trans::draw-1:`,
     },
 
     {
         "title": "Rum Merchant",
-        "coin": 2,
+        "coin": 3,
         "cost": ['c', 'c'],
         "img": "cards/merchant2.png",
         "type": "merchant",
@@ -163,7 +163,7 @@ var cards = [
 
     {
         "title": "Rich Pirate",
-        "coin": 1,
+        "coin": 2,
         "cost": ['c', 'p'],
         "img": "cards/rich.png",
         "type": "merchant",
@@ -173,17 +173,17 @@ var cards = [
 
     {
         "title": "Water Bank",
-        "coin": 2,
+        "coin": 3,
         "cost": ['c', 'c', 'c', 'r'],
         "img": "cards/water-bank.png",
         "type": "merchant",
-        "bid_text": `:parrot::rum::gun:`,
+        // "bid_text": `:parrot::rum::gun:`,
         "build": ['c', 'c']
     },
 
     {
         "title": "Animal Market",
-        "coin": 2,
+        "coin": 3,
         "cost": ['p', 'c', 'r'],
         "img": "cards/animal_market.png",
         "type": "merchant",
@@ -194,18 +194,18 @@ var cards = [
 
     {
         "title": "Loaded Cargo",
-        "coin": 1,
+        "coin": 2,
         "cost": ['r', 'p'],
         "img": "cards/loaded.png",
         "type": "merchant",
-        "bid_text": `:rum::trans::coin:`,
+        // "bid_text": `:rum::trans::coin:`,
         "build_text": `:rum::trans::coin::coin:`,
         "build": ['r'],
     },
 
     {
         "title": "Sneak Attack",
-        "coin": 2,
+        "coin": 3,
         "cost": ['r', 'g', 'g'],
         "img": "cards/sneak_attack.png",
         "type": "military",
@@ -216,7 +216,7 @@ var cards = [
 
     {
         "title": "Skeleton Crew",
-        "coin": 2,
+        "coin": 3,
         "cost": ['g'],
         "img": "cards/skeleton-crew.png",
         "type": "military",
@@ -227,18 +227,18 @@ var cards = [
 
     {
         "title": "Cannoneer's Guild",
-        "coin": 3,
+        "coin": 4,
         "cost": ['g', 'r', 'c'],
         "img": "cards/military.png",
         "type": "military",
         "play_text": `:gun: :gun:`,
-        "build_text": `:hammer: :gun::trans::coin:`,
+        // "build_text": `:hammer: :gun::trans::coin:`,
         "build": ['g']
     },
 
     {
         "title": "Walk the Plank",
-        "coin": 1,
+        "coin": 2,
         "cost": ['c', 'c'],
         "img": "cards/walk.png",
         "type": "military",
@@ -249,7 +249,7 @@ var cards = [
 
     {
         "title": "Plunder",
-        "coin": 2,
+        "coin": 3,
         "cost": ['c', 'g'],
         "img": "cards/plunder.png",
         "type": "military",
@@ -260,17 +260,17 @@ var cards = [
 
     {
         "title": "Amazon Warrior",
-        "coin": 2,
+        "coin": 3,
         "cost": ['g', 'p'],
         "img": "cards/warrior.jpeg",
         "type": "military",
-        "bid_text": `:parrot::trans::coin: `,
+        // "bid_text": `:parrot::trans::coin: `,
         "build": ['g']
     },
 
     {
         "title": "Brawl",
-        "coin": 1,
+        "coin": 2,
         "cost": ['g'],
         "img": "cards/brawl.png",
         "type": "military",
@@ -281,19 +281,19 @@ var cards = [
 
     {
         "title": "Locksmith",
-        "coin": 1,
+        "coin": 2,
         "cost": ['g', 'r'],
         "img": "cards/locksmith.png",
         "type": "military",
         // "bid_text": `:coin: in settled cards count.`,
         "play_text": `:coin::coin:`,
-        "build_text": `:hammer::coin::trans::coin:`,
+        // "build_text": `:hammer::coin::trans::coin:`,
         "build": ['g'],
     },
 
     {
         "title": "Haunted Cave",
-        "coin": 2,
+        "coin": 3,
         "cost": ['g', 'g', 'c'],
         "img": "cards/haunted.png",
         "type": "military",
