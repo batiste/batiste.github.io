@@ -17,6 +17,7 @@ a, a:visited {
     width: 69.088mm;
     height: 94.2mm;
     perspective: 1000px;
+    overflow: hidden;
 }
 
 .card-container {
