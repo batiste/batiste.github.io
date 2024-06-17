@@ -5,14 +5,14 @@ var cards = [
     {
         "title": "Return to Port",
         "coin": 2,
-        "cost": ['r'],
+        "cost": ['p'],
         "img": "cards/loaded.png",
-        "type": "merchant",
+        "type": "wild",
         // "bid_text": `:rum::trans::coin:`,
         // "build_text": `:rum::trans::coin::coin:`,
-        "play_text": 'Return 5.',
-        "build_text": 'Return 3.',
-        "build": ['r'],
+        "play_text": 'Return 4, Refresh 2',
+        "build_text": 'Return 3, Refresh 3',
+        "build": ['p'],
     },
 
     {
@@ -23,9 +23,9 @@ var cards = [
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r'],
-        "play_text": `Settle 1.`,
+        "play_text": `Build 1`,
         // "bid_text": `:parrot::rum:`,
-        "build_text": `Settle 1.`
+        "build_text": `Build 1`
     },
 
     // {
@@ -46,9 +46,23 @@ var cards = [
         "cost": ['g'],
         "img": "cards/brawl.png",
         "type": "military",
-        "play_text": `Plunder 1.`,
-        "build_text": `Plunder 1.`,
+        "play_text": `Buy 1`,
+        "build_text": `Buy 1`,
         "build": ['g']
+    },
+
+    {
+        "title": "Bustling Market",
+        "coin": 1,
+        "cost": ['c'],
+        "img": "cards/busy.png",
+        "type": "merchant",
+        // "play_text": `:coin::coin:`,
+        "build": ['r'],
+        "play_text": 'Produce 2',
+        // "play_text": `:parrot::rum:`,
+        // "bid_text": `:rum::coin:`,
+        "build_text": `Produce 1`
     },
 
     {
@@ -57,34 +71,45 @@ var cards = [
         "cost": ['c'],
         "img": "cards/plunder.png",
         "type": "military",
-        "play_text": `Take 1.`,
-        "build_text": `Plunder 1.`,
+        "play_text": `Buy 1`,
+        "build_text": `Buy 1`,
         "build": ['g']
     },
 
     {
-        "title": "Bustling Market",
-        "coin": 2,
-        "cost": ['c'],
-        "img": "cards/busy.png",
-        "type": "merchant",
-        // "play_text": `:coin::coin:`,
-        "build": ['r'],
-        "play_text": 'Return 1 and Produce 1.',
-        // "play_text": `:parrot::rum:`,
-        // "bid_text": `:rum::coin:`,
-        "build_text": `Return 1 and Produce 1.`
-    },
-
-    {
-        "title": "Spice Trade",
+        "title": "Emerald Trade",
         "coin": 2,
         "cost": ['p', 'r'],
         "img": "cards/animal_market.png",
         "type": "merchant",
-        "play_text": `Produce 2.`,
-        "build_text": `Produce 2.`,
-        "build": ['r']
+        "play_text": `Produce 2`,
+        "build_text": `Produce 2`,
+        "build": ['r', 'c']
+    },
+
+    {
+        "title": "Rum Merchant",
+        "coin": 2,
+        "cost": ['r', 'c'],
+        "img": "cards/merchant2.png",
+        "type": "merchant",
+        "play_text": `Build 1, Produce :rum:`,
+        // "bid_text": `If you win a bid with this card, draw a card.`,
+        "build": ['r', 'c'],
+        "build_text": `Trade 2`,
+    },
+
+
+    {
+        "title": "Spice Merchant",
+        "coin": 2,
+        "cost": ['r'],
+        "img": "cards/merchant.jpeg",
+        "type": "merchant",
+        "play_text": `Build 1, Produce :rum:`,
+        // "bid_text": `If you win the bid: :draw-1:`,
+        "build": ['r'],
+        "build_text": `:rum: :trans: Return all`,
     },
 
 
@@ -96,19 +121,19 @@ var cards = [
         "type": "wild",
         "build": ['p'],
         "play_text": `Return 1, Produce 2`,
-        "build_text": `:parrot::trans: Produce 3.`,
+        "build_text": `Produce :parrot::parrot:`,
     },
 
     {
         "title": "Blue Parrot",
         "coin": 2,
-        "cost": ['p'],
+        "cost": ['p', 'c'],
         "img": "cards/parrot-2.png",
         "type": "wild",
         // "play_text": `:coin::coin:`,
         "build": ['p'],
-        "play_text": 'Produce 1, Play again.',
-        "build_text": `1 VP per :parrot:`
+        "play_text": 'Produce 1, Return 2',
+        "build_text": `Return 2, Produce :parrot:`
     },
 
     {
@@ -117,8 +142,8 @@ var cards = [
         "cost": ['g'],
         "img": "cards/skeleton-crew.png",
         "type": "military",
-        "play_text": `1 Plunder. If you have no cards in hand: Return 1.`,
-        // "build_text": ``,
+        "play_text": `Buy 1`,
+        "build_text": `Buy 1`,
         "build": ['g'],
     },
 
@@ -128,8 +153,9 @@ var cards = [
         "cost": ['p', 'c'],
         "img": "cards/sanctuary.png",
         "type": "wild",
-        "play_text": `Settle 1. Return 1 :parrot:.`,
-        "build": ['p', 'p']
+        "play_text": `Build 1. Return 1.`,
+        "build": ['p'],
+        "build_text": `Produce :parrot::parrot::parrot:`,
     },
 
     {
@@ -138,7 +164,7 @@ var cards = [
         "cost": ['p', 'c'],
         "img": "cards/freed_monkeys.jpeg",
         "type": "wild",
-        "play_text": `:gun::rum:`,
+        "play_text": `Produce :parrot::gun::rum::coin:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
         "build": ['p', 'r', 'g']
     },
@@ -149,30 +175,43 @@ var cards = [
         "cost": ['p', 'g'],
         "img": "cards/armed-orangutan.jpeg",
         "type": "wild",
-        "play_text": `Produce 3.`,
-        "build_text": `:gun::trans: Produce 3.`,
+        "play_text": `Produce :gun::gun::gun:.`,
+        "build_text": `Produce :gun::gun::gun:`,
         "build": ['p'],
     },
 
     {
         "title": "Deep Sea Horror",
-        "coin": 2,
-        "cost": ['g'],
+        "coin": 3,
+        "cost": ['p', 'c'],
         "img": "cards/deep-sea-horror.png",
         "type": "wild",
-        // "bid_text": `:coin:`,
-        // "build_text": `:hammer::parrot::trans::coin:`,
+        "play_text": `Activate 2 buildings, Produce 1.`,
+        "build_text": `Activate 2 other buildings`,
+        // "build_text": `.`,
         "build": ['p'],
+    },
+
+    {
+        "title": "Water Bank",
+        "coin": 3,
+        "cost": ['c', 'c', 'r'],
+        "img": "cards/water-bank.png",
+        "type": "merchant",
+        // "bid_text": `:parrot::rum::gun:`,
+        "play_text": "Build 1.",
+        "build_text": `Produce :coin::coin::coin:`,
+        "build": ['c']
     },
 
     {
         "title": "Giant Crab",
         "coin": 3,
-        "cost": ['g', 'p'],
+        "cost": ['g', 'c'],
         "img": "cards/crab.png",
         "type": "wild",
-        "play_text": `:parrot::trans::coin::coin::coin:`,
-        "build": ['p', 'c'],
+        "play_text": `Produce :gun::parrot::coin:`,
+        "build": ['p', 'c', 'g'],
     },
 
     {
@@ -182,8 +221,8 @@ var cards = [
         "img": "cards/sidekick.png",
         "type": "wild",
         // "bid_text": `:rum::trans::coin:`,
-        "play_text": `:coin::gun:`,
-        "build": ['p'],
+        "play_text": `Move any resource, Build 1`,
+        "build": ['p', 'g'],
     },
 
     {
@@ -198,29 +237,6 @@ var cards = [
     },
 
     {
-        "title": "Spice Merchant",
-        "coin": 2,
-        "cost": ['r', 'c'],
-        "img": "cards/merchant.jpeg",
-        "type": "merchant",
-        // "bid_text": `If you win the bid: :draw-1:`,
-        "build": ['r'],
-        "build_text": `:rum::coin::trans::draw-1:`,
-    },
-
-    {
-        "title": "Rum Merchant",
-        "coin": 3,
-        "cost": ['c', 'c'],
-        "img": "cards/merchant2.png",
-        "type": "merchant",
-        "play_text": `:coin::rum:`,
-        // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build": ['r'],
-        "build_text": `:coin::trans::rum::rum:`,
-    },
-
-    {
         "title": "Rich Pirate",
         "coin": 2,
         "cost": ['c', 'p'],
@@ -228,16 +244,6 @@ var cards = [
         "type": "merchant",
         "play_text": `:coin::coin:`,
         "build": ['c']
-    },
-
-    {
-        "title": "Water Bank",
-        "coin": 3,
-        "cost": ['c', 'c', 'c', 'r'],
-        "img": "cards/water-bank.png",
-        "type": "merchant",
-        // "bid_text": `:parrot::rum::gun:`,
-        "build": ['c', 'c']
     },
 
     {
@@ -258,7 +264,6 @@ var cards = [
         "img": "cards/skeleton-crew.png",
         "type": "military",
         "play_text": `if you have no cards <br>in hand: :coin::draw-2:`,
-        // "build_text": ``,
         "build": ['g'],
     },
 
@@ -285,7 +290,7 @@ var cards = [
     },
 
     {
-        "title": "Plunder",
+        "title": "Buy",
         "coin": 3,
         "cost": ['c', 'g'],
         "img": "cards/plunder.png",
