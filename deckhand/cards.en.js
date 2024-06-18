@@ -107,7 +107,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Fist Fight',
-    'text': '+1 :Coin:<br><i>(Increase your coins by 1.)</i>',
+    'text': '+1 :Coin:.<br><i>(Increase your coins by 1.)</i>',
     'flavor': 'Pirate friendships start with a fight.',
     'img': 'attacks/fist-fight.png',
     'type': 'attack',
@@ -918,7 +918,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': `Raid on Port Royal`,
-    'text': `+1 :Coin:, + :Reload:<br>At the start of your turn, if there are at <br>least 4 Attacks in your stash: +1 :Action:.
+    'text': `+1 :Coin:, + :Reload:.<br>At the start of your turn, if there are at <br>least 4 Attacks in your stash: +1 :Action:.
     <span class="extension-sign">e1</span>`,
     'flavor': 'Sanctuary to cinders, memories to smoke.',
     'img': 'ext/raid.png',
