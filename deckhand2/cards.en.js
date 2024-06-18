@@ -5,27 +5,27 @@ var cards = [
     {
         "title": "Return to Port",
         "coin": 2,
-        "cost": ['p'],
+        // "cost": ['p'],
         "img": "cards/loaded.png",
         "type": "wild",
         // "bid_text": `:rum::trans::coin:`,
         // "build_text": `:rum::trans::coin::coin:`,
         "play_text": 'Return 4, Refresh 2',
-        "build_text": 'Return 3, Refresh 3',
+        // "build_text": 'Return 3, Refresh 3',
         "build": ['p'],
     },
 
     {
         "title": "Engineer",
         "coin": 1,
-        "cost": ['r'],
+        // "cost": ['r'],
         "img": "cards/scruf.png",
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r'],
         "play_text": `Build 1`,
         // "bid_text": `:parrot::rum:`,
-        "build_text": `Build 1`
+        // "build_text": `Build 1`
     },
 
     // {
@@ -43,11 +43,11 @@ var cards = [
     {
         "title": "Brawl",
         "coin": 1,
-        "cost": ['g'],
+        // "cost": ['g'],
         "img": "cards/brawl.png",
         "type": "military",
         "play_text": `Buy 1`,
-        "build_text": `Buy 1`,
+        // "build_text": `Buy 1`,
         "build": ['g']
     },
 
@@ -59,7 +59,7 @@ var cards = [
         "type": "merchant",
         // "play_text": `:coin::coin:`,
         "build": ['r'],
-        "play_text": 'Produce 2',
+        "play_text": 'Produce 2:coin:',
         // "play_text": `:parrot::rum:`,
         // "bid_text": `:rum::coin:`,
         "build_text": `Produce 1`

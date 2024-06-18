@@ -386,7 +386,7 @@ are reminders of triggered effects.<br>
 
 {
     'title': 'Gold Mine',
-    'text': `A chosen enemy picks a number. +3 :Card:. <br>If the total cost of the drawn cards is not that number: 
+    'text': `+3 :Card:. A chosen enemy picks a number. If the total cost of the drawn cards is not that number: 
     +1 :Action: and reveal the cards.`,
     'flavor': 'Beneath the soil, lies dreams and despair.',
     'img': 'structures/gold-mine.png',

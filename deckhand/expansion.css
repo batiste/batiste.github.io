@@ -20,9 +20,6 @@
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.5);
 }
 
-.mission .text {
-    color: #000
-}
 .mission .innerText .rule-icon {
     background-color: #000;
 }
@@ -32,7 +29,7 @@
     top: 50.8mm;
 }
 .mission .text {
-    color: #212121;
+    color: #000;
     text-shadow: none;
     top: 51mm;
     bottom: 0mm;
