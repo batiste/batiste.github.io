@@ -78,6 +78,15 @@ var get_res = (r) => {
     if (r == "r") {
         return res("rum")
     }
+    if (r == "m") {
+        return res("purse")
+    }
+    if (r == "x") {
+        return `<div class="mult" style="font-weight: bold; color: #fff">X</div>`
+    }
+    if (r == "t") {
+        return res("purse")
+    }
 }
 
 var icon = (t) => {
@@ -88,6 +97,9 @@ var replace_icons = (txt) => {
     txt = txt.replace(/:hammer:/g, icon('hammer'))
     txt = txt.replace(/:gun:/g, icon('gun'))
     txt = txt.replace(/:parrot:/g, icon('parrot'))
+    txt = txt.replace(/:rum-guild:/g, icon('rum-guild'))
+    txt = txt.replace(/:gun-guild:/g, icon('gun-guild'))
+    txt = txt.replace(/:parrot-guild:/g, icon('parrot-guild'))
     txt = txt.replace(/:rum:/g, icon('rum'))
     txt = txt.replace(/:coin:/g, icon('coin'))
     txt = txt.replace(/:trans:/g, icon('arrow'))
@@ -108,13 +120,29 @@ cards.forEach((c) => {
         }
     }
 
-    build = "";
-    if (c.build || c.build_text) {
-        c.build.forEach((b) => {
-            build += get_res(b)
+    var guild = ''
+    if (c.guild) {
+        c.guild.forEach(c => {
+            if (c == "merchant") {
+                guild += `<img src="img/rum-guild.png">`
+            }
+            if (c == "animal") {
+                guild += `<img src="img/parrot-guild.png">`
+            }
+            if (c == "military") {
+                guild += `<img src="img/gun-guild.png">`
+            }
         })
 
-        // if (build) {
+        if (guild) {
+            guild = `<div class="guild">${guild}</div>`
+        }
+    }
+    console.log(guild)
+
+
+    build = "";
+    if (c.build_text) {
         var build_text = c.build_text || ""
         build_text = replace_icons(build_text)
         if (build_text) {
@@ -123,10 +151,10 @@ cards.forEach((c) => {
             `
         }
         build = `<div class="type line">
+            ${guild}
             ${build_text}
             <div class="resources">${build}</div>
         </div>`
-        // }
     }
 
     var play_text = c.play_text || ""
@@ -150,6 +178,12 @@ cards.forEach((c) => {
         split_title = "<span>" + c.title.split(" ").join("</span> <span>") + "</span>"
     }
 
+    var dis = ""
+    if (c.discard) {
+        c.discard.forEach(d => {
+            dis += get_res(d)
+        })
+    }
 
     var card_template = `
     <div>
@@ -158,7 +192,7 @@ cards.forEach((c) => {
                 ${cost}
 
                 <div class="top-bar">
-                    <span class="coin-value">${c.coin}</span>
+                    <span class="discard">${dis}</span>
                 </div>
 
                 <div class="bg">

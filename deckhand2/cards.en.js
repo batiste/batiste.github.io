@@ -3,180 +3,185 @@
 var cards = [
 
     {
-        "title": "Return to Port",
+        "title": "White Parrot",
         "coin": 2,
-        // "cost": ['p'],
-        "img": "cards/loaded.png",
+        "discard": ['p'],
+        "cost": ['p', 'c'],
+        "img": "cards/parrot.png",
         "type": "wild",
-        // "bid_text": `:rum::trans::coin:`,
-        // "build_text": `:rum::trans::coin::coin:`,
-        "play_text": 'Return 4, Refresh 2',
-        // "build_text": 'Return 3, Refresh 3',
-        "build": ['p'],
+        "build_text": ':parrot:',
+        "guild": ['animal']
     },
 
     {
-        "title": "Engineer",
+        "title": "Shopkeeper",
         "coin": 1,
-        // "cost": ['r'],
+        "discard": ['r'],
+        "cost": ['r', 'c'],
         "img": "cards/scruf.png",
         "type": "merchant",
-        // "play_text": `:coin::coin:`,
-        "build": ['r'],
-        "play_text": `Build 1`,
-        // "bid_text": `:parrot::rum:`,
-        // "build_text": `Build 1`
+        "guild": ['merchant'],
+        "build_text": ':rum:'
     },
-
-    // {
-    //     "title": "Explore",
-    //     "coin": 3,
-    //     "cost": ['p', 'r', 'c'],
-    //     "img": "cards/wind.png",
-    //     "type": "merchant",
-    //     // "play_text": `:coin::coin:`,
-    //     "build": ['r'],
-    //     "play_text": 'Return 2 cards into your hand. Produce 1.',
-    //     // "build_text": `:rum::trans::draw-1:`
-    // },
 
     {
         "title": "Brawl",
         "coin": 1,
-        // "cost": ['g'],
+        "cost": ['g', 'c'],
+        "discard": ['g'],
         "img": "cards/brawl.png",
         "type": "military",
-        "play_text": `Buy 1`,
-        // "build_text": `Buy 1`,
-        "build": ['g']
+        "guild": ['military'],
+        "build_text": ':gun:'
     },
 
     {
         "title": "Bustling Market",
         "coin": 1,
-        "cost": ['c'],
+        "discard": ['r'],
+        "cost": ['r', 'r', 'c'],
         "img": "cards/busy.png",
         "type": "merchant",
         // "play_text": `:coin::coin:`,
-        "build": ['r'],
-        "play_text": 'Produce 2:coin:',
+        "guild": ['merchant'],
+        // "play_text": 'Produce 2:coin:',
         // "play_text": `:parrot::rum:`,
         // "bid_text": `:rum::coin:`,
-        "build_text": `Produce 1`
+        "build_text": `:rum-guild: <b>X</b> :rum:`
     },
 
     {
         "title": "Plunder",
         "coin": 2,
-        "cost": ['c'],
+        "discard": ['g'],
+        "cost": ['g', 'g', 'c'],
         "img": "cards/plunder.png",
         "type": "military",
-        "play_text": `Buy 1`,
-        "build_text": `Buy 1`,
-        "build": ['g']
-    },
-
-    {
-        "title": "Emerald Trade",
-        "coin": 2,
-        "cost": ['p', 'r'],
-        "img": "cards/animal_market.png",
-        "type": "merchant",
-        "play_text": `Produce 2`,
-        "build_text": `Produce 2`,
-        "build": ['r', 'c']
-    },
-
-    {
-        "title": "Rum Merchant",
-        "coin": 2,
-        "cost": ['r', 'c'],
-        "img": "cards/merchant2.png",
-        "type": "merchant",
-        "play_text": `Build 1, Produce :rum:`,
-        // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build": ['r', 'c'],
-        "build_text": `Trade 2`,
-    },
-
-
-    {
-        "title": "Spice Merchant",
-        "coin": 2,
-        "cost": ['r'],
-        "img": "cards/merchant.jpeg",
-        "type": "merchant",
-        "play_text": `Build 1, Produce :rum:`,
-        // "bid_text": `If you win the bid: :draw-1:`,
-        "build": ['r'],
-        "build_text": `:rum: :trans: Return all`,
-    },
-
-
-    {
-        "title": "Wild Parrot",
-        "coin": 2,
-        "cost": ['p', 'c'],
-        "img": "cards/parrot.png",
-        "type": "wild",
-        "build": ['p'],
-        "play_text": `Return 1, Produce 2`,
-        "build_text": `Produce :parrot::parrot:`,
-    },
-
-    {
-        "title": "Blue Parrot",
-        "coin": 2,
-        "cost": ['p', 'c'],
-        "img": "cards/parrot-2.png",
-        "type": "wild",
-        // "play_text": `:coin::coin:`,
-        "build": ['p'],
-        "play_text": 'Produce 1, Return 2',
-        "build_text": `Return 2, Produce :parrot:`
-    },
-
-    {
-        "title": "Skeleton Crew",
-        "coin": 2,
-        "cost": ['g'],
-        "img": "cards/skeleton-crew.png",
-        "type": "military",
-        "play_text": `Buy 1`,
-        "build_text": `Buy 1`,
-        "build": ['g'],
+        "guild": ['military'],
+        "build_text": `:gun-guild: <b>X</b> :gun:`,
     },
 
     {
         "title": "Animal Sanctuary",
         "coin": 3,
-        "cost": ['p', 'c'],
+        "discard": ['p'],
+        "cost": ['p', 'p', 'c'],
         "img": "cards/sanctuary.png",
         "type": "wild",
-        "play_text": `Build 1. Return 1.`,
-        "build": ['p'],
-        "build_text": `Produce :parrot::parrot::parrot:`,
+        "guild": ['animal'],
+        "build_text": `:parrot-guild: <b>X</b> :parrot:`,
+    },
+
+    {
+        "title": "Amazon Warrior",
+        "discard": ['g'],
+        "cost": ['p', 'g', 'c'],
+        "img": "cards/warrior.jpeg",
+        "guild": ['animal', 'military'],
+        "type": "wild",
+        // "bid_text": `:parrot::trans::coin: `,
+        "build_text": `:parrot:`,
+    },
+
+    {
+        "title": "Animal Market",
+        "coin": 2,
+        "discard": ['p'],
+        "cost": ['r', 'p', 'c'],
+        "img": "cards/animal_market.png",
+        "type": "merchant",
+        "build_text": `Produce 2`,
+        "guild": ['merchant', 'animal'],
+        "build_text": `:rum: <b>|</b> :parrot:`,
+    },
+
+    {
+        "title": "Rum Merchant",
+        "coin": 2,
+        "discard": ['r'],
+        "cost": ['r', 'r', 'c'],
+        "img": "cards/merchant2.png",
+        "type": "merchant",
+        "guild": ['merchant'],
+        // "play_text": `Build 1, Produce :rum:`,
+        // "bid_text": `If you win a bid with this card, draw a card.`,
+        "build_text": `:rum::rum:`,
+    },
+
+
+    {
+        "title": "Gun Merchant",
+        "coin": 2,
+        "discard": ['r'],
+        "cost": ['r', 'g', 'c', 'c'],
+        "img": "cards/merchant.jpeg",
+        "type": "merchant",
+        "guild": ['merchant', 'military'],
+        "build_text": `:rum::gun:`,
+    },
+
+
+    {
+        "title": "Wild Parrot",
+        "discard": ['p'],
+        "cost": ['p', 'p', 'c'],
+        "img": "cards/parrot.png",
+        "type": "wild",
+        "guild": ['animal'],
+        "build_text": `:parrot::parrot:`,
+    },
+
+    {
+        "title": "Skeleton Crew",
+        "discard": ['g'],
+        "cost": ['g', 'g'],
+        "img": "cards/skeleton-crew.png",
+        "type": "military",
+        "guild": ['military', 'military'],
+        "build_text": `:gun:`,
+    },
+
+    {
+        "title": "Blue Parrot",
+        "discard": ['p'],
+        "cost": ['p', 'p'],
+        "img": "cards/parrot-2.png",
+        "type": "wild",
+        "guild": ['animal', 'animal'],
+        "build_text": `:parrot:`
     },
 
     {
         "title": "Grand Escape",
         "coin": 3,
-        "cost": ['p', 'c'],
+        "discard": ['r'],
+        "cost": ['p', 'g', 'r'],
         "img": "cards/freed_monkeys.jpeg",
         "type": "wild",
-        "play_text": `Produce :parrot::gun::rum::coin:`,
-        // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build": ['p', 'r', 'g']
+        "guild": ['animal', 'military'],
+        "build_text": `:gun: <b>|</b> :rum:`
     },
+
+    {
+        "title": "Water Bank",
+        "discard": ['c'],
+        "cost": ['c', 'c'],
+        "img": "cards/water-bank.png",
+        "type": "merchant",
+        "build_text": `:coin:`,
+        "guild": [],
+    },
+
 
     {
         "title": "Armed Orangutan",
         "coin": 2,
-        "cost": ['p', 'g'],
+        "discard": ['p'],
+        "cost": ['p', 'g', 'c'],
         "img": "cards/armed-orangutan.jpeg",
         "type": "wild",
-        "play_text": `Produce :gun::gun::gun:.`,
-        "build_text": `Produce :gun::gun::gun:`,
+        "guild": ['animal'],
+        "build_text": `:gun::parrot:`,
         "build": ['p'],
     },
 
@@ -190,18 +195,6 @@ var cards = [
         "build_text": `Activate 2 other buildings`,
         // "build_text": `.`,
         "build": ['p'],
-    },
-
-    {
-        "title": "Water Bank",
-        "coin": 3,
-        "cost": ['c', 'c', 'r'],
-        "img": "cards/water-bank.png",
-        "type": "merchant",
-        // "bid_text": `:parrot::rum::gun:`,
-        "play_text": "Build 1.",
-        "build_text": `Produce :coin::coin::coin:`,
-        "build": ['c']
     },
 
     {
@@ -297,16 +290,6 @@ var cards = [
         "type": "military",
         "play_text": `:draw-2:`,
         "build_text": `:gun::trans::gun::coin:`,
-        "build": ['g']
-    },
-
-    {
-        "title": "Amazon Warrior",
-        "coin": 3,
-        "cost": ['g', 'p'],
-        "img": "cards/warrior.jpeg",
-        "type": "military",
-        // "bid_text": `:parrot::trans::coin: `,
         "build": ['g']
     },
 

@@ -61,7 +61,6 @@ a, a:visited {
 
 .bottom {
     position: absolute;
-    /* top: 210px; */
     left:0;
     right:0;
     bottom: 0;
@@ -84,11 +83,7 @@ a, a:visited {
     /* padding: 5px; */
     /* padding-bottom: 24px; */
     display: flex;
-    justify-content: space-evenly;
-}
-
-.bottom >*:last-child {
-    padding-bottom: 27px; 
+    justify-content: right;
 }
 
 .bottom {
@@ -105,6 +100,11 @@ a, a:visited {
 .line {
     padding: 8px 26px;
     /* text-shadow: 0.2px 0.2px #646464; */
+}
+
+.type {
+    min-height: 30px;
+    padding-bottom: 28px;
 }
 
 .texts {
@@ -154,22 +154,6 @@ a, a:visited {
     margin-bottom: -3px;
 }
 
-.gun {
-    width: 19px;
-    display: inline-flex;
-    margin-right: 2px;
-    margin-bottom: -4px;
-    margin-left: 2px;
-}
-
-.coin {
-    width: 22px;
-    display: inline-flex;
-    margin-right: 1px;
-    margin-bottom: -6px;
-    margin-left: 2px; 
-}
-
 .arrow {
     width: 22px;
     display: inline-flex;
@@ -183,41 +167,71 @@ a, a:visited {
     width: 22px;
     display: inline-flex;
     margin-right: 1px;
-    margin-bottom: -5px;
+    margin-bottom: -6px;
     margin-left: 1px; 
     margin-top: -1px;
 }
 
-.parrot {
-    width: 20px;
+.coin {
+    width: 23px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -6px;
+    margin-left: 2px; 
+}
+
+.gun {
+    width: 24px;
     display: inline-flex;
     margin-right: 2px;
-    margin-bottom: -5px;
+    margin-bottom: -7px;
+    margin-left: 2px;
+}
+
+.parrot {
+    width: 23px;
+    display: inline-flex;
+    margin-right: 2px;
+    margin-bottom: -6px;
     margin-left: 2px; 
 }
 
 .rum {
-    width: 20px;
+    width: 23px;
     display: inline-flex;
     margin-right: 1px;
-    margin-bottom: -4px;
+    margin-bottom: -6.5px;
+    margin-left: 1px; 
+}
+
+.rum-guild, .gun-guild, .parrot-guild {
+    width: 30px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -11px;
     margin-left: 1px; 
 }
 
 .wild .type {
-    background-color: rgb(60, 90, 180, 0.9); 
+    background-color: rgb(36, 64, 155);
+    background-image: url(img/bg-bottom.png);
+    background-blend-mode:overlay;
 }
 
 .military .type {
-    background-color: rgb(173, 55, 55, 0.9); 
+    background-color: rgb(110, 37, 37); 
+    background-image: url(img/bg-bottom.png);
+    background-blend-mode:overlay;
 }
 
 .merchant .type {
-    background-color: rgba(103, 64, 13, 0.871); 
+    background-image: url(img/bg-bottom.png);
+    background-color: rgba(68, 42, 9, 0.9); 
+    background-blend-mode:overlay;
 }
 
 .dark .type {
-    background-color: rgba(17, 30, 57, 0.9); 
+    /* background-color: rgba(17, 30, 57, 0.9);  */
 }
 
 .resource {
@@ -230,10 +244,10 @@ a, a:visited {
     height: 24px;
     border-radius: 50px;
     padding: 3px;
-    border: 1px #1c1c1c solid;
+    /* border: 1px #1c1c1c solid;
     background-color: #f6e2c4;
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.6);
-    margin-left: 6px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.6); */
+    margin: 0px 2px;
 }
 
 .type .resource img {
@@ -320,18 +334,25 @@ a, a:visited {
 }
 
 
-.coin-value {
+.discard {
     font-family: 'Lobster Two', cursive;
     letter-spacing: 0.1px;
     font-size: 19px;
     position: absolute;
-    top: 5px;
+    top: 6px;
     left: 27px;
     width: 17px;
     rotate: 2deg;
     color: #000000;
     text-align: center;
     /* text-shadow: 1.3px 1.4px black; */
+    width: 36px;
+    display: flex;
+    justify-content: center;
+}
+
+.discard .resource img {
+    width: 20px;
 }
 
 .card .mpc {
@@ -341,9 +362,27 @@ a, a:visited {
     width: 69.088mm;
     height: 93.98mm;
     background-image: url(img/mpc-dark.png);
+    background-image: url(img/mpc.png);
     background-size: cover;
 }
 
 .card.preparePrint .mpc {
     display: none;
+}
+
+.guild {
+    /* display: flex; */
+    position: absolute;
+    left: 28px;
+    bottom: 20px;
+    /* justify-content: center; */
+}
+
+.guild img {
+    width: 38px;
+}
+
+.mult {
+    font-weight: bold;
+    padding: 8px 2px;
 }
