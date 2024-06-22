@@ -121,6 +121,7 @@ a, a:visited {
 
 .build_text {
     color: #fff;
+    color: #000;
     display: flex;
     align-items: center;
 }
@@ -213,21 +214,21 @@ a, a:visited {
 }
 
 .wild .type {
-    background-color: rgb(36, 64, 155);
+    /* background-color: rgb(36, 64, 155); */
     background-image: url(img/bg-bottom.png);
-    background-blend-mode:overlay;
+    /* background-blend-mode:overlay; */
 }
 
 .military .type {
-    background-color: rgb(110, 37, 37); 
+    /* background-color: rgb(110, 37, 37);  */
     background-image: url(img/bg-bottom.png);
-    background-blend-mode:overlay;
+    /* background-blend-mode:overlay; */
 }
 
 .merchant .type {
     background-image: url(img/bg-bottom.png);
-    background-color: rgba(68, 42, 9, 0.9); 
-    background-blend-mode:overlay;
+    /* background-color: rgba(68, 42, 9, 0.9);  */
+    /* background-blend-mode:overlay; */
 }
 
 .dark .type {
