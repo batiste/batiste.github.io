@@ -117,6 +117,8 @@ a, a:visited {
 .play_text {
     background-color: rgba(255, 196, 0, 0.4);
     border-bottom: 1px rgba(210, 161, 0, 0.7) solid;
+    font-family: 'Lobster Two', cursive;
+    font-size: 16px;
 }
 
 .build_text {
@@ -205,7 +207,16 @@ a, a:visited {
     margin-left: 1px; 
 }
 
-.rum-guild, .gun-guild, .parrot-guild {
+.icon {
+    width: 23px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -6.5px;
+    margin-left: 1px; 
+}
+
+
+.rum-guild, .gun-guild, .parrot-guild, .skull-guild {
     width: 30px;
     display: inline-flex;
     margin-right: 1px;
@@ -253,7 +264,6 @@ a, a:visited {
 
 .type .resource img {
     width: 23px;
-    height: 23px;
 }
 
 .card .top-bar {
@@ -288,7 +298,6 @@ a, a:visited {
 
 .price-tag .resource img {
     width: 21px;
-    height: 21px;
     border-radius: 0;
     border: 0;
     background:none;
@@ -374,7 +383,7 @@ a, a:visited {
 .guild {
     /* display: flex; */
     position: absolute;
-    left: 28px;
+    left: 24px;
     bottom: 20px;
     /* justify-content: center; */
 }
