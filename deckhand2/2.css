@@ -230,13 +230,13 @@ a, a:visited {
     /* background-blend-mode:overlay; */
 }
 
-.military .type {
+.rum .type {
     /* background-color: rgb(110, 37, 37);  */
     background-image: url(img/bg-bottom.png);
     /* background-blend-mode:overlay; */
 }
 
-.merchant .type {
+.rum .type {
     background-image: url(img/bg-bottom.png);
     /* background-color: rgba(68, 42, 9, 0.9);  */
     /* background-blend-mode:overlay; */

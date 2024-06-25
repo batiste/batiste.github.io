@@ -94,11 +94,27 @@ var get_res = (r) => {
 
 var stats_costs = {};
 var stats_discard = {};
+var stats_vp = {};
+var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin']
+var stats_production = {}
 cards.forEach((c) => {
     c.cost.forEach((co) => {
         stats_costs[co] = 1 + (stats_costs[co] || 0);
     });
     stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
+    if (c.guild) {
+        c.guild.forEach(g => {
+            stats_vp[g] = 1 + (stats_vp[g] || 0);
+        })
+    }
+
+    if(c.build_text && !c.build_text.includes(":trans:")) {
+        production_type.forEach(t => {
+            if(c.build_text.includes(t)) {
+                stats_production[t] = 1 + (stats_production[t] || 0)
+            }
+        })
+    }
 });
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
@@ -122,6 +138,7 @@ var replace_icons = (txt) => {
     txt = txt.replace(/:skull:/g, icon('skull'))
     txt = txt.replace(/:draw-2:/g, icon('draw-2'))
     txt = txt.replace(/:helm:/g, icon('helm'))
+    txt = txt.replace(/:crate:/g, icon('crate'))
     txt = txt.replace(/:or:/g, `<b style="font-size:18px;color:#000c">|</b>`)
     txt = txt.replace(/:vp:/g, icon('vp'))
     return txt
@@ -142,13 +159,13 @@ cards.forEach((c) => {
     var guild = ''
     if (c.guild) {
         c.guild.forEach(c => {
-            if (c == "merchant") {
+            if (c == "rum") {
                 guild += `<img src="img/rum-guild.png">`
             }
-            if (c == "animal") {
+            if (c == "parrot") {
                 guild += `<img src="img/parrot-guild.png">`
             }
-            if (c == "military") {
+            if (c == "gun") {
                 guild += `<img src="img/gun-guild.png">`
             }
             if (c == "vp") {
@@ -216,7 +233,7 @@ cards.forEach((c) => {
 
     var card_template = `
     <div>
-        <div class="card ${c.type || ""}" title="${c.title}" id="card-${i}">
+        <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 ${cost}
 
