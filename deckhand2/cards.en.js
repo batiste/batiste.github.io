@@ -2,254 +2,289 @@
 
 var cards = [
 
-    {
-        "title": "Smuggler Cache",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/cache.png",
-        "type": "rum",
-        "guild": ['rum', 'crate'],
-        "play_text": '<b>4</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :helm: :trans: :draw-1:',
-        "build_text": '&nbsp;:coin:'
-    },
+    // {
+    //     "title": "Smuggler Cache",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/cache.png",
+    //     "type": "rum",
+    //     "guild": ['rum', 'crate'],
+    //     "play_text": '<b>4</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :helm: :trans: :draw-1:',
+    //     "build_text": '&nbsp;:coin:'
+    // },
+
+    // {
+    //     "title": "Military Dominance",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/sneak_attack.png",
+    //     "type": "rum",
+    //     // "guild": ['vp', 'vp'],
+    //     "play_text": '<b>7</b> :gun-guild:&nbsp;&nbsp; <b>1</b> :skull-guild:&nbsp;&nbsp; <b>6</b> :helm:',
+    //     "build_text": 'Win the game.'
+    // },
+
+
+    // {
+    //     "title": "Trade Monopoly",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/mono.png",
+    //     "type": "rum",
+    //     "guild": ['rum', 'crate'],
+    //     "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :parrot:&nbsp;&nbsp; <b>3</b> :helm:',
+    //     "build_text": ':helm::coin:'
+    // },
+
+
+    // {
+    //     "title": "Monkey Island",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/skull.png",
+    //     "type": "rum",
+    //     "guild": ['parrot', 'skull'],
+    //     "play_text": '<b>3</b> :parrot-guild:&nbsp;&nbsp; <b>2</b> :skull-guild:&nbsp;&nbsp; <b>4</b> :helm:',
+    //     "build_text": ':parrot::coin:'
+    // },
+
+
+    // {
+    //     "title": "Doom Temple",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/doom.png",
+    //     "type": "rum",
+    //     "guild": ['skull'],
+    //     "play_text": '<b>3</b> :skull-guild:&nbsp;&nbsp; <b>2</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
+    //     "build_text": ':skull::coin:'
+    // },
+
+    // {
+    //     "title": "Barataria Bay",
+    //     // "coin": 1,
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/bay.png",
+    //     "type": "rum",
+    //     "guild": ['gun', 'crate'],
+    //     "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
+    //     "build_text": ':rum::coin:'
+    // },
+
 
     {
-        "title": "Military Dominance",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/sneak_attack.png",
-        "type": "rum",
-        // "guild": ['vp', 'vp'],
-        "play_text": '<b>7</b> :gun-guild:&nbsp;&nbsp; <b>1</b> :skull-guild:&nbsp;&nbsp; <b>6</b> :helm:',
-        "build_text": 'Win the game.'
-    },
-
-
-    {
-        "title": "Trade Monopoly",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/mono.png",
-        "type": "rum",
-        "guild": ['rum', 'crate'],
-        "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :parrot:&nbsp;&nbsp; <b>3</b> :helm:',
-        "build_text": ':helm::coin:'
-    },
-
-
-    {
-        "title": "Monkey Island",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/skull.png",
-        "type": "rum",
-        "guild": ['parrot', 'skull'],
-        "play_text": '<b>3</b> :parrot-guild:&nbsp;&nbsp; <b>2</b> :skull-guild:&nbsp;&nbsp; <b>4</b> :helm:',
-        "build_text": ':parrot::coin:'
-    },
-
-
-    {
-        "title": "Doom Temple",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/doom.png",
-        "type": "rum",
-        "guild": ['skull'],
-        "play_text": '<b>3</b> :skull-guild:&nbsp;&nbsp; <b>2</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
-        "build_text": ':skull::coin:'
-    },
-
-    {
-        "title": "Barataria Bay",
-        // "coin": 1,
-        "discard": [],
-        "cost": [],
-        "img": "cards/bay.png",
-        "type": "rum",
-        "guild": ['gun', 'crate'],
-        "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
-        "build_text": ':rum::coin:'
-    },
-
-
-    {
-        "title": "Shopkeeper",
+        "title": "Tavern Keeper",
         "coin": 1,
         "discard": ['r'],
-        "cost": ['r', 'c'],
+        "cost": ['c', 'c', 'c'],
         "img": "cards/scruf.png",
         "type": "rum",
-        "guild": ['rum'],
+        // "guild": ['rum'],
         "build_text": ':rum:'
+    },
+
+    {
+        "title": "White Parrot",
+        "coin": 2,
+        "discard": ['c'],
+        "cost": ['c', 'c', 'c'],
+        "img": "cards/parrot.png",
+        "type": "wild",
+        "build_text": ':parrot:',
+        // "guild": ['parrot']
+    },
+
+    {
+        "title": "Gun Merchant",
+        "coin": 2,
+        "discard": ['r'],
+        "cost": ['c', 'c', 'c'],
+        "img": "cards/merchant.jpeg",
+        "type": "rum",
+        // "guild": ['rum'],
+        "build_text": `:gun:`,
+    },
+
+    {
+        "discard": ['s'],
+        "title": "Necromancer",
+        "coin": 3,
+        "cost": ['p', 'g', 'c'],
+        "img": "cards/necro.png",
+        "type": "gun",
+        "guild": ['vp-1'],
+        "build_text": `:skull:`,
     },
 
     {
         "title": "Docks",
         "coin": 1,
         "discard": ['r'],
-        "cost": ['r', 'c'],
+        "cost": ['r', 'p', 'c'],
         "img": "cards/loaded.png",
         "type": "rum",
-        "guild": ['rum'],
-        "build_text": ':coin::coin::trans::rum::parrot:'
+        "guild": ['vp-1'],
+        "build_text": ':helm:'
+    },
+
+    {
+        "title": "Gems Market",
+        "coin": 2,
+        "discard": ['p'],
+        "cost": ['g', 'r', 'c'],
+        "img": "cards/animal_market.png",
+        "type": "rum",
+        "build_text": `Produce 2`,
+        "guild": ['vp-1'],
+        "build_text": `:gem:`,
     },
 
     {
         "title": "Bustling Market",
         "coin": 1,
         "discard": ['r'],
-        "cost": ['r', 'r', 'c'],
+        "cost": ['r', 'r', 'c', 'c', 'c'],
         "img": "cards/busy.png",
         "type": "rum",
         // "play_text": `:coin::coin:`,
-        // "guild": ['rum'],
+        "guild": ['vp-2'],
         // "play_text": 'Produce 2:coin:',
         // "play_text": `:parrot::rum:`,
         // "bid_text": `:rum::coin:`,
-        "build_text": `:rum-guild: <b>X</b> :rum:`
+        "build_text": `:coin:`
     },
 
+
     {
-        "title": "Animal Market",
-        "coin": 2,
+        "title": "Animal Sanctuary",
+        "coin": 3,
         "discard": ['p'],
-        "cost": ['r', 'p', 'c'],
-        "img": "cards/animal_market.png",
-        "type": "rum",
-        "build_text": `Produce 2`,
-        "guild": ['rum'],
-        "build_text": `:rum: :or: :parrot:`,
+        "cost": ['p', 'p', 'h', 'c'],
+        "img": "cards/sanctuary.png",
+        "type": "wild",
+        "guild": ['vp-4'],
+        "build_text": `&nbsp;`,
+    },
+
+
+    {
+        "title": "Plunder",
+        "coin": 2,
+        "discard": ['g'],
+        "cost": ['g', 'g', 's', 'c'],
+        "img": "cards/plunder.png",
+        "type": "gun",
+        "guild": ['vp-2'],
+        "build_text": `:gem:`,
     },
 
     {
         "title": "Rum Merchant",
         "coin": 2,
         "discard": ['r'],
-        "cost": ['r', 'r', 'c', 'c'],
+        "cost": ['r', 'h', 'c', 'c'],
         "img": "cards/merchant2.png",
         "type": "rum",
         "guild": ['rum'],
+        "guild": ['vp-1'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build_text": `:rum::rum:`,
+        "build_text": `:rum:`,
     },
 
     {
         "title": "Trade Route",
         "coin": 2,
         "discard": ['r'],
-        "cost": ['r', 'r'],
+        "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
         "type": "rum",
-        "guild": ['rum'],
+        "guild": ['vp-4'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build_text": `:helm::rum:`,
+        "build_text": `:rum:`,
     },
 
     {
         "title": "Water Bank",
         "discard": ['c'],
-        "cost": ['c', 'c'],
+        "cost": ['c', 'c', 'c', 'c', 'c'],
         "img": "cards/water-bank.png",
         "type": "rum",
+        "guild": ['vp-1'],
         "build_text": `:coin:`,
-        "guild": ['crate'],
-    },
-
-
-    {
-        "title": "Gun Merchant",
-        "coin": 2,
-        "discard": ['r'],
-        "cost": ['r', 'r', 'g', 'g', 'c'],
-        "img": "cards/merchant.jpeg",
-        "type": "rum",
-        "guild": ['rum', 'gun'],
-        "build_text": `:rum::gun:`,
     },
 
     {
         "discard": ['p'],
         "title": "Rich Pirate",
         "coin": 2,
-        "cost": ['r', 'p', 'c'],
+        "cost": ['r', 'c', 'c'],
         "img": "cards/rich.png",
         "type": "rum",
-        "guild": ['rum'],
-        "build_text": `:coin::coin:`,
-    },
-
-    {
-        "title": "White Parrot",
-        "coin": 2,
-        "discard": ['p'],
-        "cost": ['p', 'c'],
-        "img": "cards/parrot.png",
-        "type": "wild",
-        "build_text": ':parrot:',
-        "guild": ['parrot']
-    },
-
-    {
-        "title": "Blue Parrot",
-        "discard": ['p'],
-        "cost": ['p', 'p'],
-        "img": "cards/parrot-2.png",
-        "type": "wild",
-        "guild": ['parrot', 'parrot'],
-        "build_text": `:parrot:`
-    },
-
-    {
-        "title": "Grand Escape",
-        "coin": 3,
-        "discard": ['g'],
-        "cost": ['p', 'g', 'r'],
-        "img": "cards/freed_monkeys.jpeg",
-        "type": "wild",
-        "guild": ['parrot', 'gun'],
-        "build_text": `:gun: :or: :rum:`
-    },
-
-    {
-        "title": "Animal Sanctuary",
-        "coin": 3,
-        "discard": ['p'],
-        "cost": ['p', 'p', 'c'],
-        "img": "cards/sanctuary.png",
-        "type": "wild",
-        "guild": ['parrot'],
-        "build_text": `:parrot-guild: <b>X</b> :parrot:`,
+        "guild": ['vp-1'],
+        "build_text": `:parrot:`,
     },
 
     {
         "title": "Armed Orangutan",
         "coin": 2,
         "discard": ['p'],
-        "cost": ['p', 'p', 'g', 'g', 'c'],
+        "cost": ['p', 'c', 'c'],
         "img": "cards/armed-orangutan.jpeg",
         "type": "wild",
-        "guild": ['parrot'],
-        "build_text": `:gun::parrot:`,
+        "guild": ['vp-1'],
+        "build_text": `:gun:`,
         "build": ['p'],
+    },
+
+    {
+        "title": "Brawl",
+        "coin": 1,
+        "cost": ['g', 'c', 'c'],
+        "discard": ['g'],
+        "img": "cards/brawl.png",
+        "type": "gun",
+        "guild": ['vp-1'],
+        "build_text": ':rum:'
+    },
+
+    // {
+    //     "title": "Blue Parrot",
+    //     "discard": ['p'],
+    //     "cost": ['p', 'p'],
+    //     "img": "cards/parrot-2.png",
+    //     "type": "wild",
+    //     "guild": ['parrot', 'parrot'],
+    //     "build_text": `:parrot:`
+    // },
+
+    {
+        "title": "Grand Escape",
+        "coin": 3,
+        "discard": ['g'],
+        "cost": ['p', 'g', 'e', 'c'],
+        "img": "cards/freed_monkeys.jpeg",
+        "type": "wild",
+        "guild": ['vp-2'],
+        "build_text": `:gun: :or: :rum:`
     },
 
     {
         "title": "Deep Sea Horror",
         "coin": 3,
         "discard": ['s'],
-        "cost": ['p', 's', 'c'],
+        "cost": ['s', 'e', 'c'],
         "img": "cards/deep-sea-horror.png",
         "type": "wild",
-        "guild": ['parrot', 'skull'],
-        "build_text": `:helm::skull:`,
+        "guild": ['vp-4'],
+        "build_text": ` `,
     },
 
     {
@@ -259,20 +294,42 @@ var cards = [
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
         "type": "wild",
-        "guild": ['skull'],
-        "build_text": `:skull::coin:`,
+        "guild": ['vp-2'],
+        "build_text": ` `,
         "build": ['p', 'c', 'g'],
+    },
+
+    {
+        "title": "Skeleton Crew",
+        "discard": ['s'],
+        "cost": ['s', 'h', 'c'],
+        "img": "cards/skeleton-crew.png",
+        "type": "gun",
+        "guild": ['vp-4'],
+        "build_text": ` `,
+    },
+
+    {
+        "title": "Amazon Warrior",
+        "discard": ['g'],
+        "cost": ['e', 'p', 'g', 'c'],
+        "img": "cards/warrior.jpeg",
+        "guild": ['parrot', 'gun'],
+        "guild": ['vp-4'],
+        "type": "gun",
+        // "bid_text": `:parrot::trans::coin: `,
+        "build_text": `:parrot:`,
     },
 
     {
         "title": "Sidekick",
         "coin": 2,
         "discard": ['r'],
-        "cost": ['g', 'p'],
+        "cost": ['e', 'r', 'p'],
         "img": "cards/sidekick.png",
         "type": "wild",
-        "guild": ['parrot'],
-        "build_text": `:helm::parrot:`,
+        "guild": ['vp-2'],
+        "build_text": `:helm:`,
     },
 
     {
@@ -282,32 +339,21 @@ var cards = [
         "cost": ['p', 'p', 'r', 'r'],
         "img": "cards/marmosets.png",
         "type": "wild",
-        "guild": ['parrot', 'rum'],
+        "guild": ['vp-4'],
         // "bid_text": `if you lose the bid: :draw-1:`,
-        "build_text": `:rum-guild: <b>X</b> :parrot:`,
+        "build_text": ` `,
         "build": ['p'],
-    },
-
-    {
-        "title": "Amazon Warrior",
-        "discard": ['g'],
-        "cost": ['p', 'g', 'c'],
-        "img": "cards/warrior.jpeg",
-        "guild": ['parrot', 'gun'],
-        "type": "gun",
-        // "bid_text": `:parrot::trans::coin: `,
-        "build_text": `:parrot:`,
     },
 
     {
         "discard": ['g'],
         "title": "Sneak Attack",
         "coin": 3,
-        "cost": ['g', 's', 'c', 'c'],
+        "cost": ['s', 's', 'g', 'c'],
         "img": "cards/sneak_attack.png",
         "type": "gun",
-        "guild": ['gun'],
-        "build_text": `:gun-guild: <b>X</b> :skull:`,
+        "guild": ['vp-4'],
+        "build_text": `:gem:`,
         "build": ['g'],
     },
 
@@ -323,36 +369,16 @@ var cards = [
     //     "build_text": `:gun-guild: <b>X</b> :coin:`,
     // },
 
-    {
-        "title": "Brawl",
-        "coin": 1,
-        "cost": ['g', 'c'],
-        "discard": ['g'],
-        "img": "cards/brawl.png",
-        "type": "gun",
-        "guild": ['gun'],
-        "build_text": ':gun:'
-    },
-
-    {
-        "title": "Skeleton Crew",
-        "discard": ['s'],
-        "cost": ['s', 's'],
-        "img": "cards/skeleton-crew.png",
-        "type": "gun",
-        "guild": ['skull', 'gun'],
-        "build_text": `:skull:`,
-    },
 
     {
         "discard": ['g'],
         "title": "Cannoneer's Guild",
         "coin": 4,
-        "cost": ['g', 'r', 'c', 'c'],
+        "cost": ['g', 's', 'c', 'c'],
         "img": "cards/military.png",
         "type": "gun",
-        "guild": ['gun'],
-        "build_text": `:gun::gun:`,
+        "guild": ['vp-4'],
+        "build_text": ` `,
         "build": ['g']
     },
 
@@ -360,11 +386,11 @@ var cards = [
         "discard": ['s'],
         "title": "Walk the Plank",
         "coin": 2,
-        "cost": ['c'],
+        "cost": ['c', 'c'],
         "img": "cards/walk.png",
         "type": "gun",
-        "guild": ['gun'],
-        "build_text": `:coin::trans::gun:`,
+        "guild": ['vp-1'],
+        "build_text": `:draw-2::trans::gun:`,
         "build": ['g']
     },
 
@@ -372,46 +398,13 @@ var cards = [
         "discard": ['g'],
         "title": "Locksmith",
         "coin": 2,
-        "cost": ['g', 's', 'c'],
+        "cost": ['c', 'c', 'c'],
         "img": "cards/locksmith.png",
         "type": "gun",
         // "bid_text": `:coin: in settled cards count.`,
-        "guild": ['gun'],
-        "build_text": `:gun-guild: <b>X</b> :coin:`,
+        "guild": ['vp-1'],
+        "build_text": `:draw-2::trans::gem:`,
         "build": ['g'],
-    },
-
-    {
-        "title": "Plunder",
-        "coin": 2,
-        "discard": ['g'],
-        "cost": ['g', 'g', 'c', 'c'],
-        "img": "cards/plunder.png",
-        "type": "gun",
-        "guild": ['gun'],
-        "build_text": `:gun-guild: <b>X</b> :gun:`,
-    },
-
-    {
-        "discard": ['s'],
-        "title": "Necromancer",
-        "coin": 3,
-        "cost": ['s', 'c'],
-        "img": "cards/necro.png",
-        "type": "gun",
-        "guild": ['skull'],
-        "build_text": `:skull::trans::gun::parrot:`,
-    },
-
-    {
-        "discard": ['s'],
-        "title": "Crooked Smuggler",
-        "coin": 3,
-        "cost": ['s', 'g', 'r'],
-        "img": "cards/crooked.png",
-        "type": "gun",
-        "guild": ['skull', 'rum'],
-        "build_text": `:skull: :or: :gun:`,
     },
 
 
@@ -419,57 +412,86 @@ var cards = [
         "discard": ['s'],
         "title": "Abandoned Manor",
         "coin": 3,
-        "cost": ['s', 'c'],
+        "cost": ['c', 'c', 'c'],
         "img": "cards/manor.png",
         "type": "gun",
-        "guild": ['skull'],
-        "build_text": `:skull:`,
+        "guild": ['vp-1'],
+        "build_text": `:draw-2::trans::skull:`,
+    },
+
+    {
+        "discard": ['s'],
+        "title": "Crooked Smuggler",
+        // "captain": true,
+        "coin": 3,
+        "cost": ['e', 'e', 'h', 'r'],
+        "img": "cards/crooked.png",
+        "type": "gun",
+        "guild": ['vp-4'],
+        "build_text": `:skull: :or: :gun:`,
     },
 
     {
         "discard": ['s'],
         "title": "Captain Lhoryn",
+        // "captain": true,
         "coin": 3,
-        "cost": ['s', 'p', 'c'],
+        "cost": ['h', 'h', 'c'],
         "img": "cards/captain1.png",
         "type": "gun",
-        "guild": ['skull', 'parrot'],
-        "build_text": `:helm: :or: :skull:`,
+        "guild": ['vp-4'],
+        "build_text": `:parrot:`,
     },
 
 
     {
         "discard": ['g'],
-        "title": "Captain Gerrard",
+        "title": "Captain Grenwish",
+        // "captain": true,
         "coin": 3,
-        "cost": ['p', 'c'],
+        "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
         "type": "gun",
-        "guild": ['parrot'],
-        "build_text": `:helm: :or: :parrot:`,
+        "guild": ['vp-2'],
+        "build_text": `:draw-1: :trans: :helm:`,
     },
 
+    // {
+    //     "discard": ['p'],
+    //     "title": "Captain Scruf",
+    //     "captain": true,
+    //     "coin": 3,
+    //     "cost": ['g', 'c', 'c'],
+    //     "img": "cards/captain3.png",
+    //     "type": "gun",
+    //     "guild": ['rum'],
+    //     "build_text": `:rum:`,
+    // },
+
+
     {
-        "discard": ['p'],
-        "title": "Captain Red",
+        "discard": ['g'],
+        "title": "Captain Longtooth",
+        "captain": true,
         "coin": 3,
-        "cost": ['g', 'c'],
-        "img": "cards/captain3.png",
+        "cost": ['s', 'e', 'e', 'c'],
+        "img": "cards/captain4.png",
         "type": "gun",
-        "guild": ['parrot'],
-        "build_text": `:helm: :or: :rum:`,
+        "guild": ['vp-4'],
+        "build_text": `:helm:`,
     },
 
 
     {
         "discard": ['s'],
-        "title": "Assassin",
+        "title": "Captain Cutlass",
+        "captain": true,
         "coin": 3,
-        "cost": ['s', 'g'],
+        "cost": ['s', 'h', 'c'],
         "img": "cards/assasin.png",
         "type": "gun",
-        "guild": ['skull', 'gun'],
-        "build_text": `:skull:`,
+        "guild": ['vp-4'],
+        "build_text": `:coin:`,
     },
 
 

@@ -103,8 +103,8 @@ a, a:visited {
 }
 
 .type {
-    min-height: 30px;
-    padding-bottom: 28px;
+    min-height: 31px;
+    padding-bottom: 29px;
 }
 
 .texts {
@@ -175,6 +175,18 @@ a, a:visited {
     margin-top: -1px;
 }
 
+.icon {
+    width: 23px;
+    display: inline-flex;
+    margin-right: 1px;
+    margin-bottom: -6.5px;
+    margin-left: 1px; 
+}
+
+.helm {
+    width: 25px;
+}
+
 .coin {
     width: 23px;
     display: inline-flex;
@@ -207,13 +219,7 @@ a, a:visited {
     margin-left: 1px; 
 }
 
-.icon {
-    width: 23px;
-    display: inline-flex;
-    margin-right: 1px;
-    margin-bottom: -6.5px;
-    margin-left: 1px; 
-}
+
 
 
 .rum-guild, .gun-guild, .parrot-guild, .skull-guild {
@@ -384,8 +390,16 @@ a, a:visited {
     /* display: flex; */
     position: absolute;
     left: 24px;
-    bottom: 20px;
+    bottom: 22px;
     /* justify-content: center; */
+}
+
+.captain {
+    width: 23px;
+    position: absolute;
+    top: 28px;
+    left: 13px;
+    z-index: 100;
 }
 
 .guild img {

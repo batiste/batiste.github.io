@@ -78,11 +78,20 @@ var get_res = (r) => {
     if (r == "r") {
         return res("rum")
     }
+    if (r == "e") {
+        return res("gem")
+    }
     if (r == "m") {
         return res("purse")
     }
     if (r == "s") {
         return res("skull")
+    }
+    if (r == "h") {
+        return res("helm")
+    }
+    if (r == "gem") {
+        return res("gem")
     }
     if (r == "x") {
         return `<div class="mult" style="font-weight: bold; color: #fff">X</div>`
@@ -116,8 +125,11 @@ cards.forEach((c) => {
         })
     }
 });
+
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
+console.log('stats_vp', stats_vp)
+console.log('stats_production', stats_production)
 
 var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
@@ -131,6 +143,7 @@ var replace_icons = (txt) => {
     txt = txt.replace(/:gun-guild:/g, icon('gun-guild'))
     txt = txt.replace(/:parrot-guild:/g, icon('parrot-guild'))
     txt = txt.replace(/:skull-guild:/g, icon('skull-guild'))
+    txt = txt.replace(/:gem:/g, icon('gem'))
     txt = txt.replace(/:rum:/g, icon('rum'))
     txt = txt.replace(/:coin:/g, icon('coin'))
     txt = txt.replace(/:trans:/g, icon('arrow'))
@@ -141,6 +154,7 @@ var replace_icons = (txt) => {
     txt = txt.replace(/:crate:/g, icon('crate'))
     txt = txt.replace(/:or:/g, `<b style="font-size:18px;color:#000c">|</b>`)
     txt = txt.replace(/:vp:/g, icon('vp'))
+    txt = txt.replace(/:vp-2:/g, icon('vp-2'))
     return txt
 }
 
@@ -170,6 +184,15 @@ cards.forEach((c) => {
             }
             if (c == "vp") {
                 guild += `<img src="img/vp.png">`
+            }
+            if (c == "vp-1") {
+                guild += `<img src="img/vp-1.png">`
+            }
+            if (c == "vp-2") {
+                guild += `<img src="img/vp-2.png">`
+            }
+            if (c == "vp-4") {
+                guild += `<img src="img/vp-4.png">`
             }
             if (c == "crate") {
                 guild += `<img src="img/crate.png">`
@@ -231,14 +254,22 @@ cards.forEach((c) => {
         })
     }
 
+    var cp = '';
+    if(c.captain) {
+        cp = '<img class="captain" src="img/arrow-left.png">';
+    }
+
+    // ${dis}
+
     var card_template = `
     <div>
         <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 ${cost}
+                ${cp}
 
                 <div class="top-bar">
-                    <span class="discard">${dis}</span>
+                    <span class="discard"></span>
                 </div>
 
                 <div class="bg">
