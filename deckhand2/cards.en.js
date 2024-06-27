@@ -305,7 +305,7 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/skeleton-crew.png",
         "type": "gun",
-        "guild": ['vp-4'],
+        "guild": ['vp-5'],
         "build_text": ` `,
     },
 
@@ -477,7 +477,7 @@ var cards = [
         "cost": ['s', 'e', 'e', 'c'],
         "img": "cards/captain4.png",
         "type": "gun",
-        "guild": ['vp-4'],
+        "guild": ['vp-5'],
         "build_text": `:helm:`,
     },
 
