@@ -117,10 +117,11 @@ cards.forEach((c) => {
         })
     }
 
-    if(c.build_text && !c.build_text.includes(":trans:")) {
+    if(c.build_text) {
+        var add = c.build_text.includes(":trans:") ? 0.5 : 1;
         production_type.forEach(t => {
             if(c.build_text.includes(t)) {
-                stats_production[t] = 1 + (stats_production[t] || 0)
+                stats_production[t] = add + (stats_production[t] || 0)
             }
         })
     }

@@ -295,7 +295,7 @@ var cards = [
         "img": "cards/crab.png",
         "type": "wild",
         "guild": ['vp-2'],
-        "build_text": ` `,
+        "build_text": `:draw-1: :trans: :parrot:`,
         "build": ['p', 'c', 'g'],
     },
 
