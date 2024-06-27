@@ -104,7 +104,7 @@ var get_res = (r) => {
 var stats_costs = {};
 var stats_discard = {};
 var stats_vp = {};
-var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin']
+var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin', 'gem']
 var stats_production = {}
 cards.forEach((c) => {
     c.cost.forEach((co) => {
@@ -265,11 +265,12 @@ cards.forEach((c) => {
     <div>
         <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
+                
                 ${cost}
                 ${cp}
 
                 <div class="top-bar">
-                    <span class="discard"></span>
+                    <span class="discard">${dis}</span>
                 </div>
 
                 <div class="bg">

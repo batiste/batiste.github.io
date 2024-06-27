@@ -92,7 +92,7 @@ var cards = [
     {
         "title": "White Parrot",
         "coin": 2,
-        "discard": ['c'],
+        "discard": ['p'],
         "cost": ['c', 'c', 'c'],
         "img": "cards/parrot.png",
         "type": "wild",
@@ -103,7 +103,7 @@ var cards = [
     {
         "title": "Gun Merchant",
         "coin": 2,
-        "discard": ['r'],
+        "discard": ['g'],
         "cost": ['c', 'c', 'c'],
         "img": "cards/merchant.jpeg",
         "type": "rum",
@@ -125,7 +125,7 @@ var cards = [
     {
         "title": "Docks",
         "coin": 1,
-        "discard": ['r'],
+        "discard": ['h'],
         "cost": ['r', 'p', 'c'],
         "img": "cards/loaded.png",
         "type": "rum",
@@ -136,7 +136,7 @@ var cards = [
     {
         "title": "Gems Market",
         "coin": 2,
-        "discard": ['p'],
+        "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/animal_market.png",
         "type": "rum",
@@ -213,7 +213,7 @@ var cards = [
 
     {
         "title": "Water Bank",
-        "discard": ['c'],
+        "discard": ['h'],
         "cost": ['c', 'c', 'c', 'c', 'c'],
         "img": "cards/water-bank.png",
         "type": "rum",
@@ -280,11 +280,11 @@ var cards = [
         "title": "Deep Sea Horror",
         "coin": 3,
         "discard": ['s'],
-        "cost": ['s', 'e', 'c'],
+        "cost": ['s', 'e', 'c', 'c'],
         "img": "cards/deep-sea-horror.png",
         "type": "wild",
         "guild": ['vp-4'],
-        "build_text": ` `,
+        "build_text": `:skull:`,
     },
 
     {
@@ -395,7 +395,7 @@ var cards = [
     },
 
     {
-        "discard": ['g'],
+        "discard": ['e'],
         "title": "Locksmith",
         "coin": 2,
         "cost": ['c', 'c', 'c'],
@@ -409,7 +409,7 @@ var cards = [
 
 
     {
-        "discard": ['s'],
+        "discard": ['r'],
         "title": "Abandoned Manor",
         "coin": 3,
         "cost": ['c', 'c', 'c'],
@@ -420,7 +420,7 @@ var cards = [
     },
 
     {
-        "discard": ['s'],
+        "discard": ['h'],
         "title": "Crooked Smuggler",
         // "captain": true,
         "coin": 3,
@@ -432,7 +432,7 @@ var cards = [
     },
 
     {
-        "discard": ['s'],
+        "discard": ['p'],
         "title": "Captain Lhoryn",
         // "captain": true,
         "coin": 3,
@@ -445,7 +445,7 @@ var cards = [
 
 
     {
-        "discard": ['g'],
+        "discard": ['e'],
         "title": "Captain Grenwish",
         // "captain": true,
         "coin": 3,
@@ -470,9 +470,9 @@ var cards = [
 
 
     {
-        "discard": ['g'],
+        "discard": ['e'],
         "title": "Captain Longtooth",
-        "captain": true,
+        // "captain": true,
         "coin": 3,
         "cost": ['s', 'e', 'e', 'c'],
         "img": "cards/captain4.png",
@@ -483,9 +483,9 @@ var cards = [
 
 
     {
-        "discard": ['s'],
+        "discard": ['h'],
         "title": "Captain Cutlass",
-        "captain": true,
+        // "captain": true,
         "coin": 3,
         "cost": ['s', 'h', 'c'],
         "img": "cards/assasin.png",
