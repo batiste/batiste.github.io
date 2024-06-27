@@ -136,6 +136,65 @@ var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
 }
 
+var virtual_cost = {
+    "c": 1,
+    "g": 2.3,
+    "p": 2.3,
+    "r": 2.3,
+    "s": 3,
+    "h": 3,
+    "e": 3,
+}
+
+var get_v_cost = (s) => {
+    return virtual_cost[s] || 0;
+}
+
+var virtual_cost_2 = {
+    ":coin:": 2.5,
+    ":gun:": 2,
+    ":parrot:": 2,
+    ":rum:": 2,
+    ":skull:": 3,
+    ":helm:": 3,
+    ":gem:": 3,
+}
+
+var evaluate_build_text = (t) => {
+    var bits = t.split(" ")
+    if (bits.length == 1) {
+        return virtual_cost_2[bits[0]]
+    }
+    if (bits.length == 3) {
+        if (bits[1] == ":or:") {
+            return Math.max(virtual_cost_2[bits[0]], virtual_cost_2[bits[2]]) + 0.8;
+        }
+        if (bits[1] == ":trans:") {
+            return virtual_cost_2[bits[2]] - 1.4;
+        }
+    }
+    return 0
+}
+
+var get_v_value = (c) => {
+    var v = 0;
+    if(c.guild && c.guild.length) {
+        var vp = parseInt(c.guild[0].split('-')[1]);
+        v += vp;
+    }
+
+    var v_cost = 0;
+    if (c.cost) {
+        c.cost.forEach((co) => {
+            v_cost += get_v_cost(co)
+        })
+    }
+    c.v_cost = Math.round(10.0 * v_cost) / 10.0;
+    c.v_value = v + evaluate_build_text(c.build_text);
+    c.v_ratio = Math.round(100.0 * c.v_value / parseFloat(c.v_cost)) / 100.0;
+}
+
+
 var replace_icons = (txt) => {
     txt = txt.replace(/:hammer:/g, icon('hammer'))
     txt = txt.replace(/:gun:/g, icon('gun'))
@@ -161,7 +220,8 @@ var replace_icons = (txt) => {
 
 cards.forEach((c) => {
 
-    cost = "";
+    var cost = "";
+    var v_cost = 0
     if (c.cost) {
         c.cost.forEach((co) => {
             cost += get_res(co)
@@ -266,7 +326,7 @@ cards.forEach((c) => {
         cp = '<img class="captain" src="img/arrow-left.png">';
     }
 
-    // ${dis}
+    get_v_value(c);
 
     var card_template = `
     <div>
@@ -294,7 +354,8 @@ cards.forEach((c) => {
                 <span class="title ${title_class}">${split_title}</span>
             </div>
         </div>
-        <button onclick="downloadCardButton(this)">Download #${i}</button><br>
+        <button onclick="downloadCardButton(this)">Download #${i} </button><br>
+        cost: ${c.v_cost}, value: ${c.v_value}, ratio: ${c.v_ratio};<br>
         <label><input type="checkbox" id="check-pdf-${i}" 
                 onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>
     </div>

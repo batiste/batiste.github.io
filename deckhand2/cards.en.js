@@ -85,7 +85,7 @@ var cards = [
         "cost": ['c', 'c', 'c'],
         "img": "cards/scruf.png",
         "type": "rum",
-        "guild": [''],
+        // "guild": [''],
         "build_text": ':rum:'
     },
 
@@ -109,6 +109,40 @@ var cards = [
         "type": "rum",
         // "guild": ['rum'],
         "build_text": `:gun:`,
+    },
+
+    {
+        "discard": ['p'],
+        "title": "Rich Pirate",
+        "coin": 2,
+        "cost": ['r', 'c', 'c'],
+        "img": "cards/rich.png",
+        "type": "rum",
+        "guild": ['vp-1'],
+        "build_text": `:parrot:`,
+    },
+
+    {
+        "title": "Armed Orangutan",
+        "coin": 2,
+        "discard": ['p'],
+        "cost": ['p', 'c', 'c'],
+        "img": "cards/armed-orangutan.jpeg",
+        "type": "wild",
+        "guild": ['vp-1'],
+        "build_text": `:gun:`,
+        "build": ['p'],
+    },
+
+    {
+        "title": "Brawl",
+        "coin": 1,
+        "cost": ['g', 'c', 'c'],
+        "discard": ['g'],
+        "img": "cards/brawl.png",
+        "type": "gun",
+        "guild": ['vp-1'],
+        "build_text": ':rum:'
     },
 
     {
@@ -153,13 +187,12 @@ var cards = [
         "img": "cards/busy.png",
         "type": "rum",
         // "play_text": `:coin::coin:`,
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         // "play_text": 'Produce 2:coin:',
         // "play_text": `:parrot::rum:`,
         // "bid_text": `:rum::coin:`,
         "build_text": `:coin:`
     },
-
 
     {
         "title": "Animal Sanctuary",
@@ -169,7 +202,7 @@ var cards = [
         "img": "cards/sanctuary.png",
         "type": "wild",
         "guild": ['vp-4'],
-        "build_text": `&nbsp;`,
+        "build_text": `:parrot:`,
     },
 
 
@@ -180,7 +213,7 @@ var cards = [
         "cost": ['g', 'g', 's', 'c'],
         "img": "cards/plunder.png",
         "type": "gun",
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         "build_text": `:gem:`,
     },
 
@@ -188,11 +221,11 @@ var cards = [
         "title": "Rum Merchant",
         "coin": 2,
         "discard": ['r'],
-        "cost": ['r', 'h', 'c', 'c'],
+        "cost": ['r', 'h', 'c'],
         "img": "cards/merchant2.png",
         "type": "rum",
         "guild": ['rum'],
-        "guild": ['vp-1'],
+        "guild": ['vp-2'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
         "build_text": `:rum:`,
@@ -221,40 +254,6 @@ var cards = [
         "build_text": `:coin:`,
     },
 
-    {
-        "discard": ['p'],
-        "title": "Rich Pirate",
-        "coin": 2,
-        "cost": ['r', 'c', 'c'],
-        "img": "cards/rich.png",
-        "type": "rum",
-        "guild": ['vp-1'],
-        "build_text": `:parrot:`,
-    },
-
-    {
-        "title": "Armed Orangutan",
-        "coin": 2,
-        "discard": ['p'],
-        "cost": ['p', 'c', 'c'],
-        "img": "cards/armed-orangutan.jpeg",
-        "type": "wild",
-        "guild": ['vp-1'],
-        "build_text": `:gun:`,
-        "build": ['p'],
-    },
-
-    {
-        "title": "Brawl",
-        "coin": 1,
-        "cost": ['g', 'c', 'c'],
-        "discard": ['g'],
-        "img": "cards/brawl.png",
-        "type": "gun",
-        "guild": ['vp-1'],
-        "build_text": ':rum:'
-    },
-
     // {
     //     "title": "Blue Parrot",
     //     "discard": ['p'],
@@ -269,7 +268,7 @@ var cards = [
         "title": "Grand Escape",
         "coin": 3,
         "discard": ['g'],
-        "cost": ['p', 'g', 'e', 'c'],
+        "cost": ['p', 'g', 'e'],
         "img": "cards/freed_monkeys.jpeg",
         "type": "wild",
         "guild": ['vp-2'],
@@ -294,7 +293,7 @@ var cards = [
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
         "type": "wild",
-        "guild": ['vp-2'],
+        "guild": ['vp-4'],
         "build_text": `:draw-1: :trans: :parrot:`,
         "build": ['p', 'c', 'g'],
     },
@@ -336,10 +335,10 @@ var cards = [
         "discard": ['r'],
         "title": "Drunk Marmosets",
         "coin": 3,
-        "cost": ['p', 'p', 'r', 'r'],
+        "cost": ['p', 'r', 'r', 'c'],
         "img": "cards/marmosets.png",
         "type": "wild",
-        "guild": ['vp-4'],
+        "guild": ['vp-5'],
         // "bid_text": `if you lose the bid: :draw-1:`,
         "build_text": ` `,
         "build": ['p'],
@@ -377,7 +376,7 @@ var cards = [
         "cost": ['g', 's', 'c', 'c'],
         "img": "cards/military.png",
         "type": "gun",
-        "guild": ['vp-4'],
+        "guild": ['vp-5'],
         "build_text": ` `,
         "build": ['g']
     },
@@ -390,7 +389,7 @@ var cards = [
         "img": "cards/walk.png",
         "type": "gun",
         "guild": ['vp-1'],
-        "build_text": `:draw-1::trans::gun:`,
+        "build_text": `:draw-1: :trans: :gun:`,
         "build": ['g']
     },
 
@@ -403,7 +402,7 @@ var cards = [
         "type": "gun",
         // "bid_text": `:coin: in settled cards count.`,
         "guild": ['vp-1'],
-        "build_text": `:draw-1::trans::gem:`,
+        "build_text": `:draw-1: :trans: :gem:`,
         "build": ['g'],
     },
 
@@ -416,7 +415,7 @@ var cards = [
         "img": "cards/manor.png",
         "type": "gun",
         "guild": ['vp-1'],
-        "build_text": `:draw-1::trans::skull:`,
+        "build_text": `:draw-1: :trans: :skull:`,
     },
 
     {
@@ -452,7 +451,7 @@ var cards = [
         "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
         "type": "gun",
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         "build_text": `:draw-1: :trans: :helm:`,
     },
 
