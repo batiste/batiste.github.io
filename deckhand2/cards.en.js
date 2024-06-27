@@ -85,7 +85,7 @@ var cards = [
         "cost": ['c', 'c', 'c'],
         "img": "cards/scruf.png",
         "type": "rum",
-        // "guild": ['rum'],
+        "guild": ['rum'],
         "build_text": ':rum:'
     },
 
@@ -390,7 +390,7 @@ var cards = [
         "img": "cards/walk.png",
         "type": "gun",
         "guild": ['vp-1'],
-        "build_text": `:draw-2::trans::gun:`,
+        "build_text": `:draw-1::trans::gun:`,
         "build": ['g']
     },
 
@@ -403,7 +403,7 @@ var cards = [
         "type": "gun",
         // "bid_text": `:coin: in settled cards count.`,
         "guild": ['vp-1'],
-        "build_text": `:draw-2::trans::gem:`,
+        "build_text": `:draw-1::trans::gem:`,
         "build": ['g'],
     },
 
@@ -416,7 +416,7 @@ var cards = [
         "img": "cards/manor.png",
         "type": "gun",
         "guild": ['vp-1'],
-        "build_text": `:draw-2::trans::skull:`,
+        "build_text": `:draw-1::trans::skull:`,
     },
 
     {
