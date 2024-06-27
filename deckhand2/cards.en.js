@@ -85,7 +85,7 @@ var cards = [
         "cost": ['c', 'c', 'c'],
         "img": "cards/scruf.png",
         "type": "rum",
-        "guild": ['rum'],
+        "guild": [''],
         "build_text": ':rum:'
     },
 
