@@ -413,6 +413,7 @@ a, a:visited {
 
 .guild img.cross {
     width: 20px;
+    margin: 3px;
     margin-bottom: 8px;
 }
 

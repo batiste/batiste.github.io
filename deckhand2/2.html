@@ -181,6 +181,9 @@ var get_v_value = (c) => {
     if(c.guild && c.guild.length) {
         var vp = parseInt(c.guild[0].split('-')[1]);
         v += vp;
+        if(c.guild.length == 3 && c.guild[1] == 'x') {
+            v = v * (5.5 - virtual_cost_2[':'+c.guild[2]+':'])
+        }
     }
 
     var v_cost = 0;
@@ -235,13 +238,13 @@ cards.forEach((c) => {
     if (c.guild) {
         c.guild.forEach(c => {
             if (c == "rum") {
-                guild += `<img src="img/rum-guild.png">`
+                guild += `<img class="res" src="img/rum.png">`
             }
             if (c == "parrot") {
-                guild += `<img src="img/parrot-guild.png">`
+                guild += `<img class="res" src="img/parrot.png">`
             }
             if (c == "gun") {
-                guild += `<img src="img/gun-guild.png">`
+                guild += `<img class="res" src="img/gun.png">`
             }
             if (c == "vp") {
                 guild += `<img src="img/vp.png">`
