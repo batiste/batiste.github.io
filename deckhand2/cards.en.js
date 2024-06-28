@@ -281,7 +281,7 @@ var cards = [
         "cost": ['s', 'e', 'c', 'c'],
         "img": "cards/deep-sea-horror.png",
         "type": "wild",
-        "guild": ['vp-4'],
+        "guild": ['vp-3'],
         "build_text": `:skull:`,
     },
 
@@ -303,8 +303,8 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/skeleton-crew.png",
         "type": "gun",
-        "guild": ['vp-5'],
-        "build_text": ` `,
+        "guild": ['vp-2'],
+        "build_text": `:skull:`,
     },
 
     {
@@ -477,6 +477,44 @@ var cards = [
         "type": "gun",
         "guild": ['vp-3'],
         "build_text": `:coin:`,
+    },
+
+
+    {
+        "title": "Doom Temple",
+        // "coin": 1,
+        "discard": ['s'],
+        "cost": ['s', 's', 's', 'c'],
+        "img": "cards/doom.png",
+        "type": "rum",
+        "guild": ['vp-3', 'x', 'skull'],
+        // "play_text": '<b>3</b> :skull-guild:&nbsp;&nbsp; <b>2</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
+        "build_text": ' '
+    },
+
+
+    {
+        "title": "Trade Monopoly",
+        // "coin": 1,
+        "discard": ['h'],
+        "cost": ['h', 'h', 'h', 'c'],
+        "img": "cards/mono.png",
+        "type": "rum",
+        "guild": ['vp-3', 'x', 'helm'],
+        // "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :parrot:&nbsp;&nbsp; <b>3</b> :helm:',
+        "build_text": ' '
+    },
+
+    {
+        "title": "Smuggler Cache",
+        // "coin": 1,
+        "discard": ['e'],
+        "cost": ['e', 'e', 'e', 'c'],
+        "img": "cards/cache.png",
+        "type": "rum",
+        "guild": ['vp-3', 'x', 'gem'],
+        // "play_text": '<b>4</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :helm: :trans: :draw-1:',
+        "build_text": ' '
     },
 
 

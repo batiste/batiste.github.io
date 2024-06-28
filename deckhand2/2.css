@@ -410,3 +410,13 @@ a, a:visited {
     font-weight: bold;
     padding: 8px 2px;
 }
+
+.guild img.cross {
+    width: 20px;
+    margin-bottom: 8px;
+}
+
+.guild img.res {
+    width: 30px;
+    margin-bottom: 3px;
+}
