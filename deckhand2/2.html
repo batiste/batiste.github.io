@@ -177,7 +177,7 @@ var evaluate_build_text = (t) => {
     }
     if (bits.length == 3) {
         if (bits[1] == ":or:") {
-            return Math.max(virtual_cost_2[bits[0]], virtual_cost_2[bits[2]]) + 0.8;
+            return virtual_cost_2[bits[0]] + virtual_cost_2[bits[2]] - 0.5;
         }
         if (bits[1] == ":trans:") {
             return virtual_cost_2[bits[2]] - 1.5;

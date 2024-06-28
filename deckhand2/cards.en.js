@@ -200,6 +200,74 @@ var cards = [
     },
 
     {
+        "discard": ['s'],
+        "title": "Necromancer",
+        "coin": 3,
+        "cost": ['p', 'g', 'c'],
+        "img": "cards/necro.png",
+        "type": "gun",
+        "guild": ['vp-1'],
+        "build_text": `:skull:`,
+    },
+
+    {
+        "title": "Docks",
+        "coin": 1,
+        "discard": ['h'],
+        "cost": ['r', 'p', 'c'],
+        "img": "cards/loaded.png",
+        "type": "rum",
+        "guild": ['vp-1'],
+        "build_text": ':helm:'
+    },
+
+    {
+        "title": "Gems Market",
+        "coin": 2,
+        "discard": ['e'],
+        "cost": ['g', 'r', 'c'],
+        "img": "cards/animal_market.png",
+        "type": "rum",
+        "build_text": `Produce 2`,
+        "guild": ['vp-1'],
+        "build_text": `:gem:`,
+    },
+
+    {
+        "title": "Sails Bazaar",
+        "coin": 2,
+        "discard": ['e'],
+        "cost": ['r', 'c', 'c', 'c'],
+        "img": "cards/animal_market.png",
+        "type": "rum",
+        "guild": [],
+        "build_text": `:gun: :or: :parrot:`,
+    },
+
+    {
+        "title": "Trading Post",
+        "coin": 2,
+        "discard": ['e'],
+        "cost": ['g', 'c', 'c', 'c'],
+        "img": "cards/animal_market.png",
+        "type": "rum",
+        "guild": [],
+        "build_text": `:rum: :or: :parrot:`,
+    },
+
+    {
+        "title": "Grand Escape",
+        "coin": 3,
+        "discard": ['g'],
+        "cost": ['p', 'g', 'e'],
+        "img": "cards/freed_monkeys.jpeg",
+        "type": "wild",
+        "guild": ['vp-2'],
+        "build_text": `:gun: :or: :rum:`
+    },
+
+
+    {
         "title": "Barataria Bay",
         // "coin": 1,
         "discard": ['p'],
@@ -295,17 +363,6 @@ var cards = [
     //     "guild": ['parrot', 'parrot'],
     //     "build_text": `:parrot:`
     // },
-
-    {
-        "title": "Grand Escape",
-        "coin": 3,
-        "discard": ['g'],
-        "cost": ['p', 'g', 'e'],
-        "img": "cards/freed_monkeys.jpeg",
-        "type": "wild",
-        "guild": ['vp-3'],
-        "build_text": `:gun: :or: :rum:`
-    },
 
     {
         "title": "Deep Sea Horror",
