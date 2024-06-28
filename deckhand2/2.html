@@ -146,6 +146,16 @@ var virtual_cost = {
     "e": 3,
 }
 
+var distribution_end_game = {
+    "coin": 1.5,
+    "gun": 3,
+    "parrot": 3,
+    "rum": 3,
+    "skull": 2,
+    "helm": 2,
+    "gem": 2,
+}
+
 var get_v_cost = (s) => {
     return virtual_cost[s] || 0;
 }
@@ -182,7 +192,7 @@ var get_v_value = (c) => {
         var vp = parseInt(c.guild[0].split('-')[1]);
         v += vp;
         if(c.guild.length == 3 && c.guild[1] == 'x') {
-            v = v * (5.5 - virtual_cost_2[':'+c.guild[2]+':'])
+            v = v * distribution_end_game[c.guild[2]]
         }
     }
 
@@ -246,26 +256,8 @@ cards.forEach((c) => {
             if (c == "gun") {
                 guild += `<img class="res" src="img/gun.png">`
             }
-            if (c == "vp") {
-                guild += `<img src="img/vp.png">`
-            }
-            if (c == "vp-1") {
-                guild += `<img src="img/vp-1.png">`
-            }
-            if (c == "vp-2") {
-                guild += `<img src="img/vp-2.png">`
-            }
-            if (c == "vp-3") {
-                guild += `<img src="img/vp-3.png">`
-            }
-            if (c == "vp-4") {
-                guild += `<img src="img/vp-4.png">`
-            }
-            if (c == "vp-5") {
-                guild += `<img src="img/vp-5.png">`
-            }
-            if (c == "vp-8") {
-                guild += `<img src="img/vp-8.png">`
+            if (c.startsWith('vp-')) {
+                guild += `<img src="img/${c}.png">`
             }
             if (c == "crate") {
                 guild += `<img src="img/crate.png">`

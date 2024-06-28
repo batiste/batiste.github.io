@@ -99,6 +99,39 @@ var cards = [
     },
 
     {
+        "title": "Tavern Keeper",
+        "coin": 1,
+        "discard": ['r'],
+        "cost": ['c', 'c', 'c'],
+        "img": "cards/scruf.png",
+        "type": "rum",
+        // "guild": [''],
+        "build_text": ':rum:'
+    },
+
+    {
+        "title": "White Parrot",
+        "coin": 2,
+        "discard": ['p'],
+        "cost": ['c', 'c', 'c'],
+        "img": "cards/parrot.png",
+        "type": "wild",
+        "build_text": ':parrot:',
+        // "guild": ['parrot']
+    },
+
+    {
+        "title": "Gun Merchant",
+        "coin": 2,
+        "discard": ['g'],
+        "cost": ['c', 'c', 'c'],
+        "img": "cards/merchant.jpeg",
+        "type": "rum",
+        // "guild": ['rum'],
+        "build_text": `:gun:`,
+    },
+
+    {
         "discard": ['r'],
         "title": "Rich Pirate",
         "coin": 2,
@@ -237,10 +270,10 @@ var cards = [
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
         "type": "rum",
-        "guild": ['vp-5'],
+        "guild": ['vp-6'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
-        "build_text": `:rum:`,
+        "build_text": `:draw-1: :trans: :rum:`,
     },
 
     {
@@ -424,8 +457,8 @@ var cards = [
         "cost": ['h', 'h', 'c'],
         "img": "cards/captain1.png",
         "type": "gun",
-        "guild": ['vp-4'],
-        "build_text": `:parrot:`,
+        "guild": ['vp-5'],
+        "build_text": ` `,
     },
 
 
@@ -484,7 +517,7 @@ var cards = [
         "title": "Doom Temple",
         // "coin": 1,
         "discard": ['s'],
-        "cost": ['s', 's', 's', 'c'],
+        "cost": ['s', 's', 's'],
         "img": "cards/doom.png",
         "type": "rum",
         "guild": ['vp-3', 'x', 'skull'],
@@ -494,10 +527,10 @@ var cards = [
 
 
     {
-        "title": "Trade Monopoly",
+        "title": "Spice Monopoly",
         // "coin": 1,
         "discard": ['h'],
-        "cost": ['h', 'h', 'h', 'c'],
+        "cost": ['h', 'h', 'h'],
         "img": "cards/mono.png",
         "type": "rum",
         "guild": ['vp-3', 'x', 'helm'],
@@ -509,13 +542,24 @@ var cards = [
         "title": "Smuggler Cache",
         // "coin": 1,
         "discard": ['e'],
-        "cost": ['e', 'e', 'e', 'c'],
+        "cost": ['e', 'e', 'e'],
         "img": "cards/cache.png",
         "type": "rum",
-        "guild": ['vp-3', 'x', 'gem'],
+        "guild": ['vp-2', 'x', 'gem'],
         // "play_text": '<b>4</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :helm: :trans: :draw-1:',
-        "build_text": ' '
+        "build_text": ':helm:'
     },
 
+
+    {
+        "title": "Monkey Island",
+        // "coin": 1,
+        "discard": ['p'],
+        "cost": ['e', 's', 'h', 'p', 'c', 'c'],
+        "img": "cards/skull.png",
+        "guild": ['vp-8'],
+        // "play_text": '<b>3</b> :parrot-guild:&nbsp;&nbsp; <b>2</b> :skull-guild:&nbsp;&nbsp; <b>4</b> :helm:',
+        "build_text": ':gem:'
+    },
 
 ]
