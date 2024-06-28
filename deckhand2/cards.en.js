@@ -65,19 +65,6 @@ var cards = [
     //     "build_text": ':skull::coin:'
     // },
 
-    // {
-    //     "title": "Barataria Bay",
-    //     // "coin": 1,
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/bay.png",
-    //     "type": "rum",
-    //     "guild": ['gun', 'crate'],
-    //     "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
-    //     "build_text": ':rum::coin:'
-    // },
-
-
     {
         "title": "Tavern Keeper",
         "coin": 1,
@@ -112,7 +99,7 @@ var cards = [
     },
 
     {
-        "discard": ['p'],
+        "discard": ['r'],
         "title": "Rich Pirate",
         "coin": 2,
         "cost": ['r', 'c', 'c'],
@@ -180,6 +167,18 @@ var cards = [
     },
 
     {
+        "title": "Barataria Bay",
+        // "coin": 1,
+        "discard": ['p'],
+        "cost": ['r', 'p', 'g', 'c'],
+        "img": "cards/bay.png",
+        "type": "rum",
+        "guild": ['vp-3'],
+        // "play_text": '<b>3</b> :rum-guild:&nbsp;&nbsp; <b>3</b> :gun-guild:&nbsp;&nbsp; <b>3</b> :helm:',
+        "build_text": ':coin:'
+    },
+
+    {
         "title": "Bustling Market",
         "coin": 1,
         "discard": ['r'],
@@ -225,7 +224,7 @@ var cards = [
         "img": "cards/merchant2.png",
         "type": "rum",
         "guild": ['rum'],
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
         "build_text": `:rum:`,
@@ -234,11 +233,11 @@ var cards = [
     {
         "title": "Trade Route",
         "coin": 2,
-        "discard": ['r'],
+        "discard": ['p'],
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
         "type": "rum",
-        "guild": ['vp-4'],
+        "guild": ['vp-5'],
         // "play_text": `Build 1, Produce :rum:`,
         // "bid_text": `If you win a bid with this card, draw a card.`,
         "build_text": `:rum:`,
@@ -271,7 +270,7 @@ var cards = [
         "cost": ['p', 'g', 'e'],
         "img": "cards/freed_monkeys.jpeg",
         "type": "wild",
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         "build_text": `:gun: :or: :rum:`
     },
 
@@ -327,7 +326,7 @@ var cards = [
         "cost": ['e', 'r', 'p'],
         "img": "cards/sidekick.png",
         "type": "wild",
-        "guild": ['vp-2'],
+        "guild": ['vp-3'],
         "build_text": `:helm:`,
     },
 
@@ -335,7 +334,7 @@ var cards = [
         "discard": ['r'],
         "title": "Drunk Marmosets",
         "coin": 3,
-        "cost": ['p', 'r', 'r', 'c'],
+        "cost": ['p', 'r', 'c', 'c'],
         "img": "cards/marmosets.png",
         "type": "wild",
         "guild": ['vp-5'],
@@ -355,19 +354,6 @@ var cards = [
         "build_text": `:gem:`,
         "build": ['g'],
     },
-
-    // {
-    //     "discard": ['g'],
-    //     "title": "Skeleton Crew",
-    //     "coin": 3,
-    //     "cost": ['g', 'g', 'c'],
-    //     "img": "cards/skeleton-crew.png",
-    //     "type": "gun",
-    //     "guild": ['gun'],
-    //     "build": ['g'],
-    //     "build_text": `:gun-guild: <b>X</b> :coin:`,
-    // },
-
 
     {
         "discard": ['g'],
@@ -489,7 +475,7 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/assasin.png",
         "type": "gun",
-        "guild": ['vp-4'],
+        "guild": ['vp-3'],
         "build_text": `:coin:`,
     },
 
