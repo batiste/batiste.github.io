@@ -421,3 +421,11 @@ a, a:visited {
     width: 30px;
     margin-bottom: 3px;
 }
+
+.op {
+    color: rgb(255, 89, 0);
+}
+
+.op {
+    color: rgb(0, 179, 255);
+}

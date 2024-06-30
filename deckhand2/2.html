@@ -138,14 +138,16 @@ var icon = (t) => {
 
 var virtual_cost = {
     "c": 1,
-    "g": 2.3,
-    "p": 2.3,
-    "r": 2.3,
-    "s": 3,
-    "h": 3,
-    "e": 3,
+    "g": 1.9, // justification: easier to get
+    "p": 1.9,
+    "r": 1.9,
+    "s": 2.8, // justification: you can always discard 2 cards to get it
+    "h": 2.8,
+    "e": 2.8,
 }
 
+// how many of those symbols are expected to exist in the end
+// game on a board, without pushing it too much
 var distribution_end_game = {
     "coin": 1.5,
     "gun": 3,
@@ -160,7 +162,7 @@ var get_v_cost = (s) => {
     return virtual_cost[s] || 0;
 }
 
-var virtual_cost_2 = {
+var virtual_value = {
     ":coin:": 2.5,
     ":gun:": 2,
     ":parrot:": 2,
@@ -173,14 +175,14 @@ var virtual_cost_2 = {
 var evaluate_build_text = (t) => {
     var bits = t.split(" ")
     if (bits.length == 1) {
-        return virtual_cost_2[bits[0]]
+        return virtual_value[bits[0]]
     }
     if (bits.length == 3) {
         if (bits[1] == ":or:") {
-            return virtual_cost_2[bits[0]] + virtual_cost_2[bits[2]] - 0.5;
+            return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.5;
         }
         if (bits[1] == ":trans:") {
-            return virtual_cost_2[bits[2]] - 1.5;
+            return virtual_value[bits[2]] - 1.5;
         }
     }
     return 0
@@ -331,6 +333,13 @@ cards.forEach((c) => {
     }
 
     get_v_value(c);
+    if(c.v_ratio > 0.79999) {
+        c.v_ratio = `<b class="op">${c.v_ratio}</b>`
+    }
+    if(c.v_ratio < 0.7) {
+        c.v_ratio = `<b class="up">${c.v_ratio}</b>`
+    }
+
 
     var card_template = `
     <div>
