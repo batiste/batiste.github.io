@@ -184,7 +184,6 @@ var virtual_value = {
     "r": 2,
     "s": 3,
     "h": 3,
-    "g": 3,
 }
 
 var evaluate_production = (prod) => {
@@ -230,6 +229,7 @@ var get_v_value = (c) => {
         })
     }
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
+    console.log(c.title)
     c.v_value = v + evaluate_production(c.production);
     c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
 }
