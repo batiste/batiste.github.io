@@ -127,7 +127,6 @@ var cards = [
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/animal_market.png",
-        "production": `Produce 2`,
         "extra": ['vp-1'],
         "production": ['e'],
     },
@@ -246,7 +245,7 @@ var cards = [
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
         "extra": ['vp-6'],
-        "production": ['draw-1', 'trans', 'r'],
+        "production": ['discard-1', 'produce', 'r'],
     },
 
     {
@@ -275,7 +274,7 @@ var cards = [
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
         "extra": ['vp-4'],
-        "production": ['draw-1', 'trans', 'p'],
+        "production": ['discard-1', 'produce', 'p'],
     },
 
     {
@@ -336,7 +335,7 @@ var cards = [
         "cost": ['cs'],
         "img": "cards/walk.png",
         "extra": ['bolt'],
-        "production": ['draw-1', 'trans', 'g'],
+        "production": ['discard-1', 'produce', 'g'],
     },
 
     {
@@ -345,7 +344,7 @@ var cards = [
         "cost": ['cs', 'cs'],
         "img": "cards/locksmith.png",
         "extra": ['bolt'],
-        "production": ['draw-1', 'trans', 'e'],
+        "production": ['discard-1', 'produce', 'e'],
     },
 
 
@@ -355,7 +354,7 @@ var cards = [
         "cost": ['cs', 'cs'],
         "img": "cards/manor.png",
         "extra": ['bolt'],
-        "production": ['draw-1', 'trans', 's'],
+        "production": ['discard-1', 'produce', 's'],
     },
 
     {
@@ -382,7 +381,7 @@ var cards = [
         "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
         "extra": ['vp-3'],
-        "production": ['draw-1', 'trans', 'h'],
+        "production": ['discard-1', 'produce', 'h'],
     },
 
     {
@@ -462,7 +461,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 'p', 'cs'],
         "img": "cards/p-guild.png",
-        "extra": ['vp-2', 'x', 'silver'],
+        "extra": ['vp-2', 'x', 'cs'],
     },
 
     {
@@ -476,7 +475,7 @@ var cards = [
 
     {
         "title": "Wildlife Handler",
-        "discard": ['g'],
+        "discard": ['p'],
         "cost": ['c', 'c', 'cs'],
         "img": "cards/handler.png",
         "extra": ['bolt'],
@@ -486,7 +485,7 @@ var cards = [
 
     {
         "title": "Rowdy Mob",
-        "discard": ['g'],
+        "discard": ['r'],
         "cost": ['g', 'g', 'r', 'cs', 'cs'],
         "img": "cards/mob.png",
         "production": ['h', 'or', 'r']

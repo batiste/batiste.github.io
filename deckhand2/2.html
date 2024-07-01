@@ -96,10 +96,10 @@ var get_res = (r) => {
     if (r == "gem") {
         return res("gem")
     }
-    if (r == "trans") {
+    if (r == "produce") {
         return res("arrow")
     }
-    if (r == "draw-1") {
+    if (r == "discard-1") {
         return res("draw-1")
     }
     if (r == "x") {
@@ -162,14 +162,14 @@ var virtual_cost = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "coin": 0.5,
-    "gun": 3,
-    "parrot": 3,
-    "rum": 3,
-    "skull": 2,
-    "helm": 2,
-    "gem": 2,
-    "silver": 2,
+    "c": 0.5,
+    "g": 3,
+    "p": 3,
+    "r": 3,
+    "s": 2,
+    "h": 2,
+    "e": 2,
+    "cs": 2,
 }
 
 var get_v_cost = (s) => {
@@ -275,7 +275,6 @@ cards.forEach((c) => {
     var guild = ''
     if (c.extra) {
         c.extra.forEach(c => {
-            console.log(c)
             if (c == "r") {
                 guild += `<img class="res" src="img/rum.png">`
             }
