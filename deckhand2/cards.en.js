@@ -318,7 +318,7 @@ var cards = [
     {
         "title": "Water Bank",
         "discard": ['h'],
-        "cost": ['cs', 'cs', 'cs', 'c'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "type": "rum",
         "guild": ['vp-1'],
