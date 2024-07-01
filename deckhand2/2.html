@@ -96,36 +96,45 @@ var get_res = (r) => {
     if (r == "gem") {
         return res("gem")
     }
+    if (r == "trans") {
+        return res("arrow")
+    }
+    if (r == "draw-1") {
+        return res("draw-1")
+    }
     if (r == "x") {
         return `<div class="mult" style="font-weight: bold; color: #fff">X</div>`
     }
     if (r == "t") {
         return res("purse")
     }
+    if (r == "or") {
+        return `<b style="font-size:18px;color:#000c">|</b>`
+    }
 }
 
 var stats_costs = {};
 var stats_discard = {};
 var stats_vp = {};
-var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin', 'gem', 'silver']
+var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
 cards.forEach((c) => {
     c.cost.forEach((co) => {
         stats_costs[co] = 1 + (stats_costs[co] || 0);
     });
     stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
-    if (c.guild) {
-        c.guild.forEach(g => {
+    if (c.extra) {
+        c.extra.forEach(g => {
             stats_vp[g] = 1 + (stats_vp[g] || 0);
         })
     }
-
-    if(c.build_text) {
-        var add = c.build_text.includes(":trans:") ? 0.5 : 1;
-        production_type.forEach(t => {
-            if(c.build_text.includes(t)) {
-                stats_production[t] = add + (stats_production[t] || 0)
-            }
+    if (c.production) {
+        var add = 1;
+        if (c.production.length == 3) {
+            var add = c.production[1] == "trans" ? 0.5 : 1;
+        }
+        c.production.forEach(t => {
+            stats_production[t] = add + (stats_production[t] || 0)
         })
     }
 });
@@ -168,27 +177,30 @@ var get_v_cost = (s) => {
 }
 
 var virtual_value = {
-    ":coin:": 4,
-    ":silver:": 1.5,
-    ":gun:": 2,
-    ":parrot:": 2,
-    ":rum:": 2,
-    ":skull:": 3,
-    ":helm:": 3,
-    ":gem:": 3,
+    "c": 4,
+    "cs": 1.5,
+    "g": 2,
+    "p": 2,
+    "r": 2,
+    "s": 3,
+    "h": 3,
+    "g": 3,
 }
 
-var evaluate_build_text = (t) => {
-    var bits = t.split(" ")
+var evaluate_production = (prod) => {
+    if (!prod) {
+        return 0;
+    }
+    var bits = prod;
     if (bits.length == 1) {
         return virtual_value[bits[0]]
     }
     if (bits.length == 3) {
-        if (bits[1] == ":or:") {
+        if (bits[1] == "or") {
             // very minus here because of the distribution bonus
             return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.1;
         }
-        if (bits[1] == ":trans:") {
+        if (bits[1] == "trans") {
             return virtual_value[bits[2]] - 1.5;
         }
     }
@@ -197,13 +209,13 @@ var evaluate_build_text = (t) => {
 
 var get_v_value = (c) => {
     var v = 0;
-    if(c.guild && c.guild.length) {
-        if (c.guild[0] == "bolt") {
+    if(c.extra && c.extra.length) {
+        if (c.extra[0] == "bolt") {
             v = 0.3;
         } else {
-            var vp = parseInt(c.guild[0].split('-')[1]);
-            if(c.guild.length == 3 && c.guild[1] == 'x') {
-                v = vp * distribution_end_game[c.guild[2]]
+            var vp = parseInt(c.extra[0].split('-')[1]);
+            if(c.extra.length == 3 && c.extra[1] == 'x') {
+                v = vp * distribution_end_game[c.extra[2]]
             } else {
                 v += vp;
             }
@@ -218,33 +230,32 @@ var get_v_value = (c) => {
         })
     }
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
-    c.v_value = v + evaluate_build_text(c.build_text);
+    c.v_value = v + evaluate_production(c.production);
     c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
 }
 
 
 var replace_icons = (txt) => {
-    txt = txt.replace(/:hammer:/g, icon('hammer'))
-    txt = txt.replace(/:gun:/g, icon('gun'))
-    txt = txt.replace(/:parrot:/g, icon('parrot'))
-    txt = txt.replace(/:rum-guild:/g, icon('rum-guild'))
-    txt = txt.replace(/:gun-guild:/g, icon('gun-guild'))
-    txt = txt.replace(/:parrot-guild:/g, icon('parrot-guild'))
-    txt = txt.replace(/:skull-guild:/g, icon('skull-guild'))
-    txt = txt.replace(/:gem:/g, icon('gem'))
-    txt = txt.replace(/:rum:/g, icon('rum'))
-    txt = txt.replace(/:coin:/g, icon('coin'))
-    txt = txt.replace(/:silver:/g, icon('silver'))
-    txt = txt.replace(/:trans:/g, icon('arrow'))
-    txt = txt.replace(/:draw-1:/g, icon('draw-1'))
-    txt = txt.replace(/:skull:/g, icon('skull'))
-    txt = txt.replace(/:draw-2:/g, icon('draw-2'))
-    txt = txt.replace(/:helm:/g, icon('helm'))
-    txt = txt.replace(/:crate:/g, icon('crate'))
-    txt = txt.replace(/:bolt:/g, icon('bolt'))
-    txt = txt.replace(/:or:/g, `<b style="font-size:18px;color:#000c">|</b>`)
-    txt = txt.replace(/:vp:/g, icon('vp'))
-    txt = txt.replace(/:vp-2:/g, icon('vp-2'))
+    txt = txt.replace(/hammer/g, icon('hammer'))
+    txt = txt.replace(/gun/g, icon('gun'))
+    txt = txt.replace(/parrot/g, icon('parrot'))
+    txt = txt.replace(/rum-guild/g, icon('rum-guild'))
+    txt = txt.replace(/gun-guild/g, icon('gun-guild'))
+    txt = txt.replace(/parrot-guild/g, icon('parrot-guild'))
+    txt = txt.replace(/skull-guild/g, icon('skull-guild'))
+    txt = txt.replace(/gem/g, icon('gem'))
+    txt = txt.replace(/rum/g, icon('rum'))
+    txt = txt.replace(/coin/g, icon('coin'))
+    txt = txt.replace(/silver/g, icon('silver'))
+    txt = txt.replace(/trans/g, icon('arrow'))
+    txt = txt.replace(/draw-1/g, icon('draw-1'))
+    txt = txt.replace(/skull/g, icon('skull'))
+    txt = txt.replace(/draw-2/g, icon('draw-2'))
+    txt = txt.replace(/helm/g, icon('helm'))
+    txt = txt.replace(/crate/g, icon('crate'))
+    txt = txt.replace(/bolt/g, icon('bolt'))
+    txt = txt.replace(/or/g, `<b style="font-size:18px;color:#000c">|</b>`)
+    txt = txt.replace(/vp-2/g, icon('vp-2'))
     return txt
 }
 
@@ -262,18 +273,19 @@ cards.forEach((c) => {
     }
 
     var guild = ''
-    if (c.guild) {
-        c.guild.forEach(c => {
-            if (c == "rum") {
+    if (c.extra) {
+        c.extra.forEach(c => {
+            console.log(c)
+            if (c == "r") {
                 guild += `<img class="res" src="img/rum.png">`
             }
-            if (c == "parrot") {
+            if (c == "p") {
                 guild += `<img class="res" src="img/parrot.png">`
             }
-            if (c == "gun") {
+            if (c == "g") {
                 guild += `<img class="res" src="img/gun.png">`
             }
-            if (c == "silver") {
+            if (c == "cs") {
                 guild += `<img class="res" src="img/silver.png">`
             }
             if (c == "bolt") {
@@ -285,13 +297,13 @@ cards.forEach((c) => {
             if (c == "crate") {
                 guild += `<img src="img/crate.png">`
             }
-            if (c == "helm") {
+            if (c == "h") {
                 guild += `<img class="res" src="img/helm.png">`
             }
-            if (c == "skull") {
+            if (c == "s") {
                 guild += `<img class="res" src="img/skull.png">`
             }
-            if (c == "gem") {
+            if (c == "e") {
                 guild += `<img class="res" src="img/gem.png">`
             }
             if (c == "x") {
@@ -304,33 +316,20 @@ cards.forEach((c) => {
         }
     }
 
-    build = "";
-    if (c.build_text) {
-        var build_text = c.build_text || ""
-        build_text = replace_icons(build_text)
-        if (build_text) {
-            build_text = `
-                <div class="build_text"><div>${build_text}</div></div>
-            `
-        }
-        build = `<div class="type line">
+    var build = "";
+    var production = ""
+    if (c.production) {
+        c.production.forEach(p => {
+            production += get_res(p)
+        })
+    }
+    production = `<div class="build_text">${production}</div>`
+    build = `<div class="type line">
             ${guild}
-            ${build_text}
+            ${production}
             <div class="resources">${build}</div>
         </div>`
-    }
 
-    var play_text = c.play_text || ""
-    play_text = replace_icons(play_text)
-    if (play_text) {
-        play_text = `<div class="line play_text">${play_text}</div>`
-    }
-
-    var bid_text = c.bid_text || ""
-    bid_text = replace_icons(bid_text)
-    if (bid_text) {
-        bid_text = `<div class="line bid_text">${bid_text}</div>`
-    }
 
     var title_class = "";
     var split_title = c.title;
@@ -379,8 +378,6 @@ cards.forEach((c) => {
                 </div>
 
                 <div class="bottom">
-                    ${play_text}
-                    ${bid_text}
                     ${build}
                 </div>
                 
