@@ -93,10 +93,6 @@ a, a:visited {
     text-rendering: geometricPrecision;
 }
 
-.type .resources {
-    display: flex;
-}
-
 .line {
     padding: 8px 26px;
     /* text-shadow: 0.2px 0.2px #646464; */
@@ -258,6 +254,7 @@ a, a:visited {
 }
 
 .type .resource {
+    display: flex;
     width: 24px;
     height: 24px;
     border-radius: 50px;
@@ -266,6 +263,11 @@ a, a:visited {
     background-color: #f6e2c4;
     box-shadow: 2px 2px 5px rgba(0,0,0,0.6); */
     margin: 0px 2px;
+}
+
+.type .resource.arrow {
+    padding: 3px 0px;
+    margin: 0 -1px;
 }
 
 .type .resource img {

@@ -59,8 +59,8 @@
 
 var i = 1;
 var cards_total = "";
-var res = (t) => `
-    <div class="resource">
+var res = (t, cls) => `
+    <div class="resource ${cls}">
         <img src="img/${t}.png">
     </div>
     `
@@ -97,7 +97,7 @@ var get_res = (r) => {
         return res("gem")
     }
     if (r == "produce") {
-        return res("arrow")
+        return res("arrow", "arrow")
     }
     if (r == "discard-1") {
         return res("draw-1")
@@ -232,31 +232,6 @@ var get_v_value = (c) => {
     console.log(c.title)
     c.v_value = v + evaluate_production(c.production);
     c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
-}
-
-
-var replace_icons = (txt) => {
-    txt = txt.replace(/hammer/g, icon('hammer'))
-    txt = txt.replace(/gun/g, icon('gun'))
-    txt = txt.replace(/parrot/g, icon('parrot'))
-    txt = txt.replace(/rum-guild/g, icon('rum-guild'))
-    txt = txt.replace(/gun-guild/g, icon('gun-guild'))
-    txt = txt.replace(/parrot-guild/g, icon('parrot-guild'))
-    txt = txt.replace(/skull-guild/g, icon('skull-guild'))
-    txt = txt.replace(/gem/g, icon('gem'))
-    txt = txt.replace(/rum/g, icon('rum'))
-    txt = txt.replace(/coin/g, icon('coin'))
-    txt = txt.replace(/silver/g, icon('silver'))
-    txt = txt.replace(/trans/g, icon('arrow'))
-    txt = txt.replace(/draw-1/g, icon('draw-1'))
-    txt = txt.replace(/skull/g, icon('skull'))
-    txt = txt.replace(/draw-2/g, icon('draw-2'))
-    txt = txt.replace(/helm/g, icon('helm'))
-    txt = txt.replace(/crate/g, icon('crate'))
-    txt = txt.replace(/bolt/g, icon('bolt'))
-    txt = txt.replace(/or/g, `<b style="font-size:18px;color:#000c">|</b>`)
-    txt = txt.replace(/vp-2/g, icon('vp-2'))
-    return txt
 }
 
 cards.forEach((c) => {
