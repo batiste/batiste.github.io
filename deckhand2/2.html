@@ -72,6 +72,9 @@ var get_res = (r) => {
     if (r == "c") {
         return res("coin")
     }
+    if (r == "cs") {
+        return res("silver")
+    }
     if (r == "g") {
         return res("gun")
     }
@@ -104,7 +107,7 @@ var get_res = (r) => {
 var stats_costs = {};
 var stats_discard = {};
 var stats_vp = {};
-var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin', 'gem']
+var production_type = ['rum', 'skull', 'gun', 'parrot', 'helm', 'coin', 'gem', 'silver']
 var stats_production = {}
 cards.forEach((c) => {
     c.cost.forEach((co) => {
@@ -137,7 +140,8 @@ var icon = (t) => {
 }
 
 var virtual_cost = {
-    "c": 1,
+    "c": 1.2,
+    "cs": 0.8,
     "g": 1.9, // justification: easier to get
     "p": 1.9,
     "r": 1.9,
@@ -149,13 +153,14 @@ var virtual_cost = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "coin": 1.5,
+    "coin": 0.5,
     "gun": 3,
     "parrot": 3,
     "rum": 3,
     "skull": 2,
     "helm": 2,
     "gem": 2,
+    "silver": 2,
 }
 
 var get_v_cost = (s) => {
@@ -163,7 +168,8 @@ var get_v_cost = (s) => {
 }
 
 var virtual_value = {
-    ":coin:": 2.5,
+    ":coin:": 4,
+    ":silver:": 1.5,
     ":gun:": 2,
     ":parrot:": 2,
     ":rum:": 2,
@@ -179,7 +185,8 @@ var evaluate_build_text = (t) => {
     }
     if (bits.length == 3) {
         if (bits[1] == ":or:") {
-            return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.5;
+            // very minus here because of the distribution bonus
+            return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.1;
         }
         if (bits[1] == ":trans:") {
             return virtual_value[bits[2]] - 1.5;
@@ -191,14 +198,20 @@ var evaluate_build_text = (t) => {
 var get_v_value = (c) => {
     var v = 0;
     if(c.guild && c.guild.length) {
-        var vp = parseInt(c.guild[0].split('-')[1]);
-        v += vp;
-        if(c.guild.length == 3 && c.guild[1] == 'x') {
-            v = v * distribution_end_game[c.guild[2]]
+        if (c.guild[0] == "bolt") {
+            v = 0.3;
+        } else {
+            var vp = parseInt(c.guild[0].split('-')[1]);
+            if(c.guild.length == 3 && c.guild[1] == 'x') {
+                v = vp * distribution_end_game[c.guild[2]]
+            } else {
+                v += vp;
+            }
         }
     }
 
-    var v_cost = 0;
+    // the card itself has a value of 1
+    var v_cost = 1;
     if (c.cost) {
         c.cost.forEach((co) => {
             v_cost += get_v_cost(co)
@@ -206,7 +219,7 @@ var get_v_value = (c) => {
     }
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
     c.v_value = v + evaluate_build_text(c.build_text);
-    c.v_ratio = Math.round(100.0 * c.v_value / parseFloat(c.v_cost)) / 100.0;
+    c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
 }
 
 
@@ -221,12 +234,14 @@ var replace_icons = (txt) => {
     txt = txt.replace(/:gem:/g, icon('gem'))
     txt = txt.replace(/:rum:/g, icon('rum'))
     txt = txt.replace(/:coin:/g, icon('coin'))
+    txt = txt.replace(/:silver:/g, icon('silver'))
     txt = txt.replace(/:trans:/g, icon('arrow'))
     txt = txt.replace(/:draw-1:/g, icon('draw-1'))
     txt = txt.replace(/:skull:/g, icon('skull'))
     txt = txt.replace(/:draw-2:/g, icon('draw-2'))
     txt = txt.replace(/:helm:/g, icon('helm'))
     txt = txt.replace(/:crate:/g, icon('crate'))
+    txt = txt.replace(/:bolt:/g, icon('bolt'))
     txt = txt.replace(/:or:/g, `<b style="font-size:18px;color:#000c">|</b>`)
     txt = txt.replace(/:vp:/g, icon('vp'))
     txt = txt.replace(/:vp-2:/g, icon('vp-2'))
@@ -257,6 +272,12 @@ cards.forEach((c) => {
             }
             if (c == "gun") {
                 guild += `<img class="res" src="img/gun.png">`
+            }
+            if (c == "silver") {
+                guild += `<img class="res" src="img/silver.png">`
+            }
+            if (c == "bolt") {
+                guild += `<img class="res" src="img/bolt.png">`
             }
             if (c.startsWith('vp-')) {
                 guild += `<img src="img/${c}.png">`
@@ -333,10 +354,10 @@ cards.forEach((c) => {
     }
 
     get_v_value(c);
-    if(c.v_ratio > 0.79999) {
+    if(c.v_ratio > 0.69999) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
-    if(c.v_ratio < 0.7) {
+    if(c.v_ratio < 0.5) {
         c.v_ratio = `<b class="up">${c.v_ratio}</b>`
     }
 
@@ -436,7 +457,6 @@ document.getElementById('cards').innerHTML = cards_total;
                 img = canvas.toDataURL("image/jpeg", 0.9)
             }
             download(img, title);
-            console.log('download', title);
             cb && cb(title);
         })
     }
