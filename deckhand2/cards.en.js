@@ -198,7 +198,6 @@ var cards = [
 
     {
         "title": "Bustling Market",
-        "coin": 1,
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/busy.png",
@@ -208,7 +207,6 @@ var cards = [
 
     {
         "title": "Animal Sanctuary",
-        "coin": 3,
         "discard": ['p'],
         "cost": ['p', 'p', 'p'],
         "img": "cards/sanctuary.png",
@@ -219,7 +217,6 @@ var cards = [
 
     {
         "title": "Plunder",
-        "coin": 2,
         "discard": ['g'],
         "cost": ['g', 'g', 's', 'c'],
         "img": "cards/plunder.png",
@@ -229,7 +226,6 @@ var cards = [
 
     {
         "title": "Rum Merchant",
-        "coin": 2,
         "discard": ['r'],
         "cost": ['r', 'h', 'cs', 'cs'],
         "img": "cards/merchant2.png",
@@ -240,7 +236,6 @@ var cards = [
 
     {
         "title": "Trade Route",
-        "coin": 2,
         "discard": ['p'],
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
@@ -259,7 +254,6 @@ var cards = [
 
     {
         "title": "Deep Sea Horror",
-        "coin": 3,
         "discard": ['s'],
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
@@ -269,7 +263,6 @@ var cards = [
 
     {
         "title": "Giant Crab",
-        "coin": 3,
         "discard": ['p'],
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
