@@ -208,7 +208,7 @@ var cards = [
     {
         "title": "Animal Sanctuary",
         "discard": ['p'],
-        "cost": ['p', 'p', 'p'],
+        "cost": ['p', 'p', 'cs', 'cs'],
         "img": "cards/sanctuary.png",
         "extra": ['vp-1', 'x', 'p'],
         "production": ['p'],
@@ -353,7 +353,7 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Crooked Smuggler",
-        "cost": ['e', 'e', 'h', 'r', 'c'],
+        "cost": ['e', 'e', 'h', 'r', 'cs'],
         "img": "cards/crooked.png",
         "extra": ['vp-3'],
         "production": ['s', 'or', 'g'],
