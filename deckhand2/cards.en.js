@@ -154,7 +154,6 @@ var cards = [
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/animal_market.png",
-        "production": `Produce 2`,
         "extra": ['vp-1'],
         "production": ['e'],
     },
@@ -325,7 +324,7 @@ var cards = [
     {
         "discard": ['s'],
         "title": "Walk the Plank",
-        "cost": ['cs'],
+        "cost": [],
         "img": "cards/walk.png",
         "extra": ['bolt'],
         "production": ['discard-1', 'produce', 'g'],
@@ -443,7 +442,7 @@ var cards = [
     {
         "title": "Desert Island",
         "discard": ['g'],
-        "cost": ['h', 'r', 'cs', 'cs', 'c'],
+        "cost": ['h', 'r', 'cs', 'c'],
         "img": "cards/desert.png",
         "extra": ['vp-1'],
         "production": ['g', 'or', 'cs']
@@ -460,7 +459,7 @@ var cards = [
     {
         "title": "Master Gunner",
         "discard": ['g'],
-        "cost": ['c', 'c', 'cs'],
+        "cost": ['c', 'cs', 'cs'],
         "img": "cards/gunner.png",
         "extra": ['bolt'],
         "production": ['g']
@@ -469,7 +468,7 @@ var cards = [
     {
         "title": "Wildlife Handler",
         "discard": ['p'],
-        "cost": ['c', 'c', 'cs'],
+        "cost": ['c', 'cs', 'cs'],
         "img": "cards/handler.png",
         "extra": ['bolt'],
         "production": ['p']
