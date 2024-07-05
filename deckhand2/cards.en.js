@@ -3,6 +3,77 @@
 var cards = [
 
     {
+        "title": "Kraken's Fury",
+        "discard": [],
+        "cost": ['t', 't', 't'],
+        "img": "cards/kraken.png",
+        // "production": ['r']
+        'extra': ['vp-3', 'crown'],
+        'type': 'supremacy',
+    },
+
+
+    {
+        "title": "Kraken's Fury",
+        "discard": [],
+        "cost": ['t', 't', 't'],
+        "img": "cards/kraken.png",
+        // "production": ['r']
+        'extra': ['vp-3', 'crown'],
+        'type': 'supremacy',
+    },
+
+    {
+        "title": "Emerald Valley",
+        "discard": [],
+        "cost": ['e', 'e'],
+        "img": "cards/emerald.png",
+        // "production": ['r']
+        'extra': ['vp-4'],
+        'type': 'supremacy',
+    },
+
+    {
+        "title": "Hidden Bounty",
+        "discard": [],
+        "cost": ['r', 'r'],
+        "img": "cards/bay.png",
+        // "production": ['r']
+        'extra': ['vp-1', 'crate', 'crate'],
+        'type': 'supremacy',
+    },
+
+    {
+        "title": "Animal Overrun",
+        "discard": [],
+        "cost": ['p', 'p', 'p'],
+        "img": "cards/freed_monkeys.jpeg",
+        // "production": ['r']
+        'extra': ['vp-4'],
+        'type': 'supremacy',
+    },
+
+    {
+        "title": "Military Domination",
+        "discard": [],
+        "cost": ['g', 'g', 'g', 's'],
+        "img": "cards/raid.png",
+        // "production": ['r']
+        'extra': ['vp-2', 'crown'],
+        'type': 'supremacy',
+    },
+
+    {
+        "title": "Naval Supremacy",
+        "discard": [],
+        "cost": ['h', 'h', 'h'],
+        "img": "cards/raid.png",
+        // "production": ['r']
+        'extra': ['vp-2', 'crown'],
+        'type': 'supremacy',
+    },
+
+    {
         "title": "Tavern Keeper",
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
@@ -207,10 +278,11 @@ var cards = [
     {
         "title": "Animal Sanctuary",
         "discard": ['p'],
-        "cost": ['p', 'p', 'cs', 'cs'],
+        "cost": ['p', 'p', 'p'],
         "img": "cards/sanctuary.png",
         "extra": ['vp-1', 'x', 'p'],
         "production": ['p'],
+        "value_correction": -1
     },
 
 
@@ -257,7 +329,7 @@ var cards = [
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
         "extra": ['vp-2'],
-        "production": ['s'],
+        "production": ['s', 'or', 't'],
     },
 
     {
@@ -275,7 +347,7 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/skeleton-crew.png",
         "extra": ['vp-2'],
-        "production": ['s'],
+        "production": ['s', 'or', 't'],
     },
 
     {
@@ -389,7 +461,7 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Captain Cutlass",
-        "cost": ['s', 'h', 'cs'],
+        "cost": ['s', 'h', 'c'],
         "img": "cards/assasin.png",
         "extra": ['vp-3'],
         "production": [`cs`],
@@ -428,6 +500,7 @@ var cards = [
         "cost": ['e', 's', 'h', 'p', 'cs'],
         "img": "cards/skull.png",
         "extra": ['vp-8'],
+        "production": ['t'],
     },
 
     {
@@ -476,11 +549,59 @@ var cards = [
 
 
     {
+        "title": "Rum Runner",
+        "discard": ['r'],
+        "cost": ['c', 'cs', 'cs'],
+        "img": "cards/captain3.png",
+        "extra": ['bolt'],
+        "production": ['r']
+    },
+
+
+    {
         "title": "Rowdy Mob",
         "discard": ['r'],
-        "cost": ['g', 'g', 'r', 'cs', 'cs'],
+        "cost": ['g', 'g', 'r', 'cs'],
         "img": "cards/mob.png",
         "production": ['h', 'or', 'r']
+    },
+
+    // affinity cards
+    {
+        "title": "Affinity 1",
+        "discard": ['g'],
+        "cost": ['p', 'r', 'h', 'cs'],
+        "img": "cards/mob.png",
+        "extra": ['vp-3'],
+        "production": ['g']
+    },
+
+    {
+        "title": "Affinity 2",
+        "discard": ['p'],
+        "cost": ['g', 'r', 'e', 'cs'],
+        "img": "cards/mob.png",
+        "extra": ['vp-3'],
+        "production": ['p']
+    },
+
+    {
+        "title": "Affinity 3",
+        "discard": ['r'],
+        "cost": ['g', 'p', 's', 'cs'],
+        "img": "cards/mob.png",
+        "extra": ['vp-3'],
+        "production": ['r']
+    },
+
+
+    {
+        "title": "Kraken's Tentacle",
+        "discard": ['p'],
+        "cost": ['e', 'c'],
+        "img": "cards/tentacle.png",
+        "extra": ['vp-3'],
+        "production": ['t']
     },
 
 

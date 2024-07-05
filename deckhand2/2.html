@@ -66,6 +66,9 @@ var res = (t, cls) => `
     `
 
 var get_res = (r) => {
+    if (r == "t") {
+        return res("tentacles")
+    }
     if (r == "p") {
         return res("parrot")
     }
@@ -116,6 +119,7 @@ var get_res = (r) => {
 var stats_costs = {};
 var stats_discard = {};
 var stats_vp = {};
+var double_cost = {};
 var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
 cards.forEach((c) => {
@@ -131,10 +135,12 @@ cards.forEach((c) => {
     if (c.production) {
         var add = 1;
         if (c.production.length == 3) {
-            var add = c.production[1] == "trans" ? 0.5 : 1;
+            var add = c.production[1] == "produce" ? 0.5 : 1;
         }
         c.production.forEach(t => {
-            stats_production[t] = add + (stats_production[t] || 0)
+            if (!['produce', 'or', 'discard-1'].includes(t)) {
+                stats_production[t] = add + (stats_production[t] || 0)
+            }
         })
     }
 });
@@ -150,7 +156,7 @@ var icon = (t) => {
 
 var virtual_cost = {
     "c": 1.2,
-    "cs": 0.8,
+    "cs": 0.70,
     "g": 1.9, // justification: easier to get
     "p": 1.9,
     "r": 1.9,
@@ -163,9 +169,9 @@ var virtual_cost = {
 // game on a board, without pushing it too much
 var distribution_end_game = {
     "c": 0.5,
-    "g": 3,
-    "p": 3,
-    "r": 3,
+    "g": 2.7,
+    "p": 2.7,
+    "r": 2.7,
     "s": 2,
     "h": 2,
     "e": 2,
@@ -178,13 +184,14 @@ var get_v_cost = (s) => {
 
 var virtual_value = {
     "c": 4,
-    "cs": 1.5,
+    "cs": 1.9,
     "g": 2,
     "p": 2,
     "r": 2,
     "s": 3,
     "h": 3,
     "e": 3,
+    "t": 0.1,
 }
 
 var evaluate_production = (prod) => {
@@ -231,6 +238,7 @@ var get_v_value = (c) => {
     }
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
     c.v_value = v + evaluate_production(c.production);
+    c.v_value += (c.value_correction || 0); 
     c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
 }
 
@@ -282,6 +290,15 @@ cards.forEach((c) => {
             }
             if (c == "x") {
                 guild += `<img class="cross" src="img/cross.png">`
+            }
+            if (c == "produce") {
+                guild += `<img class="res" src="img/arrow.png">`
+            }
+            if (c == "crown") {
+                guild += `<img class="res crown" src="img/crown.png">`
+            }
+            if (c == "t") {
+                guild += `<img class="res crown" src="img/tentacles.png">`
             }
         })
 

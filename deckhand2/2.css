@@ -226,6 +226,12 @@ a, a:visited {
     margin-left: 1px; 
 }
 
+.type-supremacy .type {
+    background-color: #e2b658ad;
+    background-blend-mode:overlay;
+}
+
+
 .wild .type {
     /* background-color: rgb(36, 64, 155); */
     background-image: url(img/bg-bottom.png);
@@ -396,6 +402,15 @@ a, a:visited {
     /* justify-content: center; */
 }
 
+.type-supremacy .guild {
+    position: static;
+    padding: 10px;
+}
+
+.type-supremacy .bottom .type {
+    justify-content: center;
+}
+
 .captain {
     width: 23px;
     position: absolute;
@@ -422,6 +437,12 @@ a, a:visited {
 .guild img.res {
     width: 30px;
     margin-bottom: 3px;
+}
+
+.guild img.crown {
+    margin-top: -3px;
+    margin-left: 4px;
+    margin-bottom: 4px;
 }
 
 .op {
