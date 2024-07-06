@@ -3,10 +3,10 @@
 var cards = [
 
     {
-        "title": "Kraken's Fury",
+        "title": "Graveyard",
         "discard": [],
-        "cost": ['t', 't', 't'],
-        "img": "cards/kraken.png",
+        "cost": ['s', 's', 't'],
+        "img": "cards/grave.png",
         // "production": ['r']
         'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
@@ -16,10 +16,10 @@ var cards = [
     {
         "title": "Kraken's Fury",
         "discard": [],
-        "cost": ['t', 't', 't'],
+        "cost": ['t', 't', 'h'],
         "img": "cards/kraken.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
     },
 
@@ -39,7 +39,7 @@ var cards = [
         "cost": ['r', 'r'],
         "img": "cards/bay.png",
         // "production": ['r']
-        'extra': ['vp-1', 'crate', 'crate'],
+        'extra': ['vp-2', 'crate', 'crate'],
         'type': 'supremacy',
     },
 
@@ -49,7 +49,7 @@ var cards = [
         "cost": ['p', 'p', 'p'],
         "img": "cards/freed_monkeys.jpeg",
         // "production": ['r']
-        'extra': ['vp-4'],
+        'extra': ['vp-5'],
         'type': 'supremacy',
     },
 
@@ -59,7 +59,7 @@ var cards = [
         "cost": ['g', 'g', 'g', 's'],
         "img": "cards/raid.png",
         // "production": ['r']
-        'extra': ['vp-2', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
     },
 
@@ -69,7 +69,7 @@ var cards = [
         "cost": ['h', 'h', 'h'],
         "img": "cards/raid.png",
         // "production": ['r']
-        'extra': ['vp-2', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
     },
 
@@ -282,7 +282,7 @@ var cards = [
         "img": "cards/sanctuary.png",
         "extra": ['vp-1', 'x', 'p'],
         "production": ['p'],
-        "value_correction": -1
+        // "value_correction": -1
     },
 
 
@@ -435,7 +435,7 @@ var cards = [
         "title": "Captain Lhoryn",
         "cost": ['h', 'h', 'c'],
         "img": "cards/captain1.png",
-        "extra": ['vp-5'],
+        "extra": ['vp-5', 'telescope'],
     },
 
 
@@ -532,18 +532,18 @@ var cards = [
     {
         "title": "Master Gunner",
         "discard": ['g'],
-        "cost": ['c', 'cs', 'cs'],
+        "cost": ['c', 'c', 'cs'],
         "img": "cards/gunner.png",
-        "extra": ['bolt'],
+        "extra": ['bolt', 'bolt'],
         "production": ['g']
     },
 
     {
-        "title": "Wildlife Handler",
+        "title": "Bird Handler",
         "discard": ['p'],
-        "cost": ['c', 'cs', 'cs'],
+        "cost": ['c', 'c', 'cs'],
         "img": "cards/handler.png",
-        "extra": ['bolt'],
+        "extra": ['bolt', 'telescope', 'telescope'],
         "production": ['p']
     },
 
@@ -551,9 +551,9 @@ var cards = [
     {
         "title": "Rum Runner",
         "discard": ['r'],
-        "cost": ['c', 'cs', 'cs'],
+        "cost": ['c', 'c', 'cs'],
         "img": "cards/captain3.png",
-        "extra": ['bolt'],
+        "extra": ['bolt', 'crate'],
         "production": ['r']
     },
 
@@ -603,6 +603,16 @@ var cards = [
         "extra": ['vp-3'],
         "production": ['t']
     },
+
+    {
+        "title": "Cultist",
+        "discard": ['g'],
+        "cost": ['s', 's'],
+        "img": "cards/cultist.png",
+        "extra": ['vp-1'],
+        "production": ['e', 'or', 't']
+    },
+
 
 
 ]

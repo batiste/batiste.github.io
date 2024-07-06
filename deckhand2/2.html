@@ -122,33 +122,13 @@ var stats_vp = {};
 var double_cost = {};
 var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
-cards.forEach((c) => {
-    c.cost.forEach((co) => {
-        stats_costs[co] = 1 + (stats_costs[co] || 0);
-    });
-    stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
-    if (c.extra) {
-        c.extra.forEach(g => {
-            stats_vp[g] = 1 + (stats_vp[g] || 0);
-        })
-    }
-    if (c.production) {
-        var add = 1;
-        if (c.production.length == 3) {
-            var add = c.production[1] == "produce" ? 0.5 : 1;
-        }
-        c.production.forEach(t => {
-            if (!['produce', 'or', 'discard-1'].includes(t)) {
-                stats_production[t] = add + (stats_production[t] || 0)
-            }
-        })
-    }
-});
+var stats_production_weighted = {}
 
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
 console.log('stats_vp', stats_vp)
 console.log('stats_production', stats_production)
+console.log('stats_production_weighted', stats_production_weighted)
 
 var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
@@ -163,6 +143,7 @@ var virtual_cost = {
     "s": 2.8, // justification: you can always discard 2 cards to get it
     "h": 2.8,
     "e": 2.8,
+    "t": 2.8,
 }
 
 // how many of those symbols are expected to exist in the end
@@ -191,14 +172,14 @@ var virtual_value = {
     "s": 3,
     "h": 3,
     "e": 3,
-    "t": 0.1,
+    "t": 0.3,
 }
 
-var evaluate_production = (prod) => {
-    if (!prod) {
+var evaluate_production = (c) => {
+    if (!c.production) {
         return 0;
     }
-    var bits = prod;
+    var bits = c.production;
     if (bits.length == 1) {
         return virtual_value[bits[0]]
     }
@@ -217,9 +198,21 @@ var evaluate_production = (prod) => {
 var get_v_value = (c) => {
     var v = 0;
     if(c.extra && c.extra.length) {
-        if (c.extra[0] == "bolt") {
-            v = 0.3;
-        } else {
+        c.extra.forEach(e => {
+            if (e == "bolt") {
+                v += 0.3;
+            }
+            if (e == "crate") {
+                v += 0.3;
+            }
+            if (e == "telescope") {
+                v += 0.2;
+            }
+            if (e == "crown") {
+                v += 2.5;
+            }
+        })
+        if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
             if(c.extra.length == 3 && c.extra[1] == 'x') {
                 v = vp * distribution_end_game[c.extra[2]]
@@ -237,10 +230,40 @@ var get_v_value = (c) => {
         })
     }
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
-    c.v_value = v + evaluate_production(c.production);
-    c.v_value += (c.value_correction || 0); 
+    c.v_value = v + evaluate_production(c);
+    c.v_value += (c.value_correction || 0);
     c.v_ratio = Math.round((100.0 * c.v_value) / parseFloat(c.v_cost)) / 100.0;
 }
+
+
+cards.forEach((c) => {
+    // if (c.type == 'supremacy') {
+    //     return;
+    // }
+    get_v_value(c);
+
+    c.cost.forEach((co) => {
+        stats_costs[co] = 1 + (stats_costs[co] || 0);
+    });
+    stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
+    if (c.extra) {
+        c.extra.forEach(g => {
+            stats_vp[g] = 1 + (stats_vp[g] || 0);
+        })
+    }
+    if (c.production) {
+        var add = 1;
+        if (c.production.length == 3) {
+            var add = c.production[1] == "produce" ? 0.5 : 1;
+        }
+        c.production.forEach(t => {
+            if (!['produce', 'or', 'discard-1'].includes(t)) {
+                stats_production[t] = add + (stats_production[t] || 0)
+                stats_production_weighted[t] = (add / c.v_cost) + (stats_production_weighted[t] || 0)
+            }
+        })
+    }
+});
 
 cards.forEach((c) => {
 
@@ -277,7 +300,10 @@ cards.forEach((c) => {
                 guild += `<img src="img/${c}.png">`
             }
             if (c == "crate") {
-                guild += `<img src="img/crate.png">`
+                guild += `<img class="res" src="img/crate.png">`
+            }
+            if (c == "telescope") {
+                guild += `<img class="res" src="img/telescope.png">`
             }
             if (c == "h") {
                 guild += `<img class="res" src="img/helm.png">`
@@ -343,13 +369,18 @@ cards.forEach((c) => {
         cp = '<img class="captain" src="img/arrow-left.png">';
     }
 
-    get_v_value(c);
     if(c.v_ratio > 0.69999) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
     if(c.v_ratio < 0.55) {
         c.v_ratio = `<b class="up">${c.v_ratio}</b>`
     }
+
+    // if (c.type == "supremacy") {
+    //     c.v_ratio = '-'
+    //     c.v_value = '-'
+    //     c.v_cost = '-'
+    // }
 
 
     var card_template = `
