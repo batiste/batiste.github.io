@@ -269,7 +269,7 @@ var cards = [
     {
         "title": "Bustling Market",
         "discard": ['r'],
-        "cost": ['r', 'r', 'cs', 'cs'],
+        "cost": ['r', 'r', 'c', 'cs'],
         "img": "cards/busy.png",
         "extra": ['vp-1', 'x', 'r'],
         "production": ['cs'],
@@ -424,7 +424,7 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Crooked Smuggler",
-        "cost": ['e', 'e', 'h', 'r', 'cs'],
+        "cost": ['e', 'e', 'h', 'r'],
         "img": "cards/crooked.png",
         "extra": ['vp-3'],
         "production": ['s', 'or', 'g'],
@@ -568,35 +568,35 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Affinity 1",
+        "title": "Feast",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/mob.png",
-        "extra": ['vp-3'],
+        "img": "cards/feast.png",
+        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
         "production": ['g']
     },
 
     {
-        "title": "Affinity 2",
+        "title": "Hunt",
         "discard": ['p'],
         "cost": ['g', 'r', 'e', 'cs'],
-        "img": "cards/mob.png",
-        "extra": ['vp-3'],
+        "img": "cards/hunt.png",
+        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
         "production": ['p']
     },
 
     {
-        "title": "Affinity 3",
+        "title": "Distill",
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'cs'],
-        "img": "cards/mob.png",
-        "extra": ['vp-3'],
+        "img": "cards/distill.png",
+        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
         "production": ['r']
     },
 
 
     {
-        "title": "Kraken's Tentacle",
+        "title": "Unforeseen Tentacle",
         "discard": ['p'],
         "cost": ['e', 'c'],
         "img": "cards/tentacle.png",
@@ -606,13 +606,30 @@ var cards = [
 
     {
         "title": "Cultist",
-        "discard": ['g'],
+        "discard": ['s'],
         "cost": ['s', 's'],
         "img": "cards/cultist.png",
         "extra": ['vp-1'],
         "production": ['e', 'or', 't']
     },
 
+    {
+        "title": "Shipyard",
+        "discard": ['e'],
+        "cost": ['e', 'e'],
+        "img": "cards/shipyard.png",
+        "extra": ['vp-1'],
+        "production": ['h', 'or', 't']
+    },
+
+    {
+        "title": "Troubled Expedition",
+        "discard": ['h'],
+        "cost": ['h', 'h'],
+        "img": "cards/doomed-expedition.png",
+        "extra": ['vp-1'],
+        "production": ['s', 'or', 't']
+    },
 
 
 ]
