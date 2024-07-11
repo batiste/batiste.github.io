@@ -110,11 +110,24 @@ a, a:visited {
     justify-content: space-between;
 }
 
-.play_text {
-    background-color: rgba(255, 196, 0, 0.4);
-    border-bottom: 1px rgba(210, 161, 0, 0.7) solid;
+.play_text, .ship {
+    /* background-color: rgba(255, 196, 0, 0.4);
+    border-bottom: 1px rgba(210, 161, 0, 0.7) solid; */
     font-family: 'Lobster Two', cursive;
-    font-size: 16px;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: bold;
+}
+
+.ship .crate { 
+    margin: 0 5px;
+}
+
+.ship div {
+    display: flex;
+    align-items: center;
 }
 
 .build_text {
@@ -419,7 +432,7 @@ a, a:visited {
     z-index: 100;
 }
 
-.guild img {
+.guild img, .ship img {
     width: 38px;
 }
 

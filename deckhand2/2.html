@@ -385,6 +385,11 @@ cards.forEach((c) => {
     //     c.v_cost = '-'
     // }
 
+    var ship = ''
+    if (c.type == "ship") {
+        ship = `<div class="ship line"><div>${c.holding}<img class="crate" src="img/crate.png"></div></div>`
+    }
+
 
     var card_template = `
     <div>
@@ -403,6 +408,7 @@ cards.forEach((c) => {
                 </div>
 
                 <div class="bottom">
+                    ${ship}
                     ${build}
                 </div>
                 

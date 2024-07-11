@@ -3,6 +3,76 @@
 var cards = [
 
     {
+        "title": "Ship 5",
+        "discard": [],
+        "cost": [],
+        "img": "cards/ship1.png",
+        // "production": ['r']
+        'extra': [],
+        'production': ['cs'],
+        'holding': 5,
+        'type': 'ship',
+    },
+
+    {
+        "title": "Ship 4",
+        "discard": [],
+        "cost": [],
+        "img": "cards/ship1.png",
+        // "production": ['r']
+        'extra': ['vp-1'],
+        'production': ['s'],
+        'holding': 5,
+        'type': 'ship',
+    },
+
+    {
+        "title": "Ship 3",
+        "discard": [],
+        "cost": [],
+        "img": "cards/ship1.png",
+        // "production": ['r']
+        'extra': ['vp-4'],
+        'production': ['r'],
+        'holding': 6,
+        'type': 'ship',
+    },
+
+    {
+        "title": "Ship 2",
+        "discard": [],
+        "cost": [],
+        "img": "cards/ship1.png",
+        // "production": ['r']
+        'extra': ['vp-2', 'x', 'g'],
+        'production': ['t'],
+        'holding': 6,
+        'type': 'ship',
+    },
+
+    {
+        "title": "Ship 1",
+        "discard": [],
+        "cost": [],
+        "img": "cards/ship1.png",
+        // "production": ['r']
+        'extra': ['vp-1', 'x', 'p'],
+        'production': ['p'],
+        'holding': 6,
+        'type': 'ship',
+    },
+
+    {
+        "title": "Eerie Castle",
+        "discard": [],
+        "cost": ['e', 's', 'h', 't'],
+        "img": "cards/castle.png",
+        // "production": ['r']
+        'extra': ['vp-5', 'crown'],
+        'type': 'supremacy',
+    },
+
+    {
         "title": "Graveyard",
         "discard": [],
         "cost": ['s', 's', 't'],
@@ -310,7 +380,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
-        "extra": ['vp-6'],
+        "extra": ['vp-6', 'bolt'],
         "production": ['discard-1', 'produce', 'r'],
     },
 
@@ -337,7 +407,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
-        "extra": ['vp-4'],
+        "extra": ['vp-4', 'bolt'],
         "production": ['discard-1', 'produce', 'p'],
     },
 
@@ -347,7 +417,7 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/skeleton-crew.png",
         "extra": ['vp-2'],
-        "production": ['s', 'or', 't'],
+        "production": ['s'],
     },
 
     {
@@ -444,7 +514,7 @@ var cards = [
         "title": "Captain Grenwish",
         "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
-        "extra": ['vp-3'],
+        "extra": ['vp-3', 'bolt'],
         "production": ['discard-1', 'produce', 'h'],
     },
 
@@ -500,7 +570,7 @@ var cards = [
         "cost": ['e', 's', 'h', 'p', 'cs'],
         "img": "cards/skull.png",
         "extra": ['vp-8'],
-        "production": ['t'],
+        // "production": ['t'],
     },
 
     {
@@ -572,7 +642,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/feast.png",
-        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
+        "extra": ['vp-3', 'bolt'],
         "production": ['g']
     },
 
@@ -581,7 +651,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 'r', 'e', 'cs'],
         "img": "cards/hunt.png",
-        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
+        "extra": ['vp-2', 'bolt', 'bolt'],
         "production": ['p']
     },
 
@@ -590,7 +660,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'cs'],
         "img": "cards/distill.png",
-        "extra": ['vp-2', 'bolt', 'bolt', 'bolt'],
+        "extra": ['vp-2', 'bolt', 'bolt'],
         "production": ['r']
     },
 
