@@ -141,7 +141,7 @@ var virtual_cost = {
     "p": 1.9,
     "r": 1.9,
     "s": 2.8, // justification: you can always discard 2 cards to get it
-    "h": 2.8,
+    "h": 3,
     "e": 2.8,
     "t": 3.2,
 }
@@ -150,13 +150,13 @@ var virtual_cost = {
 // game on a board, without pushing it too much
 var distribution_end_game = {
     "c": 0.5,
-    "g": 2.7,
-    "p": 2.7,
-    "r": 2.7,
+    "g": 2.5,
+    "p": 2.5,
+    "r": 2.5,
     "s": 2,
     "h": 2,
     "e": 2,
-    "cs": 2,
+    "cs": 1.8,
 }
 
 var get_v_cost = (s) => {
@@ -165,7 +165,7 @@ var get_v_cost = (s) => {
 
 var virtual_value = {
     "c": 4,
-    "cs": 1.9,
+    "cs": 2,
     "g": 2,
     "p": 2,
     "r": 2,

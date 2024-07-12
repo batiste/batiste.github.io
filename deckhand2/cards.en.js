@@ -2,65 +2,65 @@
 
 var cards = [
 
-    {
-        "title": "Ship 5",
-        "discard": [],
-        "cost": [],
-        "img": "cards/ship1.png",
-        // "production": ['r']
-        'extra': [],
-        'production': ['cs'],
-        'holding': 5,
-        'type': 'ship',
-    },
+    // {
+    //     "title": "Ship 5",
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/ship1.png",
+    //     // "production": ['r']
+    //     'extra': [],
+    //     'production': ['cs'],
+    //     'holding': 5,
+    //     'type': 'ship',
+    // },
 
-    {
-        "title": "Ship 4",
-        "discard": [],
-        "cost": [],
-        "img": "cards/ship1.png",
-        // "production": ['r']
-        'extra': ['vp-1'],
-        'production': ['s'],
-        'holding': 5,
-        'type': 'ship',
-    },
+    // {
+    //     "title": "Ship 4",
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/ship1.png",
+    //     // "production": ['r']
+    //     'extra': ['vp-1'],
+    //     'production': ['s'],
+    //     'holding': 5,
+    //     'type': 'ship',
+    // },
 
-    {
-        "title": "Ship 3",
-        "discard": [],
-        "cost": [],
-        "img": "cards/ship1.png",
-        // "production": ['r']
-        'extra': ['vp-4'],
-        'production': ['r'],
-        'holding': 6,
-        'type': 'ship',
-    },
+    // {
+    //     "title": "Ship 3",
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/ship1.png",
+    //     // "production": ['r']
+    //     'extra': ['vp-4'],
+    //     'production': ['r'],
+    //     'holding': 6,
+    //     'type': 'ship',
+    // },
 
-    {
-        "title": "Ship 2",
-        "discard": [],
-        "cost": [],
-        "img": "cards/ship1.png",
-        // "production": ['r']
-        'extra': ['vp-2', 'x', 'g'],
-        'production': ['t'],
-        'holding': 6,
-        'type': 'ship',
-    },
+    // {
+    //     "title": "Ship 2",
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/ship1.png",
+    //     // "production": ['r']
+    //     'extra': ['vp-2', 'x', 'g'],
+    //     'production': ['t'],
+    //     'holding': 6,
+    //     'type': 'ship',
+    // },
 
-    {
-        "title": "Ship 1",
-        "discard": [],
-        "cost": [],
-        "img": "cards/ship1.png",
-        // "production": ['r']
-        'extra': ['vp-1', 'x', 'p'],
-        'production': ['p'],
-        'holding': 6,
-        'type': 'ship',
-    },
+    // {
+    //     "title": "Ship 1",
+    //     "discard": [],
+    //     "cost": [],
+    //     "img": "cards/ship1.png",
+    //     // "production": ['r']
+    //     'extra': ['vp-1', 'x', 'p'],
+    //     'production': ['p'],
+    //     'holding': 6,
+    //     'type': 'ship',
+    // },
 
     {
         "title": "Eerie Castle",
@@ -109,7 +109,7 @@ var cards = [
         "cost": ['r', 'r'],
         "img": "cards/bay.png",
         // "production": ['r']
-        'extra': ['vp-2', 'crate', 'crate'],
+        'extra': ['vp-3'],
         'type': 'supremacy',
     },
 
@@ -350,8 +350,8 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'p', 'p'],
         "img": "cards/sanctuary.png",
-        "extra": ['vp-1', 'x', 'p'],
-        "production": ['p'],
+        "extra": ['vp-2', 'x', 'p'],
+        // "production": ['t'],
         // "value_correction": -1
     },
 
@@ -382,6 +382,15 @@ var cards = [
         "img": "cards/wind.png",
         "extra": ['vp-6', 'bolt'],
         "production": ['discard-1', 'produce', 'r'],
+    },
+
+    {
+        "title": "Water Bank",
+        "discard": ['h'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/water-bank.png",
+        "extra": ['vp-1'],
+        "production": ['cs'],
     },
 
     {
@@ -621,9 +630,9 @@ var cards = [
     {
         "title": "Rum Runner",
         "discard": ['r'],
-        "cost": ['c', 'c', 'cs'],
+        "cost": ['c', 'cs', 'cs'],
         "img": "cards/captain3.png",
-        "extra": ['bolt', 'crate'],
+        "extra": ['bolt'],
         "production": ['r']
     },
 
