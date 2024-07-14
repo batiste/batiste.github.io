@@ -137,7 +137,7 @@ var cards = [
         "title": "Naval Supremacy",
         "discard": [],
         "cost": ['h', 'h', 'h'],
-        "img": "cards/raid.png",
+        "img": "cards/naval-sup.png",
         // "production": ['r']
         'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
