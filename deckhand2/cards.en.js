@@ -78,7 +78,7 @@ var cards = [
         "cost": ['s', 's', 't'],
         "img": "cards/grave.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-3', 'discard-grab'],
         'type': 'supremacy',
     },
 
@@ -89,7 +89,7 @@ var cards = [
         "cost": ['t', 't', 'h'],
         "img": "cards/kraken.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-4'],
         'type': 'supremacy',
     },
 
@@ -99,7 +99,7 @@ var cards = [
         "cost": ['e', 'e'],
         "img": "cards/emerald.png",
         // "production": ['r']
-        'extra': ['vp-4'],
+        'extra': ['vp-3', 'draw-1'],
         'type': 'supremacy',
     },
 
@@ -109,7 +109,7 @@ var cards = [
         "cost": ['r', 'r'],
         "img": "cards/bay.png",
         // "production": ['r']
-        'extra': ['vp-3'],
+        'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
     },
 
@@ -119,7 +119,7 @@ var cards = [
         "cost": ['p', 'p', 'p'],
         "img": "cards/freed_monkeys.jpeg",
         // "production": ['r']
-        'extra': ['vp-5'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
     },
 
@@ -129,7 +129,7 @@ var cards = [
         "cost": ['g', 'g', 'g', 's'],
         "img": "cards/raid.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-2', 'no-compass'],
         'type': 'supremacy',
     },
 
@@ -139,7 +139,7 @@ var cards = [
         "cost": ['h', 'h', 'h'],
         "img": "cards/naval-sup.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-5', 'crown'],
         'type': 'supremacy',
     },
 
@@ -148,6 +148,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/scruf.png",
+        'extra': ['compass'],
         "production": ['r']
     },
 
@@ -156,6 +157,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/parrot.png",
+        'extra': ['compass'],
         "production": ['p'],
     },
 
@@ -164,6 +166,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/merchant.jpeg",
+        'extra': ['compass'],
         "production": ['g'],
     },
 
@@ -172,6 +175,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/scruf.png",
+        'extra': ['compass'],
         "production": ['r']
     },
 
@@ -180,6 +184,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/parrot.png",
+        'extra': ['compass'],
         "production": ['p'],
     },
 
@@ -188,6 +193,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/merchant.jpeg",
+        'extra': ['compass'],
         "production": ['g'],
     },
 
@@ -197,6 +203,7 @@ var cards = [
         "cost": ['r', 'cs', 'c'],
         "img": "cards/rich.png",
         "extra": ['vp-1'],
+        'extra': ['compass'],
         "production": ['p'],
     },
 
@@ -380,7 +387,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
-        "extra": ['vp-6', 'bolt'],
+        "extra": ['vp-4', 'crown', 'bolt'],
         "production": ['discard-1', 'produce', 'r'],
     },
 
@@ -578,7 +585,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'cs'],
         "img": "cards/skull.png",
-        "extra": ['vp-8'],
+        "extra": ['vp-7'],
         // "production": ['t'],
     },
 
@@ -587,7 +594,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
-        "extra": ['vp-8'],
+        "extra": ['vp-6', 'crown'],
     },
 
 
@@ -651,7 +658,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/feast.png",
-        "extra": ['vp-3', 'bolt'],
+        "extra": ['vp-2', 'crown'],
         "production": ['g']
     },
 
@@ -706,8 +713,26 @@ var cards = [
         "discard": ['h'],
         "cost": ['h', 'h'],
         "img": "cards/doomed-expedition.png",
-        "extra": ['vp-1'],
-        "production": ['s', 'or', 't']
+        "extra": ['crown'],
+        "production": ['s']
+    },
+
+    {
+        "title": "Strange Encounter",
+        "discard": ['e'],
+        "cost": ['h', 't', 'r', 'c'],
+        "img": "cards/strange.png",
+        "extra": ['vp-5', 'no-compass'],
+        // "production": ['e']
+    },
+
+    {
+        "title": "Haunted Shipwreck",
+        "discard": ['s'],
+        "cost": ['s', 't', 'g'],
+        "img": "cards/haunted-2.png",
+        "extra": ['vp-3', 'discard-grab'],
+        // "production": ['e']
     },
 
 

@@ -175,6 +175,10 @@ a, a:visited {
     margin-top: -1px;
 }
 
+.discard-1 {
+    width: 24px;
+}
+
 .draw-1, .draw-2 {
     width: 22px;
     display: inline-flex;
@@ -275,7 +279,7 @@ a, a:visited {
 .type .resource {
     display: flex;
     width: 24px;
-    height: 24px;
+    /* height: 24px; */
     border-radius: 50px;
     padding: 3px;
     /* border: 1px #1c1c1c solid;

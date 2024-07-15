@@ -103,7 +103,7 @@ var get_res = (r) => {
         return res("arrow", "arrow")
     }
     if (r == "discard-1") {
-        return res("draw-1")
+        return res("discard-1", "discard-1")
     }
     if (r == "x") {
         return `<div class="mult" style="font-weight: bold; color: #fff">X</div>`
@@ -140,9 +140,9 @@ var virtual_cost = {
     "g": 1.9, // justification: easier to get
     "p": 1.9,
     "r": 1.9,
-    "s": 2.8, // justification: you can always discard 2 cards to get it
-    "h": 3,
-    "e": 2.8,
+    "s": 2.7, // justification: you can always discard 2 cards to get it
+    "h": 2.7,
+    "e": 2.7,
     "t": 3.2,
 }
 
@@ -172,7 +172,7 @@ var virtual_value = {
     "s": 3,
     "h": 3,
     "e": 3,
-    "t": 0.3,
+    "t": 0.35,
 }
 
 var evaluate_production = (c) => {
@@ -209,8 +209,15 @@ var get_v_value = (c) => {
                 v += 0.2;
             }
             if (e == "crown") {
-                v += 2.5;
+                v += 1.2;
             }
+            if (e == "no-compass") {
+                v += 1;
+            }
+            if (e == "discard-grab") {
+                v += 1.1;
+            }
+            
         })
         if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
@@ -307,6 +314,21 @@ cards.forEach((c) => {
             }
             if (c == "telescope") {
                 guild += `<img class="res" src="img/telescope.png">`
+            }
+            if (c == "compass") {
+                guild += `<img src="img/compass.png">`
+            }
+            if (c == "no-compass") {
+                guild += `<img src="img/no-compass.png">`
+            }
+            if (c == "draw-1") {
+                guild += `<img src="img/draw-1.png">`
+            }
+            if (c == "draw-2") {
+                guild += `<img src="img/draw-2.png">`
+            }
+            if (c == "discard-grab") {
+                guild += `<img src="img/discard-grab.png">`
             }
             if (c == "h") {
                 guild += `<img class="res" src="img/helm.png">`
