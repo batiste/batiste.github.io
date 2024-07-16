@@ -83,7 +83,7 @@ a, a:visited {
     /* padding: 5px; */
     /* padding-bottom: 24px; */
     display: flex;
-    justify-content: right;
+    justify-content: space-between;
 }
 
 .bottom {
@@ -413,9 +413,9 @@ a, a:visited {
 
 .guild {
     /* display: flex; */
-    position: absolute;
+    /* position: absolute;
     left: 24px;
-    bottom: 22px;
+    bottom: 22px; */
     /* justify-content: center; */
 }
 
@@ -457,9 +457,8 @@ a, a:visited {
 }
 
 .guild img.crown {
-    margin-top: -3px;
     margin-left: 4px;
-    margin-bottom: 4px;
+    width: 35px;
 }
 
 .op {

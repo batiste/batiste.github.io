@@ -123,12 +123,15 @@ var double_cost = {};
 var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
 var stats_production_weighted = {}
+var doubles = {}
+var triples = {}
 
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
 console.log('stats_vp', stats_vp)
 console.log('stats_production', stats_production)
 console.log('stats_production_weighted', stats_production_weighted)
+console.log('double_cost', double_cost)
 
 var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
@@ -157,6 +160,7 @@ var distribution_end_game = {
     "h": 2,
     "e": 2,
     "cs": 1.8,
+    'compass': 1.5,
 }
 
 var get_v_cost = (s) => {
@@ -172,7 +176,7 @@ var virtual_value = {
     "s": 3,
     "h": 3,
     "e": 3,
-    "t": 0.35,
+    "t": 0.5,
 }
 
 var evaluate_production = (c) => {
@@ -212,10 +216,19 @@ var get_v_value = (c) => {
                 v += 1.2;
             }
             if (e == "no-compass") {
-                v += 1;
+                v += 1.3;
+            }
+            if (e == "compass") {
+                v -= 0.2;
             }
             if (e == "discard-grab") {
                 v += 1.1;
+            }
+            if (e == "draw-1") {
+                v += 1;
+            }
+            if (e == "draw-2") {
+                v += 2;
             }
             
         })
@@ -247,14 +260,23 @@ var get_v_value = (c) => {
 
 
 cards.forEach((c) => {
-    // if (c.type == 'supremacy') {
-    //     return;
-    // }
-    get_v_value(c);
 
+    get_v_value(c);
+    if (c.type == 'supremacy') {
+        return;
+    }
+
+    var s = {}
     c.cost.forEach((co) => {
         stats_costs[co] = 1 + (stats_costs[co] || 0);
+        s[co] = 1 + (s[co] || 0);
     });
+    Object.entries(s).forEach(([key, value]) => {
+        if(value > 1) {
+            double_cost[`${key}_${value}`] = 1 + (double_cost[`${key}_${value}`] || 0);
+        }
+    });
+
     stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
     if (c.extra) {
         c.extra.forEach(g => {
@@ -353,9 +375,8 @@ cards.forEach((c) => {
             }
         })
 
-        if (guild) {
-            guild = `<div class="guild">${guild}</div>`
-        }
+        guild = `<div class="guild">${(guild || '')}</div>`
+
     }
 
     var build = "";
@@ -369,8 +390,9 @@ cards.forEach((c) => {
     build = `<div class="type line">
             ${guild}
             ${production}
-            <div class="resources">${build}</div>
         </div>`
+
+    // <div class="resources">${build}</div>
 
 
     var title_class = "";
