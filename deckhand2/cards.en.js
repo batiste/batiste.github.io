@@ -65,7 +65,7 @@ var cards = [
     {
         "title": "Totem",
         "discard": [],
-        "cost": ['s', 'p', 'r'],
+        "cost": ['g', 'p', 'r'],
         "img": "cards/totem.png",
         // "production": ['r']
         'extra': ['crown'],
@@ -75,10 +75,10 @@ var cards = [
     {
         "title": "Eerie Castle",
         "discard": [],
-        "cost": ['s', 's', 'r', 'g'],
+        "cost": ['s', 'r', 'g', 'g'],
         "img": "cards/castle.png",
         // "production": ['r']
-        'extra': ['vp-5', 'crown'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
     },
 
@@ -116,10 +116,10 @@ var cards = [
     {
         "title": "Hidden Bounty",
         "discard": [],
-        "cost": ['r', 'r'],
+        "cost": ['h', 'r', 'r'],
         "img": "cards/bay.png",
         // "production": ['r']
-        'extra': ['vp-1', 'draw-2'],
+        'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
     },
 
@@ -222,7 +222,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
         "img": "cards/armed-orangutan.jpeg",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['g'],
     },
 
@@ -231,7 +231,7 @@ var cards = [
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
         "img": "cards/brawl.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['r']
     },
 
@@ -240,7 +240,7 @@ var cards = [
         "title": "Rich Pirate",
         "cost": ['r', 'cs', 'c'],
         "img": "cards/rich.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['p'],
     },
 
@@ -249,7 +249,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
         "img": "cards/armed-orangutan.jpeg",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['g'],
     },
 
@@ -258,7 +258,7 @@ var cards = [
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
         "img": "cards/brawl.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['r']
     },
 
@@ -356,7 +356,7 @@ var cards = [
     {
         "title": "Bustling Market",
         "discard": ['r'],
-        "cost": ['r', 'r', 'c', 'cs'],
+        "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/busy.png",
         "extra": ['vp-1', 'x', 'r'],
         "production": ['cs'],
@@ -406,7 +406,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['cs'],
     },
 
@@ -415,7 +415,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-1', 'compass'],
         "production": ['cs'],
     },
 
@@ -425,7 +425,7 @@ var cards = [
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
         "extra": ['vp-2'],
-        "production": ['s', 'or', 't'],
+        "production": ['s'],
     },
 
     {
@@ -494,7 +494,7 @@ var cards = [
         "title": "Walk the Plank",
         "cost": [],
         "img": "cards/walk.png",
-        "extra": ['bolt', 'compass'],
+        "extra": ['bolt'],
         "production": ['discard-1', 'produce', 'g'],
     },
 
@@ -639,7 +639,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['c', 'c', 'cs'],
         "img": "cards/handler.png",
-        "extra": ['bolt', 'telescope', 'telescope', 'compass'],
+        "extra": ['bolt', 'telescope'],
         "production": ['p']
     },
 
@@ -691,14 +691,14 @@ var cards = [
     },
 
 
-    {
-        "title": "Unforeseen Tentacle",
-        "discard": ['p'],
-        "cost": ['e', 'c'],
-        "img": "cards/tentacle.png",
-        "extra": ['vp-2'],
-        "production": ['t']
-    },
+    // {
+    //     "title": "Unforeseen Tentacle",
+    //     "discard": ['p'],
+    //     "cost": ['e', 'c'],
+    //     "img": "cards/tentacle.png",
+    //     "extra": ['vp-2'],
+    //     "production": ['t']
+    // },
 
     {
         "title": "Cultist",
@@ -706,16 +706,16 @@ var cards = [
         "cost": ['s', 's'],
         "img": "cards/cultist.png",
         "extra": ['vp-1'],
-        "production": ['e', 'or', 't']
+        "production": ['e']
     },
 
     {
         "title": "Shipyard",
         "discard": ['e'],
-        "cost": ['e', 'e'],
+        "cost": ['e', 'e', 'cs'],
         "img": "cards/shipyard.png",
-        "extra": ['vp-1'],
-        "production": ['h', 'or', 't']
+        "extra": ['vp-2'],
+        "production": ['h']
     },
 
     {
@@ -732,7 +732,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
         "img": "cards/strange.png",
-        "extra": ['vp-5', 'no-compass'],
+        "extra": ['vp-4', 'no-compass'],
     },
 
     {
@@ -749,9 +749,42 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'g', 'h', 'cs', 'cs'],
         "img": "cards/haven.png",
-        "extra": ['vp-2', 'x', 'compass'],
+        "extra": ['vp-2', 'x', 'compass-icon'],
         "production": ['e']
     },
 
+    {
+        "title": "Tavern",
+        "discard": ['r'],
+        "cost": ['r', 'r', 'c'],
+        "img": "cards/tavern.png",
+        "extra": ['vp-2', 'x', 'r'],
+    },
 
+    {
+        "title": "Red Parrot",
+        "discard": ['p'],
+        "cost": ['p', 'p'],
+        "img": "cards/parrot-2.png",
+        "extra": ['vp-1'],
+        "production": ['p']
+    },
+
+    {
+        "title": "Angry Ape",
+        "discard": ['g'],
+        "cost": ['p', 'p', 'g'],
+        "img": "cards/ape.png",
+        "extra": ['vp-2'],
+        "production": ['g']
+    },
+
+    {
+        "title": "Treasure Map",
+        "discard": ['p'],
+        "cost": ['p', 'r', 'cs'],
+        "img": "cards/treasure-map.png",
+        "production": ['h'],
+        "extra": ['telescope'],
+    },
 ]

@@ -153,13 +153,13 @@ var virtual_cost = {
 // game on a board, without pushing it too much
 var distribution_end_game = {
     "c": 0.5,
-    "g": 2.5,
-    "p": 2.5,
-    "r": 2.5,
+    "g": 2.1,
+    "p": 2.1,
+    "r": 2.1,
     "s": 2,
     "h": 2,
     "e": 2,
-    "cs": 1.8,
+    "cs": 1.6,
     'compass': 1.5,
 }
 
@@ -213,16 +213,16 @@ var get_v_value = (c) => {
                 v += 0.2;
             }
             if (e == "crown") {
-                v += 1.2;
+                v += 1.9;
             }
             if (e == "no-compass") {
-                v += 1.3;
+                v += 2;
             }
             if (e == "compass") {
                 v -= 0.2;
             }
             if (e == "discard-grab") {
-                v += 1.1;
+                v += 1.6;
             }
             if (e == "draw-1") {
                 v += 1;
@@ -310,72 +310,75 @@ cards.forEach((c) => {
         }
     }
 
-    var guild = ''
+    var extra = ''
     if (c.extra) {
         c.extra.forEach(c => {
             if (c == "r") {
-                guild += `<img class="res" src="img/rum.png">`
+                extra += `<img class="res" src="img/rum.png">`
             }
             if (c == "p") {
-                guild += `<img class="res" src="img/parrot.png">`
+                extra += `<img class="res" src="img/parrot.png">`
             }
             if (c == "g") {
-                guild += `<img class="res" src="img/gun.png">`
+                extra += `<img class="res" src="img/gun.png">`
             }
             if (c == "cs") {
-                guild += `<img class="res" src="img/silver.png">`
+                extra += `<img class="res" src="img/silver.png">`
             }
             if (c == "bolt") {
-                guild += `<img class="res" src="img/bolt.png">`
+                extra += `<img class="res" src="img/bolt.png">`
             }
             if (c.startsWith('vp-')) {
-                guild += `<img src="img/${c}.png">`
+                extra += `<img src="img/${c}.png">`
             }
             if (c == "crate") {
-                guild += `<img class="res" src="img/crate.png">`
+                extra += `<img class="res" src="img/crate.png">`
             }
             if (c == "telescope") {
-                guild += `<img class="res" src="img/telescope.png">`
+                extra += `<img class="res" src="img/telescope.png">`
             }
             if (c == "compass") {
-                guild += `<img src="img/compass.png">`
+                extra += `<img class="compass-banner" src="img/compass-banner.png">`
+            }
+            if (c == "compass-icon") {
+                extra += `<img class="compass-banner compass-icon" src="img/compass-banner.png">`
             }
             if (c == "no-compass") {
-                guild += `<img src="img/no-compass.png">`
+                extra += `<img class="no-compass" src="img/no-compass.png">`
             }
             if (c == "draw-1") {
-                guild += `<img src="img/draw-1.png">`
+                extra += `<img src="img/draw-1.png">`
             }
             if (c == "draw-2") {
-                guild += `<img src="img/draw-2.png">`
+                extra += `<img src="img/draw-2.png">`
             }
             if (c == "discard-grab") {
-                guild += `<img src="img/discard-grab.png">`
+                extra += `<img src="img/discard-grab.png">`
             }
             if (c == "h") {
-                guild += `<img class="res" src="img/helm.png">`
+                extra += `<img class="res" src="img/helm.png">`
             }
             if (c == "s") {
-                guild += `<img class="res" src="img/skull.png">`
+                extra += `<img class="res" src="img/skull.png">`
             }
             if (c == "e") {
-                guild += `<img class="res" src="img/gem.png">`
+                extra += `<img class="res" src="img/gem.png">`
             }
             if (c == "x") {
-                guild += `<img class="cross" src="img/cross.png">`
+                extra += `<img class="cross" src="img/cross.png">`
             }
             if (c == "produce") {
-                guild += `<img class="res" src="img/arrow.png">`
+                extra += `<img class="res" src="img/arrow.png">`
             }
             if (c == "crown") {
-                guild += `<img class="res crown" src="img/crown.png">`
+                extra += `<img class="res crown" src="img/crown.png">`
             }
             if (c == "t") {
-                guild += `<img class="res crown" src="img/tentacles.png">`
+                extra += `<img class="res crown" src="img/tentacles.png">`
             }
         })
 
-        guild = `<div class="guild">${(guild || '')}</div>`
+        extra = `<div class="guild">${(extra || '')}</div>`
 
     }
 
@@ -388,8 +391,8 @@ cards.forEach((c) => {
     }
     production = `<div class="build_text">${production}</div>`
     build = `<div class="type line">
-            ${guild}
             ${production}
+            ${extra}
         </div>`
 
     // <div class="resources">${build}</div>

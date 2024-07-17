@@ -77,13 +77,9 @@ a, a:visited {
 
 .bottom .type {
     border-top: 1px #0d0b0b solid;
-    /* right: 0px;
-    left: 0px;
-    bottom: 0px; */
-    /* padding: 5px; */
-    /* padding-bottom: 24px; */
     display: flex;
     justify-content: space-between;
+    min-height: 69px;
 }
 
 .bottom {
@@ -93,14 +89,34 @@ a, a:visited {
     text-rendering: geometricPrecision;
 }
 
+.guild .compass-banner {
+    margin-top: -20px;
+    margin-left: 4px;
+    width: 39px;
+}
+
+.guild > * {
+    align-self: center;
+}
+
+
+.guild .compass-icon {
+    margin-top:0;
+    margin-bottom:0;
+    width: 26px;
+}
+
+.guild .no-compass {
+    width: 31px;
+}
+
 .line {
-    padding: 8px 26px;
+    /* padding: 8px 26px; */
     /* text-shadow: 0.2px 0.2px #646464; */
 }
 
 .type {
     min-height: 31px;
-    padding-bottom: 29px;
 }
 
 .texts {
@@ -412,20 +428,26 @@ a, a:visited {
 }
 
 .guild {
-    /* display: flex; */
-    /* position: absolute;
-    left: 24px;
-    bottom: 22px; */
-    /* justify-content: center; */
+    display: flex;
+    padding: 9px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+    background-color: #ffffff5d;
+    border-left: 1px #00000037 solid;
+}
+
+.build_text {
+    padding: 8px;
+    padding-bottom: 24px;
+    padding-left: 24px;
 }
 
 .type-supremacy .guild {
-    position: static;
-    padding: 10px;
+
 }
 
 .type-supremacy .bottom .type {
-    justify-content: center;
+
 }
 
 .captain {
