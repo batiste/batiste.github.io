@@ -473,7 +473,12 @@ cards.forEach((c) => {
         })
 
         top = `
-        <div class="supremacy-cost">${cos}</div>`
+        <div class="supremacy-cost">${cos}</div>
+                <div class="top-bar">
+            <span class="discard">${dis}</span>
+        </div>`
+
+        title = `<span class="title ${title_class}">${split_title}</span>`
     } else {
         top = `${cost}
         <div class="top-bar">

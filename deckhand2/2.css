@@ -469,6 +469,19 @@ a, a:visited {
     box-shadow: #000000cd 0px 0px 8px 3px;
 }
 
+.type-supremacy .title {
+    z-index: 1005;
+    left: 0px;
+    right: 110px;
+    top:263px;
+}
+
+.type-supremacy .top-bar {
+    top: 248px;
+    left: -66px;
+    z-index: 1000;
+}
+
 .right .no-compass {
     width: 34px;
     margin-left: 3px;
