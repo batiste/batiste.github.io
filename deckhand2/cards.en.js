@@ -208,6 +208,62 @@ var cards = [
     },
 
     {
+        "title": "Master Gunner",
+        "discard": ['g'],
+        "cost": ['c', 'c', 'cs'],
+        "img": "cards/gunner.png",
+        "extra": ['bolt', 'bolt', 'compass'],
+        "production": ['g']
+    },
+
+    {
+        "title": "Bird Handler",
+        "discard": ['p'],
+        "cost": ['c', 'c', 'cs'],
+        "img": "cards/handler.png",
+        "extra": ['bolt', 'telescope'],
+        "production": ['p']
+    },
+
+
+    {
+        "title": "Rum Runner",
+        "discard": ['r'],
+        "cost": ['c', 'cs', 'cs'],
+        "img": "cards/captain3.png",
+        "extra": ['bolt', 'compass'],
+        "production": ['r']
+    },
+
+    // {
+    //     "title": "Master Gunner",
+    //     "discard": ['g'],
+    //     "cost": ['c', 'c', 'cs'],
+    //     "img": "cards/gunner.png",
+    //     "extra": ['bolt', 'bolt', 'compass'],
+    //     "production": ['g']
+    // },
+
+    // {
+    //     "title": "Bird Handler",
+    //     "discard": ['p'],
+    //     "cost": ['c', 'c', 'cs'],
+    //     "img": "cards/handler.png",
+    //     "extra": ['bolt', 'telescope'],
+    //     "production": ['p']
+    // },
+
+
+    // {
+    //     "title": "Rum Runner",
+    //     "discard": ['r'],
+    //     "cost": ['c', 'cs', 'cs'],
+    //     "img": "cards/captain3.png",
+    //     "extra": ['bolt', 'compass'],
+    //     "production": ['r']
+    // },
+
+    {
         "discard": ['r'],
         "title": "Rich Pirate",
         "cost": ['r', 'cs', 'c'],
@@ -626,35 +682,6 @@ var cards = [
     },
 
     {
-        "title": "Master Gunner",
-        "discard": ['g'],
-        "cost": ['c', 'c', 'cs'],
-        "img": "cards/gunner.png",
-        "extra": ['bolt', 'bolt', 'compass'],
-        "production": ['g']
-    },
-
-    {
-        "title": "Bird Handler",
-        "discard": ['p'],
-        "cost": ['c', 'c', 'cs'],
-        "img": "cards/handler.png",
-        "extra": ['bolt', 'telescope'],
-        "production": ['p']
-    },
-
-
-    {
-        "title": "Rum Runner",
-        "discard": ['r'],
-        "cost": ['c', 'cs', 'cs'],
-        "img": "cards/captain3.png",
-        "extra": ['bolt', 'compass'],
-        "production": ['r']
-    },
-
-
-    {
         "title": "Rowdy Mob",
         "discard": ['r'],
         "cost": ['g', 'g', 'r', 'cs'],
@@ -811,7 +838,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['p', 'p'],
         "img": "cards/poacher.png",
-        "production": ['p', 'produce', 's'],
+        "production": ['s', 'produce', 's', 'or', 'e'],
         // "extra": ['bolt', 'bolt'],
     },
 ]
