@@ -113,6 +113,8 @@ var get_res = (r) => {
     }
     if (r == "or") {
         return `<b style="font-size:18px;color:#000c">|</b>`
+    } else {
+        return res(r)
     }
 }
 
@@ -246,6 +248,18 @@ var get_v_value = (c) => {
                 v += vp;
             }
         }
+    }
+
+    if(c.banners) {
+        c.banners.forEach(b => {
+            if (b == 'basic-banner') {
+
+            } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner' || b == 'coin-banner') {
+                v += 0.1
+            } else {
+                v += 0.15   
+            }
+        }) 
     }
 
     // the card itself has a value of 1
@@ -421,8 +435,6 @@ cards.forEach((c) => {
             ${extra}
         </div>`
 
-    // <div class="resources">${build}</div>
-
 
     var title_class = "";
     var split_title = c.title;
@@ -440,11 +452,6 @@ cards.forEach((c) => {
         })
     }
 
-    var cp = '';
-    if(c.captain) {
-        cp = '<img class="captain" src="img/arrow-left.png">';
-    }
-
     if(c.v_ratio > 0.69999) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
@@ -452,15 +459,27 @@ cards.forEach((c) => {
         c.v_ratio = `<b class="up">${c.v_ratio}</b>`
     }
 
-    // if (c.type == "supremacy") {
-    //     c.v_ratio = '-'
-    //     c.v_value = '-'
-    //     c.v_cost = '-'
-    // }
-
     var ship = ''
     if (c.type == "ship") {
         ship = `<div class="ship line"><div>${c.holding}<img class="crate" src="img/crate.png"></div></div>`
+    }
+
+    var top = ''
+    var title = ''
+    if(c.type == 'supremacy') {
+        var cos = ''
+        c.cost.forEach(c => {
+            cos += res(c)
+        })
+
+        top = `
+        <div class="supremacy-cost">${cos}</div>`
+    } else {
+        top = `${cost}
+        <div class="top-bar">
+            <span class="discard">${dis}</span>
+        </div>`
+        title = `<span class="title ${title_class}">${split_title}</span>`
     }
 
 
@@ -469,12 +488,7 @@ cards.forEach((c) => {
         <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 
-                ${cost}
-                ${cp}
-
-                <div class="top-bar">
-                    <span class="discard">${dis}</span>
-                </div>
+                ${top}
 
                 <div class="bg">
                     <img src="${c.img}">
@@ -485,7 +499,7 @@ cards.forEach((c) => {
                 </div>
                 
                 <div class="mpc"></div>
-                <span class="title ${title_class}">${split_title}</span>
+                ${title}
             </div>
         </div>
         <button onclick="downloadCardButton(this)">Download #${i} </button><br>

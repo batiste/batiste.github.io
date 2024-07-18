@@ -65,17 +65,18 @@ var cards = [
     {
         "title": "Totem",
         "discard": [],
-        "cost": ['g', 'p', 'r'],
+        "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
         'extra': ['crown'],
+        // 'banners': ['parrot-banner'],
         'type': 'supremacy',
     },
 
     {
         "title": "Eerie Castle",
         "discard": [],
-        "cost": ['s', 'r', 'g', 'g'],
+        "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/castle.png",
         // "production": ['r']
         'extra': ['vp-4', 'crown'],
@@ -85,7 +86,7 @@ var cards = [
     {
         "title": "Graveyard",
         "discard": [],
-        "cost": ['s', 's', 'r'],
+        "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/grave.png",
         // "production": ['r']
         'extra': ['vp-2', 'discard-grab'],
@@ -96,7 +97,7 @@ var cards = [
     {
         "title": "Kraken's Fury",
         "discard": [],
-        "cost": ['e', 's', 'h'],
+        "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
         "img": "cards/kraken.png",
         // "production": ['r']
         'extra': ['vp-4', 'no-compass'],
@@ -106,7 +107,7 @@ var cards = [
     {
         "title": "Emerald Valley",
         "discard": [],
-        "cost": ['e', 'e'],
+        "cost": ['gem-banner', 'gem-banner'],
         "img": "cards/emerald.png",
         // "production": ['r']
         'extra': ['vp-3', 'draw-1'],
@@ -116,7 +117,7 @@ var cards = [
     {
         "title": "Hidden Bounty",
         "discard": [],
-        "cost": ['h', 'r', 'r'],
+        "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
         "img": "cards/bay.png",
         // "production": ['r']
         'extra': ['vp-2', 'draw-2'],
@@ -126,7 +127,7 @@ var cards = [
     {
         "title": "Animal Overrun",
         "discard": [],
-        "cost": ['p', 'p', 'p'],
+        "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/freed_monkeys.jpeg",
         // "production": ['r']
         'extra': ['vp-3', 'crown'],
@@ -136,7 +137,7 @@ var cards = [
     {
         "title": "Military Domination",
         "discard": [],
-        "cost": ['g', 'g', 'g'],
+        "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/raid.png",
         // "production": ['r']
         'extra': ['vp-3', 'no-compass'],
@@ -146,7 +147,7 @@ var cards = [
     {
         "title": "Naval Supremacy",
         "discard": [],
-        "cost": ['h', 'h', 'h'],
+        "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/naval-sup.png",
         // "production": ['r']
         'extra': ['vp-4', 'crown'],
@@ -666,6 +667,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['p', 'h', 'h'],
         "img": "cards/mono.png",
+        "banners": ['rum-banner'],
         "extra": ['vp-3', 'x', 'helm-banner'],
     },
 
@@ -693,6 +695,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
+        "banners": ['coin-banner'],
         "extra": ['vp-6', 'crown'],
     },
 
@@ -712,7 +715,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 'p', 'cs'],
         "img": "cards/p-guild.png",
-        "extra": ['vp-2', 'x', 'cs'],
+        "extra": ['vp-2', 'x', 'coin-banner'],
     },
 
     {
@@ -791,7 +794,7 @@ var cards = [
         "cost": ['h', 'h'],
         "img": "cards/doomed-expedition.png",
         "extra": ['crown'],
-        "banners": ['skull-banner'],
+        "banners": ['rum-banner'],
         "production": ['s']
     },
 
@@ -883,7 +886,7 @@ var cards = [
     {
         "title": "Poacher",
         "discard": ['p'],
-        "cost": ['p', 'cs'],
+        "cost": ['g', 'cs'],
         "img": "cards/poacher.png",
         "production": ['p', 'produce', 's', 'or', 'p'],
         "extra": ['vp-1'],

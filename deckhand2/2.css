@@ -448,24 +448,30 @@ a, a:visited {
     margin-right: 1px;
 }
 
-.type-supremacy .guild {
-
-}
-
-.type-supremacy .bottom .type {
-
-}
-
-.captain {
-    width: 23px;
-    position: absolute;
-    top: 28px;
-    left: 13px;
-    z-index: 100;
-}
-
-.right img, .ship img {
+.right img {
     width: 38px;
+    max-height: 36px;
+    align-self: center;
+}
+
+.supremacy-cost img {
+    width: 38px;
+    align-self: center;
+}
+
+.supremacy-cost {
+    position: absolute;
+    display: flex;
+    right: 0;
+    left:0;
+    padding: 25px 3px 3px 25px;
+    background-color: #000000d9;
+    box-shadow: #000000 0px 0px 8px 3px;
+}
+
+.right .no-compass {
+    width: 34px;
+    margin-left: 3px;
 }
 
 .mult {
