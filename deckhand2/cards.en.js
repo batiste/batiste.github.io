@@ -422,6 +422,7 @@ var cards = [
         "cost": ['r', 'p', 'g', 'cs'],
         "img": "cards/bay.png",
         "extra": ['vp-3'],
+        'banners': ['coin-banner'],
         "production": ['cs'],
     },
 
@@ -430,6 +431,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/busy.png",
+        'banners': ['coin-banner'],
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
     },
@@ -881,7 +883,7 @@ var cards = [
     {
         "title": "Poacher",
         "discard": ['p'],
-        "cost": ['p', 'p'],
+        "cost": ['p', 'cs'],
         "img": "cards/poacher.png",
         "production": ['p', 'produce', 's', 'or', 'p'],
         "extra": ['vp-1'],

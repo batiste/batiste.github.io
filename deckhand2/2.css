@@ -154,29 +154,6 @@ a, a:visited {
     display: flex;
     align-items: center;
 }
-
-.production {
-    color: #fff;
-    color: #000;
-    display: flex;
-    align-items: center;
-}
-
-.hammer {
-    width: 19px;
-    display: inline-flex;
-    margin-bottom: -4px;
-    width: 19px;
-    display: inline-flex; 
-    border: 1.5px solid #392f05;
-    padding: 2px;
-    border-radius: 3px;
-    background-color: #f6e2c4;
-    float: left;
-    margin-right: 4px;
-    margin-top: -2px;
-    margin-bottom: -3px;
-}
     
 .bolt {
     width: 19px;
@@ -461,11 +438,14 @@ a, a:visited {
 } */
 
 .production {
+    display: flex;
+    align-items: center;
     padding: 8px;
     padding-bottom: 24px;
     padding-left: 24px;
     background-color: #ffffff5d;
-    border-right: 1px #00000037 solid;
+    border-right: 1.5px #0000002c solid;
+    margin-right: 1px;
 }
 
 .type-supremacy .guild {
