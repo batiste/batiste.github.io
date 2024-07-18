@@ -160,7 +160,7 @@ var distribution_end_game = {
     "h": 2,
     "e": 2,
     "cs": 1.6,
-    'compass': 1.5,
+    'compass-icon': 2,
 }
 
 var get_v_cost = (s) => {
@@ -193,7 +193,12 @@ var evaluate_production = (c) => {
             return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.1;
         }
         if (bits[1] == "produce") {
-            return virtual_value[bits[2]] - 1.5;
+            return virtual_value[bits[2]] - 1.8;
+        }
+    }
+    if (bits.length == 5) {
+        if (bits[1] == "produce") {
+            return (virtual_value[bits[2]] - 1.8) + (virtual_value[bits[4]] - 1.8);
         }
     }
     return 0
@@ -378,8 +383,9 @@ cards.forEach((c) => {
             }
         })
 
-        extra = `<div class="guild">${(extra || '')}</div>`
-
+        if (extra) {
+            extra = `<div class="guild">${(extra || '')}</div>`
+        }
     }
 
     var build = "";

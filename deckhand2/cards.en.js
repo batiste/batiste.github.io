@@ -492,9 +492,9 @@ var cards = [
     {
         "discard": ['s'],
         "title": "Walk the Plank",
-        "cost": [],
+        "cost": ['cs'],
         "img": "cards/walk.png",
-        "extra": ['bolt'],
+        "extra": ['vp-1'],
         "production": ['discard-1', 'produce', 'g'],
     },
 
@@ -503,7 +503,7 @@ var cards = [
         "title": "Locksmith",
         "cost": ['cs', 'cs'],
         "img": "cards/locksmith.png",
-        "extra": ['bolt'],
+        "extra": ['vp-1'],
         "production": ['discard-1', 'produce', 'e'],
     },
 
@@ -756,7 +756,7 @@ var cards = [
     {
         "title": "Tavern",
         "discard": ['r'],
-        "cost": ['r', 'r', 'c'],
+        "cost": ['r', 'r', 'cs'],
         "img": "cards/tavern.png",
         "extra": ['vp-2', 'x', 'r'],
     },
@@ -786,5 +786,32 @@ var cards = [
         "img": "cards/treasure-map.png",
         "production": ['h'],
         "extra": ['telescope'],
+    },
+
+    {
+        "title": "Lady Celeste",
+        "discard": ['e'],
+        "cost": ['g'],
+        "img": "cards/lady-something.png",
+        // "production": ['h'],
+        "extra": ['bolt', 'bolt'],
+    },
+
+    {
+        "title": "Mobile Trader",
+        "discard": ['h'],
+        "cost": ['r', 'r'],
+        "img": "cards/market-3.png",
+        "production": ['e', 'produce', 'h', 'or', 'e'],
+        // "extra": ['bolt', 'bolt'],
+    },
+
+    {
+        "title": "Poacher",
+        "discard": ['s'],
+        "cost": ['p', 'p'],
+        "img": "cards/poacher.png",
+        "production": ['p', 'produce', 's'],
+        // "extra": ['bolt', 'bolt'],
     },
 ]
