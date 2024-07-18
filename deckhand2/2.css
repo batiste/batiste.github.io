@@ -473,13 +473,15 @@ a, a:visited {
     z-index: 1005;
     left: 0px;
     right: 110px;
-    top:263px;
+    top: 266px;
+    rotate: -5deg;
 }
 
 .type-supremacy .top-bar {
-    top: 248px;
+    top: 252px;
     left: -66px;
     z-index: 1000;
+    rotate: -4deg;
 }
 
 .right .no-compass {
