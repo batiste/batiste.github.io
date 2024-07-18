@@ -158,7 +158,8 @@ var cards = [
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/scruf.png",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'rum-banner'],
+        // 'extra': ['compass'],
         "production": ['r']
     },
 
@@ -167,7 +168,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/parrot.png",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
     },
 
@@ -176,7 +177,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/merchant.jpeg",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
     },
 
@@ -185,7 +186,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/scruf.png",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'rum-banner'],
         "production": ['r']
     },
 
@@ -194,7 +195,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/parrot.png",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
     },
 
@@ -203,7 +204,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/merchant.jpeg",
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
     },
 
@@ -212,7 +213,8 @@ var cards = [
         "discard": ['g'],
         "cost": ['c', 'c', 'cs'],
         "img": "cards/gunner.png",
-        "extra": ['bolt', 'bolt', 'compass'],
+        'banners': ['basic-banner', 'gun-banner'],
+        "extra": ['bolt', 'bolt'],
         "production": ['g']
     },
 
@@ -222,6 +224,7 @@ var cards = [
         "cost": ['c', 'c', 'cs'],
         "img": "cards/handler.png",
         "extra": ['bolt', 'telescope'],
+        'banners': ['parrot-banner'],
         "production": ['p']
     },
 
@@ -231,7 +234,8 @@ var cards = [
         "discard": ['r'],
         "cost": ['c', 'cs', 'cs'],
         "img": "cards/captain3.png",
-        "extra": ['bolt', 'compass'],
+        'banners': ['basic-banner', 'rum-banner'],
+        "extra": ['bolt'],
         "production": ['r']
     },
 
@@ -269,7 +273,7 @@ var cards = [
         "cost": ['r', 'cs', 'c'],
         "img": "cards/rich.png",
         "extra": ['vp-1'],
-        'extra': ['compass'],
+        'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
     },
 
@@ -278,7 +282,8 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
         "img": "cards/armed-orangutan.jpeg",
-        "extra": ['vp-1', 'compass'],
+        "extra": ['vp-1'],
+        'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
     },
 
@@ -287,7 +292,8 @@ var cards = [
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
         "img": "cards/brawl.png",
-        "extra": ['vp-1', 'compass'],
+        "extra": ['vp-1'],
+        'banners': ['basic-banner', 'rum-banner'],
         "production": ['r']
     },
 
@@ -296,7 +302,8 @@ var cards = [
         "title": "Rich Pirate",
         "cost": ['r', 'cs', 'c'],
         "img": "cards/rich.png",
-        "extra": ['vp-1', 'compass'],
+        "extra": ['vp-1'],
+        'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
     },
 
@@ -305,7 +312,8 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
         "img": "cards/armed-orangutan.jpeg",
-        "extra": ['vp-1', 'compass'],
+        "extra": ['vp-1'],
+        'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
     },
 
@@ -314,7 +322,8 @@ var cards = [
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
         "img": "cards/brawl.png",
-        "extra": ['vp-1', 'compass'],
+        "extra": ['vp-1'],
+        'banners': ['basic-banner', 'rum-banner'],
         "production": ['r']
     },
 
@@ -324,6 +333,7 @@ var cards = [
         "cost": ['p', 'g', 'c'],
         "img": "cards/necro.png",
         "extra": ['vp-1'],
+        'banners': ['skull-banner'],
         "production": ['s'],
     },
 
@@ -333,6 +343,7 @@ var cards = [
         "cost": ['r', 'p', 'c'],
         "img": "cards/loaded.png",
         "extra": ['vp-1'],
+        'banners': ['helm-banner'],
         "production": ['h'],
     },
 
@@ -341,6 +352,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/animal_market.png",
+        'banners': ['gem-banner'],
         "extra": ['vp-1'],
         "production": ['e'],
     },
@@ -350,6 +362,7 @@ var cards = [
         "title": "Necromancer",
         "cost": ['p', 'g', 'c'],
         "img": "cards/necro.png",
+        'banners': ['skull-banner'],
         "extra": ['vp-1'],
         "production": ['s'],
     },
@@ -359,6 +372,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['r', 'p', 'c'],
         "img": "cards/loaded.png",
+        'banners': ['helm-banner'],
         "extra": ['vp-1'],
         "production": ['h'],
     },
@@ -368,6 +382,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/animal_market.png",
+        'banners': ['gem-banner'],
         "extra": ['vp-1'],
         "production": ['e'],
     },
@@ -377,7 +392,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['r', 'cs', 'c', 'c'],
         "img": "cards/animal_market.png",
-        "extra": [],
+        'banners': ['parrot-banner'],
         "production": ['g', 'or', 'p'],
     },
 
@@ -386,7 +401,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['g', 'cs', 'c', 'c'],
         "img": "cards/animal_market.png",
-        "extra": [],
+        'banners': ['rum-banner'],
         "production": ['r', 'or', 'p'],
     },
 
@@ -396,6 +411,7 @@ var cards = [
         "cost": ['p', 'g', 'e', 'c'],
         "img": "cards/freed_monkeys.jpeg",
         "extra": ['vp-2'],
+        'banners': ['rum-banner'],
         "production": ['r', 'or', 'p'],
     },
 
@@ -414,7 +430,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/busy.png",
-        "extra": ['vp-1', 'x', 'r'],
+        "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
     },
 
@@ -423,7 +439,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'p', 'p'],
         "img": "cards/sanctuary.png",
-        "extra": ['vp-2', 'x', 'p'],
+        "extra": ['vp-2', 'x', 'parrot-banner'],
         // "production": ['t'],
         // "value_correction": -1
     },
@@ -434,6 +450,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['g', 'g', 's', 'c'],
         "img": "cards/plunder.png",
+        "banners": ['gem-banner'],
         "extra": ['vp-3'],
         "production": ['e'],
     },
@@ -443,7 +460,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'h', 'cs', 'cs'],
         "img": "cards/merchant2.png",
-        "extra": ['r'],
+        "banners": ['rum-banner'],
         "extra": ['vp-3'],
         "production": ['r'],
     },
@@ -453,7 +470,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['h', 'h', 'r', 'c'],
         "img": "cards/wind.png",
-        "extra": ['vp-5', 'bolt'],
+        "extra": ['vp-5'],
         "production": ['discard-1', 'produce', 'r'],
     },
 
@@ -462,7 +479,8 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "extra": ['vp-1', 'compass'],
+        "banners": ['coin-banner', 'basic-banner'],
+        "extra": ['vp-1'],
         "production": ['cs'],
     },
 
@@ -471,7 +489,8 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "extra": ['vp-1', 'compass'],
+        "banners": ['coin-banner', 'basic-banner'],
+        "extra": ['vp-1'],
         "production": ['cs'],
     },
 
@@ -480,6 +499,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
+        "banners": ['skull-banner'],
         "extra": ['vp-2'],
         "production": ['s'],
     },
@@ -489,7 +509,8 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 's', 'c'],
         "img": "cards/crab.png",
-        "extra": ['vp-4', 'bolt'],
+        "extra": ['vp-4'],
+        "banners": ['parrot-banner'],
         "production": ['discard-1', 'produce', 'p'],
     },
 
@@ -498,6 +519,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 'h', 'c'],
         "img": "cards/skeleton-crew.png",
+        "banners": ['skull-banner'],
         "extra": ['vp-2'],
         "production": ['s'],
     },
@@ -507,6 +529,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['e', 'p', 'g', 'c'],
         "img": "cards/warrior.jpeg",
+        "banners": ['gun-banner'],
         "extra": ['vp-4'],
         "production": ['p'],
     },
@@ -517,6 +540,7 @@ var cards = [
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
         "extra": ['vp-3'],
+        "banners": ['helm-banner'],
         "production": ['h'],
     },
 
@@ -525,6 +549,7 @@ var cards = [
         "title": "Drunk Marmosets",
         "cost": ['p', 'r', 'cs', 'cs'],
         "img": "cards/marmosets.png",
+        "banners": ['gun-banner'],
         "extra": ['vp-4'],
     },
 
@@ -533,6 +558,7 @@ var cards = [
         "title": "Sneak Attack",
         "cost": ['s', 's', 'g', 'cs', 'c'],
         "img": "cards/sneak_attack.png",
+        "banners": ['gem-banner'],
         "extra": ['vp-4'],
         "production": ['e'],
     },
@@ -542,7 +568,7 @@ var cards = [
         "title": "Cannoneer's Guild",
         "cost": ['g', 'g', 's', 'cs'],
         "img": "cards/military.png",
-        "extra": ['vp-2', 'x', 'g'],
+        "extra": ['vp-2', 'x', 'gun-banner'],
     },
 
     {
@@ -569,7 +595,7 @@ var cards = [
         "title": "Abandoned Manor",
         "cost": ['cs', 'cs'],
         "img": "cards/manor.png",
-        "extra": ['bolt'],
+        "banners": ['skull-banner'],
         "production": ['discard-1', 'produce', 's'],
     },
 
@@ -579,6 +605,7 @@ var cards = [
         "cost": ['e', 'e', 'h', 'r'],
         "img": "cards/crooked.png",
         "extra": ['vp-3'],
+        "banners": ['helm-banner'],
         "production": ['s', 'or', 'g'],
     },
 
@@ -587,6 +614,7 @@ var cards = [
         "title": "Captain Lhoryn",
         "cost": ['h', 'h', 'c'],
         "img": "cards/captain1.png",
+        "banners": ['gem-banner'],
         "extra": ['vp-5', 'telescope'],
     },
 
@@ -596,7 +624,7 @@ var cards = [
         "title": "Captain Grenwish",
         "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
-        "extra": ['vp-3', 'bolt'],
+        "extra": ['vp-3'],
         "production": ['discard-1', 'produce', 'h'],
     },
 
@@ -606,6 +634,7 @@ var cards = [
         "cost": ['s', 'e', 'e', 'cs', 'cs'],
         "img": "cards/captain4.png",
         "extra": ['vp-4'],
+        "banners": ['helm-banner'],
         "production": ['h'],
     },
 
@@ -616,6 +645,7 @@ var cards = [
         "cost": ['s', 'h', 'c'],
         "img": "cards/assasin.png",
         "extra": ['vp-3'],
+        "banners": ['coin-banner'],
         "production": [`cs`],
     },
 
@@ -625,7 +655,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['g', 's', 's'],
         "img": "cards/doom.png",
-        "extra": ['vp-3', 'x', 's'],
+        "extra": ['vp-3', 'x', 'skull-banner'],
     },
 
 
@@ -634,7 +664,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['p', 'h', 'h'],
         "img": "cards/mono.png",
-        "extra": ['vp-3', 'x', 'h'],
+        "extra": ['vp-3', 'x', 'helm-banner'],
     },
 
     {
@@ -642,7 +672,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'e', 'e'],
         "img": "cards/cache.png",
-        "extra": ['vp-3', 'x', 'e'],
+        "extra": ['vp-3', 'x', 'gem-banner'],
     },
 
 
@@ -652,6 +682,7 @@ var cards = [
         "cost": ['e', 's', 'h', 'p', 'cs'],
         "img": "cards/skull.png",
         "extra": ['vp-7'],
+        "banners": ['parrot-banner'],
         // "production": ['t'],
     },
 
@@ -670,6 +701,7 @@ var cards = [
         "cost": ['h', 'r', 'cs', 'c'],
         "img": "cards/desert.png",
         "extra": ['vp-1'],
+        "banners": ['coin-banner'],
         "production": ['g', 'or', 'cs']
     },
 
@@ -686,6 +718,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['g', 'g', 'r', 'cs'],
         "img": "cards/mob.png",
+        "banners": ['gun-banner', 'helm-banner'],
         "production": ['h', 'or', 'r']
     },
 
@@ -696,6 +729,7 @@ var cards = [
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/feast.png",
         "extra": ['vp-2', 'crown'],
+        "banners": ['gun-banner'],
         "production": ['g']
     },
 
@@ -705,6 +739,7 @@ var cards = [
         "cost": ['g', 'r', 'e', 'cs'],
         "img": "cards/hunt.png",
         "extra": ['vp-2', 'bolt', 'bolt'],
+        "banners": ['parrot-banner'],
         "production": ['p']
     },
 
@@ -714,6 +749,7 @@ var cards = [
         "cost": ['g', 'p', 's', 'cs'],
         "img": "cards/distill.png",
         "extra": ['vp-2', 'bolt', 'bolt'],
+        "banners": ['rum-banner'],
         "production": ['r']
     },
 
@@ -733,6 +769,7 @@ var cards = [
         "cost": ['s', 's'],
         "img": "cards/cultist.png",
         "extra": ['vp-1'],
+        "banners": ['gem-banner'],
         "production": ['e']
     },
 
@@ -742,6 +779,7 @@ var cards = [
         "cost": ['e', 'e', 'cs'],
         "img": "cards/shipyard.png",
         "extra": ['vp-2'],
+        "banners": ['helm-banner'],
         "production": ['h']
     },
 
@@ -751,6 +789,7 @@ var cards = [
         "cost": ['h', 'h'],
         "img": "cards/doomed-expedition.png",
         "extra": ['crown'],
+        "banners": ['skull-banner'],
         "production": ['s']
     },
 
@@ -759,6 +798,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
         "img": "cards/strange.png",
+        "banners": ['skull-banner'],
         "extra": ['vp-4', 'no-compass'],
     },
 
@@ -767,6 +807,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 's', 'g'],
         "img": "cards/haunted-2.png",
+        "banners": ['skull-banner'],
         "extra": ['vp-3', 'discard-grab'],
     },
 
@@ -776,7 +817,8 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'g', 'h', 'cs', 'cs'],
         "img": "cards/haven.png",
-        "extra": ['vp-2', 'x', 'compass-icon'],
+        "extra": ['vp-2', 'x', 'basic-banner'],
+        // "banners": ['gem-banner'],
         "production": ['e']
     },
 
@@ -785,7 +827,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'r', 'cs'],
         "img": "cards/tavern.png",
-        "extra": ['vp-2', 'x', 'r'],
+        "extra": ['vp-2', 'x', 'rum-banner'],
     },
 
     {
@@ -794,6 +836,7 @@ var cards = [
         "cost": ['p', 'p'],
         "img": "cards/parrot-2.png",
         "extra": ['vp-1'],
+        "banners": ['parrot-banner'],
         "production": ['p']
     },
 
@@ -803,6 +846,7 @@ var cards = [
         "cost": ['p', 'p', 'g'],
         "img": "cards/ape.png",
         "extra": ['vp-2'],
+        "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g']
     },
 
@@ -811,6 +855,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'r', 'cs'],
         "img": "cards/treasure-map.png",
+        "banners": ['gem-banner'],
         "production": ['h'],
         "extra": ['telescope'],
     },
@@ -820,8 +865,8 @@ var cards = [
         "discard": ['e'],
         "cost": ['g'],
         "img": "cards/lady-something.png",
-        // "production": ['h'],
-        "extra": ['bolt', 'bolt'],
+        "banners": ['gun-banner'],
+        "extra": ['vp-1', 'bolt', 'bolt'],
     },
 
     {
@@ -830,15 +875,15 @@ var cards = [
         "cost": ['r', 'r'],
         "img": "cards/market-3.png",
         "production": ['e', 'produce', 'h', 'or', 'e'],
-        // "extra": ['bolt', 'bolt'],
+        "extra": ['vp-1'],
     },
 
     {
         "title": "Poacher",
-        "discard": ['s'],
+        "discard": ['p'],
         "cost": ['p', 'p'],
         "img": "cards/poacher.png",
-        "production": ['s', 'produce', 's', 'or', 'e'],
-        // "extra": ['bolt', 'bolt'],
+        "production": ['p', 'produce', 's', 'or', 'p'],
+        "extra": ['vp-1'],
     },
 ]

@@ -123,6 +123,7 @@ var double_cost = {};
 var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
 var stats_production_weighted = {}
+var banner_stats = {}
 var doubles = {}
 var triples = {}
 
@@ -132,6 +133,7 @@ console.log('stats_vp', stats_vp)
 console.log('stats_production', stats_production)
 console.log('stats_production_weighted', stats_production_weighted)
 console.log('double_cost', double_cost)
+console.log('banner_stats', banner_stats)
 
 var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
@@ -152,15 +154,14 @@ var virtual_cost = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "c": 0.5,
-    "g": 2.1,
-    "p": 2.1,
-    "r": 2.1,
-    "s": 2,
-    "h": 2,
-    "e": 2,
-    "cs": 1.6,
-    'compass-icon': 2,
+    "gun-banner": 2.1,
+    "parrot-banner": 2.1,
+    "rum-banner": 2.1,
+    "skull-banner": 2,
+    "helm-banner": 2,
+    "gem-banner": 2,
+    "coin-banner": 1.6,
+    'basic-banner': 2,
 }
 
 var get_v_cost = (s) => {
@@ -271,6 +272,12 @@ cards.forEach((c) => {
         return;
     }
 
+    if (c.banners) {
+        c.banners.forEach(b => {
+            banner_stats[b] = 1 + (banner_stats[b] || 0);
+        })
+    }
+
     var s = {}
     c.cost.forEach((co) => {
         stats_costs[co] = 1 + (stats_costs[co] || 0);
@@ -315,6 +322,18 @@ cards.forEach((c) => {
         }
     }
 
+    var banners = ''
+    if (c.banners) {
+        c.banners.forEach(d => {
+            if (d.endsWith('banner')) {
+                banners += `<img class="banner"  src="img/${d}.png">`
+            }
+        })
+        if (banners) {
+            banners = `<div class="banners">${banners}</div>`
+        }
+    }
+
     var extra = ''
     if (c.extra) {
         c.extra.forEach(c => {
@@ -342,11 +361,8 @@ cards.forEach((c) => {
             if (c == "telescope") {
                 extra += `<img class="res" src="img/telescope.png">`
             }
-            if (c == "compass") {
-                extra += `<img class="compass-banner" src="img/compass-banner.png">`
-            }
-            if (c == "compass-icon") {
-                extra += `<img class="compass-banner compass-icon" src="img/compass-banner.png">`
+            if (c.endsWith('banner')) {
+                extra += `<img class="banner-icon"  src="img/${c}.png">`
             }
             if (c == "no-compass") {
                 extra += `<img class="no-compass" src="img/no-compass.png">`
@@ -382,22 +398,26 @@ cards.forEach((c) => {
                 extra += `<img class="res crown" src="img/tentacles.png">`
             }
         })
-
         if (extra) {
-            extra = `<div class="guild">${(extra || '')}</div>`
+            extra = `<div class="extra">${(extra || '')}</div>`
         }
+    }
+
+    if (extra) {
+        extra = `<div class="right">${(extra || '')}</div>`
     }
 
     var build = "";
     var production = ""
-    if (c.production) {
+    if (c.production && c.production.length) {
         c.production.forEach(p => {
             production += get_res(p)
         })
+        production = `<div class="production">${production}</div>`
     }
-    production = `<div class="build_text">${production}</div>`
     build = `<div class="type line">
             ${production}
+            ${banners}
             ${extra}
         </div>`
 
@@ -461,7 +481,6 @@ cards.forEach((c) => {
                 </div>
 
                 <div class="bottom">
-                    ${ship}
                     ${build}
                 </div>
                 

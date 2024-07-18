@@ -89,25 +89,34 @@ a, a:visited {
     text-rendering: geometricPrecision;
 }
 
-.guild .compass-banner {
-    margin-top: -20px;
+.banners {
+    display: flex;
+    margin-right: auto;
     margin-left: 4px;
+}
+
+.banners:first-child {
+    margin-left: 28px;
+}
+
+.banners .banner {
+    margin-top: -32px;
+    margin-right: 4px;
+    margin-left: -3px;
     width: 39px;
 }
 
-.guild > * {
+.banners {
+    display: flex;
+}
+
+.banners > *, .right > *  {
     align-self: center;
 }
 
-
-.guild .compass-icon {
-    margin-top:0;
-    margin-bottom:0;
-    width: 26px;
-}
-
-.guild .no-compass {
-    width: 31px;
+.right .banner-icon {
+    width: 32px;
+    margin-bottom: -2px;
 }
 
 .line {
@@ -146,7 +155,7 @@ a, a:visited {
     align-items: center;
 }
 
-.build_text {
+.production {
     color: #fff;
     color: #000;
     display: flex;
@@ -427,8 +436,15 @@ a, a:visited {
     display: none;
 }
 
-.guild {
+.right {
     display: flex;
+    margin-left: auto;
+    padding: 9px;
+    padding-bottom: 24px;
+    padding-right: 24px;
+}
+
+/* .extra {
     padding: 9px;
     padding-bottom: 24px;
     padding-right: 24px;
@@ -436,10 +452,20 @@ a, a:visited {
     border-left: 1px #00000037 solid;
 }
 
-.build_text {
+.banners {
+    padding: 9px;
+    padding-bottom: 24px;
+    padding-right: 9px;
+    background-color: #ffffffa2;
+    border-left: 1px #00000037 solid;
+} */
+
+.production {
     padding: 8px;
     padding-bottom: 24px;
     padding-left: 24px;
+    background-color: #ffffff5d;
+    border-right: 1px #00000037 solid;
 }
 
 .type-supremacy .guild {
@@ -458,7 +484,7 @@ a, a:visited {
     z-index: 100;
 }
 
-.guild img, .ship img {
+.right img, .ship img {
     width: 38px;
 }
 
@@ -467,18 +493,18 @@ a, a:visited {
     padding: 8px 2px;
 }
 
-.guild img.cross {
+.right img.cross {
     width: 20px;
     margin: 3px;
     margin-bottom: 8px;
 }
 
-.guild img.res {
+.right img.res {
     width: 30px;
     margin-bottom: 3px;
 }
 
-.guild img.crown {
+.right img.crown {
     margin-left: 4px;
     width: 35px;
 }
