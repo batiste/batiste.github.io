@@ -181,6 +181,12 @@ a, a:visited {
     width: 24px;
 }
 
+.type .resource.discard-res img {
+    width: 28px;
+    margin-top: -2px;
+    margin-bottom: -4px;
+}
+
 .draw-1, .draw-2 {
     width: 22px;
     display: inline-flex;

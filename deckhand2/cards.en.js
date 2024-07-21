@@ -879,7 +879,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['r', 'r'],
         "img": "cards/market-3.png",
-        "production": ['e', 'produce', 'h', 'or', 'e'],
+        "production": ['discard-gem', 'produce', 'h', 'or', 'e'],
         "extra": ['vp-1'],
     },
 
@@ -888,7 +888,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 'cs'],
         "img": "cards/poacher.png",
-        "production": ['p', 'produce', 's', 'or', 'p'],
+        "production": ['discard-parrot', 'produce', 's', 'or', 'p'],
         "extra": ['vp-1'],
     },
 ]

@@ -105,6 +105,9 @@ var get_res = (r) => {
     if (r == "discard-1") {
         return res("discard-1", "discard-1")
     }
+    if (r.startsWith('discard-')) {
+        return res(r, "discard-res")
+    }
     if (r == "x") {
         return `<div class="mult" style="font-weight: bold; color: #fff">X</div>`
     }
@@ -142,8 +145,8 @@ var icon = (t) => {
 }
 
 var virtual_cost = {
-    "c": 1.2,
-    "cs": 0.70,
+    "c": 1.1,
+    "cs": 0.8,
     "g": 1.9, // justification: easier to get
     "p": 1.9,
     "r": 1.9,
@@ -162,7 +165,7 @@ var distribution_end_game = {
     "skull-banner": 2,
     "helm-banner": 2,
     "gem-banner": 2,
-    "coin-banner": 1.6,
+    "coin-banner": 1.8,
     'basic-banner': 2,
 }
 
@@ -245,7 +248,7 @@ var get_v_value = (c) => {
             if(c.extra.length == 3 && c.extra[1] == 'x') {
                 v = vp * distribution_end_game[c.extra[2]]
             } else {
-                v += vp;
+                v += vp * 1.0;
             }
         }
     }
@@ -257,7 +260,7 @@ var get_v_value = (c) => {
             } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner' || b == 'coin-banner') {
                 v += 0.1
             } else {
-                v += 0.15   
+                v += 0.15
             }
         }) 
     }
@@ -377,6 +380,9 @@ cards.forEach((c) => {
             }
             if (c.endsWith('banner')) {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
+            }
+            if (c.startsWith('discard-')) {
+                extra += `<img class="res discard-res"  src="img/${c}.png">`
             }
             if (c == "no-compass") {
                 extra += `<img class="no-compass" src="img/no-compass.png">`
