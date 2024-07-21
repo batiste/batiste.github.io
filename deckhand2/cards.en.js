@@ -713,7 +713,7 @@ var cards = [
     {
         "title": "Pilferer's Guild",
         "discard": ['s'],
-        "cost": ['s', 'p', 'cs'],
+        "cost": ['e', 'p', 'cs'],
         "img": "cards/p-guild.png",
         "extra": ['vp-2', 'x', 'coin-banner'],
     },
@@ -724,7 +724,7 @@ var cards = [
         "cost": ['g', 'g', 'r', 'cs'],
         "img": "cards/mob.png",
         "banners": ['gun-banner', 'helm-banner'],
-        "production": ['h', 'or', 'r']
+        "production": ['skull', 'or', 'r']
     },
 
     // affinity cards

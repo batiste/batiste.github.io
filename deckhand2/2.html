@@ -125,6 +125,7 @@ var stats_costs = {};
 var stats_discard = {};
 var stats_vp = {};
 var double_cost = {};
+var single_cost = {};
 var production_type = ['r', 's', 'g', 'p', 'h', 'c', 'e', 'cs']
 var stats_production = {}
 var stats_production_weighted = {}
@@ -138,6 +139,7 @@ console.log('stats_vp', stats_vp)
 console.log('stats_production', stats_production)
 console.log('stats_production_weighted', stats_production_weighted)
 console.log('double_cost', double_cost)
+console.log('single_cost', single_cost)
 console.log('banner_stats', banner_stats)
 
 var icon = (t) => {
@@ -303,6 +305,8 @@ cards.forEach((c) => {
     Object.entries(s).forEach(([key, value]) => {
         if(value > 1) {
             double_cost[`${key}_${value}`] = 1 + (double_cost[`${key}_${value}`] || 0);
+        } else {
+            single_cost[`${key}_${value}`] = 1 + (single_cost[`${key}_${value}`] || 0);
         }
     });
 
@@ -381,9 +385,9 @@ cards.forEach((c) => {
             if (c.endsWith('banner')) {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
             }
-            if (c.startsWith('discard-')) {
-                extra += `<img class="res discard-res"  src="img/${c}.png">`
-            }
+            // if (c.startsWith('discard-')) {
+            //     extra += `<img class="res discard-res"  src="img/${c}.png">`
+            // }
             if (c == "no-compass") {
                 extra += `<img class="no-compass" src="img/no-compass.png">`
             }
