@@ -161,14 +161,14 @@ var virtual_cost = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "gun-banner": 2.1,
-    "parrot-banner": 2.1,
-    "rum-banner": 2.1,
+    "gun-banner": 2.0,
+    "parrot-banner": 2.0,
+    "rum-banner": 2.0,
     "skull-banner": 2,
     "helm-banner": 2,
     "gem-banner": 2,
-    "coin-banner": 1.8,
-    'basic-banner': 2,
+    "coin-banner": 1.6,
+    'basic-banner': 2.6,
 }
 
 var get_v_cost = (s) => {
@@ -330,11 +330,18 @@ cards.forEach((c) => {
     }
 });
 
+sort_cost = (a, b) => {
+    order = {'cs': 0, 'c': 1, 'p': 2, 'g': 3, 'r':4, 'e': 5, 's': 6,  'h': 7}
+    return order[b] - order[a]
+}
+
 cards.forEach((c) => {
 
     var cost = "";
     var v_cost = 0
     if (c.cost) {
+        c.cost.sort(sort_cost)
+
         c.cost.forEach((co) => {
             cost += get_res(co)
         })
