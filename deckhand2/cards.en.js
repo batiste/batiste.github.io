@@ -747,7 +747,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/feast.png",
-        "extra": ['vp-2', 'crown'],
+        "extra": ['vp-1', 'crown'],
         "banners": ['gun-banner'],
         "production": ['g']
     },
@@ -784,7 +784,7 @@ var cards = [
 
     {
         "title": "Cultist",
-        "discard": ['s'],
+        "discard": ['e'],
         "cost": ['s', 's'],
         "img": "cards/cultist.png",
         "extra": ['vp-1'],
@@ -794,7 +794,7 @@ var cards = [
 
     {
         "title": "Shipyard",
-        "discard": ['e'],
+        "discard": ['h'],
         "cost": ['e', 'e', 'cs'],
         "img": "cards/shipyard.png",
         "extra": ['vp-2'],
@@ -804,7 +804,7 @@ var cards = [
 
     {
         "title": "Troubled Expedition",
-        "discard": ['h'],
+        "discard": ['s'],
         "cost": ['h', 'h'],
         "img": "cards/doomed-expedition.png",
         "extra": ['crown'],
