@@ -157,6 +157,12 @@ var virtual_cost = {
     "skull-banner": 2,
 }
 
+var affinity_mitigation = {
+    'h': ['r', 'p'],
+    'e': ['r', 'g'],
+    's': ['g', 'p'],
+}
+
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
@@ -170,8 +176,35 @@ var distribution_end_game = {
     'basic-banner': 2.6,
 }
 
+function removeItem(array, item) {
+  var i = array.length;
+
+  while (i--) {
+    if (array[i] === item) {
+      array.splice(i, 1);
+    }
+  }
+}
+
 var get_v_cost = (s) => {
     return virtual_cost[s] || 0;
+}
+
+var get_mitigation_cost = (co, l) => {
+    var m = affinity_mitigation[co];
+    var rebate = 0;
+    if(m) {
+        m.forEach((c) => {
+            if (l.includes(c)) {
+                removeItem(l, c)
+                rebate -= 0.6;
+            }
+        })
+    }
+    if (rebate != 0) {
+        console.log(rebate, co, l)
+    } 
+    return rebate;
 }
 
 var virtual_value = {
@@ -184,6 +217,7 @@ var virtual_value = {
     "h": 3,
     "e": 3,
     "t": 0.5,
+    "any": 8,
 }
 
 var evaluate_production = (c) => {
@@ -200,12 +234,12 @@ var evaluate_production = (c) => {
             return virtual_value[bits[0]] + virtual_value[bits[2]] - 0.1;
         }
         if (bits[1] == "produce") {
-            return virtual_value[bits[2]] - 1.8;
+            return virtual_value[bits[2]] / 5.0;
         }
     }
     if (bits.length == 5) {
         if (bits[1] == "produce") {
-            return (virtual_value[bits[2]] - 1.8) + (virtual_value[bits[4]] - 1.8);
+            return (virtual_value[bits[2]] + virtual_value[bits[4]]) / 8.0
         }
     }
     return 0
@@ -247,7 +281,7 @@ var get_v_value = (c) => {
         if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
             if(c.extra.length == 3 && c.extra[1] == 'x') {
-                v = vp * distribution_end_game[c.extra[2]]
+                v += vp * distribution_end_game[c.extra[2]]
             } else {
                 v += vp * 1.0;
             }
@@ -261,7 +295,7 @@ var get_v_value = (c) => {
             } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner' || b == 'coin-banner') {
                 v += 0.2
             } else {
-                v += 0.25
+                v += 0.3
             }
         }) 
     }
@@ -269,8 +303,10 @@ var get_v_value = (c) => {
     // the card itself has a value of 1
     var v_cost = 1;
     if (c.cost) {
+        var copy = c.cost.slice()
         c.cost.forEach((co) => {
             v_cost += get_v_cost(co)
+            v_cost += get_mitigation_cost(co, copy)
         })
     }
     round = (n) => Math.round((100.0 * n)) / 100.0;

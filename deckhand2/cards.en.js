@@ -155,6 +155,26 @@ var cards = [
     },
 
     {
+        "title": "Water Bank",
+        "discard": ['h'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/water-bank.png",
+        "banners": ['coin-banner', 'basic-banner'],
+        "extra": ['vp-1'],
+        "production": ['cs'],
+    },
+
+    {
+        "title": "Water Bank",
+        "discard": ['h'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/water-bank.png",
+        "banners": ['coin-banner', 'basic-banner'],
+        "extra": ['vp-1'],
+        "production": ['cs'],
+    },
+
+    {
         "title": "Tavern Keeper",
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
@@ -389,6 +409,66 @@ var cards = [
     },
 
     {
+        "discard": ['e'],
+        "title": "Locksmith",
+        "cost": ['r', 'g', 'cs', 'cs'],
+        "img": "cards/locksmith.png",
+        "extra": ['vp-1'],
+        "banners": ['gem-banner'],
+        "production": ['e'],
+    },
+
+    {
+        "discard": ['r'],
+        "title": "Abandoned Manor",
+        "cost": ['g', 'p', 'cs', 'cs'],
+        "img": "cards/manor.png",
+        "banners": ['skull-banner'],
+        "extra": ['vp-1'],
+        "production": ['s'],
+    },
+
+    {
+        "title": "Treasure Map",
+        "discard": ['p'],
+        "cost": ['p', 'r', 'cs'],
+        "img": "cards/treasure-map.png",
+        "banners": ['gem-banner'],
+        "production": ['h'],
+        "extra": ['telescope'],
+    },
+
+    {
+        "title": "Skeleton Crew",
+        "discard": ['s'],
+        "cost": ['h', 'g', 'c'],
+        "img": "cards/skeleton-crew.png",
+        "banners": ['skull-banner'],
+        "extra": ['vp-1'],
+        "production": ['s'],
+    },
+
+    {
+        "title": "Giant Crab",
+        "discard": ['p'],
+        "cost": ['s', 'r', 'cs'],
+        "img": "cards/crab.png",
+        "extra": ['vp-1'],
+        "banners": ['parrot-banner'],
+        "production": ['e'],
+    },
+
+    {
+        "title": "Trade Route",
+        "discard": ['p'],
+        "cost": ['e', 'p', 'c'],
+        "img": "cards/wind.png",
+        "extra": ['vp-1'],
+        "banners": ['helm-banner'],
+        "production": ['h'],
+    },
+
+    {
         "title": "Sails Bazaar",
         "discard": ['e'],
         "cost": ['r', 'cs', 'c', 'c'],
@@ -443,6 +523,7 @@ var cards = [
         "cost": ['p', 'p', 'p'],
         "img": "cards/sanctuary.png",
         "extra": ['vp-2', 'x', 'parrot-banner'],
+        "banners": ['parrot-banner'],
         // "production": ['t'],
         // "value_correction": -1
     },
@@ -469,59 +550,10 @@ var cards = [
     },
 
     {
-        "title": "Trade Route",
-        "discard": ['p'],
-        "cost": ['h', 'h', 'r', 'c'],
-        "img": "cards/wind.png",
-        "extra": ['vp-5'],
-        "production": ['discard-1', 'produce', 'r'],
-    },
-
-    {
-        "title": "Water Bank",
-        "discard": ['h'],
-        "cost": ['cs', 'cs', 'cs', 'cs'],
-        "img": "cards/water-bank.png",
-        "banners": ['coin-banner', 'basic-banner'],
-        "extra": ['vp-1'],
-        "production": ['cs'],
-    },
-
-    {
-        "title": "Water Bank",
-        "discard": ['h'],
-        "cost": ['cs', 'cs', 'cs', 'cs'],
-        "img": "cards/water-bank.png",
-        "banners": ['coin-banner', 'basic-banner'],
-        "extra": ['vp-1'],
-        "production": ['cs'],
-    },
-
-    {
         "title": "Deep Sea Horror",
         "discard": ['s'],
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
-        "banners": ['skull-banner'],
-        "extra": ['vp-2'],
-        "production": ['s'],
-    },
-
-    {
-        "title": "Giant Crab",
-        "discard": ['p'],
-        "cost": ['g', 's', 'c'],
-        "img": "cards/crab.png",
-        "extra": ['vp-4'],
-        "banners": ['parrot-banner'],
-        "production": ['discard-1', 'produce', 'p'],
-    },
-
-    {
-        "title": "Skeleton Crew",
-        "discard": ['s'],
-        "cost": ['s', 'h', 'c'],
-        "img": "cards/skeleton-crew.png",
         "banners": ['skull-banner'],
         "extra": ['vp-2'],
         "production": ['s'],
@@ -580,26 +612,7 @@ var cards = [
         "cost": ['cs'],
         "img": "cards/walk.png",
         "extra": ['vp-1'],
-        "production": ['discard-1', 'produce', 'g'],
-    },
-
-    {
-        "discard": ['e'],
-        "title": "Locksmith",
-        "cost": ['cs', 'cs'],
-        "img": "cards/locksmith.png",
-        "extra": ['vp-1'],
-        "production": ['discard-1', 'produce', 'e'],
-    },
-
-
-    {
-        "discard": ['r'],
-        "title": "Abandoned Manor",
-        "cost": ['cs', 'cs'],
-        "img": "cards/manor.png",
-        "banners": ['skull-banner'],
-        "production": ['discard-1', 'produce', 's'],
+        "production": ['discard-gun', 'produce', 'g'],
     },
 
     {
@@ -628,7 +641,7 @@ var cards = [
         "cost": ['e', 'p', 'c'],
         "img": "cards/captain2.png",
         "extra": ['vp-3'],
-        "production": ['discard-1', 'produce', 'h'],
+        "production": ['discard-helm', 'produce', 'any'],
     },
 
     {
@@ -713,7 +726,7 @@ var cards = [
     {
         "title": "Pilferer's Guild",
         "discard": ['s'],
-        "cost": ['e', 'p', 'c', 'cs'],
+        "cost": ['e', 'p', 'g', 'c', 'cs'],
         "img": "cards/p-guild.png",
         "extra": ['vp-2', 'x', 'coin-banner'],
         "production": ['s']
@@ -725,7 +738,7 @@ var cards = [
         "cost": ['g', 'g', 'r', 'cs'],
         "img": "cards/mob.png",
         "banners": ['gun-banner', 'helm-banner'],
-        "production": ['skull', 'or', 'r']
+        "production": ['s', 'or', 'r']
     },
 
     // affinity cards
@@ -821,7 +834,7 @@ var cards = [
     {
         "title": "Haven",
         "discard": ['g'],
-        "cost": ['p', 'g', 'h', 'cs', 'cs'],
+        "cost": ['p', 'p', 'g', 'h', 'c', 'cs'],
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
         // "banners": ['gem-banner'],
@@ -857,16 +870,6 @@ var cards = [
     },
 
     {
-        "title": "Treasure Map",
-        "discard": ['p'],
-        "cost": ['p', 'r', 'cs'],
-        "img": "cards/treasure-map.png",
-        "banners": ['gem-banner'],
-        "production": ['h'],
-        "extra": ['telescope'],
-    },
-
-    {
         "title": "Lady Celeste",
         "discard": ['e'],
         "cost": ['g'],
@@ -881,7 +884,7 @@ var cards = [
         "cost": ['r', 'r'],
         "img": "cards/market-3.png",
         "production": ['discard-gem', 'produce', 'h', 'or', 'e'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
     },
 
     {
@@ -890,6 +893,6 @@ var cards = [
         "cost": ['g', 'cs'],
         "img": "cards/poacher.png",
         "production": ['discard-parrot', 'produce', 's', 'or', 'p'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
     },
 ]
