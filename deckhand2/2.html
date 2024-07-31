@@ -148,7 +148,6 @@ var virtual_cost = {
     "s": 2.7, // justification: you can always discard 2 cards to get it
     "h": 2.7,
     "e": 2.7,
-    "t": 3.2,
     "gun-banner": 1,
     "parrot-banner": 1,
     "rum-banner": 1,
@@ -169,11 +168,11 @@ var distribution_end_game = {
     "gun-banner": 2.0,
     "parrot-banner": 2.0,
     "rum-banner": 2.0,
-    "skull-banner": 2,
-    "helm-banner": 2,
-    "gem-banner": 2,
+    "skull-banner": 1.8,
+    "helm-banner": 1.8,
+    "gem-banner": 1.8,
     "coin-banner": 1.6,
-    'basic-banner': 2.6,
+    'basic-banner': 2.9,
 }
 
 function removeItem(array, item) {
@@ -201,9 +200,6 @@ var get_mitigation_cost = (co, l) => {
             }
         })
     }
-    if (rebate != 0) {
-        console.log(rebate, co, l)
-    } 
     return rebate;
 }
 
@@ -226,7 +222,14 @@ var evaluate_production = (c) => {
     }
     var bits = c.production;
     if (bits.length == 1) {
-        return virtual_value[bits[0]]
+        var v = virtual_value[bits[0]]
+        // remove value if it produce the same value it requires.
+        c.cost.forEach(cost => {
+            if (cost == bits[0]) {
+                v = v - 0.5;
+            }
+        })
+        return v
     }
     if (bits.length == 3) {
         if (bits[1] == "or") {
@@ -248,9 +251,11 @@ var evaluate_production = (c) => {
 var get_v_value = (c) => {
     var v = 0;
     if(c.extra && c.extra.length) {
+        var nb_bolt = 0;
         c.extra.forEach(e => {
             if (e == "bolt") {
-                v += 0.4;
+                v += 0.3 + nb_bolt;
+                nb_bolt += 0.5;
             }
             if (e == "crate") {
                 v += 0.3;
@@ -261,11 +266,15 @@ var get_v_value = (c) => {
             if (e == "crown") {
                 v += 1.9;
             }
-            if (e == "no-compass") {
-                v += 2;
+            if (e == "tentacle") {
+                if(c.production) {
+                    v += 3 / evaluate_production(c);
+                } else {
+                    v += 1;
+                }
             }
             if (e == "compass") {
-                v -= 0.2;
+                v += 3 / evaluate_production(c);
             }
             if (e == "discard-grab") {
                 v += 1.6;
@@ -302,17 +311,28 @@ var get_v_value = (c) => {
 
     // the card itself has a value of 1
     var v_cost = 1;
+    var duplicates = {};
     if (c.cost) {
         var copy = c.cost.slice()
         c.cost.forEach((co) => {
+            if(duplicates[co]) {
+                if (['r', 'p', 'g'].includes(co)) {
+                    v_cost += 0.25 * duplicates[co];
+                }
+                if (['s', 'e', 'h'].includes(co)) {
+                    v_cost += 0.3 * duplicates[co];
+                }
+            }
             v_cost += get_v_cost(co)
             v_cost += get_mitigation_cost(co, copy)
+            duplicates[co] = 1 + (duplicates[co] || 0);
         })
+
     }
     round = (n) => Math.round((100.0 * n)) / 100.0;
 
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
-    c.v_value = v + evaluate_production(c);
+    c.v_value = v + evaluate_production(c, c.cost);
     c.v_value += (c.value_correction || 0);
     c.v_value = round(c.v_value)
     c.v_ratio = round(c.v_value / c.v_cost)
@@ -431,14 +451,14 @@ cards.forEach((c) => {
             if (c == "telescope") {
                 extra += `<img class="res" src="img/telescope.png">`
             }
+            if (c == "tentacle") {
+                extra += `<img class="res" src="img/tentacles.png">`
+            }
             if (c.endsWith('banner')) {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
             }
-            // if (c.startsWith('discard-')) {
-            //     extra += `<img class="res discard-res"  src="img/${c}.png">`
-            // }
-            if (c == "no-compass") {
-                extra += `<img class="no-compass" src="img/no-compass.png">`
+            if (c == "compass") {
+                extra += `<img class="no-compass" src="img/compass.png">`
             }
             if (c == "draw-1") {
                 extra += `<img src="img/draw-1.png">`

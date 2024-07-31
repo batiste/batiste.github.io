@@ -2,66 +2,6 @@
 
 var cards = [
 
-    // {
-    //     "title": "Ship 5",
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/ship1.png",
-    //     // "production": ['r']
-    //     'extra': [],
-    //     'production': ['cs'],
-    //     'holding': 5,
-    //     'type': 'ship',
-    // },
-
-    // {
-    //     "title": "Ship 4",
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/ship1.png",
-    //     // "production": ['r']
-    //     'extra': ['vp-1'],
-    //     'production': ['s'],
-    //     'holding': 5,
-    //     'type': 'ship',
-    // },
-
-    // {
-    //     "title": "Ship 3",
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/ship1.png",
-    //     // "production": ['r']
-    //     'extra': ['vp-4'],
-    //     'production': ['r'],
-    //     'holding': 6,
-    //     'type': 'ship',
-    // },
-
-    // {
-    //     "title": "Ship 2",
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/ship1.png",
-    //     // "production": ['r']
-    //     'extra': ['vp-2', 'x', 'g'],
-    //     'production': ['t'],
-    //     'holding': 6,
-    //     'type': 'ship',
-    // },
-
-    // {
-    //     "title": "Ship 1",
-    //     "discard": [],
-    //     "cost": [],
-    //     "img": "cards/ship1.png",
-    //     // "production": ['r']
-    //     'extra': ['vp-1', 'x', 'p'],
-    //     'production': ['p'],
-    //     'holding': 6,
-    //     'type': 'ship',
-    // },
-
     {
         "title": "Totem",
         "discard": [],
@@ -100,7 +40,7 @@ var cards = [
         "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
         "img": "cards/kraken.png",
         // "production": ['r']
-        'extra': ['vp-4', 'no-compass'],
+        'extra': ['vp-4', 'tentacle'],
         'type': 'supremacy',
     },
 
@@ -140,7 +80,7 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/raid.png",
         // "production": ['r']
-        'extra': ['vp-3', 'no-compass'],
+        'extra': ['vp-3', 'tentacle'],
         'type': 'supremacy',
     },
 
@@ -159,7 +99,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "banners": ['coin-banner', 'basic-banner'],
+        "banners": ['basic-banner', 'coin-banner'],
         "extra": ['vp-1'],
         "production": ['cs'],
     },
@@ -169,7 +109,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
-        "banners": ['coin-banner', 'basic-banner'],
+        "banners": ['basic-banner', 'coin-banner'],
         "extra": ['vp-1'],
         "production": ['cs'],
     },
@@ -180,7 +120,6 @@ var cards = [
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/scruf.png",
         'banners': ['basic-banner', 'rum-banner'],
-        // 'extra': ['compass'],
         "production": ['r']
     },
 
@@ -245,7 +184,7 @@ var cards = [
         "cost": ['c', 'c', 'cs'],
         "img": "cards/handler.png",
         "extra": ['bolt', 'telescope'],
-        'banners': ['parrot-banner'],
+        'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p']
     },
 
@@ -502,7 +441,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['r', 'p', 'g', 'cs'],
         "img": "cards/bay.png",
-        "extra": ['vp-3'],
+        "extra": ['vp-2'],
         'banners': ['coin-banner'],
         "production": ['cs'],
     },
@@ -565,7 +504,7 @@ var cards = [
         "cost": ['e', 'p', 'g', 'c'],
         "img": "cards/warrior.jpeg",
         "banners": ['gun-banner'],
-        "extra": ['vp-4'],
+        "extra": ['vp-2', 'compass'],
         "production": ['p'],
     },
 
@@ -755,7 +694,7 @@ var cards = [
     {
         "title": "Hunt",
         "discard": ['p'],
-        "cost": ['g', 'r', 'e', 'cs'],
+        "cost": ['g', 'r', 'e', 'c'],
         "img": "cards/hunt.png",
         "extra": ['vp-2', 'bolt', 'bolt'],
         "banners": ['parrot-banner'],
@@ -765,7 +704,7 @@ var cards = [
     {
         "title": "Distill",
         "discard": ['r'],
-        "cost": ['g', 'p', 's', 'cs'],
+        "cost": ['g', 'p', 's', 'c'],
         "img": "cards/distill.png",
         "extra": ['vp-2', 'bolt', 'bolt'],
         "banners": ['rum-banner'],
@@ -818,7 +757,7 @@ var cards = [
         "cost": ['h', 's', 'r', 'cs'],
         "img": "cards/strange.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-4', 'no-compass'],
+        "extra": ['vp-4', 'tentacle'],
     },
 
     {
@@ -834,11 +773,11 @@ var cards = [
     {
         "title": "Haven",
         "discard": ['g'],
-        "cost": ['p', 'p', 'g', 'h', 'c', 'cs'],
+        "cost": ['p', 'p', 'r', 'r', 'c'],
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
         // "banners": ['gem-banner'],
-        "production": ['e']
+        "production": ['g']
     },
 
     {
@@ -881,18 +820,20 @@ var cards = [
     {
         "title": "Mobile Trader",
         "discard": ['h'],
-        "cost": ['r', 'r'],
+        "cost": ['r', 'r', 'r'],
         "img": "cards/market-3.png",
-        "production": ['discard-gem', 'produce', 'h', 'or', 'e'],
-        "extra": ['vp-2'],
+        "banners": ['rum-banner'],
+        "production": ['g', 'or', 'p'],
+        "extra": ['compass'],
     },
 
     {
         "title": "Poacher",
         "discard": ['p'],
-        "cost": ['g', 'cs'],
+        "cost": ['g', 'g', 'g'],
         "img": "cards/poacher.png",
-        "production": ['discard-parrot', 'produce', 's', 'or', 'p'],
-        "extra": ['vp-2'],
+        "banners": ['parrot-banner', 'gun-banner'],
+        "production": ['p', 'or', 's'],
+        // "extra": ['vp-1'],
     },
 ]
