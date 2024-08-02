@@ -122,6 +122,7 @@ var cards = [
         "banners": ['basic-banner', 'coin-banner'],
         "extra": ['vp-1'],
         "production": ['cs'],
+        "changed": true,
     },
 
     {
@@ -689,10 +690,12 @@ var cards = [
     {
         "title": "Pilferer's Guild",
         "discard": ['s'],
-        "cost": ['e', 'p', 'g', 'c', 'cs'],
+        "cost": ['r', 'p', 'cs', 'cs'],
         "img": "cards/p-guild.png",
+        "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
-        "production": ['s']
+        // "production": ['s']
+        "changed": true,
     },
 
     {
