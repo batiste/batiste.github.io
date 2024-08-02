@@ -177,6 +177,12 @@ a, a:visited {
     margin-top: -1px;
 }
 
+.changed {
+    color: red;
+    font-weight: bold;
+    font-size: 20px;
+}
+
 .discard-1 {
     width: 24px;
 }

@@ -141,7 +141,7 @@ var icon = (t) => {
 
 var virtual_cost = {
     "c": 1.1,
-    "cs": 0.8,
+    "cs": 0.85,
     "g": 1.9, // justification: easier to get
     "p": 1.9,
     "r": 1.9,
@@ -226,7 +226,7 @@ var evaluate_production = (c) => {
         // remove value if it produce the same value it requires.
         c.cost.forEach(cost => {
             if (cost == bits[0]) {
-                v = v - 0.5;
+                v = v - 0.35;
             }
         })
         return v
@@ -248,7 +248,35 @@ var evaluate_production = (c) => {
     return 0
 }
 
+var round = (n) => Math.round((100.0 * n)) / 100.0;
+
 var get_v_value = (c) => {
+
+    // the card itself has a value of 1
+    var v_cost = 1;
+    var duplicates = {};
+    if (c.cost) {
+        var copy = c.cost.slice()
+        c.cost.forEach((co) => {
+            if(duplicates[co]) {
+                if (['cs', 'c'].includes(co)) {
+                    v_cost += 0.15 * duplicates[co];
+                }
+                if (['r', 'p', 'g'].includes(co)) {
+                    v_cost += 0.25 * duplicates[co];
+                }
+                if (['s', 'e', 'h'].includes(co)) {
+                    v_cost += 0.3 * duplicates[co];
+                }
+            }
+            v_cost += get_v_cost(co)
+            v_cost += get_mitigation_cost(co, copy)
+            duplicates[co] = 1 + (duplicates[co] || 0);
+        })
+
+    }
+    c.v_cost = Math.round(10.0 * v_cost) / 10.0;
+
     var v = 0;
     if(c.extra && c.extra.length) {
         var nb_bolt = 0;
@@ -267,14 +295,10 @@ var get_v_value = (c) => {
                 v += 1.9;
             }
             if (e == "tentacle") {
-                if(c.production) {
-                    v += 3 / evaluate_production(c);
-                } else {
-                    v += 1;
-                }
+                v += 5 / c.v_cost;
             }
             if (e == "compass") {
-                v += 3 / evaluate_production(c);
+                v += 7 / c.v_cost;
             }
             if (e == "discard-grab") {
                 v += 1.6;
@@ -300,42 +324,18 @@ var get_v_value = (c) => {
     if(c.banners) {
         c.banners.forEach(b => {
             if (b == 'basic-banner') {
-                v += 0.05
+                v += 0.1
             } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner' || b == 'coin-banner') {
-                v += 0.2
+                v += 0.25
             } else {
-                v += 0.3
+                v += 0.35
             }
         }) 
     }
 
-    // the card itself has a value of 1
-    var v_cost = 1;
-    var duplicates = {};
-    if (c.cost) {
-        var copy = c.cost.slice()
-        c.cost.forEach((co) => {
-            if(duplicates[co]) {
-                if (['r', 'p', 'g'].includes(co)) {
-                    v_cost += 0.25 * duplicates[co];
-                }
-                if (['s', 'e', 'h'].includes(co)) {
-                    v_cost += 0.3 * duplicates[co];
-                }
-            }
-            v_cost += get_v_cost(co)
-            v_cost += get_mitigation_cost(co, copy)
-            duplicates[co] = 1 + (duplicates[co] || 0);
-        })
-
-    }
-    round = (n) => Math.round((100.0 * n)) / 100.0;
-
-    c.v_cost = Math.round(10.0 * v_cost) / 10.0;
-    c.v_value = v + evaluate_production(c, c.cost);
-    c.v_value += (c.value_correction || 0);
-    c.v_value = round(c.v_value)
-    c.v_ratio = round(c.v_value / c.v_cost)
+    v = v + evaluate_production(c, c.cost);
+    c.v_value = round(v)
+    c.v_ratio = round(v / c.v_cost)
 }
 
 
@@ -377,7 +377,7 @@ cards.forEach((c) => {
             var add = c.production[1] == "produce" ? 0.3 : 1;
         }
         c.production.forEach(t => {
-            if (!['produce', 'or', 'discard-1', 'discard-gem', 'discard-parrot'].includes(t)) {
+            if (!['produce', 'or', 'discard-1', 'discard-gem', 'discard-parrot', 'discard-gun', 'discard-helm', 'any'].includes(t)) {
                 stats_production[t] = add + (stats_production[t] || 0)
                 stats_production_weighted[t] = (add / c.v_cost) + (stats_production_weighted[t] || 0)
             }
@@ -566,6 +566,11 @@ cards.forEach((c) => {
         title = `<span class="title ${title_class}">${split_title}</span>`
     }
 
+    var ch = ''
+    if (c.changed) {
+        ch = 'changed'
+    }
+
 
     var card_template = `
     <div>
@@ -586,7 +591,7 @@ cards.forEach((c) => {
                 ${title}
             </div>
         </div>
-        <button onclick="downloadCardButton(this)">Download #${i} </button><br>
+        <button class="${ch}" onclick="downloadCardButton(this)">Download #${i} </button><br>
         cost: ${c.v_cost}, value: ${c.v_value}, ratio: ${c.v_ratio};<br>
         <label><input type="checkbox" id="check-pdf-${i}" 
                 onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>

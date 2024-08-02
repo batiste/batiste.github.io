@@ -115,6 +115,16 @@ var cards = [
     },
 
     {
+        "title": "Water Bank",
+        "discard": ['h'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/water-bank.png",
+        "banners": ['basic-banner', 'coin-banner'],
+        "extra": ['vp-1'],
+        "production": ['cs'],
+    },
+
+    {
         "title": "Tavern Keeper",
         "discard": ['r'],
         "cost": ['cs', 'cs', 'cs'],
@@ -457,6 +467,17 @@ var cards = [
     },
 
     {
+        "title": "Bustling Market",
+        "discard": ['r'],
+        "cost": ['r', 'r', 'cs', 'cs'],
+        "img": "cards/busy.png",
+        'banners': ['coin-banner'],
+        "extra": ['vp-1', 'x', 'rum-banner'],
+        "production": ['cs'],
+        "changed": true,
+    },
+
+    {
         "title": "Animal Sanctuary",
         "discard": ['p'],
         "cost": ['p', 'p', 'p'],
@@ -506,6 +527,7 @@ var cards = [
         "banners": ['gun-banner'],
         "extra": ['vp-2', 'compass'],
         "production": ['p'],
+        "changed": true,
     },
 
     {
@@ -524,7 +546,9 @@ var cards = [
         "cost": ['p', 'r', 'cs', 'cs'],
         "img": "cards/marmosets.png",
         "banners": ['gun-banner'],
-        "extra": ['vp-4'],
+        "extra": ['vp-2'],
+        "production": ['g'],
+        "changed": true,
     },
 
     {
@@ -688,7 +712,8 @@ var cards = [
         "img": "cards/feast.png",
         "extra": ['vp-1', 'crown'],
         "banners": ['gun-banner'],
-        "production": ['g']
+        "production": ['g'],
+        "changed": true,
     },
 
     {
@@ -777,15 +802,18 @@ var cards = [
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
         // "banners": ['gem-banner'],
-        "production": ['g']
+        "production": ['g'],
+        "changed": true
     },
 
     {
         "title": "Tavern",
         "discard": ['r'],
-        "cost": ['r', 'r', 'cs'],
+        "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/tavern.png",
+        "banners": ["rum-banner", "helm-banner"],
         "extra": ['vp-2', 'x', 'rum-banner'],
+        "changed": true,
     },
 
     {
@@ -795,7 +823,8 @@ var cards = [
         "img": "cards/parrot-2.png",
         "extra": ['vp-1'],
         "banners": ['parrot-banner'],
-        "production": ['p']
+        "production": ['r'],
+        "changed": true,
     },
 
     {
@@ -820,20 +849,100 @@ var cards = [
     {
         "title": "Mobile Trader",
         "discard": ['h'],
-        "cost": ['r', 'r', 'r'],
+        "cost": ['r', 'r', 'cs'],
         "img": "cards/market-3.png",
-        "banners": ['rum-banner'],
-        "production": ['g', 'or', 'p'],
+        "banners": ['rum-banner', 'helm-banner'],
+        "production": ['g'],
         "extra": ['compass'],
+        "changed": true,
     },
 
     {
         "title": "Poacher",
-        "discard": ['p'],
-        "cost": ['g', 'g', 'g'],
+        "discard": ['s'],
+        "cost": ['g', 'g', 'cs'],
         "img": "cards/poacher.png",
-        "banners": ['parrot-banner', 'gun-banner'],
-        "production": ['p', 'or', 's'],
+        "banners": ['gun-banner'],
+        "production": ['p', 'or', 'r'],
         // "extra": ['vp-1'],
+        "changed": true,
+    },
+
+    {
+        "title": "Rum Dispensary",
+        "discard": ['e'],
+        "cost": ['r', 'r', 'r', 'cs', 'cs'],
+        "img": "cards/rum-dispensary.png",
+        "banners": ['rum-banner', 'rum-banner', 'rum-banner'],
+        // "production": ['g'],
+        "extra": ['vp-5'],
+        "changed": true,
+    },
+
+    {
+        "title": "No Mercy",
+        "discard": ['s'],
+        "cost": ['g', 'g', 'g'],
+        "img": "cards/dual-pistol.png",
+        "banners": ['gun-banner', 'gun-banner', 'gun-banner'],
+        // "production": ['g'],
+        "extra": ['vp-4'],
+        "changed": true,
+    },
+
+    {
+        "title": "Frogs",
+        "discard": ['h'],
+        "cost": ['p', 'p', 'p', 'p'],
+        "img": "cards/frogs.png",
+        "banners": [],
+        // "production": ['g']
+        "banners": ['parrot-banner'],
+        "extra": ['vp-7'],
+        "changed": true,
+    },
+
+    {
+        "title": "Deadly Expedition",
+        "discard": ['r'],
+        "cost": ['h', 'h', 'cs'],
+        "img": "cards/dead-expedition.jpg",
+        "production": ['e'],
+        "banners": ['skull-banner'],
+        "extra": ['vp-2'],
+        "changed": true,
+    },
+
+    {
+        "title": "Animal Capture",
+        "discard": ['p'],
+        "cost": ['h', 'cs'],
+        "img": "cards/capture.png",
+        "production": ['p'],
+        // "banners": ['skull-banner'],
+        "extra": ['vp-1'],
+        "changed": true,
+    },
+
+    {
+        "title": "Bad Company",
+        "discard": ['g'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/death.png",
+        "production": ['h'],
+        "banners": ['skull-banner'],
+        // "extra": ['vp-1'],
+        "changed": true,
+    },
+
+    {
+        "title": "Fortune Teller",
+        "discard": ['g'],
+        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "img": "cards/fortune_teller.jpg",
+        "production": ['r'],
+        // "banners": ['skull-banner'],
+        "extra": ['compass'],
+        "changed": true,
     },
 ]
