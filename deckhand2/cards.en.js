@@ -100,8 +100,9 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "production": ['cs'],
+        "changed": true,
     },
 
     {
@@ -110,8 +111,9 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "production": ['cs'],
+        "changed": true,
     },
 
     {
@@ -120,7 +122,7 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "production": ['cs'],
         "changed": true,
     },
@@ -411,11 +413,12 @@ var cards = [
     {
         "title": "Trade Route",
         "discard": ['p'],
-        "cost": ['e', 'p', 'c'],
+        "cost": ['e', 'p', 'cs'],
         "img": "cards/wind.png",
         "extra": ['vp-1'],
         "banners": ['helm-banner'],
         "production": ['h'],
+        "changed": true,
     },
 
     {
@@ -475,7 +478,7 @@ var cards = [
         'banners': ['coin-banner'],
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -528,7 +531,7 @@ var cards = [
         "banners": ['gun-banner'],
         "extra": ['vp-2', 'compass'],
         "production": ['p'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -549,7 +552,7 @@ var cards = [
         "banners": ['gun-banner'],
         "extra": ['vp-2'],
         "production": ['g'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -573,10 +576,12 @@ var cards = [
     {
         "discard": ['s'],
         "title": "Walk the Plank",
-        "cost": ['cs'],
+        "cost": ['g', 'cs'],
         "img": "cards/walk.png",
-        "extra": ['vp-1'],
-        "production": ['discard-gun', 'produce', 'g'],
+        "banners": ["gun-banner"],
+        "extra": ['vp-1', 'x', 'gun-banner'],
+        // "production": ['', 'produce', 'g'],
+        "changed": true,
     },
 
     {
@@ -595,17 +600,20 @@ var cards = [
         "cost": ['h', 'h', 'c'],
         "img": "cards/captain1.png",
         "banners": ['gem-banner'],
-        "extra": ['vp-5', 'telescope'],
+        "extra": ['vp-4', 'telescope'],
+        "changed": true,
     },
 
 
     {
         "discard": ['e'],
         "title": "Captain Grenwish",
-        "cost": ['e', 'p', 'c'],
+        "cost": ['e', 'p', 'cs'],
         "img": "cards/captain2.png",
-        "extra": ['vp-3'],
-        "production": ['discard-helm', 'produce', 'any'],
+        "banners": ['gem-banner'],
+        "extra": ['vp-1', 'x', 'gem-banner'],
+        "changed": true,
+        // "production": ['discard-helm', 'produce', 'any'],
     },
 
     {
@@ -622,7 +630,7 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Captain Cutlass",
-        "cost": ['s', 'h', 'c'],
+        "cost": ['s', 'h', 'c', 'cs'],
         "img": "cards/assasin.png",
         "extra": ['vp-3'],
         "banners": ['coin-banner'],
@@ -682,9 +690,10 @@ var cards = [
         "discard": ['g'],
         "cost": ['h', 'r', 'cs', 'c'],
         "img": "cards/desert.png",
-        "extra": ['vp-1'],
+        // "extra": ['vp-1'],
         "banners": ['coin-banner'],
-        "production": ['g', 'or', 'cs']
+        "production": ['g', 'or', 'cs'],
+        "changed": true,
     },
 
     {
@@ -695,7 +704,7 @@ var cards = [
         "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
         // "production": ['s']
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -716,7 +725,7 @@ var cards = [
         "extra": ['vp-1', 'crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -816,7 +825,7 @@ var cards = [
         "img": "cards/tavern.png",
         "banners": ["rum-banner", "helm-banner"],
         "extra": ['vp-2', 'x', 'rum-banner'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -827,7 +836,7 @@ var cards = [
         "extra": ['vp-1'],
         "banners": ['parrot-banner'],
         "production": ['r'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -857,7 +866,7 @@ var cards = [
         "banners": ['rum-banner', 'helm-banner'],
         "production": ['g'],
         "extra": ['compass'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -868,7 +877,7 @@ var cards = [
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
         // "extra": ['vp-1'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -876,7 +885,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['r', 'r', 'r', 'cs', 'cs'],
         "img": "cards/rum-dispensary.png",
-        "banners": ['rum-banner', 'rum-banner', 'rum-banner'],
+        "banners": ['rum-banner', 'rum-banner'],
         // "production": ['g'],
         "extra": ['vp-5'],
         "changed": true,
@@ -887,10 +896,10 @@ var cards = [
         "discard": ['s'],
         "cost": ['g', 'g', 'g'],
         "img": "cards/dual-pistol.png",
-        "banners": ['gun-banner', 'gun-banner', 'gun-banner'],
+        "banners": ['gun-banner', 'gun-banner'],
         // "production": ['g'],
         "extra": ['vp-4'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -902,7 +911,7 @@ var cards = [
         // "production": ['g']
         "banners": ['parrot-banner'],
         "extra": ['vp-7'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -913,7 +922,7 @@ var cards = [
         "production": ['e'],
         "banners": ['skull-banner'],
         "extra": ['vp-2'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -924,7 +933,7 @@ var cards = [
         "production": ['p'],
         // "banners": ['skull-banner'],
         "extra": ['vp-1'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -935,7 +944,7 @@ var cards = [
         "production": ['h'],
         "banners": ['skull-banner'],
         // "extra": ['vp-1'],
-        "changed": true,
+        "changed": false,
     },
 
     {
@@ -946,6 +955,6 @@ var cards = [
         "production": ['r'],
         // "banners": ['skull-banner'],
         "extra": ['compass'],
-        "changed": true,
+        "changed": false,
     },
 ]

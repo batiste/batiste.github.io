@@ -142,12 +142,12 @@ var icon = (t) => {
 var virtual_cost = {
     "c": 1.1,
     "cs": 0.85,
-    "g": 1.9, // justification: easier to get
-    "p": 1.9,
-    "r": 1.9,
-    "s": 2.7, // justification: you can always discard 2 cards to get it
-    "h": 2.7,
-    "e": 2.7,
+    "g": 1.6, // justification: easier to get
+    "p": 1.6,
+    "r": 1.6,
+    "s": 2.4, // justification: you can always discard 1 cards to get it
+    "h": 2.4,
+    "e": 2.4,
     "gun-banner": 1,
     "parrot-banner": 1,
     "rum-banner": 1,
@@ -292,7 +292,7 @@ var get_v_value = (c) => {
                 v += 0.2;
             }
             if (e == "crown") {
-                v += 1.9;
+                v += 2.0;
             }
             if (e == "tentacle") {
                 v += 5 / c.v_cost;
