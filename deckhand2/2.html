@@ -141,7 +141,7 @@ var icon = (t) => {
 
 var virtual_cost = {
     "c": 1.1,
-    "cs": 0.85,
+    "cs": 0.95,
     "g": 1.6, // justification: easier to get
     "p": 1.6,
     "r": 1.6,
@@ -283,7 +283,7 @@ var get_v_value = (c) => {
         c.extra.forEach(e => {
             if (e == "bolt") {
                 v += 0.3 + nb_bolt;
-                nb_bolt += 0.5;
+                nb_bolt += 1;
             }
             if (e == "crate") {
                 v += 0.3;

@@ -539,9 +539,10 @@ var cards = [
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['vp-3'],
+        "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['h'],
+        "changed": true,
     },
 
     {
@@ -561,8 +562,9 @@ var cards = [
         "cost": ['s', 's', 'g', 'cs', 'c'],
         "img": "cards/sneak_attack.png",
         "banners": ['gem-banner'],
-        "extra": ['vp-4'],
+        "extra": ['vp-3'],
         "production": ['e'],
+        "changed": true,
     },
 
     {
@@ -587,11 +589,12 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Crooked Smuggler",
-        "cost": ['e', 'e', 'h', 'r'],
+        "cost": ['e', 'e', 'h', 'r', 'c'],
         "img": "cards/crooked.png",
-        "extra": ['vp-3'],
+        "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['s', 'or', 'g'],
+        "changed": true,
     },
 
     {
@@ -608,7 +611,7 @@ var cards = [
     {
         "discard": ['e'],
         "title": "Captain Grenwish",
-        "cost": ['e', 'p', 'cs'],
+        "cost": ['e', 'p'],
         "img": "cards/captain2.png",
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'x', 'gem-banner'],
@@ -635,6 +638,7 @@ var cards = [
         "extra": ['vp-3'],
         "banners": ['coin-banner'],
         "production": [`cs`],
+        "changed": true,
     },
 
 
@@ -670,9 +674,10 @@ var cards = [
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'cs'],
         "img": "cards/skull.png",
-        "extra": ['vp-7'],
+        "extra": ['vp-6'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
+        "changed": true,
     },
 
     {
@@ -681,7 +686,8 @@ var cards = [
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
         "banners": ['coin-banner'],
-        "extra": ['vp-6', 'crown'],
+        "extra": ['vp-5', 'crown'],
+        "changed": true,
     },
 
 
@@ -722,10 +728,10 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/feast.png",
-        "extra": ['vp-1', 'crown'],
+        "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
-        "changed": false,
+        "changed": true,
     },
 
     {
@@ -733,9 +739,10 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 'r', 'e', 'c'],
         "img": "cards/hunt.png",
-        "extra": ['vp-2', 'bolt', 'bolt'],
+        "extra": ['bolt', 'bolt'],
         "banners": ['parrot-banner'],
-        "production": ['p']
+        "production": ['p'],
+        "changed": true,
     },
 
     {
@@ -743,9 +750,10 @@ var cards = [
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'c'],
         "img": "cards/distill.png",
-        "extra": ['vp-2', 'bolt', 'bolt'],
+        "extra": ['bolt', 'bolt'],
         "banners": ['rum-banner'],
-        "production": ['r']
+        "production": ['r'],
+        "changed": true,
     },
 
 
@@ -781,11 +789,12 @@ var cards = [
     {
         "title": "Troubled Expedition",
         "discard": ['s'],
-        "cost": ['h', 'h'],
+        "cost": ['h', 'h', 'c'],
         "img": "cards/doomed-expedition.png",
         "extra": ['crown'],
         "banners": ['rum-banner'],
-        "production": ['s']
+        "production": ['s'],
+        "changed": true,
     },
 
     {
@@ -814,7 +823,7 @@ var cards = [
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
         // "banners": ['gem-banner'],
-        "production": ['g'],
+        // "production": ['g'],
         "changed": true
     },
 
@@ -899,7 +908,7 @@ var cards = [
         "banners": ['gun-banner', 'gun-banner'],
         // "production": ['g'],
         "extra": ['vp-4'],
-        "changed": false,
+        "changed": true,
     },
 
     {
