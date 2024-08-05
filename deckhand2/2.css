@@ -187,6 +187,13 @@ a, a:visited {
     width: 24px;
 }
 
+.right img.grab-3 {
+    width: 42px;
+    margin-left: 4px;
+    margin-bottom: 2px;
+    margin-top: -2px;
+}
+
 .type .resource.discard-res img {
     width: 28px;
     margin-top: -2px;

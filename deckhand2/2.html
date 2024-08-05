@@ -295,7 +295,7 @@ var get_v_value = (c) => {
                 v += 2.0;
             }
             if (e == "tentacle") {
-                v += 5 / c.v_cost;
+                v += 4 / c.v_cost;
             }
             if (e == "compass") {
                 v += 7 / c.v_cost;
@@ -467,7 +467,7 @@ cards.forEach((c) => {
                 extra += `<img src="img/draw-2.png">`
             }
             if (c == "discard-grab") {
-                extra += `<img src="img/discard-grab.png">`
+                extra += `<img class="grab-3" src="img/discard-grab.png">`
             }
             if (c == "h") {
                 extra += `<img class="res" src="img/helm.png">`

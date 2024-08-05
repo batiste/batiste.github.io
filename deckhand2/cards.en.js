@@ -19,8 +19,9 @@ var cards = [
         "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/castle.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
+        "changed": true,
     },
 
     {
@@ -70,8 +71,9 @@ var cards = [
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/freed_monkeys.jpeg",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-2', 'crown'],
         'type': 'supremacy',
+        "changed": true,
     },
 
     {
