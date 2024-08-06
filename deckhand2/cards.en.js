@@ -19,7 +19,7 @@ var cards = [
         "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/castle.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-2', 'crown'],
         'type': 'supremacy',
         "changed": true,
     },
@@ -30,8 +30,9 @@ var cards = [
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/grave.png",
         // "production": ['r']
-        'extra': ['vp-2', 'discard-grab'],
+        'extra': ['vp-3', 'discard-grab'],
         'type': 'supremacy',
+        "changed": true,
     },
 
 
@@ -84,6 +85,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-3', 'tentacle'],
         'type': 'supremacy',
+        "changed": true,
     },
 
     {
@@ -92,8 +94,9 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/naval-sup.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
+        "changed": true,
     },
 
     {
@@ -446,9 +449,10 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'g', 'e', 'c'],
         "img": "cards/freed_monkeys.jpeg",
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         'banners': ['rum-banner'],
         "production": ['r', 'or', 'p'],
+        "changed": true,
     },
 
 
@@ -501,8 +505,9 @@ var cards = [
         "cost": ['g', 'g', 's', 'c'],
         "img": "cards/plunder.png",
         "banners": ['gem-banner'],
-        "extra": ['vp-3'],
+        "extra": ['vp-2'],
         "production": ['e'],
+        "changed": true,
     },
 
     {
@@ -718,10 +723,11 @@ var cards = [
     {
         "title": "Rowdy Mob",
         "discard": ['r'],
-        "cost": ['g', 'g', 'r', 'cs'],
+        "cost": ['g', 'g', 'r', 'c', 'cs'],
         "img": "cards/mob.png",
         "banners": ['gun-banner', 'helm-banner'],
-        "production": ['s', 'or', 'r']
+        "production": ['s', 'or', 'r'],
+        "changed": true,
     },
 
     // affinity cards
@@ -783,7 +789,7 @@ var cards = [
         "discard": ['h'],
         "cost": ['e', 'e', 'cs'],
         "img": "cards/shipyard.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "banners": ['helm-banner'],
         "production": ['h']
     },
@@ -794,7 +800,7 @@ var cards = [
         "cost": ['h', 'h', 'c'],
         "img": "cards/doomed-expedition.png",
         "extra": ['crown'],
-        "banners": ['rum-banner'],
+        // "banners": ['rum-banner'],
         "production": ['s'],
         "changed": true,
     },
@@ -816,7 +822,6 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-3', 'discard-grab'],
     },
-
 
     {
         "title": "Haven",
@@ -915,14 +920,14 @@ var cards = [
 
     {
         "title": "Frogs",
-        "discard": ['h'],
+        "discard": ['p'],
         "cost": ['p', 'p', 'p', 'p'],
         "img": "cards/frogs.png",
         "banners": [],
         // "production": ['g']
         "banners": ['parrot-banner'],
-        "extra": ['vp-7'],
-        "changed": false,
+        "extra": ['vp-6'],
+        "changed": true,
     },
 
     {
@@ -954,8 +959,8 @@ var cards = [
         "img": "cards/death.png",
         "production": ['h'],
         "banners": ['skull-banner'],
-        // "extra": ['vp-1'],
-        "changed": false,
+        "extra": ['vp-1'],
+        "changed": true,
     },
 
     {
@@ -965,7 +970,7 @@ var cards = [
         "img": "cards/fortune_teller.jpg",
         "production": ['r'],
         // "banners": ['skull-banner'],
-        "extra": ['compass'],
-        "changed": false,
+        "extra": ['vp-1', 'compass'],
+        "changed": true,
     },
 ]
