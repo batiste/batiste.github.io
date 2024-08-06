@@ -871,7 +871,8 @@ var cards = [
         "cost": ['g'],
         "img": "cards/lady-something.png",
         "banners": ['gun-banner'],
-        "extra": ['vp-1', 'bolt', 'bolt'],
+        "extra": ['bolt', 'bolt'],
+        "changed": true,
     },
 
     {
@@ -888,12 +889,12 @@ var cards = [
     {
         "title": "Poacher",
         "discard": ['s'],
-        "cost": ['g', 'g', 'cs'],
+        "cost": ['g', 'g', 'cs', 'cs'],
         "img": "cards/poacher.png",
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
         // "extra": ['vp-1'],
-        "changed": false,
+        "changed": true,
     },
 
     {

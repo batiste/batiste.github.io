@@ -282,7 +282,7 @@ var get_v_value = (c) => {
     c.v_cost = Math.round(10.0 * v_cost) / 10.0;
 
     var v = 0;
-    
+
     if (c.discard && ['h', 'e', 's'].includes(c.discard[0])) {
         v += 0.1;
     }
@@ -298,7 +298,7 @@ var get_v_value = (c) => {
                 v += 0.3;
             }
             if (e == "telescope") {
-                v += 0.2;
+                v += 0.3;
             }
             if (e == "crown") {
                 v += 2.2;
@@ -540,10 +540,10 @@ cards.forEach((c) => {
         })
     }
 
-    if(c.v_ratio > 0.71) {
+    if(c.v_ratio > 0.75) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
-    if(c.v_ratio < 0.55) {
+    if(c.v_ratio < 0.6) {
         c.v_ratio = `<b class="up">${c.v_ratio}</b>`
     }
 
