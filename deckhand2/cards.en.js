@@ -585,7 +585,7 @@ var cards = [
     {
         "discard": ['s'],
         "title": "Walk the Plank",
-        "cost": ['g', 'cs'],
+        "cost": ['g', 'g'],
         "img": "cards/walk.png",
         "banners": ["gun-banner"],
         "extra": ['vp-1', 'x', 'gun-banner'],

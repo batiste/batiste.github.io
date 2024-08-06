@@ -323,7 +323,11 @@ var get_v_value = (c) => {
         if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
             if(c.extra.length == 3 && c.extra[1] == 'x') {
-                v += vp * distribution_end_game[c.extra[2]]
+                var banner_type = c.extra[2];
+                v += vp * distribution_end_game[banner_type]
+                if (c.banners && c.banners.includes(banner_type)) {
+                    v += vp;
+                }
             } else {
                 v += vp * 1.0;
             }
