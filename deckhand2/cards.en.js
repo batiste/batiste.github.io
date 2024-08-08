@@ -490,12 +490,13 @@ var cards = [
     {
         "title": "Animal Sanctuary",
         "discard": ['p'],
-        "cost": ['p', 'p', 'p'],
+        "cost": ['p', 'p', 'p', 'c'],
         "img": "cards/sanctuary.png",
         "extra": ['vp-2', 'x', 'parrot-banner'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
         // "value_correction": -1
+        "changed": true,
     },
 
 
@@ -809,7 +810,7 @@ var cards = [
         "title": "Strange Encounter",
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
-        "img": "cards/strange.png",
+        "img": "cards/cover.jpg",
         "banners": ['skull-banner'],
         "extra": ['vp-4', 'tentacle'],
     },
@@ -839,9 +840,9 @@ var cards = [
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
         "img": "cards/tavern.png",
-        "banners": ["rum-banner", "helm-banner"],
+        "banners": ["helm-banner"],
         "extra": ['vp-2', 'x', 'rum-banner'],
-        "changed": false,
+        "changed": true,
     },
 
     {
@@ -920,7 +921,7 @@ var cards = [
     },
 
     {
-        "title": "Frogs",
+        "title": "Hypnotic Frogs",
         "discard": ['p'],
         "cost": ['p', 'p', 'p', 'p'],
         "img": "cards/frogs.png",
@@ -934,23 +935,24 @@ var cards = [
     {
         "title": "Deadly Expedition",
         "discard": ['r'],
-        "cost": ['h', 'h', 'cs'],
+        "cost": ['h', 'h', 'e'],
         "img": "cards/dead-expedition.jpg",
         "production": ['e'],
         "banners": ['skull-banner'],
-        "extra": ['vp-2'],
+        "extra": ['vp-1', 'x', 'skull-banner'],
         "changed": false,
+        "changed": true,
     },
 
     {
         "title": "Animal Capture",
         "discard": ['p'],
-        "cost": ['h', 'cs'],
+        "cost": ['h', 'c'],
         "img": "cards/capture.png",
         "production": ['p'],
         // "banners": ['skull-banner'],
         "extra": ['vp-1'],
-        "changed": false,
+        "changed": true,
     },
 
     {

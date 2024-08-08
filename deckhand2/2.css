@@ -218,7 +218,7 @@ a, a:visited {
 }
 
 .helm {
-    width: 25px;
+    width: 34px;
 }
 
 .coin {
@@ -318,6 +318,11 @@ a, a:visited {
     width: 26px;
 }
 
+.type .helm img {
+    width: 30px;
+}
+
+
 .card .top-bar {
     width: 100%;
     height: 47px;
@@ -355,6 +360,10 @@ a, a:visited {
     background:none;
     box-shadow: none;
     padding: 2px 0;
+}
+
+.price-tag .helm img {
+    width: 22px;
 }
 
 
@@ -402,7 +411,7 @@ a, a:visited {
     font-size: 19px;
     position: absolute;
     top: 6px;
-    left: 27px;
+    left: 25px;
     width: 17px;
     rotate: 2deg;
     color: #000000;
@@ -415,6 +424,10 @@ a, a:visited {
 
 .discard .resource img {
     width: 20px;
+}
+
+.discard .helm img {
+    width: 22px;
 }
 
 .card .mpc {
