@@ -224,11 +224,13 @@ var evaluate_production = (c) => {
     if (bits.length == 1) {
         var v = virtual_value[bits[0]]
         // remove value if it produce the same value it requires.
-        c.cost.forEach(cost => {
-            if (cost == bits[0]) {
-                v = v - 0.35;
-            }
-        })
+        if (bits[0] != 'cs') {
+            c.cost.forEach(cost => {
+                if (cost == bits[0]) {
+                    v = v - 0.35;
+                }
+            })
+        }
         return v
     }
     if (bits.length == 3) {

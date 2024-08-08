@@ -105,9 +105,8 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "production": ['cs'],
-        "changed": true,
     },
 
     {
@@ -116,9 +115,8 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "production": ['cs'],
-        "changed": true,
     },
 
     {
@@ -127,9 +125,8 @@ var cards = [
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "production": ['cs'],
-        "changed": true,
     },
 
     {
