@@ -66,9 +66,6 @@ var res = (t, cls) => `
     `
 
 var get_res = (r) => {
-    if (r == "t") {
-        return res("tentacles")
-    }
     if (r == "p") {
         return res("parrot")
     }
@@ -154,6 +151,7 @@ var virtual_cost = {
     "helm-banner": 2,
     "gem-banner": 2,
     "skull-banner": 2,
+    "coin-banner":1.3,
 }
 
 var affinity_mitigation = {
@@ -320,15 +318,22 @@ var get_v_value = (c) => {
             if (e == "draw-2") {
                 v += 2;
             }
-            
+            if (e == "draw-3") {
+                v += 3;
+            }
         })
         if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
             if(c.extra.length == 3 && c.extra[1] == 'x') {
                 var banner_type = c.extra[2];
                 v += vp * distribution_end_game[banner_type]
-                if (c.banners && c.banners.includes(banner_type)) {
-                    v += vp;
+                
+                if (c.banners) {
+                    c.banners.forEach(banner_t => {
+                        if (banner_type == banner_t) {
+                            v += vp;
+                        }
+                    })
                 }
             } else {
                 v += vp * 1.0;
@@ -366,6 +371,7 @@ cards.forEach((c) => {
             banner_stats[b] = 1 + (banner_stats[b] || 0);
         })
     }
+    stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
 
     var s = {}
     c.cost.forEach((co) => {
@@ -380,7 +386,7 @@ cards.forEach((c) => {
         }
     });
 
-    stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
+
     if (c.extra) {
         c.extra.forEach(g => {
             stats_vp[g] = 1 + (stats_vp[g] || 0);
@@ -405,9 +411,20 @@ sort_cost = (a, b) => {
     return order[b] - order[a]
 }
 
+// expand the cards
+cards.forEach((c) => {
+    if (c.copies) {
+        var clone = JSON.parse(JSON.stringify(c));
+        clone.copies = null
+        clone.hide = true;
+        cards.push(clone)
+    }
+});
+
 cards.forEach((c) => {
 
     var cost = "";
+    // nb_cards += c.copies || 1;
     var v_cost = 0
     if (c.cost) {
         c.cost.sort(sort_cost)
@@ -467,7 +484,7 @@ cards.forEach((c) => {
                 extra += `<img class="res" src="img/telescope.png">`
             }
             if (c == "tentacle") {
-                extra += `<img class="res" src="img/tentacles.png">`
+                extra += `<img class="res tentacle" src="img/tentacles.png">`
             }
             if (c.endsWith('banner')) {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
@@ -475,11 +492,8 @@ cards.forEach((c) => {
             if (c == "compass") {
                 extra += `<img class="no-compass" src="img/compass.png">`
             }
-            if (c == "draw-1") {
-                extra += `<img src="img/draw-1.png">`
-            }
-            if (c == "draw-2") {
-                extra += `<img src="img/draw-2.png">`
+            if (c.startsWith('draw-')) {
+                extra += `<img src="img/${c}.png">`
             }
             if (c == "discard-grab") {
                 extra += `<img class="grab-3" src="img/discard-grab.png">`
@@ -500,7 +514,7 @@ cards.forEach((c) => {
                 extra += `<img class="res" src="img/arrow.png">`
             }
             if (c == "crown") {
-                extra += `<img class="res crown" src="img/crown.png">`
+                extra += `<img class="res crown" src="img/hook.png">`
             }
             if (c == "t") {
                 extra += `<img class="res crown" src="img/tentacles.png">`
@@ -586,6 +600,11 @@ cards.forEach((c) => {
         ch = 'changed'
     }
 
+    var copies = "";
+    if (c.copies) {
+        copies = ` | ${c.copies} copies`;
+    }
+
 
     var card_template = `
     <div>
@@ -606,14 +625,16 @@ cards.forEach((c) => {
                 ${title}
             </div>
         </div>
-        <button class="${ch}" onclick="downloadCardButton(this)">Download #${i} </button><br>
+        <button class="${ch}" onclick="downloadCardButton(this)">Download #${i} ${copies} </button><br>
         cost: ${c.v_cost}, value: ${c.v_value}, ratio: ${c.v_ratio};<br>
         <label><input type="checkbox" id="check-pdf-${i}" 
                 onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>
     </div>
     `
 
-    cards_total += card_template;
+    if (!c.hide) {
+        cards_total += card_template;
+    }
     c.id = i;
     i++;
 })

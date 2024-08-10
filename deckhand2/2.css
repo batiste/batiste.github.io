@@ -538,8 +538,13 @@ a, a:visited {
 }
 
 .right img.crown {
-    margin-left: 4px;
+    margin-left: 5px;
     width: 35px;
+}
+
+.right img.tentacle {
+    margin-left: 5px;
+    width: 33px;
 }
 
 .op {
