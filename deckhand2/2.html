@@ -416,8 +416,10 @@ cards.forEach((c) => {
     if (c.copies) {
         var clone = JSON.parse(JSON.stringify(c));
         clone.copies = null
-        clone.hide = true;
-        cards.push(clone)
+        for(let i=2; i<=c.copies; i++) {
+            clone.hide = true;
+            cards.push(clone)
+        }
     }
 });
 
