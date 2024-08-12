@@ -189,7 +189,7 @@ a, a:visited {
 
 .right img.grab-3 {
     width: 42px;
-    margin-left: 4px;
+    margin-left: 5px;
     margin-bottom: 2px;
     margin-top: -2px;
 }
@@ -215,6 +215,10 @@ a, a:visited {
     margin-right: 1px;
     margin-bottom: -6.5px;
     margin-left: 1px; 
+}
+
+.telescope, .draw {
+    margin-left: 4px;
 }
 
 .helm {
@@ -253,9 +257,6 @@ a, a:visited {
     margin-left: 1px; 
 }
 
-
-
-
 .rum-guild, .gun-guild, .parrot-guild, .skull-guild {
     width: 30px;
     display: inline-flex;
@@ -268,7 +269,6 @@ a, a:visited {
     background-color: #e2b658ad;
     background-blend-mode:overlay;
 }
-
 
 .wild .type {
     /* background-color: rgb(36, 64, 155); */

@@ -483,7 +483,7 @@ cards.forEach((c) => {
                 extra += `<img class="res" src="img/crate.png">`
             }
             if (c == "telescope") {
-                extra += `<img class="res" src="img/telescope.png">`
+                extra += `<img class="res telescope" src="img/telescope.png">`
             }
             if (c == "tentacle") {
                 extra += `<img class="res tentacle" src="img/tentacles.png">`
@@ -495,7 +495,7 @@ cards.forEach((c) => {
                 extra += `<img class="no-compass" src="img/compass.png">`
             }
             if (c.startsWith('draw-')) {
-                extra += `<img src="img/${c}.png">`
+                extra += `<img class="draw" src="img/${c}.png">`
             }
             if (c == "discard-grab") {
                 extra += `<img class="grab-3" src="img/discard-grab.png">`
