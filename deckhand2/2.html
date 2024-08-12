@@ -136,6 +136,18 @@ var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
 }
 
+// expand the cards
+cards.forEach((c) => {
+    if (c.copies) {
+        var clone = JSON.parse(JSON.stringify(c));
+        clone.copies = null
+        for(let i=2; i<=c.copies; i++) {
+            clone.hide = true;
+            cards.push(clone)
+        }
+    }
+});
+
 var virtual_cost = {
     "c": 1.1,
     "cs": 0.95,
@@ -163,14 +175,14 @@ var affinity_mitigation = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "gun-banner": 2.0,
-    "parrot-banner": 2.0,
-    "rum-banner": 2.0,
+    "gun-banner": 2.4,
+    "parrot-banner": 2.4,
+    "rum-banner": 2.4,
     "skull-banner": 1.7,
     "helm-banner": 1.7,
     "gem-banner": 1.7,
-    "coin-banner": 1.6,
-    'basic-banner': 3,
+    "coin-banner": 1.7,
+    'basic-banner': 3.5,
 }
 
 function removeItem(array, item) {
@@ -301,7 +313,7 @@ var get_v_value = (c) => {
                 v += 0.3;
             }
             if (e == "crown") {
-                v += 2.2;
+                v += 2;
             }
             if (e == "tentacle") {
                 v += 5 / c.v_cost;
@@ -343,12 +355,12 @@ var get_v_value = (c) => {
 
     if(c.banners) {
         c.banners.forEach(b => {
-            if (b == 'basic-banner') {
-                v += 0.15
-            } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner' || b == 'coin-banner') {
-                v += 0.3
+            if (b == 'basic-banner' || b == 'coin-banner') {
+                v += 0.25
+            } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner') {
+                v += 0.43
             } else {
-                v += 0.35
+                v += 0.55
             }
         }) 
     }
@@ -411,17 +423,6 @@ sort_cost = (a, b) => {
     return order[b] - order[a]
 }
 
-// expand the cards
-cards.forEach((c) => {
-    if (c.copies) {
-        var clone = JSON.parse(JSON.stringify(c));
-        clone.copies = null
-        for(let i=2; i<=c.copies; i++) {
-            clone.hide = true;
-            cards.push(clone)
-        }
-    }
-});
 
 cards.forEach((c) => {
 
