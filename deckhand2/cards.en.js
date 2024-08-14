@@ -920,7 +920,7 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'cs'],
+        "cost": ['e', 'cs', 'c'],
         "img": "cards/flag-workshop.png",
         // "production": ['g'],
         "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
