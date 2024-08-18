@@ -304,8 +304,8 @@ var get_v_value = (c) => {
         var nb_bolt = 0;
         c.extra.forEach(e => {
             if (e == "bolt") {
-                v += 0.3 + nb_bolt;
-                nb_bolt += 1;
+                v += 0.4 + nb_bolt;
+                nb_bolt += 0.3;
             }
             if (e == "crate") {
                 v += 0.3;
@@ -317,13 +317,13 @@ var get_v_value = (c) => {
                 v += 2;
             }
             if (e == "tentacle") {
-                v += 5 / c.v_cost;
+                v += 3 / c.v_cost;
             }
             if (e == "compass") {
                 v += 7 / c.v_cost;
             }
             if (e == "discard-grab") {
-                v += 1.3;
+                v += 1.5;
             }
             if (e == "draw-1") {
                 v += 1;

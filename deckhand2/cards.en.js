@@ -218,7 +218,7 @@ var cards = [
 
     {
         "discard": ['s'],
-        "title": "Necromancer",
+        "title": "Gravecaller",
         "cost": ['p', 'g', 'c'],
         "img": "cards/necro.png",
         "extra": ['vp-1'],
@@ -623,7 +623,7 @@ var cards = [
         "cost": ['g', 'r', 'e', 'c'],
         "img": "cards/hunt.png",
         "extra": ['bolt', 'bolt'],
-        "banners": ['parrot-banner'],
+        "banners": ['parrot-banner', 'parrot-banner'],
         "production": ['p'],
         "changed": false,
     },
