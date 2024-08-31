@@ -7,6 +7,7 @@
 <link rel="stylesheet" href="power.css">
 <script src="./cards.en.js"></script>
 <script src="../deckhand/rasterizeHTML.allinone.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -18,6 +19,7 @@
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
     <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label id="cards_total"></label>
 </div>
 
 
@@ -105,7 +107,6 @@ cards.forEach((c) => {
     var dis = ""
     if (c.discard) {
         c.discard.forEach(d => {
-            console.log(d)
             dis += get_res(d)
         })
     }
@@ -124,6 +125,11 @@ cards.forEach((c) => {
         })
     }
 
+    var copies = "";
+    if (c.copies) {
+        copies = ` | ${c.copies} copies`;
+    }
+
     var card_template = `
     <div>
         <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
@@ -138,10 +144,11 @@ cards.forEach((c) => {
                 <div class="bg">
                     <img src="${c.img}">
                 </div>
+                <div class="title">${c.title}</div>
                 <div class="mpc"></div>
             </div>
         </div>
-        <button onclick="downloadCardButton(this)">Download #${i} ${c.copies} </button><br>
+        <button onclick="downloadCardButton(this)">Download #${i} ${copies} </button><br>
 
         <label><input type="checkbox" id="check-pdf-${i}" 
                 onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>

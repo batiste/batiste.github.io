@@ -72,8 +72,8 @@ a, a:visited {
 
 .top-left {
     position: absolute;
-    top: 30px;
-    left: 30px;
+    top: 26px;
+    left: 26px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -104,16 +104,35 @@ a, a:visited {
 
 
 .bottom {
+    /* background: #fff; */
+    border-radius: 5px;
+    padding: 3px;
+    /* border: 2px #252525 solid; */
     position: absolute;
-    bottom: 30px;
-    left: 30px;
+    bottom: 0;
+    left: 0;
+    padding-bottom: 26px;
+    padding-left: 26px;
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+.title {
+    font-family: "Playfair Display", serif;
+    font-weight: bold;
+    position: absolute;
+    color: #000;
+    background-color: #fff;
+    font-size: 16px;
+    bottom: 26px;
+    right: 0;
+    padding: 2px 5px;
+    padding-right: 22px;
+}
+
 .bottom img {
-    width: 32px;
+    width: 28px;
     margin-right: 5px;
 }
 
