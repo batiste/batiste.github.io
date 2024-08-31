@@ -1,0 +1,126 @@
+
+html {
+    background-color: #404040;
+    -webkit-print-color-adjust: exact;
+    -webkit-filter: opacity(1);
+    color: #fff;
+    text-decoration: none;
+    font-family: "PT Sans", "Open Sans", Arial, Helvetica, sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+a, a:visited {
+    color: #fff;
+}
+
+#cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.card {
+    width: 69.088mm;
+    height: 94.2mm;
+    overflow: hidden;
+    width: 63.5mm;
+    height: 88.8mm;
+}
+
+.card .inner {
+    position: relative;
+    overflow: hidden;
+    width: 69.088mm;
+    height: 94.2mm;
+    margin-left: -2.843mm;
+    margin-top: -2.7mm;
+}
+
+.config label {
+    display: block;
+    margin: 0.5em 0;
+}
+
+.config {
+    margin: 1em;
+}
+
+/* --- */
+
+.card .bg {
+    width: 100%;
+}
+
+.card .bg img {
+    width: 100%;
+}
+
+.card .mpc {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 69.088mm;
+    height: 93.98mm;
+    background-image: url(img/mpc.png);
+    background-size: cover;
+}
+
+.card.preparePrint .mpc {
+    display: none;
+}
+
+.top-left {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.top-left img {
+    width: 22px;
+}
+
+.discard {
+    background: #fff;
+    padding: 5px;
+    border-radius: 5px;
+    border: 2px #252525 solid;
+}
+
+.cost {
+    margin-top: 12px;
+    background: #fff;
+    padding: 3px 3px;
+    border-radius: 5px;
+    border: 2px #252525 solid;
+}
+
+.cost img {
+    margin: 3px 0px;
+}
+
+
+.bottom {
+    position: absolute;
+    bottom: 30px;
+    left: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.bottom img {
+    width: 32px;
+    margin-right: 5px;
+}
+
+
+.card.preparePrint .cost {
+    padding-bottom: 0;
+}
+.card.preparePrint .discard {
+    padding-bottom: 0;
+}

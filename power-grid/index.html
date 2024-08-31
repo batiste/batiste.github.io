@@ -1,0 +1,327 @@
+<html>
+<head>
+<meta charset="UTF-8">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="power.css">
+<script src="./cards.en.js"></script>
+<script src="../deckhand/rasterizeHTML.allinone.js"></script>
+</head>
+
+<body>
+
+<h2>Power Grid</h2>
+
+
+<div class="config">
+    General config
+    <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
+    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+</div>
+
+
+<!-- <div style="clear: both;">
+    <img width="240" src="https://raw.githubusercontent.com/batiste/batiste.github.io/03451c0b33ddc125cb38a1750487a939a1397f1c/pirates-2/back-character.jpg">
+    <img src="./back-character.jpg" width="240">
+</div> -->
+
+<p>
+    <button onclick="selectAll(this)">Select All</button>
+    <button onclick="downloadSelection(this)">Download selection</button>
+</p>
+
+
+<!-- class="lang-fr" -->
+
+<style>
+
+
+
+</style>
+
+
+<div id="cards" class="lang-fr">
+
+</div>
+
+
+
+
+</div>
+
+</body>
+
+<script>
+
+
+var i = 1;
+var cards_total = "";
+var res = (t, cls) => `
+    <div class="resource ${cls}">
+        <img src="img/${t}.png">
+    </div>
+    `
+
+var get_res = (r) => {
+    return res(r)
+}
+
+var stats_costs = {};
+var stats_discard = {};
+var stats_vp = {};
+var double_cost = {};
+var single_cost = {};
+
+// expand the cards
+cards.forEach((c) => {
+    if (c.copies) {
+        var clone = JSON.parse(JSON.stringify(c));
+        clone.copies = null
+        for(let i=2; i<=c.copies; i++) {
+            clone.hide = true;
+            cards.push(clone)
+        }
+    }
+});
+
+
+var round = (n) => Math.round((100.0 * n)) / 100.0;
+
+cards.forEach((c) => {
+
+});
+
+
+cards.forEach((c) => {
+
+    var cost = "";
+    // nb_cards += c.copies || 1;
+    var v_cost = 0
+    if (c.cost) {
+
+    }
+
+    var dis = ""
+    if (c.discard) {
+        c.discard.forEach(d => {
+            console.log(d)
+            dis += get_res(d)
+        })
+    }
+
+    var cost = "";
+    if (c.cost) {
+        c.cost.forEach(d => {
+            cost += get_res(d)
+        })
+    }
+
+    var prod = "";
+    if (c.production) {
+        c.production.forEach(d => {
+            prod += get_res(d)
+        })
+    }
+
+    var card_template = `
+    <div>
+        <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
+            <div class="inner">
+                <div class="top-left">
+                    <div class="discard">${dis}</div>
+                    <div class="cost">${cost}</div>
+                </div>
+                <div class="bottom">
+                    ${prod}
+                </div>
+                <div class="bg">
+                    <img src="${c.img}">
+                </div>
+                <div class="mpc"></div>
+            </div>
+        </div>
+        <button onclick="downloadCardButton(this)">Download #${i} ${c.copies} </button><br>
+
+        <label><input type="checkbox" id="check-pdf-${i}" 
+                onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>
+    </div>
+    `
+
+    if (!c.hide) {
+        cards_total += card_template;
+    }
+    c.id = i;
+    i++;
+})
+
+document.getElementById('cards').innerHTML = cards_total;
+
+</script>
+
+
+
+<script>
+
+    var lang = 'en';
+
+
+    var format = 'png'
+    function updateFormat(e) {
+        if (e.checked) {
+            format = 'jpg'
+        } else {
+            format = 'png'
+        }
+    }
+
+    var preparePrintClass = 'preparePrint';
+
+    function download(url, title) {
+        var a = document.createElement('a')
+        a.href=url
+        a.download=title+"."+format;
+        document.body.appendChild(a)
+        a.click()
+        a.remove()
+    }
+
+    function changePrintSelection(e) {
+        cards.forEach((card) => {
+            if(card.id == parseInt(e.dataset.cardId, 10)) {
+                card['pdf'] = e.checked
+            }
+        })
+    }
+
+    var zoom = 3.16
+    function updateZoom(e) {
+        zoom = parseFloat(e.value)
+    }
+
+    function downloadCardButton(e) {
+        downloadCard(e.parentNode.querySelector('.card'))
+    }
+
+    function downloadCard(card, cb) {
+        createCardImage(card, (canvas) => {
+            var title = card.title.toLowerCase().replace(/\s/g, '-')
+            if (format=='png') {
+                img = canvas.toDataURL();
+            } else {
+                img = canvas.toDataURL("image/jpeg", 0.9)
+            }
+            download(img, title);
+            cb && cb(title);
+        })
+    }
+
+    function downloadBookletFace(id) {
+        createBookletImage(document.getElementById(id || 'face'))
+    }
+
+    function downloadBookletBack(id) {
+        createBookletImage(document.getElementById(id || 'back'))
+    }
+
+    function createCardImage(card, cb) {
+
+        card.classList.add(preparePrintClass)
+        cls = ""
+        if (lang) {
+            cls = 'class="lang-fr"'
+        }
+
+        var h = `
+            <link rel="stylesheet" href="power.css">
+            <style>
+                html, body {margin:0; padding:0; background-color: transparent;}
+                .card {zoom: ${zoom}; float: none; position: initial; margin: 0;}
+            </style>
+            <div ${cls}>
+                ${card.outerHTML}
+            </div>`
+
+        rasterizeHTML.drawHTML(h, null).then(function success(renderResult) {
+            img = renderResult.image;
+            var canvas = document.createElement('canvas');
+            canvas.width = img.naturalWidth;
+            canvas.height = img.naturalHeight;
+            document.body.appendChild(canvas)
+            const ctx = canvas.getContext("2d");
+            ctx.drawImage(img, 0, 0)
+            card.classList.remove(preparePrintClass)
+            canvas.parentNode.removeChild(canvas)
+            cb && cb(canvas)
+        }, function error(e) {
+            console.log("Error on card", card.title, e)
+        });
+    }
+
+var toRender = 0;
+
+function bindImage(element, card, cb) {
+    if (card['canvas']) {
+        return cb();
+    }
+    createCardImage(element, (canvas) => {
+        card['canvas'] = canvas
+        cb();
+    })
+}
+
+function selectAll() { 
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        card.pdf = true;
+        document.getElementById('check-pdf-'+card['id']).checked = true
+    }
+}
+
+function downloadSelection(e) {
+    e.disable = true;
+    var previous = e.innerHTML
+    toRender = 0;
+    cards_to_render = {}
+    queue = []
+    rendering = {}
+
+    e.innerHTML = 'Rendering..., please wait, it might take a while.'
+
+    for (i=0; i<cards.length; i++) {
+        var card = cards[i];
+        if (card.pdf) {
+            toRender = toRender + 1;
+            queue.push(card)
+        }
+    }
+
+    function render(card) {
+        rendering[card.title] = card
+        var e = document.getElementById('card-'+card['id'])
+        downloadCard(e, () => {
+            delete rendering[card.title];
+            toRender = toRender - 1;
+        })
+    }
+
+    var inter = setInterval(() => {
+        if (queue.length > 0) {
+            if (queue.length > 0 || Object.keys(rendering).length > 0) {
+                c = queue.pop();
+                render(c)
+            }
+            e.innerHTML = `Starting rendering of cards (${toRender}).`
+            return
+        }
+        clearInterval(inter);
+        e.innerHTML = 'Done!'
+        setTimeout(() => {
+            e.innerHTML = previous;
+        }, 2000)
+    }, 1000);
+}
+
+
+</script>
+</html>
