@@ -66,6 +66,9 @@ var res = (t, cls) => `
     `
 
 var get_res = (r) => {
+    if (r == 'or') {
+        return `<b style="font-size:18px;color:#000c">|</b>`
+    }
     return res(r)
 }
 
