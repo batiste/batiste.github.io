@@ -14,8 +14,16 @@ var cards = [
         "discard": ['cement'],
         "cost": ['dollar', 'dollar'],
         "img": "cards/cement.png",
-        "production": ['cement'],
-        "copies": 5,
+        "production": ['cement', 'co2'],
+        "copies": 4,
+    },
+    {
+        "title": "Coal",
+        "discard": ['energy'],
+        "cost": ['water', 'dollar'],
+        "img": "cards/coal.png",
+        "production": ['energy', 'co2'],
+        "copies": 2,
     },
     {
         "title": "Hydro",
@@ -31,7 +39,7 @@ var cards = [
         "cost": ['water', 'cement', 'dollar'],
         "img": "cards/smr.png",
         "production": ['energy', 'nuclear'],
-        "copies": 3,
+        "copies": 2,
     },
     {
         "title": "Nuclear",
@@ -39,7 +47,7 @@ var cards = [
         "cost": ['water', 'cement', 'dollar', 'dollar', 'dollar'],
         "img": "cards/nuclear-2.png",
         "production": ['energy', 'nuclear', 'vp-3'],
-        "copies": 2,
+        "copies": 3,
     },
     {
         "title": "Wind Onshore",
@@ -92,9 +100,9 @@ var cards = [
     {
         "title": "Nuclear Shipping",
         "discard": ['nuclear'],
-        "cost": ['research', 'research', 'nuclear', 'nuclear'],
+        "cost": ['research', 'nuclear', 'nuclear'],
         "img": "cards/atomic-shipping.png",
-        "production": ['dollar', 'vp-4'],
+        "production": ['dollar', 'vp-3'],
         "copies": 1,
     },
     {
@@ -151,6 +159,22 @@ var cards = [
         "cost": ['research', 'energy', 'energy', 'energy'],
         "img": "cards/robots.png",
         "production": ['research', 'or' ,'dollar'],
+        "copies": 2,
+    },
+    {
+        "title": "Survivalisme",
+        "discard": ['water'],
+        "cost": ['water', 'water', 'cement', 'energy', 'energy'],
+        "img": "cards/survivalisme.png",
+        "production": ['vp-4'],
+        "copies": 2,
+    },
+    {
+        "title": "Crypto-anarchy",
+        "discard": ['dollar'],
+        "cost": ['energy', 'energy', 'energy', 'energy'],
+        "img": "cards/crypto.png",
+        "production": ['vp-6', 'co2'],
         "copies": 2,
     },
 ]
