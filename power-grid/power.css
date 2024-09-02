@@ -1,4 +1,8 @@
 
+img {
+    vertical-align: middle;
+}
+
 html {
     background-color: #404040;
     -webkit-print-color-adjust: exact;
@@ -140,12 +144,4 @@ a, a:visited {
 .bottom img {
     width: 28px;
     margin-right: 5px;
-}
-
-
-.card.preparePrint .cost {
-    padding-bottom: 0;
-}
-.card.preparePrint .discard {
-    padding-bottom: 0;
 }
