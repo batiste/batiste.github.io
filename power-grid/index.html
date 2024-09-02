@@ -9,6 +9,7 @@
 <script src="./cards.en.js"></script>
 <script src="../deckhand/rasterizeHTML.allinone.js"></script>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -127,6 +128,19 @@ cards.forEach((c) => {
         c.production.forEach(d => {
             prod += get_res(d)
         })
+        prod = `<div class="bottom">
+            ${prod}
+        </div>`
+    }
+
+    var right = "";
+    if (c.right) {
+        c.right.forEach(d => {
+            right += get_res(d)
+        })
+        right = `<div class="bottom-right">
+            ${right}
+        </div>`
     }
 
     var copies = "";
@@ -134,21 +148,21 @@ cards.forEach((c) => {
         copies = ` | ${c.copies} copies`;
     }
 
+    //                 <div class="title">${c.title}</div>
+
     var card_template = `
     <div>
         <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
-                <div class="top-left">
-                    <div class="discard">${dis}</div>
+
+                    <div class="discard">${dis} <span class="title">${c.title}</span></div>
                     <div class="cost">${cost}</div>
-                </div>
-                <div class="bottom">
-                    ${prod}
-                </div>
+
+                ${prod}
+                ${right}
                 <div class="bg">
                     <img src="${c.img}">
                 </div>
-                <div class="title">${c.title}</div>
                 <div class="mpc"></div>
             </div>
         </div>

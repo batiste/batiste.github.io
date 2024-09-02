@@ -14,7 +14,8 @@ var cards = [
         "discard": ['cement'],
         "cost": ['dollar', 'dollar'],
         "img": "cards/cement.png",
-        "production": ['cement', 'co2'],
+        "production": ['cement'],
+        "right": ['co2'],
         "copies": 4,
     },
     {
@@ -22,7 +23,8 @@ var cards = [
         "discard": ['energy'],
         "cost": ['water', 'dollar'],
         "img": "cards/coal.png",
-        "production": ['energy', 'co2'],
+        "production": ['energy'],
+        "right": ['co2'],
         "copies": 2,
     },
     {
@@ -30,7 +32,8 @@ var cards = [
         "discard": ['water'],
         "cost": ['water', 'water', 'cement', 'cement', 'dollar'],
         "img": "cards/hydro.png",
-        "production": ['energy', 'energy', 'vp-3'],
+        "production": ['energy', 'energy'],
+        "right": ['vp-3'],
         "copies": 3,
     },
     {
@@ -46,7 +49,8 @@ var cards = [
         "discard": ['nuclear'],
         "cost": ['water', 'cement', 'dollar', 'dollar', 'dollar'],
         "img": "cards/nuclear-2.png",
-        "production": ['energy', 'nuclear', 'vp-3'],
+        "production": ['energy', 'nuclear'],
+        "right": ['vp-3'],
         "copies": 3,
     },
     {
@@ -54,7 +58,8 @@ var cards = [
         "discard": ['energy'],
         "cost": ['cement', 'dollar'],
         "img": "cards/wind.png",
-        "production": ['energy', 'excess-energy'],
+        "production": ['energy'],
+        "right": ['excess-energy'],
         "copies": 3,
     },
     {
@@ -78,7 +83,8 @@ var cards = [
         "discard": ['research'],
         "cost": ['nuclear', 'dollar', 'energy'],
         "img": "cards/research.png",
-        "production": ['research', '1-card'],
+        "production": ['research'],
+        "right": ['1-card'],
         "copies": 3,
     },
     {
@@ -86,7 +92,8 @@ var cards = [
         "discard": ['research'],
         "cost": ['energy', 'dollar'],
         "img": "cards/solar.png",
-        "production": ['energy', 'vp-1'],
+        "production": ['energy'],
+        "right": ['vp-1'],
         "copies": 3,
     },
     {
@@ -94,7 +101,7 @@ var cards = [
         "discard": ['research'],
         "cost": ['energy', 'energy', 'energy', 'energy', 'energy', 'dollar'],
         "img": "cards/train.png",
-        "production": ['vp-6'],
+        "right": ['vp-6'],
         "copies": 1,
     },
     {
@@ -102,7 +109,8 @@ var cards = [
         "discard": ['nuclear'],
         "cost": ['research', 'nuclear', 'nuclear'],
         "img": "cards/atomic-shipping.png",
-        "production": ['dollar', 'vp-3'],
+        "production": ['dollar'],
+        "right": ['vp-3'],
         "copies": 1,
     },
     {
@@ -110,7 +118,8 @@ var cards = [
         "discard": ['water'],
         "cost": ['dollar', 'water', 'cement', 'energy'],
         "img": "cards/water-park.png",
-        "production": ['dollar', 'vp-2'],
+        "production": ['dollar'],
+        "right": ['vp-2'],
         "copies": 2,
     },
     {
@@ -118,7 +127,7 @@ var cards = [
         "discard": ['research'],
         "cost": ['dollar', 'dollar', 'research', 'energy', 'energy', 'energy'],
         "img": "cards/cabs.png",
-        "production": ['vp-5', '1-card'],
+        "right": ['vp-5', '1-card'],
         "copies": 1,
     },
     {
@@ -126,7 +135,7 @@ var cards = [
         "discard": ['dollar'],
         "cost": ['dollar', 'dollar', 'dollar'],
         "img": "cards/capitalism.png",
-        "production": ['vp-1', 'cross', 'dollar'],
+        "right": ['vp-1', 'cross', 'dollar'],
         "copies": 1,
     },
     {
@@ -134,7 +143,7 @@ var cards = [
         "discard": ['research'],
         "cost": ['research', 'research', 'nuclear'],
         "img": "cards/contact.png",
-        "production": ['vp-2', 'cross', 'research'],
+        "right": ['vp-2', 'cross', 'research'],
         "copies": 1,
     },
     {
@@ -142,7 +151,8 @@ var cards = [
         "discard": ['nuclear'],
         "cost": ['nuclear', 'research', 'water', 'cement', 'energy', 'energy', 'dollar'],
         "img": "cards/singularity.png",
-        "production": ['vp-6', 'nuclear', 'research'],
+        "production": ['nuclear', 'research'],
+        "right": ['vp-6'],
         "copies": 1,
     },
     {
@@ -150,7 +160,8 @@ var cards = [
         "discard": ['dollar'],
         "cost": ['dollar', 'dollar', 'dollar', 'dollar', 'dollar'],
         "img": "cards/space-franchise.png",
-        "production": ['vp-6', 'dollar'],
+        "production": ['dollar'],
+        "right": ['vp-6'],
         "copies": 1,
     },
     {
@@ -166,7 +177,7 @@ var cards = [
         "discard": ['water'],
         "cost": ['water', 'water', 'cement', 'energy', 'energy'],
         "img": "cards/survivalisme.png",
-        "production": ['vp-4'],
+        "right": ['vp-4'],
         "copies": 2,
     },
     {
@@ -174,7 +185,7 @@ var cards = [
         "discard": ['dollar'],
         "cost": ['energy', 'energy', 'energy', 'energy'],
         "img": "cards/crypto.png",
-        "production": ['vp-6', 'co2'],
+        "right": ['vp-6', 'co2'],
         "copies": 2,
     },
 ]
