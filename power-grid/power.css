@@ -114,7 +114,7 @@ a, a:visited {
 
 .bottom, .bottom-right {
     background: #fff;
-    padding: 5px;
+    padding: 5px 6px;
     border-radius: 5px;
     /* border: 1.5px #252525 solid; */
     box-shadow: 3px 3px 7px rgba(0, 0, 0, 0.781);
@@ -132,7 +132,7 @@ a, a:visited {
     left: auto;
     right: 0;
     padding-right: 24px;
-    padding-left: 5px;
+    padding-left: 6px;
 }
 
 .title {
@@ -155,3 +155,16 @@ a, a:visited {
     width: 28px;
     margin-right: 5px;
 }
+
+.cross img {
+    width: 20px;
+}
+
+.dollar img {
+    /* margin-left: -2px; */
+}
+
+.bottom .resource:last-child img, .bottom-right .resource:last-child img {
+    margin-right: 0px;
+}
+

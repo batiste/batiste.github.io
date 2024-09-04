@@ -4,7 +4,7 @@ var cards = [
     {
         "title": "Water Grant",
         "discard": ['water'],
-        "cost": ['dollar', 'dollar'],
+        "cost": ['cement', 'dollar'],
         "img": "cards/water.png",
         "production": ['water'],
         "copies": 5,
@@ -12,10 +12,19 @@ var cards = [
     {
         "title": "Cement Factory",
         "discard": ['cement'],
-        "cost": ['dollar', 'dollar'],
+        "cost": ['energy', 'dollar'],
         "img": "cards/cement.png",
         "production": ['cement'],
         "right": ['co2'],
+        "copies": 4,
+    },
+    {
+        "title": "Subsidy",
+        "discard": ['energy'],
+        "cost": ['dollar', 'dollar'],
+        "img": "cards/subsidy.png",
+        "production": ['dollar'],
+        "right": ["corruption"],
         "copies": 4,
     },
     {
@@ -56,7 +65,7 @@ var cards = [
     {
         "title": "Wind Onshore",
         "discard": ['energy'],
-        "cost": ['cement', 'dollar'],
+        "cost": ['cement', 'dollar', 'dollar'],
         "img": "cards/wind.png",
         "production": ['energy'],
         "right": ['excess-energy'],
@@ -65,18 +74,10 @@ var cards = [
     {
         "title": "Battery Array",
         "discard": ['energy'],
-        "cost": ['dollar', 'dollar'],
+        "cost": ['cement', 'dollar'],
         "img": "cards/battery.jpg",
         "production": ['energy-storage'],
         "copies": 2,
-    },
-    {
-        "title": "Subsidy",
-        "discard": ['energy'],
-        "cost": ['dollar', 'dollar'],
-        "img": "cards/subsidy.png",
-        "production": ['dollar'],
-        "copies": 4,
     },
     {
         "title": "Secret Lab",
@@ -119,7 +120,7 @@ var cards = [
         "cost": ['dollar', 'water', 'cement', 'energy'],
         "img": "cards/water-park.png",
         "production": ['dollar'],
-        "right": ['vp-2'],
+        "right": ['vp-4', 'corruption'],
         "copies": 2,
     },
     {
@@ -161,7 +162,7 @@ var cards = [
         "cost": ['dollar', 'dollar', 'dollar', 'dollar', 'dollar'],
         "img": "cards/space-franchise.png",
         "production": ['dollar'],
-        "right": ['vp-6'],
+        "right": ['vp-8', 'corruption'],
         "copies": 1,
     },
     {

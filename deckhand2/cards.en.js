@@ -899,7 +899,7 @@ var cards = [
         "title": "Skull Collector",
         "discard": ['p'],
         "cost": ['s', 's', 's'],
-        "img": "cards/skull-collector.png",
+        "img": "cards/skull-2.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'skull-banner'],
         "extra": ['vp-4', 'discard-grab'],
