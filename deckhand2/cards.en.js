@@ -14,10 +14,10 @@ var cards = [
     },
 
     {
-        "title": "Eerie Castle",
+        "title": "Citadel Market",
         "discard": [],
         "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
-        "img": "cards/castle.png",
+        "img": "cards/citadel.png",
         // "production": ['r']
         'extra': ['vp-2', 'crown'],
         'type': 'supremacy',
@@ -42,7 +42,7 @@ var cards = [
         "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
         "img": "cards/kraken.png",
         // "production": ['r']
-        'extra': ['vp-4', 'tentacle'],
+        'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
     },
 
@@ -57,10 +57,10 @@ var cards = [
     },
 
     {
-        "title": "Hidden Bounty",
+        "title": "Smuggler's Cove",
         "discard": [],
         "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
-        "img": "cards/bay.png",
+        "img": "cards/cove.png",
         // "production": ['r']
         'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
@@ -100,7 +100,7 @@ var cards = [
     },
 
     {
-        "title": "Bribe the Governor",
+        "title": "Governor's Bribe",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/governor.png",
@@ -378,7 +378,7 @@ var cards = [
         "title": "Plunder",
         "discard": ['g'],
         "cost": ['g', 'g', 's', 'c'],
-        "img": "cards/plunder.png",
+        "img": "cards/attack.png",
         "banners": ['gem-banner'],
         "extra": ['vp-2'],
         "production": ['e'],
