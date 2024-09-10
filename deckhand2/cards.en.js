@@ -431,7 +431,7 @@ var cards = [
         "discard": ['r'],
         "title": "Drunk Marmosets",
         "cost": ['p', 'r', 'cs', 'cs'],
-        "img": "cards/marmosets.png",
+        "img": "cards/drunk-marmosets.png",
         "banners": ['gun-banner'],
         "extra": ['vp-2'],
         "production": ['g'],
