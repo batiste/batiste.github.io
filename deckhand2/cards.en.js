@@ -396,7 +396,7 @@ var cards = [
     },
 
     {
-        "title": "Deep Sea Horror",
+        "title": "Cavern Horror",
         "discard": ['s'],
         "cost": ['s', 'e', 'cs', 'cs'],
         "img": "cards/deep-sea-horror.png",
