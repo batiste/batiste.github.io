@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['crown'],
+        'extra': ['vp-1', 'crown'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
     },
@@ -19,7 +19,7 @@ var cards = [
         "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/citadel.png",
         // "production": ['r']
-        'extra': ['vp-2', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -30,7 +30,7 @@ var cards = [
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/grave.png",
         // "production": ['r']
-        'extra': ['vp-3', 'discard-grab'],
+        'extra': ['vp-4', 'discard-grab'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -72,7 +72,7 @@ var cards = [
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/freed_monkeys.jpeg",
         // "production": ['r']
-        'extra': ['vp-2', 'crown'],
+        'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -83,18 +83,18 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/raid.png",
         // "production": ['r']
-        'extra': ['vp-3', 'tentacle'],
+        'extra': ['vp-4', 'tentacle'],
         'type': 'supremacy',
         "changed": false,
     },
 
     {
-        "title": "Naval Supremacy",
+        "title": "Deep Exploration",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/naval-sup.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -290,7 +290,7 @@ var cards = [
     },
 
     {
-        "title": "Giant Crab",
+        "title": "Odd Apparition",
         "discard": ['p'],
         "cost": ['s', 'r', 'cs'],
         "img": "cards/crab.png",
@@ -830,10 +830,10 @@ var cards = [
     // },
 
     {
-        "title": "Bad Company",
+        "title": "Swamp Meditation",
         "discard": ['g'],
         "cost": ['s', 'cs', 'cs'],
-        "img": "cards/death.png",
+        "img": "cards/meditation.png",
         "production": ['h'],
         "banners": ['skull-banner'],
         "extra": ['vp-1'],
@@ -843,7 +843,7 @@ var cards = [
     {
         "title": "Fortune Teller",
         "discard": ['g'],
-        "cost": ['cs', 'cs', 'cs'],
+        "cost": ['p', 'cs', 'cs'],
         "img": "cards/fortune_teller.jpg",
         "production": ['r'],
         // "banners": ['skull-banner'],
@@ -947,6 +947,39 @@ var cards = [
         // "production": ['p'],
         "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
         "extra": ['vp-6'],
+        "changed": false,
+    },
+
+    {
+        "title": "Double production 1",
+        "discard": ['p'],
+        "cost": ['e', 'e', 'c', 'cs'],
+        "img": "cards/raid.png",
+        "production": ['p', 'p'],
+        "banners": ['parrot-banner'],
+        "extra": ['vp-1'],
+        "changed": false,
+    },
+
+    {
+        "title": "Double production 2",
+        "discard": ['r'],
+        "cost": ['s', 's', 'c', 'cs'],
+        "img": "cards/raid.png",
+        "production": ['r', 'r'],
+        "banners": ['rum-banner'],
+        "extra": ['vp-1'],
+        "changed": false,
+    },
+
+    {
+        "title": "Double production 3",
+        "discard": ['g'],
+        "cost": ['h', 'h', 'c', 'cs'],
+        "img": "cards/raid.png",
+        "production": ['g', 'g'],
+        "banners": ['gun-banner'],
+        "extra": ['vp-1'],
         "changed": false,
     },
 ]
