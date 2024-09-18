@@ -598,16 +598,12 @@ cards.forEach((c) => {
 
         top = `
         <div class="supremacy-cost">${cos}</div>
-                <div class="top-bar">
-            <span class="discard">${dis}</span>
-        </div>`
+        <span class="discard">${dis}</span>
+        `
 
         title = `<span class="title ${title_class}">${split_title}</span>`
     } else {
-        top = `${cost}
-        <div class="top-bar">
-            <span class="discard">${dis}</span>
-        </div>`
+        top = `${cost} <span class="discard">${dis}</span>`
         title = `<span class="title ${title_class}">${split_title}</span>`
     }
 
