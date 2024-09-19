@@ -103,7 +103,7 @@ a, a:visited {
 }
 
 .banners .banner {
-    margin-top: 8px;
+    margin-top: 14px;
     margin-right: 4px;
     margin-left: -3px;
     width: 39px;
@@ -487,8 +487,8 @@ a, a:visited {
     padding: 8px;
     padding-top: 24px;
     padding-left: 24px;
-    background-color: #ffffff5d;
-    border-right: 1.5px #0000002c solid;
+    background-color: #ffffff78;
+    border-right: 1.5px #00000050 solid;
     margin-right: 1px;
 }
 
@@ -506,9 +506,10 @@ a, a:visited {
 .supremacy-cost {
     position: absolute;
     display: flex;
-    right: 0;
+    /* right: 0; */
     left:0;
-    padding: 25px 3px 3px 25px;
+    bottom: 0;
+    padding: 3px 3px 24px 25px;
     background-color: #0000008f;
     box-shadow: #000000cd 0px 0px 8px 3px;
 }
