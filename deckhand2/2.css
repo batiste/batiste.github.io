@@ -68,12 +68,13 @@ a, a:visited {
     background-image: url(img/bg-bottom.png);
     background-size:cover;
     background-repeat: no-repeat;
-    border-top: 1px #000 solid;
+    border-bottom: 1px #000 solid;
     box-shadow: 0px 0px 10px #000 ;
     /* padding: 8px 26px; */
     display: flex;
     /* justify-items: flex-end; */
     flex-direction: column;
+    z-index: 50;
 }
 
 .bottom .type {
@@ -373,16 +374,26 @@ a, a:visited {
 .title {
     font-family: 'Lobster Two', cursive;
     letter-spacing: 0.1px;
-    font-size: 15.5px;
+    font-size: 15px;
     position: absolute;
-    right: 0;
-    top:38.5px;
-    left:74px;
-    right: 60px;
-    color: #000000;
+    top: 84px;
+    width: 200px;
+    left: 6px;
+    padding: 12px 17px 10px 19px;
+    border-radius: 0 0 0 3px;
+    color: #000000dc;
     text-align: center;
-    rotate: -1deg;
-    display: none;
+    /* background: #ffe7a5;
+    background: #f8d490; */
+    z-index:10;
+    /* border: 1px #000000ba solid; */
+    /* box-shadow: 0px 0px 5px #000000b6 ; */
+
+    background-image: url(img/top.png);
+    background-size:contain;
+    background-repeat: no-repeat;
+    /* rotate: -1deg; */
+    /* display: none; */
     /* text-shadow: 1.3px 1.4px black; */
 }
 
@@ -396,9 +407,9 @@ a, a:visited {
     display: inline-flex;
 }
 
-.large_title {
+/* .large_title {
     top:38px;
-}
+} */
 
 .large_title span:first-child {
     rotate: 3deg;
@@ -417,10 +428,16 @@ a, a:visited {
     top: 82px;
     left: 22px;
 
-    background: #ffde7c;
-    border: 1px solid #333;
+    /* background: #f8d490;
+    border: 1px solid #333; */
     padding: 7px 0px;
     border-radius: 9px;
+
+    z-index: 50;
+
+    /* background-image: url(img/bg-bottom.png);
+    background-size:cover;
+    background-repeat: no-repeat; */
 
     width: 17px;
     /* rotate: 2deg; */
@@ -431,7 +448,7 @@ a, a:visited {
     display: flex;
     justify-content: center;
 
-    box-shadow: 1px 2px 3px #00000069;
+    /* box-shadow: 1px 2px 3px #00000069; */
 }
 
 .discard .resource img {
@@ -509,9 +526,9 @@ a, a:visited {
     /* right: 0; */
     left:0;
     bottom: 0;
-    padding: 3px 3px 24px 25px;
-    background-color: #0000008f;
-    box-shadow: #000000cd 0px 0px 8px 3px;
+    padding: 3px 3px 21px 19px;
+    /* background-color: #0000008f; */
+    /* box-shadow: #000000cd 0px 0px 8px 3px; */
 }
 
 .type-supremacy .title {

@@ -111,7 +111,7 @@ var cards = [
     },
 
     {
-        "title": "Water Bank",
+        "title": "Looter's Bank",
         "discard": ['h'],
         "cost": ['cs', 'cs', 'cs', 'cs'],
         "img": "cards/water-bank.png",
@@ -251,7 +251,7 @@ var cards = [
 
     {
         "discard": ['e'],
-        "title": "Thief",
+        "title": "Hired Thief",
         "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thief.png",
         "extra": ['vp-1'],
@@ -311,7 +311,7 @@ var cards = [
     },
 
     {
-        "title": "Sails Bazaar",
+        "title": "Bird Bazaar",
         "discard": ['e'],
         "cost": ['r', 'cs', 'c', 'c'],
         "img": "cards/animal-market.png",
