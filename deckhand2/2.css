@@ -393,8 +393,9 @@ a, a:visited {
     background-size:contain;
     background-repeat: no-repeat;
     /* rotate: -1deg; */
-    /* display: none; */
+    display: none;
     /* text-shadow: 1.3px 1.4px black; */
+    
 }
 
 .title span:first-child {
@@ -428,8 +429,9 @@ a, a:visited {
     top: 82px;
     left: 22px;
 
-    /* background: #f8d490;
-    border: 1px solid #333; */
+    background: #f8d490;
+    border: 1px solid #333;
+    box-shadow: 1px 2px 3px #00000069;
     padding: 7px 0px;
     border-radius: 9px;
 
@@ -447,8 +449,6 @@ a, a:visited {
     width: 36px;
     display: flex;
     justify-content: center;
-
-    /* box-shadow: 1px 2px 3px #00000069; */
 }
 
 .discard .resource img {
