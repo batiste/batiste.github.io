@@ -135,7 +135,7 @@ var cards = [
         "title": "White Parrot",
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
-        "img": "cards/parrot.png",
+        "img": "cards/toucan.png",
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
