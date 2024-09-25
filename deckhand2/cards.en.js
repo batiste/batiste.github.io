@@ -442,7 +442,7 @@ var cards = [
         "discard": ['g'],
         "title": "Sneak Attack",
         "cost": ['s', 's', 'g', 'cs', 'c'],
-        "img": "cards/sneak_attack.png",
+        "img": "cards/sneak-attack.png",
         "banners": ['gem-banner'],
         "extra": ['vp-3'],
         "production": ['e'],

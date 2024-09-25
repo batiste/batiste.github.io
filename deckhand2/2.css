@@ -456,6 +456,7 @@ a, a:visited {
     background-image: url(img/mpc-dark.png);
     background-image: url(img/mpc.png);
     background-size: cover;
+    z-index: 100;
 }
 
 .card.preparePrint .mpc {
@@ -480,11 +481,11 @@ a, a:visited {
 
 .banners {
     background: url(img/stick.png);
-    background-size: 260px 28px;
+    background-size: 260px 26px;
     background-repeat: no-repeat;
     background-position-y: 13px;
     background-position-x: right;
-    padding-right: 12px;
+    padding-right: 8px;
     margin-right: auto;
     padding-left: 5px;
     display: flex;
@@ -504,8 +505,9 @@ a, a:visited {
     padding-right: 10px;
     background-color: #ffffff78;
     /* border-right: 1.5px #00000050 solid; */
-    margin-right: 1px;
+    /* margin-right: 1px; */
     box-shadow: #000 1px 0px 4px;
+    z-index: 5;
 }
 
 .right img {
@@ -529,7 +531,7 @@ a, a:visited {
     background-color: #0000008f;
     box-shadow: #000000cd 0px 0px 8px 3px;
     background-image: url(img/stick.png);
-    background-size: 260px 28px;
+    background-size: 260px 26px;
     background-repeat: no-repeat;
     background-position-y: -3px;
     background-position-x: right;
