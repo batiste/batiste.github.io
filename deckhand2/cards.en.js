@@ -555,7 +555,7 @@ var cards = [
         "title": "Monkey Island",
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'cs'],
-        "img": "cards/skull.png",
+        "img": "cards/monkey-temple.png",
         "extra": ['vp-6'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
