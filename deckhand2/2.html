@@ -619,7 +619,7 @@ cards.forEach((c) => {
 
     var card_template = `
     <div>
-        <div class="card type-${c.type || ""}" title="${c.title}" id="card-${i}">
+        <div class="card ${c.css || ""} type-${c.type || ""}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 
                 ${top}

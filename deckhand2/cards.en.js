@@ -673,11 +673,12 @@ var cards = [
         "title": "Troubled Expedition",
         "discard": ['s'],
         "cost": ['h', 'h', 'c'],
-        "img": "cards/doomed-expedition.png",
+        "img": "cards/trouble.png",
         "extra": ['crown'],
         // "banners": ['rum-banner'],
         "production": ['s'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {

@@ -56,6 +56,10 @@ a, a:visited {
     margin-top: 50px;
 }
 
+.card.bg-top .bg {
+    margin-top: 70px;  
+}
+
 .card .bg img {
     width: 100%;
 }
