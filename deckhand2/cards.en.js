@@ -50,7 +50,7 @@ var cards = [
         "title": "Emerald Valley",
         "discard": [],
         "cost": ['gem-banner', 'gem-banner'],
-        "img": "cards/emerald.png",
+        "img": "cards/explorers.png",
         // "production": ['r']
         'extra': ['vp-3', 'draw-1'],
         'type': 'supremacy',
@@ -452,8 +452,9 @@ var cards = [
     {
         "discard": ['g'],
         "title": "Cannoneer's Guild",
-        "cost": ['g', 'g', 's', 'cs'],
+        "cost": ['g', 'g', 'g', 's'],
         "img": "cards/military.png",
+        "banners": ["gun-banner"],
         "extra": ['vp-2', 'x', 'gun-banner'],
     },
 
@@ -528,8 +529,9 @@ var cards = [
         "title": "Doom Temple",
         "discard": ['s'],
         "cost": ['g', 's', 's'],
-        "img": "cards/doom.png",
+        "img": "cards/doom-temple.png",
         "extra": ['vp-3', 'x', 'skull-banner'],
+        "css": "bg-top",
     },
 
 
