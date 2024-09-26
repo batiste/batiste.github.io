@@ -693,7 +693,7 @@ var cards = [
         "title": "Haunted Shipwreck",
         "discard": ['s'],
         "cost": ['s', 's', 'g'],
-        "img": "cards/haunted-2.png",
+        "img": "cards/skeleton-treasure.png",
         "banners": ['skull-banner'],
         "extra": ['vp-3', 'discard-grab'],
     },
