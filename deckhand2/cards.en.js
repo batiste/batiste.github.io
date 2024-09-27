@@ -669,7 +669,8 @@ var cards = [
         "img": "cards/shipyard.png",
         "extra": ['vp-1'],
         "banners": ['helm-banner'],
-        "production": ['h']
+        "production": ['h'],
+        "css": "bg-top"
     },
 
     {
@@ -717,10 +718,11 @@ var cards = [
         "title": "Tavern",
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
-        "img": "cards/tavern.png",
+        "img": "cards/ship-tavern.png",
         "banners": ["helm-banner"],
         "extra": ['vp-2', 'x', 'rum-banner'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
