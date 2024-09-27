@@ -453,9 +453,10 @@ var cards = [
         "discard": ['g'],
         "title": "Cannoneer's Guild",
         "cost": ['g', 'g', 'g', 's'],
-        "img": "cards/military.png",
+        "img": "cards/canon-guild.png",
         "banners": ["gun-banner"],
         "extra": ['vp-2', 'x', 'gun-banner'],
+        "css": "bg-top",
     },
 
     {
