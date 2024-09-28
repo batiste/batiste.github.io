@@ -530,7 +530,7 @@ var cards = [
         "title": "Doom Temple",
         "discard": ['s'],
         "cost": ['g', 's', 's'],
-        "img": "cards/doom-temple.png",
+        "img": "cards/doom-island.png",
         "extra": ['vp-3', 'x', 'skull-banner'],
         "css": "bg-top",
     },
@@ -776,22 +776,24 @@ var cards = [
         "title": "Poacher",
         "discard": ['s'],
         "cost": ['g', 'g', 'cs', 'cs'],
-        "img": "cards/poacher.png",
+        "img": "cards/duchess.png",
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
         // "extra": ['vp-1'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
         "title": "Rum Dispensary",
         "discard": ['e'],
         "cost": ['r', 'r', 'r', 'cs', 'cs'],
-        "img": "cards/rum-dispensary.png",
+        "img": "cards/rum-collection.png",
         "banners": ['rum-banner', 'rum-banner'],
         // "production": ['g'],
         "extra": ['vp-5'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
@@ -821,12 +823,10 @@ var cards = [
         "title": "Deadly Expedition",
         "discard": ['r'],
         "cost": ['h', 'h', 'e'],
-        "img": "cards/dead-expedition.jpg",
+        "img": "cards/dead-expedition.png",
         "production": ['e'],
         "banners": ['skull-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
-        "changed": false,
-        "changed": false,
     },
 
     // {
@@ -921,7 +921,7 @@ var cards = [
         "title": "Emerald Bayou",
         "discard": ['r'],
         "cost": ['e', 'e', 'e', 'cs', 'cs'],
-        "img": "cards/emerald-bayou.png",
+        "img": "cards/doom-temple.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gem-banner'],
         "extra": ['vp-7'],
