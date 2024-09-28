@@ -254,7 +254,7 @@ var cards = [
         "title": "Hired Thief",
         "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thief.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "banners": ['gem-banner'],
         "production": ['e'],
     },
@@ -265,7 +265,7 @@ var cards = [
         "cost": ['g', 'p', 'cs', 'cs'],
         "img": "cards/manor.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "production": ['s'],
     },
 
@@ -692,6 +692,7 @@ var cards = [
         "img": "cards/cover.jpg",
         "banners": ['skull-banner'],
         "extra": ['vp-4', 'tentacle'],
+        "css": "bg-top"
     },
 
     {
@@ -740,31 +741,34 @@ var cards = [
         "title": "Angry Ape",
         "discard": ['g'],
         "cost": ['p', 'p', 'g'],
-        "img": "cards/ape.png",
+        "img": "cards/gorilla.png",
         "extra": ['vp-2'],
         "banners": ['gun-banner', 'parrot-banner'],
-        "production": ['g']
+        "production": ['g'],
+        // "css": "bg-top"
     },
 
     {
         "title": "Lady Celeste",
         "discard": ['e'],
         "cost": ['g'],
-        "img": "cards/lady-something.png",
+        "img": "cards/wanted.jpg", // toloma8
         "banners": ['gun-banner'],
         "extra": ['bolt', 'bolt'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
         "title": "Mobile Trader",
         "discard": ['h'],
         "cost": ['r', 'r', 'cs'],
-        "img": "cards/market-3.png",
+        "img": "cards/traveling-salesman.png",
         "banners": ['helm-banner'],
         "production": ['g'],
         "extra": ['compass'],
         "changed": true,
+        "css": "bg-top"
     },
 
     {
