@@ -656,10 +656,11 @@ var cards = [
         "title": "Cultist",
         "discard": ['e'],
         "cost": ['s', 's'],
-        "img": "cards/cultist.png",
+        "img": "cards/emerald-ritual.png",
         "extra": ['vp-1'],
         "banners": ['gem-banner'],
-        "production": ['e']
+        "production": ['e'],
+        "css": "bg-top",
     },
 
     {
