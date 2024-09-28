@@ -779,7 +779,7 @@ var cards = [
         "img": "cards/duchess.png",
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
-        // "extra": ['vp-1'],
+        "extra": ['vp-1'],
         "changed": false,
         "css": "bg-top"
     },
@@ -932,7 +932,7 @@ var cards = [
         "title": "Flag Workshop",
         "discard": ['h'],
         "cost": ['e', 'cs', 'c'],
-        "img": "cards/flag-workshop.png",
+        "img": "cards/banner-workshop.png",
         // "production": ['g'],
         "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
         // "extra": ['vp-8'],
