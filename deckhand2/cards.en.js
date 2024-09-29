@@ -629,6 +629,7 @@ var cards = [
         "banners": ['parrot-banner', 'parrot-banner'],
         "production": ['p'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
