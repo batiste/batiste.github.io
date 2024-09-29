@@ -889,11 +889,12 @@ var cards = [
         "title": "Happy End!",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
-        "img": "cards/happy.png",
+        "img": "cards/king-treasure.png",
         // "production": ['r'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
         "extra": ['vp-9', 'crown'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
