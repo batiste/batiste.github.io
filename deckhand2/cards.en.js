@@ -591,11 +591,12 @@ var cards = [
         "title": "Pilferer's Guild",
         "discard": ['s'],
         "cost": ['r', 'p', 'cs', 'cs'],
-        "img": "cards/p-guild.png",
+        "img": "cards/thieves-statue.png",
         "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
         // "production": ['s']
         "changed": false,
+        "css": "bg-top",
     },
 
     {
