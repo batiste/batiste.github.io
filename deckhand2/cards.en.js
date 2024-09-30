@@ -549,7 +549,7 @@ var cards = [
         "title": "Smuggler Cache",
         "discard": ['r'],
         "cost": ['r', 'e', 'e'],
-        "img": "cards/cache.png",
+        "img": "cards/mine.png",
         "extra": ['vp-3', 'x', 'gem-banner'],
     },
 
@@ -580,7 +580,7 @@ var cards = [
         "title": "Desert Island",
         "discard": ['g'],
         "cost": ['h', 'r', 'cs', 'c'],
-        "img": "cards/desert.png",
+        "img": "cards/desert-island.png",
         // "extra": ['vp-1'],
         "banners": ['coin-banner'],
         "production": ['g', 'or', 'cs'],
@@ -613,7 +613,7 @@ var cards = [
         "title": "Feast",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/feast.png",
+        "img": "cards/poison.png",
         "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
@@ -867,11 +867,12 @@ var cards = [
         "title": "Perceptor",
         "discard": ['e'],
         "cost": ['cs', 'cs', 'cs'],
-        "img": "cards/tax-collector.png",
+        "img": "cards/hooded.png",
         // "production": ['r'],
         "banners": ['coin-banner', 'coin-banner'],
         "extra": ['vp-1', 'x', 'coin-banner'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
