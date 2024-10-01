@@ -351,6 +351,40 @@ var cards = [
         "css": "bg-top"
     },
 
+    {
+        "discard": ['h'],
+        "title": "Crooked Smuggler",
+        "cost": ['e', 'e', 'h', 'r', 'c'],
+        "img": "cards/crooked.png",
+        "extra": ['vp-2'],
+        "banners": ['helm-banner'],
+        "production": ['s', 'or', 'g'],
+        "changed": false,
+    },
+
+
+    {
+        "title": "Desert Island",
+        "discard": ['g'],
+        "cost": ['h', 'r', 'cs', 'c'],
+        "img": "cards/desert-island.png",
+        // "extra": ['vp-1'],
+        "banners": ['coin-banner'],
+        "production": ['g', 'or', 'cs'],
+        "changed": false,
+    },
+
+
+    {
+        "title": "Rowdy Mob",
+        "discard": ['r'],
+        "cost": ['g', 'g', 'r', 'c', 'cs'],
+        "img": "cards/mob.png",
+        "banners": ['gun-banner', 'helm-banner'],
+        "production": ['s', 'or', 'r'],
+        "changed": false,
+    },
+
 
     {
         "title": "Barataria Bay",
@@ -482,16 +516,6 @@ var cards = [
         "changed": false,
     },
 
-    {
-        "discard": ['h'],
-        "title": "Crooked Smuggler",
-        "cost": ['e', 'e', 'h', 'r', 'c'],
-        "img": "cards/crooked.png",
-        "extra": ['vp-2'],
-        "banners": ['helm-banner'],
-        "production": ['s', 'or', 'g'],
-        "changed": false,
-    },
 
     {
         "discard": ['p'],
@@ -587,18 +611,6 @@ var cards = [
         "changed": false,
     },
 
-
-    {
-        "title": "Desert Island",
-        "discard": ['g'],
-        "cost": ['h', 'r', 'cs', 'c'],
-        "img": "cards/desert-island.png",
-        // "extra": ['vp-1'],
-        "banners": ['coin-banner'],
-        "production": ['g', 'or', 'cs'],
-        "changed": false,
-    },
-
     {
         "title": "Pilferer's Guild",
         "discard": ['s'],
@@ -609,16 +621,6 @@ var cards = [
         // "production": ['s']
         "changed": false,
         "css": "bg-top",
-    },
-
-    {
-        "title": "Rowdy Mob",
-        "discard": ['r'],
-        "cost": ['g', 'g', 'r', 'c', 'cs'],
-        "img": "cards/mob.png",
-        "banners": ['gun-banner', 'helm-banner'],
-        "production": ['s', 'or', 'r'],
-        "changed": false,
     },
 
     // affinity cards

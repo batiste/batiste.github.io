@@ -72,7 +72,7 @@ a, a:visited {
     background-image: url(img/bg-bottom.png);
     background-size:cover;
     background-repeat: no-repeat;
-    border-bottom: 1px #000 solid;
+    border-bottom: 1px #000000d0 solid;
     box-shadow: 0px 0px 10px #000 ;
     /* padding: 8px 26px; */
     display: flex;
@@ -337,8 +337,8 @@ a, a:visited {
     background-size:cover;
     background-repeat: no-repeat;
     position: absolute;
-    top: 110px;
-    left: 23px;
+    top: 108px;
+    left: 24px;
     rotate: -0deg;
     padding-top: 20px;
     padding-bottom: 10px;
@@ -421,10 +421,13 @@ a, a:visited {
     top: 82px;
     left: 22px;
 
-    background: #f0d974;
-    border: 1px solid #333;
-    box-shadow: 1px 2px 3px #00000069;
-    padding: 7px 0px;
+    /* background: #f0d974;
+    border: 1px solid #333; */
+    /* box-shadow: 1px 2px 3px #00000069; */
+    background-image: url(img/discard.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    padding: 8px 2px 12px 1px;
     border-radius: 9px;
 
     z-index: 50;
@@ -503,11 +506,17 @@ a, a:visited {
 .production {
     display: flex;
     align-items: center;
-    padding: 8px;
-    padding-top: 24px;
-    padding-left: 24px;
-    padding-right: 10px;
+    padding-top: 23px;
+    padding-left: 22px;
+    padding-right: 13px;
+    padding-bottom: 11px;
     background-color: #ffffff78;
+    /* border: 3px #5793d1 solid; */
+    background-image: url(img/production.png);
+    background-repeat: no-repeat;
+    background-position: bottom right;
+    background-size: 100px;
+    border-radius: 3px;
     /* border-right: 1.5px #00000050 solid; */
     /* margin-right: 1px; */
     box-shadow: #000 1px 0px 4px;
