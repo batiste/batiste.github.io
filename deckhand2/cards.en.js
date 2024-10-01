@@ -339,6 +339,18 @@ var cards = [
         "changed": false,
     },
 
+    {
+        "title": "Poacher",
+        "discard": ['s'],
+        "cost": ['g', 'g', 'cs', 'cs'],
+        "img": "cards/duchess.png",
+        "banners": ['gun-banner'],
+        "production": ['p', 'or', 'r'],
+        "extra": ['vp-1'],
+        "changed": false,
+        "css": "bg-top"
+    },
+
 
     {
         "title": "Barataria Bay",
@@ -733,11 +745,12 @@ var cards = [
         "title": "Red Parrot",
         "discard": ['p'],
         "cost": ['p', 'p'],
-        "img": "cards/parrot-2.png",
+        "img": "cards/turtle.png",
         "extra": ['vp-1'],
         "banners": ['parrot-banner'],
         "production": ['r'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
@@ -771,18 +784,6 @@ var cards = [
         "production": ['g'],
         "extra": ['compass'],
         "changed": true,
-        "css": "bg-top"
-    },
-
-    {
-        "title": "Poacher",
-        "discard": ['s'],
-        "cost": ['g', 'g', 'cs', 'cs'],
-        "img": "cards/duchess.png",
-        "banners": ['gun-banner'],
-        "production": ['p', 'or', 'r'],
-        "extra": ['vp-1'],
-        "changed": false,
         "css": "bg-top"
     },
 
