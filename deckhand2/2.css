@@ -489,6 +489,7 @@ a, a:visited {
     padding: 9px;
     padding-top: 24px;
     padding-right: 24px;
+    padding-left: 2px;
 }
 
 /* .extra {
@@ -507,7 +508,7 @@ a, a:visited {
     background-position-x: right;
     padding-right: 8px;
     margin-right: auto;
-    padding-left: 5px;
+    padding-left: 8px;
     display: flex;
     /* padding: 9px;
     padding-bottom: 24px;
