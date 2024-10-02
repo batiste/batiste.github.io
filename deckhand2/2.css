@@ -333,16 +333,27 @@ a, a:visited {
 .price-tag {
     width: 35px;
     /* height: 100px; */
+    position: absolute;
+    top: 106px;
+    left: 24px;
+    rotate: -0deg;
+    /* padding-top: 20px; */
+}
+
+.price-tag-bottom {
     background-image: url(img/price-tag.png);
     background-size:cover;
     background-repeat: no-repeat;
-    position: absolute;
-    top: 108px;
-    left: 24px;
-    rotate: -0deg;
-    padding-top: 20px;
-    padding-bottom: 10px;
     background-position: bottom;
+    padding-bottom: 10px;
+}
+
+.price-tag-top {
+    background-image: url(img/price-tag-top.png);
+    background-size:cover;
+    background-repeat: no-repeat;
+    height: 33px;
+    background-position: top;
 }
 
 /* .price-tag img {
@@ -418,8 +429,8 @@ a, a:visited {
     letter-spacing: 0.1px;
     font-size: 19px;
     position: absolute;
-    top: 82px;
-    left: 22px;
+    top: 79px;
+    left: 21px;
 
     /* background: #f0d974;
     border: 1px solid #333; */

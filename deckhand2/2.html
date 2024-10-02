@@ -456,7 +456,7 @@ cards.forEach((c) => {
             cost += get_res(co)
         })
         if (cost) {
-            cost = `<div class="price-tag">${cost}</div>`
+            cost = `<div class="price-tag"><div class="price-tag-top"></div><div class="price-tag-bottom">${cost}</div></div>`
         }
     }
 
