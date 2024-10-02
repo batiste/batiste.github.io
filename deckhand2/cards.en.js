@@ -165,7 +165,7 @@ var cards = [
         "title": "Bird Handler",
         "discard": ['p'],
         "cost": ['c', 'c', 'cs'],
-        "img": "cards/handler.png",
+        "img": "cards/spyglass.png",
         "extra": ['bolt', 'telescope'],
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p']
@@ -187,7 +187,7 @@ var cards = [
         "discard": ['r'],
         "title": "Rich Pirate",
         "cost": ['r', 'cs', 'c'],
-        "img": "cards/rich.png",
+        "img": "cards/handler.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
