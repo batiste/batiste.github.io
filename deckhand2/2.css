@@ -334,7 +334,7 @@ a, a:visited {
     width: 35px;
     /* height: 100px; */
     position: absolute;
-    top: 106px;
+    top: 65px;
     left: 24px;
     rotate: -0deg;
     /* padding-top: 20px; */
@@ -425,12 +425,12 @@ a, a:visited {
 
 
 .discard {
-    font-family: 'Lobster Two', cursive;
-    letter-spacing: 0.1px;
-    font-size: 19px;
-    position: absolute;
+    /* font-family: 'Lobster Two', cursive;
+    letter-spacing: 0.1px; */
+    /* font-size: 19px; */
+    /* position: absolute;
     top: 79px;
-    left: 21px;
+    left: 21px; */
 
     /* background: #f0d974;
     border: 1px solid #333; */
@@ -438,21 +438,22 @@ a, a:visited {
     background-image: url(img/discard.png);
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 8px 2px 12px 1px;
-    border-radius: 9px;
+    padding: 5px 2px 13px 1px;
+    margin-left: -1px;
+    margin-top: 5px;
+
+    /* border-radius: 9px; */
 
     z-index: 50;
-
     /* background-image: url(img/bg-bottom.png);
     background-size:cover;
     background-repeat: no-repeat; */
 
-    width: 17px;
     /* rotate: 2deg; */
     color: #000000;
     text-align: center;
     /* text-shadow: 1.3px 1.4px black; */
-    width: 36px;
+    width: 34px;
     display: flex;
     justify-content: center;
 }
@@ -591,8 +592,9 @@ a, a:visited {
 
 .right img.cross {
     width: 20px;
-    margin: 3px;
+    margin: 2px;
     margin-bottom: 8px;
+    margin-left: 3px;
 }
 
 .right img.res {

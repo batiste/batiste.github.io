@@ -326,7 +326,7 @@ var get_v_value = (c) => {
             if (e == "compass") {
                 v += 7 / c.v_cost;
             }
-            if (e == "discard-grab") {
+            if (e == "3-choices") {
                 v += 1.3;
             }
             if (e == "draw-1") {
@@ -442,6 +442,15 @@ cards.forEach((c) => {
     var cost = "";
     // nb_cards += c.copies || 1;
     var v_cost = 0
+
+    var dis = ""
+    if (c.discard) {
+        c.discard.forEach(d => {
+            dis += get_res(d)
+        })
+        dis = `<span class="discard">${dis}</span>`
+    }
+
     if (c.cost) {
         c.cost.sort(sort_cost)
 
@@ -456,7 +465,7 @@ cards.forEach((c) => {
             cost += get_res(co)
         })
         if (cost) {
-            cost = `<div class="price-tag"><div class="price-tag-top"></div><div class="price-tag-bottom">${cost}</div></div>`
+            cost = `<div class="price-tag"><div class="price-tag-top"></div><div class="price-tag-bottom">${cost}</div>${dis}</div>`
         }
     }
 
@@ -511,8 +520,8 @@ cards.forEach((c) => {
             if (c.startsWith('draw-')) {
                 extra += `<img class="draw" src="img/${c}.png">`
             }
-            if (c == "discard-grab") {
-                extra += `<img class="grab-3" src="img/discard-grab.png">`
+            if (c == "3-choices") {
+                extra += `<img class="grab-3" src="img/3-choices.png">`
             }
             if (c == "h") {
                 extra += `<img class="res" src="img/helm.png">`
@@ -569,13 +578,6 @@ cards.forEach((c) => {
         split_title = "<span>" + c.title.split(" ").join("</span> <span>") + "</span>"
     }
 
-    var dis = ""
-    if (c.discard) {
-        c.discard.forEach(d => {
-            dis += get_res(d)
-        })
-    }
-
     if(c.v_ratio > 0.75) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
@@ -602,8 +604,8 @@ cards.forEach((c) => {
 
         title = `<span class="title ${title_class}">${split_title}</span>`
     } else {
-        top = `${cost} <span class="discard">${dis}</span>`
-        title = `<span class="title ${title_class}">${split_title}</span>`
+        top = `${cost}`
+        // title = `<span class="title ${title_class}">${split_title}</span>`
     }
 
     var ch = ''

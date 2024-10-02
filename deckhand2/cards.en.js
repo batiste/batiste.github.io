@@ -30,7 +30,7 @@ var cards = [
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/grave.png",
         // "production": ['r']
-        'extra': ['vp-4', 'discard-grab'],
+        'extra': ['vp-4', '3-choices'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -718,7 +718,7 @@ var cards = [
         "cost": ['s', 's', 'g'],
         "img": "cards/skeleton-treasure.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-3', 'discard-grab'],
+        "extra": ['vp-3', '3-choices'],
     },
 
     {
@@ -920,7 +920,7 @@ var cards = [
         "img": "cards/skull-3.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'skull-banner'],
-        "extra": ['vp-4', 'discard-grab'],
+        "extra": ['vp-4', '3-choices'],
         "changed": false,
     },
 
