@@ -168,7 +168,8 @@ var cards = [
         "img": "cards/spyglass.png",
         "extra": ['bolt', 'telescope'],
         'banners': ['basic-banner', 'parrot-banner'],
-        "production": ['p']
+        "production": ['p'],
+        // "css": "bg-top"
     },
 
 
@@ -888,6 +889,7 @@ var cards = [
         "banners": ['basic-banner', 'basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
         "changed": false,
+         "css": "bg-top"
     },
 
     {
