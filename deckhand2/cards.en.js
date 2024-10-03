@@ -294,10 +294,11 @@ var cards = [
         "title": "Odd Apparition",
         "discard": ['p'],
         "cost": ['s', 'r', 'cs'],
-        "img": "cards/crab.png",
+        "img": "cards/captain-death.png",
         "extra": ['vp-2'],
         "banners": ['parrot-banner'],
         "production": ['e'],
+        "css": "bg-top"
     },
 
     {
