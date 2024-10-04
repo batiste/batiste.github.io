@@ -534,10 +534,11 @@ var cards = [
         "discard": ['e'],
         "title": "Captain Grenwish",
         "cost": ['e', 'p'],
-        "img": "cards/captain2.png",
+        "img": "cards/emerald-bird.png",
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'x', 'gem-banner'],
         "changed": false,
+        "css": "bg-top",
         // "production": ['discard-helm', 'produce', 'any'],
     },
 
