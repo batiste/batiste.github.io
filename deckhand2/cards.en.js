@@ -278,6 +278,7 @@ var cards = [
         "banners": ['gem-banner'],
         "production": ['h'],
         "extra": ['telescope'],
+        "css": "bg-top",
     },
 
     {
