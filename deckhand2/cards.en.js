@@ -474,6 +474,7 @@ var cards = [
         "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
@@ -524,7 +525,7 @@ var cards = [
         "discard": ['p'],
         "title": "Captain Lhoryn",
         "cost": ['h', 'h', 'c'],
-        "img": "cards/captain1.png",
+        "img": "cards/watch.png",
         "banners": ['gem-banner'],
         "extra": ['vp-4', 'telescope'],
         "changed": false,
