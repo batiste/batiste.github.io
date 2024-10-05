@@ -856,7 +856,7 @@ var cards = [
         "title": "Swamp Meditation",
         "discard": ['g'],
         "cost": ['s', 'cs', 'cs'],
-        "img": "cards/meditation.png",
+        "img": "cards/voodoo.png",
         "production": ['h'],
         "banners": ['skull-banner'],
         "extra": ['vp-1'],
