@@ -548,10 +548,11 @@ var cards = [
         "discard": ['e'],
         "title": "Captain Longtooth",
         "cost": ['s', 'e', 'e', 'cs', 'cs'],
-        "img": "cards/captain4.png",
+        "img": "cards/witch.png",
         "extra": ['vp-4'],
         "banners": ['helm-banner'],
         "production": ['h'],
+        "css": "bg-top",
     },
 
 
