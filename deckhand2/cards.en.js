@@ -816,6 +816,7 @@ var cards = [
         // "production": ['g'],
         "extra": ['vp-4'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
@@ -866,11 +867,12 @@ var cards = [
         "title": "Fortune Teller",
         "discard": ['g'],
         "cost": ['p', 'cs', 'cs'],
-        "img": "cards/fortune_teller.jpg",
+        "img": "cards/oracle.png",
         "production": ['r'],
         // "banners": ['skull-banner'],
         "extra": ['compass'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
