@@ -370,6 +370,10 @@ var get_v_value = (c) => {
         }) 
     }
 
+    if(c.block) {
+        v += 0.2
+    }
+
     v = v + evaluate_production(c, c.cost);
     c.v_value = round(v)
     c.v_ratio = round(v / c.v_cost)
@@ -618,10 +622,14 @@ cards.forEach((c) => {
         copies = ` | ${c.copies} copies`;
     }
 
+    var block = "";
+    if (c.block) {
+        block = `prod-block`;
+    }
 
     var card_template = `
     <div>
-        <div class="card ${c.css || ""} type-${c.type || ""}" title="${c.title}" id="card-${i}">
+        <div class="card ${c.css || ""} type-${c.type || ""} ${block}" title="${c.title}" id="card-${i}">
             <div class="inner">
                 
                 ${top}

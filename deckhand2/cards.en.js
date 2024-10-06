@@ -297,9 +297,10 @@ var cards = [
         "discard": ['p'],
         "cost": ['s', 'r', 'cs'],
         "img": "cards/captain-death.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "banners": ['parrot-banner'],
         "production": ['e'],
+        "block": true,
         "css": "bg-top"
     },
 
@@ -633,10 +634,10 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Feast",
+        "title": "Poison",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/poison.png",
+        "img": "cards/distill.png",
         "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
@@ -659,11 +660,12 @@ var cards = [
         "title": "Distill",
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'c'],
-        "img": "cards/distill.png",
+        "img": "cards/poison.png",
         "extra": ['bolt', 'bolt'],
         "banners": ['rum-banner'],
         "production": ['r'],
         "changed": false,
+        "block": true,
     },
 
 
@@ -771,6 +773,7 @@ var cards = [
         "extra": ['vp-2'],
         "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g'],
+        "block": true,
         // "css": "bg-top"
     },
 

@@ -537,6 +537,10 @@ a, a:visited {
     z-index: 5;
 }
 
+.prod-block .production {
+    background-image: url(img/production-stop.png);
+}
+
 .right img {
     width: 38px;
     max-height: 36px;
