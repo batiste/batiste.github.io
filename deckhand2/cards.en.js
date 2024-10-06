@@ -975,11 +975,12 @@ var cards = [
         "title": "Sea Battle",
         "discard": ['g'],
         "cost": ['h', 'h', 'h', 'g'],
-        "img": "cards/raid.png",
+        "img": "cards/armada.png",
         // "production": ['p'],
         "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
         "extra": ['vp-6'],
         "changed": false,
+        "css": "bg-top"
     },
 
     // {
