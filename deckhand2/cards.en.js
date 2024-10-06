@@ -70,11 +70,12 @@ var cards = [
         "title": "Deck Invasion",
         "discard": [],
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
-        "img": "cards/freed_monkeys.jpeg",
+        "img": "cards/grand-escape.png",
         // "production": ['r']
         'extra': ['vp-3', 'crown'],
         'type': 'supremacy',
         "changed": false,
+        "css": "bg-top",
     },
 
     {
@@ -322,25 +323,25 @@ var cards = [
         "production": ['g', 'or', 'p'],
     },
 
-    {
-        "title": "Trading Post",
-        "discard": ['e'],
-        "cost": ['g', 'cs', 'c', 'c'],
-        "img": "cards/animal_market.png",
-        'banners': ['rum-banner'],
-        "production": ['r', 'or', 'p'],
-    },
+    // {
+    //     "title": "Trading Post",
+    //     "discard": ['e'],
+    //     "cost": ['g', 'cs', 'c', 'c'],
+    //     "img": "cards/animal_market.png",
+    //     'banners': ['rum-banner'],
+    //     "production": ['r', 'or', 'p'],
+    // },
 
-    {
-        "title": "Grand Escape",
-        "discard": ['g'],
-        "cost": ['p', 'g', 'e', 'c'],
-        "img": "cards/freed_monkeys.jpeg",
-        "extra": ['vp-1'],
-        'banners': ['rum-banner'],
-        "production": ['r', 'or', 'p'],
-        "changed": false,
-    },
+    // {
+    //     "title": "Grand Escape",
+    //     "discard": ['g'],
+    //     "cost": ['p', 'g', 'e', 'c'],
+    //     "img": "cards/freed_monkeys.jpeg",
+    //     "extra": ['vp-1'],
+    //     'banners': ['rum-banner'],
+    //     "production": ['r', 'or', 'p'],
+    //     "changed": false,
+    // },
 
     {
         "title": "Poacher",
@@ -457,12 +458,13 @@ var cards = [
     {
         "title": "Amazon Warrior",
         "discard": ['g'],
-        "cost": ['e', 'p', 'g', 'c'],
-        "img": "cards/warrior.jpeg",
+        "cost": ['e', 'p', 'g'],
+        "img": "cards/amazon.png",
         "banners": ['gun-banner'],
-        "extra": ['vp-2', 'compass'],
+        "extra": ['vp-1', 'compass'],
         "production": ['p'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
