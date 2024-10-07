@@ -211,7 +211,7 @@ var cards = [
         "title": "Brawl",
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
-        "img": "cards/brawl.png",
+        "img": "cards/distill.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'rum-banner'],
         "production": ['r'],
@@ -637,11 +637,12 @@ var cards = [
         "title": "Poison",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/distill.png",
+        "img": "cards/monkey-helm.png",
         "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
