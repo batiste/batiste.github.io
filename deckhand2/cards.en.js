@@ -365,6 +365,7 @@ var cards = [
         "banners": ['helm-banner'],
         "production": ['s', 'or', 'g'],
         "changed": false,
+                "css": "bg-top"
     },
 
 
