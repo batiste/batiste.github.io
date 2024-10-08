@@ -634,7 +634,7 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Poison",
+        "title": "Mn",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/monkey-helm.png",
@@ -659,9 +659,9 @@ var cards = [
     },
 
     {
-        "title": "Distill",
+        "title": "Poison",
         "discard": ['r'],
-        "cost": ['g', 'p', 's', 'c'],
+        "cost": ['g', 'p', 's', 'cs'],
         "img": "cards/poison.png",
         "extra": ['bolt', 'bolt'],
         "banners": ['rum-banner'],
@@ -883,7 +883,7 @@ var cards = [
     },
 
     {
-        "title": "Perceptor",
+        "title": "Thief",
         "discard": ['e'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/hooded.png",
