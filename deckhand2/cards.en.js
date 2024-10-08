@@ -256,8 +256,8 @@ var cards = [
         "title": "Hired Thief",
         "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thief.png",
-        "extra": ['vp-2'],
-        "banners": ['gem-banner'],
+        "extra": ['vp-1', 'x', 'gem-banner'],
+        "banners": ['gun-banner'],
         "production": ['e'],
     },
 
@@ -266,8 +266,8 @@ var cards = [
         "title": "Abandoned Manor",
         "cost": ['g', 'p', 'cs', 'cs'],
         "img": "cards/manor.png",
-        "banners": ['skull-banner'],
-        "extra": ['vp-2'],
+        "banners": ['parrot-banner'],
+        "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
     },
 
@@ -366,6 +366,18 @@ var cards = [
         "production": ['s', 'or', 'g'],
         "changed": false,
                 "css": "bg-top"
+    },
+
+
+    {
+        "discard": ['e'],
+        "title": "Captain Longtooth",
+        "cost": ['s', 'e', 'e', 'cs', 'cs'],
+        "img": "cards/witch.png",
+        "extra": ['vp-4'],
+        "banners": ['helm-banner'],
+        "production": ['h'],
+        "css": "bg-top",
     },
 
 
@@ -546,17 +558,6 @@ var cards = [
         "changed": false,
         "css": "bg-top",
         // "production": ['discard-helm', 'produce', 'any'],
-    },
-
-    {
-        "discard": ['e'],
-        "title": "Captain Longtooth",
-        "cost": ['s', 'e', 'e', 'cs', 'cs'],
-        "img": "cards/witch.png",
-        "extra": ['vp-4'],
-        "banners": ['helm-banner'],
-        "production": ['h'],
-        "css": "bg-top",
     },
 
 
