@@ -48,9 +48,10 @@
 </div>
 
 
-
+<div id="stats">
 
 </div>
+
 
 </body>
 
@@ -143,7 +144,7 @@ cards.forEach((c) => {
         var clone = JSON.parse(JSON.stringify(c));
         clone.copies = null
         for(let i=2; i<=c.copies; i++) {
-            clone.hide = true;
+            // clone.hide = true;
             cards.push(clone)
         }
     }
@@ -408,11 +409,13 @@ cards.forEach((c) => {
     });
 
     Object.entries(s).forEach(([key, value]) => {
-        if(value > 1) {
-            double_cost[`${key}_${value}`] = 1 + (double_cost[`${key}_${value}`] || 0);
-        } else {
-            single_cost[`${key}_${value}`] = 1 + (single_cost[`${key}_${value}`] || 0);
+        if (!double_cost[key]) {
+            double_cost[key] = {}
         }
+        double_cost[key][value] = 1 + (double_cost[key][value] || 0);
+        // } else {
+        //     single_cost[`${key}_${value}`] = 1 + (single_cost[`${key}_${value}`] || 0);
+        // }
     });
 
 
@@ -662,6 +665,27 @@ cards.forEach((c) => {
 
 document.getElementById('cards').innerHTML = cards_total;
 
+var stats = document.getElementById('stats');
+
+function cost_table_maker(double_cost) {
+    var body = ''
+    for (const [key, row] of Object.entries(double_cost)) {
+        var row_html = ''
+        for (const [multiple, value] of Object.entries(row)) {
+            row_html += `<td>${value}</td>`
+        }
+        body += `<tr><td>${key}</td>${row_html}</tr>`
+    }
+
+    return `<table class="styled-table">
+        <caption>Cost table</caption>
+        <tr><th></th><th>1</th><th>2</th><th>3</th><th>4</th></tr>
+        ${body}
+        </table>`
+}
+
+stats.innerHTML = cost_table_maker(double_cost)
+  
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
 console.log('stats_vp', stats_vp)

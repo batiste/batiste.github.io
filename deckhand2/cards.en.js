@@ -275,7 +275,7 @@ var cards = [
         "title": "Treasure Map",
         "discard": ['p'],
         "cost": ['p', 'r', 'cs'],
-        "img": "cards/treasure-map.png",
+        "img": "cards/parrot-reconnaissance.png",
         "banners": ['gem-banner'],
         "production": ['h'],
         "extra": ['telescope'],
@@ -318,9 +318,9 @@ var cards = [
     {
         "title": "Bird Bazaar",
         "discard": ['e'],
-        "cost": ['r', 'cs', 'c', 'c'],
+        "cost": ['r', 'cs', 'cs', 'c'],
         "img": "cards/animal-market.png",
-        'banners': ['parrot-banner'],
+        'banners': ['rum-banner'],
         "production": ['g', 'or', 'p'],
     },
 
@@ -359,22 +359,22 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Crooked Smuggler",
-        "cost": ['e', 'e', 'h', 'r', 'c'],
+        "cost": ['e', 'e', 'h'],
         "img": "cards/crooked.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-3'],
         "banners": ['helm-banner'],
-        "production": ['s', 'or', 'g'],
+        "production": ['g'],
         "changed": false,
-                "css": "bg-top"
+        "css": "bg-top"
     },
 
 
     {
         "discard": ['e'],
         "title": "Captain Longtooth",
-        "cost": ['s', 'e', 'e', 'cs', 'cs'],
+        "cost": ['s', 's', 'e'],
         "img": "cards/witch.png",
-        "extra": ['vp-4'],
+        "extra": ['vp-3'],
         "banners": ['helm-banner'],
         "production": ['h'],
         "css": "bg-top",
@@ -396,10 +396,10 @@ var cards = [
     {
         "title": "Rowdy Mob",
         "discard": ['r'],
-        "cost": ['g', 'g', 'r', 'c', 'cs'],
+        "cost": ['g', 'g', 'r'],
         "img": "cards/mob.png",
         "banners": ['gun-banner', 'helm-banner'],
-        "production": ['s', 'or', 'r'],
+        "production": ['s'],
         "changed": false,
     },
 
@@ -441,10 +441,10 @@ var cards = [
     {
         "title": "Plunder",
         "discard": ['g'],
-        "cost": ['g', 'g', 's', 'c'],
+        "cost": ['g', 'g', 's'],
         "img": "cards/attack.png",
         "banners": ['gem-banner'],
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "production": ['e'],
         "changed": false,
     },
@@ -497,20 +497,21 @@ var cards = [
         "discard": ['r'],
         "title": "Drunk Marmosets",
         "cost": ['p', 'r', 'cs', 'cs'],
-        "img": "cards/drunk-marmosets.png",
-        "banners": ['gun-banner'],
+        "img": "cards/tavern-invasion.png",
+        "banners": ['rum-banner'],
         "extra": ['vp-2'],
         "production": ['g'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {
         "discard": ['g'],
         "title": "Sneak Attack",
-        "cost": ['s', 's', 'g', 'cs', 'c'],
+        "cost": ['s', 's', 'g', 'cs'],
         "img": "cards/sneak-attack.png",
         "banners": ['gem-banner'],
-        "extra": ['vp-3'],
+        "extra": ['vp-2'],
         "production": ['e'],
         "changed": false,
     },
@@ -570,6 +571,7 @@ var cards = [
         "banners": ['coin-banner'],
         "production": [`cs`],
         "changed": false,
+        "block": true,
     },
 
 
@@ -741,7 +743,7 @@ var cards = [
         "cost": ['p', 'p', 'r', 'r', 'c'],
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
-        // "banners": ['gem-banner'],
+        "banners": ['rum-banner'],
         // "production": ['g'],
         "changed": true
     },
@@ -807,7 +809,7 @@ var cards = [
     {
         "title": "Rum Dispensary",
         "discard": ['e'],
-        "cost": ['r', 'r', 'r', 'cs', 'cs'],
+        "cost": ['r', 'r', 'r', 'cs'],
         "img": "cards/rum-collection.png",
         "banners": ['rum-banner', 'rum-banner'],
         // "production": ['g'],
@@ -864,7 +866,7 @@ var cards = [
     {
         "title": "Swamp Meditation",
         "discard": ['g'],
-        "cost": ['s', 'cs', 'cs'],
+        "cost": ['s', 'c', 'cs'],
         "img": "cards/voodoo.png",
         "production": ['h'],
         "banners": ['skull-banner'],
@@ -915,7 +917,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         // "production": ['r'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-9', 'crown'],
+        "extra": ['vp-8', 'crown'],
         "changed": false,
         "css": "bg-top"
     },
@@ -923,9 +925,9 @@ var cards = [
     {
         "title": "Sail at Dawn",
         "discard": ['g'],
-        "cost": ['h', 'cs', 'cs'],
-        "img": "cards/night-sail.png",
-        "production": ['g'],
+        "cost": ['h', 'c', 'cs'],
+        "img": "cards/treasure-map.png",
+        "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
         "extra": ['vp-1', 'x', 'helm-banner'],
         "changed": false,
@@ -944,12 +946,12 @@ var cards = [
 
     {
         "title": "Emerald Bayou",
-        "discard": ['r'],
+        "discard": ['e'],
         "cost": ['e', 'e', 'e', 'cs', 'cs'],
         "img": "cards/doom-temple.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gem-banner'],
-        "extra": ['vp-7'],
+        "extra": ['vp-6'],
         "changed": false,
     },
 
@@ -987,36 +989,36 @@ var cards = [
         "css": "bg-top"
     },
 
-    // {
-    //     "title": "Double production 1",
-    //     "discard": ['p'],
-    //     "cost": ['e', 'e', 'c', 'cs'],
-    //     "img": "cards/raid.png",
-    //     "production": ['p', 'p'],
-    //     "banners": ['parrot-banner'],
-    //     "extra": ['vp-1'],
-    //     "changed": false,
-    // },
+    {
+        "title": "Double production 1",
+        "discard": ['p'],
+        "cost": ['e', 'e', 'cs'],
+        "img": "cards/test.png",
+        "production": ['p', 'p'],
+        "banners": ['parrot-banner'],
+        "extra": ['vp-2'],
+        "changed": false,
+    },
 
-    // {
-    //     "title": "Double production 2",
-    //     "discard": ['r'],
-    //     "cost": ['s', 's', 'c', 'cs'],
-    //     "img": "cards/raid.png",
-    //     "production": ['r', 'r'],
-    //     "banners": ['rum-banner'],
-    //     "extra": ['vp-1'],
-    //     "changed": false,
-    // },
+    {
+        "title": "Double production 2",
+        "discard": ['r'],
+        "cost": ['s', 's', 'cs'],
+        "img": "cards/test.png",
+        "production": ['r', 'r'],
+        "banners": ['rum-banner'],
+        "extra": ['vp-2'],
+        "changed": false,
+    },
 
-    // {
-    //     "title": "Double production 3",
-    //     "discard": ['g'],
-    //     "cost": ['h', 'h', 'c', 'cs'],
-    //     "img": "cards/raid.png",
-    //     "production": ['g', 'g'],
-    //     "banners": ['gun-banner'],
-    //     "extra": ['vp-1'],
-    //     "changed": false,
-    // },
+    {
+        "title": "Double production 3",
+        "discard": ['g'],
+        "cost": ['h', 'h', 'cs'],
+        "img": "cards/test.png",
+        "production": ['g', 'g'],
+        "banners": ['gun-banner'],
+        "extra": ['vp-2'],
+        "changed": false,
+    },
 ]
