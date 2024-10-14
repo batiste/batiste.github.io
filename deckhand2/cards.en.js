@@ -290,6 +290,7 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-1'],
         "production": ['s'],
+        "css": "bg-top",
     },
 
     {
@@ -318,9 +319,10 @@ var cards = [
     {
         "title": "Bird Bazaar",
         "discard": ['e'],
-        "cost": ['r', 'cs', 'cs', 'c'],
+        "cost": ['r', 'p', 'cs', 'cs'],
         "img": "cards/animal-market.png",
         'banners': ['rum-banner'],
+        // "extra": ['vp-1'],
         "production": ['g', 'or', 'p'],
     },
 
@@ -358,12 +360,12 @@ var cards = [
 
     {
         "discard": ['h'],
-        "title": "Crooked Smuggler",
+        "title": "Kiss the ring",
         "cost": ['e', 'e', 'h'],
         "img": "cards/crooked.png",
         "extra": ['vp-3'],
-        "banners": ['helm-banner'],
-        "production": ['g'],
+        "banners": ['gem-banner'],
+        "production": ['s'],
         "changed": false,
         "css": "bg-top"
     },
@@ -452,10 +454,10 @@ var cards = [
     {
         "title": "Rum Merchant",
         "discard": ['r'],
-        "cost": ['r', 'h', 'cs', 'cs'],
+        "cost": ['h', 'cs', 'cs'],
         "img": "cards/rum-merchant.png",
-        "banners": ['rum-banner'],
-        "extra": ['vp-3'],
+        "banners": ['basic-banner'],
+        "extra": ['draw-1'],
         "production": ['r'],
     },
 
@@ -498,11 +500,12 @@ var cards = [
         "title": "Drunk Marmosets",
         "cost": ['p', 'r', 'cs', 'cs'],
         "img": "cards/tavern-invasion.png",
-        "banners": ['rum-banner'],
+        "banners": ['basic-banner', 'rum-banner'],
         "extra": ['vp-2'],
         "production": ['g'],
         "changed": false,
         "css": "bg-top",
+        "artist": "Vitor Henrique",
     },
 
     {
@@ -765,7 +768,7 @@ var cards = [
         "cost": ['p', 'p'],
         "img": "cards/turtle.png",
         "extra": ['vp-1'],
-        "banners": ['parrot-banner'],
+        "banners": ['parrot-banner', 'basic-banner'],
         "production": ['r'],
         "changed": false,
         "css": "bg-top"
@@ -880,7 +883,7 @@ var cards = [
         "cost": ['p', 'cs', 'cs'],
         "img": "cards/oracle.png",
         "production": ['r'],
-        // "banners": ['skull-banner'],
+        "banners": ['basic-banner'],
         "extra": ['compass'],
         "changed": false,
         "css": "bg-top",
@@ -992,33 +995,33 @@ var cards = [
     {
         "title": "Double production 1",
         "discard": ['p'],
-        "cost": ['e', 'e', 'cs'],
+        "cost": ['e', 'c', 'cs'],
         "img": "cards/test.png",
         "production": ['p', 'p'],
-        "banners": ['parrot-banner'],
-        "extra": ['vp-2'],
+        "banners": ['basic-banner', 'parrot-banner'],
+        "extra": ['vp-1'],
         "changed": false,
     },
 
     {
         "title": "Double production 2",
         "discard": ['r'],
-        "cost": ['s', 's', 'cs'],
+        "cost": ['s', 'c', 'cs'],
         "img": "cards/test.png",
         "production": ['r', 'r'],
-        "banners": ['rum-banner'],
-        "extra": ['vp-2'],
+        "banners": ['basic-banner', 'rum-banner'],
+        "extra": ['vp-1'],
         "changed": false,
     },
 
     {
         "title": "Double production 3",
         "discard": ['g'],
-        "cost": ['h', 'h', 'cs'],
+        "cost": ['h', 'c', 'cs'],
         "img": "cards/test.png",
         "production": ['g', 'g'],
-        "banners": ['gun-banner'],
-        "extra": ['vp-2'],
+        "banners": ['basic-banner', 'gun-banner'],
+        "extra": ['vp-1'],
         "changed": false,
     },
 ]

@@ -151,8 +151,8 @@ cards.forEach((c) => {
 });
 
 var virtual_cost = {
-    "c": 1.1,
-    "cs": 0.95,
+    "c": 1.2,
+    "cs": 0.9,
     "g": 1.5, // justification: easier to get
     "p": 1.5,
     "r": 1.5,
@@ -316,7 +316,7 @@ var get_v_value = (c) => {
                 v += 0.3;
             }
             if (e == "telescope") {
-                v += 0.3;
+                v += 0.2;
             }
             if (e == "crown") {
                 v += 2;
@@ -325,7 +325,7 @@ var get_v_value = (c) => {
                 v += 3 / c.v_cost;
             }
             if (e == "compass") {
-                v += 7 / c.v_cost;
+                v += 6 / c.v_cost;
             }
             if (e == "3-choices") {
                 v += 1.3;
@@ -362,11 +362,11 @@ var get_v_value = (c) => {
     if(c.banners) {
         c.banners.forEach(b => {
             if (b == 'basic-banner' || b == 'coin-banner') {
-                v += 0.35
+                v += 0.45
             } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner') {
-                v += 0.55
+                v += 0.70
             } else {
-                v += 0.75
+                v += 0.90
             }
         }) 
     }
