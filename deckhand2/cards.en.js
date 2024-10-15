@@ -947,11 +947,11 @@ var cards = [
     },
 
     {
-        "title": "Sail at Dawn",
+        "title": "Treasure Hunt",
         "discard": ['g'],
         "cost": ['h', 'c', 'cs'],
         "img": "cards/treasure-map.png",
-        "production": ['s'],
+        "production": ['e'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
         "extra": ['vp-1', 'x', 'helm-banner'],
         "changed": false,
@@ -982,7 +982,7 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'cs', 'c'],
+        "cost": ['e', 'c', 'c'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
         "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
@@ -1055,26 +1055,26 @@ var cards = [
         "img": "cards/funeral.png",
         "production": ['s'],
         "banners": ['skull-banner'],
-        "extra": ['vp-3', 'bolt'],
+        "extra": ['vp-4', 'bolt'],
         "changed": false,
         "css": "bg-top"
     },
 
     {
         "title": "?",
-        "discard": ['s'],
-        "cost": ['p', 'p', 'r', 'r', 'r'],
-        "img": "cards/test.png",
+        "discard": ['e'],
+        "cost": ['p', 'p', 'r', 'r', 'r', 'cs', 'cs'],
+        "img": "cards/fire.png",
         "production": [],
         "banners": ['parrot-banner', 'rum-banner'],
-        "extra": ['vp-6'],
+        "extra": ['vp-7', 'bolt', 'bolt'],
         "changed": false,
         "css": "bg-top"
     },
 
     {
         "title": "Emerald Whale",
-        "discard": ['s'],
+        "discard": ['h'],
         "cost": ['e', 'e', 'p'],
         "img": "cards/emerald-whale.png",
         "production": [],
