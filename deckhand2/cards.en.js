@@ -104,9 +104,20 @@ var cards = [
         "title": "Governor's Bribe",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
-        "img": "cards/governor.png",
+        "img": "cards/bribe.png",
         // "production": ['r']
         'extra': ['compass', 'telescope', 'draw-2'],
+        'type': 'supremacy',
+        "changed": false,
+    },
+
+    {
+        "title": "Provision",
+        "discard": [],
+        "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
+        "img": "cards/cellar.png",
+        // "production": ['r']
+        'extra': ['vp-2', 'draw-1'],
         'type': 'supremacy',
         "changed": false,
     },
