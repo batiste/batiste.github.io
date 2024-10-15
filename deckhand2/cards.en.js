@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['vp-1', 'crown'],
+        'extra': ['vp-1', 'crown', 'telescope'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
     },
