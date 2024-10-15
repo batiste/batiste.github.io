@@ -47,6 +47,16 @@ var cards = [
     },
 
     {
+        "title": "Mermaid",
+        "discard": [],
+        "cost": ['gem-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
+        "img": "cards/mermaid.png",
+        // "production": ['r']
+        'extra': ['crown', '3-choices', 'tentacle'],
+        'type': 'supremacy',
+    },
+
+    {
         "title": "Emerald Valley",
         "discard": [],
         "cost": ['gem-banner', 'gem-banner'],
@@ -222,7 +232,7 @@ var cards = [
         "title": "Brawl",
         "cost": ['g', 'cs', 'c'],
         "discard": ['g'],
-        "img": "cards/distill.png",
+        "img": "cards/brawl.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'rum-banner'],
         "production": ['r'],
@@ -511,8 +521,8 @@ var cards = [
         "title": "Drunk Marmosets",
         "cost": ['p', 'r', 'cs', 'cs'],
         "img": "cards/tavern-invasion.png",
-        "banners": ['basic-banner', 'rum-banner'],
-        "extra": ['vp-2'],
+        "banners": ['rum-banner'],
+        "extra": ['vp-1', 'x' , 'parrot-banner'],
         "production": ['g'],
         "changed": false,
         "css": "bg-top",
@@ -763,6 +773,18 @@ var cards = [
     },
 
     {
+        "title": "Docker's Guild",
+        "discard": ['r'],
+        "cost": ['p', 'g', 'r', 'cs', 'cs'],
+        "img": "cards/dockers-guild.png",
+        // "production": ['r'],
+        "banners": ['basic-banner', 'basic-banner'],
+        "extra": ['vp-1', 'x', 'basic-banner'],
+        "changed": false,
+         "css": "bg-top"
+    },
+
+    {
         "title": "Tavern",
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
@@ -913,18 +935,6 @@ var cards = [
     },
 
     {
-        "title": "Docker's Guild",
-        "discard": ['r'],
-        "cost": ['p', 'g', 'r', 'cs', 'cs'],
-        "img": "cards/dockers-guild.png",
-        // "production": ['r'],
-        "banners": ['basic-banner', 'basic-banner'],
-        "extra": ['vp-1', 'x', 'basic-banner'],
-        "changed": false,
-         "css": "bg-top"
-    },
-
-    {
         "title": "Happy End!",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
@@ -1004,35 +1014,73 @@ var cards = [
     },
 
     {
-        "title": "Double production 1",
+        "title": "Emerald Thief",
         "discard": ['p'],
         "cost": ['e', 'c', 'cs'],
-        "img": "cards/test.png",
+        "img": "cards/emerald-thiefs.png",
         "production": ['p', 'p'],
         "banners": ['basic-banner', 'parrot-banner'],
-        "extra": ['vp-1'],
+        // "extra": ['vp-1'],
         "changed": false,
     },
 
     {
-        "title": "Double production 2",
+        "title": "Distill",
         "discard": ['r'],
         "cost": ['s', 'c', 'cs'],
-        "img": "cards/test.png",
+        "img": "cards/distill.png",
         "production": ['r', 'r'],
         "banners": ['basic-banner', 'rum-banner'],
-        "extra": ['vp-1'],
+        // "extra": ['vp-1'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
-        "title": "Double production 3",
+        "title": "Fortress",
         "discard": ['g'],
         "cost": ['h', 'c', 'cs'],
-        "img": "cards/test.png",
+        "img": "cards/fortress.png",
         "production": ['g', 'g'],
         "banners": ['basic-banner', 'gun-banner'],
-        "extra": ['vp-1'],
+        // "extra": ['vp-1'],
         "changed": false,
+        "css": "bg-top"
+    },
+
+    {
+        "title": "Funeral",
+        "discard": ['s'],
+        "cost": ['p', 'p', 'g', 'g', 'cs', 'cs'],
+        "img": "cards/funeral.png",
+        "production": ['s'],
+        "banners": ['skull-banner'],
+        "extra": ['vp-3', 'bolt'],
+        "changed": false,
+        "css": "bg-top"
+    },
+
+    {
+        "title": "?",
+        "discard": ['s'],
+        "cost": ['p', 'p', 'r', 'r', 'r'],
+        "img": "cards/test.png",
+        "production": [],
+        "banners": ['parrot-banner', 'rum-banner'],
+        "extra": ['vp-6'],
+        "changed": false,
+        "css": "bg-top"
+    },
+
+    {
+        "title": "Emerald Whale",
+        "discard": ['s'],
+        "cost": ['e', 'e', 'p'],
+        "img": "cards/emerald-whale.png",
+        "production": [],
+        "banners": ['gem-banner', 'helm-banner'],
+        "extra": ['draw-2'],
+        "changed": false,
+        "css": "bg-top"
     },
 ]
