@@ -176,7 +176,7 @@ var cards = [
     {
         "title": "Master Gunner",
         "discard": ['g'],
-        "cost": ['c', 'c', 'cs'],
+        "cost": ['g', 'c', 'cs'],
         "img": "cards/master-gunner.png",
         'banners': ['basic-banner', 'gun-banner'],
         "extra": ['bolt', 'bolt'],
@@ -186,7 +186,7 @@ var cards = [
     {
         "title": "Bird Handler",
         "discard": ['p'],
-        "cost": ['c', 'c', 'cs'],
+        "cost": ['p', 'c', 'cs'],
         "img": "cards/spyglass.png",
         "extra": ['bolt', 'telescope'],
         'banners': ['basic-banner', 'parrot-banner'],
@@ -198,7 +198,7 @@ var cards = [
     {
         "title": "Rum Runner",
         "discard": ['r'],
-        "cost": ['c', 'cs', 'cs'],
+        "cost": ['r', 'cs', 'cs'],
         "img": "cards/rum-runner.png",
         'banners': ['basic-banner', 'rum-banner'],
         "extra": ['bolt'],
@@ -306,7 +306,7 @@ var cards = [
     {
         "title": "Skeleton Crew",
         "discard": ['s'],
-        "cost": ['h', 'g', 'cs'],
+        "cost": ['h', 'g', 'g'],
         "img": "cards/skeleton-crew.png",
         "banners": ['skull-banner'],
         "extra": ['vp-1'],
@@ -317,7 +317,7 @@ var cards = [
     {
         "title": "Odd Apparition",
         "discard": ['p'],
-        "cost": ['s', 'r', 'cs'],
+        "cost": ['s', 'p', 'p'],
         "img": "cards/captain-death.png",
         "extra": ['vp-1'],
         "banners": ['parrot-banner'],
@@ -430,9 +430,9 @@ var cards = [
     {
         "title": "Barataria Bay",
         "discard": ['p'],
-        "cost": ['r', 'p', 'g', 'cs'],
+        "cost": ['r', 'p', 'g'],
         "img": "cards/bay.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         'banners': ['coin-banner'],
         "production": ['cs'],
     },
@@ -651,7 +651,7 @@ var cards = [
     {
         "title": "Pilferer's Guild",
         "discard": ['s'],
-        "cost": ['r', 'p', 'cs', 'cs'],
+        "cost": ['r', 'g', 'g', 'cs'],
         "img": "cards/thieves-statue.png",
         "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
@@ -662,7 +662,7 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Mn",
+        "title": "Monkey at the bar",
         "discard": ['g'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/monkey-helm.png",
@@ -764,7 +764,7 @@ var cards = [
     {
         "title": "Haven",
         "discard": ['g'],
-        "cost": ['p', 'p', 'r', 'r', 'c'],
+        "cost": ['p', 'p', 'r', 'r', 'p'],
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
         "banners": ['rum-banner'],
@@ -949,7 +949,7 @@ var cards = [
     {
         "title": "Treasure Hunt",
         "discard": ['g'],
-        "cost": ['h', 'c', 'cs'],
+        "cost": ['h', 'p', 'g'],
         "img": "cards/treasure-map.png",
         "production": ['e'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
@@ -971,7 +971,7 @@ var cards = [
     {
         "title": "Emerald Bayou",
         "discard": ['e'],
-        "cost": ['e', 'e', 'e', 'cs', 'cs'],
+        "cost": ['e', 'e', 'e', 's'],
         "img": "cards/doom-temple.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gem-banner'],
