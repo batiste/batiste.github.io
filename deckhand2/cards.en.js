@@ -435,7 +435,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['g', 'g', 'r'],
         "img": "cards/mob.png",
-        "banners": ['gun-banner', 'helm-banner'],
+        "banners": ['gun-banner', 'gun-banner'],
         "production": ['s'],
         "changed": false,
     },
@@ -511,7 +511,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['e', 'p', 'g'],
         "img": "cards/amazon.png",
-        "banners": ['gun-banner'],
+        "banners": ['helm-banner'],
         "extra": ['vp-1', 'compass'],
         "production": ['p'],
         "changed": false,
@@ -677,7 +677,7 @@ var cards = [
     // affinity cards
     {
         "title": "Monkey at the bar",
-        "discard": ['g'],
+        "discard": ['p'],
         "cost": ['p', 'r', 'h', 'cs'],
         "img": "cards/monkey-helm.png",
         "extra": ['crown'],
@@ -777,7 +777,7 @@ var cards = [
 
     {
         "title": "Haven",
-        "discard": ['g'],
+        "discard": ['r'],
         "cost": ['p', 'p', 'r', 'r', 'p'],
         "img": "cards/haven.png",
         "extra": ['vp-2', 'x', 'basic-banner'],
@@ -1051,10 +1051,10 @@ var cards = [
     },
 
     {
-        "title": "Fortress",
+        "title": "Armory",
         "discard": ['g'],
         "cost": ['h', 'c', 'cs'],
-        "img": "cards/fortress.png",
+        "img": "cards/armory.png",
         "production": ['g', 'g'],
         "banners": ['basic-banner', 'gun-banner'],
         // "extra": ['vp-1'],
@@ -1065,7 +1065,7 @@ var cards = [
     {
         "title": "Funeral",
         "discard": ['s'],
-        "cost": ['p', 'p', 'g', 'g', 'cs', 'cs'],
+        "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
         "img": "cards/funeral.png",
         "production": ['s'],
         "banners": ['skull-banner'],
