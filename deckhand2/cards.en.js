@@ -444,9 +444,9 @@ var cards = [
     {
         "title": "Barataria Bay",
         "discard": ['p'],
-        "cost": ['r', 'p', 'g'],
+        "cost": ['r', 'p', 'g', 'cs'],
         "img": "cards/bay.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         'banners': ['coin-banner'],
         "production": ['cs'],
     },
@@ -644,7 +644,7 @@ var cards = [
     {
         "title": "Monkey Island",
         "discard": ['p'],
-        "cost": ['e', 's', 'h', 'p', 'cs'],
+        "cost": ['e', 's', 'h', 'p', 'c'],
         "img": "cards/monkey-temple.png",
         "extra": ['vp-6'],
         "banners": ['parrot-banner'],
@@ -979,6 +979,17 @@ var cards = [
         // "production": ['g'],
         "banners": ['skull-banner', 'skull-banner'],
         "extra": ['vp-4', '3-choices'],
+        "changed": false,
+    },
+
+    {
+        "title": "Captain Undead",
+        "discard": ['g'],
+        "cost": ['s', 's', 's', 's'],
+        "img": "cards/captain-undead.png",
+        // "production": ['g'],
+        "banners": ['skull-banner', 'gun-banner'],
+        "extra": ['vp-8'],
         "changed": false,
     },
 
