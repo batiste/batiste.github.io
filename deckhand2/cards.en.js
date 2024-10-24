@@ -989,7 +989,7 @@ var cards = [
         "img": "cards/captain-undead.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
-        "extra": ['vp-8'],
+        "extra": ['vp-6', 'crown'],
         "changed": false,
     },
 
