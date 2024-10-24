@@ -143,6 +143,20 @@ var cards = [
         "copies": 3,
     },
 
+
+    {
+        "title": "Treasure",
+        "discard": ['g'],
+        "cost": ['cs', 'cs', 'p', 'g', 'r'],
+        "img": "cards/big-chest.png",
+        // "banners": ['coin-banner'],
+        "extra": ['vp-1', 'x', 'coin-banner'],
+        "production": ['cs', 'cs'],
+        "copies": 2,
+        "css": "bg-top"
+    },
+    
+
     {
         "title": "Tavern Keeper",
         "discard": ['r'],
