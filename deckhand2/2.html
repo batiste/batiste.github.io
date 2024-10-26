@@ -328,6 +328,9 @@ var get_v_value = (c) => {
             if (e == "crown") {
                 v += 2;
             }
+            if (e == "battle") {
+                v += 0.8;
+            }
             if (e == "tentacle") {
                 v += 3 / c.v_cost;
             }
@@ -567,6 +570,9 @@ cards.forEach((c) => {
             }
             if (c == "crown") {
                 extra += `<img class="res crown" src="img/hook.png">`
+            }
+            if (c == "battle") {
+                extra += `<img class="res battle" src="img/battle.png">`
             }
             if (c == "t") {
                 extra += `<img class="res crown" src="img/tentacles.png">`

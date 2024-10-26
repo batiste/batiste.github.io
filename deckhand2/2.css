@@ -625,6 +625,10 @@ a, a:visited {
     /* margin-right: -4px; */
 }
 
+.right img.battle  {
+    width: 33px;
+}
+
 .right img.tentacle {
     margin-left: 3px;
     width: 33px;
