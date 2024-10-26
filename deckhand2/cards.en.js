@@ -835,7 +835,7 @@ var cards = [
     },
 
     {
-        "title": "Lady Celeste",
+        "title": "Ambush",
         "discard": ['e'],
         "cost": ['g'],
         "img": "cards/wanted.jpg", // toloma8
@@ -986,7 +986,7 @@ var cards = [
     {
         "title": "Captain Undead",
         "discard": ['g'],
-        "cost": ['s', 's', 's', 's'],
+        "cost": ['s', 's', 's', 'h'],
         "img": "cards/captain-undead.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
