@@ -613,6 +613,16 @@ a, a:visited {
     width: 35px;
 }
 
+.right img.vp {
+    /* margin-right: 2px; */
+}
+
+.right img.arrow {
+    margin-left: 2px;
+    width: 30px;
+    margin-right: -4px;
+}
+
 .right img.tentacle {
     margin-left: 5px;
     width: 33px;

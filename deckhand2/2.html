@@ -323,7 +323,7 @@ var get_v_value = (c) => {
                 v += 0.3;
             }
             if (e == "telescope") {
-                v += 0.2;
+                v += 0.4;
             }
             if (e == "crown") {
                 v += 2;
@@ -362,6 +362,19 @@ var get_v_value = (c) => {
                 }
             } else {
                 v += vp * 1.0;
+            }
+        }
+        if (c.extra.length == 3 && c.extra[1] == 'produce') {
+            var banner_type = c.extra[0];
+            var n = distribution_end_game[banner_type]
+            if (c.extra[2] == 'draw-1') {
+                v += n;
+            }
+            if (c.extra[2] == '3-choices') {
+                v += n * 1.2;
+            }
+            if (c.extra[2] == 'telescope') {
+                v += n * 0.4;
             }
         }
     }
@@ -514,7 +527,7 @@ cards.forEach((c) => {
                 extra += `<img class="res" src="img/bolt.png">`
             }
             if (c.startsWith('vp-')) {
-                extra += `<img src="img/${c}.png">`
+                extra += `<img class="vp" src="img/${c}.png">`
             }
             if (c == "crate") {
                 extra += `<img class="res" src="img/crate.png">`
@@ -550,7 +563,7 @@ cards.forEach((c) => {
                 extra += `<img class="cross" src="img/cross.png">`
             }
             if (c == "produce") {
-                extra += `<img class="res" src="img/arrow.png">`
+                extra += `<img class="res arrow" src="img/arrow.png">`
             }
             if (c == "crown") {
                 extra += `<img class="res crown" src="img/hook.png">`
@@ -633,9 +646,9 @@ cards.forEach((c) => {
     }
 
     var block = "";
-    if (c.block) {
-        block = `prod-block`;
-    }
+    // if (c.block) {
+    //     block = `prod-block`;
+    // }
 
     var card_template = `
     <div>
@@ -709,10 +722,7 @@ console.log('silver_affinity', silver_affinity)
 
 
 <script>
-
     var lang = 'en';
-
-
     var format = 'png'
     function updateFormat(e) {
         if (e.checked) {

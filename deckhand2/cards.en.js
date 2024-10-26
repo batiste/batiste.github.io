@@ -145,14 +145,14 @@ var cards = [
 
 
     {
-        "title": "Treasure",
+        "title": "Stolen Treasure",
         "discard": ['g'],
-        "cost": ['cs', 'cs', 'p', 'g', 'r'],
+        "cost": ['cs', 'c', 'p', 'g', 'r'],
         "img": "cards/big-chest.png",
         // "banners": ['coin-banner'],
-        "extra": ['vp-1', 'x', 'coin-banner'],
+        // "extra": ['vp-1', 'x', 'coin-banner'],
         "production": ['cs', 'cs'],
-        "copies": 2,
+        "copies": 1,
         "css": "bg-top"
     },
     
@@ -301,7 +301,7 @@ var cards = [
         "title": "Abandoned Manor",
         "cost": ['g', 'p', 'cs', 'cs'],
         "img": "cards/manor.png",
-        "banners": ['parrot-banner'],
+        "banners": ['rum-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
     },
@@ -311,9 +311,9 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'r', 'cs'],
         "img": "cards/parrot-reconnaissance.png",
-        "banners": ['gem-banner'],
+        // "banners": ['gem-banner'],
         "production": ['h'],
-        "extra": ['telescope'],
+        "extra": ['parrot-banner', 'produce', 'telescope'],
         "css": "bg-top",
     },
 
@@ -326,11 +326,12 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['s'],
         "css": "bg-top",
+        "block": true,
     },
 
     {
         "title": "Odd Apparition",
-        "discard": ['p'],
+        "discard": ['s'],
         "cost": ['s', 'p', 'p'],
         "img": "cards/captain-death.png",
         "extra": ['vp-1'],
@@ -343,7 +344,7 @@ var cards = [
     {
         "title": "Trade Route",
         "discard": ['p'],
-        "cost": ['e', 'p', 'cs'],
+        "cost": ['e', 'r', 'cs'],
         "img": "cards/wind.png",
         "extra": ['vp-1'],
         "banners": ['helm-banner'],
@@ -382,8 +383,8 @@ var cards = [
     // },
 
     {
-        "title": "Poacher",
-        "discard": ['s'],
+        "title": "Duchess",
+        "discard": ['p'],
         "cost": ['g', 'g', 'cs', 'cs'],
         "img": "cards/duchess.png",
         "banners": ['gun-banner'],
@@ -523,8 +524,8 @@ var cards = [
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['vp-2'],
-        "banners": ['helm-banner'],
+        "extra": ['vp-3'],
+        // "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
         "css": "bg-top",
@@ -771,8 +772,8 @@ var cards = [
         "discard": ['s'],
         "cost": ['s', 's', 'g'],
         "img": "cards/skeleton-treasure.png",
-        "banners": ['skull-banner'],
-        "extra": ['vp-3', '3-choices'],
+        // "banners": ['skull-banner'],
+        "extra": ['skull-banner', 'produce', '3-choices'],
     },
 
     {
@@ -962,18 +963,18 @@ var cards = [
 
     {
         "title": "Treasure Hunt",
-        "discard": ['g'],
-        "cost": ['h', 'p', 'g'],
+        "discard": ['p'],
+        "cost": ['h', 'h', 'p'],
         "img": "cards/treasure-map.png",
-        "production": ['e'],
-        // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-1', 'x', 'helm-banner'],
+        // "production": ['e'],
+        "banners": ['parrot-banner'],
+        "extra": ['helm-banner', 'produce', 'draw-1'],
         "changed": false,
     },
 
     {
         "title": "Skull Collector",
-        "discard": ['p'],
+        "discard": ['g'],
         "cost": ['s', 's', 's'],
         "img": "cards/skull-3.png",
         // "production": ['g'],
@@ -1082,7 +1083,8 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-4', 'bolt'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-top",
+        "block": true,
     },
 
     {
@@ -1103,8 +1105,8 @@ var cards = [
         "cost": ['e', 'e', 'p'],
         "img": "cards/emerald-whale.png",
         "production": [],
-        "banners": ['gem-banner', 'helm-banner'],
-        "extra": ['draw-2'],
+        "banners": ['helm-banner'],
+        "extra": ['gem-banner', 'produce', 'draw-1'],
         "changed": false,
         "css": "bg-top"
     },
