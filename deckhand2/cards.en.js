@@ -251,6 +251,7 @@ var cards = [
         'banners': ['basic-banner', 'rum-banner'],
         "production": ['r'],
         "copies": 2,
+        "css": "bg-top",
     },
 
     {
@@ -502,7 +503,7 @@ var cards = [
         "title": "Cavern Horror",
         "discard": ['s'],
         "cost": ['s', 'e', 'cs', 'cs'],
-        "img": "cards/deep-sea-horror.png",
+        "img": "cards/cavern-horror.png",
         "banners": ['skull-banner'],
         "extra": ['vp-2'],
         "production": ['s'],
@@ -769,9 +770,9 @@ var cards = [
     },
 
     {
-        "title": "Haunted Shipwreck",
+        "title": "Shipwreck",
         "discard": ['s'],
-        "cost": ['s', 'g'],
+        "cost": ['h', 'g'],
         "img": "cards/skeleton-treasure.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
@@ -965,7 +966,7 @@ var cards = [
     {
         "title": "Treasure Hunt",
         "discard": ['p'],
-        "cost": ['h', 'h', 'p'],
+        "cost": ['e', 'p'],
         "img": "cards/treasure-map.png",
         // "production": ['e'],
         "banners": ['parrot-banner'],
@@ -1103,7 +1104,7 @@ var cards = [
     {
         "title": "Emerald Whale",
         "discard": ['h'],
-        "cost": ['e', 'p'],
+        "cost": ['h', 'p'],
         "img": "cards/emerald-whale.png",
         "production": [],
         "banners": ['helm-banner'],
