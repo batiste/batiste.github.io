@@ -266,10 +266,10 @@ var cards = [
     },
 
     {
-        "title": "Docks",
+        "title": "Monkey at the helm",
         "discard": ['h'],
         "cost": ['r', 'p', 'c'],
-        "img": "cards/docks.png",
+        "img": "cards/monkey-helm.png",
         "extra": ['vp-1'],
         'banners': ['helm-banner'],
         "production": ['h'],
@@ -679,10 +679,10 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Monkey at the bar",
+        "title": "Docks?",
         "discard": ['p'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/monkey-helm.png",
+        "img": "cards/docks.png",
         "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
