@@ -550,19 +550,32 @@ a, a:visited {
 
 .supremacy-cost {
     position: absolute;
-    display: flex;
-    /* right: 0; */
+    right: 0;
     left:0;
-    bottom: 0;
-    padding: 3px 3px 21px 19px;
-    background-color: #0000008f;
-    box-shadow: #000000cd 0px 0px 8px 3px;
-    background-image: url(img/stick.png);
+    top: 72px;
+    background-color: #2b7396;
+    background-image: url(img/bg-bottom.png);
+    background-size: cover;
+    box-shadow: #000000b3 0px 0px 2px 2px;
+    /* background-image: url(img/stick.png);
     background-size: 260px 26px;
     background-repeat: no-repeat;
     background-position-y: -3px;
-    background-position-x: right;
-    padding-right: 19px;
+    background-position-x: right; */
+}
+
+.supremacy-bg {
+    padding: 4px;
+    padding-top: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2c3d51a3;
+    background-blend-mode: overlay;
+}
+
+.type-supremacy .bg {
+    margin-top: 80px;
 }
 
 .type-supremacy .title {

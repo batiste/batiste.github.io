@@ -28,7 +28,7 @@ var cards = [
         "title": "Graveyard",
         "discard": [],
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
-        "img": "cards/grave.png",
+        "img": "cards/skeleton-treasure.png",
         // "production": ['r']
         'extra': ['vp-4', '3-choices'],
         'type': 'supremacy',
@@ -147,7 +147,7 @@ var cards = [
     {
         "title": "Stolen Treasure",
         "discard": ['g'],
-        "cost": ['cs', 'c', 'p', 'g', 'r'],
+        "cost": ['cs', 'p', 'g', 'r'],
         "img": "cards/big-chest.png",
         // "banners": ['coin-banner'],
         // "extra": ['vp-1', 'x', 'coin-banner'],
@@ -773,7 +773,7 @@ var cards = [
         "title": "Shipwreck",
         "discard": ['s'],
         "cost": ['h', 'g'],
-        "img": "cards/skeleton-treasure.png",
+        "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
     },
