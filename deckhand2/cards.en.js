@@ -150,7 +150,7 @@ var cards = [
         "cost": ['cs', 'p', 'g', 'r'],
         "img": "cards/big-chest.png",
         // "banners": ['coin-banner'],
-        // "extra": ['vp-1', 'x', 'coin-banner'],
+        "extra": ['vp-1'],
         "production": ['cs', 'cs'],
         "copies": 1,
         "css": "bg-top"
