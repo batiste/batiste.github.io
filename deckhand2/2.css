@@ -64,15 +64,15 @@ a, a:visited {
     width: 100%;
 }
 
-.bottom {
+.top {
     position: absolute;
     left:0;
     right:0;
     top: 0;
-    background-image: url(img/bg-bottom.png);
+    background-image: url(img/bg-bottom-2.png);
     background-size:cover;
     background-repeat: no-repeat;
-    border-bottom: 1px #000000b7 solid;
+    border-bottom: 1.5px #000000a0 solid;
     box-shadow: 0px 1px 4px #00000075;
     /* padding: 8px 26px; */
     display: flex;
@@ -81,14 +81,14 @@ a, a:visited {
     /* z-index: 50; */
 }
 
-.bottom .type {
+.top .type {
     border-top: 1px #0d0b0b solid;
     display: flex;
     justify-content: space-between;
     height: 69px;
 }
 
-.bottom {
+.top {
     color: #000;
     font-size: 13px;
     line-height: 1.4;
@@ -257,31 +257,12 @@ a, a:visited {
     margin-left: 1px; 
 }
 
+.type {
+    background-color: #eaca9acf;
+}
+
 .type-supremacy .type {
-    background-color: #e2b658ad;
-    background-blend-mode:overlay;
-}
-
-.wild .type {
-    /* background-color: rgb(36, 64, 155); */
-    background-image: url(img/bg-bottom.png);
-    /* background-blend-mode:overlay; */
-}
-
-.rum .type {
-    /* background-color: rgb(110, 37, 37);  */
-    background-image: url(img/bg-bottom.png);
-    /* background-blend-mode:overlay; */
-}
-
-.rum .type {
-    background-image: url(img/bg-bottom.png);
-    /* background-color: rgba(68, 42, 9, 0.9);  */
-    /* background-blend-mode:overlay; */
-}
-
-.dark .type {
-    /* background-color: rgba(17, 30, 57, 0.9);  */
+    background-color: #e8ae31bd;
 }
 
 .resource {
@@ -552,11 +533,13 @@ a, a:visited {
     position: absolute;
     right: 0;
     left:0;
-    top: 72px;
+    bottom: 0;
     background-color: #2b7396;
-    background-image: url(img/bg-bottom.png);
+    background-image: url(img/bg-bottom-2.png);
     background-size: cover;
-    box-shadow: #000000b3 0px 0px 2px 2px;
+    box-shadow: #0000009b 0px 0px 2px 2px;
+    box-shadow: 0px -2px 4px #00000075;
+    border-top: 1.5px #000000cf solid;
     /* background-image: url(img/stick.png);
     background-size: 260px 26px;
     background-repeat: no-repeat;
@@ -567,15 +550,16 @@ a, a:visited {
 .supremacy-bg {
     padding: 4px;
     padding-top: 6px;
+    padding-bottom: 21px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: #2c3d51a3;
+    background-color: #203853ce;
     background-blend-mode: overlay;
 }
 
 .type-supremacy .bg {
-    margin-top: 80px;
+    margin-top: 30px;
 }
 
 .type-supremacy .title {
@@ -655,8 +639,6 @@ a, a:visited {
 .up {
     color: rgb(0, 179, 255);
 }
-
-
 
 .styled-table {
     border-collapse: collapse;
