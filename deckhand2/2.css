@@ -451,13 +451,13 @@ a, a:visited {
     width: 69.088mm;
     height: 93.98mm;
     background-image: url(img/mpc-dark.png);
-    background-image: url(img/mpc.png);
+    /* background-image: url(img/mpc.png); */
     background-size: cover;
     z-index: 100;
 }
 
 .card.preparePrint .mpc {
-    display: none;
+    /* display: none; */
 }
 
 .right {

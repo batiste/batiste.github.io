@@ -422,14 +422,15 @@ var cards = [
 
 
     {
-        "title": "Desert Island",
+        "title": "Thief in Action",
         "discard": ['g'],
         "cost": ['h', 'r', 'cs', 'c'],
-        "img": "cards/desert-island.png",
+        "img": "cards/fisherman.png",
         // "extra": ['vp-1'],
         "banners": ['coin-banner'],
         "production": ['g', 'or', 'cs'],
         "changed": false,
+        "css": "bg-top",
     },
 
 
@@ -649,11 +650,12 @@ var cards = [
         "title": "Monkey Island",
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'c'],
-        "img": "cards/monkey-temple.png",
+        "img": "cards/possesion.png",
         "extra": ['vp-6'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
         "changed": false,
+        "css": "bg-top",
     },
 
     {

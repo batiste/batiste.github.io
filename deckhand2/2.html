@@ -147,14 +147,14 @@ cards.forEach((c) => {
     //     }
     //     return cost
     // })
-    if (c.copies) {
-        var clone = JSON.parse(JSON.stringify(c));
-        clone.copies = null
-        for(let i=2; i<=c.copies; i++) {
-            // clone.hide = true;
-            cards.push(clone)
-        }
-    }
+    // if (c.copies) {
+    //     var clone = JSON.parse(JSON.stringify(c));
+    //     clone.copies = null
+    //     for(let i=2; i<=c.copies; i++) {
+    //         // clone.hide = true;
+    //         cards.push(clone)
+    //     }
+    // }
 });
 
 var virtual_cost = {
