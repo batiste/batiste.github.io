@@ -1119,7 +1119,7 @@ var cards = [
 
     {
         "title": "Strong Spell",
-        "discard": ['h'],
+        "discard": ['g'],
         "cost": ['r', 'r', 'g', 'g', 'e', 'e'],
         "img": "cards/spell.png",
         "production": ["h", "or", "cs"],
