@@ -1124,7 +1124,7 @@ var cards = [
         "img": "cards/spell.png",
         "production": ["h", "or", "cs"],
         "banners": ['gem-banner'],
-        "extra": ['vp-3','bolt'],
+        "extra": ['vp-4','bolt'],
         "changed": false,
         "css": "bg-top"
     },
