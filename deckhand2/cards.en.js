@@ -1116,4 +1116,16 @@ var cards = [
         "changed": false,
         "css": "bg-top"
     },
+
+    {
+        "title": "Strong Spell",
+        "discard": ['h'],
+        "cost": ['r', 'r', 'g', 'g', 'e', 'e'],
+        "img": "cards/spell.png",
+        "production": ["h", "or", "cs"],
+        "banners": ['gem-banner'],
+        "extra": ['vp-3','bolt'],
+        "changed": false,
+        "css": "bg-top"
+    },
 ]
