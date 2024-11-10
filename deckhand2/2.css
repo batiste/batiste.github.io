@@ -659,6 +659,14 @@ img {
     /* filter: hue-rotate(30deg); */
 }
 
+.sign.vh div {
+    background-image: url(sign/vh.png);  
+}
+
+.sign.ma div {
+    background-image: url(sign/ma.png);  
+}
+
 /* .sign img {
     width: 14px;
     height: 14px;

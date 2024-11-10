@@ -253,6 +253,7 @@ var cards = [
         "production": ['r'],
         "copies": 2,
         "css": "bg-top",
+        "sign": "vh",
     },
 
     {
@@ -432,6 +433,7 @@ var cards = [
         "production": ['g', 'or', 'cs'],
         "changed": false,
         "css": "bg-top",
+        "sign": "vh",
     },
 
 
@@ -510,6 +512,7 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-2'],
         "production": ['s'],
+        "sign": "vh",
     },
 
     {
@@ -546,7 +549,7 @@ var cards = [
         "production": ['g'],
         "changed": false,
         "css": "bg-top",
-        "artist": "Vitor Henrique",
+        "sign": "vh",
     },
 
     {
@@ -648,7 +651,7 @@ var cards = [
 
 
     {
-        "title": "Monkey Island",
+        "title": "Friendly Octopus",
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'c'],
         "img": "cards/possesion.png",
@@ -657,6 +660,7 @@ var cards = [
         // "production": ['t'],
         "changed": false,
         "css": "bg-top",
+        "sign": "vh",
     },
 
     {
@@ -987,6 +991,7 @@ var cards = [
         "banners": ['skull-banner', 'skull-banner'],
         "extra": ['vp-4', '3-choices'],
         "changed": false,
+        "sign": "ma",
     },
 
     {
