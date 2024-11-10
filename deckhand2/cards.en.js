@@ -37,13 +37,14 @@ var cards = [
 
 
     {
-        "title": "Kraken's Fury",
+        "title": "Cult of the Monkey",
         "discard": [],
         "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
-        "img": "cards/kraken.png",
+        "img": "cards/monkey-temple.png",
         // "production": ['r']
         'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
+        "css": "bg-10"
     },
 
     {

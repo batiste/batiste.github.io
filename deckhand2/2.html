@@ -147,14 +147,14 @@ cards.forEach((c) => {
     //     }
     //     return cost
     // })
-    // if (c.copies) {
-    //     var clone = JSON.parse(JSON.stringify(c));
-    //     clone.copies = null
-    //     for(let i=2; i<=c.copies; i++) {
-    //         // clone.hide = true;
-    //         cards.push(clone)
-    //     }
-    // }
+    if (c.copies) {
+        var clone = JSON.parse(JSON.stringify(c));
+        clone.copies = null
+        for(let i=2; i<=c.copies; i++) {
+            // clone.hide = true;
+            cards.push(clone)
+        }
+    }
 });
 
 var virtual_cost = {
@@ -656,6 +656,8 @@ cards.forEach((c) => {
     //     block = `prod-block`;
     // }
 
+    // ${i} / ${cards.length}
+
     var card_template = `
     <div>
         <div class="card ${c.css || ""} type-${c.type || ""} ${block}" title="${c.title}" id="card-${i}">
@@ -666,6 +668,8 @@ cards.forEach((c) => {
                 <div class="bg">
                     <img src="${c.img}">
                 </div>
+
+                <div class="card-infos">#${i}</div>
 
                 <div class="top">
                     ${build}

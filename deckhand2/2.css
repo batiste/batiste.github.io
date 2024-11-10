@@ -60,6 +60,10 @@ a, a:visited {
     margin-top: 70px;  
 }
 
+.card.bg-10 .bg {
+    margin-top: 10px;  
+}
+
 .card .bg img {
     width: 100%;
 }
@@ -444,6 +448,21 @@ a, a:visited {
     width: 22px;
 }
 
+.card-infos {
+    position: absolute;
+    top: 71px;
+    right: 20px;
+    background: #e0cda9bb;
+    font-size: 7.5px;
+    padding: 1px 3px;
+    border-radius: 0 0 2px 2px;
+    color:#282828;
+
+    border-bottom: 1px #000000a0 solid;
+    box-shadow: 0px 1px 4px #00000075;
+    display: none;
+}
+
 .card .mpc {
     position: absolute;
     top:0;
@@ -451,7 +470,7 @@ a, a:visited {
     width: 69.088mm;
     height: 93.98mm;
     background-image: url(img/mpc-dark.png);
-    /* background-image: url(img/mpc.png); */
+    background-image: url(img/mpc.png);
     background-size: cover;
     z-index: 100;
 }
