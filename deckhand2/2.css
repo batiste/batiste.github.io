@@ -638,6 +638,12 @@ img {
     backdrop-filter:blur(1px);
     /* will-change: opacity; */
     border-radius: 2px;
+    /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.65); */
+    /* background: #0007; */
+}
+
+.type-supremacy .sign {
+    bottom: 75px;
 }
 
 .sign div {
