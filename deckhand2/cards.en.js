@@ -577,7 +577,7 @@ var cards = [
         "discard": ['s'],
         "title": "Walk the Plank",
         "cost": ['g', 'g'],
-        "img": "cards/lady-pirate.jpg",
+        "img": "cards/lady-pirate.png",
         "banners": ["gun-banner"],
         "extra": ['vp-1', 'x', 'gun-banner'],
         // "production": ['', 'produce', 'g'],
@@ -1126,10 +1126,10 @@ var cards = [
     },
 
     {
-        "title": "Strong Spell",
+        "title": "Statuette",
         "discard": ['g'],
-        "cost": ['r', 'r', 'g', 'g', 'e', 'e'],
-        "img": "cards/spell.png",
+        "cost": ['r', 'r', 'p', 'p', 'e', 'e'],
+        "img": "cards/statuette.png",
         "production": ["h", "or", "cs"],
         "banners": ['gem-banner'],
         "extra": ['vp-4','bolt'],
