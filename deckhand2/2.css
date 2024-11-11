@@ -476,7 +476,7 @@ img {
     width: 69.088mm;
     height: 93.98mm;
     background-image: url(img/mpc-dark.png);
-    background-image: url(img/mpc.png);
+    /* background-image: url(img/mpc.png); */
     background-size: cover;
     z-index: 100;
 }
@@ -649,7 +649,7 @@ img {
 .sign div {
     width: 12px;
     height: 12px;
-    opacity: 0.3;
+    opacity: 0.2;
     background-image: url(sign/bb.png);
     border-radius: 1px;
     background-size: cover;

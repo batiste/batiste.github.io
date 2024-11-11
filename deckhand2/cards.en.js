@@ -577,11 +577,12 @@ var cards = [
         "discard": ['s'],
         "title": "Walk the Plank",
         "cost": ['g', 'g'],
-        "img": "cards/walk.png",
+        "img": "cards/lady-pirate.jpg",
         "banners": ["gun-banner"],
         "extra": ['vp-1', 'x', 'gun-banner'],
         // "production": ['', 'produce', 'g'],
         "changed": false,
+        "css": "bg-top",
     },
 
 
@@ -980,6 +981,7 @@ var cards = [
         "banners": ['parrot-banner'],
         "extra": ['helm-banner', 'produce', 'draw-1'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
@@ -1053,18 +1055,19 @@ var cards = [
     {
         "title": "Emerald Thief",
         "discard": ['p'],
-        "cost": ['e', 'c', 'cs'],
-        "img": "cards/emerald-thiefs.png",
+        "cost": ['e', 'c', 'cs', 'cs'],
+        "img": "cards/nesting.png",
         "production": ['p', 'p'],
         "banners": ['basic-banner', 'parrot-banner'],
         // "extra": ['vp-1'],
         "changed": false,
+        "css": "bg-top"
     },
 
     {
         "title": "Distill",
         "discard": ['r'],
-        "cost": ['s', 'c', 'cs'],
+        "cost": ['s', 'c', 'cs', 'cs'],
         "img": "cards/distill.png",
         "production": ['r', 'r'],
         "banners": ['basic-banner', 'rum-banner'],
@@ -1074,10 +1077,10 @@ var cards = [
     },
 
     {
-        "title": "Armory",
+        "title": "War Ship",
         "discard": ['g'],
-        "cost": ['h', 'c', 'cs'],
-        "img": "cards/armory.png",
+        "cost": ['h', 'c', 'cs', 'cs'],
+        "img": "cards/war-ship.png",
         "production": ['g', 'g'],
         "banners": ['basic-banner', 'gun-banner'],
         // "extra": ['vp-1'],
