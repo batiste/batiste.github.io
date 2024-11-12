@@ -988,12 +988,13 @@ var cards = [
         "title": "Skull Collector",
         "discard": ['g'],
         "cost": ['s', 's', 's'],
-        "img": "cards/skull-3.png",
+        "img": "cards/skull-collector.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'skull-banner'],
         "extra": ['vp-4', '3-choices'],
         "changed": false,
         "sign": "ma",
+        "css": "bg-0"
     },
 
     {

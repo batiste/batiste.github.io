@@ -66,6 +66,10 @@ img {
     margin-top: 70px;  
 }
 
+.card.bg-0 .bg {
+    margin-top: 0;  
+}
+
 .card.bg-10 .bg {
     margin-top: 10px;  
 }
