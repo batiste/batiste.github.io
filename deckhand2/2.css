@@ -621,7 +621,7 @@ img {
 .right img.cross {
     width: 20px;
     margin: 2px;
-    margin-bottom: 8px;
+    margin-bottom: 5px;
 }
 
 .right img.res {
@@ -690,6 +690,7 @@ img {
 .right img.vp {
     margin-right: 2px;
     margin-left: 2px;
+    margin-top: -1px;
 }
 
 /* .right img.vp:last-child {
@@ -704,6 +705,8 @@ img {
 
 .right img.battle  {
     width: 33px;
+    margin: 1px;
+    margin-bottom: 4px;
 }
 
 .right img.tentacle {
