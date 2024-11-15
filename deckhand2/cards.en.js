@@ -71,7 +71,7 @@ var cards = [
         "title": "Smuggler's Cove",
         "discard": [],
         "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
-        "img": "cards/cove.png",
+        "img": "cards/thief-town.png",
         // "production": ['r']
         'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
@@ -90,14 +90,15 @@ var cards = [
     },
 
     {
-        "title": "Military Domination",
+        "title": "Shooting the Kraken",
         "discard": [],
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
-        "img": "cards/raid.png",
+        "img": "cards/shooting-kraken.jpg",
         // "production": ['r']
         'extra': ['vp-4', 'tentacle'],
         'type': 'supremacy',
         "changed": false,
+        "css": "bg-top",
     },
 
     {
@@ -453,10 +454,11 @@ var cards = [
         "title": "Barataria Bay",
         "discard": ['p'],
         "cost": ['r', 'p', 'g', 'cs'],
-        "img": "cards/bay.png",
+        "img": "cards/39.jpg",
         "extra": ['vp-2'],
         'banners': ['coin-banner'],
         "production": ['cs'],
+        "css": "bg-top",
     },
 
     {
@@ -474,12 +476,14 @@ var cards = [
         "title": "Animal Sanctuary",
         "discard": ['p'],
         "cost": ['p', 'p', 'p', 'c'],
+        // "img": "cards/magic-tree.png",
         "img": "cards/sanctuary.png",
         "extra": ['vp-2', 'x', 'parrot-banner'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
         // "value_correction": -1
         "changed": false,
+        "css": "bg-top",
     },
 
 
@@ -643,7 +647,7 @@ var cards = [
     },
 
     {
-        "title": "Smuggler Cache",
+        "title": "Mine",
         "discard": ['r'],
         "cost": ['r', 'e', 'e'],
         "img": "cards/mine.png",

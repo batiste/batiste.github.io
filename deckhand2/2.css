@@ -430,7 +430,7 @@ img {
     background-image: url(img/discard.png);
     background-size: contain;
     background-repeat: no-repeat;
-    padding: 5px 2px 13px 1px;
+    padding: 5px 2px 13px 2px;
     margin-left: -1px;
     margin-top: 5px;
 
@@ -647,7 +647,7 @@ img {
 }
 
 .type-supremacy .sign {
-    bottom: 75px;
+    bottom: 79px;
 }
 
 .sign div {
