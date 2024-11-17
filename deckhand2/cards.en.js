@@ -150,11 +150,48 @@ var cards = [
         "title": "Stolen Treasure",
         "discard": ['g'],
         "cost": ['cs', 'p', 'g', 'r'],
-        "img": "cards/big-chest.png",
+        "img": "cards/2-thieves.png",
         // "banners": ['coin-banner'],
         "extra": ['vp-1'],
         "production": ['cs', 'cs'],
         "copies": 1,
+        "css": "bg-top"
+    },
+
+
+    {
+        "title": "Emerald Thief",
+        "discard": ['p'],
+        "cost": ['e', 'c', 'cs', 'cs'],
+        "img": "cards/nesting.png",
+        "production": ['p', 'p'],
+        "banners": ['basic-banner', 'parrot-banner'],
+        // "extra": ['vp-1'],
+        "changed": false,
+        "css": "bg-top"
+    },
+
+    {
+        "title": "Distill",
+        "discard": ['r'],
+        "cost": ['s', 'c', 'cs', 'cs'],
+        "img": "cards/distill.png",
+        "production": ['r', 'r'],
+        "banners": ['basic-banner', 'rum-banner'],
+        // "extra": ['vp-1'],
+        "changed": false,
+        "css": "bg-top"
+    },
+
+    {
+        "title": "War Ship",
+        "discard": ['g'],
+        "cost": ['h', 'c', 'cs', 'cs'],
+        "img": "cards/war-ship.png",
+        "production": ['g', 'g'],
+        "banners": ['basic-banner', 'gun-banner'],
+        // "extra": ['vp-1'],
+        "changed": false,
         "css": "bg-top"
     },
     
@@ -1053,42 +1090,6 @@ var cards = [
         // "production": ['p'],
         "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
         "extra": ['vp-6'],
-        "changed": false,
-        "css": "bg-top"
-    },
-
-    {
-        "title": "Emerald Thief",
-        "discard": ['p'],
-        "cost": ['e', 'c', 'cs', 'cs'],
-        "img": "cards/nesting.png",
-        "production": ['p', 'p'],
-        "banners": ['basic-banner', 'parrot-banner'],
-        // "extra": ['vp-1'],
-        "changed": false,
-        "css": "bg-top"
-    },
-
-    {
-        "title": "Distill",
-        "discard": ['r'],
-        "cost": ['s', 'c', 'cs', 'cs'],
-        "img": "cards/distill.png",
-        "production": ['r', 'r'],
-        "banners": ['basic-banner', 'rum-banner'],
-        // "extra": ['vp-1'],
-        "changed": false,
-        "css": "bg-top"
-    },
-
-    {
-        "title": "War Ship",
-        "discard": ['g'],
-        "cost": ['h', 'c', 'cs', 'cs'],
-        "img": "cards/war-ship.png",
-        "production": ['g', 'g'],
-        "banners": ['basic-banner', 'gun-banner'],
-        // "extra": ['vp-1'],
         "changed": false,
         "css": "bg-top"
     },
