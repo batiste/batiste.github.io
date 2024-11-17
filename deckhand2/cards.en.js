@@ -318,10 +318,10 @@ var cards = [
     },
 
     {
-        "title": "Gems Market",
+        "title": "Gems Greed",
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
-        "img": "cards/gem-merchant.png",
+        "img": "cards/gem-greed.png",
         'banners': ['gem-banner'],
         "extra": ['vp-1'],
         "production": ['e'],
@@ -1098,7 +1098,7 @@ var cards = [
         "title": "Funeral",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
-        "img": "cards/funeral.png",
+        "img": "cards/2-jaguars.png",
         "production": ['s'],
         "banners": ['skull-banner'],
         "extra": ['vp-4', 'bolt'],
