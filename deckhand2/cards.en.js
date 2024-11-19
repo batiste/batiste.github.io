@@ -149,10 +149,10 @@ var cards = [
     {
         "title": "Stolen Treasure",
         "discard": ['g'],
-        "cost": ['cs', 'p', 'g', 'r'],
+        "cost": ['c', 'p', 'g', 'r'],
         "img": "cards/2-thieves.png",
-        // "banners": ['coin-banner'],
-        "extra": ['vp-1'],
+        "banners": ['coin-banner'],
+        // "extra": ['vp-1'],
         "production": ['cs', 'cs'],
         "copies": 1,
         "css": "bg-top"
@@ -346,6 +346,7 @@ var cards = [
         "banners": ['rum-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
+        "css": "bg-50",
     },
 
     {
@@ -623,7 +624,8 @@ var cards = [
         "extra": ['vp-1', 'x', 'gun-banner'],
         // "production": ['', 'produce', 'g'],
         "changed": false,
-        "css": "bg-top",
+        "css": "bg-top",    
+        "sign": "to",
     },
 
 
@@ -729,10 +731,10 @@ var cards = [
 
     // affinity cards
     {
-        "title": "Docks?",
+        "title": "Walk the plank",
         "discard": ['p'],
         "cost": ['p', 'r', 'h', 'cs'],
-        "img": "cards/docks.png",
+        "img": "cards/walk-plank.png",
         "extra": ['crown'],
         "banners": ['gun-banner'],
         "production": ['g'],
@@ -894,7 +896,8 @@ var cards = [
         "banners": ['gun-banner'],
         "extra": ['bolt', 'bolt', 'battle'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-top",
+        "sign": "to",
     },
 
     {
@@ -1091,7 +1094,7 @@ var cards = [
         "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
         "extra": ['vp-6'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-60"
     },
 
     {

@@ -147,14 +147,14 @@ cards.forEach((c) => {
     //     }
     //     return cost
     // })
-    if (c.copies) {
-        var clone = JSON.parse(JSON.stringify(c));
-        clone.copies = null
-        for(let i=2; i<=c.copies; i++) {
-            // clone.hide = true;
-            cards.push(clone)
-        }
-    }
+    // if (c.copies) {
+    //     var clone = JSON.parse(JSON.stringify(c));
+    //     clone.copies = null
+    //     for(let i=2; i<=c.copies; i++) {
+    //         // clone.hide = true;
+    //         cards.push(clone)
+    //     }
+    // }
 });
 
 var virtual_cost = {
@@ -224,7 +224,7 @@ var get_mitigation_cost = (co, l) => {
 
 var virtual_value = {
     // "c": 4,
-    "cs": 2.5,
+    "cs": 2.6,
     "g": 2,
     "p": 2,
     "r": 2,
@@ -262,6 +262,9 @@ var evaluate_production = (c) => {
         }
     }
     if (bits.length == 2) {
+        if (bits[0] == 'cs') {
+            return 1.8 * virtual_value[bits[0]]
+        }
         // double production of the same value
         return 1.6 * virtual_value[bits[0]]
     }
