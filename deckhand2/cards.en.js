@@ -1111,10 +1111,10 @@ var cards = [
     },
 
     {
-        "title": "?",
+        "title": "Powder Keg Accident",
         "discard": ['e'],
         "cost": ['p', 'p', 'r', 'r', 'r', 'cs', 'cs'],
-        "img": "cards/fire.png",
+        "img": "cards/powder.png",
         "production": [],
         "banners": ['parrot-banner', 'rum-banner'],
         "extra": ['vp-7', 'bolt', 'bolt'],
