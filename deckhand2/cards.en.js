@@ -118,7 +118,7 @@ var cards = [
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/bribe.png",
         // "production": ['r']
-        'extra': ['compass', 'telescope', 'draw-2'],
+        'extra': ['vp-1', 'compass', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -617,7 +617,7 @@ var cards = [
 
     {
         "discard": ['s'],
-        "title": "Walk the Plank",
+        "title": "Lady Pirate",
         "cost": ['g', 'g'],
         "img": "cards/lady-pirate.png",
         "banners": ["gun-banner"],
@@ -733,13 +733,14 @@ var cards = [
     {
         "title": "Walk the plank",
         "discard": ['p'],
-        "cost": ['p', 'r', 'h', 'cs'],
+        "cost": ['p', 'r', 'h'],
         "img": "cards/walk-plank.png",
-        "extra": ['crown'],
+        "extra": ['vp-2'],
         "banners": ['gun-banner'],
         "production": ['g'],
         "changed": false,
         "css": "bg-top",
+        "sign": "vh"
     },
 
     {
