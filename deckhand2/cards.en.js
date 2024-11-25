@@ -485,6 +485,8 @@ var cards = [
         "extra": ["battle"],
         "production": ['s'],
         "changed": false,
+        "sign": "vh",
+        "css": "bg-top",
     },
 
 
@@ -735,8 +737,8 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'r', 'h'],
         "img": "cards/walk-plank.png",
-        "extra": ['vp-2'],
-        "banners": ['gun-banner'],
+        "extra": ['crown'],
+        // "banners": ['gun-banner'],
         "production": ['g'],
         "changed": false,
         "css": "bg-top",
