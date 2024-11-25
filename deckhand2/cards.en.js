@@ -142,7 +142,7 @@ var cards = [
         "banners": ['basic-banner', 'coin-banner'],
         "extra": ['vp-1'],
         "production": ['cs'],
-        "copies": 3,
+        "copies": 2,
     },
 
 
@@ -343,15 +343,15 @@ var cards = [
         "title": "Abandoned Manor",
         "cost": ['g', 'p', 'cs', 'cs'],
         "img": "cards/manor.png",
-        "banners": ['rum-banner'],
+        "banners": ['gun-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
         "css": "bg-50",
     },
 
     {
-        "title": "Treasure Map",
-        "discard": ['p'],
+        "title": "Helpful Parrot",
+        "discard": ['h'],
         "cost": ['p', 'r', 'cs'],
         "img": "cards/parrot-reconnaissance.png",
         // "banners": ['gem-banner'],
@@ -497,9 +497,10 @@ var cards = [
         "cost": ['r', 'p', 'g', 'cs'],
         "img": "cards/39.jpg",
         "extra": ['vp-2'],
-        'banners': ['coin-banner'],
+        'banners': ['rum-banner'],
         "production": ['cs'],
         "css": "bg-top",
+        "copies": 2,
     },
 
     {
