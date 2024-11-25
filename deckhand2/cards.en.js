@@ -334,7 +334,7 @@ var cards = [
         "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thief.png",
         "extra": ['vp-1', 'x', 'gem-banner'],
-        "banners": ['gun-banner'],
+        "banners": ['coin-banner'],
         "production": ['e'],
     },
 
@@ -403,6 +403,7 @@ var cards = [
         'banners': ['rum-banner'],
         // "extra": ['vp-1'],
         "production": ['g', 'or', 'p'],
+        "css": "bg-top"
     },
 
     // {
@@ -1119,7 +1120,7 @@ var cards = [
         "cost": ['p', 'p', 'r', 'r', 'r', 'cs', 'cs'],
         "img": "cards/powder.png",
         "production": [],
-        "banners": ['parrot-banner', 'rum-banner'],
+        "banners": ['parrot-banner', 'gun-banner'],
         "extra": ['vp-7', 'bolt', 'bolt'],
         "changed": false,
         "css": "bg-top"
