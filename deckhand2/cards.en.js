@@ -796,9 +796,9 @@ var cards = [
     {
         "title": "Shipyard",
         "discard": ['h'],
-        "cost": ['e', 'e', 'cs'],
+        "cost": ['e', 'e', 'c'],
         "img": "cards/shipyard.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['h'],
         "css": "bg-top"
@@ -807,7 +807,7 @@ var cards = [
     {
         "title": "Troubled Expedition",
         "discard": ['s'],
-        "cost": ['h', 'h', 'c'],
+        "cost": ['h', 'h', 'cs'],
         "img": "cards/trouble.png",
         "extra": ['crown'],
         // "banners": ['rum-banner'],
@@ -849,7 +849,7 @@ var cards = [
     {
         "title": "Docker's Guild",
         "discard": ['r'],
-        "cost": ['p', 'g', 'r', 'cs', 'cs'],
+        "cost": ['p', 'g', 'r', 'c', 'cs'],
         "img": "cards/dockers-guild.png",
         // "production": ['r'],
         "banners": ['basic-banner', 'basic-banner'],
@@ -1050,11 +1050,12 @@ var cards = [
         "title": "Captain Undead",
         "discard": ['g'],
         "cost": ['s', 's', 's', 'h'],
-        "img": "cards/captain-undead.png",
+        "img": "cards/ghost.jpg",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'crown'],
         "changed": false,
+        "css": "bg-0"
     },
 
     {
