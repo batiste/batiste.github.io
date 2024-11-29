@@ -684,9 +684,10 @@ var cards = [
         "title": "Spice Monopoly",
         "discard": ['h'],
         "cost": ['p', 'h', 'h'],
-        "img": "cards/mono.png",
+        "img": "cards/construction.jpg",
         "banners": ['rum-banner'],
         "extra": ['vp-3', 'x', 'helm-banner'],
+        "css": "bg-top",
     },
 
     {
