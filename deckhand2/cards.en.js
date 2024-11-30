@@ -512,6 +512,7 @@ var cards = [
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
         "copies": 2,
+        "css": "bg-30",
     },
 
     {
@@ -1105,7 +1106,7 @@ var cards = [
     },
 
     {
-        "title": "Jaguar's Attack",
+        "title": "Jaguar's Ambush",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
         "img": "cards/2-jaguars.png",
