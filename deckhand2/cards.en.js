@@ -39,10 +39,10 @@ var cards = [
     {
         "title": "Tamed Kraken",
         "discard": [],
-        "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
+        "cost": ['gem-banner', 'skull-banner', 'parrot-banner'],
         "img": "cards/tamed.jpg",
         // "production": ['r']
-        'extra': ['vp-5', 'tentacle'],
+        'extra': ['vp-4', 'tentacle', 'telescope'],
         'type': 'supremacy',
         "css": "bg-top"
     },
@@ -50,10 +50,10 @@ var cards = [
     {
         "title": "Mermaid",
         "discard": [],
-        "cost": ['gem-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
+        "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['crown', '3-choices', 'tentacle'],
+        'extra': ['vp-5', 'crown', 'tentacle'],
         'type': 'supremacy',
     },
 
@@ -107,7 +107,7 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-3', '3-choices', 'crown'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-0",
