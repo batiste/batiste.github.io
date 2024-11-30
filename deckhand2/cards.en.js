@@ -53,7 +53,7 @@ var cards = [
         "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['vp-5', 'crown', 'tentacle'],
+        'extra': ['vp-5', 'tentacle', 'crown'],
         'type': 'supremacy',
     },
 
@@ -669,6 +669,7 @@ var cards = [
         "production": [`cs`],
         "changed": false,
         "block": true,
+        "css": "bg-50",
     },
 
 
