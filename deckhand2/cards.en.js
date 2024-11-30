@@ -25,7 +25,7 @@ var cards = [
     },
 
     {
-        "title": "Graveyard",
+        "title": "Greed till the end",
         "discard": [],
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/skeleton-treasure.png",
@@ -37,14 +37,14 @@ var cards = [
 
 
     {
-        "title": "Cult of the Monkey",
+        "title": "Tamed Kraken",
         "discard": [],
         "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
-        "img": "cards/monkey-temple.png",
+        "img": "cards/tamed.jpg",
         // "production": ['r']
         'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
-        "css": "bg-10"
+        "css": "bg-top"
     },
 
     {
@@ -207,7 +207,7 @@ var cards = [
     },
 
     {
-        "title": "White Parrot",
+        "title": "Familiar Toucan",
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/toucan.png",
@@ -237,7 +237,7 @@ var cards = [
     },
 
     {
-        "title": "Bird Handler",
+        "title": "Lookout",
         "discard": ['p'],
         "cost": ['p', 'c', 'cs'],
         "img": "cards/spyglass.png",
@@ -492,7 +492,7 @@ var cards = [
 
 
     {
-        "title": "Barataria Bay",
+        "title": "Quiet Afternoon",
         "discard": ['p'],
         "cost": ['r', 'p', 'g', 'cs'],
         "img": "cards/39.jpg",
@@ -635,7 +635,7 @@ var cards = [
 
     {
         "discard": ['p'],
-        "title": "Captain Lhoryn",
+        "title": "Planning attack",
         "cost": ['h', 'h', 'c'],
         "img": "cards/watch.png",
         "banners": ['gem-banner'],
@@ -646,7 +646,7 @@ var cards = [
 
     {
         "discard": ['e'],
-        "title": "Captain Grenwish",
+        "title": "Emerald Bird",
         "cost": ['e', 'p'],
         "img": "cards/emerald-bird.png",
         "banners": ['gem-banner'],
@@ -659,7 +659,7 @@ var cards = [
 
     {
         "discard": ['h'],
-        "title": "Captain Cutlass",
+        "title": "Cutlass Wielder",
         "cost": ['s', 'h', 'c', 'cs'],
         "img": "cards/killer.png",
         "extra": ['vp-3'],
@@ -691,7 +691,7 @@ var cards = [
     },
 
     {
-        "title": "Mine",
+        "title": "Emerald's Mine",
         "discard": ['r'],
         "cost": ['r', 'e', 'e'],
         "img": "cards/mine.png",
@@ -723,7 +723,7 @@ var cards = [
     },
 
     {
-        "title": "Pilferer's Guild",
+        "title": "Pilferer's Monument",
         "discard": ['s'],
         "cost": ['r', 'g', 'g', 'cs'],
         "img": "cards/thieves-statue.png",
@@ -821,10 +821,10 @@ var cards = [
         "title": "Strange Encounter",
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
-        "img": "cards/cover.jpg",
+        "img": "cards/monkey-temple.png",
         "banners": ['skull-banner'],
         "extra": ['vp-3', 'battle', 'tentacle'],
-        "css": "bg-top"
+        "css": "bg-40"
     },
 
     {
@@ -907,7 +907,7 @@ var cards = [
     },
 
     {
-        "title": "Mobile Trader",
+        "title": "Potion Trader",
         "discard": ['h'],
         "cost": ['r', 'r', 'cs'],
         "img": "cards/traveling-salesman.png",
@@ -1011,7 +1011,7 @@ var cards = [
     },
 
     {
-        "title": "Happy End!",
+        "title": "Dead King's Treasure",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
         "img": "cards/king-treasure.png",
@@ -1060,7 +1060,7 @@ var cards = [
     },
 
     {
-        "title": "Emerald Bayou",
+        "title": "Emerald's Portal",
         "discard": ['e'],
         "cost": ['e', 'e', 'e', 's'],
         "img": "cards/doom-temple.png",
@@ -1105,7 +1105,7 @@ var cards = [
     },
 
     {
-        "title": "Funeral",
+        "title": "Jaguar's Attack",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
         "img": "cards/2-jaguars.png",
