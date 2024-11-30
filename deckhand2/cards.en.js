@@ -105,11 +105,12 @@ var cards = [
         "title": "Deep Exploration",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
-        "img": "cards/naval-sup.png",
+        "img": "cards/3-scrolls.png",
         // "production": ['r']
         'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
         "changed": false,
+        "css": "bg-0",
     },
 
     {
