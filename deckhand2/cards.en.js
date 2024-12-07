@@ -1054,7 +1054,7 @@ var cards = [
         "title": "Captain Undead",
         "discard": ['g'],
         "cost": ['s', 's', 's', 'h'],
-        "img": "cards/ghost.jpg",
+        "img": "cards/ghost-2.jpg",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'crown'],
