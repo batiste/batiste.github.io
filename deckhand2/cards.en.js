@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['vp-1', 'crown', 'telescope'],
+        'extra': ['vp-2', 'crown', 'telescope'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
     },
@@ -19,7 +19,7 @@ var cards = [
         "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/citadel.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -30,7 +30,7 @@ var cards = [
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/skeleton-treasure.png",
         // "production": ['r']
-        'extra': ['vp-4', '3-choices'],
+        'extra': ['vp-5', '3-choices'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -42,7 +42,7 @@ var cards = [
         "cost": ['gem-banner', 'skull-banner', 'parrot-banner'],
         "img": "cards/tamed.jpg",
         // "production": ['r']
-        'extra': ['vp-4', 'tentacle', 'telescope'],
+        'extra': ['vp-5', 'tentacle', 'telescope'],
         'type': 'supremacy',
         "css": "bg-top"
     },
@@ -53,7 +53,7 @@ var cards = [
         "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['vp-5', 'tentacle', 'crown'],
+        'extra': ['vp-6', 'tentacle', 'crown'],
         'type': 'supremacy',
     },
 
@@ -63,7 +63,7 @@ var cards = [
         "cost": ['gem-banner', 'gem-banner'],
         "img": "cards/explorers.png",
         // "production": ['r']
-        'extra': ['vp-3', 'draw-1'],
+        'extra': ['vp-4', 'draw-1'],
         'type': 'supremacy',
     },
 
@@ -73,7 +73,7 @@ var cards = [
         "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
         "img": "cards/thief-town.png",
         // "production": ['r']
-        'extra': ['vp-2', 'draw-2'],
+        'extra': ['vp-3', 'draw-2'],
         'type': 'supremacy',
     },
 
@@ -83,7 +83,7 @@ var cards = [
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/grand-escape.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown'],
+        'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-top",
@@ -95,7 +95,7 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/shooting-kraken.jpg",
         // "production": ['r']
-        'extra': ['vp-4', 'tentacle'],
+        'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-top",
@@ -107,19 +107,19 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
         // "production": ['r']
-        'extra': ['vp-3', '3-choices', 'crown'],
+        'extra': ['vp-4', '3-choices', 'crown'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-0",
     },
 
     {
-        "title": "Governor's Bribe",
+        "title": "Thief Tattoo",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/tattoo.png",
         // "production": ['r']
-        'extra': ['vp-1', 'compass', 'draw-2'],
+        'extra': ['vp-2', 'compass', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-50",
@@ -131,7 +131,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/cellar.png",
         // "production": ['r']
-        'extra': ['vp-2', 'draw-1'],
+        'extra': ['vp-3', 'draw-1'],
         'type': 'supremacy',
         "changed": false,
     },
