@@ -117,11 +117,12 @@ var cards = [
         "title": "Governor's Bribe",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
-        "img": "cards/bribe.png",
+        "img": "cards/tattoo.png",
         // "production": ['r']
         'extra': ['vp-1', 'compass', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
+        "css": "bg-50",
     },
 
     {
