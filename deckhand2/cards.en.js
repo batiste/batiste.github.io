@@ -14,14 +14,15 @@ var cards = [
     },
 
     {
-        "title": "Citadel Market",
+        "title": "Bomber",
         "discard": [],
-        "cost": ['skull-banner', 'rum-banner', 'gun-banner', 'gun-banner'],
-        "img": "cards/citadel.png",
+        "cost": ['gun-banner', 'gun-banner', 'skull-banner', 'rum-banner'],
+        "img": "cards/bomber.png",
         // "production": ['r']
         'extra': ['vp-4', 'crown'],
         'type': 'supremacy',
         "changed": false,
+        "css": "bg-top"
     },
 
     {
