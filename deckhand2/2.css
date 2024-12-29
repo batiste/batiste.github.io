@@ -28,20 +28,20 @@ img {
 
 .card {
     background-color: transparent;
-    width: 69.088mm;
-    height: 94.2mm;
-    overflow: hidden;
+    /* width: 69.088mm;
+    height: 94.2mm; */
+    /* overflow: hidden;
     width: 63.5mm;
-    height: 88.8mm;
+    height: 88.8mm; */
 }
 
 .card .inner {
     position: relative;
     overflow: hidden;
-    width: 69.088mm;
+    width: 69.24972972972974mm;
     height: 94.2mm;
-    margin-left: -2.843mm;
-    margin-top: -2.7mm;
+    /* margin-left: -2.843mm;
+    margin-top: -2.7mm; */
 }
 
 
@@ -499,7 +499,7 @@ img {
     left:0;
     width: 69.088mm;
     height: 93.98mm;
-    background-image: url(img/mpc-dark.png);
+    /* background-image: url(img/mpc-dark.png); */
     /* background-image: url(img/mpc.png); */
     background-size: cover;
     z-index: 100;
@@ -507,6 +507,12 @@ img {
 
 .card.preparePrint .mpc {
     /* display: none; */
+}
+
+.card.preparePrint {
+    width: 69.24972972972974mm;
+    height: 94.2mm;
+    overflow: visible;
 }
 
 .right {
