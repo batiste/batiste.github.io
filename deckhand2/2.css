@@ -408,7 +408,7 @@ img {
     background-image: url(img/banner-2.png);
     background-size:contain;
     background-repeat: no-repeat;
-    rotate: 1deg;
+    rotate: 0deg;
     /* display: none; */
     /* text-shadow: 1.3px 1.4px black; */
     

@@ -187,7 +187,7 @@ var cards = [
         "banners": ['basic-banner', 'rum-banner'],
         // "extra": ['vp-1'],
         "changed": false,
-        "css": "bg-top title-medium"
+        "css": "bg-top title-small"
     },
 
     {
@@ -199,7 +199,7 @@ var cards = [
         "banners": ['basic-banner', 'gun-banner'],
         // "extra": ['vp-1'],
         "changed": false,
-        "css": "bg-top title-medium"
+        "css": "bg-top title-small"
     },
     
 
@@ -559,11 +559,11 @@ var cards = [
     },
 
     {
-        "title": "Rum Merchant",
+        "title": "Barrel Master",
         "discard": ['r'],
-        "cost": ['h', 'cs', 'cs'],
+        "cost": ['h', 'c', 'cs'],
         "img": "cards/rum-merchant.png",
-        "banners": ['basic-banner'],
+        "banners": ['rum-banner'],
         "extra": ['draw-1'],
         "production": ['r'],
         "css": "title-medium",
@@ -590,7 +590,7 @@ var cards = [
         "extra": ['vp-1', 'compass'],
         "production": ['p'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-50"
     },
 
     {
@@ -1076,7 +1076,7 @@ var cards = [
     },
 
     {
-        "title": "Undead Fleet",
+        "title": "Macabre Mates",
         "discard": ['g'],
         "cost": ['s', 's', 's', 'h'],
         "img": "cards/ghost-2.jpg",
