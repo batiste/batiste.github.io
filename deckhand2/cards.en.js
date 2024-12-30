@@ -211,7 +211,7 @@ var cards = [
     },
 
     {
-        "title": "Toucan Familiar",
+        "title": "Tropical Messenger",
         "discard": ['p'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/toucan.png",
@@ -222,13 +222,14 @@ var cards = [
     },
 
     {
-        "title": "Gun Merchant",
+        "title": "Arms Dealer",
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
         "img": "cards/gun-merchant.png",
         'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
         "copies": 2,
+        "css": "bg-top title-medium"
     },
 
     {
@@ -659,13 +660,13 @@ var cards = [
 
     {
         "discard": ['e'],
-        "title": "Emerald Bird",
+        "title": "Emerald Magpie",
         "cost": ['e', 'p'],
         "img": "cards/emerald-bird.png",
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'x', 'gem-banner'],
         "changed": false,
-        "css": "bg-top",
+        "css": "bg-60",
         // "production": ['discard-helm', 'produce', 'any'],
     },
 
@@ -1066,7 +1067,7 @@ var cards = [
     },
 
     {
-        "title": "Captain Undead",
+        "title": "Undead Fleet",
         "discard": ['g'],
         "cost": ['s', 's', 's', 'h'],
         "img": "cards/ghost-2.jpg",
@@ -1074,11 +1075,11 @@ var cards = [
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'crown'],
         "changed": false,
-        "css": "bg-0"
+        "css": "bg-20"
     },
 
     {
-        "title": "Emerald's Portal",
+        "title": "Verdant Portal",
         "discard": ['e'],
         "cost": ['e', 'e', 'e', 's'],
         "img": "cards/doom-temple.png",
@@ -1124,7 +1125,7 @@ var cards = [
     },
 
     {
-        "title": "Jaguar's Territory",
+        "title": "Predator's Strike",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
         "img": "cards/2-jaguars.png",
@@ -1137,7 +1138,7 @@ var cards = [
     },
 
     {
-        "title": "Unlucky Accident",
+        "title": "Unlucky Incident",
         "discard": ['e'],
         "cost": ['p', 'p', 'r', 'r', 'r', 'cs', 'cs'],
         "img": "cards/powder.png",
@@ -1149,7 +1150,7 @@ var cards = [
     },
 
     {
-        "title": "Emerald Whale",
+        "title": "Jade Whale",
         "discard": ['h'],
         "cost": ['h', 'p'],
         "img": "cards/emerald-whale.png",
@@ -1157,11 +1158,11 @@ var cards = [
         "banners": ['helm-banner'],
         "extra": ['gem-banner', 'produce', 'draw-1'],
         "changed": false,
-        "css": "bg-top title-top"
+        "css": "bg-top title-top title-medium"
     },
 
     {
-        "title": "Monkey Statuette",
+        "title": "Simian Idol",
         "discard": ['g'],
         "cost": ['r', 'r', 'p', 'p', 'e', 'e'],
         "img": "cards/statuette.png",
@@ -1169,6 +1170,6 @@ var cards = [
         "banners": ['gem-banner'],
         "extra": ['vp-4','bolt'],
         "changed": false,
-        "css": "bg-top title-top"
+        "css": "bg-top title-top title-medium"
     },
 ]

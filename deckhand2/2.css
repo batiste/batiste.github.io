@@ -395,7 +395,7 @@ img {
     bottom:auto;
     width: 170px;
     right: -35px;
-    padding: 6px 21px 20px 20px;
+    padding: 6px 26px 22px 23px;
     border-radius: 0 0 0 3px;
     color: #000000dc;
     text-align: center;
@@ -421,7 +421,7 @@ img {
 
 .title-small .title {
     right: -89px;
-    padding: 6px 48px 20px 0px;
+    padding: 6px 50px 21px 0px;
 }
 
 .title-top .title {
