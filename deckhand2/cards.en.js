@@ -11,10 +11,11 @@ var cards = [
         'extra': ['vp-2', 'crown', 'telescope'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
+        "css": "bg-30 title-small"
     },
 
     {
-        "title": "Bomber",
+        "title": "Mad Bomber",
         "discard": [],
         "cost": ['gun-banner', 'gun-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/bomber.png",
@@ -26,7 +27,7 @@ var cards = [
     },
 
     {
-        "title": "Greed till the end",
+        "title": "Eternal Greed",
         "discard": [],
         "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/skeleton-treasure.png",
@@ -56,10 +57,11 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-6', 'tentacle', 'crown'],
         'type': 'supremacy',
+        "css": "bg-30 title-small"
     },
 
     {
-        "title": "Emerald Valley",
+        "title": "Emerald Quest",
         "discard": [],
         "cost": ['gem-banner', 'gem-banner'],
         "img": "cards/explorers.png",
@@ -91,7 +93,7 @@ var cards = [
     },
 
     {
-        "title": "Shooting the Kraken",
+        "title": "Hurt Kraken",
         "discard": [],
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/shooting-kraken.jpg",
@@ -103,7 +105,7 @@ var cards = [
     },
 
     {
-        "title": "Deep Exploration",
+        "title": "Path to Riches",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
@@ -115,7 +117,7 @@ var cards = [
     },
 
     {
-        "title": "Thief Tattoo",
+        "title": "Inking Oath",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/tattoo.png",
@@ -146,11 +148,12 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['cs'],
         "copies": 2,
+        "css": "bg-40 title-medium"
     },
 
 
     {
-        "title": "Stolen Treasure",
+        "title": "Stolen Stash",
         "discard": ['g'],
         "cost": ['c', 'p', 'g', 'r'],
         "img": "cards/2-thieves.png",
@@ -158,12 +161,12 @@ var cards = [
         // "extra": ['vp-1'],
         "production": ['cs', 'cs'],
         "copies": 1,
-        "css": "bg-top"
+        "css": "bg-top title-medium"
     },
 
 
     {
-        "title": "Emerald Thief",
+        "title": "Nest of Riches",
         "discard": ['p'],
         "cost": ['e', 'c', 'cs', 'cs'],
         "img": "cards/nesting.png",
@@ -171,7 +174,7 @@ var cards = [
         "banners": ['basic-banner', 'parrot-banner'],
         // "extra": ['vp-1'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-top title-medium"
     },
 
     {
@@ -268,7 +271,7 @@ var cards = [
 
     {
         "discard": ['r'],
-        "title": "Thirsty Pirate",
+        "title": "Jungle Corsair",
         "cost": ['r', 'cs', 'c'],
         "img": "cards/handler.png",
         "extra": ['vp-1'],
@@ -315,7 +318,7 @@ var cards = [
     },
 
     {
-        "title": "At the helm",
+        "title": "Wandering Wheel",
         "discard": ['h'],
         "cost": ['r', 'p', 'c'],
         "img": "cards/monkey-helm.png",
@@ -323,7 +326,7 @@ var cards = [
         'banners': ['helm-banner'],
         "production": ['h'],
         "copies": 2,
-        "css": "bg-top title-medium",
+        "css": "bg-60",
     },
 
     {
@@ -438,7 +441,7 @@ var cards = [
     // },
 
     {
-        "title": "Duchess",
+        "title": "Rum Heiress",
         "discard": ['p'],
         "cost": ['g', 'g', 'cs', 'cs'],
         "img": "cards/duchess.png",
@@ -446,7 +449,7 @@ var cards = [
         "production": ['p', 'or', 'r'],
         "extra": ['vp-1'],
         "changed": false,
-        "css": "bg-top title-small"
+        "css": "bg-top title-medium",
     },
 
     {
@@ -572,6 +575,7 @@ var cards = [
         "extra": ['vp-2'],
         "production": ['s'],
         "sign": "vh",
+        "css": "bg-top title-medium",
     },
 
     {
@@ -673,7 +677,7 @@ var cards = [
 
     {
         "discard": ['h'],
-        "title": "Cutlass Wielder",
+        "title": "Pirate's Cut",
         "cost": ['s', 'h', 'c', 'cs'],
         "img": "cards/killer.png",
         "extra": ['vp-3'],
@@ -681,7 +685,7 @@ var cards = [
         "production": [`cs`],
         "changed": false,
         "block": true,
-        "css": "bg-top",
+        "css": "bg-top title-medium",
     },
 
 
@@ -691,7 +695,7 @@ var cards = [
         "cost": ['g', 's', 's'],
         "img": "cards/doom-island.png",
         "extra": ['vp-3', 'x', 'skull-banner'],
-        "css": "bg-top",
+        "css": "bg-top title-medium",
     },
 
 
@@ -819,7 +823,7 @@ var cards = [
         "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-top title-medium",
+        "css": "bg-top title-small",
     },
 
     {
@@ -885,7 +889,7 @@ var cards = [
         "banners": ["helm-banner"],
         "extra": ['vp-2', 'x', 'rum-banner'],
         "changed": false,
-        "css": "bg-top title-medium"
+        "css": "bg-top title-small"
     },
 
     {
