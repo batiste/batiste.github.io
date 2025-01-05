@@ -327,7 +327,7 @@ var cards = [
         'banners': ['helm-banner'],
         "production": ['h'],
         "copies": 2,
-        "css": "bg-60",
+        "css": "bg-40",
     },
 
     {
@@ -561,7 +561,7 @@ var cards = [
     {
         "title": "Barrel Master",
         "discard": ['r'],
-        "cost": ['h', 'c', 'cs'],
+        "cost": ['h', 'cs', 'cs'],
         "img": "cards/rum-merchant.png",
         "banners": ['rum-banner'],
         "extra": ['draw-1'],
@@ -572,7 +572,7 @@ var cards = [
     {
         "title": "Cavern Horror",
         "discard": ['s'],
-        "cost": ['s', 'e', 'cs', 'cs'],
+        "cost": ['s', 'e', 'cs'],
         "img": "cards/cavern-horror.png",
         "banners": ['skull-banner'],
         "extra": ['vp-2'],
@@ -839,7 +839,7 @@ var cards = [
         // "banners": ['rum-banner'],
         "production": ['s'],
         "changed": false,
-        "css": "bg-top"
+        "css": "bg-top title-medium",
     },
 
     {
@@ -935,7 +935,7 @@ var cards = [
     },
 
     {
-        "title": "Elixir of Power",
+        "title": "Elixir Dealer",
         "discard": ['h'],
         "cost": ['r', 'r', 'cs'],
         "img": "cards/traveling-salesman.png",
@@ -943,7 +943,7 @@ var cards = [
         "production": ['g'],
         "extra": ['compass'],
         "changed": true,
-        "css": "bg-top"
+        "css": "bg-top title-medium",
     },
 
     {

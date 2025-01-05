@@ -433,7 +433,7 @@ img {
 
 .title-bottom .title {
     top: auto;
-    bottom: 12px;
+    bottom: 24px;
 }
 
 .title span:first-child {
@@ -522,8 +522,8 @@ img {
     left:0;
     width: 69.088mm;
     height: 93.98mm;
-    /* background-image: url(img/mpc-dark.png); */
-    background-image: url(img/mpc.png);
+    background-image: url(img/mpc-dark.png);
+    /* background-image: url(img/mpc.png); */
     background-size: cover;
     z-index: 100;
 }
@@ -642,17 +642,17 @@ img {
 
 .type-supremacy .title {
     z-index: 60;
-    left: -75px;
-    top: 48px;
+    left: -79px;
+    top: 55px;
     padding: 8px 9px 42px 48px;
     width: 186px;
-    rotate: 5deg;
+    rotate: 1deg;
     background-image: url(img/banner.png);
 }
 
 .title-small.type-supremacy .title {
     left: -102px;
-    top: 49px;
+    top: 55px;
     padding: 7px 0px 42px 69px;
     width: 167px;
 }
