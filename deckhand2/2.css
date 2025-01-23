@@ -133,7 +133,7 @@ img {
 }
 
 .banners .banner {
-    margin-top: 13px;
+    margin-top: 15px;
     margin-right: 4px;
     margin-left: -3px;
     width: 39px;
@@ -318,13 +318,12 @@ img {
 }
 
 .type .resource img {
-    width: 26px;
+    width: 27px;
 }
 
 .type .helm img {
     width: 30px;
 }
-
 
 .card .top-bar {
     width: 100%;
@@ -555,7 +554,7 @@ img {
     background: url(img/stick.png);
     background-size: 260px 26px;
     background-repeat: no-repeat;
-    background-position-y: 14px;
+    background-position-y: 16px;
     background-position-x: right;
     padding-right: 8px;
     margin-right: auto;
@@ -594,7 +593,7 @@ img {
 
 .right img {
     width: 38px;
-    max-height: 36px;
+    max-height: 38px;
     align-self: center;
 }
 
@@ -662,8 +661,10 @@ img {
 }
 
 .right .no-compass {
-    width: 34px;
+    width: 35px;
     margin-left: 3px;
+    margin-right: 1px;
+    margin-top: 1px;
 }
 
 .mult {
@@ -758,6 +759,7 @@ img {
     margin-left: 1px;
     margin-right: 2px;
     margin-bottom: 0px;
+    margin-top: -2px;
     width: 35px;
 }
 
@@ -765,6 +767,7 @@ img {
     margin-right: 2px;
     margin-left: 2px;
     margin-top: -1px;
+    width: 36px;
 }
 
 /* .right img.vp:last-child {
