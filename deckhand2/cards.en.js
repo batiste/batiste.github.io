@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['vp-2', 'crown', 'telescope'],
+        'extra': ['crown', 'telescope', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign"
@@ -44,7 +44,7 @@ var cards = [
         "cost": ['gem-banner', 'skull-banner', 'parrot-banner'],
         "img": "cards/tamed.jpg",
         // "production": ['r']
-        'extra': ['vp-5', 'tentacle', 'telescope'],
+        'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-top",
         "sign": "zp",
@@ -56,7 +56,7 @@ var cards = [
         "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['vp-6', 'tentacle', 'crown'],
+        'extra': ['vp-6', 'crown', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign",
     },
@@ -114,7 +114,7 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
         // "production": ['r']
-        'extra': ['vp-4', '3-choices', 'crown'],
+        'extra': ['vp-4', 'crown', '3-choices'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-0",
@@ -138,7 +138,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/cellar.png",
         // "production": ['r']
-        'extra': ['vp-3', 'draw-1'],
+        'extra': ['vp-3', 'crown', 'draw-1'],
         'type': 'supremacy',
         "changed": false,
         "css": "title-small left-sign",
@@ -579,15 +579,15 @@ var cards = [
     },
 
     {
-        "title": "Quiet Sidekick",
+        "title": "Sidekick",
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['vp-3'],
+        "extra": ['vp-2', 'draw-1'],
         // "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
-        "css": "bg-top title-medium",
+        "css": "bg-top title-small",
     },
 
     {
@@ -606,7 +606,7 @@ var cards = [
     {
         "discard": ['g'],
         "title": "Sneak Attack",
-        "cost": ['s', 's', 'g', 'cs'],
+        "cost": ['s', 'h', 'g', 'cs'],
         "img": "cards/sneak-attack.png",
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'battle'],
@@ -644,8 +644,8 @@ var cards = [
         "title": "Planning Ahead",
         "cost": ['h', 'h', 'c'],
         "img": "cards/watch.png",
-        "banners": ['gem-banner'],
-        "extra": ['vp-4', 'telescope'],
+        "banners": ['helm-banner'],
+        "extra": ['telescope', 'draw-2'],
         "changed": false,
     },
 
@@ -841,11 +841,35 @@ var cards = [
     {
         "title": "Grave Robbers",
         "discard": ['s'],
-        "cost": ['h', 'g'],
+        "cost": ['s', 'g'],
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
         "css": "title-medium"
+    },
+
+    {
+        "title": "Jade Whale",
+        "discard": ['h'],
+        "cost": ['h', 'p'],
+        "img": "cards/emerald-whale.png",
+        "production": [],
+        "banners": ['parrot-banner'],
+        "extra": ['gem-banner', 'produce', 'draw-1'],
+        "changed": false,
+        "css": "bg-top title-top title-medium"
+    },
+
+    {
+        "title": "Treasure Hunt",
+        "discard": ['p'],
+        "cost": ['e', 'p'],
+        "img": "cards/treasure-map.png",
+        // "production": ['e'],
+        "banners": ['gem-banner'],
+        "extra": ['helm-banner', 'produce', 'draw-1'],
+        "changed": false,
+        "css": "bg-top title-medium"
     },
 
     {
@@ -1037,18 +1061,6 @@ var cards = [
     },
 
     {
-        "title": "Treasure Hunt",
-        "discard": ['p'],
-        "cost": ['e', 'p'],
-        "img": "cards/treasure-map.png",
-        // "production": ['e'],
-        "banners": ['parrot-banner'],
-        "extra": ['helm-banner', 'produce', 'draw-1'],
-        "changed": false,
-        "css": "bg-top title-medium"
-    },
-
-    {
         "title": "Skull Collector",
         "discard": ['g'],
         "cost": ['s', 's', 's'],
@@ -1089,7 +1101,7 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'c', 'c'],
+        "cost": ['e', 'c', 'c', 'c'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
         "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
@@ -1145,18 +1157,6 @@ var cards = [
         "extra": ['vp-7', 'bolt', 'bolt'],
         "changed": false,
         "css": "bg-top title-top"
-    },
-
-    {
-        "title": "Jade Whale",
-        "discard": ['h'],
-        "cost": ['h', 'p'],
-        "img": "cards/emerald-whale.png",
-        "production": [],
-        "banners": ['helm-banner'],
-        "extra": ['gem-banner', 'produce', 'draw-1'],
-        "changed": false,
-        "css": "bg-top title-top title-medium"
     },
 
     {
