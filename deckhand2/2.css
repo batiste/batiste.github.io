@@ -116,10 +116,9 @@ img {
 }
 
 .top .type {
-    border-top: 1px #0d0b0b solid;
     display: flex;
     justify-content: space-between;
-    height: 69px;
+    height: 71px;
 }
 
 .top {
@@ -134,7 +133,7 @@ img {
 }
 
 .banners .banner {
-    margin-top: 14px;
+    margin-top: 13px;
     margin-right: 4px;
     margin-left: -3px;
     width: 39px;
@@ -152,10 +151,6 @@ img {
 .line {
     /* padding: 8px 26px; */
     /* text-shadow: 0.2px 0.2px #646464; */
-}
-
-.type {
-    min-height: 31px;
 }
 
 .texts {
@@ -292,11 +287,12 @@ img {
 }
 
 .type {
-    background-color: #eaca9acf;
+    background-color: #fbd091b3;
+    /* height: 31px; */
 }
 
 .type-supremacy .type {
-    background-color: #e8ae31bd;
+    background-color: #f0b331ae;
 }
 
 .resource {
@@ -391,7 +387,7 @@ img {
     letter-spacing: 0.1px;
     font-size: 15px;
     position: absolute;
-    top: 65px;
+    top: 63.5px;
     bottom:auto;
     width: 169px;
     right: -35px;
@@ -408,7 +404,7 @@ img {
     background-image: url(img/banner-2.png);
     background-size:contain;
     background-repeat: no-repeat;
-    rotate: 0deg;
+    rotate: -0.5deg;
     /* display: none; */
     /* text-shadow: 1.3px 1.4px black; */
     
@@ -433,7 +429,7 @@ img {
 
 .title-bottom .title {
     top: auto;
-    bottom: 24px;
+    bottom: 40px;
 }
 
 .title span:first-child {
@@ -529,7 +525,7 @@ img {
 }
 
 .card.preparePrint .mpc {
-    /* display: none; */
+    display: none;
 }
 
 .card.preparePrint {
@@ -542,7 +538,7 @@ img {
     display: flex;
     margin-left: auto;
     padding: 9px;
-    padding-top: 24px;
+    padding-top: 23px;
     padding-right: 24px;
     padding-left: 2px;
 }
@@ -559,7 +555,7 @@ img {
     background: url(img/stick.png);
     background-size: 260px 26px;
     background-repeat: no-repeat;
-    background-position-y: 13px;
+    background-position-y: 14px;
     background-position-x: right;
     padding-right: 8px;
     margin-right: auto;
@@ -643,10 +639,10 @@ img {
 .type-supremacy .title {
     z-index: 60;
     left: -79px;
-    top: 55px;
+    top: 54px;
     padding: 8px 9px 42px 48px;
     width: 186px;
-    rotate: 1deg;
+    rotate: 2deg;
     background-image: url(img/banner.png);
 }
 
