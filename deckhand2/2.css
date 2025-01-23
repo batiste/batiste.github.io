@@ -516,10 +516,10 @@ img {
     position: absolute;
     top:0;
     left:0;
-    width: 69.088mm;
-    height: 93.98mm;
+    width: 69.24972972972974mm;
+    height: 94.2mm;
     background-image: url(img/mpc-dark.png);
-    /* background-image: url(img/mpc.png); */
+    background-image: url(img/mpc.png);
     background-size: cover;
     z-index: 100;
 }
@@ -692,11 +692,16 @@ img {
     align-items: center;
     justify-content: center;
     /* filter:invert(); */
-    backdrop-filter:blur(1px);
+    backdrop-filter:blur(2px);
     /* will-change: opacity; */
     border-radius: 2px;
     /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.65); */
     /* background: #0007; */
+}
+
+.left-sign .sign {
+    right: auto;
+    left: 21px;
 }
 
 .type-supremacy .sign {
@@ -706,7 +711,7 @@ img {
 .sign div {
     width: 12px;
     height: 12px;
-    opacity: 0.2;
+    opacity: 0.3;
     background-image: url(sign/bb.png);
     border-radius: 1px;
     background-size: cover;
@@ -716,8 +721,20 @@ img {
     /* filter: hue-rotate(30deg); */
 }
 
+.sign-extra .sign div {
+    opacity: 0.5;
+}
+
 .sign.vh div {
     background-image: url(sign/vh.png);  
+}
+
+.sign.dc div {
+    background-image: url(sign/dc.png);  
+}
+
+.sign.zp div {
+    background-image: url(sign/zp.png);  
 }
 
 .sign.ma div {

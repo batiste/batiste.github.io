@@ -11,7 +11,7 @@ var cards = [
         'extra': ['vp-2', 'crown', 'telescope'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
-        "css": "bg-30 title-small"
+        "css": "bg-30 title-small left-sign"
     },
 
     {
@@ -46,7 +46,8 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-5', 'tentacle', 'telescope'],
         'type': 'supremacy',
-        "css": "bg-top"
+        "css": "bg-top",
+        "sign": "zp",
     },
 
     {
@@ -57,7 +58,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-6', 'tentacle', 'crown'],
         'type': 'supremacy',
-        "css": "bg-30 title-small"
+        "css": "bg-30 title-small left-sign",
     },
 
     {
@@ -68,6 +69,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-4', 'draw-1'],
         'type': 'supremacy',
+        'css': 'left-sign',
     },
 
     {
@@ -78,6 +80,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-3', 'draw-2'],
         'type': 'supremacy',
+        'sign': 'dc',
     },
 
     {
@@ -101,7 +104,8 @@ var cards = [
         'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
         "changed": false,
-        "css": "bg-top",
+        "css": "bg-top sign-extra",
+        "sign": "zp",
     },
 
     {
@@ -137,7 +141,7 @@ var cards = [
         'extra': ['vp-3', 'draw-1'],
         'type': 'supremacy',
         "changed": false,
-        "css": "title-small",
+        "css": "title-small left-sign",
     },
 
     {
@@ -149,7 +153,7 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-40 title-medium"
+        "css": "bg-40 title-medium left-sign"
     },
 
 
@@ -302,7 +306,7 @@ var cards = [
         'banners': ['basic-banner', 'rum-banner'],
         "production": ['r'],
         "copies": 2,
-        "css": "bg-top title-small title-top",
+        "css": "bg-top title-small title-top left-sign",
         "sign": "vh",
     },
 
@@ -327,7 +331,7 @@ var cards = [
         'banners': ['helm-banner'],
         "production": ['h'],
         "copies": 2,
-        "css": "bg-40",
+        "css": "bg-40 left-sign",
     },
 
     {
@@ -339,7 +343,7 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['e'],
         "copies": 2,
-        "css": "bg-50",
+        "css": "bg-50 left-sign",
     },
 
     {
@@ -361,7 +365,7 @@ var cards = [
         "banners": ['gun-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
-        "css": "bg-50 title-medium",
+        "css": "bg-50 title-medium left-sign",
     },
 
     {
@@ -383,7 +387,7 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-1'],
         "production": ['s'],
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
         "block": true,
     },
 
@@ -422,26 +426,6 @@ var cards = [
         "css": "bg-50 title-small",
     },
 
-    // {
-    //     "title": "Trading Post",
-    //     "discard": ['e'],
-    //     "cost": ['g', 'cs', 'c', 'c'],
-    //     "img": "cards/animal_market.png",
-    //     'banners': ['rum-banner'],
-    //     "production": ['r', 'or', 'p'],
-    // },
-
-    // {
-    //     "title": "Grand Escape",
-    //     "discard": ['g'],
-    //     "cost": ['p', 'g', 'e', 'c'],
-    //     "img": "cards/freed_monkeys.jpeg",
-    //     "extra": ['vp-1'],
-    //     'banners': ['rum-banner'],
-    //     "production": ['r', 'or', 'p'],
-    //     "changed": false,
-    // },
-
     {
         "title": "Heiress",
         "discard": ['p'],
@@ -451,7 +435,7 @@ var cards = [
         "production": ['p', 'or', 'r'],
         "extra": ['vp-1'],
         "changed": false,
-        "css": "bg-60 title-small",
+        "css": "bg-60 title-small left-sign",
     },
 
     {
@@ -463,7 +447,7 @@ var cards = [
         "banners": ['gem-banner'],
         "production": ['s'],
         "changed": false,
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
     },
 
 
@@ -515,7 +499,8 @@ var cards = [
         "extra": ['vp-2'],
         'banners': ['rum-banner'],
         "production": ['cs'],
-        "css": "bg-top",
+        "css": "bg-top left-sign",
+        "sign": "zp",
         "copies": 2,
     },
 
@@ -528,7 +513,7 @@ var cards = [
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-30",
+        "css": "bg-30 left-sign",
     },
 
     {
@@ -578,7 +563,7 @@ var cards = [
         "extra": ['vp-2'],
         "production": ['s'],
         "sign": "vh",
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium sign-extra left-sign",  
     },
 
     {
@@ -590,7 +575,7 @@ var cards = [
         "extra": ['vp-1', 'compass'],
         "production": ['p'],
         "changed": false,
-        "css": "bg-50"
+        "css": "bg-50 left-sign"
     },
 
     {
@@ -614,7 +599,7 @@ var cards = [
         "extra": ['vp-1', 'x' , 'parrot-banner'],
         "production": ['g'],
         "changed": false,
-        "css": "bg-60",
+        "css": "bg-60 left-sign",
         "sign": "vh",
     },
 
@@ -627,7 +612,7 @@ var cards = [
         "extra": ['vp-1', 'battle'],
         "production": ['e'],
         "changed": false,
-        "css": "title-medium",
+        "css": "title-medium left-sign",
     },
 
     {
@@ -649,7 +634,7 @@ var cards = [
         "extra": ['vp-1', 'x', 'gun-banner'],
         // "production": ['', 'produce', 'g'],
         "changed": false,
-        "css": "bg-top title-medium",    
+        "css": "bg-top title-medium left-sign",    
         "sign": "to",
     },
 
@@ -698,7 +683,7 @@ var cards = [
         "cost": ['g', 's', 's'],
         "img": "cards/doom-island.png",
         "extra": ['vp-3', 'x', 'skull-banner'],
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
     },
 
 
@@ -710,6 +695,7 @@ var cards = [
         "banners": ['rum-banner'],
         "extra": ['vp-3', 'x', 'helm-banner'],
         "css": "bg-top",
+        "sign": "zp",
     },
 
     {
@@ -718,7 +704,7 @@ var cards = [
         "cost": ['r', 'e', 'e'],
         "img": "cards/mine.png",
         "extra": ['vp-3', 'x', 'gem-banner'],
-        "css": "title-medium",
+        "css": "title-medium left-sign",
     },
 
 
@@ -839,7 +825,7 @@ var cards = [
         // "banners": ['rum-banner'],
         "production": ['s'],
         "changed": false,
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
     },
 
     {
@@ -871,7 +857,7 @@ var cards = [
         "banners": ['rum-banner'],
         // "production": ['g'],
         "changed": true,
-        "css": "title-small bg-60"
+        "css": "title-small bg-60 left-sign"
     },
 
     {
@@ -883,7 +869,7 @@ var cards = [
         "banners": ['basic-banner', 'basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
         "changed": false,
-         "css": "bg-top title-medium"
+        "css": "bg-top title-medium left-sign"
     },
 
     {
@@ -906,7 +892,7 @@ var cards = [
         "banners": ['parrot-banner', 'basic-banner'],
         "production": ['r'],
         "changed": false,
-        "css": "bg-top title-medium"
+        "css": "bg-top title-medium left-sign"
     },
 
     {
@@ -918,7 +904,7 @@ var cards = [
         "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g'],
         "block": true,
-        "css": "bg-60 title-medium",
+        "css": "bg-60 title-medium left-sign",
     },
 
     {
@@ -931,7 +917,7 @@ var cards = [
         "changed": false,
         "css": "bg-top",
         "sign": "to",
-        "css": "bg-top title-small",
+        "css": "bg-top title-small left-sign",
     },
 
     {
@@ -967,7 +953,7 @@ var cards = [
         // "production": ['g'],
         "extra": ['vp-3', 'battle'],
         "changed": false,
-        "css": "bg-top title-small",
+        "css": "bg-top title-small left-sign",
     },
 
     {
@@ -1072,7 +1058,7 @@ var cards = [
         "extra": ['vp-4', '3-choices'],
         "changed": false,
         "sign": "ma",
-        "css": "bg-20 title-medium"
+        "css": "bg-20 title-medium left-sign"
     },
 
     {
@@ -1084,6 +1070,7 @@ var cards = [
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'crown'],
         "changed": false,
+        "sign": "ma",
         "css": "bg-20 title-medium"
     },
 
@@ -1108,7 +1095,7 @@ var cards = [
         "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
         // "extra": ['vp-8'],
         "changed": false,
-        "css": "title-medium"
+        "css": "title-medium left-sign"
     },
 
     {
@@ -1144,7 +1131,7 @@ var cards = [
         "banners": ['skull-banner'],
         "extra": ['vp-4', 'bolt'],
         "changed": false,
-        "css": "bg-top title-top",
+        "css": "bg-top title-top left-sign",
         "block": true,
     },
 
