@@ -238,8 +238,10 @@ img {
     margin-left: 3px;
 }
 
-.draw {
+.right .draw {
+    width: 37px;
     margin-right: -3px;
+    margin-top: -2px;
 }
 
 .helm {
@@ -403,7 +405,7 @@ img {
     background-image: url(img/banner-2.png);
     background-size:contain;
     background-repeat: no-repeat;
-    rotate: -0.5deg;
+    rotate: -1deg;
     /* display: none; */
     /* text-shadow: 1.3px 1.4px black; */
     
@@ -593,7 +595,7 @@ img {
 
 .right img {
     width: 38px;
-    max-height: 38px;
+    /* max-height: 38px; */
     align-self: center;
 }
 
