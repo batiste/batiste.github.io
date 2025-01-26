@@ -443,17 +443,15 @@ img {
     display: inline-flex;
 }
 
-/* .large_title {
-    top:38px;
-} */
-
-.large_title span:first-child {
+/* .large_title span:first-child {
     rotate: 3deg;
 }
 
 .large_title span:last-child {
     rotate: -3deg;
-}
+} */
+
+
 
 
 .discard {
@@ -652,6 +650,18 @@ img {
     top: 55px;
     padding: 7px 0px 42px 69px;
     width: 167px;
+}
+
+.type-supremacy .title-medium.title {
+    left: -77px;
+    padding: 7px 6px 39px 52px;
+    width: 185px;
+}
+
+.type-supremacy .title-large.title {
+    left: -70px;
+    padding: 8px 25px 38px 55px;
+    width: 171px;
 }
 
 .type-supremacy .top-bar {

@@ -607,8 +607,11 @@ cards.forEach((c) => {
 
     var title_class = "";
     var split_title = c.title;
-    if (split_title.length > 14) {
-        title_class = "large_title"
+    if (split_title.length > 9) {
+        title_class = "title-medium"
+    }
+    if (split_title.length > 13) {
+        title_class = "title-large"
     }
     if (split_title.split(" ").length > 1) {
         split_title = "<span>" + c.title.split(" ").join("</span> <span>") + "</span>"

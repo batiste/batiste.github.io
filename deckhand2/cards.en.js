@@ -109,7 +109,7 @@ var cards = [
     },
 
     {
-        "title": "Path to Riches",
+        "title": "3 Paths",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
@@ -117,7 +117,7 @@ var cards = [
         'extra': ['vp-4', 'crown', '3-choices'],
         'type': 'supremacy',
         "changed": false,
-        "css": "bg-0",
+        "css": "bg-0 title-small",
     },
 
     {
@@ -251,7 +251,7 @@ var cards = [
     },
 
     {
-        "title": "Lookout",
+        "title": "Eagle Eyes",
         "discard": ['p'],
         "cost": ['p', 'c', 'cs'],
         "img": "cards/spyglass.png",
@@ -462,6 +462,18 @@ var cards = [
         "css": "bg-top title-medium",
     },
 
+    {
+        "title": "Bone Tempest",
+        "discard": ['s'],
+        "cost": ['h', 'h', 'cs'],
+        "img": "cards/trouble.png",
+        "extra": ['crown'],
+        // "banners": ['rum-banner'],
+        "production": ['s'],
+        "changed": false,
+        "css": "bg-top title-medium left-sign",
+    },
+
 
     {
         "title": "Robbery",
@@ -583,7 +595,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['vp-2', 'draw-1'],
+        "extra": ['vp-2', '3-choices'],
         // "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
@@ -641,7 +653,7 @@ var cards = [
 
     {
         "discard": ['p'],
-        "title": "Planning Ahead",
+        "title": "Dreams of Treasure",
         "cost": ['h', 'h', 'c'],
         "img": "cards/watch.png",
         "banners": ['helm-banner'],
@@ -733,7 +745,7 @@ var cards = [
     },
 
     {
-        "title": "Monument",
+        "title": "Theft Worship",
         "discard": ['s'],
         "cost": ['r', 'g', 'g', 'cs'],
         "img": "cards/thieves-statue.png",
@@ -741,7 +753,7 @@ var cards = [
         "extra": ['vp-2', 'x', 'coin-banner'],
         // "production": ['s']
         "changed": false,
-        "css": "bg-top title-small",
+        "css": "bg-top title-medium",
     },
 
     // affinity cards
@@ -751,7 +763,7 @@ var cards = [
         "cost": ['p', 'r', 'h'],
         "img": "cards/walk-plank.png",
         "extra": ['crown'],
-        // "banners": ['gun-banner'],
+        "banners": ['parrot-banner'],
         "production": ['g'],
         "changed": false,
         "css": "bg-top title-bottom title-small",
@@ -759,7 +771,7 @@ var cards = [
     },
 
     {
-        "title": "Hunt",
+        "title": "Swamp Hunt",
         "discard": ['p'],
         "cost": ['g', 'r', 'e', 'c'],
         "img": "cards/hunt.png",
@@ -767,12 +779,12 @@ var cards = [
         "banners": ['parrot-banner', 'parrot-banner'],
         "production": ['p'],
         "changed": false,
-        "css": "bg-top title-small",
+        "css": "bg-top title-medium",
         "block": true,
     },
 
     {
-        "title": "Poison the Supply",
+        "title": "Deadly Brew",
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'cs'],
         "img": "cards/poison.png",
@@ -781,7 +793,7 @@ var cards = [
         "production": ['r'],
         "changed": false,
         "block": true,
-        "css": "bg-50",
+        "css": "bg-50 title-medium",
     },
 
 
@@ -817,18 +829,6 @@ var cards = [
     },
 
     {
-        "title": "Bone Tempest",
-        "discard": ['s'],
-        "cost": ['h', 'h', 'cs'],
-        "img": "cards/trouble.png",
-        "extra": ['crown'],
-        // "banners": ['rum-banner'],
-        "production": ['s'],
-        "changed": false,
-        "css": "bg-top title-medium left-sign",
-    },
-
-    {
         "title": "Glowing Grotto",
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
@@ -849,7 +849,7 @@ var cards = [
     },
 
     {
-        "title": "Jade Whale",
+        "title": "Gemback Whale",
         "discard": ['h'],
         "cost": ['h', 'p'],
         "img": "cards/emerald-whale.png",
@@ -857,7 +857,7 @@ var cards = [
         "banners": ['parrot-banner'],
         "extra": ['gem-banner', 'produce', 'draw-1'],
         "changed": false,
-        "css": "bg-top title-top title-medium"
+        "css": "bg-top title-top title-large"
     },
 
     {
@@ -969,7 +969,7 @@ var cards = [
     },
 
     {
-        "title": "Blast",
+        "title": "Having a Blast",
         "discard": ['s'],
         "cost": ['g', 'g', 'g'],
         "img": "cards/captain-crazy.png",
@@ -977,7 +977,7 @@ var cards = [
         // "production": ['g'],
         "extra": ['vp-3', 'battle'],
         "changed": false,
-        "css": "bg-top title-small left-sign",
+        "css": "bg-top left-sign",
     },
 
     {
@@ -1101,10 +1101,10 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'c', 'c', 'c'],
+        "cost": ['e', 'c', 'c'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
-        "banners": ['rum-banner', 'parrot-banner', 'helm-banner', 'basic-banner', 'coin-banner'],
+        "banners": ['rum-banner', 'parrot-banner', 'basic-banner', 'coin-banner'],
         // "extra": ['vp-8'],
         "changed": false,
         "css": "title-medium left-sign"
