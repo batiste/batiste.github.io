@@ -41,10 +41,10 @@ var cards = [
     {
         "title": "Tamed Kraken",
         "discard": [],
-        "cost": ['gem-banner', 'skull-banner', 'parrot-banner'],
+        "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
         "img": "cards/tamed.jpg",
         // "production": ['r']
-        'extra': ['vp-5', 'tentacle'],
+        'extra': ['vp-6', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-top",
         "sign": "zp",
@@ -75,10 +75,10 @@ var cards = [
     {
         "title": "Smuggler's Cove",
         "discard": [],
-        "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
+        "cost": ['helm-banner', 'gem-banner', 'rum-banner', 'rum-banner'],
         "img": "cards/thief-town.png",
         // "production": ['r']
-        'extra': ['vp-3', 'draw-2'],
+        'extra': ['vp-4', 'draw-2'],
         'type': 'supremacy',
         'sign': 'dc',
     },
@@ -126,7 +126,7 @@ var cards = [
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/tattoo.png",
         // "production": ['r']
-        'extra': ['vp-2', 'compass', 'draw-2'],
+        'extra': ['vp-5'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-50",
@@ -138,7 +138,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/cellar.png",
         // "production": ['r']
-        'extra': ['vp-3', 'crown', 'draw-1'],
+        'extra': ['crown', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
         "css": "title-small left-sign",
@@ -468,7 +468,7 @@ var cards = [
         "cost": ['h', 'h', 'cs'],
         "img": "cards/trouble.png",
         "extra": ['crown'],
-        // "banners": ['rum-banner'],
+        "banners": ['gun-banner'],
         "production": ['s'],
         "changed": false,
         "css": "bg-top title-medium left-sign",
@@ -784,7 +784,7 @@ var cards = [
     },
 
     {
-        "title": "Deadly Brew",
+        "title": "Bitter Vintage",
         "discard": ['r'],
         "cost": ['g', 'p', 's', 'cs'],
         "img": "cards/poison.png",
@@ -793,7 +793,7 @@ var cards = [
         "production": ['r'],
         "changed": false,
         "block": true,
-        "css": "bg-50 title-medium",
+        "css": "bg-50",
     },
 
 
