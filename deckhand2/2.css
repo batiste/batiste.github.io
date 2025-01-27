@@ -235,7 +235,7 @@ img {
 }
 
 .telescope {
-    margin-left: 3px;
+    margin-left: 1px;
 }
 
 .right .draw {
@@ -767,7 +767,7 @@ img {
     padding: 0;
 } */
 
-.right img.crown {
+.right img.hook {
     margin-left: 1px;
     margin-right: 2px;
     margin-bottom: 0px;

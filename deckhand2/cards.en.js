@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['crown', 'telescope', 'compass'],
+        'extra': ['hook', 'telescope', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign"
@@ -20,7 +20,7 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/bomber.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-top"
@@ -56,7 +56,7 @@ var cards = [
         "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['vp-6', 'crown', 'tentacle'],
+        'extra': ['vp-6', 'hook', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign",
     },
@@ -89,7 +89,7 @@ var cards = [
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/grand-escape.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown'],
+        'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-top",
@@ -114,7 +114,7 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
         // "production": ['r']
-        'extra': ['vp-4', 'crown', '3-choices'],
+        'extra': ['vp-4', 'hook', '3-choices'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-0 title-small",
@@ -138,7 +138,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/cellar.png",
         // "production": ['r']
-        'extra': ['crown', 'draw-2'],
+        'extra': ['hook', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
         "css": "title-small left-sign",
@@ -392,7 +392,7 @@ var cards = [
     },
 
     {
-        "title": "Gravehound",
+        "title": "Gravehounds",
         "discard": ['s'],
         "cost": ['s', 'p', 'p'],
         "img": "cards/captain-death.png",
@@ -463,11 +463,21 @@ var cards = [
     },
 
     {
+        "title": "Deadly Expedition",
+        "discard": ['r'],
+        "cost": ['h', 'h', 'e'],
+        "img": "cards/dead-expedition.png",
+        "production": ['e'],
+        "banners": ['skull-banner'],
+        "extra": ['vp-1', 'x', 'skull-banner'],
+    },
+
+    {
         "title": "Bone Tempest",
         "discard": ['s'],
         "cost": ['h', 'h', 'cs'],
         "img": "cards/trouble.png",
-        "extra": ['crown'],
+        "extra": ['hook'],
         "banners": ['gun-banner'],
         "production": ['s'],
         "changed": false,
@@ -595,7 +605,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['vp-2', '3-choices'],
+        "extra": ['hook', '3-choices'],
         // "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
@@ -654,7 +664,7 @@ var cards = [
     {
         "discard": ['p'],
         "title": "Dreams of Treasure",
-        "cost": ['h', 'h', 'c'],
+        "cost": ['h', 'h', 'cs'],
         "img": "cards/watch.png",
         "banners": ['helm-banner'],
         "extra": ['telescope', 'draw-2'],
@@ -739,7 +749,7 @@ var cards = [
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
         "banners": ['coin-banner'],
-        "extra": ['vp-5', 'crown'],
+        "extra": ['vp-5', 'hook'],
         "changed": false,
         "css": "bg-top title-small",
     },
@@ -762,7 +772,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['p', 'r', 'h'],
         "img": "cards/walk-plank.png",
-        "extra": ['crown'],
+        "extra": ['hook'],
         "banners": ['parrot-banner'],
         "production": ['g'],
         "changed": false,
@@ -988,18 +998,8 @@ var cards = [
         "banners": [],
         // "production": ['g']
         "banners": ['parrot-banner'],
-        "extra": ['vp-5', 'crown'],
+        "extra": ['vp-5', 'hook'],
         "changed": false,
-    },
-
-    {
-        "title": "Deadly Expedition",
-        "discard": ['r'],
-        "cost": ['h', 'h', 'e'],
-        "img": "cards/dead-expedition.png",
-        "production": ['e'],
-        "banners": ['skull-banner'],
-        "extra": ['vp-1', 'x', 'skull-banner'],
     },
 
     // {
@@ -1055,7 +1055,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         // "production": ['r'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-8', 'crown'],
+        "extra": ['vp-8', 'hook'],
         "changed": false,
         "css": "bg-top title-small"
     },
@@ -1080,7 +1080,7 @@ var cards = [
         "img": "cards/ghost-2.jpg",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
-        "extra": ['vp-6', 'crown'],
+        "extra": ['vp-6', 'hook'],
         "changed": false,
         "sign": "ma",
         "css": "bg-20 title-medium"

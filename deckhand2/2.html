@@ -328,7 +328,7 @@ var get_v_value = (c) => {
             if (e == "telescope") {
                 v += 0.4;
             }
-            if (e == "crown") {
+            if (e == "hook") {
                 v += 2;
             }
             if (e == "battle") {
@@ -388,11 +388,11 @@ var get_v_value = (c) => {
     if(c.banners) {
         c.banners.forEach(b => {
             if (b == 'basic-banner' || b == 'coin-banner') {
-                v += 0.45
+                v += 0.50
             } else if (b == 'parrot-banner' || b == 'gun-banner' || b == 'rum-banner') {
-                v += 0.70
+                v += 0.75
             } else {
-                v += 0.90
+                v += 0.95
             }
         }) 
     }
@@ -571,14 +571,14 @@ cards.forEach((c) => {
             if (c == "produce") {
                 extra += `<img class="res arrow" src="img/arrow.png">`
             }
-            if (c == "crown") {
-                extra += `<img class="res crown" src="img/hook.png">`
+            if (c == "hook") {
+                extra += `<img class="res hook" src="img/hook.png">`
             }
             if (c == "battle") {
                 extra += `<img class="res battle" src="img/battle.png">`
             }
             if (c == "t") {
-                extra += `<img class="res crown" src="img/tentacles.png">`
+                extra += `<img class="res hook" src="img/tentacles.png">`
             }
         })
         if (extra) {
