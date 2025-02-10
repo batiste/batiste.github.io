@@ -735,7 +735,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'c'],
         "img": "cards/possesion.png",
-        "extra": ['vp-6'],
+        "extra": ['vp-6', 'tentacle'],
         "banners": ['parrot-banner'],
         // "production": ['t'],
         "changed": false,
@@ -755,7 +755,7 @@ var cards = [
     },
 
     {
-        "title": "Theft Worship",
+        "title": "Severed Relic",
         "discard": ['s'],
         "cost": ['r', 'g', 'g', 'cs'],
         "img": "cards/thieves-statue.png",
@@ -770,9 +770,9 @@ var cards = [
     {
         "title": "The Plank",
         "discard": ['p'],
-        "cost": ['p', 'r', 'h'],
+        "cost": ['p', 'r', 'h', 'c'],
         "img": "cards/walk-plank.png",
-        "extra": ['hook'],
+        "extra": ['hook', 'tentacle'],
         "banners": ['parrot-banner'],
         "production": ['g'],
         "changed": false,
