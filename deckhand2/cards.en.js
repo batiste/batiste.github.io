@@ -484,6 +484,28 @@ var cards = [
         "css": "bg-top title-medium left-sign",
     },
 
+    {
+        "title": "Emerald Cultist",
+        "discard": ['e'],
+        "cost": ['s', 's'],
+        "img": "cards/emerald-ritual.png",
+        "extra": ['vp-1'],
+        "banners": ['gem-banner'],
+        "production": ['e'],
+        "css": "bg-top",
+    },
+
+    {
+        "title": "Shipyard",
+        "discard": ['h'],
+        "cost": ['e', 'e', 'c'],
+        "img": "cards/shipyard.png",
+        "extra": ['vp-2'],
+        "banners": ['helm-banner'],
+        "production": ['h'],
+        "css": "bg-top title-small",
+    },
+
 
     {
         "title": "Robbery",
@@ -817,28 +839,6 @@ var cards = [
     // },
 
     {
-        "title": "Emerald Cultist",
-        "discard": ['e'],
-        "cost": ['s', 's'],
-        "img": "cards/emerald-ritual.png",
-        "extra": ['vp-1'],
-        "banners": ['gem-banner'],
-        "production": ['e'],
-        "css": "bg-top",
-    },
-
-    {
-        "title": "Shipyard",
-        "discard": ['h'],
-        "cost": ['e', 'e', 'c'],
-        "img": "cards/shipyard.png",
-        "extra": ['vp-2'],
-        "banners": ['helm-banner'],
-        "production": ['h'],
-        "css": "bg-top title-small",
-    },
-
-    {
         "title": "Glowing Grotto",
         "discard": ['e'],
         "cost": ['h', 's', 'r', 'cs'],
@@ -1049,7 +1049,7 @@ var cards = [
     },
 
     {
-        "title": "Lost Loot",
+        "title": "Drowned Keeper",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
         "img": "cards/king-treasure.png",
@@ -1057,7 +1057,7 @@ var cards = [
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
         "extra": ['vp-8', 'hook'],
         "changed": false,
-        "css": "bg-top title-small"
+        "css": "bg-top title-large"
     },
 
     {
