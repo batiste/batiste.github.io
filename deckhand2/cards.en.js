@@ -129,7 +129,7 @@ var cards = [
         'extra': ['vp-5'],
         'type': 'supremacy',
         "changed": false,
-        "css": "bg-50",
+        "css": "bg-60",
     },
 
     {
@@ -141,7 +141,7 @@ var cards = [
         'extra': ['hook', 'draw-2'],
         'type': 'supremacy',
         "changed": false,
-        "css": "title-small left-sign",
+        "css": "title-small left-sign bg-60",
     },
 
     {

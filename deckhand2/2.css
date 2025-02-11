@@ -638,7 +638,7 @@ img {
 .type-supremacy .title {
     z-index: 60;
     left: -79px;
-    top: 54px;
+    top: 49px;
     padding: 8px 9px 42px 48px;
     width: 186px;
     rotate: 2deg;
@@ -647,14 +647,14 @@ img {
 
 .title-small.type-supremacy .title {
     left: -102px;
-    top: 55px;
+    top: 50px;
     padding: 7px 0px 42px 69px;
     width: 167px;
 }
 
 .type-supremacy .title-medium.title {
     left: -77px;
-    padding: 7px 6px 39px 52px;
+    padding: 8px 6px 39px 52px;
     width: 185px;
 }
 
