@@ -503,7 +503,7 @@ var cards = [
         "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-top title-small",
+        "css": "bg-60 title-small",
     },
 
 
@@ -1077,13 +1077,13 @@ var cards = [
         "title": "Macabre Mates",
         "discard": ['g'],
         "cost": ['s', 's', 's', 'h'],
-        "img": "cards/ghost-2.jpg",
+        "img": "cards/macabre-mates.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'hook'],
         "changed": false,
         "sign": "ma",
-        "css": "bg-20 title-medium"
+        "css": "bg-30 title-medium"
     },
 
     {
