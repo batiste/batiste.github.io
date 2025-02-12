@@ -15,7 +15,7 @@ var cards = [
     },
 
     {
-        "title": "Mad Bomber",
+        "title": "Mad Bowler",
         "discard": [],
         "cost": ['gun-banner', 'gun-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/bomber.png",
@@ -29,7 +29,7 @@ var cards = [
     {
         "title": "Eternal Greed",
         "discard": [],
-        "cost": ['skull-banner', 'skull-banner', 'rum-banner'],
+        "cost": ['skull-banner', 'skull-banner', 'gem-banner'],
         "img": "cards/skeleton-treasure.png",
         // "production": ['r']
         'extra': ['vp-5', '3-choices'],
@@ -1083,7 +1083,7 @@ var cards = [
         "extra": ['vp-6', 'hook'],
         "changed": false,
         "sign": "ma",
-        "css": "bg-30 title-medium"
+        "css": "bg-30 title-large"
     },
 
     {
