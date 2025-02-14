@@ -641,7 +641,7 @@ img {
     top: 49px;
     padding: 8px 9px 42px 48px;
     width: 186px;
-    rotate: 2deg;
+    rotate: 3deg;
     background-image: url(img/banner.png);
 }
 
@@ -659,9 +659,9 @@ img {
 }
 
 .type-supremacy .title-large.title {
-    left: -70px;
-    padding: 8px 25px 38px 55px;
-    width: 171px;
+    left: -71px;
+    padding: 8px 15px 36px 59px;
+    width: 170px;
 }
 
 .type-supremacy .top-bar {

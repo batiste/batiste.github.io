@@ -27,7 +27,7 @@ var cards = [
     },
 
     {
-        "title": "Eternal Greed",
+        "title": "Eternal Avarice",
         "discard": [],
         "cost": ['skull-banner', 'skull-banner', 'gem-banner'],
         "img": "cards/skeleton-treasure.png",
@@ -685,12 +685,13 @@ var cards = [
 
     {
         "discard": ['p'],
-        "title": "Dreams of Treasure",
+        "title": "Glint of Riches",
         "cost": ['h', 'h', 'cs'],
         "img": "cards/watch.png",
         "banners": ['helm-banner'],
         "extra": ['telescope', 'draw-2'],
         "changed": false,
+        "css": "title-medium",
     },
 
 
@@ -851,7 +852,7 @@ var cards = [
     {
         "title": "Grave Robbers",
         "discard": ['s'],
-        "cost": ['s', 'g'],
+        "cost": ['s', 'g', 'c'],
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
@@ -923,7 +924,7 @@ var cards = [
         "cost": ['p', 'p'],
         "img": "cards/turtle.png",
         "extra": ['vp-1'],
-        "banners": ['parrot-banner', 'basic-banner'],
+        "banners": ['basic-banner', 'parrot-banner'],
         "production": ['r'],
         "changed": false,
         "css": "bg-top title-medium left-sign"
@@ -1104,7 +1105,7 @@ var cards = [
         "cost": ['e', 'c', 'c'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
-        "banners": ['rum-banner', 'parrot-banner', 'basic-banner', 'coin-banner'],
+        "banners": ['basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'],
         // "extra": ['vp-8'],
         "changed": false,
         "css": "title-medium left-sign"

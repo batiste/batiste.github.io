@@ -317,42 +317,41 @@ var get_v_value = (c) => {
 
     if(c.extra && c.extra.length) {
         var nb_bolt = 0;
-        c.extra.forEach(e => {
-            if (e == "bolt") {
-                v += 0.4 + nb_bolt;
-                nb_bolt += 0.3;
-            }
-            if (e == "crate") {
-                v += 0.3;
-            }
-            if (e == "telescope") {
-                v += 0.4;
-            }
-            if (e == "hook") {
-                v += 2;
-            }
-            if (e == "battle") {
-                v += 0.8;
-            }
-            if (e == "tentacle") {
-                v += 3 / c.v_cost;
-            }
-            if (e == "compass") {
-                v += 6 / c.v_cost;
-            }
-            if (e == "3-choices") {
-                v += 1.7;
-            }
-            if (e == "draw-1") {
-                v += 1.5;
-            }
-            if (e == "draw-2") {
-                v += 3;
-            }
-            if (e == "draw-3") {
-                v += 4.5;
-            }
-        })
+        if (c.extra[1] != 'produce') {
+            c.extra.forEach(e => {
+                if (e == "bolt") {
+                    v += 0.4 + nb_bolt;
+                    nb_bolt += 0.3;
+                }
+                if (e == "crate") {
+                    v += 0.3;
+                }
+                if (e == "telescope") {
+                    v += 0.4;
+                }
+                if (e == "hook") {
+                    v += 2;
+                }
+                if (e == "battle") {
+                    v += 0.8;
+                }
+                if (e == "tentacle") {
+                    v += 3 / c.v_cost;
+                }
+                if (e == "compass") {
+                    v += 6 / c.v_cost;
+                }
+                if (e == "3-choices") {
+                    v += 3;
+                }
+                if (e == "draw-1") {
+                    v += 2;
+                }
+                if (e == "draw-2") {
+                    v += 4;
+                }
+            })
+        }
         if (c.extra[0].startsWith('vp-')) {
             var vp = parseInt(c.extra[0].split('-')[1]);
             if(c.extra.length == 3 && c.extra[1] == 'x') {
@@ -374,13 +373,13 @@ var get_v_value = (c) => {
             var banner_type = c.extra[0];
             var n = distribution_end_game[banner_type]
             if (c.extra[2] == 'draw-1') {
-                v += n;
+                v += (n * 2);
             }
             if (c.extra[2] == '3-choices') {
-                v += n * 1.2;
+                v += (n * 3);
             }
             if (c.extra[2] == 'telescope') {
-                v += n * 0.4;
+                v += n * 0.3;
             }
         }
     }
@@ -469,6 +468,11 @@ sort_cost = (a, b) => {
     return order[b] - order[a]
 }
 
+sort_banners = (a, b) => {
+    order = {'basic-banner': 0, 'rum-banner': 1, 'parrot-banner': 2, 'gun-banner': 3, 'gem-banner': 5, 'skull-banner': 6,  'helm-banner': 7}
+    return order[b] - order[a]
+}
+
 
 cards.forEach((c) => {
 
@@ -484,8 +488,15 @@ cards.forEach((c) => {
         dis = `<span class="discard">${dis}</span>`
     }
 
+    if (c.banners) {
+        c.banners.sort(sort_banners)
+    }
+
     if (c.cost) {
         c.cost.sort(sort_cost)
+        if (c.type == 'supremacy') {
+            c.cost.sort(sort_banners)
+        }
 
         if(c.cost[c.cost.length-1] == 'cs') {
             cars_1_silver += 1;
