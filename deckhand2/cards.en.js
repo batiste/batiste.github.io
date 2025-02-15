@@ -161,12 +161,12 @@ var cards = [
         "title": "Stolen Stash",
         "discard": ['g'],
         "cost": ['c', 'p', 'g', 'r'],
-        "img": "cards/2-thieves.png",
+        "img": "cards/silver-chest.png",
         "banners": ['coin-banner'],
         // "extra": ['vp-1'],
         "production": ['cs', 'cs'],
         "copies": 1,
-        "css": "bg-top title-medium"
+        "css": "bg-30 title-medium"
     },
 
 

@@ -552,7 +552,7 @@ img {
 
 .banners {
     background: url(img/stick.png);
-    background-size: 260px 26px;
+    background-size: 260px 25px;
     background-repeat: no-repeat;
     background-position-y: 16px;
     background-position-x: right;
