@@ -699,7 +699,7 @@ cards.forEach((c) => {
             </div>
         </div>
         <button class="${ch}" onclick="downloadCardButton(this)">Download #${i} ${copies} </button><br>
-        ${c.title}<br>
+        ${c.title} <span style="font-size:12px;color: #bbb;"> / ${c.img.split('/')[1]}</span><br>
         <span style="font-size: 11px; color: #ccc">cost: ${c.v_cost}, value: ${c.v_value}, ratio: ${c.v_ratio}</span><br>
         <label style="font-size: 11px; color: #ccc"><input type="checkbox" id="check-pdf-${i}" 
                 onclick="changePrintSelection(this)" data-card-id="${i}">Part of print sheet</label>

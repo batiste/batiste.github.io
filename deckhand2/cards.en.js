@@ -247,7 +247,8 @@ var cards = [
         "img": "cards/master-gunner.png",
         'banners': ['basic-banner', 'gun-banner'],
         "extra": ['bolt', 'bolt'],
-        "production": ['g']
+        "production": ['g'],
+        "css": "bg-40",
     },
 
     {
@@ -270,7 +271,7 @@ var cards = [
         'banners': ['basic-banner', 'rum-banner'],
         "extra": ['bolt'],
         "production": ['r'],
-        "css": "title-medium"
+        "css": "title-medium bg-40"
     },
 
 
