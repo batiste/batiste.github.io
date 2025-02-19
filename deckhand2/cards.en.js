@@ -284,7 +284,7 @@ var cards = [
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
-        "css": "bg-top"
+        "css": "bg-top title-medium"
     },
 
     {
@@ -827,7 +827,7 @@ var cards = [
         "production": ['r'],
         "changed": false,
         "block": true,
-        "css": "bg-50",
+        "css": "bg-30 title-medium",
     },
 
 
@@ -857,7 +857,7 @@ var cards = [
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
-        "css": "title-medium"
+        "css": "title-large"
     },
 
     {

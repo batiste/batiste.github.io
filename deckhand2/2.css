@@ -413,7 +413,7 @@ img {
 
 .title-medium .title {
     right: -63px;
-    padding: 6px 43px 20px 9px;
+    padding: 6px 43px 20px 10px;
     width: 171px;
 }
 
@@ -434,12 +434,13 @@ img {
 }
 
 .title span:first-child {
-    rotate: 3deg;
+    transform: rotate(3.5deg);
+    /* transform-origin: center; */
     display: inline-flex;
 }
 
 .title span:last-child {
-    rotate: -3deg;
+    transform: rotate(-3deg);
     display: inline-flex;
 }
 
@@ -518,7 +519,7 @@ img {
     width: 69.24972972972974mm;
     height: 94.2mm;
     background-image: url(img/mpc-dark.png);
-    /* background-image: url(img/mpc.png); */
+    background-image: url(img/mpc.png);
     background-size: cover;
     z-index: 100;
 }
