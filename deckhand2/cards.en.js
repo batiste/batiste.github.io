@@ -1095,7 +1095,7 @@ var cards = [
         "img": "cards/doom-temple.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'gem-banner'],
-        "extra": ['vp-6'],
+        "extra": ['vp-7'],
         "changed": false,
         "css": "title-medium"
     },
