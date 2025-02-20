@@ -1002,6 +1002,7 @@ var cards = [
         "banners": ['parrot-banner'],
         "extra": ['vp-5', 'hook'],
         "changed": false,
+        "css": "bg-40"
     },
 
     // {
