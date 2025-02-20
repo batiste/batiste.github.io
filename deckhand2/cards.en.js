@@ -117,7 +117,7 @@ var cards = [
         'extra': ['vp-4', 'hook', '3-choices'],
         'type': 'supremacy',
         "changed": false,
-        "css": "bg-0 title-small",
+        "css": "bg-20 title-small",
     },
 
     {
