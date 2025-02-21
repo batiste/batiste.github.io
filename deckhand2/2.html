@@ -618,14 +618,11 @@ cards.forEach((c) => {
 
     var title_class = "";
     var split_title = c.title;
-    if (split_title.length > 9) {
-        title_class = "title-medium"
-    }
-    if (split_title.length > 13) {
-        title_class = "title-large"
-    }
+
     if (split_title.split(" ").length > 1) {
-        split_title = "<span>" + c.title.split(" ").join("</span> <span>") + "</span>"
+        split_title = "<div style='display:inline-block'><span>" + c.title.split(" ").join("</span> <span>") + "</span></div>"
+    } else {
+        split_title = "<div style='display:inline-block'>" + c.title + "</span></div>"
     }
 
     if(c.v_ratio > 0.75) {
@@ -642,6 +639,8 @@ cards.forEach((c) => {
 
     var top = ''
     var title = ''
+    var l = -130 + 5.5 * c.title.length;
+
     if(c.type == 'supremacy') {
         var cos = ''
         c.cost.forEach(c => {
@@ -652,10 +651,10 @@ cards.forEach((c) => {
         <div class="supremacy-cost"><div class="supremacy-bg">${cos}</div></div>
         `
 
-        title = `<span class="title ${title_class}">${split_title}</span>`
+        title = `<span class="title ${title_class}" style="right:${l}px">${split_title}</span>`
     } else {
         top = `${cost}`
-        title = `<span class="title ${title_class}">${split_title}</span>`
+        title = `<span class="title ${title_class}" style="right:${l}px">${split_title}</span>`
     }
 
     var ch = ''
@@ -669,11 +668,6 @@ cards.forEach((c) => {
     }
 
     var block = "";
-    // if (c.block) {
-    //     block = `prod-block`;
-    // }
-
-    // ${i} / ${cards.length}
 
     var card_template = `
     <div>
@@ -714,6 +708,23 @@ cards.forEach((c) => {
 })
 
 document.getElementById('cards').innerHTML = cards_total;
+
+
+// Adjust title after rendering
+setTimeout(() => {
+    cards.forEach((c) => {
+        var t =  document.getElementById('card-'+c.id).querySelector('.title')
+        if (t.querySelector('div')) {
+            var w = t.querySelector('div').clientWidth
+            console.log(w)
+            if(c.type == 'supremacy') {
+                t.style.left = (-160 + w) + 'px'
+            } else {
+                t.style.right = (-142 + w) + 'px'
+            }
+        }
+    })
+}, 1000)
 
 var stats = document.getElementById('stats');
 

@@ -393,7 +393,7 @@ var cards = [
     },
 
     {
-        "title": "Gravehounds",
+        "title": "Grave Hounds",
         "discard": ['s'],
         "cost": ['s', 'p', 'p'],
         "img": "cards/captain-death.png",
