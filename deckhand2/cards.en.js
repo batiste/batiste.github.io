@@ -41,7 +41,7 @@ var cards = [
     {
         "title": "Tamed Kraken",
         "discard": [],
-        "cost": ['gem-banner', 'skull-banner', 'helm-banner'],
+        "cost": ['gem-banner', 'skull-banner', 'helm-banner',  'parrot-banner'],
         "img": "cards/tamed.jpg",
         // "production": ['r']
         'extra': ['vp-6', 'tentacle'],
@@ -53,7 +53,7 @@ var cards = [
     {
         "title": "Mermaid",
         "discard": [],
-        "cost": ['helm-banner', 'skull-banner', 'coin-banner', 'parrot-banner', 'gun-banner'],
+        "cost": ['skull-banner', 'coin-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
         'extra': ['vp-6', 'hook', 'tentacle'],
@@ -64,10 +64,10 @@ var cards = [
     {
         "title": "Emerald Quest",
         "discard": [],
-        "cost": ['gem-banner', 'gem-banner'],
+        "cost": ['gem-banner', 'gem-banner', 'gem-banner', 'helm-banner'],
         "img": "cards/explorers.png",
         // "production": ['r']
-        'extra': ['vp-4', 'draw-1'],
+        'extra': ['vp-6', 'draw-1'],
         'type': 'supremacy',
         'css': 'left-sign',
     },
@@ -138,7 +138,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/cellar.png",
         // "production": ['r']
-        'extra': ['hook', 'draw-2'],
+        'extra': ['draw-2'],
         'type': 'supremacy',
         "changed": false,
         "css": "title-small left-sign bg-60",
@@ -628,7 +628,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['e', 'r', 'p', 'c'],
         "img": "cards/sidekick.png",
-        "extra": ['hook', '3-choices'],
+        "extra": ['3-choices'],
         // "banners": ['helm-banner'],
         "production": ['h'],
         "changed": false,
@@ -863,7 +863,7 @@ var cards = [
     {
         "title": "Gemback Whale",
         "discard": ['h'],
-        "cost": ['h', 'p'],
+        "cost": ['h', 'p', 'c'],
         "img": "cards/emerald-whale.png",
         "production": [],
         "banners": ['parrot-banner'],
@@ -875,7 +875,7 @@ var cards = [
     {
         "title": "Treasure Hunt",
         "discard": ['p'],
-        "cost": ['e', 'p'],
+        "cost": ['e', 'p', 'c'],
         "img": "cards/treasure-map.png",
         // "production": ['e'],
         "banners": ['gem-banner'],
