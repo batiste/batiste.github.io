@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['hook', 'telescope', 'compass'],
+        'extra': ['vp-2', 'telescope', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign"
@@ -20,7 +20,7 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'skull-banner', 'rum-banner'],
         "img": "cards/bomber.png",
         // "production": ['r']
-        'extra': ['vp-4', 'hook'],
+        'extra': ['vp-5', 'hook'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-top"
@@ -32,7 +32,7 @@ var cards = [
         "cost": ['skull-banner', 'skull-banner', 'gem-banner'],
         "img": "cards/skeleton-treasure.png",
         // "production": ['r']
-        'extra': ['vp-5', '3-choices'],
+        'extra': ['vp-6'],
         'type': 'supremacy',
         "changed": false,
     },
@@ -56,7 +56,7 @@ var cards = [
         "cost": ['skull-banner', 'coin-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/mermaid.png",
         // "production": ['r']
-        'extra': ['vp-6', 'hook', 'tentacle'],
+        'extra': ['vp-5', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-30 title-small left-sign",
     },
@@ -64,10 +64,10 @@ var cards = [
     {
         "title": "Emerald Quest",
         "discard": [],
-        "cost": ['gem-banner', 'gem-banner', 'gem-banner', 'helm-banner'],
+        "cost": ['gem-banner', 'gem-banner', 'helm-banner'],
         "img": "cards/explorers.png",
         // "production": ['r']
-        'extra': ['vp-6', 'draw-1'],
+        'extra': ['vp-5', 'draw-1'],
         'type': 'supremacy',
         'css': 'left-sign',
     },
@@ -75,10 +75,10 @@ var cards = [
     {
         "title": "Smuggler's Cove",
         "discard": [],
-        "cost": ['helm-banner', 'gem-banner', 'rum-banner', 'rum-banner'],
+        "cost": ['helm-banner', 'rum-banner', 'rum-banner'],
         "img": "cards/thief-town.png",
         // "production": ['r']
-        'extra': ['vp-4', 'draw-2'],
+        'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
         'sign': 'dc',
     },
@@ -114,7 +114,7 @@ var cards = [
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
         // "production": ['r']
-        'extra': ['vp-4', 'hook', '3-choices'],
+        'extra': ['vp-4', '3-choices'],
         'type': 'supremacy',
         "changed": false,
         "css": "bg-20 title-small",
@@ -246,7 +246,7 @@ var cards = [
         "cost": ['g', 'c', 'cs'],
         "img": "cards/master-gunner.png",
         'banners': ['basic-banner', 'gun-banner'],
-        "extra": [],
+        "extra": ['hook'],
         "production": ['g'],
         "css": "bg-40",
     },
@@ -266,12 +266,35 @@ var cards = [
     {
         "title": "Rum Runner",
         "discard": ['r'],
-        "cost": ['r', 'cs', 'cs'],
+        "cost": ['r', 'g', 'c'],
         "img": "cards/rum-runner.png",
         'banners': ['basic-banner', 'rum-banner'],
-        "extra": [],
+        "extra": ['draw-1'],
         "production": ['r'],
         "css": "title-medium bg-40"
+    },
+
+    {
+        "title": "Fortune Teller",
+        "discard": ['g'],
+        "cost": ['p', 'cs', 'cs'],
+        "img": "cards/oracle.png",
+        "production": ['r'],
+        "banners": ['basic-banner'],
+        "extra": ['compass'],
+        "changed": false,
+        "css": "bg-top title-medium",
+    },
+
+    {
+        "title": "Barrel Master",
+        "discard": ['r'],
+        "cost": ['h', 'cs', 'c', 'c'],
+        "img": "cards/rum-merchant.png",
+        "banners": ['rum-banner'],
+        "extra": ['draw-2'],
+        "production": ['r'],
+        "css": "title-medium",
     },
 
 
@@ -422,7 +445,7 @@ var cards = [
         "cost": ['r', 'p', 'cs', 'cs'],
         "img": "cards/animal-market.png",
         'banners': ['rum-banner'],
-        // "extra": ['vp-1'],
+        "extra": ['vp-1'],
         "production": ['g', 'or', 'p'],
         "css": "bg-50 title-small",
     },
@@ -478,7 +501,7 @@ var cards = [
         "discard": ['s'],
         "cost": ['h', 'h', 'cs'],
         "img": "cards/trouble.png",
-        "extra": ['hook'],
+        "extra": ['vp-1','hook'],
         "banners": ['gun-banner'],
         "production": ['s'],
         "changed": false,
@@ -589,23 +612,12 @@ var cards = [
     },
 
     {
-        "title": "Barrel Master",
-        "discard": ['r'],
-        "cost": ['h', 'cs', 'cs'],
-        "img": "cards/rum-merchant.png",
-        "banners": ['rum-banner'],
-        "extra": ['draw-1'],
-        "production": ['r'],
-        "css": "title-medium",
-    },
-
-    {
         "title": "Cavern Horror",
         "discard": ['s'],
-        "cost": ['s', 'e', 'cs'],
+        "cost": ['s', 'e', 'c'],
         "img": "cards/cavern-horror.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-2'],
+        "extra": ['3-choices'],
         "production": ['s'],
         "sign": "vh",
         "css": "bg-top title-medium sign-extra left-sign",  
@@ -773,7 +785,7 @@ var cards = [
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
         "banners": ['coin-banner'],
-        "extra": ['vp-5', 'hook'],
+        "extra": ['vp-7'],
         "changed": false,
         "css": "bg-top title-small",
     },
@@ -794,7 +806,7 @@ var cards = [
     {
         "title": "The Plank",
         "discard": ['p'],
-        "cost": ['p', 'r', 'h', 'c'],
+        "cost": ['p', 'r', 'h'],
         "img": "cards/walk-plank.png",
         "extra": ['hook', 'tentacle'],
         "banners": ['parrot-banner'],
@@ -807,7 +819,7 @@ var cards = [
     {
         "title": "Swamp Hunt",
         "discard": ['p'],
-        "cost": ['g', 'r', 'e', 'c'],
+        "cost": ['g', 'r', 'e'],
         "img": "cards/hunt.png",
         "extra": [],
         "banners": ['parrot-banner', 'parrot-banner'],
@@ -820,10 +832,10 @@ var cards = [
     {
         "title": "Bitter Vintage",
         "discard": ['r'],
-        "cost": ['g', 'p', 's', 'cs'],
+        "cost": ['g', 'p', 's'],
         "img": "cards/poison.png",
         "extra": ['battle'],
-        "banners": ['rum-banner'],
+        "banners": ['skull-banner'],
         "production": ['r'],
         "changed": false,
         "block": true,
@@ -843,7 +855,7 @@ var cards = [
     {
         "title": "Glowing Grotto",
         "discard": ['e'],
-        "cost": ['h', 's', 'r', 'cs'],
+        "cost": ['h', 's', 'r'],
         "img": "cards/monkey-temple.png",
         "banners": ['skull-banner'],
         "extra": ['vp-3', 'battle', 'tentacle'],
@@ -853,7 +865,7 @@ var cards = [
     {
         "title": "Grave Robbers",
         "discard": ['s'],
-        "cost": ['s', 'g', 'c'],
+        "cost": ['s', 'g'],
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
@@ -863,7 +875,7 @@ var cards = [
     {
         "title": "Gemback Whale",
         "discard": ['h'],
-        "cost": ['h', 'p', 'c'],
+        "cost": ['h', 'p'],
         "img": "cards/emerald-whale.png",
         "production": [],
         "banners": ['parrot-banner'],
@@ -875,7 +887,7 @@ var cards = [
     {
         "title": "Treasure Hunt",
         "discard": ['p'],
-        "cost": ['e', 'p', 'c'],
+        "cost": ['e', 'p'],
         "img": "cards/treasure-map.png",
         // "production": ['e'],
         "banners": ['gem-banner'],
@@ -936,7 +948,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['p', 'p', 'g'],
         "img": "cards/gorilla.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-1'],
         "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g'],
         "block": true,
@@ -946,10 +958,11 @@ var cards = [
     {
         "title": "Ambush",
         "discard": ['e'],
-        "cost": ['g'],
+        "cost": ['g', 'r', 'c'],
         "img": "cards/wanted.jpg", // toloma8
         "banners": ['gun-banner'],
-        "extra": ['battle'],
+        "extra": ['hook', 'battle'],
+        "production": ['g'],
         "changed": false,
         "css": "bg-top",
         "sign": "to",
@@ -1000,7 +1013,7 @@ var cards = [
         "banners": [],
         // "production": ['g']
         "banners": ['parrot-banner'],
-        "extra": ['vp-5', 'hook'],
+        "extra": ['vp-6'],
         "changed": false,
         "css": "bg-40"
     },
@@ -1028,18 +1041,6 @@ var cards = [
     },
 
     {
-        "title": "Fortune Teller",
-        "discard": ['g'],
-        "cost": ['p', 'cs', 'cs'],
-        "img": "cards/oracle.png",
-        "production": ['r'],
-        "banners": ['basic-banner'],
-        "extra": ['compass'],
-        "changed": false,
-        "css": "bg-top title-medium",
-    },
-
-    {
         "title": "Shadow Thief",
         "discard": ['e'],
         "cost": ['cs', 'cs', 'cs'],
@@ -1058,7 +1059,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         // "production": ['r'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-8', 'hook'],
+        "extra": ['vp-9', 'hook'],
         "changed": false,
         "css": "bg-top title-large"
     },
@@ -1070,7 +1071,7 @@ var cards = [
         "img": "cards/skull-collector.png",
         // "production": ['g'],
         "banners": ['skull-banner', 'skull-banner'],
-        "extra": ['vp-4', '3-choices'],
+        "extra": ['vp-3', '3-choices'],
         "changed": false,
         "sign": "ma",
         "css": "bg-20 title-medium left-sign"
@@ -1140,7 +1141,7 @@ var cards = [
     {
         "title": "Predator's Strike",
         "discard": ['s'],
-        "cost": ['p', 'p', 'g', 'g', 'c', 'cs'],
+        "cost": ['p', 'p', 'g', 'g', 'c'],
         "img": "cards/2-jaguars.png",
         "production": ['s'],
         "banners": ['skull-banner'],
@@ -1153,7 +1154,7 @@ var cards = [
     {
         "title": "Unlucky Incident",
         "discard": ['e'],
-        "cost": ['p', 'p', 'r', 'r', 'r', 'cs', 'cs'],
+        "cost": ['p', 'p', 'r', 'r', 'cs', 'cs'],
         "img": "cards/powder.png",
         "production": [],
         "banners": ['parrot-banner', 'gun-banner'],

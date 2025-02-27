@@ -184,14 +184,14 @@ var affinity_mitigation = {
 // how many of those symbols are expected to exist in the end
 // game on a board, without pushing it too much
 var distribution_end_game = {
-    "gun-banner": 2.4,
-    "parrot-banner": 2.4,
-    "rum-banner": 2.4,
-    "skull-banner": 1.7,
-    "helm-banner": 1.7,
-    "gem-banner": 1.7,
-    "coin-banner": 1.7,
-    'basic-banner': 3.5,
+    "gun-banner": 2.2,
+    "parrot-banner": 2.2,
+    "rum-banner": 2.2,
+    "skull-banner": 1.5,
+    "helm-banner": 1.5,
+    "gem-banner": 1.5,
+    "coin-banner": 1.5,
+    'basic-banner': 3.3,
 }
 
 function removeItem(array, item) {
@@ -330,7 +330,7 @@ var get_v_value = (c) => {
                     v += 0.4;
                 }
                 if (e == "hook") {
-                    v += 2;
+                    v += 0.5;
                 }
                 if (e == "battle") {
                     v += 0.8;
