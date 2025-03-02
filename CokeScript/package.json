@@ -14,7 +14,7 @@
   "author": "Batiste Bieler",
   "license": "BSD",
   "dependencies": {
-    "minimist": "~1.1.0",
+    "minimist": "~1.2.5",
     "colors": "^1.0.3"
   },
   "repository": "https://github.com/batiste/CokeScript",
