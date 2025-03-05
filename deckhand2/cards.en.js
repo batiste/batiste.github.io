@@ -958,7 +958,7 @@ var cards = [
     {
         "title": "Ambush",
         "discard": ['e'],
-        "cost": ['g', 'r', 'c'],
+        "cost": ['g', 'r', 'cs'],
         "img": "cards/wanted.jpg", // toloma8
         "banners": ['gun-banner'],
         "extra": ['hook', 'battle'],
