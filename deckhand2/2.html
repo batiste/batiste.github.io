@@ -474,6 +474,23 @@ sort_banners = (a, b) => {
 }
 
 
+// Extract and sort v_ratio values
+const sortedRatios = [...cards].sort((a, b) => a.v_ratio - b.v_ratio);
+
+const count = cards.length;
+const threshold = Math.ceil(count * 0.1); // 10% of the total count
+
+// Get threshold values
+const bottomThreshold = sortedRatios[threshold - 1]?.v_ratio;
+const topThreshold = sortedRatios[count - threshold]?.v_ratio;
+
+// Mark cards
+cards.forEach(card => {
+    card.bottom_ratio = card.v_ratio <= bottomThreshold;
+    card.top_ratio = card.v_ratio >= topThreshold;
+});
+
+
 cards.forEach((c) => {
 
     var cost = "";
@@ -625,10 +642,10 @@ cards.forEach((c) => {
         split_title = "<div style='display:inline-block'>" + c.title + "</span></div>"
     }
 
-    if(c.v_ratio > 0.75) {
+    if(c.top_ratio > 0.75) {
         c.v_ratio = `<b class="op">${c.v_ratio}</b>`
     }
-    if(c.v_ratio < 0.6) {
+    if(c.bottom_ratio) {
         c.v_ratio = `<b class="up">${c.v_ratio}</b>`
     }
 
