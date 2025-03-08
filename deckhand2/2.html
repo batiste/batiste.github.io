@@ -579,7 +579,7 @@ cards.forEach((c) => {
                 extra += `<img class="no-compass" src="img/compass.png">`
             }
             if (c.startsWith('draw-')) {
-                extra += `<img class="draw" src="img/${c}.png">`
+                extra += `<img class="${c}" src="img/${c}.png">`
             }
             if (c == "3-choices") {
                 extra += `<img class="grab-3" src="img/3-choices.png">`

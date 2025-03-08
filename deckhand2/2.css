@@ -212,14 +212,6 @@ img {
     width: 24px;
 }
 
-.right img.grab-3 {
-    width: 41px;
-    margin-left: 2px;
-    margin-right: 2px;
-    margin-bottom: 0px;
-    margin-top: 1px;
-}
-
 .type .resource.discard-res img {
     width: 28px;
     margin-top: -2px;
@@ -235,13 +227,30 @@ img {
 }
 
 .telescope {
+    margin-left: 1.5px;
     margin-left: 1px;
 }
 
-.right .draw {
+.right .draw-1 {
     width: 37px;
-    margin-right: -3px;
-    margin-top: -2px;
+    margin-right: -2px;
+    margin-left: 1px;
+    margin-top: -2.5px;
+}
+
+.right .draw-2 {
+    width: 37px;
+    margin-right: -2px;
+    margin-left: 1px;
+    margin-top: -2.5px;
+}
+
+.right img.grab-3 {
+    width: 41px;
+    margin-left: 3px;
+    margin-right: 2px;
+    margin-bottom: 0px;
+    margin-top: -1px;
 }
 
 .helm {
@@ -790,7 +799,7 @@ img {
 } */
 
 .right img.arrow {
-    margin-left: 2px;
+    margin-left: 3px;
     width: 30px;
     /* margin-right: -4px; */
 }
