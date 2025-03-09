@@ -528,7 +528,7 @@ img {
     width: 69.24972972972974mm;
     height: 94.2mm;
     background-image: url(img/mpc-dark.png);
-    /* background-image: url(img/mpc.png); */
+    background-image: url(img/mpc.png);
     background-size: cover;
     z-index: 100;
 }

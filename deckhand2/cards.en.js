@@ -616,7 +616,7 @@ var cards = [
     },
 
     {
-        "title": "Sidekick",
+        "title": "Bartering Helmsman",
         "discard": ['r'],
         "cost": ['e', 'r', 'p'],
         "img": "cards/sidekick.png",
