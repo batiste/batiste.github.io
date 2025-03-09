@@ -618,7 +618,7 @@ var cards = [
     {
         "title": "Sidekick",
         "discard": ['r'],
-        "cost": ['e', 'r', 'p', 'c'],
+        "cost": ['e', 'r', 'p'],
         "img": "cards/sidekick.png",
         "extra": ['3-choices'],
         // "banners": ['helm-banner'],
@@ -1013,7 +1013,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         // "production": ['r'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-9', 'hook'],
+        "extra": ['vp-8', 'hook'],
         "css": "bg-top title-large"
     },
 
