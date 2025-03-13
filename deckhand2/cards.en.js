@@ -361,7 +361,7 @@ var cards = [
 
     {
         "discard": ['e'],
-        "title": "Hired Thief",
+        "title": "Gifted Thief",
         "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thief.png",
         "extra": ['vp-1', 'x', 'gem-banner'],
@@ -616,7 +616,7 @@ var cards = [
     },
 
     {
-        "title": "Bartering Helmsman",
+        "title": "Wily Helmsman",
         "discard": ['r'],
         "cost": ['e', 'r', 'p'],
         "img": "cards/sidekick.png",
