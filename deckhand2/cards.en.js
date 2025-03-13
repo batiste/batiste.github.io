@@ -398,7 +398,7 @@ var cards = [
         "cost": ['h', 'g', 'g'],
         "img": "cards/skeleton-crew.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "production": ['s'],
         "css": "bg-top title-medium left-sign",
         "block": true,

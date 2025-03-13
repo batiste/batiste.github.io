@@ -226,33 +226,6 @@ img {
     margin-left: 1px; 
 }
 
-.telescope {
-    margin-left: 1.5px;
-    margin-left: 1px;
-}
-
-.right .draw-1 {
-    width: 37px;
-    margin-right: -2px;
-    margin-left: 1px;
-    margin-top: -2.5px;
-}
-
-.right .draw-2 {
-    width: 37px;
-    margin-right: -2px;
-    margin-left: 1px;
-    margin-top: -2.5px;
-}
-
-.right img.grab-3 {
-    width: 41px;
-    margin-left: 3px;
-    margin-right: 2px;
-    margin-bottom: 0px;
-    margin-top: -1px;
-}
-
 .helm {
     width: 34px;
 }
@@ -354,7 +327,7 @@ img {
     width: 37px;
     position: absolute;
     top: 65px;
-    left: 20px;
+    left: 21px;
 }
 
 .price-tag-bottom {
@@ -370,7 +343,7 @@ img {
     background-image: url(img/price-tag-top.png);
     background-size:cover;
     background-repeat: no-repeat;
-    height: 33px;
+    height: 34px;
     background-position: top;
 }
 
@@ -546,7 +519,7 @@ img {
     background: url(img/stick.png);
     background-size: 260px 25px;
     background-repeat: no-repeat;
-    background-position-y: 16px;
+    background-position-y: 15px;
     background-position-x: right;
     padding-right: 8px;
     margin-right: auto;
@@ -583,15 +556,13 @@ img {
     background-image: url(img/production-stop.png);
 }
 
-.right img {
-    width: 38px;
-    /* max-height: 38px; */
-    align-self: center;
-}
-
 .supremacy-cost img {
     width: 38px;
     align-self: center;
+}
+
+.supremacy-cost .resource {
+    width: auto;
 }
 
 .supremacy-cost {
@@ -666,7 +637,40 @@ img {
     display: none;
 }
 
-.right .no-compass {
+.right img {
+    width: 38px;
+    /* max-height: 38px; */
+    align-self: center;
+}
+
+.telescope {
+    margin-left: 1.5px;
+    margin-left: 1px;
+}
+
+.right .draw-1 {
+    width: 37px;
+    margin-right: -2px;
+    margin-left: 1px;
+    margin-top: -2.5px;
+}
+
+.right .draw-2 {
+    width: 37px;
+    margin-right: -2px;
+    margin-left: 1px;
+    margin-top: -2.5px;
+}
+
+.right img.grab-3 {
+    width: 41px;
+    margin-left: 3px;
+    margin-right: 2px;
+    margin-bottom: 0px;
+    margin-top: -1px;
+}
+
+.right .compass {
     width: 36px;
     margin-left: 3px;
     margin-right: 1px;
@@ -685,7 +689,7 @@ img {
 }
 
 .right img.res {
-    width: 30px;
+    width: 31px;
     margin-bottom: 3px;
 }
 
@@ -752,15 +756,6 @@ img {
     background-image: url(sign/to.png);  
 }
 
-/* .sign img {
-    width: 14px;
-    height: 14px;
-    line-height: 1;
-    border-radius: 3px;
-    margin: 0;
-    padding: 0;
-} */
-
 .right img.hook {
     margin-left: 1px;
     margin-right: 2px;
@@ -773,12 +768,8 @@ img {
     margin-right: 2px;
     margin-left: 2px;
     margin-top: -1px;
-    width: 36px;
+    width: 37px;
 }
-
-/* .right img.vp:last-child {
-    margin-right: 0.5px;
-} */
 
 .right img.arrow {
     margin-left: 3px;
@@ -787,9 +778,9 @@ img {
 }
 
 .right img.battle  {
-    width: 33px;
+    width: 35px;
     margin: 1px;
-    margin-bottom: 4px;
+    margin-bottom: 3px;
 }
 
 .right img.tentacle {
