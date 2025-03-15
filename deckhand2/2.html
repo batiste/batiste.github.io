@@ -19,7 +19,8 @@
 <div class="config">
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
-    <label>Zoom<input type="text" value="6.5" onchange="updateZoom(this)"></label>
+    <label>Zoom<input type="text" value="3.118" onchange="updateZoom(this)"></label>
+    <label>Work mask<input type="checkbox" onchange="updateMask(this)"></label>
 </div>
 
 
@@ -637,9 +638,9 @@ cards.forEach((c) => {
     var split_title = c.title;
 
     if (split_title.split(" ").length > 1) {
-        split_title = "<div style='display:inline-block'><span>" + c.title.split(" ").join("</span> <span>") + "</span></div>"
+        split_title = "<div class='title-container'><span>" + c.title.split(" ").join("</span> <span>") + "</span></div>"
     } else {
-        split_title = "<div style='display:inline-block'>" + c.title + "</span></div>"
+        split_title = "<div class='title-container'>" + c.title + "</span></div>"
     }
 
     if(c.top_ratio > 0.75) {
@@ -734,7 +735,7 @@ setTimeout(() => {
             if(c.type == 'supremacy') {
                 t.style.left = (-160 + w) + 'px'
             } else {
-                t.style.right = (-142 + w) + 'px'
+                t.style.right = (-145 + w) + 'px'
             }
         }
     })
@@ -809,6 +810,14 @@ console.log('silver_affinity', silver_affinity)
     var zoom = 3.118
     function updateZoom(e) {
         zoom = parseFloat(e.value)
+    }
+
+    function updateMask(e) {
+        if (e.checked) {
+            document.body.classList.add('work')
+        } else {
+            document.body.classList.remove('work')
+        }
     }
 
     function downloadCardButton(e) {
