@@ -78,7 +78,7 @@ var get_res = (r) => {
         return res("silver")
     }
     if (r == "g") {
-        return res("gun")
+        return res("gun", "gun")
     }
     if (r == "r") {
         return res("rum")
@@ -114,7 +114,7 @@ var get_res = (r) => {
         return res("purse")
     }
     if (r == "or") {
-        return `<b style="font-size:18px;color:#000c">|</b>`
+        return `<b style="font-size:18px;color:#000c;margin:1px">|</b>`
     } else {
         return res(r)
     }
@@ -577,7 +577,7 @@ cards.forEach((c) => {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
             }
             if (c == "compass") {
-                extra += `<img class="compass" src="img/compass.png">`
+                extra += `<img class="compass" src="img/compass-2.png">`
             }
             if (c.startsWith('draw-')) {
                 extra += `<img class="${c}" src="img/${c}.png">`

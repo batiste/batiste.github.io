@@ -235,38 +235,6 @@ img {
     margin-left: 2px; 
 }
 
-.gun {
-    width: 24px;
-    display: inline-flex;
-    margin-right: 2px;
-    margin-bottom: -7px;
-    margin-left: 2px;
-}
-
-.parrot {
-    width: 23px;
-    display: inline-flex;
-    margin-right: 2px;
-    margin-bottom: -6px;
-    margin-left: 2px; 
-}
-
-.rum {
-    width: 23px;
-    display: inline-flex;
-    margin-right: 1px;
-    margin-bottom: -6.5px;
-    margin-left: 1px; 
-}
-
-.rum-guild, .gun-guild, .parrot-guild, .skull-guild {
-    width: 30px;
-    display: inline-flex;
-    margin-right: 1px;
-    margin-bottom: -11px;
-    margin-left: 1px; 
-}
-
 .type {
     background-color: #fbd091b3;
     /* height: 31px; */
@@ -287,8 +255,11 @@ img {
     display: flex;
     width: 25px;
     border-radius: 50px;
-    padding: 3px;
-    margin: 0px 2px;
+    margin: 0px 5px;
+}
+
+.type .resource.gun {
+    margin: 0px 4px;
 }
 
 .type .resource.arrow {
@@ -617,10 +588,6 @@ img {
     rotate: -1deg;
 }
 
-.type-supremacy {
-    rotate: 1deg;
-}
-
 .right img {
     width: 38px;
     /* max-height: 38px; */
@@ -655,7 +622,7 @@ img {
 }
 
 .right .compass {
-    width: 38px;
+    width: 37px;
     margin-left: 3px;
     margin-right: 1px;
     margin-top: 1px;
@@ -769,7 +736,7 @@ img {
 
 .right img.tentacle {
     margin-left: 3px;
-    width: 35px;
+    width: 36px;
     margin-bottom: 2px;
 }
 
