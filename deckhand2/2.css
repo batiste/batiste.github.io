@@ -366,7 +366,7 @@ img {
     letter-spacing: 0.1px;
     font-size: 15px;
     position: absolute;
-    top: 63.5px;
+    top: 64px;
     bottom:auto;
     width: 169px;
     right: -50px;
@@ -418,7 +418,7 @@ img {
 }
 
 .title span:last-child {
-    transform: rotate(-3deg);
+    transform: rotate(-2deg);
     display: inline-flex;
 }
 
@@ -499,17 +499,14 @@ img {
     margin-left: auto;
     padding: 9px;
     padding-top: 23px;
-    padding-right: 24px;
+    padding-right: 24px;    
     padding-left: 2px;
 }
 
-/* .extra {
-    padding: 9px;
-    padding-bottom: 24px;
-    padding-right: 24px;
-    background-color: #ffffff5d;
-    border-left: 1px #00000037 solid;
-}*/
+.extra {
+    display: flex;
+    align-items: center;
+}
 
 .banners {
     background: url(img/stick.png);
@@ -598,9 +595,9 @@ img {
     z-index: 60;
     left: -79px;
     top: 49px;
-    padding: 8px 62px 46px 0px;
+    padding: 8px 62px 50px 0px;
     text-align: right;
-    width: 186px;
+    width: 188px;
     rotate: 3deg;
     background-image: url(img/banner.png);
     right:auto;
@@ -667,7 +664,7 @@ img {
 }
 
 .right .compass {
-    width: 36px;
+    width: 38px;
     margin-left: 3px;
     margin-right: 1px;
     margin-top: 1px;
@@ -681,11 +678,11 @@ img {
 .right img.cross {
     width: 20px;
     margin: 2px;
-    margin-bottom: 5px;
+    margin-bottom: 4px;
 }
 
 .right img.res {
-    width: 31px;
+    width: 35px;
     margin-bottom: 3px;
 }
 
@@ -757,14 +754,14 @@ img {
     margin-right: 2px;
     margin-bottom: 0px;
     margin-top: -2px;
-    width: 35px;
+    width: 38px;
 }
 
 .right img.vp {
     margin-right: 2px;
     margin-left: 2px;
-    margin-top: -1px;
-    width: 37px;
+    margin-top: 0px;
+    width: 40px;
 }
 
 .right img.arrow {
@@ -781,7 +778,7 @@ img {
 
 .right img.tentacle {
     margin-left: 3px;
-    width: 33px;
+    width: 35px;
     margin-bottom: 2px;
 }
 
