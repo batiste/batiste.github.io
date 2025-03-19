@@ -948,7 +948,7 @@ var cards = [
         "banners": ['rum-banner', 'rum-banner'],
         // "production": ['g'],
         "extra": ['vp-5'],
-        "css": "bg-top",
+        "css": "bg-60",
     },
 
     {
