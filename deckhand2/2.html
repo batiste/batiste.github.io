@@ -535,7 +535,7 @@ cards.forEach((c) => {
     if (c.banners) {
         c.banners.forEach(d => {
             if (d.endsWith('banner')) {
-                banners += `<img class="banner"  src="img/${d}.png">`
+                banners += `<img class="banner ${d}" src="img/${d}.png">`
             }
         })
         if (banners) {
