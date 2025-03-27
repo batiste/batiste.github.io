@@ -82,14 +82,14 @@ var cards = [
     },
 
     {
-        "title": "Deck Invasion",
+        "title": "Misfits",
         "discard": [],
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
-        "img": "cards/raft.png",
+        "img": "cards/raft-2.png",
         // "production": ['r']
         'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
-        "css": "bg-top",
+        "css": "bg-50",
     },
 
     {
