@@ -84,7 +84,7 @@ var get_res = (r) => {
         return res("rum")
     }
     if (r == "e") {
-        return res("gem")
+        return res("gem-2")
     }
     if (r == "m") {
         return res("purse")
@@ -95,9 +95,9 @@ var get_res = (r) => {
     if (r == "h") {
         return res("helm", "helm")
     }
-    if (r == "gem") {
-        return res("gem")
-    }
+    // if (r == "gem") {
+    //     return res("gem-2")
+    // }
     if (r == "produce") {
         return res("arrow", "arrow")
     }
@@ -546,26 +546,11 @@ cards.forEach((c) => {
     var extra = ''
     if (c.extra) {
         c.extra.forEach(c => {
-            if (c == "r") {
-                extra += `<img class="res" src="img/rum.png">`
-            }
-            if (c == "p") {
-                extra += `<img class="res" src="img/parrot.png">`
-            }
-            if (c == "g") {
-                extra += `<img class="res" src="img/gun.png">`
-            }
-            if (c == "cs") {
-                extra += `<img class="res" src="img/silver-2.png">`
-            }
             if (c == "bolt") {
                 extra += `<img class="res" src="img/bolt.png">`
             }
             if (c.startsWith('vp-')) {
-                extra += `<img class="vp" src="img/${c}.png">`
-            }
-            if (c == "crate") {
-                extra += `<img class="res" src="img/crate.png">`
+                extra += `<img class="vp ${c}" src="img/${c}.png">`
             }
             if (c == "telescope") {
                 extra += `<img class="res telescope" src="img/telescope.png">`
@@ -584,15 +569,6 @@ cards.forEach((c) => {
             }
             if (c == "3-choices") {
                 extra += `<img class="grab-3" src="img/3-choices.png">`
-            }
-            if (c == "h") {
-                extra += `<img class="res" src="img/helm.png">`
-            }
-            if (c == "s") {
-                extra += `<img class="res" src="img/skull.png">`
-            }
-            if (c == "e") {
-                extra += `<img class="res" src="img/gem.png">`
             }
             if (c == "x") {
                 extra += `<img class="cross" src="img/cross.png">`

@@ -130,22 +130,25 @@ img {
 }
 
 .banners .banner {
-    margin-top: 15px;
+    margin-top: 21px;
     margin-right: 4px;
     margin-left: -3px;
     width: 39px;
 }
 
 .banners .skull-banner {
-    margin-top: 16px;
     margin-right: 7px;
     margin-left: 0;
     width: 34px;
     filter: drop-shadow(1px 1px 1.2px #000000a7);
 }
 
-.banners > *, .right > *  {
+.right > *  {
     align-self: center;
+}
+
+.banners > * {
+    align-self: flex-start;
 }
 
 .right .banner-icon {
@@ -653,6 +656,7 @@ img {
 .right img.res {
     width: 35px;
     margin-bottom: 3px;
+    /* filter: drop-shadow(1px 1px 0.5px #00000066); */
 }
 
 .sign {
@@ -732,6 +736,13 @@ img {
     margin-top: 0px;
     width: 40px;
 }
+
+.right img.vp-1, .right img.vp-6 {
+    width: 36px;
+    margin-top: 1px;
+}
+
+
 
 .right img.arrow {
     margin-left: 3px;
