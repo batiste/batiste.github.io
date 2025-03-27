@@ -85,7 +85,7 @@ var cards = [
         "title": "Deck Invasion",
         "discard": [],
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
-        "img": "cards/grand-escape.png",
+        "img": "cards/raft.png",
         // "production": ['r']
         'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
