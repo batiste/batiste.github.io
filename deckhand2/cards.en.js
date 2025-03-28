@@ -308,6 +308,7 @@ var cards = [
         'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
         "copies": 2,
+        "css": "bg-top"
     },
 
     {
