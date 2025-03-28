@@ -303,7 +303,7 @@ var cards = [
         "title": "Armed Orangutan",
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
-        "img": "cards/armed-orangutan.png",
+        "img": "cards/orang.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
