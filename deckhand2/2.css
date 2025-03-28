@@ -644,7 +644,7 @@ img {
     width: 20px;
     margin: 2px;
     margin-bottom: 4px;
-    filter: drop-shadow(1px 1px 1.2px #000000a7);
+    /* filter: drop-shadow(1px 1px 1.2px #000000a7); */
 }
 
 .right img.res {
@@ -739,7 +739,7 @@ img {
 .right img.arrow {
     margin-left: 4px;
     width: 30px;
-    filter: drop-shadow(1px 1px 1.2px #000000a7);
+    /* filter: drop-shadow(1px 1px 1.2px #000000a7); */
     /* margin-right: -4px; */
 }
 
