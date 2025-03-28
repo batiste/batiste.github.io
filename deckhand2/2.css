@@ -294,7 +294,7 @@ img {
     background-position: bottom;
     padding-bottom: 10px;
     padding-top: 5px;
-    filter: drop-shadow(1px 1px 0.8px #333333bb);
+    filter: drop-shadow(1px 1px 0.8px #000000bb);
 }
 
 .price-tag-top {
