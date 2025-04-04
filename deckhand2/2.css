@@ -256,13 +256,13 @@ img {
     margin: 0px 5px;
 }
 
-.type .resource.gun {
-    margin: 0px 4px;
-}
-
 .type .resource img {
     width: 30px;
     align-self: center;
+}
+
+.type .gun img {
+    /* width: 32px; */
 }
 
 .type .helm img {
@@ -318,6 +318,10 @@ img {
     background:none;
     box-shadow: none;
     padding: 2px 0;
+}
+
+.price-tag .resource.gun img {
+    width: 23px;
 }
 
 .price-tag .resource.helm img {
