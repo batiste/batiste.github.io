@@ -663,9 +663,9 @@ var cards = [
     {
         "discard": ['s'],
         "title": "Scarlet Rogue",
-        "cost": ['g', 'g'],
+        "cost": ['g', 'g', 'h'],
         "img": "cards/lady-pirate.png",
-        "banners": ["gun-banner"],
+        "banners": ["gun-banner", "gun-banner"],
         "extra": ['vp-1', 'x', 'gun-banner'],
         // "production": ['', 'produce', 'g'],
         "css": "bg-top title-medium left-sign",    
