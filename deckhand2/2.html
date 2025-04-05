@@ -616,7 +616,7 @@ cards.forEach((c) => {
     if (split_title.split(" ").length > 1) {
         split_title = "<div class='title-container'><span>" + c.title.split(" ").join("</span> <span>") + "</span></div>"
     } else {
-        split_title = "<div class='title-container'>" + c.title + "</span></div>"
+        split_title = "<div class='title-container single-word'><span>" + c.title + "</span></div>"
     }
 
     if(c.top_ratio > 0.75) {
