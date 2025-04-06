@@ -19,7 +19,7 @@
 <div class="config">
     General config
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
-    <label>Zoom<input type="text" value="3.118" onchange="updateZoom(this)"></label>
+    <label>Zoom<input type="text" value="" id="zoom" onchange="updateZoom(this)"></label>
     <label>Work mask<input type="checkbox" onchange="updateMask(this)"></label>
 </div>
 
@@ -312,9 +312,9 @@ var get_v_value = (c) => {
 
     var v = 0;
 
-    if (c.discard && ['h', 'e', 's'].includes(c.discard[0])) {
-        v += 0.1;
-    }
+    // if (c.discard && ['h', 'e', 's'].includes(c.discard[0])) {
+    //     v += 0.1;
+    // }
 
     if(c.extra && c.extra.length) {
         var nb_bolt = 0;
@@ -499,12 +499,12 @@ cards.forEach((c) => {
     var v_cost = 0
 
     var dis = ""
-    if (c.discard) {
-        c.discard.forEach(d => {
-            dis += get_res(d)
-        })
-        dis = `<span class="discard">${dis}</span>`
-    }
+    // if (c.discard) {
+    //     c.discard.forEach(d => {
+    //         dis += get_res(d)
+    //     })
+    //     dis = `<span class="discard">${dis}</span>`
+    // }
 
     if (c.banners) {
         c.banners.sort(sort_banners)
@@ -707,7 +707,6 @@ setTimeout(() => {
         var t =  document.getElementById('card-'+c.id).querySelector('.title')
         if (t.querySelector('div')) {
             var w = t.querySelector('div').clientWidth
-            console.log(w)
             if(c.type == 'supremacy') {
                 t.style.left = (-160 + w) + 'px'
             } else {
@@ -783,7 +782,8 @@ console.log('silver_affinity', silver_affinity)
         })
     }
 
-    var zoom = 3.118
+    var zoom = 3.118 * 2
+    document.getElementById('zoom').value = zoom
     function updateZoom(e) {
         zoom = parseFloat(e.value)
     }
