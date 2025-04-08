@@ -421,11 +421,11 @@ var cards = [
         "title": "Trade Route",
         "discard": ['p'],
         "cost": ['e', 'r', 'cs'],
-        "img": "cards/wind.png",
+        "img": "cards/trade-route.png",
         "extra": ['vp-1'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "title-medium",
+        "css": "bg-top",
     },
 
     {
@@ -677,10 +677,10 @@ var cards = [
     {
         "discard": ['p'],
         "title": "Glint of Riches",
-        "cost": ['h', 'h', 'cs'],
+        "cost": ['h', 'h', 'c'],
         "img": "cards/watch.png",
         "banners": ['helm-banner'],
-        "production": ['h'],
+        // "production": ['h'],
         "extra": ['telescope', 'draw-2'],
         "css": "title-medium",
     },
@@ -715,7 +715,7 @@ var cards = [
     {
         "title": "Doom Temple",
         "discard": ['s'],
-        "cost": ['g', 's', 's'],
+        "cost": ['s', 's', 's'],
         "img": "cards/doom-island.png",
         "production": ['s'],
         "extra": ['vp-3', 'x', 'skull-banner'],
@@ -726,7 +726,7 @@ var cards = [
     {
         "title": "Plank Workshop",
         "discard": ['h'],
-        "cost": ['p', 'h', 'h'],
+        "cost": ['h', 'h', 'h'],
         "img": "cards/construction.jpg",
         // "banners": ['rum-banner'],
         "production": ['h'],
@@ -738,7 +738,7 @@ var cards = [
     {
         "title": "Emerald's Mine",
         "discard": ['r'],
-        "cost": ['r', 'e', 'e'],
+        "cost": ['e', 'e', 'e'],
         "img": "cards/mine.png",
         "production": ['e'],
         "extra": ['vp-3', 'x', 'gem-banner'],
@@ -764,7 +764,7 @@ var cards = [
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
         "img": "cards/el-dorado.png",
         "banners": ['coin-banner'],
-        "production": ['g'],
+        "production": ['r'],
         "extra": ['vp-7'],
         "css": "bg-top title-small",
     },
@@ -840,7 +840,7 @@ var cards = [
     {
         "title": "Grave Robbers",
         "discard": ['s'],
-        "cost": ['s', 'g'],
+        "cost": ['s', 'g', 'c'],
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
@@ -1032,7 +1032,7 @@ var cards = [
         "cost": ['s', 's', 's'],
         "img": "cards/skull-collector.png",
         // "production": ['g'],
-        "banners": ['skull-banner', 'skull-banner'],
+        "banners": ['skull-banner'],
         "extra": ['vp-3', '3-choices'],
         "sign": "ma",
         "css": "bg-20 title-medium left-sign"
@@ -1057,7 +1057,7 @@ var cards = [
         "img": "cards/doom-temple.png",
         "production": ['e'],
         "banners": ['skull-banner', 'gem-banner'],
-        "extra": ['vp-7'],
+        "extra": ['vp-6'],
         "css": "title-medium"
     },
 
@@ -1111,7 +1111,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['p', 'p', 'r', 'r', 'cs', 'cs'],
         "img": "cards/powder.png",
-        "production": [],
+        "production": ['r'],
         "banners": ['parrot-banner', 'gun-banner'],
         "extra": ['vp-7'],
         "css": "bg-top title-top"

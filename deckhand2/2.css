@@ -151,7 +151,7 @@ img {
 
 .right .banner-icon {
     width: 34px;
-    margin-bottom: 0px;
+    margin-bottom: -3px;
     /* filter: drop-shadow(1px 1px 1.2px #000000a7); */
 }
 
@@ -592,7 +592,7 @@ img {
 
 .right img.grab-3 {
     width: 43px;
-    margin-left: 3px;
+    margin-left: 2px;
     margin-right: 2px;
     margin-bottom: 0px;
     margin-top: -2px;
@@ -703,7 +703,7 @@ img {
 
 .right img.arrow {
     margin-left: 4px;
-    margin-right: 3px;
+    margin-right: 2px;
     width: 30px;
     /* filter: drop-shadow(1px 1px 1.2px #000000a7); */
     /* margin-right: -4px; */
