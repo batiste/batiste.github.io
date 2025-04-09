@@ -401,7 +401,11 @@ var get_v_value = (c) => {
         v += 0.5
     }
 
-    v = v + evaluate_production(c, c.cost);
+    if (c.v_cost > 7) {
+        v = v + (evaluate_production(c) / (c.v_cost / 8.0)); 
+    } else {
+        v = v + evaluate_production(c);
+    }
     c.v_value = round(v)
     c.v_ratio = round(v / c.v_cost)
 }
@@ -419,7 +423,6 @@ cards.forEach((c) => {
             banner_stats[b] = 1 + (banner_stats[b] || 0);
         })
     }
-    stats_discard[c.discard[0]] = 1 + (stats_discard[c.discard[0]] || 0);
 
     var s = {}
     var has_silver = false;
@@ -456,6 +459,7 @@ cards.forEach((c) => {
             add = 0.75;
         }
         c.production.forEach(t => {
+            stats_discard[t] = 1 + (stats_discard[t] || 0);
             if (!['or'].includes(t)) {
                 stats_production[t] = add + (stats_production[t] || 0)
                 stats_production_weighted[t] = (add / c.v_cost) + (stats_production_weighted[t] || 0)

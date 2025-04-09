@@ -794,11 +794,11 @@ var cards = [
     },
 
     {
-        "title": "Swamp Hunt",
+        "title": "Under the Canopy",
         "discard": ['p'],
         "cost": ['g', 'r', 'e'],
         "img": "cards/hunt.png",
-        "extra": [],
+        "extra": ['vp-1'],
         "banners": ['parrot-banner', 'parrot-banner'],
         "production": ['p'],
         "css": "bg-top title-medium",
@@ -833,7 +833,7 @@ var cards = [
         "cost": ['h', 's', 'r'],
         "img": "cards/monkey-temple.png",
         "banners": ['skull-banner'],
-        "extra": ['vp-3', 'battle', 'tentacle'],
+        "extra": ['vp-4', 'battle', 'tentacle'],
         "css": "bg-60"
     },
 
@@ -1055,7 +1055,7 @@ var cards = [
         "discard": ['e'],
         "cost": ['e', 'e', 'e', 's'],
         "img": "cards/doom-temple.png",
-        "production": ['e'],
+        "production": ['h'],
         "banners": ['skull-banner', 'gem-banner'],
         "extra": ['vp-6'],
         "css": "title-medium"
