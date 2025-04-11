@@ -560,12 +560,12 @@ var cards = [
         "title": "Bustling Market",
         "discard": ['r'],
         "cost": ['r', 'r', 'cs', 'cs'],
-        "img": "cards/busy.png",
+        "img": "cards/busy-2.png",
         'banners': ['coin-banner'],
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-30 left-sign",
+        "css": "bg-60 left-sign",
     },
 
     {
@@ -1022,7 +1022,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-8', 'hook'],
+        "extra": ['vp-9'],
         "css": "bg-top title-large"
     },
 
@@ -1031,7 +1031,7 @@ var cards = [
         "discard": ['g'],
         "cost": ['s', 's', 's'],
         "img": "cards/skull-collector.png",
-        // "production": ['g'],
+        "production": ['p'],
         "banners": ['skull-banner'],
         "extra": ['vp-3', '3-choices'],
         "sign": "ma",
@@ -1064,7 +1064,7 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'c', 'c'],
+        "cost": ['e', 'c', 'cs'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
         "banners": ['basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'],
