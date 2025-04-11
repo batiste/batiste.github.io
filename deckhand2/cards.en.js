@@ -146,7 +146,7 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-40 title-medium left-sign"
+        "css": "bg-30 title-medium left-sign"
     },
 
 
@@ -703,7 +703,7 @@ var cards = [
         "discard": ['h'],
         "title": "Pirate's Cut",
         "cost": ['s', 'h', 'c', 'cs'],
-        "img": "cards/killer.png",
+        "img": "cards/killer-2.png",
         "extra": ['vp-3'],
         "banners": ['coin-banner'],
         "production": [`cs`],
@@ -814,7 +814,7 @@ var cards = [
         "banners": ['skull-banner'],
         "production": ['r'],
         "block": true,
-        "css": "bg-30 title-medium",
+        "css": "bg-40 title-medium",
     },
 
 
@@ -1084,14 +1084,14 @@ var cards = [
     },
 
     {
-        "title": "Sea Domination",
+        "title": "Armada",
         "discard": ['g'],
         "cost": ['h', 'h', 'h', 'g'],
         "img": "cards/armada.png",
         // "production": ['p'],
         "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
         "extra": ['vp-6'],
-        "css": "bg-60 title-top"
+        "css": "bg-50 title-top"
     },
 
     {
