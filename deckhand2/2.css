@@ -132,9 +132,9 @@ img {
 
 .banners .banner {
     margin-top: 21px;
-    margin-right: 4px;
-    margin-left: -3px;
-    width: 39px;
+    margin-right: 5px;
+    margin-left: 1px;
+    width: 33px;
 }
 
 .banners .skull-banner {
@@ -150,7 +150,8 @@ img {
 }
 
 .right .banner-icon {
-    width: 34px;
+    width: 31px;
+    margin: 0 2px;
     margin-bottom: -3px;
     /* filter: drop-shadow(1px 1px 1.2px #000000a7); */
 }
@@ -494,8 +495,9 @@ img {
 }
 
 .supremacy-cost img {
-    width: 38px;
+    width: 34px;
     align-self: center;
+    margin: 0px 3px;
 }
 
 .supremacy-cost .resource {
