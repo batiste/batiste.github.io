@@ -337,9 +337,9 @@ img {
     position: absolute;
     top: 65px;
     bottom:auto;
-    width: 169px;
+    width: 160px;
     right: -50px;
-    padding: 6.5px 0px 22px 60px;
+    padding: 7px 0px 25px 51px;
     border-radius: 0 0 0 3px;
     color: #000000;
     text-align: left;
@@ -362,9 +362,18 @@ img {
     display: inline-flex;
 }
 
+.title span.long-word:first-child {
+    transform: rotate(2deg);
+}
+
 .title span:last-child {
     transform: rotate(-2deg);
     display: inline-flex;
+}
+
+.type-supremacy .title .single-word span:first-child {
+    transform: rotate(-1deg);
+    margin-top: -1px;
 }
 
 .single-word span:last-child {
@@ -540,10 +549,10 @@ img {
 .type-supremacy .title {
     z-index: 60;
     left: -79px;
-    top: 41px;
-    padding: 16px 65px 50px 0px;
+    top: 48px;
+    padding: 8px 58px 50px 0px;
     text-align: right;
-    width: 185px;
+    width: 196px;
     rotate: 3deg;
     background-image: url(img/banner-left.png);
     right:auto;
@@ -563,10 +572,11 @@ img {
 
 .title-container {
     display: inline-block;
+    rotate: 1deg;
 }
 
 .type-supremacy .title-container {
-    rotate: -1deg;
+    rotate: -2deg;
 }
 
 .right img {

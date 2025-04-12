@@ -616,9 +616,18 @@ cards.forEach((c) => {
 
     var title_class = "";
     var split_title = c.title;
+    var words = split_title.split(" ")
 
-    if (split_title.split(" ").length > 1) {
-        split_title = "<div class='title-container'><span>" + c.title.split(" ").join("</span> <span>") + "</span></div>"
+    if (words.length > 1) {
+        split_title = "<div class='title-container'>"
+        words.forEach(w => {
+            var cls = "word"
+            if (w.length > 5) {
+                cls = "long-word"
+            }
+            split_title += `<span class='${cls}'>` + w + "</span> "
+        })
+        split_title += "</div>"
     } else {
         split_title = "<div class='title-container single-word'><span>" + c.title + "</span></div>"
     }
@@ -712,9 +721,9 @@ setTimeout(() => {
         if (t.querySelector('div')) {
             var w = t.querySelector('div').clientWidth
             if(c.type == 'supremacy') {
-                t.style.left = (-160 + w) + 'px'
+                t.style.left = (-168 + w) + 'px'
             } else {
-                t.style.right = (-145 + w) + 'px'
+                t.style.right = (-133 + w) + 'px'
             }
         }
     })
