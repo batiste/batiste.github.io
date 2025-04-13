@@ -140,10 +140,10 @@ var cards = [
     {
         "title": "Looter's Bank",
         "discard": ['h'],
-        "cost": ['cs', 'cs', 'cs', 'cs'],
+        "cost": ['cs', 'cs', 'c'],
         "img": "cards/water-bank.png",
         "banners": ['basic-banner', 'coin-banner'],
-        "extra": ['vp-1'],
+        "extra": [],
         "production": ['cs'],
         "copies": 2,
         "css": "bg-30 title-medium left-sign"
