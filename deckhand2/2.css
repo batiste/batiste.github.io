@@ -463,13 +463,13 @@ img {
 
 .banners {
     background: url(img/stick.png);
-    background-size: 260px 25px;
+    background-size: 260px 24px;
     background-repeat: no-repeat;
     background-position-y: 15px;
     background-position-x: right;
-    padding-right: 8px;
+    padding-right: 10px;
     margin-right: auto;
-    padding-left: 8px;
+    padding-left: 7px;
     display: flex;
     /* padding: 9px;
     padding-bottom: 24px;
