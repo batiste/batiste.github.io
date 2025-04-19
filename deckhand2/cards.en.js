@@ -922,7 +922,7 @@ var cards = [
         "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g'],
         "block": true,
-        "css": "bg-60 title-medium left-sign",
+        "css": "bg-65 title-medium left-sign",
     },
 
     {

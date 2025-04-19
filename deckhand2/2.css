@@ -94,6 +94,14 @@ img {
     margin-top: 60px;  
 }
 
+.card.bg-65 .bg {
+    margin-top: 65px;  
+}
+
+.card.bg-70 .bg {
+    margin-top: 70px;  
+}
+
 .card .bg img {
     width: 100%;
 }
