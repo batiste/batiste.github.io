@@ -11,7 +11,7 @@ var cards = [
         'extra': ['vp-2', 'telescope', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
-        "css": "bg-30 title-small left-sign"
+        "css": "bg-50 title-small left-sign"
     },
 
     {
