@@ -3,15 +3,15 @@
 var cards = [
 
     {
-        "title": "Totem",
+        "title": "Sight Totem",
         "discard": [],
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['vp-2', 'telescope', 'compass'],
+        'extra': ['telescope', 'vp-2', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
-        "css": "bg-60 title-small left-sign"
+        "css": "bg-60 left-sign"
     },
 
     {
@@ -216,7 +216,7 @@ var cards = [
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
-        "css": "bg-top"
+        "css": "bg-top left-sign"
     },
 
     {
@@ -1125,6 +1125,6 @@ var cards = [
         "production": ["h", "or", "cs"],
         "banners": ['gem-banner'],
         "extra": ['vp-4'],
-        "css": "bg-top title-top title-medium"
+        "css": "bg-top title-top title-medium left-sign",
     },
 ]
