@@ -79,6 +79,7 @@ var cards = [
         'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
         'sign': 'dc',
+        "css": "bg-60",
     },
 
     {
