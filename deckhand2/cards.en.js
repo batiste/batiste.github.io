@@ -82,7 +82,7 @@ var cards = [
     },
 
     {
-        "title": "Misfits",
+        "title": "Among Misfits",
         "discard": [],
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
         "img": "cards/raft-2.png",
