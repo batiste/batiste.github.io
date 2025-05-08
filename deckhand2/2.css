@@ -445,6 +445,10 @@ img {
     background-image: url(img/mpc.png);
 }
 
+.no-mask .card .mpc {
+    background-image: none
+}
+
 .card.preparePrint .mpc {
     /* display: none; */
 }

@@ -21,6 +21,7 @@
     <label>Use jpg<input type="checkbox" onchange="updateFormat(this)"></label>
     <label>Zoom<input type="text" value="" id="zoom" onchange="updateZoom(this)"></label>
     <label>Work mask<input type="checkbox" onchange="updateMask(this)"></label>
+    <label>No mask (for printer)<input type="checkbox" onchange="noMask(this)"></label>
 </div>
 
 
@@ -818,6 +819,17 @@ console.log('silver_affinity', silver_affinity)
         }
     }
 
+    var mask = true;
+    function noMask(e) {
+        if (e.checked) {
+            document.body.classList.add('no-mask')
+            mask = false;
+        } else {
+            document.body.classList.remove('no-mask')
+            mask = true;
+        }
+    }
+
     function downloadCardButton(e) {
         downloadCard(e.parentNode.querySelector('.card'))
     }
@@ -849,6 +861,9 @@ console.log('silver_affinity', silver_affinity)
         cls = ""
         if (lang) {
             cls = 'class="lang-fr"'
+        }
+        if (!mask) {
+            cls = 'class="no-mask"'
         }
 
         var h = `
