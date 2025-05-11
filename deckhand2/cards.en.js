@@ -799,7 +799,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 'r', 'e'],
         "img": "cards/hunt.png",
-        "extra": ['vp-1'],
+        "extra": ['vp-2'],
         "banners": ['parrot-banner'],
         "production": ['p'],
         "css": "bg-top title-medium",
