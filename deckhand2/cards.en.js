@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['telescope', 'vp-2', 'compass'],
+        'extra': ['telescope', 'vp-3', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
         "css": "bg-60 left-sign"
@@ -128,14 +128,14 @@ var cards = [
     },
 
     {
-        "title": "Provision",
+        "title": "Perl Diving",
         "discard": [],
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
-        "img": "cards/cellar.png",
+        "img": "cards/perl.png",
         // "production": ['r']
         'extra': ['draw-2'],
         'type': 'supremacy',
-        "css": "title-small left-sign bg-60",
+        "css": "title-small left-sign bg-70",
     },
 
     {
@@ -536,7 +536,7 @@ var cards = [
         "discard": ['r'],
         "cost": ['g', 'g', 'r'],
         "img": "cards/mob.png",
-        "banners": ['gun-banner', 'gun-banner'],
+        "banners": ['gun-banner'],
         "extra": ["battle"],
         "production": ['s'],
         "sign": "vh",
@@ -800,7 +800,7 @@ var cards = [
         "cost": ['g', 'r', 'e'],
         "img": "cards/hunt.png",
         "extra": ['vp-1'],
-        "banners": ['parrot-banner', 'parrot-banner'],
+        "banners": ['parrot-banner'],
         "production": ['p'],
         "css": "bg-top title-medium",
         "block": true,
@@ -882,14 +882,14 @@ var cards = [
     },
 
     {
-        "title": "Docker's Guild",
+        "title": "Fair",
         "discard": ['r'],
         "cost": ['p', 'g', 'r', 'cs'],
         "img": "cards/dockers-guild.png",
         "production": ['r'],
         "banners": ['basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
-        "css": "bg-top title-medium left-sign"
+        "css": "bg-top left-sign"
     },
 
     {
