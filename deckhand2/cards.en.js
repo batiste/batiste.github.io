@@ -122,7 +122,7 @@ var cards = [
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
         "img": "cards/tattoo.png",
         // "production": ['r']
-        'extra': ['vp-5'],
+        'extra': ['vp-2', 'x', 'coin-banner'],
         'type': 'supremacy',
         "css": "bg-60",
     },
