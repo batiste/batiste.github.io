@@ -135,7 +135,7 @@ var cards = [
         // "production": ['r']
         'extra': ['draw-2'],
         'type': 'supremacy',
-        "css": "title-small left-sign bg-70",
+        "css": "title-small bg-60",
     },
 
     {
