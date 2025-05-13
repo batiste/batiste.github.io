@@ -488,7 +488,7 @@ var cards = [
         "title": "Bone Tempest",
         "discard": ['s'],
         "cost": ['h', 'h', 'cs'],
-        "img": "cards/trouble.png",
+        "img": "cards/cpt-elec.png",
         "extra": ['vp-1','hook'],
         "banners": ['gun-banner'],
         "production": ['s'],
