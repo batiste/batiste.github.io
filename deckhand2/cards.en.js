@@ -478,14 +478,15 @@ var cards = [
         "title": "Deadly Expedition",
         "discard": ['r'],
         "cost": ['h', 'h', 'e'],
-        "img": "cards/dead-expedition.png",
+        "img": "cards/deadly.png",
         "production": ['e'],
         "banners": ['skull-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
+        "css": "bg-top title-medium",
     },
 
     {
-        "title": "Bone Tempest",
+        "title": "Deadhand",
         "discard": ['s'],
         "cost": ['h', 'h', 'cs'],
         "img": "cards/cpt-elec.png",
