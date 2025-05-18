@@ -443,7 +443,7 @@ var cards = [
     {
         "title": "Heiress",
         "discard": ['p'],
-        "cost": ['g', 'g', 'cs', 'cs'],
+        "cost": ['r', 'p', 'cs', 'cs'],
         "img": "cards/duchess.png",
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
