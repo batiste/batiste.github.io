@@ -857,7 +857,7 @@ var cards = [
         "production": [],
         "banners": ['parrot-banner'],
         "extra": ['gem-banner', 'produce', 'draw-1'],
-        "css": "bg-top title-top title-large"
+        "css": "bg-65 title-top title-large"
     },
 
     {
