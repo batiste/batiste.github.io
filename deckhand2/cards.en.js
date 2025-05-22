@@ -443,7 +443,7 @@ var cards = [
     {
         "title": "Heiress",
         "discard": ['p'],
-        "cost": ['r', 'p', 'cs', 'cs'],
+        "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/duchess.png",
         "banners": ['gun-banner'],
         "production": ['p', 'or', 'r'],
@@ -477,7 +477,7 @@ var cards = [
     {
         "title": "Deadly Expedition",
         "discard": ['r'],
-        "cost": ['h', 'h', 'e'],
+        "cost": ['h', 'h', 's'],
         "img": "cards/deadly.png",
         "production": ['e'],
         "banners": ['skull-banner'],
@@ -774,7 +774,7 @@ var cards = [
     {
         "title": "Severed Relic",
         "discard": ['s'],
-        "cost": ['r', 'g', 'g', 'cs'],
+        "cost": ['r', 'g', 'cs', 'cs'],
         "img": "cards/thieves-statue.png",
         "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
@@ -832,9 +832,9 @@ var cards = [
     {
         "title": "Glowing Grotto",
         "discard": ['e'],
-        "cost": ['h', 's', 'r'],
+        "cost": ['h', 'e', 'r'],
         "img": "cards/monkey-temple.png",
-        "banners": ['skull-banner'],
+        // "banners": ['skull-banner'],
         "extra": ['vp-4', 'battle', 'tentacle'],
         "css": "bg-60"
     },
@@ -846,7 +846,7 @@ var cards = [
         "img": "cards/grave.png",
         // "banners": ['skull-banner'],
         "extra": ['skull-banner', 'produce', '3-choices'],
-        "css": "title-large"
+        "css": "title-large bg-60"
     },
 
     {
@@ -1066,11 +1066,11 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'c', 'cs'],
+        "cost": ['e', 'cs', 'cs'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
-        "banners": ['basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'],
-        // "extra": ['vp-8'],
+        "banners": ['basic-banner', 'basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'], //'basic-banner'
+        // "extra": ['vp-2'],
         "css": "title-medium left-sign"
     },
 
