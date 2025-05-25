@@ -139,15 +139,15 @@ var cards = [
     },
 
     {
-        "title": "Looter's Bank",
+        "title": "Alley Harvest",
         "discard": ['h'],
         "cost": ['cs', 'cs', 'c'],
-        "img": "cards/water-bank.png",
+        "img": "cards/thief-cut.png",
         "banners": ['basic-banner', 'coin-banner'],
         "extra": [],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-30 title-medium left-sign"
+        "css": "bg-top title-medium"
     },
 
 
