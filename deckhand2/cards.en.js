@@ -139,7 +139,7 @@ var cards = [
     },
 
     {
-        "title": "Alley Harvest",
+        "title": "Cutpurse Alley",
         "discard": ['h'],
         "cost": ['cs', 'cs', 'c'],
         "img": "cards/thief-cut.png",
@@ -147,7 +147,7 @@ var cards = [
         "extra": [],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-top title-medium"
+        "css": "bg-65 title-medium"
     },
 
 
