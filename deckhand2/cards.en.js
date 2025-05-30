@@ -90,7 +90,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
-        "css": "bg-50",
+        "css": "bg-60",
     },
 
     {
@@ -147,7 +147,7 @@ var cards = [
         "extra": [],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-65 title-medium"
+        "css": "bg-50 title-medium"
     },
 
 
