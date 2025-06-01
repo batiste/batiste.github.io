@@ -699,9 +699,8 @@ cards.forEach((c) => {
             </svg>`;
     }
 
-    var svgCurvedTitle = createCurvedTitle(c.title, 200, 60, 16);
+    var svgCurvedTitle = createCurvedTitle(c.title, 200, 60, 14);
     if (c.type == 'supremacy') {
-        console.log('???')
         svgCurvedTitle = createCurvedTitle(c.title, 200, 60, 10);
     }
 
@@ -779,22 +778,23 @@ setTimeout(() => {
                 // }
             } else {
                 t.style.rotate = '-2deg'
+                curve.style.rotate = '1deg'
                 if (w > 60) {
                     t.style.rotate = '-2deg'
                 }
                 if (w > 70) {
                     t.style.rotate = '-2deg'
-                    curve.style.rotate = '-0.5deg'
+                    curve.style.rotate = '0.5deg'
                 }
                 if (w > 90) {
-                    t.style.rotate = '-1.5deg'
+                    t.style.rotate = '-2deg'
                     curve.style.rotate = '-1deg'
                 }
                 if (w > 110) {
                     curve.style.rotate = '-2deg'
                     t.style.rotate = '-2deg'
                 }
-                t.style.right = (-134 + w) + 'px'
+                t.style.right = (-136 + w) + 'px'
             }
         }
     })
