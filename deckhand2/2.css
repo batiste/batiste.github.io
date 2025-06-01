@@ -339,9 +339,9 @@ img {
 
 
 .title {
-    font-family: 'Lobster Two', cursive;
+    font-family: 'IM Fell English', cursive;
     letter-spacing: 0.1px;
-    font-size: 15px;
+    font-size: 14.5px;
     position: absolute;
     top: 65px;
     bottom:auto;
@@ -355,13 +355,30 @@ img {
     background-image: url(img/banner-right.png);
     background-size:contain;
     background-repeat: no-repeat;
-    rotate: -1deg;
+    rotate: -2.5deg;
     /* filter: drop-shadow(1px 2px 2.5px #00000030); */
+}
+
+.title span {
+    visibility: hidden;
+}
+
+.svg-curve {
+    position:absolute;
+    top:50.5px;
+    /* right: 20px;  */
+    z-index: 100;
+    /* rotate: 0.5deg; */
 }
 
 .title-bottom .title {
     top: auto;
-    bottom: 40px;
+    bottom: 47.5px;
+}
+
+.title-bottom .svg-curve {
+    top: auto;
+    bottom: 52.5px;
 }
 
 .title span:first-child {

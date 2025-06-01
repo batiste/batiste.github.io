@@ -6,6 +6,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Pirata+One&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="2.css">
 <script src="./cards.en.js"></script>
 <script src="../deckhand/rasterizeHTML.allinone.js"></script>
@@ -665,6 +666,45 @@ cards.forEach((c) => {
         title = `<span class="title ${title_class}" style="right:${l}px">${split_title}</span>`
     }
 
+    function createCurvedTitle(title, width = 400, height = 100, baseCurve = 40) {
+        const startX = 20;
+        const endX = width - 20;
+        const midX = (startX + endX) / 2;
+        const baseY = height / 2;
+
+        // Estimate curve depth: shorter titles = deeper curve
+        const maxTitleLength = 40; // tweak this depending on your font size
+        const lengthRatio = 0 // Math.min(title.length / maxTitleLength, 1);
+        let curveDepth = baseCurve;
+        // if (title.length < 12) {
+        //     curveDepth = baseCurve * 1.1;
+        // }
+        // if (title.length > 16) {
+        //     curveDepth = baseCurve * 0.9;
+        // }
+        // if (title.length > 20) {
+        //     curveDepth = baseCurve * 0.8;
+        // }
+
+        const controlY = baseY + curveDepth;
+
+        return `
+            <svg class="svg-curve" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
+            <path id="curve-${i}" d="M${startX},${baseY} Q${midX},${controlY} ${endX},${baseY}" fill="transparent" />
+            <text font-family="'IM Fell English', cursive" font-size="14.5" fill="#100">
+                <textPath href="#curve-${i}" startOffset="50%" text-anchor="middle">
+                ${title}
+                </textPath>
+            </text>
+            </svg>`;
+    }
+
+    var svgCurvedTitle = createCurvedTitle(c.title, 200, 60, 16);
+    if (c.type == 'supremacy') {
+        console.log('???')
+        svgCurvedTitle = createCurvedTitle(c.title, 200, 60, 10);
+    }
+
     var ch = ''
 
     var copies = "";
@@ -695,6 +735,7 @@ cards.forEach((c) => {
                 
                 <div class="mpc"></div>
                 ${title}
+                ${svgCurvedTitle}
             </div>
         </div>
         <button class="${ch}" onclick="downloadCardButton(this)">Download #${i} ${copies} </button><br>
@@ -719,18 +760,38 @@ document.getElementById('cards').innerHTML = cards_total;
 setTimeout(() => {
     cards.forEach((c) => {
         var t =  document.getElementById('card-'+c.id).querySelector('.title')
+        var curve = document.getElementById('card-'+c.id).querySelector('.svg-curve')
         if (t.querySelector('div')) {
             var w = t.querySelector('div').clientWidth
+
+            if (curve) {
+                curve.style.right = (-70 + (w * 0.45)) + 'px'
+            }
+
             if(c.type == 'supremacy') {
                 t.style.left = (-170 + w) + 'px'
+                curve.style.left = (-66 + (w * 0.43)) + 'px'
+                curve.style.right = 'auto'
+                curve.style.top = '38px'
+                curve.style.rotate = '-1deg'
+                // if (w > 80) {
+                //     curve.style.rotate = '0deg'
+                // }
             } else {
-                if (w > 80) {
-                    t.style.rotate = '-1.2deg'
+                t.style.rotate = '-2deg'
+                if (w > 60) {
+                    t.style.rotate = '-2deg'
                 }
-                if (w > 100) {
+                if (w > 70) {
+                    t.style.rotate = '-2deg'
+                    curve.style.rotate = '-0.5deg'
+                }
+                if (w > 90) {
                     t.style.rotate = '-1.5deg'
+                    curve.style.rotate = '-1deg'
                 }
-                if (w > 150) {
+                if (w > 110) {
+                    curve.style.rotate = '-2deg'
                     t.style.rotate = '-2deg'
                 }
                 t.style.right = (-134 + w) + 'px'
@@ -869,6 +930,7 @@ console.log('silver_affinity', silver_affinity)
         var h = `
             <link href="https://fonts.googleapis.com/css2?family=Della+Respira&family=Lobster+Two:wght@400;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IM+Fell+English:ital@0;1&family=Pirata+One&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="2.css">
             <style>
                 html, body {margin:0; padding:0; background-color: transparent;}
