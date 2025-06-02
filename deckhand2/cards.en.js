@@ -106,7 +106,7 @@ var cards = [
     },
 
     {
-        "title": "3 Paths",
+        "title": "Three Paths",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
         "img": "cards/3-scrolls.png",
