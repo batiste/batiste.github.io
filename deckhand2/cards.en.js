@@ -649,7 +649,8 @@ var cards = [
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'battle'],
         "production": ['e'],
-        "css": "title-medium left-sign bg-top",
+        "css": "title-medium bg-top",
+        "sign": "mb",
     },
 
     {
