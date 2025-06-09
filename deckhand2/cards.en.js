@@ -643,13 +643,13 @@ var cards = [
 
     {
         "discard": ['g'],
-        "title": "Ana Windbreaker",
+        "title": "Ana Stormlash",
         "cost": ['s', 'h', 'g', 'cs'],
-        "img": "cards/ana.jpg",
+        "img": "cards/ana.png",
         "banners": ['gem-banner'],
         "extra": ['vp-1', 'battle'],
         "production": ['e'],
-        "css": "title-medium left-sign",
+        "css": "title-medium left-sign bg-top",
     },
 
     {
