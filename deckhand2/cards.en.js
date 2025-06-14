@@ -1100,11 +1100,11 @@ var cards = [
     {
         "title": "Predator's Strike",
         "discard": ['s'],
-        "cost": ['p', 'p', 'g', 'g', 'c'],
+        "cost": ['p', 'p', 'g', 'g'],
         "img": "cards/2-jaguars.png",
         "production": ['s'],
         "banners": ['skull-banner'],
-        "extra": ['vp-4'],
+        "extra": ['vp-3'],
         "css": "bg-top title-top left-sign",
         "block": true,
     },
