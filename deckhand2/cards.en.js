@@ -8,7 +8,7 @@ var cards = [
         "cost": ['gun-banner', 'parrot-banner', 'rum-banner'],
         "img": "cards/totem.png",
         // "production": ['r']
-        'extra': ['telescope', 'vp-3', 'compass'],
+        'extra': ['telescope', 'vp-2', 'compass'],
         // 'banners': ['parrot-banner'],
         'type': 'supremacy',
         "css": "bg-60 left-sign"
@@ -99,7 +99,7 @@ var cards = [
         "cost": ['gun-banner', 'gun-banner', 'gun-banner'],
         "img": "cards/shooting-kraken.jpg",
         // "production": ['r']
-        'extra': ['vp-5', 'tentacle'],
+        'extra': ['vp-4', 'tentacle'],
         'type': 'supremacy',
         "css": "bg-top sign-extra",
         "sign": "zp",
@@ -133,7 +133,7 @@ var cards = [
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/perl.png",
         // "production": ['r']
-        'extra': ['draw-2'],
+        'extra': ['vp-3', 'draw-2'],
         'type': 'supremacy',
         "css": "title-small bg-60",
     },
@@ -279,7 +279,7 @@ var cards = [
     {
         "title": "Barrel Master",
         "discard": ['r'],
-        "cost": ['h', 'cs', 'c', 'c'],
+        "cost": ['h', 'cs', 'cs', 'c'],
         "img": "cards/rum-merchant.png",
         "banners": ['rum-banner'],
         "extra": ['draw-2'],
@@ -388,9 +388,9 @@ var cards = [
         "discard": ['h'],
         "cost": ['p', 'r', 'cs'],
         "img": "cards/parrot-reconnaissance.png",
-        // "banners": ['gem-banner'],
+        "banners": ['basic-banner'],
         "production": ['h'],
-        "extra": ['parrot-banner', 'produce', 'telescope'],
+        "extra": ['vp-1','telescope'],
         "css": "bg-top title-bottom title-medium",
     },
 
