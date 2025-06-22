@@ -510,7 +510,7 @@ var cards = [
     {
         "title": "Shipyard",
         "discard": ['h'],
-        "cost": ['e', 'e', 'c'],
+        "cost": ['e', 'e', 'cs'],
         "img": "cards/shipyard.png",
         "extra": ['vp-2'],
         "banners": ['helm-banner'],
