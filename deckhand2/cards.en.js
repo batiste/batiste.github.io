@@ -187,14 +187,15 @@ var cards = [
     },
 
     {
-        "title": "War Ship",
+        "title": "Double Cannon",
         "discard": ['g'],
         "cost": ['h', 'c', 'cs', 'cs'],
-        "img": "cards/war-ship.png",
+        "img": "cards/double-canon.png",
         "production": ['g', 'g'],
         "banners": ['basic-banner', 'gun-banner'],
         // "extra": ['vp-1'],
-        "css": "bg-top title-small"
+        "css": "bg-top title-small",
+        "sign": "vh",
     },
     
 
@@ -407,7 +408,7 @@ var cards = [
     },
 
     {
-        "title": "Grave Hounds",
+        "title": "Beach Hounds",
         "discard": ['s'],
         "cost": ['s', 'p', 'p'],
         "img": "cards/captain-death.png",
@@ -415,7 +416,7 @@ var cards = [
         "banners": ['parrot-banner'],
         "production": ['e'],
         "block": true,
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
     },
 
     {
@@ -831,10 +832,10 @@ var cards = [
     // },
 
     {
-        "title": "Glowing Grotto",
+        "title": "Tentacle Diner",
         "discard": ['e'],
         "cost": ['h', 'e', 'r'],
-        "img": "cards/monkey-temple.png",
+        "img": "cards/tentacle-diner.png",
         // "banners": ['skull-banner'],
         "extra": ['vp-4', 'battle', 'tentacle'],
         "css": "bg-60"
