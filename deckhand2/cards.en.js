@@ -187,7 +187,7 @@ var cards = [
     },
 
     {
-        "title": "Double Cannon",
+        "title": "Twin Thunder",
         "discard": ['g'],
         "cost": ['h', 'c', 'cs', 'cs'],
         "img": "cards/double-canon.png",
