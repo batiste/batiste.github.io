@@ -695,7 +695,7 @@ var cards = [
         "title": "Emerald Magpie",
         "cost": ['e', 'p', 'cs'],
         "img": "cards/emerald-bird.png",
-        // "banners": ['gem-banner'],
+        "banners": ['coin-banner'],
         "extra": ['vp-1', 'x', 'gem-banner'],
         "production": ['e'],
         "css": "bg-60",
