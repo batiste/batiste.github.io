@@ -838,7 +838,8 @@ var cards = [
         "img": "cards/tentacle-diner.png",
         // "banners": ['skull-banner'],
         "extra": ['vp-4', 'battle', 'tentacle'],
-        "css": "bg-60"
+        "css": "bg-0",
+        "sign": "vh",
     },
 
     {
