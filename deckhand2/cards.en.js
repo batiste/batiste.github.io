@@ -278,7 +278,7 @@ var cards = [
     },
 
     {
-        "title": "Barrel Master",
+        "title": "Barrel Trader",
         "discard": ['r'],
         "cost": ['h', 'cs', 'cs', 'c'],
         "img": "cards/rum-merchant.png",
@@ -562,9 +562,9 @@ var cards = [
     {
         "title": "Bustling Market",
         "discard": ['r'],
-        "cost": ['r', 'r', 'cs', 'cs'],
+        "cost": ['r', 'cs', 'c'],
         "img": "cards/busy-2.png",
-        'banners': ['coin-banner'],
+        // 'banners': ['coin-banner'],
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
         "copies": 2,
