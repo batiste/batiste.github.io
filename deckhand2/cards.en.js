@@ -658,11 +658,11 @@ var cards = [
         "discard": ['g'],
         "title": "Cannoneer's Guild",
         "cost": ['g', 'g', 'g'],
-        "img": "cards/canon-guild.png",
+        "img": "cards/canon-guild-4.png",
         // "banners": ["gun-banner"],
         "production": ['g'],
         "extra": ['vp-2', 'x', 'gun-banner'],
-        "css": "bg-top",
+        "css": "bg-0",
     },
 
     {
@@ -802,7 +802,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['g', 'r', 'e'],
         "img": "cards/hunt.png",
-        "extra": ['vp-2'],
+        "extra": ['vp-3'],
         "banners": ['parrot-banner'],
         "production": ['p'],
         "css": "bg-top title-medium",
@@ -845,10 +845,10 @@ var cards = [
     {
         "title": "Grave Robbers",
         "discard": ['s'],
-        "cost": ['s', 'g', 'c'],
+        "cost": ['s', 'g'],
         "img": "cards/grave.png",
-        // "banners": ['skull-banner'],
-        "extra": ['skull-banner', 'produce', '3-choices'],
+        "banners": ['coin-banner'],
+        "extra": ['skull-banner', 'produce', 'draw-1'],
         "css": "title-large bg-60"
     },
 
@@ -984,7 +984,7 @@ var cards = [
         "banners": [],
         "production": ['p'],
         "banners": ['parrot-banner'],
-        "extra": ['vp-6'],
+        "extra": ['vp-7'],
         "css": "bg-40"
     },
 

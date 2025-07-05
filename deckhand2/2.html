@@ -781,20 +781,32 @@ setTimeout(() => {
                 curve.style.rotate = '1deg'
                 if (w > 60) {
                     t.style.rotate = '-2deg'
+                    curve.style.rotate = '0.5deg'
                 }
                 if (w > 70) {
                     t.style.rotate = '-2deg'
-                    curve.style.rotate = '0.5deg'
+                    curve.style.rotate = '0.2deg'
                 }
                 if (w > 90) {
-                    t.style.rotate = '-2deg'
-                    curve.style.rotate = '-1deg'
+                    t.style.rotate = '-1.2deg'
+                    curve.style.rotate = '0deg'
+                }
+                if (w > 100) {
+                    t.style.rotate = '-1.2deg'
+                    curve.style.rotate = '-0.5deg'
                 }
                 if (w > 110) {
-                    curve.style.rotate = '-2deg'
-                    t.style.rotate = '-2deg'
+                    t.style.rotate = '-1.2deg'
+                    curve.style.rotate = '-1deg'
                 }
-                t.style.right = (-136 + w) + 'px'
+                let right = -135;
+                // if (w < 50) {
+                //     right = right + 2;
+                // }
+                // if (w < 90) {
+                //     right = right + 2;
+                // }
+                t.style.right = (right + w) + 'px'
             }
         }
     })
