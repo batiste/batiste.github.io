@@ -139,28 +139,28 @@ var cards = [
     },
 
     {
-        "title": "Cutpurse Alley",
+        "title": "Stolen Stash",
         "discard": ['h'],
         "cost": ['cs', 'cs', 'c'],
-        "img": "cards/thief-cut.png",
+        "img": "cards/silver-chest.png",
         "banners": ['basic-banner', 'coin-banner'],
         "extra": [],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-50 title-medium"
+        "css": "bg-30 title-medium"
     },
 
 
     {
-        "title": "Stolen Stash",
+        "title": "Cutpurse Alley",
         "discard": ['g'],
         "cost": ['c', 'p', 'g', 'r'],
-        "img": "cards/silver-chest.png",
-        "banners": ['coin-banner'],
-        // "extra": ['vp-1'],
-        "production": ['cs', 'cs'],
+        "img": "cards/thief-cut.png",
+        "banners": [],
+        "extra": ['coin-banner', 'produce', 'draw-1'],
+        "production": ['cs'],
         "copies": 1,
-        "css": "bg-30 title-medium"
+        "css": "bg-50 title-medium"
     },
 
 
@@ -1069,7 +1069,7 @@ var cards = [
     {
         "title": "Flag Workshop",
         "discard": ['h'],
-        "cost": ['e', 'cs', 'cs'],
+        "cost": ['e', 'c', 'cs'],
         "img": "cards/banner-workshop.png",
         // "production": ['g'],
         "banners": ['basic-banner', 'basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'], //'basic-banner'
