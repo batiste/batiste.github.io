@@ -79,7 +79,7 @@ var cards = [
         'extra': ['vp-2', 'draw-2'],
         'type': 'supremacy',
         'sign': 'dc',
-        "css": "bg-60",
+        "css": "bg-70",
     },
 
     {
@@ -755,7 +755,7 @@ var cards = [
         "discard": ['p'],
         "cost": ['e', 's', 'h', 'p', 'c'],
         "img": "cards/possesion.png",
-        "extra": ['vp-6', 'tentacle'],
+        "extra": ['vp-5', 'tentacle'],
         "banners": ['parrot-banner'],
         "production": ['p'],
         "css": "bg-top",
@@ -769,7 +769,7 @@ var cards = [
         "img": "cards/el-dorado.png",
         "banners": ['coin-banner'],
         "production": ['r'],
-        "extra": ['vp-7'],
+        "extra": ['vp-6'],
         "css": "bg-top title-small",
     },
 
@@ -1027,7 +1027,7 @@ var cards = [
         "img": "cards/king-treasure.png",
         "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-9'],
+        "extra": ['vp-8'],
         "css": "bg-top title-large"
     },
 
@@ -1067,6 +1067,18 @@ var cards = [
     },
 
     {
+        "title": "Armada",
+        "discard": ['g'],
+        "cost": ['h', 'h', 'h', 'g'],
+        "img": "cards/armada.png",
+        // "production": ['p'],
+        "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
+        "extra": ['vp-6'],
+        "css": "bg-50 title-top"
+    },
+
+
+    {
         "title": "Flag Workshop",
         "discard": ['h'],
         "cost": ['e', 'c', 'cs'],
@@ -1089,17 +1101,6 @@ var cards = [
     },
 
     {
-        "title": "Armada",
-        "discard": ['g'],
-        "cost": ['h', 'h', 'h', 'g'],
-        "img": "cards/armada.png",
-        // "production": ['p'],
-        "banners": ['rum-banner', 'helm-banner', 'gem-banner'],
-        "extra": ['vp-6'],
-        "css": "bg-50 title-top"
-    },
-
-    {
         "title": "Predator's Strike",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g'],
@@ -1118,7 +1119,7 @@ var cards = [
         "img": "cards/powder.png",
         "production": ['r'],
         "banners": ['parrot-banner', 'gun-banner'],
-        "extra": ['vp-7'],
+        "extra": ['vp-6'],
         "css": "bg-top title-top"
     },
 
