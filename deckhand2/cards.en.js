@@ -1130,7 +1130,7 @@ var cards = [
         "img": "cards/statuette.png",
         "production": ["h", "or", "cs"],
         "banners": ['gem-banner'],
-        "extra": ['vp-4'],
+        "extra": ['vp-5'],
         "css": "bg-top title-top title-medium left-sign",
     },
 ]
