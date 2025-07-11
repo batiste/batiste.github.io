@@ -1003,11 +1003,11 @@ var cards = [
     {
         "title": "Doll of the Deep",
         "discard": ['g'],
-        "cost": ['s', 'c', 'cs'],
+        "cost": ['s', 'p', 'c'],
         "img": "cards/voodoo.png",
         "production": ['h'],
         "banners": ['skull-banner'],
-        "extra": ['vp-1'],
+        "extra": ['compass'],
     },
 
     {
