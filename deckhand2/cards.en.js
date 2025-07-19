@@ -656,7 +656,7 @@ var cards = [
 
     {
         "discard": ['g'],
-        "title": "Cannoneer's Guild",
+        "title": "Cannoneers' Guild",
         "cost": ['g', 'g', 'g'],
         "img": "cards/cannon-guild.png",
         // "banners": ["gun-banner"],
@@ -681,7 +681,7 @@ var cards = [
 
     {
         "discard": ['p'],
-        "title": "Glint of Riches",
+        "title": "Glimmer of Riches",
         "cost": ['h', 'h', 'c'],
         "img": "cards/watch.png",
         "banners": ['helm-banner'],
@@ -718,7 +718,7 @@ var cards = [
 
 
     {
-        "title": "Doom Temple",
+        "title": "Temple of Chaos",
         "discard": ['s'],
         "cost": ['s', 's', 's'],
         "img": "cards/doom-island.png",
@@ -741,7 +741,7 @@ var cards = [
     },
 
     {
-        "title": "Emerald's Mine",
+        "title": "Emerald Mine",
         "discard": ['r'],
         "cost": ['e', 'e', 'e'],
         "img": "cards/mine.png",
@@ -833,7 +833,7 @@ var cards = [
     // },
 
     {
-        "title": "Tentacle Diner",
+        "title": "Tentacle Dinner",
         "discard": ['e'],
         "cost": ['h', 'e', 'r'],
         "img": "cards/tentacle-diner.png",
@@ -1001,7 +1001,7 @@ var cards = [
     // },
 
     {
-        "title": "Doll of the Deep",
+        "title": "Doll from the Deep",
         "discard": ['g'],
         "cost": ['s', 'p', 'c'],
         "img": "cards/voodoo.png",
@@ -1102,7 +1102,7 @@ var cards = [
     },
 
     {
-        "title": "Predator's Strike",
+        "title": "Predator Strike",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g'],
         "img": "cards/2-jaguars.png",
