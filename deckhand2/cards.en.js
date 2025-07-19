@@ -794,7 +794,7 @@ var cards = [
         "extra": ['hook', 'tentacle'],
         "banners": ['parrot-banner'],
         "production": ['g'],
-        "css": "bg-top title-bottom title-small",
+        "css": "bg-top title-small",
         "sign": "vh",
     },
 
