@@ -275,7 +275,8 @@ var cards = [
         'banners': ['basic-banner', 'rum-banner'],
         "extra": ['draw-1'],
         "production": ['r'],
-        "css": "title-medium bg-40"
+        "css": "title-medium bg-40",
+        "sign": "bb"
     },
 
     {
@@ -408,7 +409,8 @@ var cards = [
         "banners": ['basic-banner'],
         "production": ['h'],
         "extra": ['vp-1','telescope'],
-        "css": "bg-top title-bottom title-medium",
+        "css": "bg-top title-medium",
+        "sign": "bb",
     },
 
     {
@@ -468,6 +470,7 @@ var cards = [
         "production": ['p', 'or', 'r'],
         "extra": ['vp-1'],
         "css": "bg-60 title-small left-sign",
+        "sign": "bb",
     },
 
     {
@@ -479,6 +482,7 @@ var cards = [
         "banners": ['gem-banner'],
         "production": ['s'],
         "css": "bg-top title-medium left-sign",
+        "sign": "bb",
     },
 
 
@@ -526,6 +530,7 @@ var cards = [
         "banners": ['gem-banner'],
         "production": ['e'],
         "css": "bg-top",
+        "sign": "bb",
     },
 
     {
@@ -602,6 +607,7 @@ var cards = [
         "production": ['p'],
         // "value_correction": -1
         "css": "bg-top",
+        "sign": "bb",
     },
 
     //     {
@@ -887,7 +893,8 @@ var cards = [
         "img": "cards/grave.png",
         "banners": ['coin-banner'],
         "extra": ['skull-banner', 'produce', 'draw-1'],
-        "css": "title-large bg-60"
+        "css": "title-large bg-60",
+        "sign": "bb",
     },
 
     {
