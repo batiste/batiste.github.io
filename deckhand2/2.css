@@ -703,6 +703,10 @@ img {
     /* filter: hue-rotate(30deg); */
 }
 
+.no-sign .sign {
+    background: #ff000064;
+}
+
 .sign-extra .sign div {
     opacity: 0.5;
 }

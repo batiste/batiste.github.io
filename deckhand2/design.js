@@ -101,6 +101,7 @@ cards.forEach((c) => {
      if (c.copies) {
          var clone = JSON.parse(JSON.stringify(c));
          clone.copies = null
+         clone.is_clone = true;
          for(let i=2; i<=c.copies; i++) {
              // clone.hide = true;
              cards.push(clone)
@@ -660,6 +661,9 @@ cards.forEach((c) => {
     }
 
     var block = "";
+    if (!c.sign) {
+        c.css += " no-sign";
+    }
 
     var card_template = `
     <div>
@@ -779,7 +783,35 @@ function cost_table_maker(double_cost) {
         </table>`
 }
 
-stats.innerHTML = cost_table_maker(double_cost)
+function card_signatures_stats(cards) {
+    var body = ''
+    var signatures = {};
+    scards = cards.filter(c => !c.is_clone);
+    scards.forEach((c) => {
+        if (c.sign) {
+            if (!signatures[c.sign]) {
+                signatures[c.sign] = 0;
+            }
+            signatures[c.sign] += 1;
+        }
+    })
+    body += `<tr><th>Signature</th><th>Count</th></tr>`
+    Object.entries(signatures).forEach(([key, value]) => {
+        body += `<tr><td>${key}</td><td>${value}</td></tr>`
+    })
+    let total = 0;
+    Object.entries(signatures).forEach(([key, value]) => {
+        total += value;
+    })
+    body += `<tr><td>Total</td><td>${total} / ${scards.length} / ${((total / scards.length) * 100).toFixed(2)}%</td></tr>`
+
+    return `<table class="styled-table">
+        <caption>Card signatures</caption>
+        ${body}
+        </table>`
+}
+
+stats.innerHTML = cost_table_maker(double_cost) + card_signatures_stats(cards)
   
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
