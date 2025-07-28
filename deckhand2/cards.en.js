@@ -712,7 +712,7 @@ var cards = [
         "img": "cards/lady-pirate.png",
         "banners": ["gun-banner"],
         "extra": ['vp-1', 'x', 'gun-banner'],
-        "production": ['g'],
+        "production": ['p'],
         "css": "bg-top title-medium left-sign",    
         "sign": "to",
     },
@@ -1065,7 +1065,7 @@ var cards = [
     },
 
     {
-        "title": "Drowned Keeper",
+        "title": "Hoard Warden",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
         "img": "cards/keeper.png",
