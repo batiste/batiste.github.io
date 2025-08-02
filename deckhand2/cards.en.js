@@ -136,11 +136,11 @@ var cards = [
         "title": "Perl Diving",
         "discard": [],
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
-        "img": "cards/perl.png",
+        "img": "cards/perl2.png",
         // "production": ['r']
         'extra': ['vp-3', 'draw-2'],
         'type': 'supremacy',
-        "css": "title-small bg-60",
+        "css": "title-small bg-40 left-sign",
         "sign": "bb",
     },
 
