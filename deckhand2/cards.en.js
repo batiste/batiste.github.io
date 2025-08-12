@@ -133,14 +133,14 @@ var cards = [
     },
 
     {
-        "title": "Perl Diving",
+        "title": "Pearl Diving",
         "discard": [],
         "cost": ['basic-banner', 'basic-banner', 'basic-banner', 'basic-banner', 'basic-banner'],
         "img": "cards/perl2.png",
         // "production": ['r']
         'extra': ['vp-3', 'draw-2'],
         'type': 'supremacy',
-        "css": "title-small bg-40 left-sign",
+        "css": "title-small bg-10 left-sign",
         "sign": "bb",
     },
 
@@ -319,12 +319,13 @@ var cards = [
         "title": "Armed Orangutan",
         "discard": ['p'],
         "cost": ['p', 'cs', 'c'],
-        "img": "cards/orang.png",
+        "img": "cards/orang.jpeg",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
         "copies": 2,
-        "css": "bg-top left-sign"
+        "css": "bg-0 left-sign",
+        "sign": "mg",
     },
 
     {
@@ -402,7 +403,7 @@ var cards = [
     },
 
     {
-        "title": "Winged Path",
+        "title": "Aerial Lookout",
         "discard": ['h'],
         "cost": ['p', 'r', 'cs'],
         "img": "cards/parrot-reconnaissance.png",
@@ -451,6 +452,18 @@ var cards = [
     },
 
     {
+        "discard": ['r'],
+        "title": "Drunk Marmosets",
+        "cost": ['p', 'r', 'cs', 'cs'],
+        "img": "cards/tavern-invasion.png",
+        "banners": ['rum-banner'],
+        "extra": ['vp-1', 'x' , 'parrot-banner'],
+        "production": ['g'],
+        "css": "bg-60 left-sign",
+        "sign": "vh",
+    },
+
+    {
         "title": "Bazaar",
         "discard": ['e'],
         "cost": ['r', 'p', 'cs', 'cs'],
@@ -487,14 +500,15 @@ var cards = [
 
 
     {
-        "discard": ['e'],
+        "discard": ['e'],   
         "title": "Eager Bride",
         "cost": ['s', 's', 'e'],
-        "img": "cards/witch.png",
+        "img": "cards/witch.jpeg",
         "extra": ['vp-3'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-top title-medium",
+        "css": "bg-0 title-medium",
+        "sign": "mg",
     },
 
     {
@@ -680,17 +694,6 @@ var cards = [
         "sign": "bb",
     },
 
-    {
-        "discard": ['r'],
-        "title": "Drunk Marmosets",
-        "cost": ['p', 'r', 'cs', 'cs'],
-        "img": "cards/tavern-invasion.png",
-        "banners": ['rum-banner'],
-        "extra": ['vp-1', 'x' , 'parrot-banner'],
-        "production": ['g'],
-        "css": "bg-60 left-sign",
-        "sign": "vh",
-    },
 
 
     {
@@ -901,12 +904,12 @@ var cards = [
         "title": "Gemback Whale",
         "discard": ['h'],
         "cost": ['h', 'p'],
-        "img": "cards/emerald-whale.png",
+        "img": "cards/whale.jpeg",
         "production": [],
         "banners": ['parrot-banner'],
         "extra": ['gem-banner', 'produce', 'draw-1'],
-        "css": "bg-65 title-top title-large",
-        "sign": "bb",
+        "css": "bg-10 title-top title-large",
+        "sign": "mg",
     },
 
     {
@@ -934,7 +937,7 @@ var cards = [
     },
 
     {
-        "title": "Fair",
+        "title": "Pearl Fair",
         "discard": ['r'],
         "cost": ['p', 'g', 'r', 'cs'],
         "img": "cards/dockers-guild.png",

@@ -735,6 +735,10 @@ img {
     background-image: url(sign/mb.png);  
 }
 
+.sign.mg div {
+    background-image: url(sign/mg.png);  
+}
+
 .right img.hook {
     margin-left: 1px;
     margin-right: 2px;
