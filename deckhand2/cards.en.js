@@ -95,6 +95,7 @@ var cards = [
         'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
         "css": "bg-50",
+        "sign": "bb",
     },
 
     {
@@ -312,7 +313,8 @@ var cards = [
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
-        "css": "bg-top title-medium left-sign"
+        "css": "bg-top title-medium left-sign",
+        "sign": "bb",
     },
 
     {
@@ -472,6 +474,7 @@ var cards = [
         "extra": ['vp-1'],
         "production": ['g', 'or', 'p'],
         "css": "bg-50 title-small",
+        "sign": "bb",
     },
 
     {
@@ -643,7 +646,8 @@ var cards = [
         "banners": ['gem-banner'],
         "extra": ['battle'],
         "production": ['e'],
-        "css": "bg-50",
+        "css": "bg-5python 0",
+        "sign": "bb"
     },
 
     {
@@ -1054,6 +1058,7 @@ var cards = [
         "production": ['h'],
         "banners": ['skull-banner'],
         "extra": ['compass'],
+        "sign": "bb",
     },
 
     {
@@ -1146,7 +1151,8 @@ var cards = [
         "production": ['p'],
         "banners": ['parrot-banner', 'rum-banner'],
         "extra": ['vp-1'],
-        "css": "bg-50 title-medium"
+        "css": "bg-50 title-medium",
+        "sign": "bb",
     },
 
     {
@@ -1182,5 +1188,6 @@ var cards = [
         "banners": ['gem-banner'],
         "extra": ['vp-5'],
         "css": "bg-top title-top title-medium left-sign",
+        "sign": "bb",
     },
 ]
