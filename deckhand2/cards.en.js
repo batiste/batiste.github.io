@@ -639,11 +639,11 @@ var cards = [
         "title": "Charming Plunder",
         "discard": ['g'],
         "cost": ['g', 'g', 's'],
-        "img": "cards/attack-2.png",
+        "img": "cards/attack-3.png",
         "banners": ['gem-banner'],
         "extra": ['battle'],
         "production": ['e'],
-        "css": "bg-top",
+        "css": "bg-50",
     },
 
     {
