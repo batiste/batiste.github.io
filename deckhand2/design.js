@@ -707,6 +707,7 @@ cards.forEach((c) => {
 document.getElementById('cards').innerHTML = cards_total;
 
 
+
 // Adjust title after rendering
 setTimeout(() => {
     cards.forEach((c) => {
@@ -812,6 +813,42 @@ function card_signatures_stats(cards) {
 }
 
 stats.innerHTML = cost_table_maker(double_cost) + card_signatures_stats(cards)
+
+
+function all_effects_table(cards) {
+    var body = ''
+    var effects = {};
+    cards.forEach((c) => {
+        // exclude vp-*
+        if (c.extra) {
+            c.extra.forEach((e) => {
+                if (e.startsWith('vp-') || e.endsWith('banner') || ['x', 'produce'].includes(e)) {
+                    return 
+                }
+                if (!effects[e]) {
+                    effects[e] = 0;
+                }
+                effects[e] += 1;
+            })
+        }
+    })
+    body += `<tr><th>Effect</th><th>Count</th></tr>`
+    Object.entries(effects).forEach(([key, value]) => {
+        body += `<tr><td>${key}</td><td>${value}</td></tr>`
+    })
+    let total = 0;
+    Object.entries(effects).forEach(([key, value]) => {
+        total += value;
+    })
+
+    return `<table class="styled-table">
+        <caption>Card effects</caption>
+        ${body}
+        </table>`
+}
+
+
+document.getElementById('effect-stats').innerHTML = all_effects_table(cards)
   
 console.log('stats_costs', stats_costs)
 console.log('stats_discard', stats_discard)
