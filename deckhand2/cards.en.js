@@ -126,11 +126,11 @@ var cards = [
         "title": "Inking Oath",
         "discard": [],
         "cost": ['coin-banner', 'coin-banner', 'coin-banner'],
-        "img": "cards/tattoo.png",
+        "img": "cards/ink-oath.png",
         // "production": ['r']
         'extra': ['vp-2', 'x', 'coin-banner'],
         'type': 'supremacy',
-        "css": "bg-60",
+        "css": "bg-0",
     },
 
     {
@@ -397,11 +397,11 @@ var cards = [
         "discard": ['r'],
         "title": "Haunted Manor",
         "cost": ['g', 'p', 'cs', 'cs'],
-        "img": "cards/manor.png",
+        "img": "cards/haunted-manor.png",
         "banners": ['gun-banner'],
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
-        "css": "bg-50 title-medium left-sign",
+        "css": "bg-20 title-medium left-sign",
     },
 
     {
@@ -1065,11 +1065,11 @@ var cards = [
         "title": "Shadow Thief",
         "discard": ['e'],
         "cost": ['g', 'cs', 'cs', 'cs'],
-        "img": "cards/hooded.png",
+        "img": "cards/shadow-thief.png",
         "production": ['e'],
         "banners": ['coin-banner'],
         "extra": ['vp-1', 'x', 'coin-banner'],
-        "css": "bg-top title-medium"
+        "css": "bg-10 title-medium"
     },
 
     {
