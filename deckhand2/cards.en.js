@@ -131,6 +131,7 @@ var cards = [
         'extra': ['vp-2', 'x', 'coin-banner'],
         'type': 'supremacy',
         "css": "bg-0",
+        "sign": "mg"
     },
 
     {
@@ -402,6 +403,7 @@ var cards = [
         "extra": ['vp-1', 'x', 'skull-banner'],
         "production": ['s'],
         "css": "bg-20 title-medium left-sign",
+        "sign": "mg"
     },
 
     {
@@ -1069,7 +1071,8 @@ var cards = [
         "production": ['e'],
         "banners": ['coin-banner'],
         "extra": ['vp-1', 'x', 'coin-banner'],
-        "css": "bg-10 title-medium"
+        "css": "bg-10 title-medium",
+        "sign": "mg"
     },
 
     {
