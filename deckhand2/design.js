@@ -89,6 +89,27 @@ var icon = (t) => {
     return `<img src="img/${t}.png" class="${t} icon">`
 }
 
+if (!localStorage.getItem("highQualityImages")) {
+    // change the card image from cards/<filename>.ext to thumb/<filename>.jpg
+    cards.forEach((c) => {
+        c.img = c.img.replace("cards/", "thumb/").replace(/\.[^/.]+$/, ".jpg");
+    });
+} else {
+    document.getElementById('use-high-quality-images').checked = true;
+}
+
+document.getElementById('use-high-quality-images').addEventListener('click', function(e) {
+    console.log(e.target.checked)
+    e.preventDefault()
+    if(e.target.checked) {
+        localStorage.setItem("highQualityImages", true);
+        location.reload();
+    } else {
+        localStorage.removeItem("highQualityImages");
+        location.reload();
+    }
+});
+
 // expand the cards
 cards.forEach((c) => {
     // transform gold to silver (part of simplification)

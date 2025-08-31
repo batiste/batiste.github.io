@@ -130,7 +130,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-2', 'x', 'coin-banner'],
         'type': 'supremacy',
-        "css": "bg-0",
+        "css": "bg-0 left-sign",
         "sign": "mg"
     },
 
@@ -182,7 +182,7 @@ var cards = [
         "production": ['p', 'p'],
         "banners": ['basic-banner', 'parrot-banner'],
         // "extra": ['vp-1'],
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
         "sign": "bb",
     },
 
@@ -242,7 +242,7 @@ var cards = [
         'banners': ['basic-banner', 'gun-banner'],
         "production": ['g'],
         "copies": 2,
-        "css": "bg-top title-medium",
+        "css": "bg-top title-medium left-sign",
         "sign": "bb",
     },
 
@@ -452,7 +452,7 @@ var cards = [
         "extra": ['vp-1'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-top",
+        "css": "bg-top left-sign",
     },
 
     {
@@ -1108,7 +1108,7 @@ var cards = [
         "banners": ['skull-banner', 'gun-banner'],
         "extra": ['vp-6', 'hook'],
         "sign": "ma",
-        "css": "bg-30 title-large"
+        "css": "bg-30 title-large left-sign"
     },
 
     {
