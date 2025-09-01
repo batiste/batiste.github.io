@@ -843,8 +843,12 @@ function all_effects_table(cards) {
     cards.forEach((c) => {
         // exclude vp-*
         if (c.extra) {
+            var cancel = c.extra.filter(e => ['x', 'produce'].includes(e));
+            if (cancel.length) {
+                return
+            }
             c.extra.forEach((e) => {
-                if (e.startsWith('vp-') || e.endsWith('banner') || ['x', 'produce'].includes(e)) {
+                if (e.startsWith('vp-') || e.endsWith('banner')) {
                     return 
                 }
                 if (!effects[e]) {

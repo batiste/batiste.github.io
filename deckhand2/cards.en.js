@@ -441,7 +441,7 @@ var cards = [
         "production": ['e'],
         "block": true,
         "css": "bg-top title-medium left-sign",
-        "sign": "bb",
+        // "sign": "bb",
     },
 
     {
@@ -508,9 +508,9 @@ var cards = [
         "title": "Fish Monger",
         "cost": ['s', 'h', 'c', 'cs'],
         "img": "cards/fish-monger.png",
-        "extra": ['tentacle', 'produce', 'draw-1'],
+        "extra": ['tentacle', 'produce', '3-choices'],
         // "banners": ['rum-banner'],
-        "production": ['p', 'or', 'cs'],
+        "production": ['p'],
         "block": true,
         "css": "bg-top title-medium",
     },
