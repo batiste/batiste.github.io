@@ -1081,7 +1081,7 @@ var cards = [
         "img": "cards/keeper.png",
         "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'gem-banner'],
-        "extra": ['vp-8'],
+        "extra": ['vp-8', 'tentacle'],
         "css": "bg-0 title-large",
         "sign": "vh",
     },
