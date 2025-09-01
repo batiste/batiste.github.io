@@ -755,12 +755,12 @@ var cards = [
 
     {
         "discard": ['h'],
-        "title": "Pirate's Cut",
+        "title": "Fish Monger",
         "cost": ['s', 'h', 'c', 'cs'],
-        "img": "cards/killer-2.png",
-        "extra": ['vp-3'],
-        "banners": ['coin-banner'],
-        "production": [`cs`],
+        "img": "cards/fish-monger.png",
+        "extra": ['tentacle', 'produce', 'draw-1'],
+        "banners": [],
+        "production": ['p'],
         "block": true,
         "css": "bg-top title-medium",
     },

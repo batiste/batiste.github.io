@@ -165,6 +165,7 @@ var distribution_end_game = {
     "gem-banner": 1.5,
     "coin-banner": 1.5,
     'basic-banner': 3.3,
+    'tentacle': 1.5
 }
 
 function removeItem(array, item) {
