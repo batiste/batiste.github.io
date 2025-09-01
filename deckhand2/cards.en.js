@@ -492,6 +492,30 @@ var cards = [
     },
 
     {
+        "title": "Robbery",
+        "discard": ['g'],
+        "cost": ['h', 'r', 'cs', 'c'],
+        "img": "cards/fisherman.png",
+        // "extra": ['vp-1'],
+        "banners": ['coin-banner'],
+        "production": ['g', 'or', 'cs'],
+        "css": "bg-top title-small",
+        "sign": "vh",
+    },
+
+    {
+        "discard": ['h'],
+        "title": "Fish Monger",
+        "cost": ['s', 'h', 'c', 'cs'],
+        "img": "cards/fish-monger.png",
+        "extra": ['tentacle', 'produce', 'draw-1'],
+        // "banners": ['rum-banner'],
+        "production": ['p', 'or', 'cs'],
+        "block": true,
+        "css": "bg-top title-medium",
+    },
+
+    {
         "discard": ['h'],
         "title": "Kiss the Ring",
         "cost": ['e', 'e', 'h'],
@@ -561,19 +585,6 @@ var cards = [
         "banners": ['helm-banner'],
         "production": ['h'],
         "css": "bg-60 title-small",
-    },
-
-
-    {
-        "title": "Robbery",
-        "discard": ['g'],
-        "cost": ['h', 'r', 'cs', 'c'],
-        "img": "cards/fisherman.png",
-        // "extra": ['vp-1'],
-        "banners": ['coin-banner'],
-        "production": ['g', 'or', 'cs'],
-        "css": "bg-top title-small",
-        "sign": "vh",
     },
 
 
@@ -752,18 +763,6 @@ var cards = [
         // "production": ['discard-helm', 'produce', 'any'],
     },
 
-
-    {
-        "discard": ['h'],
-        "title": "Fish Monger",
-        "cost": ['s', 'h', 'c', 'cs'],
-        "img": "cards/fish-monger.png",
-        "extra": ['tentacle', 'produce', 'draw-1'],
-        "banners": [],
-        "production": ['p'],
-        "block": true,
-        "css": "bg-top title-medium",
-    },
 
 
     {
