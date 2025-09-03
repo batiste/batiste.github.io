@@ -506,7 +506,7 @@ var cards = [
     {
         "discard": ['h'],
         "title": "Fish Monger",
-        "cost": ['s', 'h', 'c', 'cs'],
+        "cost": ['s', 'h', 'cs'],
         "img": "cards/fish-monger.png",
         "extra": ['tentacle', 'produce', '3-choices'],
         // "banners": ['rum-banner'],
@@ -530,13 +530,13 @@ var cards = [
 
     {
         "discard": ['e'],   
-        "title": "Eager Bride",
+        "title": "Bride",
         "cost": ['s', 's', 'e'],
         "img": "cards/witch.jpeg",
         "extra": ['vp-3'],
         "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-0 title-medium",
+        "css": "bg-10 title-medium",
         "sign": "mg",
     },
 
@@ -843,7 +843,7 @@ var cards = [
         "extra": ['hook', 'tentacle'],
         "banners": ['parrot-banner'],
         "production": ['g'],
-        "css": "bg-top title-small",
+        "css": "bg-top title-small title-bottom",
         "sign": "vh",
     },
 
