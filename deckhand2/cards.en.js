@@ -793,10 +793,11 @@ var cards = [
         "title": "Emerald Mine",
         "discard": ['r'],
         "cost": ['e', 'e', 'e'],
-        "img": "cards/mine.png",
+        "img": "cards/emerald-mine.png",
         "production": ['e'],
         "extra": ['vp-3', 'x', 'gem-banner'],
-        "css": "title-medium left-sign",
+        "css": "title-medium left-sign bg-10",
+        "sign": "mg"
     },
 
 
@@ -1161,12 +1162,12 @@ var cards = [
         "title": "Predator Strike",
         "discard": ['s'],
         "cost": ['p', 'p', 'g', 'g'],
-        "img": "cards/2-jaguars.png",
+        "img": "cards/strike.png",
         "production": ['s'],
         "banners": ['skull-banner'],
         "extra": ['vp-3'],
-        "css": "bg-top title-top left-sign",
-        "block": true,
+        "css": "bg-0 title-top left-sign",
+        "sign": "mg",
     },
 
     {
