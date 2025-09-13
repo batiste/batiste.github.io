@@ -773,7 +773,7 @@ var cards = [
         "production": ['s'],
         "extra": ['vp-3', 'x', 'skull-banner'],
         "css": "bg-top title-medium left-sign",
-        "sign": "bb",
+        // "sign": "bb",
     },
 
 
