@@ -307,14 +307,16 @@ var cards = [
 
     {
         "discard": ['r'],
-        "title": "Jungle Corsair",
+        "title": "Primal Mayhem",
+        "img": "cards/tavern-invasion.png",
+        // "title": "Jungle Corsair",
         "cost": ['r', 'cs', 'c'],
-        "img": "cards/handler.png",
+        // "img": "cards/handler.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
-        "css": "bg-top title-medium left-sign",
+        "css": "bg-60 title-medium left-sign",
         "sign": "bb",
     },
 
@@ -457,13 +459,13 @@ var cards = [
 
     {
         "discard": ['r'],
-        "title": "Drunk Marmosets",
+        "title": "Jungle Corsair",
         "cost": ['p', 'r', 'cs', 'cs'],
-        "img": "cards/tavern-invasion.png",
+        "img": "cards/handler.png",
         "banners": ['rum-banner'],
         "extra": ['vp-1', 'x' , 'parrot-banner'],
         "production": ['g'],
-        "css": "bg-60 left-sign",
+        "css": "bg-70 left-sign",
         "sign": "vh",
     },
 
@@ -858,7 +860,7 @@ var cards = [
         "production": ['p'],
         "css": "bg-top title-medium",
         "block": true,
-        "sign": "bb",
+        // "sign": "bb",
     },
 
     {
@@ -870,7 +872,7 @@ var cards = [
         "banners": ['skull-banner'],
         "production": ['r'],
         "block": true,
-        "css": "bg-40 title-medium",
+        "css": "bg-40 title-medium left-sign",
         "sign": "bb",
     },
 
