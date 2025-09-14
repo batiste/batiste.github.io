@@ -709,7 +709,7 @@ var cards = [
         "extra": ['3-choices'],
         // "banners": ['helm-banner'],
         "production": ['h'],
-        "css": "bg-top title-small",
+        "css": "bg-top title-small left-sign",
         "sign": "bb",
     },
 
