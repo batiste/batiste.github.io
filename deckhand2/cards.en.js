@@ -607,7 +607,7 @@ var cards = [
         "title": "Quiet Afternoon",
         "discard": ['p'],
         "cost": ['r', 'p', 'g', 'cs'],
-        "img": "cards/39.jpg",
+        "img": "cards/quiet.png",
         "extra": ['vp-2'],
         'banners': ['rum-banner'],
         "production": ['cs'],
