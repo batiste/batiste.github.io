@@ -830,11 +830,11 @@ var cards = [
         "title": "Severed Relic",
         "discard": ['s'],
         "cost": ['r', 'g', 'cs', 'cs'],
-        "img": "cards/thieves-statue.png",
+        "img": "cards/hand-cult.png",
         "banners": ['coin-banner'],
         "extra": ['vp-2', 'x', 'coin-banner'],
         // "production": ['s']
-        "css": "bg-top title-medium",
+        "css": "bg-0 title-medium",
     },
 
     // affinity cards
@@ -945,10 +945,10 @@ var cards = [
     },
 
     {
-        "title": "Pearl Fair",
+        "title": "Pearl Swindler",
         "discard": ['r'],
         "cost": ['p', 'g', 'r', 'cs'],
-        "img": "cards/dockers-guild.png",
+        "img": "cards/pearl-swindler.png",
         "production": ['r'],
         "banners": ['basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
