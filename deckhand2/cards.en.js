@@ -824,6 +824,7 @@ var cards = [
         "production": ['r'],
         "extra": ['vp-6'],
         "css": "bg-top title-small",
+        "sign": "bb",
     },
 
     {
