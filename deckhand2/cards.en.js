@@ -819,7 +819,7 @@ var cards = [
         "title": "El Dorado",
         "discard": ['h'],
         "cost": ['p', 'p', 'g', 'g', 'r', 'r'],
-        "img": "cards/el-dorado.png",
+        "img": "cards/ed-dorado.png",
         "banners": ['coin-banner'],
         "production": ['r'],
         "extra": ['vp-6'],
@@ -835,6 +835,7 @@ var cards = [
         "extra": ['vp-2', 'x', 'coin-banner'],
         // "production": ['s']
         "css": "bg-0 title-medium",
+        "sign": "mg",
     },
 
     // affinity cards
@@ -952,7 +953,7 @@ var cards = [
         "production": ['r'],
         "banners": ['basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
-        "css": "bg-top left-sign",
+        "css": "bg-65 left-sign",
         "sign": "bb",
     },
 
