@@ -515,6 +515,7 @@ var cards = [
         "production": ['p'],
         "block": true,
         "css": "bg-top title-medium",
+        "sign": "bb",
     },
 
     {
@@ -983,15 +984,16 @@ var cards = [
     },
 
     {
-        "title": "Angry Ape",
+        "title": "Wild Echo",
         "discard": ['g'],
         "cost": ['p', 'p', 'g'],
-        "img": "cards/gorilla.png",
+        "img": "cards/gor.png",
         "extra": ['vp-1'],
         "banners": ['gun-banner', 'parrot-banner'],
         "production": ['g'],
         "block": true,
-        "css": "bg-65 title-medium left-sign",
+        "css": "bg-20 title-medium left-sign",
+        "sign": "mg",
     },
 
     {
