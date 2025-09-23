@@ -924,7 +924,7 @@ var cards = [
     },
 
     {
-        "title": "Treasure Hunt",
+        "title": "Treasure Hunter",
         "discard": ['p'],
         "cost": ['e', 'p'],
         "img": "cards/treasure-map.png",
@@ -943,7 +943,7 @@ var cards = [
         "extra": ['vp-2', 'x', 'basic-banner'],
         "banners": ['rum-banner'],
         "production": ['p'],
-        "css": "title-small bg-60 left-sign",
+        "css": "title-small bg-65 left-sign",
         "sign": "bb",
     },
 
