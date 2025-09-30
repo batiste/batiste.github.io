@@ -955,7 +955,7 @@ var cards = [
         "production": ['r'],
         "banners": ['basic-banner'],
         "extra": ['vp-1', 'x', 'basic-banner'],
-        "css": "bg-65 left-sign",
+        "css": "bg-65",
         "sign": "bb",
     },
 
