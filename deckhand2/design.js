@@ -143,7 +143,7 @@ var virtual_cost = {
     "parrot-banner": 1.1,
     "rum-banner": 1.1,
     "helm-banner": 2,
-    "gem-banner": 2,
+    "crown-banner": 2,
     "skull-banner": 2,
     "coin-banner":1.3,
 }
@@ -162,7 +162,7 @@ var distribution_end_game = {
     "rum-banner": 2.2,
     "skull-banner": 1.5,
     "helm-banner": 1.5,
-    "gem-banner": 1.5,
+    "crown-banner": 1.5,
     "coin-banner": 1.5,
     'basic-banner': 3.3,
     'tentacle': 1.5
@@ -447,7 +447,7 @@ sort_cost = (a, b) => {
 }
 
 sort_banners = (a, b) => {
-    order = {'basic-banner': 0, 'rum-banner': 1, 'parrot-banner': 2, 'gun-banner': 3, 'gem-banner': 5, 'skull-banner': 6,  'helm-banner': 7}
+    order = {'basic-banner': 0, 'rum-banner': 1, 'parrot-banner': 2, 'gun-banner': 3, 'crown-banner': 5, 'skull-banner': 6,  'helm-banner': 7}
     return order[b] - order[a]
 }
 
@@ -579,6 +579,8 @@ cards.forEach((c) => {
             production += get_res(p)
         })
         production = `<div class="production">${production}</div>`
+    } else {
+        production = ``
     }
     build = `<div class="type line">
             ${production}
