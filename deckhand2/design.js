@@ -808,6 +808,31 @@ function cost_table_maker(double_cost) {
         </table>`
 }
 
+function banner_table_maker(cards) {
+    var body = ''
+    var banners = {};
+    cards.forEach((c) => {
+        if (c.banners) {
+            c.banners.forEach((b) => {
+                if (!banners[b]) {
+                    banners[b] = 0;
+                }
+                banners[b] += 1;
+            })
+        }
+    })
+    // sort banners by number of occurences
+    banners = Object.fromEntries(Object.entries(banners).sort(([,a],[,b]) => b-a));
+    body += `<tr><th>Banner</th><th>Count</th></tr>`
+    Object.entries(banners).forEach(([key, value]) => {
+        body += `<tr><td>${key}</td><td>${value}</td></tr>`
+    })
+    return `<table class="styled-table">
+        <caption>Card banners</caption>
+        ${body}
+        </table>`
+}
+
 function card_signatures_stats(cards) {
     var body = ''
     var signatures = {};
@@ -836,7 +861,7 @@ function card_signatures_stats(cards) {
         </table>`
 }
 
-stats.innerHTML = cost_table_maker(double_cost) + card_signatures_stats(cards)
+stats.innerHTML = cost_table_maker(double_cost) + card_signatures_stats(cards) + banner_table_maker(cards);
 
 
 function all_effects_table(cards) {
