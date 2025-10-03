@@ -618,15 +618,16 @@ var cards = [
     },
 
     {
-        "title": "Bustling Market",
+        "title": "Smuggler's Market",
         "discard": ['r'],
         "cost": ['r', 'cs', 'c'],
-        "img": "cards/busy-2.png",
+        "img": "cards/market.png",
         // 'banners': ['coin-banner'],
         "extra": ['vp-1', 'x', 'rum-banner'],
         "production": ['cs'],
         "copies": 2,
-        "css": "bg-60 left-sign",
+        "css": "bg-40",
+        "sign": "bb",
     },
 
     {
