@@ -618,7 +618,7 @@ var cards = [
     },
 
     {
-        "title": "Smuggler's Market",
+        "title": "Contraband Cove",
         "discard": ['r'],
         "cost": ['r', 'cs', 'c'],
         "img": "cards/market.png",
