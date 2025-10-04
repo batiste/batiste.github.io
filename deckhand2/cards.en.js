@@ -1090,7 +1090,7 @@ var cards = [
         "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'crown-banner'],
         "extra": ['vp-8', 'tentacle'],
-        "css": "bg-10 title-large left-sign",
+        "css": "bg-15 title-large left-sign",
         "sign": "vh",
     },
 
