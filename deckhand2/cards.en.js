@@ -1086,11 +1086,11 @@ var cards = [
         "title": "Hoard Warden",
         "discard": ['s'],
         "cost": ['e', 'e', 's', 's', 'h', 'h'],
-        "img": "cards/keeper.png",
+        "img": "cards/drowned-keeper.png",
         "production": ['s'],
         // "banners": ['helm-banner', 'skull-banner', 'crown-banner'],
         "extra": ['vp-8', 'tentacle'],
-        "css": "bg-0 title-large",
+        "css": "bg-10 title-large left-sign",
         "sign": "vh",
     },
 
