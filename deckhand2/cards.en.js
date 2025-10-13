@@ -1056,7 +1056,7 @@ var cards = [
         "production": ['p'],
         "banners": ['parrot-banner'],
         "extra": ['vp-7'],
-        "css": "bg-40",
+        "css": "bg-70",
         "sign": "bb",
     },
 
