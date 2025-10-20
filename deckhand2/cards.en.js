@@ -537,7 +537,7 @@ var cards = [
         "title": "Bride",
         "cost": ['s', 's', 'e'],
         "img": "cards/witch.jpeg",
-        "extra": ['vp-3'],
+        "extra": ['vp-1', 'draw-1'],
         "banners": ['helm-banner'],
         "production": ['h'],
         "css": "bg-10 title-medium",
