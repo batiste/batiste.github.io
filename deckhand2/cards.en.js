@@ -751,7 +751,7 @@ var cards = [
         "banners": ['helm-banner'],
         // "production": ['h'],
         "extra": ['telescope', 'draw-2'],
-        "css": "title-medium",
+        "css": "title-medium bg-60",
     },
 
 
