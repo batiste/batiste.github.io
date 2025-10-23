@@ -377,12 +377,13 @@ var cards = [
         "title": "Jewel of Greed",
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
-        "img": "cards/gem-greed.png",
+        "img": "cards/greed.png",
         'banners': ['crown-banner'],
         "extra": ['vp-1'],
         "production": ['e'],
         "copies": 2,
-        "css": "bg-50 left-sign",
+        "css": "bg-30 left-sign",
+        "sign": "ma",
     },
 
     {
@@ -435,16 +436,16 @@ var cards = [
     },
 
     {
-        "title": "Beach Hounds",
+        "title": "Beach Wyrms",
         "discard": ['s'],
         "cost": ['s', 'p', 'p'],
-        "img": "cards/captain-death.png",
-        "extra": ['vp-1'],
+        "img": "cards/murena.jpeg",
+        "extra": ['vp-2'],
         "banners": ['parrot-banner'],
         "production": ['e'],
         "block": true,
-        "css": "bg-top title-medium left-sign",
-        // "sign": "bb",
+        "css": "bg-10 title-medium",
+        "sign": "mg",
     },
 
     {
