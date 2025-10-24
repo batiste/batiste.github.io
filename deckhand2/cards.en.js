@@ -910,7 +910,7 @@ var cards = [
         "img": "cards/graveyard.png",
         "banners": ['coin-banner'],
         "extra": ['skull-banner', 'produce', 'draw-1'],
-        "css": "title-large bg-40 left-sign",
+        "css": "title-large bg-30 left-sign",
         "sign": "bb",
     },
 
