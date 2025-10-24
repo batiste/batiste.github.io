@@ -904,13 +904,13 @@ var cards = [
     },
 
     {
-        "title": "Grave Robbers",
+        "title": "Grave Robber",
         "discard": ['s'],
         "cost": ['s', 'g'],
-        "img": "cards/grave.png",
+        "img": "cards/graveyard.png",
         "banners": ['coin-banner'],
         "extra": ['skull-banner', 'produce', 'draw-1'],
-        "css": "title-large bg-60",
+        "css": "title-large bg-40 left-sign",
         "sign": "bb",
     },
 
