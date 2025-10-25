@@ -374,7 +374,7 @@ var cards = [
     },
 
     {
-        "title": "Jewel of Greed",
+        "title": "Idol of Greed",
         "discard": ['e'],
         "cost": ['g', 'r', 'c'],
         "img": "cards/greed.png",
@@ -852,7 +852,7 @@ var cards = [
         "extra": ['hook', 'tentacle'],
         "banners": ['parrot-banner'],
         "production": ['g'],
-        "css": "bg-top title-small title-bottom",
+        "css": "bg-top title-small",
         "sign": "vh",
     },
 
@@ -910,7 +910,7 @@ var cards = [
         "img": "cards/graveyard.png",
         "banners": ['coin-banner'],
         "extra": ['skull-banner', 'produce', 'draw-1'],
-        "css": "title-large bg-30 left-sign",
+        "css": "title-large bg-60",
         "sign": "bb",
     },
 
@@ -1192,7 +1192,7 @@ var cards = [
     },
 
     {
-        "title": "Simian Idol",
+        "title": "Simian Effigy",
         "discard": ['g'],
         "cost": ['r', 'r', 'p', 'p', 'e', 'e'],
         "img": "cards/statuette.png",

@@ -113,12 +113,12 @@ document.getElementById('use-high-quality-images').addEventListener('click', fun
 // expand the cards
 cards.forEach((c) => {
     // transform gold to silver (part of simplification)
-    // c.cost = c.cost.map((cost) => {
-    //     if (cost == 'c') {
-    //         return 'cs'
-    //     }
-    //     return cost
-    // })
+    c.cost = c.cost.map((cost) => {
+        if (cost == 'c') {
+            return 'cs'
+        }
+        return cost
+    })
      if (c.copies) {
          var clone = JSON.parse(JSON.stringify(c));
          clone.copies = null
