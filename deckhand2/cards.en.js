@@ -310,15 +310,13 @@ var cards = [
         "discard": ['r'],
         "title": "Primal Mayhem",
         "img": "cards/tavern-invasion.png",
-        // "title": "Jungle Corsair",
         "cost": ['r', 'cs', 'c'],
-        // "img": "cards/handler.png",
         "extra": ['vp-1'],
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
         "copies": 2,
         "css": "bg-60 title-medium left-sign",
-        "sign": "bb",
+        "sign": "vh",
     },
 
     {
@@ -468,7 +466,7 @@ var cards = [
         "extra": ['vp-1', 'x' , 'parrot-banner'],
         "production": ['g'],
         "css": "bg-70 left-sign",
-        "sign": "vh",
+        "sign": "bb",
     },
 
     {
