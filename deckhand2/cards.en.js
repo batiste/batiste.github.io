@@ -1161,7 +1161,7 @@ var cards = [
         "production": ['p'],
         "banners": ['parrot-banner', 'rum-banner'],
         "extra": ['vp-1'],
-        "css": "bg-50 title-medium",
+        "css": "bg-65 title-medium",
         "sign": "bb",
     },
 
