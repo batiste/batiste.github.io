@@ -706,7 +706,7 @@ cards.forEach((c) => {
                     ${build}
                 </div>
 
-                <div class="sign ${c.sign}"><div></div></div>
+                <div class="sign ${c.sign || "unsigned"}"><div></div></div>
                 
                 <div class="mpc"></div>
                 ${title}

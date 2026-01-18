@@ -194,7 +194,8 @@ var cards = [
         "production": ['r', 'r'],
         "banners": ['basic-banner', 'rum-banner'],
         // "extra": ['vp-1'],
-        "css": "bg-top title-small"
+        "css": "bg-top title-small",
+        "sign": "bb",
     },
 
     {
@@ -255,6 +256,7 @@ var cards = [
         "extra": ['hook'],
         "production": ['g'],
         "css": "bg-40",
+        "sign": "bb",
     },
 
     {
@@ -1185,7 +1187,7 @@ var cards = [
         "production": ['r'],
         "banners": ['parrot-banner', 'gun-banner'],
         "extra": ['vp-6'],
-        "css": "bg-top title-top",
+        "css": "bg-65 title-top",
         "sign": "bb",
     },
 

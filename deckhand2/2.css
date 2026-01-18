@@ -668,6 +668,10 @@ img {
     /* filter: drop-shadow(1px 1px 0.5px #00000066); */
 }
 
+.unsigned {
+    border: 3px #ff0000 solid;
+}
+
 .sign {
     position:absolute;
     bottom: 21px;
