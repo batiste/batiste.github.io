@@ -67,11 +67,12 @@ var cards = [
         "title": "Emerald Quest",
         "discard": [],
         "cost": ['crown-banner', 'crown-banner', 'helm-banner'],
-        "img": "cards/explorers.png",
+        "img": "cards/temple.png",
         // "production": ['r']
         'extra': ['vp-5', 'draw-1'],
         'type': 'supremacy',
-        'css': 'left-sign',
+        'css': 'left-sign bg-60',
+        'sign': 'bb',
     },
 
     {
