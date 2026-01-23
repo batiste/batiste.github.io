@@ -1153,7 +1153,7 @@ var cards = [
         // "production": ['g'],
         "banners": ['basic-banner', 'basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'], //'basic-banner'
         // "extra": ['vp-2'],
-        "css": "title-medium left-sign",
+        "css": "title-medium left-sign bg-50",
         "sign": "bb",
     },
 
