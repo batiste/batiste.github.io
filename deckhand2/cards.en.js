@@ -237,6 +237,17 @@ var cards = [
     },
 
     {
+        "title": "Extra card 1",
+        "cost": ['c', 'c'],
+        "img": "cards/toucan.png",
+        // 'banners': ['basic-banner', 'parrot-banner'],
+        "production": ['p'],
+        "copies": 2,
+        "css": "bg-top left-sign",
+        "sign": "bb",
+    },
+
+    {
         "title": "Arms Dealer",
         "discard": ['g'],
         "cost": ['cs', 'cs', 'cs'],
