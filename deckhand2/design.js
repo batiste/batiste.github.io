@@ -664,7 +664,7 @@ cards.forEach((c) => {
         return `
             <svg class="svg-curve" width="${width}" height="${height}" xmlns="http://www.w3.org/2000/svg">
             <path id="curve-${i}" d="M${startX},${baseY} Q${midX},${controlY} ${endX},${baseY}" fill="transparent" />
-            <text font-family="'IM Fell English', cursive" font-size="14.5" fill="#100">
+            <text font-family="'IM Fell English', cursive" font-size="14.5" fill="#000">
                 <textPath href="#curve-${i}" startOffset="50%" text-anchor="middle">
                 ${title}
                 </textPath>
