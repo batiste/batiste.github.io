@@ -1141,7 +1141,8 @@ var cards = [
         // "production": ['p'],
         "banners": ['rum-banner', 'helm-banner', 'crown-banner'],
         "extra": ['vp-6'],
-        "css": "bg-50 title-top"
+        "css": "bg-50 title-top",
+        "sign": "bb",
     },
 
 
