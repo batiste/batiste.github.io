@@ -868,7 +868,7 @@ var cards = [
         "production": ['p'],
         "css": "bg-top title-medium",
         "block": true,
-        // "sign": "bb",
+        "sign": "bb",
     },
 
     {
