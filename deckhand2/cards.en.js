@@ -115,11 +115,11 @@ var cards = [
         "title": "Three Paths",
         "discard": [],
         "cost": ['helm-banner', 'helm-banner', 'helm-banner'],
-        "img": "cards/3-scrolls.png",
+        "img": "cards/3-paths.png",
         // "production": ['r']
         'extra': ['vp-4', '3-choices'],
         'type': 'supremacy',
-        "css": "bg-30 title-small left-sign",
+        "css": "bg-60 title-small left-sign",
         "sign": "bb",
     },
 
