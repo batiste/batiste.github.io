@@ -119,7 +119,7 @@ var cards = [
         // "production": ['r']
         'extra': ['vp-4', '3-choices'],
         'type': 'supremacy',
-        "css": "bg-60 title-small left-sign",
+        "css": "bg-50 title-small left-sign",
         "sign": "bb",
     },
 
