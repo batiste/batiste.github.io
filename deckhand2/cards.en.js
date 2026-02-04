@@ -584,10 +584,10 @@ var cards = [
     },
 
     {
-        "title": "Shipyard",
+        "title": "Fool's Bargain",
         "discard": ['h'],
         "cost": ['e', 'e', 'cs'],
-        "img": "cards/shipyard.png",
+        "img": "cards/sale.png",
         "extra": ['vp-2'],
         "banners": ['helm-banner'],
         "production": ['h'],
