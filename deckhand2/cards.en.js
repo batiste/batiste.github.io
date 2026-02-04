@@ -584,7 +584,7 @@ var cards = [
     },
 
     {
-        "title": "Fool's Bargain",
+        "title": "Real Bargain",
         "discard": ['h'],
         "cost": ['e', 'e', 'cs'],
         "img": "cards/sale.png",
@@ -592,6 +592,7 @@ var cards = [
         "banners": ['helm-banner'],
         "production": ['h'],
         "css": "bg-60 title-small",
+        "sign": "bb",
     },
 
 
