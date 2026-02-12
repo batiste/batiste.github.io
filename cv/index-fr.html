@@ -1,0 +1,256 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+    <head>
+        <meta http-equiv="X-UA-Compatible" content="IE=Edge;chrome=1">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Curriculum vit&aelig; of Batiste Bieler</title>
+        <meta name="description" content="Batiste Bieler's C.V.">
+        <meta name="author" content="Batiste Bieler">
+        <link rel="stylesheet" href="reset.css" type="text/css">
+        <link rel="stylesheet" href="main.css" type="text/css">
+    </head>
+
+    <body>
+
+    <div id="main">
+
+
+<div id="header">
+	<img src="batiste.png" style="float:right;margin:2em;max-width:10em;filter:grayscale(1)"/>
+
+	<h1>Curriculum Vitæ de Batiste Bieler</h1>
+</div>
+
+<div id="content">
+
+<p>
+    Je suis un ingénieur logiciel basé en Suisse. Mon adresse e-mail est
+    <a id="mail" href="mailto:batiste.bieler_at_gmail.com">batiste.bieler_at_gmail.com</a>.
+
+    <span class="only-print">Une version de ce document avec 
+        des liens hypertextes et plus de détails est disponible à l’adresse
+        <a href="http://batiste.github.io/cv/">http://batiste.github.io/cv</a></span>
+</p>
+
+<script type="text/javascript">
+    var mail=document.getElementById('mail');
+    mail.href=mail.href.replace(RegExp('(_at_)','g'),'@');
+    mail.innerHTML=mail.innerHTML.replace(RegExp('(_at_)','g'),'@');
+</script>
+
+<h2>Domaines d’expertise</h2>    
+
+<p>Python, Type/JavaScript, NodeJS, Django, FastAPI, Angular/React, Azure/AWS/Google Cloud.</p> 
+
+<h2>Expériences professionnelles</h2>
+
+<table cellspacing="0">
+<thead>
+<tr><th>Période</th><th width="60%">Nature du travail / Responsabilités</th><th>Technologies clés</th></tr>
+</thead>
+<tbody>
+
+<tr>
+    <td class="period">Octobre 2024 à août 2025, Baden CH</td>
+    <td>
+        J’ai travaillé chez <a href="https://www.axpo.com">Axpo</a>, où j’ai développé un
+        portail interne connecté à différents services internes et mis en place
+        l’infrastructure Cloud nécessaire. J’ai occupé des rôles variés, allant du
+        développement Backend au DevOps.
+    </td>
+    <td class="tech">
+        Django Ninja, SRE, Azure, Kubernetes, Terraform, ArgoCD, React
+    </td>
+</tr>
+
+<tr>
+    <td class="period">Novembre 2022 à janvier 2024, Morges CH</td>
+    <td>
+        J’ai travaillé chez <a href="https://www.earny.ch/">Earny.ch</a> au développement de leur
+        logiciel suisse de gestion de paie en ligne, en ajoutant des fonctionnalités de
+        paiement/facturation (Stripe) et en mettant en place de bonnes pratiques de qualité
+        logicielle (logs, CI/CD).
+    </td>
+    <td class="tech">
+        Python, Django, Kubernetes, Stripe, Google Cloud et AWS
+    </td>
+</tr>
+
+<tr>
+    <td class="period">Juin 2022 à octobre 2022, Zürich CH</td>
+    <td>
+        J’ai travaillé chez <a href="https://www.caplena.com/">Caplena.com</a> au développement de leurs
+        produits principaux et API liés à l’analyse de texte, au scraping et à la classification.
+    </td>
+    <td class="tech">
+        Python, Django, FastAPI, Kubernetes, Google Cloud
+    </td>
+</tr>
+
+<tr>
+    <td class="period">Octobre 2018 à mai 2022, Zürich CH</td>
+    <td>
+        J’ai travaillé chez <a href="https://www.pricehubble.com/">PriceHubble.ch</a>, où j’ai développé
+        leurs produits pour l’évaluation immobilière, leur frontends (SPA) et des rapports avancés,
+        tout en assurant également le rôle de Tech Lead.
+    </td>
+    <td class="tech">
+        TypeScript, Angular, Python, FastAPI, Django, Google Cloud, Kubernetes
+    </td>
+</tr>
+
+<tr>
+    <td colspan="3" style="text-align: center">
+        <a class="no-print" href="#more" id="more">Afficher plus...</a>
+        <span class="only-print">Seuls les 4 derniers postes sont affichés. Plus d’informations sont disponibles en ligne.</span>
+    </td>
+</tr>
+
+<script type="text/javascript">
+    var more=document.getElementById('more');
+    more.onclick=function(e) {
+        e.preventDefault();
+        Array.from(document.querySelectorAll('.old')).forEach((item) => {
+            item.style.display = 'table-row';
+        })
+        more.parentNode.parentNode.remove();
+    }
+</script>
+
+<tr class="old">
+    <td class="period">Janvier 2017 à septembre 2018, Zug CH</td>
+    <td>
+        J’ai travaillé chez <a href="https://www.ricardo.ch">ricardo.ch</a> au développement de leurs applications web
+        et participé à la migration d’une plateforme legacy vers une architecture orientée microservices.
+    </td>
+    <td class="tech">
+        NodeJS, React, GraphQL, Vue.js, Go, Docker, Kubernetes
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Mars 2016 à octobre 2016, Lausanne CH</td>
+    <td>
+        J’ai travaillé chez <a href="http://www.pix4d.com">Pix4D</a> en tant qu’ingénieur logiciel web. Mes missions :
+        développement de la plateforme cloud sur AWS, implémentation d’un visualiseur dynamique
+        <a href="https://en.wikipedia.org/wiki/Normalized_Difference_Vegetation_Index">NDVI</a> pour le Web,
+        mise en place de tests automatisés pour les services existants.
+    </td>
+    <td class="tech">
+        Amazon Services (AWS, S3), OpenLayers 3, Python, Django
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Janvier 2014 à mars 2016, Zürich CH</td>
+    <td>
+        J’ai travaillé comme ingénieur logiciel web chez <a href="https://local.ch">Local.ch</a>. Mes missions incluaient notamment :
+        <ul>
+            <li>Développement et maintenance du <a href="https://local.ch">site Local.ch</a> et des outils internes.</li>
+            <li>Mise en place de tests A/B pour guider les décisions produit.</li>
+            <li>Écriture de tests unitaires.</li>
+        </ul>
+    </td>
+    <td class="tech">
+        Ruby, Ruby on Rails, Angular 1, Node.js
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Novembre 2013 à janvier 2014, Genève CH</td>
+    <td>
+        J’ai travaillé pour l’Organisation Mondiale de la Propriété Intellectuelle (OMPI) à Genève,
+        où j’ai développé une application Django liée à la classification des brevets.
+    </td>
+    <td class="tech">
+        Django, Python, JavaScript
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Novembre 2012 à mars 2013, Genève CH</td>
+    <td>
+        J’ai travaillé dans une banque privée à Genève comme développeur Frontend sur
+        une application de gestion de portefeuille financier.
+    </td>
+    <td class="tech">
+        JSP, JavaScript, jQuery, CSS, HTML, compatibilité navigateurs
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Janvier 2009 à septembre 2012, Oslo, Norvège</td>
+    <td>
+        Durant cette période, j’ai travaillé comme ingénieur logiciel chez <a href="http://opera.com">Opera Software</a>.
+    </td>
+    <td class="tech">
+        Django, Python, JavaScript, jQuery, CSS3, infrastructure serveur, bases de données
+    </td>
+</tr>
+
+<tr class="old">
+    <td class="period">Mars 2006 à décembre 2008, Lausanne CH</td>
+    <td>
+        J’ai travaillé comme développeur web dans une agence web.
+        J’ai collaboré directement avec <a href="http://iec.org/">l’IEC</a>, <a href="http://www.nespresso.com/">Nespresso</a> et le <a href="http://tcs.ch">TCS</a>.
+    </td>
+    <td class="tech">
+        Django, Python, JavaScript, compatibilité navigateurs, ASP.NET 2.0, C#
+    </td>
+</tr>
+
+</tbody>
+</table>
+
+<h2>Formation</h2>
+
+<ul>
+    <li>2006 : Obtention d’un <a href="diploma.png">Bachelor en ingénierie informatique</a> à la Haute École Spécialisée de Suisse Occidentale (HES-SO) ;</li>
+    <li>2002 : Obtention d’un CFC (Certificat Fédéral de Capacité) en médiamatique.</li>
+</ul>
+
+<h2>Projets & Contributions Open Source</h2>
+
+<p>Je me suis impliqué dans plusieurs projets Open Source et j’en ai créé certains moi-même. En voici quelques-uns :</p>
+<ul>
+    <li><a href="https://github.com/batiste/blop-language">Blop language</a> est un langage de programmation pour le Web que j’ai créé.</li>
+    <li><a href="https://django-page-cms.readthedocs.io/">Django page CMS</a> est un CMS puissant et simple basé sur le framework Django.</li>
+    <li><a href="https://spritejs.readthedocs.io/">Sprite.js</a> est une bibliothèque JavaScript utilisée pour créer
+        des jeux et des animations en JavaScript.</li>
+</ul>
+
+<h2>Langues</h2>
+
+<p>Le français est ma langue maternelle, je parle couramment l’anglais et j’ai des notions d’allemand et de norvégien.</p>
+
+<h2>Informations complémentaires</h2>
+
+<p id="more">
+    <a href="http://batiste.github.io/">Site personnel</a>,
+    <a href="https://www.linkedin.com/in/batistebieler/">Profil LinkedIn</a>,
+    <a href="https://resume.github.io/?batiste">CV GitHub</a>.
+</p>
+
+    </div>
+
+    <div id="footer">
+
+    </div>
+
+    </div>
+    </body>
+    <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-1048886-9', 'auto');
+    ga('send', 'pageview');
+
+    </script>
+</html>
+
+
+
