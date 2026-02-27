@@ -268,7 +268,8 @@ var cards = [
         "extra": [ 'telescope'],
         'banners': ['basic-banner', 'parrot-banner'],
         "production": ['p'],
-        "css": "title-small"
+        "css": "title-small",
+        "sign": "bb",
     },
 
 
@@ -756,6 +757,7 @@ var cards = [
         // "production": ['h'],
         "extra": ['telescope', 'draw-2'],
         "css": "title-medium bg-60",
+        "sign": "bb",
     },
 
 
@@ -782,7 +784,7 @@ var cards = [
         "production": ['s'],
         "extra": ['vp-3', 'x', 'skull-banner'],
         "css": "bg-top title-medium left-sign",
-        // "sign": "bb",
+        "sign": "bb",
     },
 
 
@@ -1131,7 +1133,8 @@ var cards = [
         "production": ['h'],
         "banners": ['skull-banner', 'crown-banner'],
         "extra": ['vp-6'],
-        "css": "title-medium"
+        "css": "title-medium",
+        "sign": "bb",
     },
 
     {
@@ -1155,7 +1158,7 @@ var cards = [
         // "production": ['g'],
         "banners": ['basic-banner', 'basic-banner', 'rum-banner', 'parrot-banner', 'coin-banner'], //'basic-banner'
         // "extra": ['vp-2'],
-        "css": "title-medium left-sign bg-50",
+        "css": "title-medium bg-50",
         "sign": "bb",
     },
 
