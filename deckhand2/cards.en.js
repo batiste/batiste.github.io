@@ -1126,14 +1126,14 @@ var cards = [
     },
 
     {
-        "title": "Verdant Portal",
+        "title": "Lost Crown",
         "discard": ['e'],
         "cost": ['e', 'e', 'e', 's'],
-        "img": "cards/doom-temple.png",
+        "img": "cards/crown.png",
         "production": ['h'],
         "banners": ['skull-banner', 'crown-banner'],
         "extra": ['vp-6'],
-        "css": "title-medium",
+        "css": "title-medium bg-65",
         "sign": "bb",
     },
 
