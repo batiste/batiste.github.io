@@ -91,12 +91,12 @@ var cards = [
         "title": "Among Misfits",
         "discard": [],
         "cost": ['parrot-banner', 'parrot-banner', 'parrot-banner'],
-        "img": "cards/raft-3.png",
+        "img": "cards/8.jpg",
         // "production": ['r']
         'extra': ['vp-4', 'hook'],
         'type': 'supremacy',
-        "css": "bg-50",
-        "sign": "bb",
+        "css": "bg-60",
+        "sign": "zp",
     },
 
     {
