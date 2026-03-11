@@ -19,7 +19,7 @@ var res = (t, cls) => `
 
 var get_res = (r) => {
     if (r == "p") {
-        return res("parrot")
+        return res("parrot-2", "parrot")
     }
     if (r == "c") {
         return res("coin-2")
@@ -28,10 +28,10 @@ var get_res = (r) => {
         return res("silver-2")
     }
     if (r == "g") {
-        return res("gun", "gun")
+        return res("gun-2", "gun")
     }
     if (r == "r") {
-        return res("rum")
+        return res("rum-3", "rum")
     }
     if (r == "e") {
         return res("gem-2")
@@ -40,10 +40,10 @@ var get_res = (r) => {
         return res("purse")
     }
     if (r == "s") {
-        return res("skull-2" , "skull")
+        return res("skull-4" , "skull")
     }
     if (r == "h") {
-        return res("helm", "helm")
+        return res("helm-2", "helm")
     }
     // if (r == "gem") {
     //     return res("gem-2")
@@ -533,7 +533,7 @@ cards.forEach((c) => {
                 extra += `<img class="res telescope" src="img/telescope.png">`
             }
             if (c == "tentacle") {
-                extra += `<img class="res tentacle" src="img/tentacles.png">`
+                extra += `<img class="res tentacle" src="img/tentacle-3.png">`
             }
             if (c.endsWith('banner')) {
                 extra += `<img class="banner-icon"  src="img/${c}.png">`
@@ -554,13 +554,13 @@ cards.forEach((c) => {
                 extra += `<img class="res arrow" src="img/arrow.png">`
             }
             if (c == "hook") {
-                extra += `<img class="res hook" src="img/hook-2.png">`
+                extra += `<img class="res hook" src="img/hook-3.png">`
             }
             if (c == "battle") {
                 extra += `<img class="res battle" src="img/battle.png">`
             }
             if (c == "t") {
-                extra += `<img class="res hook" src="img/tentacles.png">`
+                extra += `<img class="res hook" src="img/tentacle-3.png">`
             }
         })
         if (extra) {
