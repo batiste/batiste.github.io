@@ -22,10 +22,10 @@ var get_res = (r) => {
         return res("parrot-2", "parrot")
     }
     if (r == "c") {
-        return res("coin-2")
+        return res("coin-3", "coin")
     }
     if (r == "cs") {
-        return res("silver-2")
+        return res("silver-coin-2", "silver-coin")
     }
     if (r == "g") {
         return res("gun-2", "gun")

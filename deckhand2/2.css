@@ -236,14 +236,6 @@ img {
     width: 34px;
 }
 
-.coin {
-    width: 23px;
-    display: inline-flex;
-    margin-right: 1px;
-    margin-bottom: -6px;
-    margin-left: 2px; 
-}
-
 .type {
     background-color: #ffc4739e;
     background-color: #f4c886b3;
