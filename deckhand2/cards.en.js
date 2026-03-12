@@ -752,7 +752,7 @@ var cards = [
         "discard": ['p'],
         "title": "Glimmer of Riches",
         "cost": ['h', 'h', 'c'],
-        "img": "cards/60.jpg",
+        "img": "cards/60.png",
         "banners": ['helm-banner'],
         // "production": ['h'],
         "extra": ['telescope', 'draw-2'],

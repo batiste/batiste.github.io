@@ -38,8 +38,8 @@ img {
 .card .inner {
     position: relative;
     overflow: hidden;
-    width: 69.24972972972974mm;
-    height: 94.2mm;
+    width: 69mm;
+    height: 94mm;
     /* margin-left: -2.843mm;
     margin-top: -2.7mm; */
 }
@@ -455,7 +455,7 @@ img {
 }
 
 .work .card .mpc {
-    background-image: url(img/mpc.png);
+    background-image: url(card-template.png);
 }
 
 .no-mask .card .mpc {
@@ -666,8 +666,8 @@ img {
 
 .sign {
     position:absolute;
-    bottom: 21px;
-    right: 21px;
+    bottom: 22px;
+    right: 22px;
     width: 14px;
     height: 14px;
     display: flex;
