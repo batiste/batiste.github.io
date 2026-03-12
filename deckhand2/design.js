@@ -557,7 +557,7 @@ cards.forEach((c) => {
                 extra += `<img class="res hook" src="img/hook-3.png">`
             }
             if (c == "battle") {
-                extra += `<img class="res battle" src="img/battle.png">`
+                extra += `<img class="res battle" src="img/battle-2.png">`
             }
             if (c == "t") {
                 extra += `<img class="res hook" src="img/tentacle-3.png">`
