@@ -975,7 +975,11 @@ function downloadCardButton(e) {
 
 function downloadCard(card, cb) {
     createCardImage(card, (canvas) => {
+        // Extract card id from element's id attribute and pad to 3 digits
+        var cardId = card.id.replace('card-', '');
+        var paddedId = cardId.padStart(3, '0');
         var title = card.title.toLowerCase().replace(/\s/g, '-')
+        title = paddedId + '-' + title;
         if (format=='png') {
             img = canvas.toDataURL();
         } else {
