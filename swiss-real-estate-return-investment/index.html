@@ -1,33 +1,70 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
   <head>
-    <title>Swiss Real Estate Return on Investment Calculator</title>
+    <title>Swiss Real Estate: Buy vs Rent + Invest Calculator</title>
     <meta charset="utf-8">
-    <meta name="description" content="Swiss Real Estate Return on Investment Calculator, 
-a quick way to get ROI from a apartment and determine if it is a sane investment in Switzerland">
+    <meta name="description" content="Swiss Real Estate decision tool: compare buying vs renting and investing the difference. Accounts for opportunity cost of down payment in stocks.">
     <meta name="author" content="Batiste Bieler">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        * {
+            box-sizing: border-box;
+        }
+
         body {
-            font-family: sans-serif;
-            padding: 3em;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            padding: 3em 2em;
             font-size: 15px;
+            max-width: 1200px;
+            margin: 0 auto;
+            color: #333;
+        }
+
+        h1 {
+            color: #009879;
+            margin-bottom: 0.5em;
+        }
+
+        h2 {
+            color: #009879;
+            font-size: 1.2em;
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+            border-bottom: 2px solid #009879;
+            padding-bottom: 0.3em;
+        }
+
+        .section-note {
+            color: #666;
+            font-size: 0.9em;
+            margin-bottom: 1em;
+            font-style: italic;
         }
 
         body, table, input {
             font-size: 15px;
-            font-family: sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
         }
 
         input {
             padding: 4px 6px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #009879;
+            box-shadow: 0 0 4px rgba(0, 152, 121, 0.3);
         }
 
         .styled-table {
             border-collapse: collapse;
-            margin: 25px 0;
-            min-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+            margin: 15px 0;
+            min-width: 100%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
         }
         .styled-table thead tr {
             background-color: #009879;
@@ -43,36 +80,267 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
         }
 
         .styled-table tbody tr:nth-of-type(even) {
-            background-color: #f3f3f3;
+            background-color: #f9f9f9;
         }
 
         .styled-table tbody tr.result {
             background-color: #4ac58c;
             color: #fff;
+            font-weight: bold;
         }
 
-        .styled-table tbody tr:last-of-type {
-            border-bottom: 2px solid #009879;
+        .styled-table tbody tr.section-header {
+            background-color: #f0f0f0;
+            font-weight: bold;
+            color: #009879;
         }
+
+        .styled-table tbody tr.verdict {
+            background-color: #004d39;
+            color: #fff;
+            font-size: 1.05em;
+            font-weight: bold;
+        }
+
+        .styled-table tbody tr.verdict-renting {
+            background-color: #e8594e;
+        }
+
         table input {
             width: 8em;
         }
         .percent {
             width: 4em;
         }
-        #netReturn {
-            font-size: 20px;
+
+        .comparison-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        @media (max-width: 900px) {
+            .comparison-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .scenario-box {
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background: #f9f9f9;
+            transition: all 0.2s ease;
+        }
+
+        .scenario-box.winner {
+            border-color: #2e7d32;
+            background: #e8f5e9;
+            box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.12);
+        }
+
+        .scenario-box h3 {
+            margin-top: 0;
+            color: #009879;
+            border-bottom: 2px solid #009879;
+            padding-bottom: 0.5em;
+        }
+
+        .scenario-line {
+            display: flex;
+            justify-content: space-between;
+            padding: 6px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .scenario-line:last-child {
+            border-bottom: none;
+        }
+
+        .scenario-total {
             font-weight: bold;
+            font-size: 1.1em;
+            color: #004d39;
+            padding-top: 8px;
+        }
+
+        .verdict-box {
+            margin: 20px 0;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .verdict-box.buying-wins {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+
+        .verdict-box.renting-wins {
+            background-color: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+
+        .verdict-box h3 {
+            margin: 0 0 0.5em 0;
+            font-size: 1.3em;
+        }
+
+        .verdict-value {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+
+        .footer-note {
+            color: #999;
+            font-size: 0.85em;
+            margin-top: 2em;
+            padding-top: 1em;
+            border-top: 1px solid #ddd;
+        }
+
+        .important-note {
+            background: #fff8e1;
+            border-left: 4px solid #f9a825;
+            padding: 10px 12px;
+            margin: 12px 0;
+            color: #5d4037;
+            border-radius: 4px;
+        }
+
+        .important-row {
+            background-color: #fffde7 !important;
+        }
+
+        .important-row td:first-child {
+            font-weight: 600;
+        }
+
+        .floating-summary {
+            position: fixed;
+            right: 16px;
+            bottom: 16px;
+            width: 320px;
+            max-width: calc(100vw - 32px);
+            background: #ffffff;
+            border: 2px solid #cfd8dc;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            padding: 12px;
+            z-index: 1000;
+            display: none;
+        }
+
+        .floating-summary h4 {
+            margin: 0 0 6px 0;
+            color: #00695c;
+            font-size: 14px;
+        }
+
+        .floating-summary-line {
+            font-size: 13px;
+            color: #37474f;
+            margin: 3px 0;
+        }
+
+        .floating-summary-result {
+            margin-top: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            color: #1b5e20;
+        }
+
+        .floating-summary-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 12px;
+            color: #00695c;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 900px) {
+            .floating-summary {
+                width: auto;
+                left: 12px;
+                right: 12px;
+                bottom: 12px;
+            }
         }
     </style>
   </head>
 <body>
 
-<h1>Swiss Real Estate Return on Investment Calculator</h1>
+<h1>Swiss Real Estate: Buy vs Rent + Invest</h1>
 
 <p>
-    A quick calculator to get the return on investment of an real estate object in Switzerland based on purchase price and rental income.
+    <strong>Financial decision tool</strong> for Swiss property buyers. Compares the true cost of buying vs. renting and investing the down payment in stocks (~5–7% annual return). This accounts for the opportunity cost of capital—the critical factor most calculators ignore.
 </p>
+
+<div class="comparison-container" id="comparisonResults" style="display: none;">
+    <div class="scenario-box" id="buyingBox">
+        <h3>📊 Monthly Cost: Buying</h3>
+        <div class="scenario-line">
+            <span>Mortgage interest:</span>
+            <span id="monthlyMortgage">-</span>
+        </div>
+        <div class="scenario-line">
+            <span>Maintenance, insurance:</span>
+            <span id="monthlyMaintenance">-</span>
+        </div>
+        <div class="scenario-line">
+            <span>Property tax:</span>
+            <span id="monthlyPropertyTax">-</span>
+        </div>
+        <div class="scenario-line">
+            <span>Gross cost:</span>
+            <span id="monthlyGrossCost">-</span>
+        </div>
+        <div class="scenario-line">
+            <span>Opportunity cost:</span>
+            <span id="monthlyOpportunityCost">included in renting side</span>
+        </div>
+        <div class="scenario-total">
+            Real cost: <span id="monthlyRealCostBuying">-</span>
+        </div>
+    </div>
+
+    <div class="scenario-box" id="rentingBox">
+        <h3>📊 Monthly Cost: Renting</h3>
+        <div class="scenario-line">
+            <span>Rent:</span>
+            <span id="monthlyRentDisplay">-</span>
+        </div>
+        <div class="scenario-line">
+            <span style="color: #4caf50;">Stock return on same equity:</span>
+            <span style="color: #4caf50;" id="monthlyStockReturns">-</span>
+        </div>
+        <div class="scenario-total">
+            Real cost: <span id="monthlyRealCostRenting">-</span>
+        </div>
+    </div>
+</div>
+
+<div id="verdictBox" class="verdict-box" style="display: none;">
+    <h3 id="verdictTitle">Buying vs Renting</h3>
+    <div class="verdict-value" id="verdictText"></div>
+</div>
+
+<div id="floatingSummary" class="floating-summary">
+    <h4>Quick Buy vs Rent</h4>
+    <div class="floating-summary-line">Buying real cost: <span id="floatingBuyingCost">-</span></div>
+    <div class="floating-summary-line">Renting real cost: <span id="floatingRentingCost">-</span></div>
+    <div class="floating-summary-result" id="floatingVerdict">-</div>
+    <a class="floating-summary-link" href="#comparisonResults">Back to top comparison</a>
+</div>
+
+<h2>Property & Investment Parameters</h2>
+
+<p class="section-note">Enter your property details, rental assumptions, and investment returns.</p>
+
+<div class="important-note">
+    Start with highlighted rows: these inputs drive most of the result.
+</div>
 
 <table class="styled-table">
    
@@ -82,7 +350,7 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
     <th>Notes</th>
 </tr>
 
-<tr>
+<tr class="important-row">
     <td>
         Price of the property
     </td>
@@ -107,7 +375,7 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
     </td>
 </tr>
 
-<tr>
+<tr class="important-row">
     <td>
         Down payment in % of purchase price
     </td>
@@ -128,14 +396,82 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
         <span id="downPaymentReal">-</span> CHF
     </td>
     <td>
-        Down payment to obtain a mortgage. This is considered the investment value for further calculations.
+        Down payment to obtain a mortgage. This is invested capital with opportunity cost.
     </td>
 </tr>
 
+<tr class="section-header">
+    <td colspan="3">💡 Critical Assumptions: Stock Returns & Rent</td>
+</tr>
+
+<tr class="important-row">
+    <td>
+        Annual stock market return (if down payment invested instead)
+    </td>
+    <td>
+        <input type="number" class="percent" value="5.5" step=0.5 id="stockReturn"> %
+    </td>
+    <td>
+        Swiss benchmark: ~5–7% long-term. This is your opportunity cost for buying.
+    </td>
+</tr>
+
+<tr class="important-row">
+    <td>
+        Monthly market rent (same flat, utilities excluded)
+    </td>
+    <td>
+        <input type="number" value="1600" step=100 id="monthlyRent"> CHF
+    </td>
+    <td>
+        Single rent input used for both scenarios: what you pay if renting, and what the property earns if rented out.
+    </td>
+</tr>
+
+<tr class="section-header">
+    <td colspan="3">📍 Property Rental (Investment Case)</td>
+</tr>
 
 <tr>
     <td>
-        Mortgage
+        Monthly rental income used in ROI
+    </td>
+    <td>
+        <span id="monthlyRentalIncomeUsed">-</span> CHF
+    </td>
+    <td>
+        Same as monthly market rent above (utilities excluded).
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Yearly rental income used in ROI
+    </td>
+    <td>
+        <span id="yearlyRental">-</span> CHF
+    </td>
+    <td>
+        Gross rent before owner costs. Owner costs are accounted separately below.
+    </td>
+</tr>
+
+<tr class="important-row">
+    <td>
+        Interest of mortgage
+    </td>
+    <td>
+        <input type="number" class="percent" value="2" step=0.1 id="interest"> %
+        (<span id="chargeInterest">-</span> CHF)
+    </td>
+    <td>
+        Secured interest rate with the bank
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Mortgage amount
     </td>
     <td>
         <span id="mortgage">-</span> CHF
@@ -145,44 +481,11 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
     </td>
 </tr>
 
-
-<tr>
-    <td>
-        Net monthly rental return
-    </td>
-    <td>
-        <input type="number" value="1500" step=100 id="monthlyRentalValue"> CHF
-    </td>
-    <td>
-        Estimation of the net monthly rental return.
-    </td>
+<tr class="section-header">
+    <td colspan="3">💰 Annual Costs (for detailed ROI breakdown)</td>
 </tr>
 
-<tr>
-    <td>
-        Net yearly rental return
-    </td>
-    <td>
-        <span id="yearlyRental">-</span> CHF
-    </td>
-    <td>
-        Amount of rent net on a year.
-    </td>
-</tr>
-
-<tr class="result">
-    <td>
-        Gross return on investment
-    </td>
-    <td>
-        <span id="grossReturnValue">-</span> %
-    </td>
-    <td>
-        Expressed in percent of down payment
-    </td>
-</tr>
-
-<tr>
+<tr class="important-row">
     <td>
         Operating expenses in % of purchase price
     </td>
@@ -191,59 +494,7 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
         (<span id="operatingExpense">-</span> CHF)
     </td>
     <td>
-        Property insurance, maintenance, depreciation, <br>
-        administration, vacancy, etc.
-    </td>
-</tr>
-
-
-<tr class="result">
-    <td>
-        Return after operating expenses
-    </td>
-    <td>
-        <span id="intermediaryReturnValue">-</span> %
-    </td>
-    <td>
-        Expressed in percent of down payment
-    </td>
-</tr>
-
-<tr>
-    <td>
-        Interest of mortgage
-    </td>
-    <td>
-        <input type="number" class="percent" value="2" step=0.1 id="interest"> %
-        (<span id="chargeInterest">-</span> CHF)
-    </td>
-    <td>
-        Secured interest with the bank
-    </td>
-</tr>
-
-
-<tr>
-    <td>
-        Charge of interest in % of down payment
-    </td>
-    <td>
-        <span id="chargeInterestPercent">-</span> %
-    </td>
-    <td>
-        
-    </td>
-</tr>
-
-<tr class="result">
-    <td>
-        Net return after interest payments
-    </td>
-    <td>
-        <span id="netReturnBeforeTaxes">-</span> %
-    </td>
-    <td>
-        Expressed in percent of down payment
+        Property insurance, maintenance, depreciation, administration, vacancy, etc.
     </td>
 </tr>
 
@@ -256,8 +507,8 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
         (<span id="propertyTaxValue">-</span> CHF)
     </td>
     <td>
-        This tax depends on the canton, or even the commune. E.g. (VD: 1,5‰, NE: 2,4‰)<br>
-        ZH, SZ, GL, ZG, SO, BL et AG take no property taxes. <a href="https://www.estv.admin.ch/dam/estv/de/dokumente/estv/steuersystem/dossier-steuerinformationen/d/d-liegenschaftssteuer.pdf.download.pdf/d-liegenschaftssteuer.pdf">More infos</a>
+        This tax depends on the canton, commune. Examples: VD: 1,5‰, NE: 2,4‰. <br>
+        ZH, SZ, GL, ZG, SO, BL, AG: no property taxes. <a href="https://www.estv.admin.ch/dam/estv/de/dokumente/estv/steuersystem/dossier-steuerinformationen/d/d-liegenschaftssteuer.pdf.download.pdf/d-liegenschaftssteuer.pdf">More info</a>
     </td>
 </tr>
 
@@ -268,13 +519,12 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
     <td>
         <span id="taxableRentalValue">-</span> CHF
         <div style="margin-top:0.5em;">
-        <input type="checkbox" value="checked" id="liveHere" style="width:1em;display: inline-block;">I will live here 
+        <input type="checkbox" value="checked" id="liveHere" style="width:1em;display: inline-block;">I will live here
         </div>
     </td>
     <td>
-        The net yearly rental return - (interest + 10% of rental value).
-        If you live in your own property the taxable rental value might be further reduced (~70% of real).
-        <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More infos</a>
+        The net yearly rental return − (interest + 10% of rental value). <br>
+        If you live in the property, taxable value is reduced (~70% of real). <a href="https://www.financescout24.ch/fr/hypotheque/hypotheque-et-impots">More info</a>
     </td>
 </tr>
 
@@ -287,61 +537,124 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
         (<span id="taxesRentalValue">-</span> CHF)
     </td>
     <td>
-        Enter here your estimated revenue taxes.
+        Your estimated income tax rate on rental returns.
     </td>
 </tr>
 
-<tr class="result" style="background-color:#348581">
+<tr class="section-header">
+    <td colspan="3">📈 Detailed ROI Breakdown (for reference; main decision above)</td>
+</tr>
+
+<tr class="result">
     <td>
-        Net return
+        Gross return on investment
     </td>
     <td>
-        <span id="netReturn">-</span> %
+        <span id="grossReturnValue">-</span> %
     </td>
     <td>
-        Expressed in percent of down payment.
+        Rental income / down payment (before costs)
     </td>
 </tr>
 
 <tr>
     <td>
-        Yearly speculative capital appreciation in % of purchase price
+        Return after operating & property expenses
     </td>
     <td>
-        <input type="number" class="percent" value="1.5" step=0.1 id="speculativeAppreciation"> %
-        (<span id="speculativeAppreciationValue">-</span> CHF)
+        <span id="intermediaryReturnValue">-</span> %
     </td>
     <td>
-        Based on historical <a href="https://fred.stlouisfed.org/series/QCHR628BIS">Real Residential Property Prices</a>.
-        Based on <a href="https://fred.stlouisfed.org/series/QCHN628BIS">Residential Property Prices (not CPI adjusted)</a> this value
-        is closer to 3.5%
+        Expressed in percent of down payment
     </td>
 </tr>
 
+<tr>
+    <td>
+        Annual mortgage interest in % of down payment
+    </td>
+    <td>
+        <span id="chargeInterestPercent">-</span> %
+    </td>
+    <td></td>
+</tr>
 
 <tr class="result">
     <td>
-        Net return with capital appreciation
+        Net return after interest & expenses
+    </td>
+    <td>
+        <span id="netReturnBeforeTaxes">-</span> %
+    </td>
+    <td>
+        Expressed in percent of down payment
+    </td>
+</tr>
+
+<tr class="result" style="background-color:#348581">
+    <td>
+        <strong>Net return after all costs & taxes</strong>
+    </td>
+    <td>
+        <strong><span id="netReturn">-</span> %</strong>
+    </td>
+    <td>
+        <strong>ROI from rental property investment (before comparing to buying scenario above)</strong>
+    </td>
+</tr>
+
+<tr>
+    <td colspan="3" style="padding: 0.5em; font-size: 0.9em; color: #666;">
+        <strong>Optional: Speculative Appreciation</strong> — The following adds appreciation, which is volatile and not guaranteed.
+    </td>
+</tr>
+
+<tr>
+    <td colspan="3" style="padding: 0.6em; font-size: 0.9em; color: #8a1c1c; background: #fff1f1; border-left: 4px solid #d32f2f;">
+        <strong>Warning:</strong> In real (inflation-adjusted) terms, Swiss housing prices were roughly flat for long periods (for example 1973-2008).
+    </td>
+</tr>
+
+<tr>
+    <td>
+        Yearly property appreciation in % of purchase price
+    </td>
+    <td>
+        <input type="number" class="percent" value="1" step=0.1 id="speculativeAppreciation"> %
+        (<span id="speculativeAppreciationValue">-</span> CHF)
+    </td>
+    <td>
+        Historical Swiss real estate can have long flat real periods; use conservative assumptions. <a href="https://fred.stlouisfed.org/series/QCHR628BIS">Data</a>. This is highly uncertain and varies by region.
+    </td>
+</tr>
+
+<tr class="result">
+    <td>
+        Net return INCLUDING appreciation
     </td>
     <td>
         <span id="netReturnWithAppreciation">-</span> %
     </td>
     <td>
-        Expressed in percent of down payment.
+        Only if you believe in this appreciation estimate.
     </td>
 </tr>
 
 
 </table>
 
-<p>Batiste Bieler, 2022, All right reserved. Do not copy without keeping authorship.</p>
+<div class="footer-note">
+    <strong>Methodology:</strong> Buying vs. Renting compares the true monthly cost of ownership (mortgage, maintenance, taxes, minus rental income) vs. renting (monthly rent, minus your stock returns on the down payment). The net ROI figures below are for detailed reference but should not be your only decision factor—the cost comparison above is what matters financially.
+</div>
+
+<p style="color: #666; font-size: 0.9em;">Batiste Bieler, 2024. Updated for financial decision-making. <a href="https://github.com/batiste/...">GitHub</a></p>
 
 
 <script>
     function get(id) {
-        return document.querySelector('#'+id)
+        return document.querySelector('#' + id)
     }
-    function getValue(id, type="int") {
+    function getValue(id, type = "int") {
         return parseFloat(get(id).value, 10)
     }
     function setInner(id, value) {
@@ -350,91 +663,182 @@ a quick way to get ROI from a apartment and determine if it is a sane investment
     function round1Dec(num) {
         return Math.round(num * 10) / 10
     }
+    function formatCHF(num) {
+        return Math.round(num).toLocaleString('de-CH') + ' CHF'
+    }
 
     function recalculate() {
+        // ===== INPUT PARAMETERS =====
         let objectPrice = getValue('price')
         const feesPercent = getValue('buyingFees') / 100.0
-
         const feesValue = (feesPercent * objectPrice)
-        setInner('feesValue', feesValue)
+        setInner('feesValue', Math.round(feesValue))
 
         const price = objectPrice + feesValue
         const downPaymentPercent = getValue('downPayment') / 100.0
         const downPayment = Math.round(downPaymentPercent * price)
 
-        setInner('downPaymentReal', Math.round(price * (downPaymentPercent)))
+        setInner('downPaymentReal', Math.round(downPayment).toLocaleString('de-CH'))
 
-        const mortgage = Math.round((1 - (downPaymentPercent)) * price)
-        setInner('mortgage', mortgage)
+        const mortgage = Math.round((1 - downPaymentPercent) * price)
+        setInner('mortgage', Math.round(mortgage).toLocaleString('de-CH'))
 
-        const monthlyRentalValue = getValue('monthlyRentalValue')
-        const yearlyRental = monthlyRentalValue * 12;
-        setInner('yearlyRental', yearlyRental)
-
-        const grossReturnValuePercent = yearlyRental / downPayment;
-        const grossReturnValue = round1Dec(grossReturnValuePercent * 100)
-        setInner('grossReturnValue', grossReturnValue)
+        const monthlyRent = getValue('monthlyRent')
+        const yearlyRental = monthlyRent * 12
+        setInner('monthlyRentalIncomeUsed', Math.round(monthlyRent).toLocaleString('de-CH'))
+        setInner('yearlyRental', Math.round(yearlyRental))
 
         const operatingExpensePercent = getValue('operatingExpensePercent') / 100.0
         const operatingExpense = Math.round(objectPrice * operatingExpensePercent)
-        setInner('operatingExpense', operatingExpense)
-
-        const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
-        setInner('intermediaryReturnValue', round1Dec(intermediaryReturnValue * 100))
+        setInner('operatingExpense', Math.round(operatingExpense).toLocaleString('de-CH'))
 
         const interest = getValue('interest') / 100.0
-
-        const chargeInterest = interest * mortgage;
-        const chargeInterestPercent = chargeInterest / downPayment;
-        setInner('chargeInterestPercent', round1Dec(chargeInterestPercent * 100))
-        setInner('chargeInterest', round1Dec(chargeInterest))
-
-        const netReturnBeforeTaxes = intermediaryReturnValue - chargeInterestPercent
-        setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
+        const chargeInterest = interest * mortgage
+        setInner('chargeInterest', Math.round(chargeInterest).toLocaleString('de-CH'))
 
         const propertyTax = getValue('propertyTax') / 1000.0
-        propertyTaxValue = Math.round(propertyTax * objectPrice)
-        setInner('propertyTaxValue', propertyTaxValue)
+        const propertyTaxValue = Math.round(propertyTax * objectPrice)
+        setInner('propertyTaxValue', Math.round(propertyTaxValue).toLocaleString('de-CH'))
 
         const taxesRental = getValue('taxesRental') / 100.0
 
         let taxableRentalValue = (yearlyRental * 0.9) - chargeInterest
-
         if (get('liveHere').checked) {
-            taxableRentalValue = taxableRentalValue * 0.7;
+            taxableRentalValue = taxableRentalValue * 0.7
         }
 
         setInner('taxableRentalValue', Math.round(taxableRentalValue))
         const taxesRentalValue = Math.round(taxesRental * taxableRentalValue)
-        setInner('taxesRentalValue', Math.round(taxesRental * taxableRentalValue))
+        setInner('taxesRentalValue', Math.round(taxesRentalValue))
+
+        // ===== BUYING vs RENTING COMPARISON (Main Decision) =====
+
+        // BUYING SCENARIO (monthly)
+        // Principal repayment is equity transfer, not a cost.
+        // Real ownership cost = interest + maintenance + property tax.
+        // Opportunity cost is accounted once on the renting side to avoid double counting.
+        const monthlyInterest = chargeInterest / 12
+        const monthlyMaintenance = operatingExpense / 12
+        const monthlyPropertyTaxPayment = propertyTaxValue / 12
+        const monthlyGrossCostBuying = monthlyInterest + monthlyMaintenance + monthlyPropertyTaxPayment
+        const monthlyRealCostBuying = monthlyGrossCostBuying
+
+        setInner('monthlyMortgage', formatCHF(monthlyInterest))
+        setInner('monthlyMaintenance', formatCHF(monthlyMaintenance))
+        setInner('monthlyPropertyTax', formatCHF(monthlyPropertyTaxPayment))
+        setInner('monthlyGrossCost', formatCHF(monthlyGrossCostBuying))
+        setInner('monthlyOpportunityCost', 'included in renting side')
+        setInner('monthlyRealCostBuying', formatCHF(monthlyRealCostBuying))
+
+        // RENTING SCENARIO (monthly)
+        const monthlyStockReturnBenefit = (downPayment * getValue('stockReturn') / 100.0) / 12
+        const monthlyRealCostRenting = monthlyRent - monthlyStockReturnBenefit
+
+        setInner('monthlyRentDisplay', formatCHF(monthlyRent))
+        setInner('monthlyStockReturns', '− ' + formatCHF(monthlyStockReturnBenefit))
+        setInner('monthlyRealCostRenting', formatCHF(monthlyRealCostRenting))
+
+        // VERDICT
+        const delta = monthlyRealCostRenting - monthlyRealCostBuying // Positive = buying is cheaper
+        const verdictBox = get('verdictBox')
+        const comparisonResults = get('comparisonResults')
+        const buyingBox = get('buyingBox')
+        const rentingBox = get('rentingBox')
+        const floatingSummary = get('floatingSummary')
+
+        if (monthlyRent > 0) {
+            comparisonResults.style.display = 'grid'
+            verdictBox.style.display = 'block'
+            floatingSummary.style.display = 'block'
+
+            // Reset visual states
+            buyingBox.classList.remove('winner')
+            rentingBox.classList.remove('winner')
+            verdictBox.classList.remove('buying-wins', 'renting-wins')
+            verdictBox.style.backgroundColor = ''
+            verdictBox.style.borderLeft = ''
+            get('floatingBuyingCost').innerText = formatCHF(monthlyRealCostBuying)
+            get('floatingRentingCost').innerText = formatCHF(monthlyRealCostRenting)
+
+            if (delta > 50) { // Buying is clearly better (more than 50 CHF/month difference)
+                verdictBox.classList.add('buying-wins')
+                buyingBox.classList.add('winner')
+                get('verdictTitle').innerText = '✓ BUYING IS BETTER'
+                get('verdictText').innerText = `Monthly savings: ${formatCHF(Math.abs(delta))} per month vs renting`
+                get('floatingVerdict').innerText = `Buying better by ${formatCHF(Math.abs(delta))} / month`
+            } else if (delta < -50) { // Renting is clearly better
+                rentingBox.classList.add('winner')
+                verdictBox.style.backgroundColor = '#f5f5f5'
+                verdictBox.style.borderLeft = '4px solid #9e9e9e'
+                get('verdictTitle').innerText = '✓ RENTING IS BETTER'
+                get('verdictText').innerText = `Monthly savings: ${formatCHF(Math.abs(delta))} per month vs buying`
+                get('floatingVerdict').innerText = `Renting better by ${formatCHF(Math.abs(delta))} / month`
+            } else {
+                verdictBox.style.backgroundColor = '#fff3cd'
+                verdictBox.style.borderLeft = '4px solid #ffc107'
+                get('verdictTitle').innerText = '≈ ROUGHLY EQUIVALENT'
+                get('verdictText').innerText = `Difference: ${formatCHF(Math.abs(delta))} per month. Other factors (stability, lifestyle, location) matter more.`
+                get('floatingVerdict').innerText = `Almost equal: ${formatCHF(Math.abs(delta))} / month`
+            }
+        } else {
+            comparisonResults.style.display = 'none'
+            verdictBox.style.display = 'none'
+            floatingSummary.style.display = 'none'
+        }
+
+        // ===== LEGACY ROI CALCULATIONS (for reference) =====
+
+        const grossReturnValuePercent = yearlyRental / downPayment
+        const grossReturnValue = round1Dec(grossReturnValuePercent * 100)
+        setInner('grossReturnValue', grossReturnValue)
+
+        const intermediaryReturnValue = grossReturnValuePercent - (operatingExpense / downPayment)
+        setInner('intermediaryReturnValue', round1Dec(intermediaryReturnValue * 100))
+
+        const chargeInterestPercent = chargeInterest / downPayment
+        setInner('chargeInterestPercent', round1Dec(chargeInterestPercent * 100))
+
+        const netReturnBeforeTaxes = intermediaryReturnValue - chargeInterestPercent
+        setInner('netReturnBeforeTaxes', round1Dec(netReturnBeforeTaxes * 100))
 
         const netReturn = netReturnBeforeTaxes - (propertyTaxValue / downPayment) - (taxesRentalValue / downPayment)
         setInner('netReturn', round1Dec(netReturn * 100))
 
         const speculativeAppreciation = getValue('speculativeAppreciation') / 100.0
         const speculativeAppreciationValue = Math.round(speculativeAppreciation * objectPrice)
-        setInner('speculativeAppreciationValue', speculativeAppreciationValue)
+        setInner('speculativeAppreciationValue', Math.round(speculativeAppreciationValue).toLocaleString('de-CH'))
 
         const netReturnWithAppreciation = netReturn + (speculativeAppreciationValue / downPayment)
         setInner('netReturnWithAppreciation', round1Dec(netReturnWithAppreciation * 100))
     }
 
+    // Run immediately on page load
+    recalculate()
+
+    // Recalculate on input change
     setInterval(function() {
         recalculate()
-    }, 1000)
+    }, 500)
 
 </script>
 
 <script>
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
     ga('create', 'UA-1048886-9', 'auto');
     ga('send', 'pageview');
 
-  </script>
+</script>
 
 </body>
 </html>

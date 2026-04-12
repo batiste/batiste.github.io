@@ -1018,7 +1018,7 @@ var cards = [
     },
 
     {
-        "title": "Elixir Dealer",
+        "title": "Elixir Peddler",
         "discard": ['h'],
         "cost": ['r', 'r', 'cs'],
         "img": "cards/traveling-salesman.png",
