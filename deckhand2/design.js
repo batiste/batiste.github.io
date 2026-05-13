@@ -969,6 +969,29 @@ function noMask(e) {
     }
 }
 
+var noBleed = false;
+var fullCardWidthMm = 69.24972972972974;
+var fullCardHeightMm = 94.2;
+var pokerCardWidthMm = 63.5;
+var pokerCardHeightMm = 88.8;
+function updateNoBleed(e) {
+    noBleed = e.checked;
+}
+
+function cropBleed(canvas) {
+    var bleedXMm = (fullCardWidthMm - pokerCardWidthMm) / 2;
+    var bleedYMm = (fullCardHeightMm - pokerCardHeightMm) / 2;
+    var cropX = Math.round(canvas.width * bleedXMm / fullCardWidthMm);
+    var cropY = Math.round(canvas.height * bleedYMm / fullCardHeightMm);
+    var cropW = Math.round(canvas.width * pokerCardWidthMm / fullCardWidthMm);
+    var cropH = Math.round(canvas.height * pokerCardHeightMm / fullCardHeightMm);
+    var cropped = document.createElement('canvas');
+    cropped.width = cropW;
+    cropped.height = cropH;
+    cropped.getContext('2d').drawImage(canvas, cropX, cropY, cropW, cropH, 0, 0, cropW, cropH);
+    return cropped;
+}
+
 function downloadCardButton(e) {
     downloadCard(e.parentNode.querySelector('.card'))
 }
@@ -1032,6 +1055,9 @@ function createCardImage(card, cb) {
         ctx.drawImage(img, 0, 0)
         card.classList.remove(preparePrintClass)
         canvas.parentNode.removeChild(canvas)
+        if (noBleed) {
+            canvas = cropBleed(canvas)
+        }
         cb && cb(canvas)
     }, function error(e) {
         console.log("Error on card", card.title, e)
