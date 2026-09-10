@@ -222,8 +222,9 @@
           squares.push({
             x: j, y: i,
             ox: j, oy: i,
-            rx: ((Math.random() - 0.5) / 1.0), 
-            ry: ((Math.random() - 0.5) / 1.0)
+            rx: ((Math.random() - 0.5) / 1.0),
+            ry: ((Math.random() - 0.5) / 1.0),
+            z: Math.random()
           })
         }
       }
@@ -256,34 +257,113 @@
     return Math.abs(x - _x) + Math.abs(y - _y)
   }
 
+  // cap how many excited particles run full neighbour checks, so typing a long
+  // string near the cursor can't turn the O(n^2) boid pass into a frame drop
+  var BOID_CAP = 250;
+  var NEIGHBOR_RADIUS = 45;
+  var SEPARATION_RADIUS = 12;
+  var MAX_SPEED = 2.4;
+  var DAMPING = 0.92;
+  var RANDOM_JITTER = 0.15;
+  var SEPARATION_WEIGHT = 0.5;
+  var ALIGN_WEIGHT = 0.15;
+  var COHESION_WEIGHT = 0.002;
+
   function draw() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
-    cos = Math.cos(di / 2) / 5
-    sin = Math.sin(di / 2) / 5
     ctx.lineWidth = 1;
+
+    var excited = [];
+
     for (var i=0; i < squares.length; i++) {
-      ctx.fillStyle = `rgb(${100 + (i % 155)}, ${(i + 120) % 255}, ${100 + (i + 240) % 155})`;
       var s = squares[i];
-      var coordinates = [margins.left + 4 * s.x, margins.top + 4 * s.y];
-      ctx.fillRect(coordinates[0], coordinates[1], 3, 3);
+
+      // depth still drives size and brightness, so near particles pop and far ones recede,
+      // but every particle stays on the same plane (no positional offset from z)
+      var size = 2.5 + s.z * 1.0;
+      var shade = 0.55 + s.z * 0.45;
+      ctx.fillStyle = `rgba(${Math.round((100 + (i % 155)) * shade)}, ${Math.round(((i + 120) % 255) * shade)}, ${Math.round((100 + (i + 240) % 155) * shade)}, ${(0.5 + s.z * 0.5).toFixed(2)})`;
+
+      var cx = margins.left + 4 * s.x;
+      var cy = margins.top + 4 * s.y;
+      ctx.fillRect(cx, cy, size, size);
+      s.cx = cx;
+      s.cy = cy;
+
       if (x !== null && y !== null) {
-        var d = distance(coordinates[0], coordinates[1])
+        var d = distance(cx, cy)
         if (d < 200) {
-          var fear = 200 - d;
-          s.vx = (fear / 50.) * (Math.random() - 0.5)
-          s.vy = (fear / 50.) * (Math.random() - 0.5)
-        }
-        if (d < 150) {
-          s.vx += ((coordinates[0] - x) / 2500.)
-          s.vy += ((coordinates[1] - y) / 2500.)
-        }
-        if (d > 250) {
+          excited.push(s)
+        } else if (d > 250) {
           s.vx = (s.ox - s.x) / 40.
           s.vy = (s.oy - s.y) / 40.
         }
       }
+    }
 
-      var speed = 3;
+    // boid-style flocking among the particles the cursor is currently disturbing:
+    // separation keeps them from stacking, alignment makes neighbours drift together,
+    // cohesion keeps the little flock from flying apart
+    // particles carry momentum (s.vx/s.vy persist and are only nudged each frame)
+    // instead of getting a brand new random velocity every frame, so the group
+    // eases into motion together instead of vibrating in place
+    var boidSet = excited.length > BOID_CAP ? excited.slice(0, BOID_CAP) : excited;
+    for (var a = 0; a < boidSet.length; a++) {
+      var s = boidSet[a];
+      var dxm = s.cx - x;
+      var dym = s.cy - y;
+      var edist = Math.sqrt(dxm * dxm + dym * dym) || 1;
+
+      var ax = (Math.random() - 0.5) * RANDOM_JITTER;
+      var ay = (Math.random() - 0.5) * RANDOM_JITTER;
+
+      if (edist < 150) {
+        var fleeFactor = (150 - edist) / 150;
+        ax += (dxm / edist) * fleeFactor * 0.5;
+        ay += (dym / edist) * fleeFactor * 0.5;
+      }
+
+      var sepX = 0, sepY = 0, aliX = 0, aliY = 0, cohX = 0, cohY = 0, n = 0;
+      for (var b = 0; b < boidSet.length; b++) {
+        if (a === b) continue;
+        var o = boidSet[b];
+        var dx = s.cx - o.cx;
+        var dy = s.cy - o.cy;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist > 0 && dist < NEIGHBOR_RADIUS) {
+          n++;
+          if (dist < SEPARATION_RADIUS) {
+            sepX += dx / dist;
+            sepY += dy / dist;
+          }
+          aliX += o.vx || 0;
+          aliY += o.vy || 0;
+          cohX += o.cx;
+          cohY += o.cy;
+        }
+      }
+
+      if (n > 0) {
+        ax += (sepX / n) * SEPARATION_WEIGHT;
+        ay += (sepY / n) * SEPARATION_WEIGHT;
+        ax += ((aliX / n) - (s.vx || 0)) * ALIGN_WEIGHT;
+        ay += ((aliY / n) - (s.vy || 0)) * ALIGN_WEIGHT;
+        ax += ((cohX / n) - s.cx) * COHESION_WEIGHT;
+        ay += ((cohY / n) - s.cy) * COHESION_WEIGHT;
+      }
+
+      s.vx = ((s.vx || 0) + ax) * DAMPING;
+      s.vy = ((s.vy || 0) + ay) * DAMPING;
+
+      var speed = Math.sqrt(s.vx * s.vx + s.vy * s.vy);
+      if (speed > MAX_SPEED) {
+        s.vx = (s.vx / speed) * MAX_SPEED;
+        s.vy = (s.vy / speed) * MAX_SPEED;
+      }
+    }
+
+    for (var i=0; i < squares.length; i++) {
+      var s = squares[i];
       if (s.vx || s.vy) {
         s.x += s.vx
         s.y += s.vy
