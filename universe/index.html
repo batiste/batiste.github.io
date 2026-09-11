@@ -1,0 +1,1278 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<title>Batiste Bieler — Universe of interests</title>
+<meta charset="utf-8">
+<meta name="description" content="An interactive 3D map of Batiste Bieler's projects and interests, organized as galaxies around a central sun.">
+<meta name="author" content="Batiste Bieler">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden;
+    background: #0a0a16;
+    font-family: 'Inter', sans-serif;
+    color: #e8e8f4;
+  }
+  a { color: inherit; }
+  #stage {
+    position: fixed;
+    inset: 0;
+  }
+  canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
+    touch-action: none;
+    cursor: grab;
+  }
+  canvas.dragging { cursor: grabbing; }
+
+  #overlay {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+  }
+
+  .node-label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    transform: translate(-50%, -100%);
+    font-size: 12px;
+    color: rgba(232,232,244,0.85);
+    text-shadow: 0 0 6px rgba(0,0,0,0.9), 0 0 2px rgba(0,0,0,0.9);
+    opacity: 0;
+    transition: opacity 0.25s;
+    pointer-events: none;
+  }
+  .node-label.galaxy-label {
+    font-weight: 600;
+    font-size: 13px;
+    letter-spacing: 0.02em;
+    pointer-events: auto;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 2px 6px;
+  }
+  .node-label.hub-label {
+    font-weight: 600;
+    font-size: 15px;
+    pointer-events: auto;
+    cursor: pointer;
+  }
+
+  .item-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, 6px);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    text-decoration: none;
+    max-width: 130px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s;
+  }
+  .item-link.visible {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  .item-link .name {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #fff;
+    text-shadow: 0 0 6px rgba(0,0,0,0.95), 0 0 3px rgba(0,0,0,0.95);
+    white-space: nowrap;
+  }
+  .item-link .desc {
+    font-size: 10px;
+    line-height: 1.3;
+    color: rgba(232,232,244,0.75);
+    text-shadow: 0 0 5px rgba(0,0,0,0.95);
+    margin-top: 2px;
+    display: none;
+  }
+  @media (min-width: 760px) {
+    .item-link .desc { display: block; }
+  }
+  .item-link:hover .name, .item-link:focus .name { color: #ffe9b0; }
+
+  /* Timeline mode packs many more items on screen at once, so descriptions
+     stay hidden until you hover or focus one — the panel below carries the
+     detail instead. Labels are also left-justified starting right at their
+     dot (rather than centered under it), so a label's footprint never
+     reaches backward over an earlier, already-placed dot. */
+  body.mode-timeline .item-link .desc { display: none; }
+  body.mode-timeline .item-link:hover .desc,
+  body.mode-timeline .item-link:focus .desc { display: block; }
+  body.mode-timeline .item-link {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  #mode-toggle {
+    position: fixed;
+    top: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 6;
+    display: flex;
+    gap: 2px;
+    background: rgba(20,18,40,0.7);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 999px;
+    padding: 3px;
+    backdrop-filter: blur(6px);
+  }
+  #mode-toggle button {
+    background: none;
+    border: none;
+    color: rgba(232,232,244,0.7);
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 7px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  #mode-toggle button.active {
+    background: rgba(255,255,255,0.16);
+    color: #fff;
+  }
+  #mode-toggle button:hover { color: #fff; }
+
+  #hint {
+    position: fixed;
+    top: 58px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: rgba(232,232,244,0.55);
+    background: rgba(20,18,40,0.55);
+    border: 1px solid rgba(255,255,255,0.12);
+    padding: 7px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(6px);
+    transition: opacity 0.6s;
+    pointer-events: none;
+    z-index: 5;
+    text-align: center;
+  }
+  #hint.hidden { opacity: 0; }
+
+  #home-link {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 6;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(20,18,40,0.7);
+    border: 1px solid rgba(255,255,255,0.14);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    text-decoration: none;
+    backdrop-filter: blur(6px);
+  }
+  #home-link:hover { border-color: rgba(255,255,255,0.35); }
+
+  #back-btn {
+    position: fixed;
+    top: 16px;
+    left: 16px;
+    z-index: 6;
+    background: rgba(20,18,40,0.7);
+    border: 1px solid rgba(255,255,255,0.14);
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 12px;
+    font-family: inherit;
+    cursor: pointer;
+    backdrop-filter: blur(6px);
+    display: none;
+  }
+  #back-btn.show { display: inline-flex; align-items: center; gap: 6px; }
+  #back-btn:hover { border-color: rgba(255,255,255,0.35); }
+
+  /* Legend / quick-jump, doubles as keyboard-accessible nav */
+  #legend {
+    position: fixed;
+    right: 14px;
+    top: 14px;
+    z-index: 6;
+    background: rgba(20,18,40,0.7);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 14px;
+    padding: 10px;
+    backdrop-filter: blur(6px);
+    max-width: 190px;
+  }
+  #legend h2 {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(232,232,244,0.55);
+    margin: 0 0 6px 2px;
+    font-weight: 600;
+  }
+  #legend ul { list-style: none; margin: 0; padding: 0; }
+  #legend li { margin: 0; }
+  #legend button {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    background: none;
+    border: none;
+    color: #e8e8f4;
+    font-family: inherit;
+    font-size: 12px;
+    text-align: left;
+    padding: 5px 6px;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+  #legend button:hover, #legend button:focus, #legend button.active {
+    background: rgba(255,255,255,0.08);
+  }
+  #legend .dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    flex: none;
+    box-shadow: 0 0 6px currentColor;
+  }
+  @media (max-width: 640px) {
+    #legend { display: none; }
+  }
+
+  /* Info panel at the bottom */
+  #panel {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: 14px;
+    z-index: 6;
+    max-width: 480px;
+    background: rgba(20,18,40,0.82);
+    border: 1px solid rgba(255,255,255,0.14);
+    border-radius: 16px;
+    padding: 14px 16px;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.45);
+    transition: opacity 0.25s, transform 0.25s;
+  }
+  #panel.empty { opacity: 0; transform: translateY(6px); pointer-events: none; }
+  #panel h3 {
+    margin: 0 0 4px 0;
+    font-size: 15px;
+    font-weight: 600;
+  }
+  #panel p {
+    margin: 0;
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: rgba(232,232,244,0.8);
+  }
+  #panel .eyebrow {
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(199,179,255,0.85);
+    margin-bottom: 4px;
+    display: block;
+  }
+  #panel .hub-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 10px;
+    list-style: none;
+    padding: 0;
+  }
+  #panel .hub-links a {
+    font-size: 11.5px;
+    text-decoration: none;
+    background: rgba(255,255,255,0.08);
+    padding: 5px 10px;
+    border-radius: 999px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+  #panel .hub-links a:hover { border-color: rgba(255,255,255,0.4); }
+  #panel .close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: rgba(232,232,244,0.6);
+    font-size: 16px;
+    cursor: pointer;
+    line-height: 1;
+  }
+  #panel .close:hover { color: #fff; }
+
+  .sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap;
+    border: 0;
+  }
+</style>
+</head>
+<body>
+
+<div id="stage">
+  <canvas id="c" role="img" aria-label="An interactive 3D map of Batiste Bieler's projects, grouped into galaxies of interest around a central sun. Use the legend to jump to a galaxy, or drag to orbit and scroll to zoom."></canvas>
+</div>
+<div id="overlay"></div>
+
+<div id="mode-toggle" role="group" aria-label="View mode">
+  <button type="button" id="mode-cloud" class="active">Cloud</button>
+  <button type="button" id="mode-timeline">Timeline</button>
+</div>
+<div id="hint">Drag to orbit &middot; Scroll to zoom &middot; Click a cluster to explore</div>
+<a id="home-link" href="../">&larr; batiste.github.io</a>
+<button id="back-btn" type="button">&larr; Overview</button>
+
+<nav id="legend" aria-label="Jump to a topic">
+  <h2>Topics</h2>
+  <ul id="legend-list"></ul>
+</nav>
+
+<section id="panel" class="empty" aria-live="polite"></section>
+
+<!-- Static fallback: the same content as plain links, for search engines, screen readers, and no-JS. -->
+<main class="sr-only">
+  <h1>Batiste Bieler — a universe of interests</h1>
+  <p id="sr-hub-bio"></p>
+  <div id="sr-content"></div>
+</main>
+
+<script>
+(function () {
+  "use strict";
+
+  // ---------------------------------------------------------------------
+  // Content: the hub (me) and the galaxies (subjects) orbiting it.
+  // ---------------------------------------------------------------------
+
+  var HUB = {
+    name: "Batiste Bieler",
+    tagline: "Software Engineer, Switzerland",
+    bio: "Head of Infrastructure at Schölé AI. I build cloud infrastructure by day, and small languages, games and calculators whenever there's time left. This is a map of what I've made.",
+    links: [
+      { label: "Curriculum Vitæ", url: "../cv/" },
+      { label: "GitHub", url: "https://github.com/batiste" },
+      { label: "LinkedIn", url: "https://www.linkedin.com/in/batistebieler/" },
+      { label: "Medium articles", url: "https://medium.com/@batiste" },
+      { label: "Email", url: "mailto:batiste.bieler@gmail.com" },
+      { label: "NPM packages", url: "https://www.npmjs.com/~batiste" },
+      { label: "Python packages", url: "https://pypi.org/user/batiste/" }
+    ]
+  };
+
+  var GALAXIES = [
+    {
+      id: "lang", name: "Languages & Compilers", color: "#c7b3ff",
+      blurb: "Small programming languages, and the parsers that make them possible.",
+      items: [
+        { name: "Blop", url: "https://github.com/batiste/blop-language", year: 2015, desc: "A web-oriented language that compiles to JavaScript and natively generates Virtual DOM." },
+        { name: "CokeScript", url: "../CokeScript/", year: 2015, desc: "A whitespace-sensitive language that compiles to JavaScript." },
+        { name: "EPEG.js", url: "../EPEG.js/", year: 2014, desc: "A top-down PEG parser that handles left recursion with a stack and backtracking." },
+        { name: "meta-parser-generator", url: "https://github.com/batiste/meta-parser-generator", year: 2019, desc: "Generates a parser from a grammar and a token definition." },
+        { name: "pug-vdom", url: "https://github.com/batiste/pug-vdom", year: 2017, desc: "Compiles Pug templates straight to a HyperScript virtual DOM." }
+      ]
+    },
+    {
+      id: "frameworks", name: "Frameworks & Tools", color: "#7fc4ff",
+      blurb: "Frameworks for building on the web, from animation to APIs to CMSs.",
+      items: [
+        { name: "Sprite.js", url: "https://spritejs.readthedocs.io/", year: 2010, desc: "An efficient HTML5 sprite-animation framework for games — 870+ stars." },
+        { name: "Likely.js", url: "../likely.js/", year: 2013, desc: "An HTML template language written in JavaScript." },
+        { name: "Like.js", url: "../like.js/", year: 2013, desc: "Behavioral classes for JavaScript." },
+        { name: "Donkey", url: "https://github.com/batiste/donkey", year: 2021, desc: "A configuration-based HTTPS gateway written in TypeScript, built to replace Kong." },
+        { name: "Django Page CMS", url: "https://django-page-cms.readthedocs.io/", year: 2009, desc: "A CMS that integrates directly into the Django admin — 280+ stars." },
+        { name: "Django Wireframes", url: "https://github.com/batiste/django-wireframes", year: 2009, desc: "A simple framework for building wireframes in JavaScript and CSS." }
+      ]
+    },
+    {
+      id: "tidale", name: "Tidale Card Games", color: "#ff8fc8",
+      blurb: "Card games designed, illustrated and published in spare time, under the Tidale banner.",
+      items: [
+        { name: "Tidale Games", url: "https://tidale.org", year: 2024, desc: "Affordable, portable card games — my game-publishing project." },
+        { name: "DeckHand: Race for Infamy", url: "https://tidale.org/deckhand-race-to-infamy/", year: 2024, desc: "A brand new, fast-paced engine-building game distilled into 108 cards." },
+        { name: "DeckHand", url: "../deckhand/", year: 2023, desc: "A pirate-themed card game adventure, the original DeckHand." },
+        { name: "DeckHand meets Godot", url: "https://github.com/batiste/deckhand-digital", year: 2026, desc: "Bringing DeckHand into the Godot engine." },
+        { name: "Card Game Template", url: "../card-game-creation-template/", year: 2023, desc: "A reusable template for building card games, extracted from DeckHand." },
+        { name: "BoardGameGeek Profile", url: "https://boardgamegeek.com/boardgamedesigner/156021/batiste-bieler", year: 2024, desc: "My designer profile and games catalog on BoardGameGeek." }
+      ]
+    },
+    {
+      id: "games", name: "Video Games & Prototypes", color: "#6ee7b7",
+      blurb: "Small games and engine experiments — mostly unfinished, all instructive.",
+      items: [
+        // { name: "Pirates", url: "../pirates/test.html", year: 2022, desc: "A pirate-crew card battler prototype with status effects and monster encounters." },
+        { name: "Miner Game", url: "../miner-game/test_game.html", year: 2019, desc: "A top-down mining game with sprite-cycle animation." },
+        // { name: "Power Grid", url: "../power-grid/", year: 2024, desc: "A power-grid strategy game prototype." },
+        // { name: "Mercandia", url: "../mercandia/design.html", year: 2024, desc: "A trading and crafting board game in design, with a werewolf expansion." },
+        { name: "PlainHero", url: "https://github.com/batiste/PlainHero", year: 2016, desc: "A minimalist hero game made with Godot." },
+        { name: "Godot 3 Game", url: "https://github.com/batiste/Godot3Game", year: 2020, desc: "An experimental game built with Godot 3." },
+        { name: "sdl2-game-loop", url: "https://github.com/batiste/sdl2-game-loop", year: 2013, desc: "A game loop rendering a scrolling background made of many tiles." }
+        // { name: "Word Test", url: "https://github.com/batiste/word-test", year: 2016, desc: "A guess-the-word game." }
+      ]
+    },
+    {
+      id: "backend", name: "Backend & Django Ecosystem", color: "#ffb86b",
+      blurb: "Open-source tools built around Django and Python, mostly from earlier years.",
+      items: [
+        { name: "django-rpg", url: "https://github.com/batiste/django-rpg", year: 2009, desc: "A framework for building RPGs with gevent and Django — 60 stars." },
+        { name: "django-continuous-integration", url: "https://github.com/batiste/django-continuous-integration", year: 2010, desc: "Continuous integration for Python projects." },
+        { name: "django-tracker", url: "https://github.com/batiste/django-tracker", year: 2010, desc: "A simple, efficient tracker for user actions." },
+        { name: "swagger-markdown", url: "https://github.com/batiste/swagger-markdown", year: 2020, desc: "A Python-Markdown extension that embeds Swagger definitions in your docs." },
+        { name: "abortable-promise", url: "https://github.com/batiste/abortable-promise", year: 2020, desc: "Cancellable Promises, including an abortable fetch." },
+        { name: "python-git-tools", url: "https://github.com/batiste/python-git-tools", year: 2009, desc: "Scripts to help administrate Git Python repositories." }
+      ]
+    },
+    {
+      id: "finance", name: "Finance & Investing", color: "#a3e635",
+      blurb: "Calculators and trackers, mostly built to answer my own money questions.",
+      items: [
+        { name: "Swiss Real Estate Calculator", url: "../swiss-real-estate-return-investment/", year: 2022, desc: "Buy-vs-rent-and-invest decision tool for the Swiss market." },
+        // { name: "PostFinance Fund Analysis", url: "../invest/analyse-fonds-postfinance.html", year: 2019, desc: "An analysis of PostFinance's investment funds." },
+        { name: "Portfolio Tracker", url: "https://github.com/batiste/Portfolio-tracker", year: 2012, desc: "A small stock-portfolio tracker." },
+        { name: "Django Portfolio", url: "https://github.com/batiste/Django-portfolio", year: 2012, desc: "An investment-portfolio simulator." }
+      ]
+    },
+    {
+      id: "ai", name: "AI / ML Experiments", color: "#ff7a5c",
+      blurb: "Teaching models new tricks, from restoring old scans to speaking my own language.",
+      items: [
+        { name: "Gemma learns Blop", url: "https://github.com/batiste/gemma-learn-blop", year: 2026, desc: "Fine-tuning an LLM to teach it the Blop language." },
+        { name: "Neural Network Rosette", url: "https://github.com/batiste/neural-network-rosette", year: 2018, desc: "Trying to improve low-quality scans with a neural network." }
+      ]
+    }
+  ];
+
+  var HUB_YEAR = 2026;
+
+  // ---------------------------------------------------------------------
+  // A tiny orbit camera + perspective projection. No 3D library needed:
+  // the scene is just points and lines.
+  // ---------------------------------------------------------------------
+
+  function project(p, cam, view) {
+    var px = p.x - cam.target.x, py = p.y - cam.target.y, pz = p.z - cam.target.z;
+    var cy = Math.cos(cam.yaw), sy = Math.sin(cam.yaw);
+    var x1 = px * cy - pz * sy;
+    var z1 = px * sy + pz * cy;
+    var cp = Math.cos(cam.pitch), sp = Math.sin(cam.pitch);
+    var y2 = py * cp - z1 * sp;
+    var z2 = py * sp + z1 * cp;
+    var depth = cam.distance - z2;
+    var focal = cam.zoom * view.w * 0.95;
+    return {
+      x: view.w / 2 + (focal * x1) / depth,
+      y: view.h / 2 - (focal * y2) / depth,
+      depth: depth,
+      scale: cam.distance / depth
+    };
+  }
+
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function lerpCam(a, b, t) {
+    return {
+      yaw: lerp(a.yaw, b.yaw, t),
+      pitch: lerp(a.pitch, b.pitch, t),
+      distance: lerp(a.distance, b.distance, t),
+      zoom: lerp(a.zoom, b.zoom, t),
+      target: {
+        x: lerp(a.target.x, b.target.x, t),
+        y: lerp(a.target.y, b.target.y, t),
+        z: lerp(a.target.z, b.target.z, t)
+      }
+    };
+  }
+
+  function makeRng(seed) {
+    var a = seed >>> 0;
+    return function () {
+      a |= 0; a = (a + 0x6d2b79f5) | 0;
+      var t = Math.imul(a ^ (a >>> 15), 1 | a);
+      t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+      return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+  }
+
+  // ---------------------------------------------------------------------
+  // Two layouts sharing the same nodes, blended by a "morph" factor:
+  //
+  //  - "cloud" (morph 0): topics as loose clusters close to the hub,
+  //    planets close together within each one — a nebula, not a
+  //    spread-out solar system.
+  //  - "timeline" (morph 1): every project on one time axis, one lane
+  //    per topic, with the hub floating above "now".
+  // ---------------------------------------------------------------------
+
+  var CLOUD_RADIUS = 15;
+  var TIMELINE_SPAN = 140;
+  var ROW_GAP = 3.2;
+  // A reference camera used only to size labels for the row-packing below —
+  // the real timeline camera is defined further down, but packing has to
+  // happen before nodes exist, so these numbers are kept in sync with it.
+  var TIMELINE_REF_DISTANCE = 60;
+  var TIMELINE_REF_ZOOM = 0.8;
+  var TIMELINE_REF_VIEW_W = 1280;
+
+  var nodes = []; // { id, kind:'hub'|'galaxy'|'item', posCloud, posTimeline, r, color, galaxy, data }
+
+  var allYears = [HUB_YEAR];
+  GALAXIES.forEach(function (g) { g.items.forEach(function (it) { allYears.push(it.year); }); });
+  var MIN_YEAR = Math.min.apply(null, allYears);
+  var MAX_YEAR = Math.max.apply(null, allYears);
+
+  function yearX(year) {
+    return -TIMELINE_SPAN / 2 + ((year - MIN_YEAR) / (MAX_YEAR - MIN_YEAR)) * TIMELINE_SPAN;
+  }
+
+  // Every project sits on one flat plane below the axis (a single page, the
+  // timeline as its header row), packed into rows so labels close in time
+  // never overlap — the same greedy interval-scheduling a calendar UI uses
+  // to stack overlapping events into columns, just turned sideways. Each
+  // label is left-justified starting at its own dot (never reaching back
+  // over an earlier dot), so a label's world-space footprint is simply
+  // [x, x + width] — no half-width, no centering.
+  (function packTimelineRows() {
+    var worldPerPx = TIMELINE_REF_DISTANCE / (TIMELINE_REF_ZOOM * TIMELINE_REF_VIEW_W * 0.95);
+    var CHAR_PX = 6.6, LABEL_PAD_PX = 24, MIN_LABEL_PX = 54;
+    var flat = [];
+    GALAXIES.forEach(function (g) { g.items.forEach(function (item) { flat.push(item); }); });
+    flat.sort(function (a, b) { return a.year - b.year || a.name.localeCompare(b.name); });
+    var rowRightEdge = []; // world x of the last placed label's right edge, per row
+    flat.forEach(function (item) {
+      var x = yearX(item.year);
+      var width = Math.max(MIN_LABEL_PX, item.name.length * CHAR_PX + LABEL_PAD_PX) * worldPerPx;
+      var row = 0;
+      while (row < rowRightEdge.length && x < rowRightEdge[row]) row++;
+      rowRightEdge[row] = x + width;
+      item.timelineRow = row;
+    });
+  })();
+
+  nodes.push({
+    id: "hub", kind: "hub", r: 3.2, color: "#ffe9b0", data: HUB,
+    posCloud: { x: 0, y: 0, z: 0 },
+    posTimeline: { x: yearX(HUB_YEAR), y: 6, z: 0 }
+  });
+
+  GALAXIES.forEach(function (g, gi) {
+    var rng = makeRng(1000 + gi * 97);
+    var baseAngle = (gi / GALAXIES.length) * Math.PI * 2;
+    var angle = baseAngle + (rng() - 0.5) * 0.3;
+    var radius = CLOUD_RADIUS + (rng() - 0.5) * 4;
+    var cx = Math.cos(angle) * radius;
+    var cz = Math.sin(angle) * radius;
+    var cy = (rng() - 0.5) * 5;
+    g.center = { x: cx, y: cy, z: cz };
+
+    nodes.push({
+      id: "g:" + g.id, kind: "galaxy", r: 2.1, color: g.color, galaxy: g.id, data: g,
+      posCloud: g.center,
+      posTimeline: { x: -TIMELINE_SPAN / 2 - 7, y: 0, z: 0 }
+    });
+
+    var golden = Math.PI * (3 - Math.sqrt(5));
+    g.items.forEach(function (item, i) {
+      var t = i + 1;
+      var r = Math.sqrt(t) * 2.1;
+      var a = t * golden;
+      var dx = Math.cos(a) * r;
+      var dz = Math.sin(a) * r;
+      var dy = Math.sin(a * 2.2) * 1.2;
+      var posCloud = { x: cx + dx, y: cy + dy, z: cz + dz };
+
+      var posTimeline = { x: yearX(item.year), y: -ROW_GAP * (item.timelineRow + 1), z: 0 };
+      nodes.push({ id: g.id + ":" + i, kind: "item", r: 0.9, color: g.color, galaxy: g.id, data: item, posCloud: posCloud, posTimeline: posTimeline });
+    });
+
+    // Faint dust, purely decorative — only ever drawn in the cloud.
+    g.dust = [];
+    for (var d = 0; d < 22; d++) {
+      var dr = rng() * 7 + 1;
+      var da = rng() * Math.PI * 2;
+      g.dust.push({
+        x: cx + Math.cos(da) * dr,
+        y: cy + (rng() - 0.5) * 2.5,
+        z: cz + Math.sin(da) * dr,
+        s: rng() * 1.3 + 0.3,
+        a: rng() * 0.35 + 0.08
+      });
+    }
+  });
+
+  function nodePos(n) {
+    return {
+      x: lerp(n.posCloud.x, n.posTimeline.x, morph),
+      y: lerp(n.posCloud.y, n.posTimeline.y, morph),
+      z: lerp(n.posCloud.z, n.posTimeline.z, morph)
+    };
+  }
+
+  // Backdrop starfield (screen-space, independent of the 3D scene).
+  var BACKDROP = (function () {
+    var rng = makeRng(42);
+    var stars = [];
+    for (var i = 0; i < 260; i++) {
+      stars.push({
+        x: rng(), y: rng(),
+        r: rng() * 1.2 + 0.3,
+        a: rng() * 0.6 + 0.2,
+        period: 2500 + rng() * 4500,
+        phase: rng() * Math.PI * 2
+      });
+    }
+    return stars;
+  })();
+
+  // ---------------------------------------------------------------------
+  // Mode + camera state
+  // ---------------------------------------------------------------------
+
+  var CLOUD_CAMERA = { yaw: 0.5, pitch: 0.52, distance: 62, zoom: 1.05, target: { x: 0, y: 0, z: 0 } };
+  // Flat and near head-on — a page, with the timeline as its header row —
+  // reusing the same distance/zoom the row-packing above was sized against.
+  var TIMELINE_CAMERA = { yaw: 0.04, pitch: 0.2, distance: TIMELINE_REF_DISTANCE, zoom: TIMELINE_REF_ZOOM, target: { x: yearX(2020), y: -5, z: 0 } };
+  var TIMELINE_PAN_MIN = -TIMELINE_SPAN / 2 - 14;
+  var TIMELINE_PAN_MAX = TIMELINE_SPAN / 2 + 14;
+
+  var mode = "cloud";    // "cloud" | "timeline"
+  var morph = 0;         // 0 = cloud, 1 = timeline; eased toward morphTarget each frame
+  var morphTarget = 0;
+  var current = CLOUD_CAMERA;
+  var targetCam = CLOUD_CAMERA;
+  var interacted = false;
+  var focusedId = null;   // cloud mode: the topic flown into, or null
+  var highlightId = null; // timeline mode: the topic picked out, or null
+
+  function cameraForGalaxy(g) {
+    return {
+      yaw: 0.4,
+      pitch: 0.4,
+      distance: 30,
+      zoom: 2.35,
+      target: { x: g.center.x, y: g.center.y, z: g.center.z }
+    };
+  }
+
+  function activeGalaxyId() {
+    return mode === "cloud" ? focusedId : highlightId;
+  }
+
+  function setFocus(id) {
+    focusedId = id;
+    targetCam = id === null ? CLOUD_CAMERA : cameraForGalaxy(GALAXIES.filter(function (x) { return x.id === id; })[0]);
+    updatePanel();
+    updateLegendActive();
+    backBtn.classList.toggle("show", id !== null);
+  }
+
+  function toggleHighlight(id) {
+    highlightId = highlightId === id ? null : id;
+    updatePanel();
+    updateLegendActive();
+  }
+
+  function setMode(m) {
+    if (m === mode) return;
+    mode = m;
+    morphTarget = m === "timeline" ? 1 : 0;
+    focusedId = null;
+    highlightId = null;
+    targetCam = m === "timeline" ? TIMELINE_CAMERA : CLOUD_CAMERA;
+    document.body.classList.toggle("mode-timeline", m === "timeline");
+    backBtn.classList.remove("show");
+    modeButtons.cloud.classList.toggle("active", m === "cloud");
+    modeButtons.timeline.classList.toggle("active", m === "timeline");
+    hint.textContent = m === "cloud"
+      ? "Drag to orbit · Scroll to zoom · Click a cluster to explore"
+      : "Drag to scrub through time · Scroll to zoom · Hover a project for details";
+    updatePanel();
+    updateLegendActive();
+  }
+
+  // ---------------------------------------------------------------------
+  // DOM overlay: real elements riding the projected 3D positions.
+  // ---------------------------------------------------------------------
+
+  var overlay = document.getElementById("overlay");
+  var elFor = {};
+
+  function makeHubEl() {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "node-label hub-label";
+    b.textContent = HUB.name;
+    b.addEventListener("click", function () { openHub(); });
+    overlay.appendChild(b);
+    return b;
+  }
+
+  function makeGalaxyEl(g) {
+    var b = document.createElement("button");
+    b.type = "button";
+    b.className = "node-label galaxy-label";
+    b.style.color = g.color;
+    b.textContent = g.name;
+    b.addEventListener("click", function () {
+      if (mode === "cloud") setFocus(focusedId === g.id ? null : g.id);
+      else toggleHighlight(g.id);
+    });
+    overlay.appendChild(b);
+    return b;
+  }
+
+  function makeItemEl(node) {
+    var a = document.createElement("a");
+    a.className = "item-link";
+    a.href = node.data.url;
+    if (!/^\.\.\//.test(node.data.url)) {
+      a.target = "_blank";
+      a.rel = "noopener";
+    }
+    var name = document.createElement("span");
+    name.className = "name";
+    name.textContent = node.data.name;
+    var desc = document.createElement("span");
+    desc.className = "desc";
+    desc.textContent = node.data.desc;
+    a.appendChild(name);
+    a.appendChild(desc);
+    a.addEventListener("mouseenter", function () { showHoverDesc(node); });
+    a.addEventListener("focus", function () { showHoverDesc(node); });
+    a.addEventListener("mouseleave", function () { showHoverDesc(null); });
+    a.addEventListener("blur", function () { showHoverDesc(null); });
+    overlay.appendChild(a);
+    return a;
+  }
+
+  nodes.forEach(function (n) {
+    if (n.kind === "hub") elFor[n.id] = makeHubEl();
+    else if (n.kind === "galaxy") elFor[n.id] = makeGalaxyEl(n);
+    else elFor[n.id] = makeItemEl(n);
+  });
+
+  function isItemVisible(n) {
+    if (mode === "timeline") return true;
+    return n.galaxy === focusedId || morph > 0.02;
+  }
+
+  // ---------------------------------------------------------------------
+  // Mode toggle
+  // ---------------------------------------------------------------------
+
+  var modeButtons = {
+    cloud: document.getElementById("mode-cloud"),
+    timeline: document.getElementById("mode-timeline")
+  };
+  modeButtons.cloud.addEventListener("click", function () { setMode("cloud"); });
+  modeButtons.timeline.addEventListener("click", function () { setMode("timeline"); });
+
+  // ---------------------------------------------------------------------
+  // Legend / quick jump
+  // ---------------------------------------------------------------------
+
+  var legendList = document.getElementById("legend-list");
+  var legendButtons = {};
+  GALAXIES.forEach(function (g) {
+    var li = document.createElement("li");
+    var btn = document.createElement("button");
+    btn.type = "button";
+    var dot = document.createElement("span");
+    dot.className = "dot";
+    dot.style.color = g.color;
+    dot.style.background = g.color;
+    var label = document.createElement("span");
+    label.textContent = g.name;
+    btn.appendChild(dot);
+    btn.appendChild(label);
+    btn.addEventListener("click", function () {
+      if (mode === "cloud") setFocus(focusedId === g.id ? null : g.id);
+      else toggleHighlight(g.id);
+    });
+    li.appendChild(btn);
+    legendList.appendChild(li);
+    legendButtons[g.id] = btn;
+  });
+
+  function updateLegendActive() {
+    var activeId = activeGalaxyId();
+    Object.keys(legendButtons).forEach(function (id) {
+      legendButtons[id].classList.toggle("active", id === activeId);
+    });
+  }
+
+  // ---------------------------------------------------------------------
+  // Info panel
+  // ---------------------------------------------------------------------
+
+  var panel = document.getElementById("panel");
+  var hoveredItem = null;
+  var hubOpenState = false;
+
+  function openHub() {
+    hoveredItem = null;
+    renderHubPanel();
+  }
+
+  function renderHubPanel() {
+    panel.classList.remove("empty");
+    panel.innerHTML =
+      '<button class="close" aria-label="Close">×</button>' +
+      '<span class="eyebrow">' + HUB.tagline + '</span>' +
+      '<h3>' + HUB.name + '</h3>' +
+      '<p>' + HUB.bio + '</p>' +
+      '<ul class="hub-links">' +
+      HUB.links.map(function (l) { return '<li><a href="' + l.url + '">' + l.label + '</a></li>'; }).join("") +
+      '</ul>';
+    panel.querySelector(".close").addEventListener("click", function () {
+      hubOpenState = false;
+      updatePanel();
+    });
+    hubOpenState = true;
+  }
+
+  function showHoverDesc(node) {
+    hoveredItem = node;
+    updatePanel();
+  }
+
+  function updatePanel() {
+    if (hubOpenState) { renderHubPanel(); return; }
+    if (hoveredItem) {
+      panel.classList.remove("empty");
+      panel.innerHTML =
+        '<span class="eyebrow">' + escapeHtml(GALAXIES.filter(function (g) { return g.id === hoveredItem.galaxy; })[0].name) + ' · ' + hoveredItem.data.year + '</span>' +
+        '<h3>' + escapeHtml(hoveredItem.data.name) + '</h3>' +
+        '<p>' + escapeHtml(hoveredItem.data.desc) + '</p>';
+      return;
+    }
+    var activeId = activeGalaxyId();
+    if (activeId) {
+      var g = GALAXIES.filter(function (x) { return x.id === activeId; })[0];
+      panel.classList.remove("empty");
+      panel.innerHTML =
+        '<span class="eyebrow">Topic</span>' +
+        '<h3 style="color:' + g.color + '">' + escapeHtml(g.name) + '</h3>' +
+        '<p>' + escapeHtml(g.blurb) + '</p>';
+      return;
+    }
+    panel.classList.add("empty");
+    panel.innerHTML = "";
+  }
+
+  function escapeHtml(s) {
+    return String(s).replace(/[&<>"]/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c];
+    });
+  }
+
+  // ---------------------------------------------------------------------
+  // Canvas render loop
+  // ---------------------------------------------------------------------
+
+  var canvas = document.getElementById("c");
+  var ctx = canvas.getContext("2d");
+  var view = { w: 1, h: 1 };
+  var dpr = 1;
+
+  function resize() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    view.w = window.innerWidth;
+    view.h = window.innerHeight;
+    canvas.width = Math.round(view.w * dpr);
+    canvas.height = Math.round(view.h * dpr);
+  }
+  resize();
+  window.addEventListener("resize", resize);
+
+  var hint = document.getElementById("hint");
+  var backBtn = document.getElementById("back-btn");
+  backBtn.addEventListener("click", function () { setFocus(null); });
+
+  function hideHint() {
+    if (!hint.classList.contains("hidden")) hint.classList.add("hidden");
+  }
+
+  var reducedMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var start = performance.now();
+
+  function frame(now) {
+    requestAnimationFrame(frame);
+    var t = reducedMotion ? 1 : 0.07;
+    current = reducedMotion ? targetCam : lerpCam(current, driftedTarget(now), t);
+    morph = reducedMotion ? morphTarget : lerp(morph, morphTarget, 0.06);
+
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    drawBackground(now);
+
+    // The timeline's spine and year ticks fade in as the view morphs there.
+    if (morph > 0.01) drawTimelineAxis();
+
+    // Nebula dust fades out as the view morphs toward the timeline.
+    if (morph < 0.99) {
+      GALAXIES.forEach(function (g) {
+        var dim = (1 - morph) * (focusedId && focusedId !== g.id ? 0.35 : 1);
+        if (dim <= 0.01) return;
+        g.dust.forEach(function (d) {
+          var p = project(d, current, view);
+          if (p.depth < 2) return;
+          ctx.globalAlpha = d.a * dim;
+          ctx.fillStyle = g.color;
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, Math.max(0.5, d.s * p.scale), 0, Math.PI * 2);
+          ctx.fill();
+        });
+      });
+      ctx.globalAlpha = 1;
+    }
+
+    // Stars, far to near.
+    var proj = {};
+    nodes.forEach(function (n) { proj[n.id] = project(nodePos(n), current, view); });
+    var order = nodes.slice().sort(function (x, y) { return proj[y.id].depth - proj[x.id].depth; });
+
+    order.forEach(function (n) {
+      var p = proj[n.id];
+      if (p.depth < 2) return;
+      var dim = 1;
+      if (n.kind === "item") {
+        // Satellites stay visible everywhere — just dimmed when they are
+        // not the cluster currently in focus, rather than disappearing.
+        if (mode === "cloud") dim = n.galaxy === focusedId ? 1 : (focusedId ? 0.16 : 0.5);
+        else if (highlightId && n.galaxy !== highlightId) dim = 0.25;
+      }
+      if (n.kind === "galaxy") {
+        dim = 1 - morph; // the big cluster sphere only belongs to the cloud
+        if (dim <= 0.01) return;
+        if (activeGalaxyId() && activeGalaxyId() !== n.galaxy) dim *= 0.4;
+      }
+
+      var baseR = n.kind === "hub" ? 5.5 : n.kind === "galaxy" ? 4.2 : 2.6;
+      var r = baseR * p.scale * current.zoom * 6;
+      var isActiveGalaxy = n.kind === "galaxy" && n.galaxy === activeGalaxyId();
+      var isHovered = !!(hoveredItem && n.id === hoveredItem.id);
+
+      drawGlowStar(p.x, p.y, r, n.color, dim, n.kind === "hub" || isActiveGalaxy || isHovered);
+    });
+
+    positionLabels(proj);
+  }
+
+  function drawTimelineAxis() {
+    // The header row of the page: one flat line at y=0, z=0 — the same
+    // plane every project sits on, just above all of them.
+    ctx.save();
+    ctx.globalAlpha = morph;
+    var p1 = project({ x: -TIMELINE_SPAN / 2 - 4, y: 0, z: 0 }, current, view);
+    var p2 = project({ x: TIMELINE_SPAN / 2 + 4, y: 0, z: 0 }, current, view);
+    if (p1.depth >= 2 && p2.depth >= 2) {
+      ctx.strokeStyle = "rgba(232,232,244,0.28)";
+      ctx.lineWidth = 1;
+      ctx.beginPath();
+      ctx.moveTo(p1.x, p1.y);
+      ctx.lineTo(p2.x, p2.y);
+      ctx.stroke();
+    }
+    ctx.font = "11px Inter, sans-serif";
+    ctx.textAlign = "center";
+    var firstTick = Math.ceil(MIN_YEAR / 2) * 2;
+    for (var yr = firstTick; yr <= MAX_YEAR; yr += 2) {
+      var tx = yearX(yr);
+      var pa = project({ x: tx, y: 0, z: 0 }, current, view);
+      var pb = project({ x: tx, y: -2.2, z: 0 }, current, view);
+      if (pa.depth < 2) continue;
+      ctx.strokeStyle = "rgba(232,232,244,0.3)";
+      ctx.beginPath();
+      ctx.moveTo(pa.x, pa.y);
+      ctx.lineTo(pb.x, pb.y);
+      ctx.stroke();
+      ctx.fillStyle = "rgba(232,232,244,0.6)";
+      ctx.fillText(String(yr), pb.x, pb.y - 4);
+    }
+    ctx.restore();
+  }
+
+  function driftedTarget(now) {
+    if (interacted || focusedId) return targetCam;
+    var drift = Math.sin((now - start) / 26000 * Math.PI * 2) * 0.12;
+    return {
+      yaw: targetCam.yaw + drift,
+      pitch: targetCam.pitch,
+      distance: targetCam.distance,
+      zoom: targetCam.zoom,
+      target: targetCam.target
+    };
+  }
+
+  function hexAlpha(hex, alpha) {
+    var r = parseInt(hex.slice(1, 3), 16), g = parseInt(hex.slice(3, 5), 16), b = parseInt(hex.slice(5, 7), 16);
+    return "rgba(" + r + "," + g + "," + b + "," + alpha + ")";
+  }
+
+  function drawGlowStar(x, y, r, color, dim, halo) {
+    r = Math.max(1, Math.min(r, 60));
+    ctx.save();
+    ctx.globalAlpha = dim;
+    if (halo) {
+      var glow = ctx.createRadialGradient(x, y, 0, x, y, r * 3.2);
+      glow.addColorStop(0, hexAlpha(color, 0.55));
+      glow.addColorStop(1, hexAlpha(color, 0));
+      ctx.fillStyle = glow;
+      ctx.beginPath();
+      ctx.arc(x, y, r * 3.2, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    var core = ctx.createRadialGradient(x, y, 0, x, y, r);
+    core.addColorStop(0, "#ffffff");
+    core.addColorStop(0.35, color);
+    core.addColorStop(1, hexAlpha(color, 0));
+    ctx.fillStyle = core;
+    ctx.beginPath();
+    ctx.arc(x, y, r, 0, Math.PI * 2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function drawBackground(now) {
+    var g = ctx.createLinearGradient(0, 0, 0, view.h);
+    g.addColorStop(0, "#151233");
+    g.addColorStop(0.55, "#0a0a16");
+    g.addColorStop(1, "#050509");
+    ctx.fillStyle = g;
+    ctx.fillRect(0, 0, view.w, view.h);
+
+    ctx.save();
+    ctx.fillStyle = "#ffffff";
+    BACKDROP.forEach(function (s) {
+      var twinkle = reducedMotion ? 1 : 0.6 + 0.4 * Math.sin((now / s.period) * Math.PI * 2 + s.phase);
+      ctx.globalAlpha = s.a * twinkle;
+      ctx.beginPath();
+      ctx.arc(s.x * view.w, s.y * view.h, s.r, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    ctx.restore();
+  }
+
+  function positionLabels(proj) {
+    nodes.forEach(function (n) {
+      var el = elFor[n.id];
+      var p = proj[n.id];
+      var behind = !p || p.depth < 2;
+
+      if (n.kind === "hub") {
+        el.style.opacity = behind ? "0" : "1";
+        el.style.pointerEvents = behind ? "none" : "auto";
+        if (!behind) el.style.transform = "translate(-50%,-100%) translate(" + p.x + "px," + (p.y - 10) + "px)";
+        return;
+      }
+      if (n.kind === "galaxy") {
+        // The cluster name belongs to the cloud; the timeline identifies
+        // topics by color and the legend instead, so this fades out with it.
+        var activeId = activeGalaxyId();
+        var baseDim = activeId && activeId !== n.galaxy ? 0.55 : 1;
+        var opacity = baseDim * (1 - morph);
+        el.style.opacity = behind ? "0" : String(opacity);
+        el.style.pointerEvents = behind || opacity < 0.05 ? "none" : "auto";
+        if (!behind) el.style.transform = "translate(-50%,-100%) translate(" + p.x + "px," + (p.y - 14) + "px)";
+        return;
+      }
+      // item: visibility is governed by the 'visible' CSS class only, so a
+      // node dipping behind the camera never gets stuck under an inline
+      // opacity that the class can no longer override.
+      var visible = isItemVisible(n) && !behind;
+      el.classList.toggle("visible", visible);
+      if (!behind) {
+        // Cloud: centered below the planet. Timeline: left-justified beside
+        // the dot, matching the row-packing math (a label never reaches
+        // backward over an earlier dot).
+        el.style.transform = mode === "timeline"
+          ? "translate(6px,-50%) translate(" + p.x + "px," + p.y + "px)"
+          : "translate(-50%,6px) translate(" + p.x + "px," + p.y + "px)";
+      }
+    });
+  }
+
+  requestAnimationFrame(frame);
+
+  // ---------------------------------------------------------------------
+  // Pointer interaction: drag to orbit, wheel to zoom, click to focus.
+  // ---------------------------------------------------------------------
+
+  var ORBIT_SPEED = 0.005;
+  var ZOOM_MIN = 0.4, ZOOM_MAX = 6;
+  var drag = null;
+
+  canvas.addEventListener("pointerdown", function (e) {
+    drag = { x: e.clientX, y: e.clientY, moved: false, id: e.pointerId };
+    canvas.setPointerCapture(e.pointerId);
+    canvas.classList.add("dragging");
+  });
+
+  canvas.addEventListener("pointermove", function (e) {
+    if (!drag || drag.id !== e.pointerId) return;
+    var dx = e.clientX - drag.x, dy = e.clientY - drag.y;
+    if (!drag.moved && Math.hypot(dx, dy) < 4) return;
+    drag.moved = true;
+    drag.x = e.clientX; drag.y = e.clientY;
+    interacted = true;
+    hideHint();
+    if (mode === "timeline") {
+      // Horizontal drag scrubs through time (there is no other way to reach
+      // years outside the current view — orbiting alone never would);
+      // vertical drag only tilts, within a narrower, timeline-friendly range.
+      var worldPerPx = targetCam.distance / (targetCam.zoom * view.w * 0.95);
+      var newX = Math.max(TIMELINE_PAN_MIN, Math.min(TIMELINE_PAN_MAX, targetCam.target.x - dx * worldPerPx));
+      targetCam = {
+        yaw: targetCam.yaw,
+        pitch: Math.max(0.15, Math.min(0.75, targetCam.pitch + dy * ORBIT_SPEED * 0.4)),
+        distance: targetCam.distance,
+        zoom: targetCam.zoom,
+        target: { x: newX, y: targetCam.target.y, z: targetCam.target.z }
+      };
+    } else {
+      targetCam = {
+        yaw: targetCam.yaw + dx * ORBIT_SPEED,
+        pitch: Math.max(-0.2, Math.min(1.1, targetCam.pitch + dy * ORBIT_SPEED)),
+        distance: targetCam.distance,
+        zoom: targetCam.zoom,
+        target: targetCam.target
+      };
+    }
+  });
+
+  function endDrag(e) {
+    canvas.classList.remove("dragging");
+    if (!drag) return;
+    var wasClick = !drag.moved;
+    drag = null;
+    if (wasClick) handleClick(e.clientX, e.clientY);
+  }
+  canvas.addEventListener("pointerup", endDrag);
+  canvas.addEventListener("pointercancel", function () { drag = null; canvas.classList.remove("dragging"); });
+
+  canvas.addEventListener("wheel", function (e) {
+    e.preventDefault();
+    interacted = true;
+    hideHint();
+    var zoom = Math.min(ZOOM_MAX, Math.max(ZOOM_MIN, targetCam.zoom * Math.exp(-e.deltaY * 0.0015)));
+    targetCam = {
+      yaw: targetCam.yaw, pitch: targetCam.pitch, distance: targetCam.distance,
+      zoom: zoom, target: targetCam.target
+    };
+  }, { passive: false });
+
+  function handleClick(clientX, clientY) {
+    var rect = canvas.getBoundingClientRect();
+    var x = clientX - rect.left, y = clientY - rect.top;
+    var proj = {};
+    nodes.forEach(function (n) { if (n.kind !== "item") proj[n.id] = project(nodePos(n), current, view); });
+
+    var best = null, bestD = Infinity;
+    Object.keys(proj).forEach(function (id) {
+      var p = proj[id];
+      if (p.depth < 2) return;
+      var n = nodes.filter(function (x) { return x.id === id; })[0];
+      var baseR = n.kind === "hub" ? 5.5 : 4.2;
+      var r = Math.max(16, baseR * p.scale * current.zoom * 6);
+      var d = Math.hypot(p.x - x, p.y - y);
+      if (d < r && d < bestD) { best = n; bestD = d; }
+    });
+
+    hideHint();
+    if (best && best.kind === "hub") { hubOpenState = false; openHub(); return; }
+    if (best && best.kind === "galaxy") {
+      if (mode === "cloud") setFocus(focusedId === best.galaxy ? null : best.galaxy);
+      else toggleHighlight(best.galaxy);
+      return;
+    }
+    if (mode === "cloud" && focusedId) { setFocus(null); return; }
+    if (mode === "timeline" && highlightId) { toggleHighlight(highlightId); return; }
+    hubOpenState = false;
+    updatePanel();
+  }
+
+  document.addEventListener("keydown", function (e) {
+    if (e.key === "Escape") {
+      if (hubOpenState) { hubOpenState = false; updatePanel(); }
+      else if (mode === "cloud" && focusedId) setFocus(null);
+      else if (mode === "timeline" && highlightId) toggleHighlight(highlightId);
+    }
+  });
+
+  updatePanel();
+  updateLegendActive();
+
+  // ---------------------------------------------------------------------
+  // Static, always-present content for search engines, screen readers and
+  // anyone without JavaScript: the same map, as a plain document.
+  // ---------------------------------------------------------------------
+
+  document.getElementById("sr-hub-bio").textContent = HUB.tagline + ". " + HUB.bio;
+  var srContent = document.getElementById("sr-content");
+  GALAXIES.forEach(function (g) {
+    var section = document.createElement("section");
+    var h2 = document.createElement("h2");
+    h2.textContent = g.name;
+    var p = document.createElement("p");
+    p.textContent = g.blurb;
+    var ul = document.createElement("ul");
+    g.items.slice().sort(function (a, b) { return a.year - b.year; }).forEach(function (item) {
+      var li = document.createElement("li");
+      var a = document.createElement("a");
+      a.href = item.url;
+      a.textContent = item.name;
+      li.appendChild(a);
+      li.appendChild(document.createTextNode(" (" + item.year + "): " + item.desc));
+      ul.appendChild(li);
+    });
+    section.appendChild(h2);
+    section.appendChild(p);
+    section.appendChild(ul);
+    srContent.appendChild(section);
+  });
+})();
+</script>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-1048886-9', 'auto');
+  ga('send', 'pageview');
+</script>
+
+</body>
+</html>
