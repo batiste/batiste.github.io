@@ -1,0 +1,1196 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aeropolis — Board Draft</title>
+    <style>
+      :root {
+        --ink: #14181c;
+        --ink-soft: #3d474f;
+        --paper: #efe7d8;
+        --paper-edge: #e2d6c1;
+        --night: #1b2126;
+
+        /* Each location owns a colour; its Agent cubes are that colour, so a cube's
+           origin stays readable once it is socketed onto a card. */
+        --forum: #b0812f;
+        --counting: #2f5d86;
+        --docks: #2f7d74;
+        --bar: #9e4a2c;
+        --scrap: #5d7a35;
+        --lift: #6a4a86;
+        --market: #94406e;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 36px;
+        background: #121619;
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        color: var(--ink);
+      }
+
+      /* ---------- board shell ---------- */
+
+      .board {
+        position: relative;
+        width: auto;
+        margin: 0 auto;
+        padding: 30px 34px 26px;
+        border-radius: 10px;
+        background:
+          radial-gradient(1100px 620px at 50% 0%, #2a333b, transparent),
+          linear-gradient(180deg, #202830, #171d22);
+        box-shadow: 0 26px 60px rgba(0, 0, 0, 0.6);
+        color: #e7edf1;
+        overflow: hidden;
+      }
+
+      /* Schematic art nouveau tower, drawn on load — the board's full backdrop. */
+      #board-canvas {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        pointer-events: none;
+        display: block;
+      }
+
+      .board-head,
+      .board-main,
+      .turn-strip {
+        position: relative;
+        z-index: 1;
+      }
+
+      .board-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 30px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .board-head h1 {
+        margin: 0;
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-size: 46px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+      }
+
+      .board-head .tagline {
+        margin: 6px 0 0;
+        font-size: 13px;
+        letter-spacing: 0.04em;
+        color: #93a0a8;
+      }
+
+      /* ---------- cross-page nav ---------- */
+
+      .nav-link {
+        flex: none;
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 12px;
+        padding: 11px 18px;
+        border: 1px solid rgba(233, 196, 119, 0.45);
+        border-radius: 999px;
+        background: rgba(233, 196, 119, 0.09);
+        color: #e9c477;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+      }
+
+      .nav-link:hover {
+        background: rgba(233, 196, 119, 0.18);
+        border-color: rgba(233, 196, 119, 0.8);
+        transform: translateY(-1px);
+      }
+
+      .nav-link .chev {
+        font-size: 15px;
+        line-height: 1;
+      }
+
+      .head-right {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+
+      .replenish {
+        max-width: 430px;
+        padding: 11px 15px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        border-radius: 6px;
+        font-size: 12.5px;
+        line-height: 1.5;
+        color: #b6c1c8;
+      }
+
+      .replenish strong {
+        color: #eef3f6;
+        font-weight: 600;
+      }
+
+      /* ---------- three-column layout ---------- */
+
+      .board-main {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 30px;
+        align-items: start;
+        padding: 26px 0;
+      }
+
+      .loc-col {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      .loc-list {
+        display: flex;
+        flex-direction: column;
+        gap: 22px;
+      }
+
+      /* Which line a location serves — the board's two halves. */
+      .loc-col-head {
+        padding-bottom: 9px;
+        border-bottom: 2px solid var(--side);
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-size: 16px;
+        font-weight: 600;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--side);
+      }
+
+      .loc-col-note {
+        display: block;
+        margin-top: 5px;
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        font-size: 11.5px;
+        font-weight: 400;
+        letter-spacing: 0;
+        text-transform: none;
+        color: #8d99a1;
+      }
+
+      /* The one neutral location, on the axis beneath the two halves. */
+      .shared {
+        max-width: 620px;
+        margin: 0 auto;
+        padding-bottom: 26px;
+      }
+
+      /* ---------- location ---------- */
+
+      .location {
+        position: relative;
+        padding: 16px 18px 17px;
+        border-radius: 7px;
+        border-left: 9px solid var(--accent);
+        background: var(--paper);
+        color: var(--ink);
+        box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
+      }
+
+      .loc-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+      }
+
+      .loc-name {
+        margin: 0;
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-size: 23px;
+        font-weight: 600;
+        letter-spacing: 0.07em;
+        text-transform: uppercase;
+        color: var(--accent);
+      }
+
+      .loc-glyph {
+        flex: none;
+        font-size: 30px;
+        line-height: 1;
+        color: rgba(20, 24, 28, 0.22);
+      }
+
+      .loc-flavour {
+        margin: 3px 0 0;
+        font-size: 12px;
+        font-style: italic;
+        color: var(--ink-soft);
+      }
+
+      .loc-lock {
+        margin: 7px 0 0;
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: var(--accent);
+        background: color-mix(in srgb, var(--accent) 14%, transparent);
+      }
+
+      /* Badge on any location the Line also stops at — ties the two systems together. */
+      .loc-rail {
+        margin: 7px 0 0 6px;
+        display: inline-block;
+        padding: 2px 7px;
+        border-radius: 3px;
+        font-size: 10px;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: #e9c477;
+        background: rgba(233, 196, 119, 0.14);
+      }
+
+      .loc-body {
+        display: flex;
+        align-items: flex-end;
+        gap: 16px;
+        margin-top: 13px;
+        padding-top: 13px;
+        border-top: 1px dashed rgba(20, 24, 28, 0.25);
+      }
+
+      .reservoir {
+        flex: none;
+      }
+
+      .mini-label {
+        margin: 0 0 6px;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--ink-soft);
+      }
+
+      .slots {
+        display: flex;
+        gap: 7px;
+      }
+
+      /* Matches the socket on the cards, so a cube visibly moves slot → socket. */
+      .cube-slot {
+        display: grid;
+        place-items: center;
+        width: 34px;
+        height: 34px;
+        border: 2px dashed color-mix(in srgb, var(--accent) 55%, rgba(20, 24, 28, 0.3));
+        border-radius: 4px;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(20, 24, 28, 0.34);
+      }
+
+      .reward {
+        flex: 1;
+      }
+
+      .reward-text {
+        margin: 0;
+        font-size: 15.5px;
+        line-height: 1.35;
+        font-weight: 500;
+      }
+
+      /* Coin: a plain golden disc drawn in CSS, no image asset. */
+      .coin {
+        display: inline-block;
+        width: 0.8em;
+        height: 0.8em;
+        border-radius: 50%;
+        background: radial-gradient(circle at 36% 30%, #f2d275, #cf9a2a 68%, #a87817);
+        box-shadow: inset 0 0 0 0.055em rgba(96, 64, 8, 0.45);
+        vertical-align: -0.02em;
+      }
+
+      /* ---------- the spire ---------- */
+
+      .spire {
+        width: 330px;
+        padding: 16px 18px 18px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .spire-title {
+        margin: 0 0 2px;
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-size: 21px;
+        font-weight: 600;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        text-align: center;
+        color: #e7edf1;
+      }
+
+      .spire-sub {
+        margin: 0 0 14px;
+        font-size: 11px;
+        text-align: center;
+        letter-spacing: 0.03em;
+        color: #8fa0a9;
+      }
+
+      .start-marker {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding: 7px 0;
+        font-size: 10.5px;
+        font-weight: 700;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: #b9c5cc;
+      }
+
+      .token {
+        width: 17px;
+        height: 17px;
+        border-radius: 50%;
+        border: 2px solid rgba(255, 255, 255, 0.5);
+      }
+
+      .token.citizen { background: var(--forum); }
+      .token.outcast { background: var(--docks); }
+
+      .track {
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+      }
+
+      .space {
+        display: grid;
+        grid-template-columns: 26px 1fr 46px;
+        align-items: center;
+        gap: 9px;
+        height: 22px;
+        padding: 0 9px;
+        border-radius: 4px;
+        background: linear-gradient(90deg, rgba(255, 255, 255, 0.11), rgba(255, 255, 255, 0.05));
+      }
+
+      /* Higher spaces glow warmer — where you want the tokens to meet. */
+      .space[data-band="high"] {
+        background: linear-gradient(90deg, rgba(233, 196, 119, 0.34), rgba(233, 196, 119, 0.12));
+      }
+
+      .space[data-band="mid"] {
+        background: linear-gradient(90deg, rgba(233, 196, 119, 0.17), rgba(233, 196, 119, 0.06));
+      }
+
+      .space-no {
+        font-size: 9.5px;
+        font-weight: 700;
+        color: #93a0a8;
+      }
+
+      .space-rung {
+        height: 2px;
+        border-radius: 2px;
+        background: rgba(255, 255, 255, 0.22);
+      }
+
+      .space-vp {
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-size: 13px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-align: right;
+        color: #f0e2c4;
+      }
+
+      .midline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 5px 0;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: #8b8170;
+      }
+
+      .midline::before,
+      .midline::after {
+        content: "";
+        flex: 1;
+        height: 1px;
+        background: rgba(233, 196, 119, 0.4);
+      }
+
+      /* ---------- market row, shown inside the Market location ---------- */
+
+      .market-row {
+        margin-top: 13px;
+        padding-top: 13px;
+        border-top: 1px dashed rgba(20, 24, 28, 0.25);
+      }
+
+      .market-slots {
+        display: flex;
+        gap: 9px;
+      }
+
+      .market-slot {
+        display: grid;
+        place-items: center;
+        width: 58px;
+        height: 88px;
+        border: 2px dashed rgba(20, 24, 28, 0.26);
+        border-radius: 4px;
+        font-size: 8px;
+        font-weight: 700;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(20, 24, 28, 0.32);
+      }
+
+      /* ---------- the line (train loop) ---------- */
+
+      .line-section {
+        max-width: 760px;
+        margin: 0 auto 28px;
+      }
+
+      .line-diagram {
+        margin-top: 14px;
+        padding: 18px 20px 8px;
+        border-radius: 8px;
+        background: rgba(0, 0, 0, 0.24);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .line-svg {
+        display: block;
+        width: 100%;
+        height: auto;
+      }
+
+      .rail-outer {
+        fill: none;
+        stroke: rgba(233, 196, 119, 0.22);
+        stroke-width: 9;
+      }
+
+      .rail-ties {
+        fill: none;
+        stroke: rgba(233, 196, 119, 0.45);
+        stroke-width: 2;
+        stroke-dasharray: 1 11;
+        stroke-linecap: round;
+      }
+
+      .stop-dot {
+        fill: #171d22;
+        stroke: #e9c477;
+        stroke-width: 2.5;
+      }
+
+      .stop-dot.current {
+        fill: #e9c477;
+      }
+
+      .stop-label {
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        fill: #dfe6ea;
+      }
+
+      .train-glyph {
+        font-size: 22px;
+      }
+
+      .line-footer {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        margin-top: 10px;
+        padding: 14px 4px 18px;
+      }
+
+      .seat-block .mini-label {
+        margin: 0 0 6px;
+      }
+
+      .seat-row {
+        display: flex;
+        gap: 8px;
+      }
+
+      .seat {
+        width: 22px;
+        height: 22px;
+        border-radius: 50%;
+        border: 2px dashed rgba(233, 196, 119, 0.45);
+      }
+
+      .seat.filled {
+        border-style: solid;
+        border-color: rgba(255, 255, 255, 0.5);
+      }
+
+      .seat.filled.citizen { background: var(--forum); }
+      .seat.filled.outcast { background: var(--docks); }
+
+      .line-rules {
+        flex: 1;
+        min-width: 260px;
+        margin: 0;
+        font-size: 12.5px;
+        line-height: 1.55;
+        color: #bcc7ce;
+      }
+
+      /* ---------- turn sequence ---------- */
+
+      .turn-strip {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 16px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.13);
+      }
+
+      .step {
+        padding: 12px 15px;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.06);
+      }
+
+      .step h3 {
+        margin: 0 0 5px;
+        font-size: 11.5px;
+        font-weight: 700;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: #e9c477;
+      }
+
+      .step p {
+        margin: 0;
+        font-size: 12.5px;
+        line-height: 1.45;
+        color: #bcc7ce;
+      }
+
+      .step .n {
+        color: #7f8c94;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="board">
+      <canvas id="board-canvas"></canvas>
+      <header class="board-head">
+        <div>
+          <h1>Aeropolis</h1>
+          <p class="tagline">
+            Seven locations, each holding up to two Agent cubes — three sworn to the Citizen, three
+            to the Outcast, and the Market open to both. A location is unavailable once its cubes
+            are gone.
+          </p>
+        </div>
+        <div class="head-right">
+        <a class="nav-link" href="concept.html"><span class="chev">←</span> Concept</a>
+        <a class="nav-link" href="deck.html"><span class="chev">←</span> Cards</a>
+        <p class="replenish">
+          <strong>Reservoirs &amp; replenishment.</strong> Recruiting is mandatory: to play a card
+          you must take one cube from a location and take that location's reward.
+          <strong>The line you play into decides which locations are open to you</strong> — Citizen
+          locations for the Citizen line, Outcast locations for the Outcast line, the Gut for
+          either. The played card then decides where the cube goes: onto the card if it has a slot,
+          otherwise into the character anchoring that line. Replenish
+          <strong>1 cube per location</strong> at the end of every round, to a maximum of 2.
+        </p>
+        </div>
+      </header>
+
+      <div class="board-main">
+        <section class="loc-col" style="--side: #d8b45f">
+          <header class="loc-col-head">
+            Citizen locations
+            <span class="loc-col-note">Only for cards played into your Citizen line</span>
+          </header>
+          <div class="loc-list" id="loc-citizen"></div>
+        </section>
+
+        <section class="spire" id="spire"></section>
+
+        <section class="loc-col" style="--side: #7fb2ad">
+          <header class="loc-col-head">
+            Outcast locations
+            <span class="loc-col-note">Only for cards played into your Outcast line</span>
+          </header>
+          <div class="loc-list" id="loc-outcast"></div>
+        </section>
+      </div>
+
+      <section class="shared">
+        <header class="loc-col-head" style="--side: #d59ab9">
+          Open to both
+          <span class="loc-col-note">Recruit here from either line</span>
+        </header>
+        <div class="loc-list" id="loc-shared"></div>
+      </section>
+
+      <section class="line-section">
+        <header class="loc-col-head" style="--side: #e9c477">
+          The Line
+          <span class="loc-col-note">Board at the Gut · the train advances 1 stop on Replenish · ride as long as you like</span>
+        </header>
+        <div class="line-diagram" id="line-diagram"></div>
+      </section>
+
+      <footer class="turn-strip">
+        <div class="step">
+          <h3><span class="n">1 ·</span> Draw</h3>
+          <p>Everyone draws 4 cards from their deck of 7.</p>
+        </div>
+        <div class="step">
+          <h3><span class="n">2 ·</span> Action</h3>
+          <p>
+            In turn order, either pass or: pay that line's play cost, play 1 card to the line,
+            recruit 1 cube from a location open to that line, resolve the card and the location in
+            either order. Repeat until you pass.
+          </p>
+        </div>
+        <div class="step">
+          <h3><span class="n">3 ·</span> Discard</h3>
+          <p>Discard the rest of your hand, taking each card's Keep bonus.</p>
+        </div>
+        <div class="step">
+          <h3><span class="n">4 ·</span> Replenish</h3>
+          <p>Add 1 cube to each location, to a maximum of 2. New round.</p>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      const LOCATIONS = [
+        {
+          name: "The High Forum",
+          side: "citizen",
+          accent: "var(--forum)",
+          glyph: "⏢",
+          flavour: "Where the council sells what it pretends to protect.",
+          reward: "Rise your Citizen 1.",
+          rail: true,
+        },
+        {
+          name: "The Counting House",
+          side: "citizen",
+          accent: "var(--counting)",
+          glyph: "⏣",
+          flavour: "Ledgers thick enough to hide a city in.",
+          reward: "Gain 1 coin.",
+        },
+        {
+          name: "Gaming Den",
+          side: "citizen",
+          accent: "var(--docks)",
+          glyph: "⎔",
+          flavour: "Vats, cranes, and shifts that never end.",
+          reward: "Sink your Citizen 1: gain 2 coin.",
+        },
+        {
+          name: "The Rust Bar",
+          side: "outcast",
+          accent: "var(--bar)",
+          glyph: "⟁",
+          flavour: "Every rumour in Aeropolis passes this counter.",
+          reward: "Draw 1 card.",
+          unlock: { track: "outcast", level: 4 },
+          rail: true,
+        },
+        {
+          name: "The Scrapyard",
+          side: "outcast",
+          accent: "var(--scrap)",
+          glyph: "⌬",
+          flavour: "Bring what you no longer need. Leave it.",
+          reward: "Trash 1 card from your hand or discard.",
+          rail: true,
+        },
+        {
+          name: "The Gut",
+          side: "shared",
+          accent: "var(--market)",
+          glyph: "◈",
+          flavour: "Noodle stalls and worse business, shoulder to shoulder.",
+          reward: "Buy 1 card, paying its coin cost.",
+          marketSlots: 5,
+          rail: true,
+        },
+        {
+          name: "The Cable Lift",
+          side: "outcast",
+          accent: "var(--lift)",
+          glyph: "⌖",
+          flavour: "The only way up that does not ask your name.",
+          reward: "Rise your Outcast 1.",
+        },
+      ];
+
+      // 30 spaces: the Citizen starts on 30 and the Outcast on 1, so the gap is 29 —
+      // that is the total number of closing moves the whole game allows.
+      const SPIRE_SPACES = 30;
+      const DEAD_ZONE = 5; // bottom spaces worth nothing
+      const TOP_VP = 40;
+
+      // Payout curve for the meeting space: flat at the bottom, accelerating upward.
+      function spireVp(space) {
+        if (space <= DEAD_ZONE) return 0;
+        const t = (space - DEAD_ZONE) / (SPIRE_SPACES - DEAD_ZONE);
+        return Math.round(t * t * TOP_VP);
+      }
+
+      // Top of the spire down to the bottom.
+      const SPIRE = Array.from({ length: SPIRE_SPACES }, (_, index) =>
+        spireVp(SPIRE_SPACES - index)
+      );
+
+      function escapeHtml(value) {
+        return String(value ?? "")
+          .replaceAll("&", "&amp;")
+          .replaceAll("<", "&lt;")
+          .replaceAll(">", "&gt;")
+          .replaceAll('"', "&quot;");
+      }
+
+      function withIcons(text) {
+        return escapeHtml(text).replace(
+          /\bcoin(s?)\b/gi,
+          (match, plural) => `<span class="coin" role="img" aria-label="coin"></span>${plural || ""}`
+        );
+      }
+
+      function unlockMarkup(loc) {
+        if (!loc.unlock) return "";
+        const trackLabel = loc.unlock.track === "citizen" ? "Citizen" : "Outcast";
+        return `<p class="loc-lock">🔒 Requires ${trackLabel} at Spire ${loc.unlock.level}+</p>`;
+      }
+
+      function railMarkup(loc) {
+        if (!loc.rail) return "";
+        return `<p class="loc-rail">🚆 Line stop</p>`;
+      }
+
+      function locationMarkup(loc) {
+        // Only the Market carries a row of purchasable cards under its reservoir.
+        const marketRow = loc.marketSlots
+          ? `<div class="market-row">
+               <p class="mini-label">On offer</p>
+               <div class="market-slots">
+                 ${Array.from(
+                   { length: loc.marketSlots },
+                   () => `<span class="market-slot">Card</span>`
+                 ).join("")}
+               </div>
+             </div>`
+          : "";
+
+        return `
+          <article class="location" style="--accent: ${loc.accent}">
+            <div class="loc-head">
+              <div>
+                <h2 class="loc-name">${escapeHtml(loc.name)}</h2>
+                <p class="loc-flavour">${escapeHtml(loc.flavour)}</p>
+                ${unlockMarkup(loc)}${railMarkup(loc)}
+              </div>
+              <span class="loc-glyph">${loc.glyph}</span>
+            </div>
+            <div class="loc-body">
+              <div class="reservoir">
+                <p class="mini-label">Agents</p>
+                <div class="slots">
+                  <span class="cube-slot">Cube</span>
+                  <span class="cube-slot">Cube</span>
+                </div>
+              </div>
+              <div class="reward">
+                <p class="mini-label">Reward on recruit</p>
+                <p class="reward-text">${withIcons(loc.reward)}</p>
+              </div>
+            </div>
+            ${marketRow}
+          </article>
+        `;
+      }
+
+      function spireMarkup() {
+        const total = SPIRE.length;
+        const rows = SPIRE.map((vp, index) => {
+          const spaceNo = total - index;
+          const band = vp >= 20 ? "high" : vp >= 6 ? "mid" : "low";
+          const mid = index === Math.floor(total / 2) ? `<div class="midline">Midline</div>` : "";
+          return `
+            ${mid}
+            <div class="space" data-band="${band}">
+              <span class="space-no">${spaceNo}</span>
+              <span class="space-rung"></span>
+              <span class="space-vp">${vp} VP</span>
+            </div>
+          `;
+        }).join("");
+
+        return `
+          <h2 class="spire-title">The Spire</h2>
+          <p class="spire-sub">VP scored where your two tokens meet</p>
+          <div class="start-marker"><span class="token citizen"></span> Citizen starts here</div>
+          <div class="track">${rows}</div>
+          <div class="start-marker"><span class="token outcast"></span> Outcast starts here</div>
+        `;
+      }
+
+      // ---------- the line (train loop) ----------
+      // Stops = whichever locations carry `rail: true` above, in array order.
+      // One shared train; a small pool of seats; riders may disembark free of
+      // a stop's usual line/cube restriction, or stay aboard for a small toll.
+
+      const TRAIN_SEATS = 3;
+      const MOCK_RIDERS = ["citizen", "outcast"]; // occupied seats, for illustration
+      const MOCK_CURRENT_STOP = "The Scrapyard"; // where the train sits, for illustration
+
+      function lineMarkup() {
+        const stops = LOCATIONS.filter((loc) => loc.rail);
+        const cx = 350;
+        const cy = 100;
+        const rx = 300;
+        const ry = 66;
+
+        const nodes = stops.map((loc, i) => {
+          const angle = (Math.PI * 2 * i) / stops.length - Math.PI / 2;
+          return {
+            loc,
+            x: cx + rx * Math.cos(angle),
+            y: cy + ry * Math.sin(angle),
+            angle,
+          };
+        });
+
+        const railPath = `M ${nodes.map((n) => `${n.x.toFixed(1)},${n.y.toFixed(1)}`).join(" L ")} Z`;
+
+        const stopMarkup = nodes
+          .map(({ loc, x, y, angle }) => {
+            const isCurrent = loc.name === MOCK_CURRENT_STOP;
+            const above = Math.sin(angle) < -0.2;
+            const below = Math.sin(angle) > 0.2;
+            const labelY = above ? y - 16 : below ? y + 24 : y + 5;
+            const anchor = Math.cos(angle) > 0.3 ? "start" : Math.cos(angle) < -0.3 ? "end" : "middle";
+            const labelX = anchor === "start" ? x + 12 : anchor === "end" ? x - 12 : x;
+            const train = isCurrent
+              ? `<text class="train-glyph" x="${x}" y="${y - 30}" text-anchor="middle">🚆</text>`
+              : "";
+            return `
+              ${train}
+              <circle class="stop-dot${isCurrent ? " current" : ""}" cx="${x}" cy="${y}" r="8"></circle>
+              <text class="stop-label" x="${labelX}" y="${labelY}" text-anchor="${anchor}">${escapeHtml(loc.name)}</text>
+            `;
+          })
+          .join("");
+
+        const seatRow = Array.from({ length: TRAIN_SEATS }, (_, i) => {
+          const rider = MOCK_RIDERS[i];
+          return rider
+            ? `<span class="seat filled ${rider}"></span>`
+            : `<span class="seat"></span>`;
+        }).join("");
+
+        return `
+          <svg class="line-svg" viewBox="0 0 700 200">
+            <path class="rail-outer" d="${railPath}"></path>
+            <path class="rail-ties" d="${railPath}"></path>
+            ${stopMarkup}
+          </svg>
+          <div class="line-footer">
+            <div class="seat-block">
+              <p class="mini-label">Seats aboard (${MOCK_RIDERS.length}/${TRAIN_SEATS})</p>
+              <div class="seat-row">${seatRow}</div>
+            </div>
+            <p class="line-rules">
+              Recruit at any Line stop (🚆) to <strong>board</strong>: take that location's reward as
+              normal, but send the cube to the train instead of its usual socket or character — the
+              card's socket (or the character's, if the card had none) stays empty this round. Take an
+              open seat. Each round the train advances one stop. At any stop, <strong>disembark</strong>
+              to take that location's reward without playing a card there and regardless of its line
+              restriction, or <strong>stay aboard</strong> to collect
+              <span class="coin" role="img" aria-label="coin"></span>1 and ride on. Only ${TRAIN_SEATS}
+              seats exist — sometimes there is nowhere to sit.
+            </p>
+          </div>
+        `;
+      }
+
+      function renderSide(elementId, side) {
+        document.getElementById(elementId).innerHTML = LOCATIONS.filter(
+          (loc) => loc.side === side
+        )
+          .map(locationMarkup)
+          .join("");
+      }
+
+      renderSide("loc-citizen", "citizen");
+      renderSide("loc-outcast", "outcast");
+      renderSide("loc-shared", "shared");
+
+      document.getElementById("spire").innerHTML = spireMarkup();
+      document.getElementById("line-diagram").innerHTML = lineMarkup();
+
+      // ---------- background tower illustration ----------
+      // A schematic art nouveau tower — glass panels between curved metal
+      // ribs, banded floors with whiplash scrollwork, a lattice-orb finial.
+      // Drawn low-opacity gold/teal so the VP track stays readable on top.
+
+      function drawScroll(ctx, x, y, dir, size) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(dir, 1);
+        ctx.beginPath();
+        const turns = 1.6;
+        const steps = 24;
+        for (let i = 0; i <= steps; i++) {
+          const a = (i / steps) * turns * Math.PI * 2;
+          const r = (i / steps) * size;
+          const px = Math.cos(a) * r;
+          const py = Math.sin(a) * r * 0.7;
+          if (i === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        }
+        ctx.strokeStyle = "rgba(233, 196, 119, 0.14)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.restore();
+      }
+
+      function drawFinial(ctx, cx, topY, baseHalf, finialH) {
+        const tipY = topY - finialH;
+        const orbY = tipY + finialH * 0.32;
+        const orbR = Math.max(3, baseHalf * 0.16);
+
+        ctx.beginPath();
+        ctx.moveTo(cx - baseHalf * 0.5, topY);
+        ctx.quadraticCurveTo(cx - baseHalf * 0.12, orbY + orbR, cx, tipY);
+        ctx.quadraticCurveTo(cx + baseHalf * 0.12, orbY + orbR, cx + baseHalf * 0.5, topY);
+        ctx.strokeStyle = "rgba(233, 196, 119, 0.17)";
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        [1, 0.4].forEach((ry) => {
+          ctx.beginPath();
+          ctx.ellipse(cx, orbY, ry === 1 ? orbR : orbR * ry, ry === 1 ? orbR : orbR, 0, 0, Math.PI * 2);
+          ctx.strokeStyle = "rgba(127, 178, 173, 0.17)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        ctx.beginPath();
+        ctx.moveTo(cx, orbY - orbR);
+        ctx.lineTo(cx, tipY - finialH * 0.12);
+        ctx.strokeStyle = "rgba(233, 196, 119, 0.2)";
+        ctx.lineWidth = 1;
+        ctx.stroke();
+
+        [-1, 1].forEach((s) => {
+          ctx.beginPath();
+          ctx.moveTo(cx, tipY - finialH * 0.05);
+          ctx.lineTo(cx + s * baseHalf * 0.35, tipY - finialH * 0.28);
+          ctx.strokeStyle = "rgba(233, 196, 119, 0.12)";
+          ctx.lineWidth = 0.8;
+          ctx.stroke();
+        });
+      }
+
+      function drawBaseFlourish(ctx, cx, baseY, baseHalf) {
+        ctx.beginPath();
+        ctx.moveTo(cx - baseHalf * 1.08, baseY);
+        ctx.lineTo(cx + baseHalf * 1.08, baseY);
+        ctx.strokeStyle = "rgba(233, 196, 119, 0.14)";
+        ctx.lineWidth = 1.4;
+        ctx.stroke();
+
+        [-1, 1].forEach((dir) => {
+          ctx.save();
+          ctx.translate(cx + dir * baseHalf * 1.08, baseY);
+          ctx.scale(dir, 1);
+          ctx.beginPath();
+          ctx.moveTo(0, 0);
+          ctx.quadraticCurveTo(14, 4, 20, -8);
+          ctx.strokeStyle = "rgba(233, 196, 119, 0.14)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+          ctx.restore();
+        });
+      }
+
+      function drawTower(canvas) {
+        const parent = canvas.parentElement;
+        const dpr = window.devicePixelRatio || 1;
+        const w = parent.clientWidth;
+        const h = parent.clientHeight;
+        if (!w || !h) return;
+
+        canvas.width = w * dpr;
+        canvas.height = h * dpr;
+        canvas.style.width = w + "px";
+        canvas.style.height = h + "px";
+
+        const ctx = canvas.getContext("2d");
+        ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        ctx.clearRect(0, 0, w, h);
+
+        const cx = w / 2;
+        const margin = h * 0.02;
+        const baseY = h - margin;
+        const finialH = h * 0.09;
+        const shaftTopY = margin + finialH;
+        const shaftH = baseY - shaftTopY;
+
+        // Sized off the board's height, not its (much wider) width — the
+        // tower stays a narrow, tall silhouette centered on the page.
+        const baseHalf = h * 0.075;
+        const topHalf = h * 0.018;
+        const flareExtra = h * 0.025;
+
+        function halfWidthAt(t) {
+          const flare = Math.exp(-t * 16) * flareExtra;
+          const taper = baseHalf + (topHalf - baseHalf) * Math.pow(t, 0.8);
+          return taper + flare;
+        }
+
+        const N = 48;
+        const left = [];
+        const right = [];
+        for (let i = 0; i <= N; i++) {
+          const t = i / N;
+          const y = baseY - t * shaftH;
+          const hw = halfWidthAt(t);
+          left.push({ x: cx - hw, y });
+          right.push({ x: cx + hw, y });
+        }
+
+        // silhouette fill (glass) + clipped highlight streaks
+        ctx.save();
+        ctx.beginPath();
+        ctx.moveTo(left[0].x, left[0].y);
+        for (const p of left) ctx.lineTo(p.x, p.y);
+        for (let i = right.length - 1; i >= 0; i--) ctx.lineTo(right[i].x, right[i].y);
+        ctx.closePath();
+
+        const glassGrad = ctx.createLinearGradient(0, baseY, 0, shaftTopY);
+        glassGrad.addColorStop(0, "rgba(127, 178, 173, 0.05)");
+        glassGrad.addColorStop(0.5, "rgba(233, 196, 119, 0.035)");
+        glassGrad.addColorStop(1, "rgba(233, 196, 119, 0.07)");
+        ctx.fillStyle = glassGrad;
+        ctx.fill();
+        ctx.clip();
+
+        [-0.6, 0.1, 0.5].forEach((offset) => {
+          ctx.save();
+          ctx.translate(cx + offset * w * 0.5, 0);
+          ctx.rotate(-0.28);
+          const grad = ctx.createLinearGradient(-8, 0, 8, 0);
+          grad.addColorStop(0, "rgba(255, 255, 255, 0)");
+          grad.addColorStop(0.5, "rgba(255, 255, 255, 0.03)");
+          grad.addColorStop(1, "rgba(255, 255, 255, 0)");
+          ctx.fillStyle = grad;
+          ctx.fillRect(-8, -h, 16, h * 3);
+          ctx.restore();
+        });
+        ctx.restore();
+
+        // outer silhouette edges (metal)
+        ctx.strokeStyle = "rgba(233, 196, 119, 0.16)";
+        ctx.lineWidth = 1.4;
+        [left, right].forEach((side) => {
+          ctx.beginPath();
+          ctx.moveTo(side[0].x, side[0].y);
+          for (const p of side) ctx.lineTo(p.x, p.y);
+          ctx.stroke();
+        });
+
+        // vertical ribs, each with a faint organic wobble
+        [-0.62, -0.32, 0, 0.32, 0.62].forEach((frac, idx) => {
+          ctx.beginPath();
+          for (let i = 0; i <= N; i++) {
+            const t = i / N;
+            const hw = halfWidthAt(t);
+            const wobble = Math.sin(t * Math.PI * 2.4 + idx) * hw * 0.03;
+            const x = cx + frac * hw + wobble;
+            const y = baseY - t * shaftH;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = frac === 0 ? "rgba(233, 196, 119, 0.1)" : "rgba(233, 196, 119, 0.07)";
+          ctx.lineWidth = frac === 0 ? 1 : 0.8;
+          ctx.stroke();
+        });
+
+        // horizontal floor bands with scrollwork at the edges
+        const bandCount = 7;
+        for (let b = 1; b < bandCount; b++) {
+          const t = b / bandCount;
+          const y = baseY - t * shaftH;
+          const hw = halfWidthAt(t);
+          ctx.beginPath();
+          ctx.moveTo(cx - hw, y);
+          ctx.quadraticCurveTo(cx, y + hw * 0.06, cx + hw, y);
+          ctx.strokeStyle = "rgba(233, 196, 119, 0.12)";
+          ctx.lineWidth = 1;
+          ctx.stroke();
+
+          drawScroll(ctx, cx - hw, y, -1, hw * 0.22);
+          drawScroll(ctx, cx + hw, y, 1, hw * 0.22);
+        }
+
+        drawFinial(ctx, cx, shaftTopY, halfWidthAt(1), finialH);
+        drawBaseFlourish(ctx, cx, baseY, halfWidthAt(0));
+      }
+
+      const boardCanvas = document.getElementById("board-canvas");
+      drawTower(boardCanvas);
+
+      let resizeTimer;
+      window.addEventListener("resize", () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => drawTower(boardCanvas), 120);
+      });
+    </script>
+  </body>
+</html>
