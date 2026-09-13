@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aeropolis — Draft Rules</title>
+    <style>
+      :root {
+        --ink: #14181c;
+        --ink-soft: #3d474f;
+        --paper: #efe7d8;
+        --night: #191f24;
+        --gold: #e9c477;
+        --brass: #b0812f;
+        --verdigris: #2f7d74;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        padding: 40px 32px 80px;
+        background:
+          radial-gradient(1200px 700px at 50% -200px, #2b333a, transparent),
+          var(--night);
+        color: #dfe6ea;
+        font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
+      }
+
+      .wrap {
+        max-width: 880px;
+        margin: 0 auto;
+      }
+
+      .page-head {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 26px;
+      }
+
+      h1,
+      h2,
+      h3 {
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 6px 0 0;
+        color: #f3ede0;
+        font-size: 44px;
+        letter-spacing: 0.14em;
+      }
+
+      h2 {
+        margin: 0 0 8px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.14);
+        color: var(--gold);
+        font-size: 19px;
+        letter-spacing: 0.18em;
+      }
+
+      h3 {
+        margin: 22px 0 6px;
+        color: #cfd8dd;
+        font-size: 13.5px;
+        letter-spacing: 0.08em;
+      }
+
+      p,
+      li {
+        color: #c3ccd2;
+        font-size: 14.5px;
+        line-height: 1.65;
+      }
+
+      p { margin: 10px 0; }
+
+      strong { color: #f0e8d8; font-weight: 600; }
+
+      .tagline {
+        max-width: 62ch;
+        margin: 10px 0 0;
+        color: #a9b3ba;
+      }
+
+      nav {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 10px;
+      }
+
+      .nav-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 18px;
+        border: 1px solid rgba(233, 196, 119, 0.45);
+        border-radius: 999px;
+        background: rgba(233, 196, 119, 0.09);
+        color: var(--gold);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.16em;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      .nav-link:hover {
+        background: rgba(233, 196, 119, 0.18);
+        border-color: rgba(233, 196, 119, 0.8);
+      }
+
+      section {
+        margin: 0 0 38px;
+      }
+
+      .callout {
+        margin: 0 0 40px;
+        padding: 18px 22px;
+        border-left: 3px solid var(--gold);
+        border-radius: 4px;
+        background: rgba(233, 196, 119, 0.07);
+        color: #ecd9ab;
+      }
+
+      .steps {
+        margin: 12px 0 0;
+        padding-left: 24px;
+      }
+
+      .steps li { padding-left: 8px; }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 14px;
+      }
+
+      .term {
+        padding: 14px 16px;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-top: 3px solid var(--brass);
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .term:nth-child(even) { border-top-color: var(--verdigris); }
+
+      .term h3 {
+        margin: 0 0 5px;
+        color: #eef3f6;
+      }
+
+      .term p { margin: 0; font-size: 13.5px; }
+
+      .draft-note {
+        color: #d9bd78;
+      }
+
+      footer {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 50px;
+        padding-top: 20px;
+        border-top: 1px solid rgba(255, 255, 255, 0.14);
+      }
+
+      @media (max-width: 700px) {
+        body { padding: 28px 18px 60px; }
+        .page-head { display: block; }
+        nav { justify-content: flex-start; margin-top: 18px; }
+        h1 { font-size: 34px; }
+        .grid { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="page-head">
+        <div>
+          <h1>Aeropolis</h1>
+          <p class="tagline">Draft rules for the current playtest version.</p>
+        </div>
+        <nav aria-label="Game pages">
+          <a class="nav-link" href="concept.html">Concept</a>
+          <a class="nav-link" href="deck.html">Cards</a>
+          <a class="nav-link" href="board.html">Board</a>
+        </nav>
+      </header>
+
+      <p class="callout">
+        Each player manages a Citizen and an Outcast. Play cards into their two lines, slot cubes
+        from the city, and decide when to spend status for resources. This is an early draft: values,
+        card effects, scoring beyond the Spire, and some train details are still being tested.
+      </p>
+
+      <section>
+        <h2>Setup</h2>
+        <ol class="steps">
+          <li>Give each player one Citizen character and one Outcast character.</li>
+          <li>Place the Citizen at the top of the Spire and the Outcast at the bottom.</li>
+          <li>Give each player the current example starter deck of 7 cards.</li>
+          <li>Give each player 2 coins.</li>
+          <li>Fill each board location with up to 2 cubes.</li>
+          <li>Place the train at its starting stop and make its seats available.</li>
+        </ol>
+        <p class="draft-note">The character pool, player count, and exact starting setup are still playtest parameters.</p>
+      </section>
+
+      <section>
+        <h2>Round Structure</h2>
+        <ol class="steps">
+          <li><strong>Draw:</strong> each player draws 4 cards from their deck.</li>
+          <li>
+            <strong>Action:</strong> in turn order, each player takes exactly 1 action. After that
+            action, play passes to the next player.
+          </li>
+          <li>
+            <strong>Discard:</strong> a player may pass instead of taking an action. That player
+            immediately discards their remaining hand and resolves its Keep effects. They do not take
+            further actions this round.
+          </li>
+          <li>
+            <strong>Replenish:</strong> after every player has passed, add 1 cube to each location,
+            up to 2, and advance the train by 1 stop. Players empty their lines.
+          </li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Taking An Action</h2>
+        <p>
+          The normal card action is to play 1 card into a line. Choose the line, pay that line's play
+          cost, and <strong>Slot 1</strong> from an eligible location. Resolve the location reward
+          and the card effect in either order. Every played card has a cube socket, and the slotted
+          cube starts there.
+        </p>
+        <p>
+          A card marked <strong>Any</strong> may be played into either line. A Citizen card normally
+          belongs in the Citizen line, and an Outcast card normally belongs in the Outcast line.
+          Train access overrides this restriction for a passenger who disembarks at the current stop.
+        </p>
+        <p>
+          Card effects may move a slotted cube from its current socket to the character anchoring
+          that line or to another empty card socket. A card effect may also change a character's
+          position, draw cards, gain coins, or modify another game element.
+        </p>
+        <p>
+          Boarding the train is an action and uses an available seat. Disembarking is a card-play
+          action: play the card at the train's current stop, take the cube from the train instead of
+          from the location, and resolve the stop's reward. The location does not need to contain a
+          cube. A passenger may therefore disembark at an empty location.
+        </p>
+      </section>
+
+      <section>
+        <h2>Locations And Cubes</h2>
+        <p>
+          Each location holds 0–2 cubes. A location is available only while it has at least 1 cube.
+          Citizen locations are eligible when playing into the Citizen line. Outcast locations are
+          eligible when playing into the Outcast line. Shared locations, including the Noodle Shop,
+          are eligible for either line.
+        </p>
+        <p>
+          If no eligible location has a cube, you usually cannot play the card. When you Slot 1,
+          take the cube first and resolve that location's reward. A passenger who disembarks uses the
+          train's cube instead, so the stop may be empty. The card's socket effect then resolves
+          according to the card text.
+        </p>
+        <p>
+          The Noodle Shop is the shared location where cards may be bought with coins before they
+          enter a player's hand. Its cards are provisional examples and use the same play process as
+          starter cards.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Train</h2>
+        <p>
+          The train has a limited number of seats. Boarding costs 1 action. Disembarking costs the
+          passenger's card-play action: play at the train's current stop, take the cube from the train
+          instead of the location, and resolve the stop's reward. A passenger who disembarks may use
+          that stop even when its normal line restriction does not match their card, such as playing
+          an Outcast card into the Citizen line.
+        </p>
+        <p>
+          The train advances 1 stop during Replenish. When it completes a full circuit, each passenger
+          gains 1 coin. Additional train interactions and bonuses remain open for playtesting.
+        </p>
+      </section>
+
+      <section>
+        <h2>The Revolution</h2>
+        <p>
+          When a player's Citizen and Outcast meet on the Spire, the Revolution begins immediately
+          for everyone. The player who triggered it gains a temporary advantage: e.g. gain 2 coins. 
+          All players flip one of their characters to its Revolution side;
+          the Revolution side changes the character's power for the rest of the game.
+        </p>
+        <p>
+          The game continues with the same one-action turn structure. During the Revolution, a player
+          may play a normal card face down into either line as an <strong>Intrigue</strong>. 
+          Each Intrigue card has a conflict value. At the end of each round, resolve all Intrigues one by one at the current
+          Revolution site: the train's current stop. The highest total wins the site (TBD what that means).
+        </p>
+        <p>
+          The current site determines which Intrigue cards may contest it. Citizen locations accept
+          Citizen-line Intrigue, Outcast locations accept Outcast-line Intrigue, and shared locations
+          accept either line. A passenger who disembarks at the site may use either line.
+        </p>
+        <p>
+          Each location has one optional Revolution advantage. A player may pay its cost when their
+          Intrigue contests that site. First-pass examples: the High Forum costs 2 coins for +3
+          conflict value.
+        </p>
+        <p class="draft-note">
+          The Revolution is a second phase, not the end of the game. The exact Leader powers,
+          Intrigue values, location costs, and Revolution rewards are playtest values.
+        </p>
+      </section>
+
+      <section>
+        <h2>Glossary</h2>
+        <div class="grid">
+          <article class="term">
+            <h3>Slot</h3>
+            <p>Take 1 cube from an eligible location, resolve its reward, and place the cube in the played card's socket. Slotting is part of playing a card, not a separate action.</p>
+          </article>
+          <article class="term">
+            <h3>Recruit</h3>
+            <p>Fixer's card effect. Move the cube in Fixer's socket onto the character anchoring that line. Recruit does not take a new cube from a location.</p>
+          </article>
+          <article class="term">
+            <h3>Rise</h3>
+            <p>Move the named character 1 space upward on the Spire, toward the top.</p>
+          </article>
+          <article class="term">
+            <h3>Sink</h3>
+            <p>Move the named character 1 space downward on the Spire, toward the bottom.</p>
+          </article>
+          <article class="term">
+            <h3>Pass</h3>
+            <p>Take no action, discard your remaining hand, and wait for the next round.</p>
+          </article>
+        </div>
+      </section>
+
+      <section>
+        <h2>End Of The Game</h2>
+        <p>
+          The game ends when a player's when the revolution is over (4 conflict sites have been resolved). 
+          Players score Victory Points for their final Spire meeting position,
+             plus any other scoring effects.
+        </p>
+        <p class="draft-note">Do not treat the current card values or scoring curve as final.</p>
+      </section>
+
+      <footer>
+        <a class="nav-link" href="concept.html">Concept</a>
+        <a class="nav-link" href="deck.html">Cards</a>
+        <a class="nav-link" href="board.html">Board</a>
+      </footer>
+    </div>
+  </body>
+</html>

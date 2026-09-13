@@ -61,18 +61,17 @@
       }
 
       .board-head,
-      .board-main,
+        padding: 26px 0;
       .turn-strip {
         position: relative;
         z-index: 1;
       }
-
+        grid-template-columns: minmax(250px, 1fr) minmax(170px, 0.55fr) minmax(250px, 1fr);
       .board-head {
         display: flex;
-        align-items: flex-end;
         justify-content: space-between;
         gap: 30px;
-        padding-bottom: 18px;
+        padding-bottom: 12px;
         border-bottom: 1px solid rgba(255, 255, 255, 0.13);
       }
 
@@ -126,13 +125,14 @@
 
       .head-right {
         display: flex;
-        flex-direction: column;
-        align-items: flex-end;
+        align-items: center;
+        gap: 10px;
       }
 
       .replenish {
-        max-width: 430px;
-        padding: 11px 15px;
+        max-width: 760px;
+        margin: 0 auto 20px;
+        padding: 9px 13px;
         border: 1px solid rgba(255, 255, 255, 0.16);
         border-radius: 6px;
         font-size: 12.5px;
@@ -145,14 +145,26 @@
         font-weight: 600;
       }
 
+      .replenish-band {
+        position: relative;
+        z-index: 1;
+      }
+
       /* ---------- three-column layout ---------- */
 
-      .board-main {
+      .board-layout {
         display: grid;
-        grid-template-columns: 1fr auto 1fr;
-        gap: 30px;
+        grid-template-columns: minmax(250px, 1fr) minmax(170px, 0.55fr) minmax(250px, 1fr);
+        gap: 28px;
         align-items: start;
         padding: 26px 0;
+      }
+
+      .board-side {
+        display: flex;
+        flex-direction: column;
+        gap: 28px;
+        min-width: 0;
       }
 
       .loc-col {
@@ -192,8 +204,7 @@
 
       /* The one neutral location, on the axis beneath the two halves. */
       .shared {
-        max-width: 620px;
-        margin: 0 auto;
+        min-width: 0;
         padding-bottom: 26px;
       }
 
@@ -334,7 +345,7 @@
       /* ---------- the spire ---------- */
 
       .spire {
-        width: 330px;
+        width: auto;
         padding: 16px 18px 18px;
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.24);
@@ -450,7 +461,7 @@
         background: rgba(233, 196, 119, 0.4);
       }
 
-      /* ---------- market row, shown inside the Market location ---------- */
+      /* ---------- card row, shown inside the Noodle Shop location ---------- */
 
       .market-row {
         margin-top: 13px;
@@ -480,13 +491,13 @@
       /* ---------- the line (train loop) ---------- */
 
       .line-section {
-        max-width: 760px;
-        margin: 0 auto 28px;
+        min-width: 0;
+        margin: 0;
       }
 
       .line-diagram {
         margin-top: 14px;
-        padding: 18px 20px 8px;
+        padding: 18px 12px 8px;
         border-radius: 8px;
         background: rgba(0, 0, 0, 0.24);
         border: 1px solid rgba(255, 255, 255, 0.12);
@@ -524,7 +535,7 @@
 
       .stop-label {
         font-family: "Avenir Next", "Helvetica Neue", Arial, sans-serif;
-        font-size: 12px;
+        font-size: 14px;
         font-weight: 700;
         letter-spacing: 0.06em;
         text-transform: uppercase;
@@ -571,7 +582,7 @@
 
       .line-rules {
         flex: 1;
-        min-width: 260px;
+        min-width: 0;
         margin: 0;
         font-size: 12.5px;
         line-height: 1.55;
@@ -613,6 +624,21 @@
       .step .n {
         color: #7f8c94;
       }
+
+      @media (max-width: 900px) {
+        .board-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .board-side {
+          gap: 28px;
+        }
+
+        .spire {
+          order: -1;
+        }
+
+      }
     </style>
   </head>
   <body>
@@ -621,85 +647,60 @@
       <header class="board-head">
         <div>
           <h1>Aeropolis</h1>
+          <div class="head-right">
+            <a class="nav-link" href="concept.html"><span class="chev">←</span> Concept</a>
+            <a class="nav-link" href="deck.html"><span class="chev">←</span> Cards</a>
+            <a class="nav-link" href="rules.html"><span class="chev">→</span> Rules</a>
+          </div>
           <p class="tagline">
-            Seven locations, each holding up to two Agent cubes — three sworn to the Citizen, three
-            to the Outcast, and the Market open to both. A location is unavailable once its cubes
-            are gone.
+            A location is unavailable once its grey cubes
+            are gone. Citizen locations for the Citizen line, Outcast locations for the Outcast 
+            line, and shared locations for either line. The played card may socket the slotted cube
+            to trigger its card effect.
           </p>
-        </div>
-        <div class="head-right">
-        <a class="nav-link" href="concept.html"><span class="chev">←</span> Concept</a>
-        <a class="nav-link" href="deck.html"><span class="chev">←</span> Cards</a>
-        <p class="replenish">
-          <strong>Reservoirs &amp; replenishment.</strong> Recruiting is mandatory: to play a card
-          you must take one cube from a location and take that location's reward.
-          <strong>The line you play into decides which locations are open to you</strong> — Citizen
-          locations for the Citizen line, Outcast locations for the Outcast line, the Gut for
-          either. The played card then decides where the cube goes: onto the card if it has a slot,
-          otherwise into the character anchoring that line. Replenish
-          <strong>1 cube per location</strong> at the end of every round, to a maximum of 2.
-        </p>
         </div>
       </header>
 
-      <div class="board-main">
-        <section class="loc-col" style="--side: #d8b45f">
-          <header class="loc-col-head">
-            Citizen locations
-            <span class="loc-col-note">Only for cards played into your Citizen line</span>
-          </header>
-          <div class="loc-list" id="loc-citizen"></div>
-        </section>
+      <div class="board-layout">
+        <div class="board-side">
+          <section class="line-section">
+            <header class="loc-col-head" style="--side: #e9c477">
+              The Line
+              <span class="loc-col-note">Boarding costs 1 action. Disembarking is card play: take the cube from the train, so the current stop may be empty. The train advances 1 stop during Replenish.</span>
+            </header>
+            <div class="line-diagram" id="line-diagram"></div>
+          </section>
+
+          <section class="loc-col" style="--side: #d8b45f">
+            <header class="loc-col-head">
+              Citizen locations
+              <span class="loc-col-note">Only for cards played into your Citizen line</span>
+            </header>
+            <div class="loc-list" id="loc-citizen"></div>
+          </section>
+        </div>
 
         <section class="spire" id="spire"></section>
 
-        <section class="loc-col" style="--side: #7fb2ad">
-          <header class="loc-col-head">
-            Outcast locations
-            <span class="loc-col-note">Only for cards played into your Outcast line</span>
-          </header>
-          <div class="loc-list" id="loc-outcast"></div>
-        </section>
+        <div class="board-side">
+          <section class="loc-col" style="--side: #d59ab9">
+            <header class="loc-col-head" style="--side: #d59ab9">
+              Open to both
+              <span class="loc-col-note">Slot here from either line</span>
+            </header>
+            <div class="loc-list" id="loc-shared"></div>
+          </section>
+
+          <section class="loc-col" style="--side: #7fb2ad">
+            <header class="loc-col-head">
+              Outcast locations
+              <span class="loc-col-note">Only for cards played into your Outcast line</span>
+            </header>
+            <div class="loc-list" id="loc-outcast"></div>
+          </section>
+        </div>
       </div>
 
-      <section class="shared">
-        <header class="loc-col-head" style="--side: #d59ab9">
-          Open to both
-          <span class="loc-col-note">Recruit here from either line</span>
-        </header>
-        <div class="loc-list" id="loc-shared"></div>
-      </section>
-
-      <section class="line-section">
-        <header class="loc-col-head" style="--side: #e9c477">
-          The Line
-          <span class="loc-col-note">Board at the Gut · the train advances 1 stop on Replenish · ride as long as you like</span>
-        </header>
-        <div class="line-diagram" id="line-diagram"></div>
-      </section>
-
-      <footer class="turn-strip">
-        <div class="step">
-          <h3><span class="n">1 ·</span> Draw</h3>
-          <p>Everyone draws 4 cards from their deck of 7.</p>
-        </div>
-        <div class="step">
-          <h3><span class="n">2 ·</span> Action</h3>
-          <p>
-            In turn order, either pass or: pay that line's play cost, play 1 card to the line,
-            recruit 1 cube from a location open to that line, resolve the card and the location in
-            either order. Repeat until you pass.
-          </p>
-        </div>
-        <div class="step">
-          <h3><span class="n">3 ·</span> Discard</h3>
-          <p>Discard the rest of your hand, taking each card's Keep bonus.</p>
-        </div>
-        <div class="step">
-          <h3><span class="n">4 ·</span> Replenish</h3>
-          <p>Add 1 cube to each location, to a maximum of 2. New round.</p>
-        </div>
-      </footer>
     </div>
 
     <script>
@@ -749,11 +750,11 @@
           rail: true,
         },
         {
-          name: "The Gut",
+          name: "Noodle Shop",
           side: "shared",
           accent: "var(--market)",
           glyph: "◈",
-          flavour: "Noodle stalls and worse business, shoulder to shoulder.",
+          flavour: "Shoulder to shoulder, the place to hire agents.",
           reward: "Buy 1 card, paying its coin cost.",
           marketSlots: 5,
           rail: true,
@@ -813,7 +814,7 @@
       }
 
       function locationMarkup(loc) {
-        // Only the Market carries a row of purchasable cards under its reservoir.
+        // Only the Noodle Shop carries a row of purchasable cards under its reservoir.
         const marketRow = loc.marketSlots
           ? `<div class="market-row">
                <p class="mini-label">On offer</p>
@@ -845,7 +846,7 @@
                 </div>
               </div>
               <div class="reward">
-                <p class="mini-label">Reward on recruit</p>
+                <p class="mini-label">Reward on slotting</p>
                 <p class="reward-text">${withIcons(loc.reward)}</p>
               </div>
             </div>
@@ -892,7 +893,7 @@
         const stops = LOCATIONS.filter((loc) => loc.rail);
         const cx = 350;
         const cy = 100;
-        const rx = 300;
+        const rx = 200;
         const ry = 66;
 
         const nodes = stops.map((loc, i) => {
@@ -944,16 +945,8 @@
               <p class="mini-label">Seats aboard (${MOCK_RIDERS.length}/${TRAIN_SEATS})</p>
               <div class="seat-row">${seatRow}</div>
             </div>
-            <p class="line-rules">
-              Recruit at any Line stop (🚆) to <strong>board</strong>: take that location's reward as
-              normal, but send the cube to the train instead of its usual socket or character — the
-              card's socket (or the character's, if the card had none) stays empty this round. Take an
-              open seat. Each round the train advances one stop. At any stop, <strong>disembark</strong>
-              to take that location's reward without playing a card there and regardless of its line
-              restriction, or <strong>stay aboard</strong> to collect
-              <span class="coin" role="img" aria-label="coin"></span>1 and ride on. Only ${TRAIN_SEATS}
-              seats exist — sometimes there is nowhere to sit.
-            </p>
+            <p class="line-rules">Boarding costs 1 action. Disembarking is card play: take the cube
+              from the train, not the stop. Complete circuits pay each passenger 1 coin.</p>
           </div>
         `;
       }

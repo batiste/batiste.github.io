@@ -236,15 +236,7 @@
         color: rgba(20, 24, 28, 0.34);
       }
 
-      .cost-arrow {
-        flex: none;
-        font-size: 5.6cqw;
-        font-weight: 700;
-        line-height: 0.95;
-        color: var(--accent);
-      }
-
-      /* Slotted card: cube is spent, arrow points straight into what you get. */
+      /* Slotted card: cube is spent to produce the listed effect. */
       .cost-line {
         display: flex;
         align-items: center;
@@ -446,7 +438,7 @@
         text-align: center;
       }
 
-      /* ---------- coin-cost cards (Market) ---------- */
+      /* ---------- coin-cost cards (Noodle Shop) ---------- */
 
       /* A price bar in place of the cube-socket flow: these cards are bought
          with coin, not recruited with a cube, so there's nothing to socket. */
@@ -521,8 +513,8 @@
       <div>
         <h1>Aeropolis — Prototype Cards</h1>
         <p>
-          Two characters and the seven-card starter deck. A deck card reads two ways: played into a
-          character line, or kept in hand through the discard phase. The face-down Intrigue mode is
+          Two characters and an example seven-card starter deck. Each player begins with 2 coins. A
+          deck card reads two ways: played into a character line, or kept in hand through the discard phase. Every played card has a cube socket. The face-down Intrigue mode is
           parked for now to keep the core loop testable — its text is still in the file behind the
           <code>SHOW_INTRIGUE</code> flag. All numbers are first-pass placeholders. Print at true
           57 × 89 mm with ⌘P.
@@ -531,6 +523,7 @@
       <nav style="display: flex; flex-direction: column; gap: 8px;">
         <a class="nav-link" href="concept.html"><span class="chev">←</span> Concept</a>
         <a class="nav-link" href="board.html">Board <span class="chev">→</span></a>
+        <a class="nav-link" href="rules.html">Rules <span class="chev">→</span></a>
       </nav>
     </header>
 
@@ -543,129 +536,33 @@
     <ul class="deck" id="characters"></ul>
 
     <h2 class="section-head">
-      Starter Deck — 7 cards
-      <span class="note">Identical for every player.</span>
+      Example Starter Deck — 7 cards
+      <span class="note">Identical for every player in this draft.</span>
       <span class="note">
-        Playing card in a location activate the location benefit and you take the cube.
-        Each card in your deck can socket a cube. If there are no cube in a location, you
-        can still go but the cube effect do not apply.
+        Card procedures and terminology are defined in the <a href="rules.html">draft rules</a>.
+        Fixer's <strong>Recruit</strong> effect moves its cube onto the character anchoring that line.
 
       </span>
     </h2>
     <ul class="deck" id="deck"></ul>
 
     <h2 class="section-head">
-      Market — Coin-cost samples
+      Noodle Shop — Coin-cost samples
       <span class="note">
-        Bought from a market spot for <strong>coin</strong> before joining your hand — everything after
-        that follows the same slotted-card template as the starter deck, still recruiting and socketing
-        a cube to play. Priced on a rough <strong>1 coin ≈ 1 Rise-step</strong> curve, so the four
-        samples trace a cheap-to-priced power curve.
+        Bought from the shared Noodle Shop for <strong>coin</strong> before joining your hand. After
+        purchase, each card follows the same process as the starter deck. Costs and effects are
+        first-pass examples.
       </span>
     </h2>
     <ul class="deck" id="market"></ul>
 
+    <script src="deck-data.js"></script>
     <script>
       // Intrigue is parked while the core loop gets tested. The text below is kept
       // intact — flip this to true to put the block back on every card.
       const SHOW_INTRIGUE = false;
 
-      const CHARACTERS = [
-        {
-          title: "Councillor Vane",
-          line: "citizen",
-          glyph: "⏢",
-          sockets: 3,
-          // Cost to play the 1st, 2nd, 3rd, 4th card into this line, in coin.
-          // Identical on both characters for now; a lever for asymmetry later.
-          playCosts: [0, 1, 2, 3],
-          ability: "Sink twice a turn → gain 1 coin.",
-          reward: "Rise your Citizen 1 and gain 3 coin.",
-        },
-        {
-          title: "The Ferryman",
-          line: "outcast",
-          glyph: "⌭",
-          sockets: 3,
-          playCosts: [0, 1, 2, 2],
-          ability: "Once per turn: coin → Rise 1.",
-          reward: "Rise your Outcast 2.",
-        },
-      ];
-
-      const DECK = [
-        {
-          title: "Fixer",
-          line: "any",
-          glyph: "⎔",
-          slots: [
-            {
-              text: "Recruit 1.",
-              note: "Move the cube onto another empty cube on this line.",
-            },
-          ],
-          intrigue: "Retooling. Move up to 2 socketed cubes to other cards in your lines.",
-          keep: "1 coin",
-        },
-        {
-          title: "Bribe",
-          line: "citizen",
-          glyph: "⬢",
-          slot: true,
-          play: "Your next card played into this line costs nothing.",
-          intrigue: "Peek at one card in an opponent's hand.",
-          keep: "1 coin",
-        },
-        {
-          title: "Smuggler",
-          line: "outcast",
-          glyph: "⟁",
-          slot: true,
-          play: "Rise 1.",
-          intrigue: "Gain 1 coin for each space your Outcast Rose this round.",
-          keep: "1 coin",
-        },
-        {
-          title: "Embezzler",
-          line: "citizen",
-          glyph: "⏣",
-          slot: true,
-          play: "Gain 1 coin.",
-          intrigue: "Audit. Gain 1 coin for each card in your Citizen line.",
-          keep: "1 coin",
-        },
-        {
-          title: "Fence",
-          line: "outcast",
-          glyph: "⌖",
-          slot: true,
-          play: "Sink: Gain 2 coin.",
-          intrigue: "If any other Outcast sits above yours, Rise your Outcast 1.",
-          keep: "1 coin",
-        },
-        {
-          title: "Whisper",
-          line: "outcast",
-          glyph: "✧",
-          slot: true,
-          play: "Draw 1 card.",
-          intrigue: "Resolve the Play effect of one card in your discard pile.",
-          keep: "1 coin",
-        },
-        {
-          title: "Agitator",
-          line: "outcast",
-          glyph: "⌬",
-          slots: [
-            { text: "Sink your Citizen: Rise your Outcast." },
-            { text: "Gain 1 coin.", note: "Recruit in the same line can come here." },
-          ],
-          intrigue: "If your Outcast is within 3 spaces of your Citizen, gain 4 coin.",
-          keep: "1 coin",
-        },
-      ];
-
-      // Same slotted-card template as DECK — still recruits a cube — but also
+      // Same slotted-card template as DECK — still slots a cube — but also
       // charges coin up front. Priced on ~1 coin per Rise-step of effect on
       // top of the cube, so the four samples trace a cheap-to-priced curve.
       const MARKET = [
@@ -675,7 +572,7 @@
           glyph: "☍",
           slot: true,
           cost: 2,
-          play: "1 coin: Draw 1 card, Recruit 1.",
+          play: "Pay 1 coin → Draw 1 card.",
           intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
           keep: "1 coin",
         },
@@ -695,7 +592,7 @@
           glyph: "⚖",
           slot: true,
           cost: 3,
-          play: "Sink your Citizen 2 and gain 4 coin.",
+          play: "Sink your Citizen 2 → gain 4 coin.",
           intrigue: "Gain 1 coin for each card in your Citizen line.",
           keep: "1 coin",
         },
@@ -774,7 +671,7 @@
       }
 
       function cardMarkup(card) {
-        // Three readings of "cube → destination": a multi-slot card fires a
+        // Three readings of "cube to destination": a multi-slot card fires a
         // separate effect per socket it holds a cube in; a slotted card fires
         // its one effect off the one cube it recruits; a slotless card routes
         // the cube on to the character instead.
@@ -784,7 +681,6 @@
                 (slot) => `
              <div class="cost-line slot-row">
                <span class="socket">Cube</span>
-               <span class="cost-arrow">→</span>
                <p class="block-text">
                  ${withIcons(slot.text)}
                  ${slot.note ? `<span class="slot-note">${escapeHtml(slot.note)}</span>` : ""}
@@ -795,13 +691,11 @@
           : card.slot
           ? `<div class="cost-line">
                <span class="socket">Cube</span>
-               <span class="cost-arrow">→</span>
                <p class="block-text">${withIcons(card.play)}</p>
              </div>`
           : `<p class="block-text">${withIcons(card.play)}</p>
              <span class="route">
                <span class="socket">Cube</span>
-               <span class="cost-arrow">→</span>
                <span class="route-dest">Character</span>
              </span>`;
         const intrigue = SHOW_INTRIGUE
@@ -811,7 +705,7 @@
              </section>`
           : "";
 
-        // Market cards are bought from a market spot for coin before they ever
+        // Noodle Shop cards are bought for coin before they ever
         // reach your hand — everything else follows the exact same slotted-card
         // template as the starter deck, still recruiting and socketing a cube to play.
         const priceStrip = card.cost

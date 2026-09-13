@@ -103,6 +103,19 @@
         color: #ecd9ab;
       }
 
+      .concept-art {
+        margin: -20px 0 46px;
+      }
+
+      .concept-art img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border: 1px solid rgba(233, 196, 119, 0.35);
+        border-radius: 8px;
+        box-shadow: 0 18px 36px rgba(0, 0, 0, 0.35);
+      }
+
       section.block {
         margin: 0 0 40px;
       }
@@ -242,6 +255,7 @@
         <nav class="nav-links">
           <a class="nav-link" href="deck.html">Cards <span class="chev">→</span></a>
           <a class="nav-link" href="board.html">Board <span class="chev">→</span></a>
+          <a class="nav-link" href="rules.html">Rules <span class="chev">→</span></a>
         </nav>
       </header>
 
@@ -251,6 +265,10 @@
         sides from the shadows, engineer a silent coup, and eliminate your rivals to seize absolute
         control.
       </p>
+
+      <figure class="concept-art">
+        <img src="box.png" alt="Aeropolis city with a central glass spire and elevated train" />
+      </figure>
 
       <section class="block">
         <h2>The Dynamic</h2>
@@ -266,18 +284,16 @@
         <h2>Central Track</h2>
         <p>
           A central vertical track runs along the spire of the city board. Each player places their
-          Citizen token at the top and their Outcast token at the bottom of this track. The game ends
-          when they meet (or after a number of turns).
-        </p>
-        <p>
-          The higher up the track the two characters meet, the more Victory Points (VPs) the player
-          scores. VPs might be scored by other means.
+          Citizen token at the top and their Outcast token at the bottom of this track. The Citizen
+          can lose status by moving down, while the Outcast can move up. The game ends when a
+          player's Citizen and Outcast meet. The higher they meet on the track, the more Victory
+          Points the player scores; other effects may also award VPs.
         </p>
         <h3>Track Regress as a Currency</h3>
         <p>
-          Players can spend progress by moving a character down the track to generate resources (e.g.
-          to buy more cards or activate effects). Descending is necessary, but lowers your endgame VP
-          yield and might reduce access to certain actions.
+          Players can spend status by moving a character down the track to generate resources or
+          activate effects. A character can later move back up. Moving down may reduce the final
+          meeting score or access to certain actions.
         </p>
       </section>
 
@@ -293,8 +309,8 @@
           <div class="card-note citizen">
             <h4>Played cards</h4>
             <p>
-              Executed in a character line, socketed with cubes, or played face down as Intrigue
-              (traps/bribes).
+              Played into a character line and given a cube socket. Slotting takes a cube from a
+              location; card effects can then move it. Face-down Intrigue is parked for now.
             </p>
           </div>
           <div class="card-note outcast">
@@ -307,52 +323,10 @@
         </div>
       </section>
 
-      <section class="block">
-        <h2>Going to Locations</h2>
-        <p>
-          <strong>Board reservoirs (0–2 cubes):</strong> board locations (The Rust Bar, The High
-          Forum, The Market, etc.) each hold 0–2 Agent cubes and automatically replenish each
-          round. A location can only be used while it has an available cube; once its cubes are gone,
-          it is unavailable until the next replenishment.
-        </p>
-        <p>
-          <strong>Recruiting an Agent:</strong> to use a location, recruit one of its available cubes
-          and socket it onto the card you played in your line.
-        </p>
-      </section>
-
-      <section class="block">
-        <h2>Turn Sequence</h2>
-        <ol class="steps">
-          <li>
-            <h4>Draw phase</h4>
-            <p>Everybody draws a hand (4 cards) from their deck of 7 (3 cards left).</p>
-          </li>
-          <li>
-            <h4>Action phase — going around the table for each player</h4>
-            <p>
-              If you wish, end your turn and go to the discard phase. Otherwise: play 1 card to the
-              Citizen or Outcast line, "recruit" 1 cube (mandatory) from the board to socket into the
-              played card, then activate the effect of the card and the location in any order.
-            </p>
-          </li>
-          <li>
-            <h4>Discard phase</h4>
-            <p>Discard your remaining hand to trigger a bonus (up the coin track?).</p>
-          </li>
-          <li>
-            <h4>Resolution &amp; reset</h4>
-            <p>
-              Replenish board location cubes (typically 1). Random effects or the number of players
-              might vary the amount.
-            </p>
-          </li>
-        </ol>
-      </section>
-
       <footer class="foot-nav">
         <a class="nav-link" href="deck.html">Cards <span class="chev">→</span></a>
         <a class="nav-link" href="board.html">Board <span class="chev">→</span></a>
+        <a class="nav-link" href="rules.html">Rules <span class="chev">→</span></a>
       </footer>
     </div>
   </body>
