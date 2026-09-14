@@ -160,6 +160,34 @@
 
       .term p { margin: 0; font-size: 13.5px; }
 
+      .revolution-table {
+        width: 100%;
+        margin: 18px 0;
+        border-collapse: collapse;
+        background: rgba(255, 255, 255, 0.04);
+      }
+
+      .revolution-table th,
+      .revolution-table td {
+        padding: 10px 12px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        text-align: left;
+        vertical-align: top;
+      }
+
+      .revolution-table th {
+        color: var(--gold);
+        font-size: 11px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .revolution-table td {
+        color: #c3ccd2;
+        font-size: 13px;
+        line-height: 1.45;
+      }
+
       .draft-note {
         color: #d9bd78;
       }
@@ -301,15 +329,24 @@
         <h2>The Revolution</h2>
         <p>
           When a player's Citizen and Outcast meet on the Spire, the Revolution begins immediately
-          for everyone. The player who triggered it gains a temporary advantage: e.g. gain 2 coins. 
-          All players flip one of their characters to its Revolution side;
+          for everyone. The player who triggered it gains 2 coins. All players flip one of their
+          characters to its Revolution side;
           the Revolution side changes the character's power for the rest of the game.
         </p>
         <p>
-          The game continues with the same one-action turn structure. During the Revolution, a player
-          may play a normal card face down into either line as an <strong>Intrigue</strong>. 
-          Each Intrigue card has a conflict value. At the end of each round, resolve all Intrigues one by one at the current
-          Revolution site: the train's current stop. The highest total wins the site (TBD what that means).
+          The game continues with the same one-action turn structure. Normal face-up card play is
+          unchanged. The new Revolution option is that a player may play a normal card face down into
+          either line as an
+          <strong>Intrigue</strong>. Slot a cube from an eligible location and place it on top of the
+          face-down card. The card and cube stay committed to that line until the Intrigue is
+          resolved.
+        </p>
+        <p>
+          At the end of each round, the train's current stop becomes the Revolution site. Reveal and
+          resolve every eligible Intrigue there, one at a time, in descending conflict value. Resolve
+          the Intrigue text even if that card does not win. The player with the highest conflict value,
+          including Leader bonuses, wins the site. Discard the resolved Intrigue cards and return their
+          cubes to the supply.
         </p>
         <p>
           The current site determines which Intrigue cards may contest it. Citizen locations accept
@@ -317,13 +354,47 @@
           accept either line. A passenger who disembarks at the site may use either line.
         </p>
         <p>
-          Each location has one optional Revolution advantage. A player may pay its cost when their
-          Intrigue contests that site. First-pass examples: the High Forum costs 2 coins for +3
-          conflict value.
+          The winner receives the current site's Revolution reward. The location's normal reward is
+          still resolved through normal face-up play; the Revolution reward is received only by the
+          player who wins the Intrigue conflict.
         </p>
+        <table class="revolution-table">
+          <thead>
+            <tr>
+              <th>Site</th>
+              <th>Winner's reward</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>High Forum</td>
+              <td>Rise your Citizen 2 and gain 3 coins.</td>
+            </tr>
+            <tr>
+              <td>Counting House</td>
+              <td>Gain 5 coins.</td>
+            </tr>
+            <tr>
+              <td>Rust Bar</td>
+              <td>Rise your Outcast 2 and force one opponent to discard 1 coin.</td>
+            </tr>
+            <tr>
+              <td>Scrapyard</td>
+              <td>Return one discarded card to your hand and gain 2 coins.</td>
+            </tr>
+            <tr>
+              <td>Noodle Shop</td>
+              <td>Take one available Noodle Shop card for free.</td>
+            </tr>
+            <tr>
+              <td>Cable Lift</td>
+              <td>Rise your Outcast 2 and draw 2 cards.</td>
+            </tr>
+          </tbody>
+        </table>
         <p class="draft-note">
           The Revolution is a second phase, not the end of the game. The exact Leader powers,
-          Intrigue values, location costs, and Revolution rewards are playtest values.
+          Intrigue values, and Revolution rewards are playtest values.
         </p>
       </section>
 
@@ -356,9 +427,8 @@
       <section>
         <h2>End Of The Game</h2>
         <p>
-          The game ends when a player's when the revolution is over (4 conflict sites have been resolved). 
-          Players score Victory Points for their final Spire meeting position,
-             plus any other scoring effects.
+           The game ends after 4 Revolution sites have been resolved. Players score Victory Points for
+           their final Spire meeting position, plus any other scoring effects.
         </p>
         <p class="draft-note">Do not treat the current card values or scoring curve as final.</p>
       </section>
