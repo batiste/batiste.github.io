@@ -233,12 +233,12 @@
       <section>
         <h2>Setup</h2>
         <ol class="steps">
-          <li>Give each player one Citizen character and one Outcast character.</li>
-          <li>Place the Citizen at the top of the Spire and the Outcast at the bottom.</li>
+          <li>Each player get one Citizen character and one Outcast character cards (draft).</li>
+          <li>Each player places their Citizen token at the top of the Spire and their Outcast token at the bottom.</li>
           <li>Give each player the current example starter deck of 7 cards.</li>
           <li>Give each player 2 coins.</li>
           <li>Create a deck of 6 random Conflict cards.</li>
-          <li>Fill each board location with up to 2 cubes.</li>
+          <li>Fill each board location with up to 2 cubes (mechanism TBD).</li>
           <li>Place the train at its starting stop and make its seats available.</li>
         </ol>
         <p class="draft-note">The character pool, player count, and exact starting setup are still playtest parameters.</p>
@@ -249,51 +249,58 @@
         <ol class="steps">
           <li><strong>Draw:</strong> each player draws 4 cards from their deck.</li>
           <li>
-            <strong>Action:</strong> in turn order, each player takes exactly 1 action. After that
-            action, play passes to the next player.
+            <strong>Action:</strong> in turn order, each player takes one turn — Play, Discard, or
+            Intrigue (see Taking An Action) — until every player has discarded and has no committed
+            card left to resolve.
           </li>
           <li>
-            <strong>Discard:</strong> a player may pass instead of taking an action. That player
-            discards their remaining hand and resolves its Keep effects. They do not take further
-            actions this round. After every player has completed their action or passed, all remaining
-            hands are discarded before the conflicts resolve.
-          </li>
-          <li>
-            <strong>Replenish:</strong> after every player has passed, add 1 cube to each location,
-            up to 2, and advance the train by 1 stop. Players empty their lines: discard every
-            card in them, face-up or face-down, and return their cubes to the supply.
+            <strong>Replenish:</strong> add 1 cube to each location, up to 2, and advance the train
+            by 1 stop. Empty every line: discard every card in it, face-up or face-down, and return
+            their cubes to the supply.
           </li>
         </ol>
       </section>
 
       <section>
         <h2>Taking An Action</h2>
-        <p>
-          The normal card action is to play 1 card into a line. Choose the line, pay that line's play
-          cost, and <strong>Slot 1</strong> from an eligible location. Resolve the location reward
-          and the card effect in either order. Every played card has a cube socket, and the slotted
-          cube starts there.
+        <p>Each turn is one of three actions.
+          Each player must take an action, until they have nothing to do.
+
         </p>
+
+        <h3>Play</h3>
         <p>
-          A card marked <strong>Any</strong> may be played into either line. A Citizen card normally
-          belongs in the Citizen line, and an Outcast card normally belongs in the Outcast line.
-          Train access overrides this restriction for a passenger who disembarks at the current stop.
+          Play 1 card into a line. Pay that line's play cost, then <strong>Recruit</strong> 1 cube
+          from an eligible location. Then, depending on whether you played the card face up or face
+          down:
         </p>
+        <ul class="steps">
+          <li>
+            <strong>Face up:</strong> Slot the cube in the card's socket and resolve the card's effect.
+          </li>
+          <li>
+            <strong>Face down (Intrigue):</strong> Sink that line's character 1 as a cost, and place the cube
+            on the top of the card (see Conflict).
+          </li>
+        </ul>
+
+        <h3>Discard</h3>
         <p>
-          Card effects may move a slotted cube from its current socket to the character anchoring
-          that line or to another empty card socket. A card effect may also change a character's
-          position, draw cards, gain coins, or modify another game element.
+          If you hold any cards, you may spend your turn discarding your remaining hand and resolving its
+          Keep effects.
         </p>
+
+        <h3>Intrigue</h3>
         <p>
-          Boarding the train is an action and uses an available seat. Disembarking is a card-play
-          action: play the card at the train's current stop, take the cube from the train instead of
-          from the location, and resolve the stop's reward. The location does not need to contain a
-          cube. A passenger may therefore disembark at an empty location.
+          When you have no cards in hand, if you have committed face-down cards, spend 1 turn resolving one of
+          them. Choose the rightmost face-down card in your line, flip it face up, and choose where
+          to socket the cube: the card's normal socket, or the intrigue socket.
         </p>
+
       </section>
 
       <section>
-        <h2>Locations And Cubes</h2>
+        <h2>Locations and Access</h2>
         <p>
           Each location holds 0–2 cubes. A location is available only while it has at least 1 cube.
           Citizen locations are eligible when playing into the Citizen line. Outcast locations are
@@ -301,67 +308,72 @@
           are eligible for either line.
         </p>
         <p>
-          If no eligible location has a cube, you usually cannot play the card. When you Slot 1,
+          If no eligible location has a cube, you usually cannot play the card. When you Recruit,
           take the cube first and resolve that location's reward. A passenger who disembarks uses the
           train's cube instead, so the stop may be empty. The card's socket effect then resolves
-          according to the card text.
+          normally.
+        </p>
+        <p>
+          A card marked <strong>Any</strong> may be played into either line. A Citizen card normally
+          belongs in the Citizen line, and an Outcast card normally belongs in the Outcast line.
+          Train access overrides this restriction for a passenger who disembarks at the current stop.
         </p>
         <p>
           The Noodle Shop is the shared location where cards may be bought with coins before they
-          enter a player's hand. Its cards are provisional examples and use the same play process as
-          starter cards.
+          enter a player's discard pile.
         </p>
       </section>
 
       <section>
         <h2>The Train</h2>
+        <p>The train has a limited number of seats.</p>
+
+        <h3>Boarding</h3>
         <p>
-          The train has a limited number of seats. Boarding costs 1 action. Disembarking costs the
-          passenger's card-play action: play at the train's current stop, take the cube from the train
-          instead of the location, and resolve the stop's reward. A passenger who disembarks may use
-          that stop even when its normal line restriction does not match their card, such as playing
-          an Outcast card into the Citizen line.
+          To board the train, it must be at a location with a station: play a card in the
+          appropriate line, take your colored cube from your reserve, and place it in the train's
+          socket. If you board you do not pick a cube from that location.
         </p>
+
+        <h3>Disembarking</h3>
         <p>
-          The train advances 1 stop during Replenish. When it completes a full circuit, each passenger
-          gains 1 coin. Additional train interactions and bonuses remain open for playtesting.
+          To disembark the train, it must be at a location with a station: play a card in the
+          appropriate line, take the cube from the train's socket and place it in the card's
+          socket, then resolve that location's reward. If you disembark you do not pick a cube
+          from that location. A passenger who disembarks may use that stop even when its normal
+          line restriction does not match their card, such as playing an Outcast card into the
+          Citizen line.
+        </p>
+
+        <p>
+          The train advances 1 stop during Replenish. When it completes a full circuit, each
+          passenger gains 1 coin. Additional train interactions and bonuses remain open for
+          playtesting.
         </p>
       </section>
 
       <section>
         <h2>Conflict</h2>
         <p>
-          Each round has one conflict. It happens before the Revolution and is the main source of
-          player interaction from the beginning of the game.
+          Each new round a new conflict is revealed and placed on the board.
         </p>
         <p>
-          During the action phase, a player may play one of their normal cards face down into the
-          Citizen or Outcast line as an <strong>Intrigue</strong>. Each card has an Intrigue value.
-          This costs the same as a normal play — pay that line's play cost and Slot 1 from an
-          eligible location — plus Sink the line's character 1. Place the cube on top of the
-          face-down card. The card and cube stay committed until the conflict resolves.
+          A player commits to the conflict with the Play action: play a normal card face down into
+          the Citizen or Outcast line as an <strong>Intrigue</strong> (see Taking An Action).
         </p>
         <p>
-          At the end of each round, resolve the face-down cards one at a
-          time, going around the table. Each player's their rightmost
-          face-up card in a line of their choice. They may either slot the cube in the normal socket, or in the bottom one for its Intrigue value.
-          After every committed card is resolved, the highest total wins.
+          Resolve committed cards one at a time, going around the table, with the Intrigue action
+          (see Taking An Action): a card's owner chooses score the card's
+          Intrigue value, or move the cube into its normal socket. Once every
+          committed card is resolved, the highest total wins.
         </p>
         <p>
-          A separate Conflict-card deck defines the reward and special condition for the round. At
-          the start of each round, reveal one Conflict card. It is not played from a player's hand
-          and does not occupy a line. The normal cards players choose to commit provide the
-          variability: each has its own Intrigue value.
-        </p>
-        <p>
-          A player may commit at most one Intrigue per round. This still creates two decisions:
-          which card to commit, and which line to play it into, since that line's character takes
-          the Sink cost.
+          There is no limit on committed cards. Each needs its own Intrigue turn to resolve, one at
+          a time.
         </p>
 
         <p class="draft-note">
-          Conflict is the primary interaction system. It does not require the Revolution, Leader sides,
-          or the train's position.
+          Conflict is the primary interaction system.
         </p>
       </section>
 
@@ -372,18 +384,10 @@
           for everyone. The player who started the revolution raises its Citizen and Outcast by 2. Each player chooses one character
           as their Leader and flips that character to its Revolution side; this changes the
           character's power for the rest of the game. Replace the Conflict pile 
-          with a pile of 3 random Revolution Conflict cards.
-        </p>
-        <p>
-          The Revolution does not replace or add a separate conflict system. The conflict continues
-          using the normal rules. For this first draft, the Revolution is a global
-          second phase that changes the stakes and activates the Leaders; its additional rewards and
-          effects remain open for playtesting.
+          with a pile of 3 random Revolution Conflict cards (playtest: replace the current conflict).
         </p>
         <p class="draft-note">
-          The Revolution is a second phase, not the end of the game. The exact Leader powers and
-          Revolution rewards are playtest values. The train remains movement and access; it does not
-          determine the conflict.
+          The Revolution is a second phase, not the end of the game.
         </p>
       </section>
 
@@ -391,12 +395,16 @@
         <h2>Glossary</h2>
         <div class="grid">
           <article class="term">
-            <h3>Slot</h3>
-            <p>Take 1 cube from an eligible location, resolve its reward, and place the cube in the played card's socket. Slotting is part of playing a card, not a separate action.</p>
+            <h3>Recruit</h3>
+            <p>Take 1 grey cube from an eligible location and resolve its reward. Recruiting is part of playing a card, not a separate action.</p>
           </article>
           <article class="term">
-            <h3>Recruit</h3>
-            <p>Fixer's card effect. Move the cube in Fixer's socket onto the character anchoring that line. Recruit does not take a new cube from a location.</p>
+            <h3>Slot</h3>
+            <p>Place a cube in a card's own socket. A face-up card slots its recruited cube; other effects may slot a cube already in play.</p>
+          </article>
+          <article class="term">
+            <h3>Move</h3>
+            <p>Fixer's card effect. Move the cube in Fixer's socket onto the character anchoring that line. Move does not recruit a new cube from a location.</p>
           </article>
           <article class="term">
             <h3>Rise</h3>
@@ -405,10 +413,6 @@
           <article class="term">
             <h3>Sink</h3>
             <p>Move the named character 1 space downward on the Spire, toward the bottom.</p>
-          </article>
-          <article class="term">
-            <h3>Pass</h3>
-            <p>Take no action, discard your remaining hand, and wait for the next round.</p>
           </article>
         </div>
       </section>

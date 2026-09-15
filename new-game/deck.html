@@ -18,6 +18,7 @@
         --brass: #b0812f;
         --verdigris: #2f7d74;
         --rust: #9e4a2c;
+        --revolution: #8f1d1d;
       }
 
       * { box-sizing: border-box; }
@@ -127,6 +128,7 @@
       .card[data-line="citizen"] { --accent: var(--brass); }
       .card[data-line="outcast"] { --accent: var(--verdigris); }
       .card[data-line="any"]     { --accent: var(--rust); }
+      .card.revolution           { --accent: var(--revolution); }
 
       .card-head {
         display: flex;
@@ -590,7 +592,7 @@
       <span class="note">Identical for every player in this draft.</span>
       <span class="note">
         Card procedures and terminology are defined in the <a href="rules.html">draft rules</a>.
-        Fixer's <strong>Recruit</strong> effect moves its cube onto the character anchoring that line.
+        Fixer's <strong>Move</strong> effect moves its cube onto the character anchoring that line.
 
       </span>
     </h2>
@@ -615,6 +617,15 @@
       </span>
     </h2>
     <ul class="deck" id="conflicts"></ul>
+
+    <h2 class="section-head">
+      Revolution Conflict Cards
+      <span class="note">
+        Replaces the Conflict pile once the Revolution begins — 3 of these shuffled in instead.
+        Same shape as a Conflict card, raised stakes.
+      </span>
+    </h2>
+    <ul class="deck" id="revolution-conflicts"></ul>
 
     <script src="deck-data.js"></script>
     <script>
@@ -695,6 +706,25 @@
           glyph: "⛨",
           reward: "Winner: gain 4 coin.",
           condition: "The player with the lowest Citizen may not commit an Intrigue here.",
+        },
+      ];
+
+      // Replaces the Conflict pile once the Revolution begins (rules: "a pile of 3 random
+      // Revolution Conflict cards"). Same Reward/Condition shape, raised stakes.
+      const REVOLUTION_CONFLICTS = [
+        {
+          title: "The Tribunal",
+          line: "citizen",
+          glyph: "⚡",
+          reward: "Winner: Rise your Leader 3 and gain 4 coin.",
+          condition: "Every other player Sinks their Leader 1.",
+        },
+        {
+          title: "Blood In The Streets",
+          line: "outcast",
+          glyph: "☠",
+          reward: "Winner: Rise your Leader 4.",
+          condition: "Each losing player discards their entire hand.",
         },
       ];
 
@@ -833,13 +863,13 @@
         `;
       }
 
-      function conflictCardMarkup(card) {
+      function conflictCardMarkup(card, revolution = false) {
         return `
           <li>
-            <article class="card conflict" data-line="${escapeHtml(card.line)}">
+            <article class="card conflict${revolution ? " revolution" : ""}" data-line="${escapeHtml(card.line)}">
               <header class="card-head">
                 <h2 class="card-title">${escapeHtml(card.title)}</h2>
-                <span class="line-badge">Conflict</span>
+                <span class="line-badge">${revolution ? "Revolution Conflict" : "Conflict"}</span>
               </header>
               <div class="card-art"><span class="art-glyph">${card.glyph}</span></div>
               <div class="card-body">
@@ -861,7 +891,9 @@
         CHARACTERS.map(characterMarkup).join("");
       document.getElementById("deck").innerHTML = DECK.map(cardMarkup).join("");
       document.getElementById("market").innerHTML = MARKET.map(cardMarkup).join("");
-      document.getElementById("conflicts").innerHTML = CONFLICTS.map(conflictCardMarkup).join("");
+      document.getElementById("conflicts").innerHTML = CONFLICTS.map((c) => conflictCardMarkup(c)).join("");
+      document.getElementById("revolution-conflicts").innerHTML =
+        REVOLUTION_CONFLICTS.map((c) => conflictCardMarkup(c, true)).join("");
     </script>
   </body>
 </html>
