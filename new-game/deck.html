@@ -298,6 +298,37 @@
         color: #8fa3ab;
       }
 
+      .intrigue-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 2cqw;
+      }
+
+      .intrigue-head .block-label {
+        flex: 1;
+        margin: 0;
+      }
+
+      .block-intrigue .socket {
+        border-color: rgba(217, 224, 228, 0.35);
+        color: rgba(217, 224, 228, 0.55);
+      }
+
+      .intrigue-value {
+        flex: none;
+        width: 13cqw;
+        height: 13cqw;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        background: var(--paper);
+        color: var(--night);
+        font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
+        font-weight: 700;
+        font-size: 7.5cqw;
+      }
+
       .keep-strip {
         display: flex;
         align-items: center;
@@ -371,6 +402,25 @@
       /* Tinted like the deck cards' keep strip, marking it as the payoff block. */
       .block-full {
         background: var(--paper-edge);
+      }
+
+      /* ---------- conflict cards ---------- */
+
+      /* Not played from hand: same paper front, just Reward + Condition, no socket. */
+      .card.conflict .card-art {
+        height: 26cqh;
+      }
+
+      .card.conflict .art-glyph {
+        font-size: 24cqh;
+      }
+
+      .card.conflict .block {
+        padding: 3cqw 4cqw;
+      }
+
+      .card.conflict .block + .block {
+        border-top: 1px dashed rgba(20, 24, 28, 0.25);
       }
 
       /* Escalating price of playing further cards into this character's line. */
@@ -514,7 +564,7 @@
         <h1>Aeropolis — Prototype Cards</h1>
         <p>
           Two characters and an example seven-card starter deck. Each player begins with 2 coins. A
-          deck card reads two ways: played into a character line, or kept in hand through the discard phase. Every played card has a cube socket. The face-down Intrigue mode is
+          deck card reads two ways: played into a character line, or kept in hand until the discard phase. Every played card has a cube socket. The face-down Intrigue mode is
           parked for now to keep the core loop testable — its text is still in the file behind the
           <code>SHOW_INTRIGUE</code> flag. All numbers are first-pass placeholders. Print at true
           57 × 89 mm with ⌘P.
@@ -556,11 +606,21 @@
     </h2>
     <ul class="deck" id="market"></ul>
 
+    <h2 class="section-head">
+      Conflict Cards
+      <span class="note">
+        One revealed at the start of each round from a separate Conflict-card deck. Not played
+        from hand and not part of a line — it only sets that round's <strong>Reward</strong> and
+        <strong>Condition</strong> for the conflict.
+      </span>
+    </h2>
+    <ul class="deck" id="conflicts"></ul>
+
     <script src="deck-data.js"></script>
     <script>
       // Intrigue is parked while the core loop gets tested. The text below is kept
       // intact — flip this to true to put the block back on every card.
-      const SHOW_INTRIGUE = false;
+      const SHOW_INTRIGUE = true;
 
       // Same slotted-card template as DECK — still slots a cube — but also
       // charges coin up front. Priced on ~1 coin per Rise-step of effect on
@@ -573,6 +633,7 @@
           slot: true,
           cost: 2,
           play: "Pay 1 coin → Draw 1 card.",
+          intrigueValue: 2,
           intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
           keep: "1 coin",
         },
@@ -583,6 +644,7 @@
           slot: true,
           cost: 2,
           play: "Rise your Outcast 2.",
+          intrigueValue: 2,
           intrigue: "Rise your Outcast 1 for each other player whose Outcast sits below yours.",
           keep: "1 coin",
         },
@@ -593,6 +655,7 @@
           slot: true,
           cost: 3,
           play: "Sink your Citizen 2 → gain 4 coin.",
+          intrigueValue: 1,
           intrigue: "Gain 1 coin for each card in your Citizen line.",
           keep: "1 coin",
         },
@@ -603,8 +666,35 @@
           slot: true,
           cost: 5,
           play: "Rise your Citizen 1, Rise your Outcast 1, Gain 2 coin.",
+          intrigueValue: 2,
           intrigue: "If your Citizen and Outcast are within 3 spaces of each other, gain 4 coin.",
           keep: "1 coin",
+        },
+      ];
+
+      // Not part of a player's hand: one Citizen and one Outcast card are revealed from this
+      // deck at the start of each round to set that round's stakes for the two conflicts.
+      const CONFLICTS = [
+        {
+          title: "Show Trial",
+          line: "citizen",
+          glyph: "⚔",
+          reward: "Winner: Rise your Citizen 2.",
+          condition: "Ties are won by the Citizen nearer the top of the Spire.",
+        },
+        {
+          title: "Underground Vote",
+          line: "outcast",
+          glyph: "⛓",
+          reward: "Winner: Rise your Outcast 2.",
+          condition: "Each losing player also gains 1 coin.",
+        },
+        {
+          title: "Public Inquiry",
+          line: "citizen",
+          glyph: "⛨",
+          reward: "Winner: gain 4 coin.",
+          condition: "The player with the lowest Citizen may not commit an Intrigue here.",
         },
       ];
 
@@ -700,8 +790,11 @@
              </span>`;
         const intrigue = SHOW_INTRIGUE
           ? `<section class="block block-intrigue">
-               <p class="block-label">Intrigue — end of round</p>
-               <p class="block-text">${withIcons(card.intrigue)}</p>
+               <div class="intrigue-head">
+                 <span class="socket">Cube</span>
+                 <p class="block-label">Intrigue — end of round</p>
+                 <span class="intrigue-value" title="Intrigue value">${card.intrigueValue}</span>
+               </div>
              </section>`
           : "";
 
@@ -731,9 +824,33 @@
                 </section>
                 ${intrigue}
                 <footer class="keep-strip">
-                  <span class="keep-label">Keep in hand</span>
+                  <span class="keep-label">Discard effect</span>
                   <span class="keep-value">${withIcons(card.keep)}</span>
                 </footer>
+              </div>
+            </article>
+          </li>
+        `;
+      }
+
+      function conflictCardMarkup(card) {
+        return `
+          <li>
+            <article class="card conflict" data-line="${escapeHtml(card.line)}">
+              <header class="card-head">
+                <h2 class="card-title">${escapeHtml(card.title)}</h2>
+                <span class="line-badge">Conflict</span>
+              </header>
+              <div class="card-art"><span class="art-glyph">${card.glyph}</span></div>
+              <div class="card-body">
+                <section class="block block-full">
+                  <p class="block-label">Reward</p>
+                  <p class="block-text">${withIcons(card.reward)}</p>
+                </section>
+                <section class="block">
+                  <p class="block-label">Condition</p>
+                  <p class="block-text">${withIcons(card.condition)}</p>
+                </section>
               </div>
             </article>
           </li>
@@ -744,6 +861,7 @@
         CHARACTERS.map(characterMarkup).join("");
       document.getElementById("deck").innerHTML = DECK.map(cardMarkup).join("");
       document.getElementById("market").innerHTML = MARKET.map(cardMarkup).join("");
+      document.getElementById("conflicts").innerHTML = CONFLICTS.map(conflictCardMarkup).join("");
     </script>
   </body>
 </html>
