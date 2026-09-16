@@ -33,7 +33,7 @@ const DECK = [
     ],
     intrigueValue: 1,
     intrigue: "Retooling. Move up to 2 socketed cubes to other cards in your lines.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Bribe",
@@ -43,7 +43,7 @@ const DECK = [
     play: "Your next card played into this line costs nothing.",
     intrigueValue: 1,
     intrigue: "Peek at one card in an opponent's hand.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Smuggler",
@@ -53,7 +53,7 @@ const DECK = [
     play: "Rise your Outcast 1.",
     intrigueValue: 1,
     intrigue: "Gain 1 coin for each space your Outcast Rose this round.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Embezzler",
@@ -63,7 +63,7 @@ const DECK = [
     play: "Gain 1 coin.",
     intrigueValue: 2,
     intrigue: "Audit. Gain 1 coin for each card in your Citizen line.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Fence",
@@ -73,7 +73,7 @@ const DECK = [
     play: "Sink your Outcast 1 → gain 2 coin.",
     intrigueValue: 1,
     intrigue: "If any other Outcast sits above yours, Rise your Outcast 1.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Whisper",
@@ -83,7 +83,7 @@ const DECK = [
     play: "Draw 1 card.",
     intrigueValue: 2,
     intrigue: "Resolve the Play effect of one card in your discard pile.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
   {
     title: "Agitator",
@@ -95,6 +95,6 @@ const DECK = [
     ],
     intrigueValue: 2,
     intrigue: "If your Outcast is within 3 spaces of your Citizen, gain 4 coin.",
-    keep: "1 coin",
+    discardEffect: "1 coin",
   },
 ];

@@ -331,7 +331,7 @@
         font-size: 7.5cqw;
       }
 
-      .keep-strip {
+      .card-footer {
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -342,14 +342,14 @@
         font-size: 3.8cqw;
       }
 
-      .keep-strip .keep-label {
+      .card-footer .footer-label {
         font-weight: 700;
         letter-spacing: 0.14em;
         text-transform: uppercase;
         color: var(--ink-soft);
       }
 
-      .keep-strip .keep-value {
+      .card-footer .footer-value {
         font-weight: 600;
       }
 
@@ -401,7 +401,7 @@
       }
 
 
-      /* Tinted like the deck cards' keep strip, marking it as the payoff block. */
+      /* Tinted like the deck cards' footer strip, marking it as the payoff block. */
       .block-full {
         background: var(--paper-edge);
       }
@@ -423,6 +423,10 @@
 
       .card.conflict .block + .block {
         border-top: 1px dashed rgba(20, 24, 28, 0.25);
+      }
+
+      .block-condition {
+        flex: 1;
       }
 
       /* Escalating price of playing further cards into this character's line. */
@@ -612,8 +616,9 @@
       Conflict Cards
       <span class="note">
         One revealed at the start of each round from a separate Conflict-card deck. Not played
-        from hand and not part of a line — it only sets that round's <strong>Reward</strong> and
-        <strong>Condition</strong> for the conflict.
+        from hand and not part of a line — it sets that round's <strong>Reward</strong> and
+        <strong>Condition</strong> for the conflict, plus the <strong>Refill Bonus</strong> added
+        to Replenish (2 × player count + this card's bonus).
       </span>
     </h2>
     <ul class="deck" id="conflicts"></ul>
@@ -646,7 +651,7 @@
           play: "Pay 1 coin → Draw 1 card.",
           intrigueValue: 2,
           intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
-          keep: "1 coin",
+          discardEffect: "1 coin",
         },
         {
           title: "Stevedore",
@@ -657,7 +662,7 @@
           play: "Rise your Outcast 2.",
           intrigueValue: 2,
           intrigue: "Rise your Outcast 1 for each other player whose Outcast sits below yours.",
-          keep: "1 coin",
+          discardEffect: "1 coin",
         },
         {
           title: "Under the table",
@@ -668,7 +673,7 @@
           play: "Sink your Citizen 2 → gain 4 coin.",
           intrigueValue: 1,
           intrigue: "Gain 1 coin for each card in your Citizen line.",
-          keep: "1 coin",
+          discardEffect: "1 coin",
         },
         {
           title: "Powerbroker",
@@ -679,12 +684,14 @@
           play: "Rise your Citizen 1, Rise your Outcast 1, Gain 2 coin.",
           intrigueValue: 2,
           intrigue: "If your Citizen and Outcast are within 3 spaces of each other, gain 4 coin.",
-          keep: "1 coin",
+          discardEffect: "1 coin",
         },
       ];
 
       // Not part of a player's hand: one Citizen and one Outcast card are revealed from this
       // deck at the start of each round to set that round's stakes for the two conflicts.
+      // `refill` is this card's X in the Replenish formula: 2 × player count + X cubes
+      // added this round (see rules.html — Replenish).
       const CONFLICTS = [
         {
           title: "Show Trial",
@@ -692,6 +699,7 @@
           glyph: "⚔",
           reward: "Winner: Rise your Citizen 2.",
           condition: "Ties are won by the Citizen nearer the top of the Spire.",
+          refill: 1,
         },
         {
           title: "Underground Vote",
@@ -699,6 +707,7 @@
           glyph: "⛓",
           reward: "Winner: Rise your Outcast 2.",
           condition: "Each losing player also gains 1 coin.",
+          refill: 3,
         },
         {
           title: "Public Inquiry",
@@ -706,11 +715,12 @@
           glyph: "⛨",
           reward: "Winner: gain 4 coin.",
           condition: "The player with the lowest Citizen may not commit an Intrigue here.",
+          refill: 2,
         },
       ];
 
       // Replaces the Conflict pile once the Revolution begins (rules: "a pile of 3 random
-      // Revolution Conflict cards"). Same Reward/Condition shape, raised stakes.
+      // Revolution Conflict cards"). Same Reward/Condition/refill shape, raised stakes.
       const REVOLUTION_CONFLICTS = [
         {
           title: "The Tribunal",
@@ -718,6 +728,7 @@
           glyph: "⚡",
           reward: "Winner: Rise your Leader 3 and gain 4 coin.",
           condition: "Every other player Sinks their Leader 1.",
+          refill: 4,
         },
         {
           title: "Blood In The Streets",
@@ -725,6 +736,7 @@
           glyph: "☠",
           reward: "Winner: Rise your Leader 4.",
           condition: "Each losing player discards their entire hand.",
+          refill: 0,
         },
       ];
 
@@ -853,9 +865,9 @@
                   ${playBody}
                 </section>
                 ${intrigue}
-                <footer class="keep-strip">
-                  <span class="keep-label">Discard effect</span>
-                  <span class="keep-value">${withIcons(card.keep)}</span>
+                <footer class="card-footer">
+                  <span class="footer-label">Discard effect</span>
+                  <span class="footer-value">${withIcons(card.discardEffect)}</span>
                 </footer>
               </div>
             </article>
@@ -877,10 +889,14 @@
                   <p class="block-label">Reward</p>
                   <p class="block-text">${withIcons(card.reward)}</p>
                 </section>
-                <section class="block">
+                <section class="block block-condition">
                   <p class="block-label">Condition</p>
                   <p class="block-text">${withIcons(card.condition)}</p>
                 </section>
+                <footer class="card-footer">
+                  <span class="footer-label">Refill Bonus</span>
+                  <span class="footer-value">+${card.refill}</span>
+                </footer>
               </div>
             </article>
           </li>

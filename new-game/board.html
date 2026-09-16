@@ -12,15 +12,17 @@
         --paper-edge: #e2d6c1;
         --night: #1b2126;
 
-        /* Each location owns a colour; its Agent cubes are that colour, so a cube's
-           origin stays readable once it is socketed onto a card. */
+        /* Each location owns a colour, used for its card accent (border, title) and
+           carried by the Spire track token/train seat for its side. Agent cubes
+           themselves are plain grey — see rules.html Glossary. */
         --forum: #b0812f;
         --counting: #2f5d86;
-        --docks: #2f7d74;
+        --den: #a13b3b;
         --bar: #9e4a2c;
         --scrap: #5d7a35;
         --lift: #6a4a86;
         --market: #94406e;
+        --outcast-track: #2f7d74;
       }
 
       * { box-sizing: border-box; }
@@ -60,13 +62,11 @@
         display: block;
       }
 
-      .board-head,
-        padding: 26px 0;
       .turn-strip {
         position: relative;
         z-index: 1;
       }
-        grid-template-columns: minmax(250px, 1fr) minmax(170px, 0.55fr) minmax(250px, 1fr);
+
       .board-head {
         display: flex;
         justify-content: space-between;
@@ -392,7 +392,7 @@
       }
 
       .token.citizen { background: var(--forum); }
-      .token.outcast { background: var(--docks); }
+      .token.outcast { background: var(--outcast-track); }
 
       .track {
         display: flex;
@@ -578,7 +578,7 @@
       }
 
       .seat.filled.citizen { background: var(--forum); }
-      .seat.filled.outcast { background: var(--docks); }
+      .seat.filled.outcast { background: var(--outcast-track); }
 
       .line-rules {
         flex: 1;
@@ -725,9 +725,9 @@
         {
           name: "Gaming Den",
           side: "citizen",
-          accent: "var(--docks)",
-          glyph: "⎔",
-          flavour: "Vats, cranes, and shifts that never end.",
+          accent: "var(--den)",
+          glyph: "⚂",
+          flavour: "Bet your standing. The house always collects.",
           reward: "Sink your Citizen 1: gain 2 coin.",
         },
         {
@@ -846,7 +846,7 @@
                 </div>
               </div>
               <div class="reward">
-                <p class="mini-label">Reward on slotting</p>
+                <p class="mini-label">Reward on Recruit</p>
                 <p class="reward-text">${withIcons(loc.reward)}</p>
               </div>
             </div>

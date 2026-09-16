@@ -254,9 +254,11 @@
             card left to resolve.
           </li>
           <li>
-            <strong>Replenish:</strong> add 1 cube to each location, up to 2, and advance the train
-            by 1 stop. Empty every line: discard every card in it, face-up or face-down, and return
-            their cubes to the supply.
+            <strong>Replenish:</strong> add cubes equal to 2 × the number of players, plus this
+            round's Conflict card's Refill Bonus (see Conflict). Place them 1 at a time around the
+            locations in board order, looping back and skipping any already at 2, until every cube
+            is placed. Advance the train by 1 stop. Empty every line: discard every card in it,
+            face-up or face-down, and return their cubes to the supply.
           </li>
         </ol>
       </section>
@@ -271,8 +273,9 @@
         <h3>Play</h3>
         <p>
           Play 1 card into a line. Pay that line's play cost, then <strong>Recruit</strong> 1 cube
-          from an eligible location. Then, depending on whether you played the card face up or face
-          down:
+          from an eligible location. Recruiting resolves that location's reward; depending on
+          whether you played the card face up or face down, a second effect also resolves — the
+          player chooses which of the two effects to resolve first:
         </p>
         <ul class="steps">
           <li>
@@ -286,8 +289,8 @@
 
         <h3>Discard</h3>
         <p>
-          If you hold any cards, you may spend your turn discarding your remaining hand and resolving its
-          Keep effects.
+          If you hold any cards, you may spend your turn discarding your remaining hand and resolving each
+          card's Discard effect.
         </p>
 
         <h3>Intrigue</h3>
@@ -308,10 +311,11 @@
           are eligible for either line.
         </p>
         <p>
-          If no eligible location has a cube, you usually cannot play the card. When you Recruit,
-          take the cube first and resolve that location's reward. A passenger who disembarks uses the
-          train's cube instead, so the stop may be empty. The card's socket effect then resolves
-          normally.
+          If no eligible location has a cube, you usually cannot play the card. Recruiting takes
+          the cube from the location and resolves that location's reward; slotting places the same
+          cube in the card's socket and resolves the card's effect — the player chooses which of
+          the two to resolve first. A passenger who disembarks uses the train's cube instead, so
+          the stop may be empty; the card's socket effect still resolves the same way.
         </p>
         <p>
           A card marked <strong>Any</strong> may be played into either line. A Citizen card normally
@@ -355,25 +359,16 @@
       <section>
         <h2>Conflict</h2>
         <p>
-          Each new round a new conflict is revealed and placed on the board.
+          Each new round a new conflict is revealed and placed on the board. It sets that round's
+          Reward, Condition, and Refill Bonus (see Round Structure — Replenish).
         </p>
         <p>
-          A player commits to the conflict with the Play action: play a normal card face down into
-          the Citizen or Outcast line as an <strong>Intrigue</strong> (see Taking An Action).
+          A player typically commits to the conflict with a face-down (see Taking An Action).
         </p>
         <p>
-          Resolve committed cards one at a time, going around the table, with the Intrigue action
-          (see Taking An Action): a card's owner chooses score the card's
-          Intrigue value, or move the cube into its normal socket. Once every
-          committed card is resolved, the highest total wins.
-        </p>
-        <p>
-          There is no limit on committed cards. Each needs its own Intrigue turn to resolve, one at
-          a time.
-        </p>
-
-        <p class="draft-note">
-          Conflict is the primary interaction system.
+          Once everybody has passed, it is time to resolve the conflict. A player's total
+          for the conflict is the sum of the Intrigue values of their
+          cards. The highest total wins and claims the reward.
         </p>
       </section>
 
