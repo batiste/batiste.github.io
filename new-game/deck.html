@@ -324,8 +324,8 @@
         display: grid;
         place-items: center;
         border-radius: 50%;
-        background: var(--paper);
-        color: var(--night);
+        background: var(--revolution);
+        color: var(--paper);
         font-family: "Avenir Next Condensed", "Futura", Impact, sans-serif;
         font-weight: 700;
         font-size: 7.5cqw;
@@ -570,9 +570,10 @@
         <h1>Aeropolis — Prototype Cards</h1>
         <p>
           Two characters and an example seven-card starter deck. Each player begins with 2 coins. A
-          deck card reads two ways: played into a character line, or kept in hand until the discard phase. Every played card has a cube socket. The face-down Intrigue mode is
-          parked for now to keep the core loop testable — its text is still in the file behind the
-          <code>SHOW_INTRIGUE</code> flag. All numbers are first-pass placeholders. Print at true
+          deck card reads two ways: played into a character line, 
+          or kept in hand until the discard phase. Every played card has a cube socket. 
+          The face-down Intrigue mode is
+          Print at true
           57 × 89 mm with ⌘P.
         </p>
       </div>
@@ -596,8 +597,6 @@
       <span class="note">Identical for every player in this draft.</span>
       <span class="note">
         Card procedures and terminology are defined in the <a href="rules.html">draft rules</a>.
-        Fixer's <strong>Move</strong> effect moves its cube onto the character anchoring that line.
-
       </span>
     </h2>
     <ul class="deck" id="deck"></ul>
@@ -648,7 +647,7 @@
           glyph: "☍",
           slot: true,
           cost: 2,
-          play: "Pay 1 coin → Draw 1 card.",
+          play: "Pay 1 coin → Draw 1 card. Dispatch.",
           intrigueValue: 2,
           intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
           discardEffect: "1 coin",
@@ -740,7 +739,7 @@
         },
       ];
 
-      const LINE_LABEL = { citizen: "Citizen", outcast: "Outcast", any: "Either line" };
+      const LINE_LABEL = { citizen: "Citizen", outcast: "Outcast", any: "Broker" };
 
       function escapeHtml(value) {
         return String(value ?? "")

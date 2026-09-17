@@ -28,7 +28,7 @@ const DECK = [
     glyph: "⎔",
     slots: [
       {
-        text: "Move.", note: "Move 1 cube from this card to another slot in this line."
+        text: "Dispatch.", note: "Move 1 cube from this card to another slot in this line."
       },
     ],
     intrigueValue: 1,
