@@ -160,6 +160,17 @@
 
       .term p { margin: 0; font-size: 13.5px; }
 
+      /* Grey cube: matches the icon used on the cards (deck.html), no image asset. */
+      .cube-icon {
+        display: inline-block;
+        width: 0.85em;
+        height: 0.85em;
+        border-radius: 0.18em;
+        background: linear-gradient(135deg, #c9cfd4, #8b939a 68%, #6b7278);
+        box-shadow: inset 0 0 0 0.07em rgba(20, 24, 28, 0.45);
+        vertical-align: -0.05em;
+      }
+
       .revolution-table {
         width: 100%;
         margin: 18px 0;
@@ -226,8 +237,7 @@
 
       <p class="callout">
         Each player manages a Citizen and an Outcast. Play cards into their two lines, slot cubes
-        from the city, and decide when to spend status for resources. This is an early draft: values,
-        card effects, scoring beyond the Spire, and some train details are still being tested.
+        from the city, and decide when to spend status for resources. This is an early draft: everything is subject to chance.
       </p>
 
       <section>
@@ -375,10 +385,17 @@
       <section>
         <h2>The Revolution</h2>
         <p>
-          When a player's Citizen and Outcast meet on the Spire, the Revolution begins immediately
-          for everyone. The player who started the revolution raises its Citizen and Outcast by 2. Each player chooses one character
+          The Revolution begins immediately when one of those 2 conditions is met:</p>
+        <ul class="steps">
+          <li>A player's Citizen and Outcast meet on the Spire: this players raises his Citizen and Outcast by 2.</li>
+          <li>The Conflict deck is exhausted.</li>
+        </ul>
+        <p>          
+          Each player chooses one character
           as their Leader and flips that character to its Revolution side; this changes the
-          character's power for the rest of the game. Replace the Conflict pile 
+          character's power for the rest of the game.
+          
+          Replace the Conflict pile 
           with a pile of 3 random Revolution Conflict cards (playtest: replace the current conflict).
         </p>
         <p class="draft-note">
@@ -396,8 +413,9 @@
             </p>
           </article>
           <article class="term">
-            <h3>Dispatch</h3>
-            <p>Move the recruit in this card's socket onto the character anchoring that line.</p>
+            <h3>Plant <span class="cube-icon" role="img" aria-label="cube"></span></h3>
+            <p>Take a cube from the supply, and place it in any empty slot in this line: another card's socket, or the character anchoring it.
+            </p>
           </article>
           <article class="term">
             <h3>Rise</h3>

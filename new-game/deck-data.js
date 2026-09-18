@@ -26,11 +26,7 @@ const DECK = [
     title: "Fixer",
     line: "any",
     glyph: "⎔",
-    slots: [
-      {
-        text: "Dispatch.", note: "Move 1 cube from this card to another slot in this line."
-      },
-    ],
+    slots: [{ text: "cube" }],
     intrigueValue: 1,
     intrigue: "Retooling. Move up to 2 socketed cubes to other cards in your lines.",
     discardEffect: "1 coin",
@@ -81,7 +77,7 @@ const DECK = [
     glyph: "✧",
     slot: true,
     play: "Draw 1 card.",
-    intrigueValue: 2,
+    intrigueValue: 1,
     intrigue: "Resolve the Play effect of one card in your discard pile.",
     discardEffect: "1 coin",
   },
