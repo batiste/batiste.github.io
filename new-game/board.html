@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aeropolis — Board Draft</title>
+    <link rel="stylesheet" href="icons.css" />
     <style>
       :root {
         --ink: #14181c;
@@ -331,16 +332,7 @@
         font-weight: 500;
       }
 
-      /* Coin: a plain golden disc drawn in CSS, no image asset. */
-      .coin {
-        display: inline-block;
-        width: 0.8em;
-        height: 0.8em;
-        border-radius: 50%;
-        background: radial-gradient(circle at 36% 30%, #f2d275, #cf9a2a 68%, #a87817);
-        box-shadow: inset 0 0 0 0.055em rgba(96, 64, 8, 0.45);
-        vertical-align: -0.02em;
-      }
+      /* .coin, .coin-num live in icons.css, shared with deck.html. */
 
       /* ---------- the spire ---------- */
 
@@ -720,7 +712,7 @@
           accent: "var(--counting)",
           glyph: "⏣",
           flavour: "Ledgers thick enough to hide a city in.",
-          reward: "Gain 1 coin.",
+          reward: "1 coin.",
         },
         {
           name: "Gaming Den",
@@ -795,10 +787,16 @@
           .replaceAll('"', "&quot;");
       }
 
+      // Any explicit count is folded into the coin icon itself (e.g. "1 coin" or
+      // "2 coin" → a coin showing that number); a bare, uncounted "coin" stays
+      // a plain icon.
       function withIcons(text) {
         return escapeHtml(text).replace(
-          /\bcoin(s?)\b/gi,
-          (match, plural) => `<span class="coin" role="img" aria-label="coin"></span>${plural || ""}`
+          /\b(?:(\d+)\s+)?coin(s?)\b/gi,
+          (match, n, plural) =>
+            n
+              ? `<span class="coin" role="img" aria-label="${n} coin"><span class="coin-num">${n}</span></span>`
+              : `<span class="coin" role="img" aria-label="coin"></span>${plural || ""}`
         );
       }
 
