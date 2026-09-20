@@ -647,7 +647,7 @@
           glyph: "☍",
           slot: true,
           cost: 2,
-          play: "Pay 1 coin → Draw 1 card. cube.",
+          play: "1 coin → Draw 1 card. cube.",
           intrigueValue: 2,
           intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
           discardEffect: "1 coin",
@@ -678,12 +678,15 @@
           title: "Powerbroker",
           line: "any",
           glyph: "⚜",
-          slot: true,
+          slots: [
+            { text: "Rise your Citizen 1, Rise your Outcast 1, 1 coin." },
+            { text: "1 coin." },
+          ],
           cost: 5,
-          play: "Rise your Citizen 1, Rise your Outcast 1, 2 coin.",
+          // play: "",
           intrigueValue: 2,
           intrigue: "If your Citizen and Outcast are within 3 spaces of each other, gain 4 coin.",
-          discardEffect: "1 coin",
+          discardEffect: "2 coin",
         },
       ];
 

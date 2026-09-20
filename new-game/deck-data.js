@@ -16,7 +16,7 @@ const CHARACTERS = [
     glyph: "⌭",
     sockets: 3,
     playCosts: [0, 1, 2, 2],
-    ability: "Once per turn, pay 1 coin → Rise your Outcast 1.",
+    ability: "Once per turn, 1 coin → Rise your Outcast 1.",
     reward: "Rise your Outcast 2.",
   },
 ];
@@ -87,7 +87,6 @@ const DECK = [
     glyph: "⌬",
     slots: [
       { text: "Sink your Citizen 1 → Rise your Outcast 1." },
-      { text: "1 coin.", note: "A slotted cube may be moved here from another card." },
     ],
     intrigueValue: 2,
     intrigue: "If your Outcast is within 3 spaces of your Citizen, gain 4 coin.",
