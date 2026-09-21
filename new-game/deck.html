@@ -389,7 +389,25 @@
       .socket-row {
         display: flex;
         gap: 2.6cqw;
-        margin: 0 0 2.6cqw;
+      }
+
+      /* Sockets → reward, all on one line: filling every socket is what pays out
+         the reward text sitting right after the arrow. */
+      .recruit-line {
+        display: flex;
+        align-items: center;
+        gap: 2.6cqw;
+      }
+
+      .recruit-line .block-text {
+        flex: 1;
+      }
+
+      .recruit-arrow {
+        flex: none;
+        font-size: 5.5cqw;
+        font-weight: 700;
+        color: var(--accent);
       }
 
       .reward-lead {
@@ -637,110 +655,8 @@
       // intact — flip this to true to put the block back on every card.
       const SHOW_INTRIGUE = true;
 
-      // Same slotted-card template as DECK — still slots a cube — but also
-      // charges coin up front. Priced on ~1 coin per Rise-step of effect on
-      // top of the cube, so the four samples trace a cheap-to-priced curve.
-      const MARKET = [
-        {
-          title: "Tipster",
-          line: "any",
-          glyph: "☍",
-          slot: true,
-          cost: 2,
-          play: "1 coin → Draw 1 card. cube.",
-          intrigueValue: 2,
-          intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
-          discardEffect: "1 coin",
-        },
-        {
-          title: "Stevedore",
-          line: "outcast",
-          glyph: "⚓",
-          slot: true,
-          cost: 2,
-          play: "Rise your Outcast 2.",
-          intrigueValue: 2,
-          intrigue: "Rise your Outcast 1 for each other player whose Outcast sits below yours.",
-          discardEffect: "1 coin",
-        },
-        {
-          title: "Under the table",
-          line: "citizen",
-          glyph: "⚖",
-          slot: true,
-          cost: 3,
-          play: "Sink your Citizen 2 → 4 coin.",
-          intrigueValue: 1,
-          intrigue: "coin for each card in your Citizen line.",
-          discardEffect: "1 coin",
-        },
-        {
-          title: "Powerbroker",
-          line: "any",
-          glyph: "⚜",
-          slots: [
-            { text: "Rise your Citizen 1, Rise your Outcast 1, 1 coin." },
-            { text: "1 coin." },
-          ],
-          cost: 5,
-          // play: "",
-          intrigueValue: 2,
-          intrigue: "If your Citizen and Outcast are within 3 spaces of each other, gain 4 coin.",
-          discardEffect: "2 coin",
-        },
-      ];
-
-      // Not part of a player's hand: one Citizen and one Outcast card are revealed from this
-      // deck at the start of each round to set that round's stakes for the two conflicts.
-      // `refill` is this card's X in the Replenish formula: 2 × player count + X cubes
-      // added this round (see rules.html — Replenish).
-      const CONFLICTS = [
-        {
-          title: "Show Trial",
-          line: "citizen",
-          glyph: "⚔",
-          reward: "Rise your Citizen 2 and Plant 1 cube from the supply.",
-          condition: "Ties are won by the Citizen nearer the top of the Spire.",
-          refill: 1,
-        },
-        {
-          title: "Underground Vote",
-          line: "outcast",
-          glyph: "⛓",
-          reward: "Rise your Outcast 2.",
-          condition: "Each losing player also gains 1 coin.",
-          refill: 3,
-        },
-        {
-          title: "Public Inquiry",
-          line: "citizen",
-          glyph: "⛨",
-          reward: "4 coin.",
-          condition: "The player with the lowest Citizen may not commit an Intrigue here.",
-          refill: 2,
-        },
-      ];
-
-      // Replaces the Conflict pile once the Revolution begins (rules: "a pile of 3 random
-      // Revolution Conflict cards"). Same Reward/Condition/refill shape, raised stakes.
-      const REVOLUTION_CONFLICTS = [
-        {
-          title: "The Tribunal",
-          line: "citizen",
-          glyph: "⚡",
-          reward: "Rise your Leader 3 and 3 coin.",
-          condition: "Every other player Sinks their Leader 1.",
-          refill: 4,
-        },
-        {
-          title: "Blood In The Streets",
-          line: "outcast",
-          glyph: "☠",
-          reward: "Rise your Leader 4.",
-          condition: "Each losing player discards their entire hand.",
-          refill: 0,
-        },
-      ];
+      // CHARACTERS, DECK, MARKET, CONFLICTS, REVOLUTION_CONFLICTS all live in
+      // deck-data.js, loaded above.
 
       const LINE_LABEL = { citizen: "Citizen", outcast: "Outcast", any: "Broker" };
 
@@ -768,6 +684,29 @@
           .replace(
             /\bcube(s?)\b/gi,
             (match, plural) => `<span class="cube-icon" role="img" aria-label="cube"></span>${plural || ""}`
+          )
+          .replace(
+            // "Rise 1"/"Sink 2" becomes N icons and no text. A named subject
+            // ("Rise Citizen 1", "Sinks Leader 1" — write it bare, no "your"/
+            // "their") drops its words too, but the icon is recoloured to
+            // that subject's own colour instead of the card's — otherwise two
+            // different subjects on one card (e.g. "Sink Citizen 1 → Rise
+            // Outcast 1") would render as two same-coloured icons and lose
+            // which character is which.
+            /\b(Rise|Sink)(s?)\b(?:\s+(Citizen|Outcast|Leader))?\s*(\d+)?/g,
+            (match, word, plural, subject, count) => {
+              const cls = word === "Rise" ? "rise-icon" : "sink-icon";
+              const n = count ? Number(count) : 1;
+              const accent =
+                subject === "Citizen" ? "var(--brass)" :
+                subject === "Outcast" ? "var(--verdigris)" :
+                subject === "Leader" ? "var(--revolution)" :
+                null;
+              const style = accent ? ` style="--accent:${accent}"` : "";
+              const icon = `<span class="${cls}"${style} aria-hidden="true"></span>`;
+              const label = subject ? `${word} ${subject} ${n}` : `${word} ${n}`;
+              return `<span role="img" aria-label="${label}">${icon.repeat(n)}</span>`;
+            }
           );
       }
 
@@ -803,10 +742,11 @@
                 </section>
                 <section class="block block-full">
                   <p class="block-label">Recruits</p>
-                  <div class="socket-row">${sockets}</div>
-                  <p class="block-text">
-                    ${withIcons(char.reward)}
-                  </p>
+                  <div class="recruit-line">
+                    <div class="socket-row">${sockets}</div>
+                    <span class="recruit-arrow" aria-hidden="true">→</span>
+                    <p class="block-text">${withIcons(char.reward)}</p>
+                  </div>
                 </section>
               </div>
               <footer class="cost-strip">${costCells}</footer>
@@ -816,10 +756,9 @@
       }
 
       function cardMarkup(card) {
-        // Three readings of "cube to destination": a multi-slot card fires a
-        // separate effect per socket it holds a cube in; a slotted card fires
-        // its one effect off the one cube it recruits; a slotless card routes
-        // the cube on to the character instead.
+        // Two readings of "cube to destination": a card with slots fires a
+        // separate effect per socket it holds a cube in — most have just one —
+        // while a slotless card routes the cube on to the character instead.
         const playBody = card.slots
           ? card.slots
               .map(
@@ -833,11 +772,6 @@
              </div>`
               )
               .join("")
-          : card.slot
-          ? `<div class="cost-line">
-               <span class="socket">Cube</span>
-               <p class="block-text">${withIcons(card.play)}</p>
-             </div>`
           : `<p class="block-text">${withIcons(card.play)}</p>
              <span class="route">
                <span class="socket">Cube</span>

@@ -38,3 +38,34 @@
   box-shadow: inset 0 0 0 0.07em rgba(20, 24, 28, 0.45);
   vertical-align: -0.16em;
 }
+
+/* Rise/Sink: a triangle pointing the direction of travel on the Spire.
+   Colour is not baked in — it reads var(--accent) so the same icon comes out
+   brass on a Citizen card, verdigris on an Outcast card, a location's own
+   colour on the board, etc. The ink-soft fallback covers spots with no
+   --accent in scope. */
+.rise-icon,
+.sink-icon {
+  display: inline-block;
+  width: 1.05em;
+  height: 1.05em;
+  vertical-align: -0.08em;
+  background: linear-gradient(
+    180deg,
+    var(--accent, var(--ink-soft, #666)),
+    color-mix(in srgb, var(--accent, var(--ink-soft, #666)) 75%, black)
+  );
+  /* box-shadow gets clipped away with the shape, so fake a border with two
+     stacked drop-shadows instead — filter runs on the already-clipped
+     triangle and can paint outside it. */
+  filter: drop-shadow(0 0 0.6px #000) drop-shadow(0 0 0.6px #000);
+}
+
+.rise-icon {
+  clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+}
+
+.sink-icon {
+  vertical-align: -0.2em;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+}

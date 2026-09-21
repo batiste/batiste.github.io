@@ -703,7 +703,7 @@
           accent: "var(--forum)",
           glyph: "⏢",
           flavour: "Where the council sells what it pretends to protect.",
-          reward: "Rise your Citizen 1.",
+          reward: "Rise Citizen 1.",
           rail: true,
         },
         {
@@ -720,7 +720,7 @@
           accent: "var(--den)",
           glyph: "⚂",
           flavour: "Bet your standing. The house always collects.",
-          reward: "Sink your Citizen 1: gain 2 coin.",
+          reward: "Sink Citizen 1 → 2 coin.",
         },
         {
           name: "The Rust Bar",
@@ -757,7 +757,7 @@
           accent: "var(--lift)",
           glyph: "⌖",
           flavour: "The only way up that does not ask your name.",
-          reward: "Rise your Outcast 1.",
+          reward: "Rise Outcast 1.",
         },
       ];
 
@@ -791,13 +791,33 @@
       // "2 coin" → a coin showing that number); a bare, uncounted "coin" stays
       // a plain icon.
       function withIcons(text) {
-        return escapeHtml(text).replace(
-          /\b(?:(\d+)\s+)?coin(s?)\b/gi,
-          (match, n, plural) =>
-            n
-              ? `<span class="coin" role="img" aria-label="${n} coin"><span class="coin-num">${n}</span></span>`
-              : `<span class="coin" role="img" aria-label="coin"></span>${plural || ""}`
-        );
+        return escapeHtml(text)
+          .replace(
+            /\b(?:(\d+)\s+)?coin(s?)\b/gi,
+            (match, n, plural) =>
+              n
+                ? `<span class="coin" role="img" aria-label="${n} coin"><span class="coin-num">${n}</span></span>`
+                : `<span class="coin" role="img" aria-label="coin"></span>${plural || ""}`
+          )
+          .replace(
+            // Same rule as deck.html's withIcons — keep these two in sync.
+            // Colour vars differ here (--forum/--outcast-track vs. deck.html's
+            // --brass/--verdigris) but point at the same hex values. Subject is
+            // written bare ("Rise Citizen 1"), no "your"/"their".
+            /\b(Rise|Sink)(s?)\b(?:\s+(Citizen|Outcast|Leader))?\s*(\d+)?/g,
+            (match, word, plural, subject, count) => {
+              const cls = word === "Rise" ? "rise-icon" : "sink-icon";
+              const n = count ? Number(count) : 1;
+              const accent =
+                subject === "Citizen" ? "var(--forum)" :
+                subject === "Outcast" ? "var(--outcast-track)" :
+                null;
+              const style = accent ? ` style="--accent:${accent}"` : "";
+              const icon = `<span class="${cls}"${style} aria-hidden="true"></span>`;
+              const label = subject ? `${word} ${subject} ${n}` : `${word} ${n}`;
+              return `<span role="img" aria-label="${label}">${icon.repeat(n)}</span>`;
+            }
+          );
       }
 
       function unlockMarkup(loc) {
