@@ -117,3 +117,61 @@
 .plant-other-icon.plant-other-citizen::after {
   bottom: -0.28em;
 }
+
+/* Inline Intrigue value: same red circle as the card's own .intrigue-value
+   badge, sized to match .coin so the two sit evenly in running text (e.g. a
+   socket that grants Intrigue directly, distinct from the card's printed
+   Intrigue value). */
+.intrigue-icon {
+  position: relative;
+  display: inline-block;
+  width: 1.43em;
+  height: 1.43em;
+  border-radius: 50%;
+  background: var(--revolution, #8f1d1d);
+  box-shadow: inset 0 0 0 0.055em rgba(0, 0, 0, 0.35);
+  vertical-align: -0.35em;
+}
+
+.intrigue-icon-num {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.78em;
+  font-weight: 700;
+  line-height: 1;
+  color: var(--paper, #efe7d8);
+}
+
+/* Refresh: a circular arrow — discard 1 card on offer in the Noodle Shop and
+   replace it with a new one. Same --accent-recolouring convention as
+   .rise-icon/.sink-icon. See rules.html Glossary: Refresh. */
+.refresh-icon {
+  position: relative;
+  display: inline-block;
+  width: 1.1em;
+  height: 1.1em;
+  vertical-align: -0.16em;
+  border-radius: 50%;
+  border: 0.16em solid var(--accent, var(--ink-soft, #666));
+  border-top-color: transparent;
+}
+
+.refresh-icon::after {
+  content: "";
+  position: absolute;
+  top: -0.06em;
+  right: -0.1em;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.36em 0.24em 0 0.24em;
+  border-color: var(--accent, var(--ink-soft, #666)) transparent transparent transparent;
+  transform: rotate(140deg);
+}
+
+.refresh-icon + .refresh-icon {
+  margin-left: 0.12em;
+}

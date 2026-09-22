@@ -161,6 +161,23 @@
               const step = `<span class="plant-other-icon ${modifier}" aria-hidden="true"><span class="cube-icon"></span></span>`;
               return `<span role="img" aria-label="Plant ${n} in your ${targetLine} line">${step.repeat(Number(n))}</span>`;
             }
+          )
+          .replace(
+            // "Intrigue 1" → the same red circle as the card's own printed
+            // Intrigue-value badge, just inline and smaller — for a socket
+            // that grants Intrigue value directly, as text alongside it.
+            /\bIntrigue\s+(\d+)\b/g,
+            (match, n) =>
+              `<span class="intrigue-icon" role="img" aria-label="Intrigue ${n}"><span class="intrigue-icon-num">${n}</span></span>`
+          )
+          .replace(
+            // "Refresh 1" becomes N circular-arrow icons and no text, same
+            // treatment as Rise/Sink/Draw (see rules.html Glossary — Refresh).
+            /\bRefresh\s+(\d+)\b/g,
+            (match, n) => {
+              const icon = `<span class="refresh-icon" aria-hidden="true"></span>`;
+              return `<span role="img" aria-label="Refresh ${n}">${icon.repeat(Number(n))}</span>`;
+            }
           );
       }
 
@@ -221,7 +238,7 @@
                <span class="socket">Cube</span>
                <p class="block-text">
                  ${withIcons(slot.text)}
-                 ${slot.note ? `<span class="slot-note">${escapeHtml(slot.note)}</span>` : ""}
+                 ${slot.note ? `<span class="slot-note">${withIcons(slot.note)}</span>` : ""}
                </p>
              </div>`
               )
@@ -235,8 +252,8 @@
           ? `<section class="block block-intrigue">
                <div class="intrigue-head">
                  <span class="socket">Cube</span>
-                 <p class="block-label">Intrigue — end of round</p>
-                 <span class="intrigue-value" title="Intrigue value">${card.intrigueValue}</span>
+                 <p class="block-label">Conflict</p>
+                 <span class="intrigue-value" title="Conflict value">${card.conflictValue}</span>
                </div>
              </section>`
           : "";
@@ -291,7 +308,7 @@
                   <p class="block-text">${withIcons(card.reward)}</p>
                 </section>
                 <section class="block block-condition">
-                  <p class="block-label">Condition</p>
+                  <p class="block-label">Game changer</p>
                   <p class="block-text">${withIcons(card.condition)}</p>
                 </section>
                 <footer class="card-footer">

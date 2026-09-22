@@ -44,9 +44,8 @@ const DECK = [
     title: "Fixer",
     line: "any",
     glyph: "⎔",
-    slots: [{ text: "cube" }],
-    intrigueValue: 1,
-    intrigue: "Retooling. Move up to 2 socketed cubes to other cards in your lines.",
+    slots: [{ text: "cube Refresh 1" }],
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -54,8 +53,7 @@ const DECK = [
     line: "outcast",
     glyph: "⬢",
     slots: [{ text: "Your next card played into this line costs nothing." }],
-    intrigueValue: 1,
-    intrigue: "Peek at one card in an opponent's hand.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -63,8 +61,7 @@ const DECK = [
     line: "outcast",
     glyph: "⟁",
     slots: [{ text: "Rise Outcast " }],
-    intrigueValue: 1,
-    intrigue: "coin for each space your Outcast Rose this round.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -74,8 +71,7 @@ const DECK = [
     // Playtest probe: a direct card-count interaction (see rules.html
     // Glossary — Other Line).
     slots: [{ text: "coin for each card in your other line." }],
-    intrigueValue: 2,
-    intrigue: "Audit. coin for each card in your Citizen line.",
+    conflictValue: 2,
     discardEffect: "1 coin",
   },
   {
@@ -83,8 +79,7 @@ const DECK = [
     line: "outcast",
     glyph: "⌖",
     slots: [{ text: "Sink Outcast 1 → 2 coin" }],
-    intrigueValue: 1,
-    intrigue: "If any other Outcast sits above yours, Rise Outcast 1.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -92,8 +87,7 @@ const DECK = [
     line: "citizen",
     glyph: "✧",
     slots: [{ text: "Draw 1 card" }],
-    intrigueValue: 1,
-    intrigue: "Resolve the Play effect of one card in your discard pile.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -106,8 +100,7 @@ const DECK = [
       { text: "Sink Citizen 1 → Rise Outcast 1." },
       { text: "If this line is Under Pressure: Rise Outcast 2." },
     ],
-    intrigueValue: 2,
-    intrigue: "If your Outcast is within 3 spaces of your Citizen, gain 4 coin.",
+    conflictValue: 2,
     discardEffect: "1 coin",
   },
 ];
@@ -120,10 +113,9 @@ const MARKET = [
     title: "Tipster",
     line: "any",
     glyph: "☍",
-    slots: [{ text: "1 coin → Draw 1 card cube" }],
+    slots: [{ text: "1 coin → Draw 1 card cube Refresh 1" }],
     cost: 2,
-    intrigueValue: 2,
-    intrigue: "Draw 1 card for each card in your discard pile, to a maximum of 3.",
+    conflictValue: 2,
     discardEffect: "1 coin",
   },
   {
@@ -132,8 +124,7 @@ const MARKET = [
     glyph: "⚓",
     slots: [{ text: "Rise Outcast 2" }],
     cost: 2,
-    intrigueValue: 2,
-    intrigue: "Rise Outcast 1 for each other player whose Outcast sits below yours.",
+    conflictValue: 2,
     discardEffect: "1 coin",
   },
   {
@@ -142,8 +133,7 @@ const MARKET = [
     glyph: "⚖",
     slots: [{ text: "Sink Citizen 2 → 4 coin" }],
     cost: 3,
-    intrigueValue: 1,
-    intrigue: "coin for each card in your Citizen line.",
+    conflictValue: 1,
     discardEffect: "Rise 1",
   },
   {
@@ -152,11 +142,10 @@ const MARKET = [
     glyph: "⚜",
     slots: [
       { text: "Rise Citizen 1 Rise Outcast 1 1 coin" },
-      { text: "1 coin" },
+      { text: "1 coin Intrigue 1" },
     ],
     cost: 5,
-    intrigueValue: 2,
-    intrigue: "If your Citizen and Outcast are within 3 spaces of each other, gain 4 coin.",
+    conflictValue: 2,
     discardEffect: "2 coin",
   },
   {
@@ -165,8 +154,7 @@ const MARKET = [
     glyph: "⎊",
     slots: [{ text: "Rise Citizen 1 Draw 1 card" }],
     cost: 3,
-    intrigueValue: 1,
-    intrigue: "coin for each card in your hand.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   {
@@ -175,18 +163,16 @@ const MARKET = [
     glyph: "⚒",
     slots: [{ text: "Discard 1 card → Rise Outcast 2 1 coin" }],
     cost: 3,
-    intrigueValue: 2,
-    intrigue: "coin for each card in your discard pile.",
+    conflictValue: 2,
     discardEffect: "1 coin",
   },
   {
     title: "The Middleman",
     line: "any",
     glyph: "⚗",
-    slots: [{ text: "cube Rise Outcast" }, { text: "1 coin" }],
+    slots: [{ text: "cube Rise Outcast" }, { text: "1 coin Refresh 1" }],
     cost: 4,
-    intrigueValue: 1,
-    intrigue: "Draw 1 card for each Broker card in your lines.",
+    conflictValue: 1,
     discardEffect: "1 coin",
   },
   // ---------- playtest probes (no coin cost — see deck.html's Noodle Shop
@@ -199,9 +185,8 @@ const MARKET = [
     // the Outcast line instead of this card's own line (rendered with the
     // plant-other-icon, not a plain Plant; see rules.html Glossary).
     slots: [{ text: "cube. If your Outcast line is Under Pressure: Rise Outcast 2." }],
-    intrigueValue: 2,
+    conflictValue: 2,
     cost: 2,
-    intrigue: "Rise Outcast 2 if your Outcast line is Under Pressure.",
     discardEffect: "1 coin",
   },
   {
@@ -212,9 +197,8 @@ const MARKET = [
     // effect in the other line, not their Intrigue/discard effects, and
     // never moves cubes (see rules.html Glossary's Echo ruling).
     slots: [{ text: "Repeat the effect of every slotted card in your other line." }],
-    intrigueValue: 2,
+    conflictValue: 2,
     cost: 4,
-    intrigue: "Draw 1 card.",
     discardEffect: "1 coin",
   },
 ];
@@ -228,8 +212,10 @@ const CONFLICTS = [
     title: "Show Trial",
     line: "citizen",
     glyph: "⚔",
-    reward: "Rise Citizen 2 cube.",
-    condition: "Ties are won by the Citizen nearer the top of the Spire.",
+    reward: "Rise Citizen 2 cube",
+    // Overrides the default tiebreak (rules.html Conflict: nearer the top
+    // wins) instead of restating it — the point of a per-card condition.
+    condition: "The player with the longest line Intrigue 1",
     refill: 1,
   },
   {
@@ -248,6 +234,22 @@ const CONFLICTS = [
     condition: "The player with the lowest Citizen may not commit an Intrigue here.",
     refill: 2,
   },
+  {
+    title: "The Informant's Price",
+    line: "outcast",
+    glyph: "⚚",
+    reward: "Rise Outcast 1 2 coin",
+    condition: "Each player Sink Outcast 1.",
+    refill: 2,
+  },
+  {
+    title: "Closed Session",
+    line: "citizen",
+    glyph: "⌾",
+    reward: "4 coin",
+    condition: "Player(s) with the highest Citizen: Intrigue 1",
+    refill: 1,
+  },
 ];
 
 // Replaces the Conflict pile once the Revolution begins (rules: "a pile of 3 random
@@ -258,7 +260,7 @@ const REVOLUTION_CONFLICTS = [
     line: "citizen",
     glyph: "⚡",
     reward: "Rise Leader 3 and 3 coin.",
-    condition: "Every other player Sinks Leader 1.",
+    condition: "Every player Sink Citizen 2.",
     refill: 4,
   },
   {
@@ -266,7 +268,20 @@ const REVOLUTION_CONFLICTS = [
     line: "outcast",
     glyph: "☠",
     reward: "Rise Leader 4.",
-    condition: "Each losing player discards their entire hand.",
+    // Hands are already empty by resolution time (Round Structure — Action
+    // runs "until every player has discarded"), so a discard-the-hand
+    // punishment can never actually happen. Sink is always resolvable.
+    condition: "Each losing player Sink Outcast 1.",
     refill: 0,
+  },
+  {
+    title: "The Purge",
+    line: "outcast",
+    glyph: "⛃",
+    reward: "Rise Leader 3.",
+    // Same cost-on-the-winner shape as The Informant's Price, raised to
+    // Revolution stakes.
+    condition: "Each player Refresh 1.",
+    refill: 3,
   },
 ];
