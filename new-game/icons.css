@@ -87,3 +87,33 @@
 .card-icon + .card-icon {
   margin-left: 0.12em;
 }
+
+/* Plant into the *other* line: the same cube, plus a ground line drawn over
+   or under it — same reading as the Spire (Citizen above ground, Outcast
+   below). Line above the cube = it's going underground = Outcast. Line
+   below the cube = it's staying above ground = Citizen. Distinct from a
+   plain .cube-icon (same-line Plant, written out — no icon of its own yet).
+   See rules.html Glossary: Plant / Other Line. */
+.plant-other-icon {
+  position: relative;
+  display: inline-block;
+  vertical-align: -0.16em;
+}
+
+.plant-other-icon::after {
+  content: "";
+  position: absolute;
+  left: -0.16em;
+  right: -0.16em;
+  height: 0.16em;
+  border-radius: 0.08em;
+  background: var(--ink, #14181c);
+}
+
+.plant-other-icon.plant-other-outcast::after {
+  top: -0.28em;
+}
+
+.plant-other-icon.plant-other-citizen::after {
+  bottom: -0.28em;
+}

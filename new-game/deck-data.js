@@ -51,7 +51,7 @@ const DECK = [
   },
   {
     title: "Bribe",
-    line: "citizen",
+    line: "outcast",
     glyph: "⬢",
     slots: [{ text: "Your next card played into this line costs nothing." }],
     intrigueValue: 1,
@@ -69,15 +69,17 @@ const DECK = [
   },
   {
     title: "Embezzler",
-    line: "citizen",
+    line: "outcast",
     glyph: "⏣",
-    slots: [{ text: "1 coin" }],
+    // Playtest probe: a direct card-count interaction (see rules.html
+    // Glossary — Other Line).
+    slots: [{ text: "coin for each card in your other line." }],
     intrigueValue: 2,
     intrigue: "Audit. coin for each card in your Citizen line.",
     discardEffect: "1 coin",
   },
   {
-    title: "Fence",
+    title: "Shady Deals",
     line: "outcast",
     glyph: "⌖",
     slots: [{ text: "Sink Outcast 1 → 2 coin" }],
@@ -87,7 +89,7 @@ const DECK = [
   },
   {
     title: "Whisper",
-    line: "outcast",
+    line: "citizen",
     glyph: "✧",
     slots: [{ text: "Draw 1 card" }],
     intrigueValue: 1,
@@ -96,10 +98,13 @@ const DECK = [
   },
   {
     title: "Agitator",
-    line: "outcast",
+    line: "citizen",
     glyph: "⌬",
+    // Playtest probe: rewards Agitator further when the Citizen line is the
+    // weaker/shorter one (see rules.html Glossary — Under Pressure).
     slots: [
-      { text: "Sink Citizen 1 → Rise Outcast 1" },
+      { text: "Sink Citizen 1 → Rise Outcast 1." },
+      { text: "If this line is Under Pressure: Rise Outcast 2." },
     ],
     intrigueValue: 2,
     intrigue: "If your Outcast is within 3 spaces of your Citizen, gain 4 coin.",
@@ -182,6 +187,34 @@ const MARKET = [
     cost: 4,
     intrigueValue: 1,
     intrigue: "Draw 1 card for each Broker card in your lines.",
+    discardEffect: "1 coin",
+  },
+  // ---------- playtest probes (no coin cost — see deck.html's Noodle Shop
+  // section note) ----------
+  {
+    title: "Revolutionary Organizer",
+    line: "outcast",
+    glyph: "⚑",
+    // First card that lets one line develop the other — cube crosses into
+    // the Outcast line instead of this card's own line (rendered with the
+    // plant-other-icon, not a plain Plant; see rules.html Glossary).
+    slots: [{ text: "cube. If your Outcast line is Under Pressure: Rise Outcast 2." }],
+    intrigueValue: 2,
+    cost: 2,
+    intrigue: "Rise Outcast 2 if your Outcast line is Under Pressure.",
+    discardEffect: "1 coin",
+  },
+  {
+    title: "Echo",
+    line: "any",
+    glyph: "⟲",
+    // Deliberately strong probe: repeats every card's normal socket/recruit
+    // effect in the other line, not their Intrigue/discard effects, and
+    // never moves cubes (see rules.html Glossary's Echo ruling).
+    slots: [{ text: "Repeat the effect of every slotted card in your other line." }],
+    intrigueValue: 2,
+    cost: 4,
+    intrigue: "Draw 1 card.",
     discardEffect: "1 coin",
   },
 ];

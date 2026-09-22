@@ -52,6 +52,11 @@
         purchase, each card follows the same process as the starter deck. Costs and effects are
         first-pass examples.
       </span>
+      <span class="note">
+        Revolutionary Organizer and Echo carry no coin cost — they're playtest probes for the
+        <strong>Under Pressure</strong> and <strong>Other Line</strong> rules, shown here rather than
+        in the 7-card starter deck.
+      </span>
     </h2>
     <ul class="deck" id="market"></ul>
 
@@ -140,6 +145,21 @@
               const icon = `<span class="${cls}"${style} aria-hidden="true"></span>`;
               const label = subject ? `${word} ${subject} ${n}` : `${word} ${n}`;
               return `<span role="img" aria-label="${label}">${icon.repeat(n)}</span>`;
+            }
+          )
+          .replace(
+            // "Plant 1 in your Outcast line" (or Citizen): the cube, plus a
+            // ground line over or under it — Outcast (underground) gets the
+            // line above the cube, Citizen (above ground) gets it below.
+            // Not an ordinary same-line Plant (see rules.html Glossary —
+            // Plant / Other Line). Kept last in this chain: its output's own
+            // class="cube-icon" text must not be re-matched by the plain
+            // \bcube\b replace above.
+            /\bPlant\s+(\d+)\s+in\s+your\s+(Citizen|Outcast)\s+line\b/gi,
+            (match, n, targetLine) => {
+              const modifier = /outcast/i.test(targetLine) ? "plant-other-outcast" : "plant-other-citizen";
+              const step = `<span class="plant-other-icon ${modifier}" aria-hidden="true"><span class="cube-icon"></span></span>`;
+              return `<span role="img" aria-label="Plant ${n} in your ${targetLine} line">${step.repeat(Number(n))}</span>`;
             }
           );
       }

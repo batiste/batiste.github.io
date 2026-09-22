@@ -165,7 +165,7 @@
         <p>
           Once everybody has passed, it is time to resolve the conflict. A player's total
           for the conflict is the sum of the Intrigue values of their
-          cards. The highest total wins and claims the reward.
+          cards. The highest total wins and claims the reward. In case of a tie, the Citizen and the Outcast position are used as a tiebreaker, in this order. If still tied, the reward is discarded.
         </p>
       </section>
 
@@ -202,6 +202,7 @@
           <article class="term">
             <h3>Plant <span class="cube-icon" role="img" aria-label="cube"></span></h3>
             <p>Take a cube from the supply, and place it in any empty slot in this line: another card's socket, or the character anchoring it.
+              Some cards name a different line to plant into instead — follow the card's text, shown with its own icon (see Other Line).
             </p>
           </article>
           <article class="term">
@@ -212,7 +213,25 @@
             <h3>Sink <span class="sink-icon" role="img" aria-label="Sink"></span></h3>
             <p>Move the named character 1 space downward on the Spire, toward the bottom.</p>
           </article>
+          <article class="term">
+            <h3>Under Pressure</h3>
+            <p>A line holding fewer cards than the other line is Under Pressure (4 Citizen cards to 2 Outcast, for
+              example, makes the Outcast line Under Pressure). Equal counts: neither line is Under Pressure. Checked
+              directly from the card counts whenever an effect refers to it — there is no token or marker for it.
+            </p>
+          </article>
+          <article class="term">
+            <h3>Other Line</h3>
+            <p>The line opposite the one a card is played into: the Outcast line for a Citizen card, the Citizen
+              line for an Outcast card. For a Broker card, whichever line it was not played into.
+            </p>
+          </article>
         </div>
+        <p class="draft-note">
+          <strong>Echo</strong> ruling: resolving Echo repeats only the normal socket/recruit effect already
+          resolved on each card in your other line — not their Intrigue or Discard effects — and does not move,
+          add, or remove any cubes. A card with no meaningful socket effect is skipped.
+        </p>
       </section>
 
       <section>
