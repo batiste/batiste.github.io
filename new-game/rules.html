@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aeropolis — Draft Rules</title>
+    <link rel="stylesheet" href="icons.css" />
     <style>
       :root {
         --ink: #14181c;
@@ -160,16 +161,8 @@
 
       .term p { margin: 0; font-size: 13.5px; }
 
-      /* Grey cube: matches the icon used on the cards (deck.html), no image asset. */
-      .cube-icon {
-        display: inline-block;
-        width: 0.85em;
-        height: 0.85em;
-        border-radius: 0.18em;
-        background: linear-gradient(135deg, #c9cfd4, #8b939a 68%, #6b7278);
-        box-shadow: inset 0 0 0 0.07em rgba(20, 24, 28, 0.45);
-        vertical-align: -0.05em;
-      }
+      /* .cube-icon, .rise-icon, .sink-icon, .card-icon live in icons.css,
+         shared with deck.html and board.html. */
 
       .revolution-table {
         width: 100%;
@@ -418,11 +411,11 @@
             </p>
           </article>
           <article class="term">
-            <h3>Rise</h3>
+            <h3>Rise <span class="rise-icon" role="img" aria-label="Rise"></span></h3>
             <p>Move the named character 1 space upward on the Spire, toward the top.</p>
           </article>
           <article class="term">
-            <h3>Sink</h3>
+            <h3>Sink <span class="sink-icon" role="img" aria-label="Sink"></span></h3>
             <p>Move the named character 1 space downward on the Spire, toward the bottom.</p>
           </article>
         </div>

@@ -686,6 +686,14 @@
             (match, plural) => `<span class="cube-icon" role="img" aria-label="cube"></span>${plural || ""}`
           )
           .replace(
+            // "Draw 1 card" becomes 1 card icon, text and all — same rule as
+            // "Draw 1 card for each card in discard pile": the "1" there is a
+            // per-unit rate, not a fixed amount, but reads the same either way.
+            /\bDraw\s+(\d+)\s+cards?\b/gi,
+            (match, n) =>
+              `<span role="img" aria-label="Draw ${n} card${n > 1 ? "s" : ""}">${`<span class="card-icon" aria-hidden="true"></span>`.repeat(Number(n))}</span>`
+          )
+          .replace(
             // "Rise 1"/"Sink 2" becomes N icons and no text. A named subject
             // ("Rise Citizen 1", "Sinks Leader 1" — write it bare, no "your"/
             // "their") drops its words too, but the icon is recoloured to

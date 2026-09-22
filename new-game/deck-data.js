@@ -203,7 +203,7 @@ const CONFLICTS = [
     title: "Underground Vote",
     line: "outcast",
     glyph: "⛓",
-    reward: "Rise Outcast 2.",
+    reward: "Rise Outcast 2 1 coin",
     condition: "Each losing player 1 coin.",
     refill: 3,
   },

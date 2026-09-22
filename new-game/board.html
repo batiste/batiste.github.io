@@ -801,6 +801,12 @@
           )
           .replace(
             // Same rule as deck.html's withIcons — keep these two in sync.
+            /\bDraw\s+(\d+)\s+cards?\b/gi,
+            (match, n) =>
+              `<span role="img" aria-label="Draw ${n} card${n > 1 ? "s" : ""}">${`<span class="card-icon" aria-hidden="true"></span>`.repeat(Number(n))}</span>`
+          )
+          .replace(
+            // Same rule as deck.html's withIcons — keep these two in sync.
             // Colour vars differ here (--forum/--outcast-track vs. deck.html's
             // --brass/--verdigris) but point at the same hex values. Subject is
             // written bare ("Rise Citizen 1"), no "your"/"their".
