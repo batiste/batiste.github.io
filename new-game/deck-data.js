@@ -70,7 +70,7 @@ const DECK = [
     glyph: "⏣",
     // Playtest probe: a direct card-count interaction (see rules.html
     // Glossary — Other Line).
-    slots: [{ text: "coin for each card in your other line." }],
+    slots: [{ text: "1 coin for each card in your other line." }],
     conflictValue: 2,
     discardEffect: "1 coin",
   },
@@ -94,11 +94,11 @@ const DECK = [
     title: "Agitator",
     line: "citizen",
     glyph: "⌬",
-    // Playtest probe: rewards Agitator further when the Citizen line is the
-    // weaker/shorter one (see rules.html Glossary — Under Pressure).
+    // Playtest probe: a direct card-count interaction, same pattern as
+    // Embezzler (see rules.html Glossary — Other Line).
     slots: [
       { text: "Sink Citizen 1 → Rise Outcast 1." },
-      { text: "If this line is Under Pressure: Rise Outcast 2." },
+      { text: "Sink Citizen 1 coin → Rise Outcast for each card in your other line." },
     ],
     conflictValue: 2,
     discardEffect: "1 coin",
@@ -181,10 +181,9 @@ const MARKET = [
     title: "Revolutionary Organizer",
     line: "outcast",
     glyph: "⚑",
-    // First card that lets one line develop the other — cube crosses into
-    // the Outcast line instead of this card's own line (rendered with the
-    // plant-other-icon, not a plain Plant; see rules.html Glossary).
-    slots: [{ text: "cube. If your Outcast line is Under Pressure: Rise Outcast 2." }],
+    // Playtest probe: a direct card-count interaction, same pattern as
+    // Embezzler (see rules.html Glossary — Other Line).
+    slots: [{ text: "cube. Rise Outcast for each card in your other line." }],
     conflictValue: 2,
     cost: 2,
     discardEffect: "1 coin",
@@ -230,8 +229,8 @@ const CONFLICTS = [
     title: "Public Inquiry",
     line: "citizen",
     glyph: "⛨",
-    reward: "4 coin.",
-    condition: "The player with the lowest Citizen may not commit an Intrigue here.",
+    reward: "4 coin",
+    condition: "The player with the lowest Citizen may not commit an Intrigue.",
     refill: 2,
   },
   {
@@ -259,15 +258,15 @@ const REVOLUTION_CONFLICTS = [
     title: "The Tribunal",
     line: "citizen",
     glyph: "⚡",
-    reward: "Rise Leader 3 and 3 coin.",
-    condition: "Every player Sink Citizen 2.",
+    reward: "Rise Citizen 3 2 coin",
+    condition: "Every losing player Sink Citizen 1.",
     refill: 4,
   },
   {
     title: "Blood In The Streets",
     line: "outcast",
     glyph: "☠",
-    reward: "Rise Leader 4.",
+    reward: "Rise Outcast 3",
     // Hands are already empty by resolution time (Round Structure — Action
     // runs "until every player has discarded"), so a discard-the-hand
     // punishment can never actually happen. Sink is always resolvable.
@@ -278,7 +277,7 @@ const REVOLUTION_CONFLICTS = [
     title: "The Purge",
     line: "outcast",
     glyph: "⛃",
-    reward: "Rise Leader 3.",
+    reward: "Rise Outcast 3 cube",
     // Same cost-on-the-winner shape as The Informant's Price, raised to
     // Revolution stakes.
     condition: "Each player Refresh 1.",

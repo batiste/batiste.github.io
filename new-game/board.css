@@ -218,7 +218,7 @@ body {
   background: color-mix(in srgb, var(--accent) 14%, transparent);
 }
 
-/* Badge on any location the Line also stops at — ties the two systems together. */
+/* Badge on any location the Line also stops at — ties the two systems together.
 .loc-rail {
   margin: 7px 0 0 6px;
   display: inline-block;
@@ -231,6 +231,7 @@ body {
   color: #e9c477;
   background: rgba(233, 196, 119, 0.14);
 }
+*/
 
 .loc-body {
   display: flex;
@@ -433,7 +434,7 @@ body {
   color: rgba(20, 24, 28, 0.32);
 }
 
-/* ---------- the line (train loop) ---------- */
+/* ---------- the line (train loop) ----------
 
 .line-section {
   min-width: 0;
@@ -533,6 +534,8 @@ body {
   line-height: 1.55;
   color: #bcc7ce;
 }
+
+*/
 
 /* ---------- turn sequence ---------- */
 

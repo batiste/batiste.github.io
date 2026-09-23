@@ -325,7 +325,7 @@ body {
 }
 
 .card.char .block {
-  padding: 2.5cqw 4cqw;
+  padding: 4cqw 4cqw;
 }
 
 .card.char .block + .block {
@@ -404,7 +404,7 @@ body {
 
 .cost-cell {
   flex: 1;
-  padding: 2cqw 0 2.2cqw;
+  padding: 4cqw 0 4cqw;
   text-align: center;
   border-left: 1px solid rgba(20, 24, 28, 0.13);
 }
