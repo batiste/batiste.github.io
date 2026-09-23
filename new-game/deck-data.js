@@ -70,7 +70,7 @@ const DECK = [
     glyph: "⏣",
     // Playtest probe: a direct card-count interaction (see rules.html
     // Glossary — Other Line).
-    slots: [{ text: "1 coin for each card in your other line." }],
+    slots: [{ text: "For each card in your other line: 1 coin" }],
     conflictValue: 2,
     discardEffect: "1 coin",
   },
@@ -98,7 +98,7 @@ const DECK = [
     // Embezzler (see rules.html Glossary — Other Line).
     slots: [
       { text: "Sink Citizen 1 → Rise Outcast 1." },
-      { text: "Sink Citizen 1 coin → Rise Outcast for each card in your other line." },
+      { text: "Sink Citizen 1 coin → For each card in your other line : Rise Outcast " },
     ],
     conflictValue: 2,
     discardEffect: "1 coin",
@@ -183,7 +183,7 @@ const MARKET = [
     glyph: "⚑",
     // Playtest probe: a direct card-count interaction, same pattern as
     // Embezzler (see rules.html Glossary — Other Line).
-    slots: [{ text: "cube. Rise Outcast for each card in your other line." }],
+    slots: [{ text: "cube, for each card in your other line: Rise Outcast" }],
     conflictValue: 2,
     cost: 2,
     discardEffect: "1 coin",
@@ -204,8 +204,9 @@ const MARKET = [
 
 // Not part of a player's hand: one Citizen and one Outcast card are revealed from this
 // deck at the start of each round to set that round's stakes for the two conflicts.
-// `refill` is this card's X in the Replenish formula: 2 × player count + X cubes
-// added this round (see rules.html — Replenish).
+// `refillStart` names the board location where this round's Replenish placement
+// begins (rules.html — Replenish); `refill` is this card's X in the Replenish
+// formula: 2 × player count + X cubes added this round, capped 0–2.
 const CONFLICTS = [
   {
     title: "Show Trial",
@@ -215,6 +216,7 @@ const CONFLICTS = [
     // Overrides the default tiebreak (rules.html Conflict: nearer the top
     // wins) instead of restating it — the point of a per-card condition.
     condition: "The player with the longest line Intrigue 1",
+    refillStart: "The High Forum",
     refill: 1,
   },
   {
@@ -223,7 +225,8 @@ const CONFLICTS = [
     glyph: "⛓",
     reward: "Rise Outcast 2 1 coin",
     condition: "Each losing player 1 coin.",
-    refill: 3,
+    refillStart: "The Scrapyard",
+    refill: 2,
   },
   {
     title: "Public Inquiry",
@@ -231,6 +234,7 @@ const CONFLICTS = [
     glyph: "⛨",
     reward: "4 coin",
     condition: "The player with the lowest Citizen may not commit an Intrigue.",
+    refillStart: "Noodle Shop",
     refill: 2,
   },
   {
@@ -239,6 +243,7 @@ const CONFLICTS = [
     glyph: "⚚",
     reward: "Rise Outcast 1 2 coin",
     condition: "Each player Sink Outcast 1.",
+    refillStart: "The Cable Lift",
     refill: 2,
   },
   {
@@ -247,6 +252,7 @@ const CONFLICTS = [
     glyph: "⌾",
     reward: "4 coin",
     condition: "Player(s) with the highest Citizen: Intrigue 1",
+    refillStart: "Gaming Den",
     refill: 1,
   },
 ];
@@ -260,7 +266,8 @@ const REVOLUTION_CONFLICTS = [
     glyph: "⚡",
     reward: "Rise Citizen 3 2 coin",
     condition: "Every losing player Sink Citizen 1.",
-    refill: 4,
+    refillStart: "The Rust Bar",
+    refill: 2,
   },
   {
     title: "Blood In The Streets",
@@ -271,6 +278,7 @@ const REVOLUTION_CONFLICTS = [
     // runs "until every player has discarded"), so a discard-the-hand
     // punishment can never actually happen. Sink is always resolvable.
     condition: "Each losing player Sink Outcast 1.",
+    refillStart: "The Counting House",
     refill: 0,
   },
   {
@@ -281,6 +289,7 @@ const REVOLUTION_CONFLICTS = [
     // Same cost-on-the-winner shape as The Informant's Price, raised to
     // Revolution stakes.
     condition: "Each player Refresh 1.",
-    refill: 3,
+    refillStart: "The High Forum",
+    refill: 2,
   },
 ];

@@ -35,7 +35,7 @@
           <li>Give each player the current example starter deck of 7 cards.</li>
           <li>Give each player 2 coins.</li>
           <li>Create a deck of 6 random Conflict cards.</li>
-          <li>Fill each board location with up to 2 cubes (mechanism TBD).</li>
+          <li>Fill each board location up to its cap (see Locations and Access; mechanism TBD).</li>
           <!-- <li>Place the train at its starting stop and make its seats available.</li> -->
         </ol>
         <p class="draft-note">The character pool, player count, and exact starting setup are still playtest parameters.</p>
@@ -52,8 +52,9 @@
           </li>
           <li>
             <strong>Replenish:</strong> add cubes equal to 2 × the number of players, plus this
-            round's Conflict card's Refill Bonus (see Conflict). Place them 1 at a time around the
-            locations in board order, looping back and skipping any already at 2, until every cube
+            round's Conflict card's Refill Bonus (see Conflict). Starting at the Conflict card's
+            named location, place them 1 at a time around the locations in board order, looping
+            back and skipping any already at its cap (see Locations and Access), until every cube
             is placed. <!-- Advance the train by 1 stop. --> Empty every line: discard every card in it,
             face-up or face-down, and return their cubes to the supply.
           </li>
@@ -69,7 +70,8 @@
 
         <h3>Play</h3>
         <p>
-          Play 1 card into a line. Pay that line's play cost, then <strong>Recruit</strong> 1 cube
+          Play 1 card into a line (aligned left). Pay that position's play cost, set by the line's
+          character, then <strong>Recruit</strong> 1 cube
           from an eligible location. Recruiting resolves that location's reward; depending on
           whether you played the card face up or face down, a second effect also resolves — the
           player chooses which of the two effects to resolve first:
@@ -102,7 +104,8 @@
       <section>
         <h2>Locations and Access</h2>
         <p>
-          Each location holds 0–2 cubes. A location is available only while it has at least 1 cube.
+          Each location holds up to a set number of cubes — 2 for most locations, 3 for the Noodle
+          Shop. A location is available only while it has at least 1 cube.
           Citizen locations are eligible when playing into the Citizen line. Outcast locations are
           eligible when playing into the Outcast line. Shared locations, including the Noodle Shop,
           are eligible for either line.
@@ -160,7 +163,8 @@
         <h2>Conflict</h2>
         <p>
           Each new round a new conflict is revealed and placed on the board. It sets that round's
-          Reward, Condition, and Refill Bonus (see Round Structure — Replenish).
+          Reward, Condition, and Refill Bonus — a named board location where this round's
+          Replenish starts, plus 0–2 extra cubes (see Round Structure — Replenish).
         </p>
         <p>
           A player typically commits to the conflict with a face-down (see Taking An Action).

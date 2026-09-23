@@ -98,6 +98,7 @@
           glyph: "⚂",
           flavour: "Bet your standing. The house always collects.",
           reward: "Sink Citizen 1 → 2 coin.",
+          unlock: { track: "outcast", level: 4 },
         },
         {
           name: "The Rust Bar",
@@ -106,7 +107,6 @@
           glyph: "⟁",
           flavour: "Every rumour in Aeropolis passes this counter.",
           reward: "Draw 1 card.",
-          unlock: { track: "outcast", level: 4 },
           rail: true,
         },
         {
@@ -126,6 +126,7 @@
           flavour: "Shoulder to shoulder, the place to hire agents.",
           reward: "Buy 1 card, paying its coin cost.",
           marketSlots: 5,
+          slots: 3,
           rail: true,
         },
         {
@@ -242,8 +243,7 @@
               <div class="reservoir">
                 <p class="mini-label">Agents</p>
                 <div class="slots">
-                  <span class="cube-slot">Cube</span>
-                  <span class="cube-slot">Cube</span>
+                  ${Array.from({ length: loc.slots || 2 }, () => `<span class="cube-slot">Cube</span>`).join("")}
                 </div>
               </div>
               <div class="reward">
