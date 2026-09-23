@@ -98,7 +98,7 @@
           glyph: "⚂",
           flavour: "Bet your standing. The house always collects.",
           reward: "Sink Citizen 1 → 2 coin.",
-          unlock: { track: "outcast", level: 4 },
+          unlock: { track: "citizen", level: 14 },
         },
         {
           name: "The Rust Bar",
@@ -139,17 +139,21 @@
         },
       ];
 
-      // 30 spaces: the Citizen starts on 30 and the Outcast on 1, so the gap is 29 —
-      // that is the total number of closing moves the whole game allows.
-      const SPIRE_SPACES = 30;
-      const DEAD_ZONE = 5; // bottom spaces worth nothing
-      const TOP_VP = 40;
+      // 16 spaces: the Citizen starts on 16 and the Outcast on 1, so the gap is 15 —
+      // that is the total number of closing moves the whole game allows. Sized so a
+      // dedicated Rise/Sink rush can plausibly close it by round 5-6 (playtest target).
+      const SPIRE_SPACES = 16;
 
-      // Payout curve for the meeting space: flat at the bottom, accelerating upward.
+      // Payout curve for the meeting space: every space is worth a different amount,
+      // starting at 1 VP at the bottom, and the jump to the next space up is never
+      // more than 3 — small gaps low down, capped (not accelerating past 3) near the top.
+      const SPIRE_VALUES = [1];
+      for (let pos = 2; pos <= SPIRE_SPACES; pos++) {
+        const gap = Math.min(3, Math.ceil(pos / 5));
+        SPIRE_VALUES.push(SPIRE_VALUES[pos - 2] + gap);
+      }
       function spireVp(space) {
-        if (space <= DEAD_ZONE) return 0;
-        const t = (space - DEAD_ZONE) / (SPIRE_SPACES - DEAD_ZONE);
-        return Math.round(t * t * TOP_VP);
+        return SPIRE_VALUES[space - 1];
       }
 
       // Top of the spire down to the bottom.
@@ -261,9 +265,7 @@
         const rows = SPIRE.map((vp, index) => {
           const spaceNo = total - index;
           const band = vp >= 20 ? "high" : vp >= 6 ? "mid" : "low";
-          const mid = index === Math.floor(total / 2) ? `<div class="midline">Midline</div>` : "";
           return `
-            ${mid}
             <div class="space" data-band="${band}">
               <span class="space-no">${spaceNo}</span>
               <span class="space-rung"></span>

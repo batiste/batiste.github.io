@@ -303,12 +303,13 @@ body {
 
 .card-footer .footer-value {
   font-weight: 600;
+  font-size: 5cqw;
 }
 
 /* Discard-effect row only: bumped 25% over the shared .footer-value size. */
-.card-footer .footer-value.discard-amount {
-  font-size: 4.75cqw;
-}
+/* .card-footer .footer-value.discard-amount {
+  font-size: 5.75cqw;
+} */
 
 /* .coin, .coin-num, .cube-icon now live in icons.css, shared with board.html. */
 
