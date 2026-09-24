@@ -319,13 +319,49 @@
         `;
       }
 
-      document.getElementById("characters").innerHTML =
-        CHARACTERS.map(characterMarkup).join("");
-      document.getElementById("deck").innerHTML = DECK.map(cardMarkup).join("");
-      document.getElementById("market").innerHTML = MARKET.map(cardMarkup).join("");
-      document.getElementById("conflicts").innerHTML = CONFLICTS.map((c) => conflictCardMarkup(c)).join("");
-      document.getElementById("revolution-conflicts").innerHTML =
-        REVOLUTION_CONFLICTS.map((c) => conflictCardMarkup(c, true)).join("");
+      // One entry per screentop.gg sheet — the decks as that platform cuts
+      // them, which is why both Conflict types share a sheet.
+      const SHEETS = {
+        character: () => CHARACTERS.map(characterMarkup),
+        base: () => DECK.map(cardMarkup),
+        shop: () => MARKET.map(cardMarkup),
+        conflict: () => [
+          ...CONFLICTS.map((c) => conflictCardMarkup(c)),
+          ...REVOLUTION_CONFLICTS.map((c) => conflictCardMarkup(c, true)),
+        ],
+      };
+
+      // Cards per row on a sheet: the divisor of the card count that puts the
+      // sheet closest to 1.4:1, so the grid is always full — a blank cell
+      // would offset screentop's slicing.
+      function gridCols(count) {
+        const off = (cols) =>
+          Math.abs(Math.log((cols * 57) / (Math.ceil(count / cols) * 89) / 1.4));
+        let best = count;
+        for (let cols = 1; cols < count; cols++) {
+          if (count % cols === 0 && off(cols) < off(best)) best = cols;
+        }
+        return best;
+      }
+
+      // ?sheet=<name> renders that one deck as a bare export grid instead of
+      // the page (see export-screentop.js).
+      const sheet = new URLSearchParams(location.search).get("sheet");
+
+      if (SHEETS[sheet]) {
+        const cards = SHEETS[sheet]();
+        document.body.className = "sheet-export";
+        document.body.innerHTML =
+          `<ul class="deck" style="--cols:${gridCols(cards.length)}">${cards.join("")}</ul>`;
+      } else {
+        document.getElementById("characters").innerHTML =
+          CHARACTERS.map(characterMarkup).join("");
+        document.getElementById("deck").innerHTML = DECK.map(cardMarkup).join("");
+        document.getElementById("market").innerHTML = MARKET.map(cardMarkup).join("");
+        document.getElementById("conflicts").innerHTML = CONFLICTS.map((c) => conflictCardMarkup(c)).join("");
+        document.getElementById("revolution-conflicts").innerHTML =
+          REVOLUTION_CONFLICTS.map((c) => conflictCardMarkup(c, true)).join("");
+      }
     </script>
   </body>
 </html>

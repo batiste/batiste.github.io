@@ -532,3 +532,33 @@ body {
   .deck { gap: 3mm; max-width: none; }
   .card { box-shadow: none; border: 0.2mm solid #999; }
 }
+
+/* ---------- screentop.gg sheet export (export-screentop.js) ---------- */
+
+/* One deck per image: a gapless grid of cards at a fixed size, sliced back
+   into single cards by screentop's importer — so no page chrome, no gaps
+   between cards, and no blank cells (see gridCols in deck.html). */
+/* Set on :root, like the print block above, so --card-h recomputes with it. */
+:root:has(.sheet-export) {
+  /* 57 x 89 mm at ~200 dpi; keeps the card height a whole 712px. */
+  --card-w: 456px;
+}
+
+body.sheet-export {
+  padding: 0;
+  background: #fff;
+}
+
+body.sheet-export .deck {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--card-w));
+  gap: 0;
+  width: max-content;
+  max-width: none;
+}
+
+/* Square corners and no drop shadow: every pixel of a cell is card face. */
+body.sheet-export .card {
+  border-radius: 0;
+  box-shadow: none;
+}

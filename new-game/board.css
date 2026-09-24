@@ -567,3 +567,21 @@ body {
   }
 
 }
+
+/* ---------- screentop.gg export (export-screentop.js) ---------- */
+
+/* The board alone, square-cornered and without cross-page nav, so the image
+   can be dropped in as a board. */
+body.board-export {
+  padding: 0;
+  background: #fff;
+}
+
+body.board-export .board {
+  border-radius: 0;
+  box-shadow: none;
+}
+
+body.board-export .head-right {
+  display: none;
+}

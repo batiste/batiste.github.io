@@ -363,6 +363,13 @@
           .join("");
       }
 
+      // ?export renders the board alone, for export-screentop.js. Set before
+      // anything is drawn: it changes the page padding, and so the board width
+      // the tower is drawn to.
+      if (new URLSearchParams(location.search).has("export")) {
+        document.body.className = "board-export";
+      }
+
       renderSide("loc-citizen", "citizen");
       renderSide("loc-outcast", "outcast");
       renderSide("loc-shared", "shared");
