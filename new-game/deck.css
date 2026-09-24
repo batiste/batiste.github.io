@@ -177,8 +177,8 @@ body {
 /* Where a recruited Agent cube gets socketed — same on deck and character cards. */
 .socket {
   flex: none;
-  width: 11cqw;
-  height: 11cqw;
+  width: 13.75cqw;
+  height: 13.75cqw;
   display: grid;
   place-items: center;
   border: 0.5cqw dashed rgba(20, 24, 28, 0.28);

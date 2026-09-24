@@ -264,8 +264,8 @@ body {
 .cube-slot {
   display: grid;
   place-items: center;
-  width: 34px;
-  height: 34px;
+  width: 42.5px;
+  height: 42.5px;
   border: 2px dashed color-mix(in srgb, var(--accent) 55%, rgba(20, 24, 28, 0.3));
   border-radius: 4px;
   font-size: 8px;
