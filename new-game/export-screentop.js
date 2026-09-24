@@ -27,7 +27,7 @@ const TARGETS = {
   "shop-deck": { page: "deck.html?sheet=shop", selector: ".deck" },
   // Board width is viewport-driven; this is the widest the 3-column layout
   // holds before board.css's 900px breakpoint would ever matter.
-  board: { page: "board.html?export", selector: ".board", width: 1800, height: 1400 },
+  board: { page: "board.html?export", selector: ".board", width: 1200, height: 1400 },
   character: { page: "deck.html?sheet=character", selector: ".deck" },
 };
 
