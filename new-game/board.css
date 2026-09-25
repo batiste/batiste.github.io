@@ -1,17 +1,5 @@
 :root {
   --night: #1b2126;
-
-  /* Each location owns a colour, used for its card accent (border, title) and
-     carried by the Spire track token/train seat for its side. Agent cubes
-     themselves are plain grey — see rules.html Glossary. */
-  --forum: #b0812f;
-  --counting: #2f5d86;
-  --den: #a13b3b;
-  --bar: #9e4a2c;
-  --scrap: #5d7a35;
-  --lift: #6a4a86;
-  --market: #94406e;
-  --outcast-track: #2f7d74;
 }
 
 body {

@@ -187,17 +187,21 @@ const MARKET = [
     conflictValue: 1,
     discardEffect: "1 coin",
   },
-  // ---------- playtest probes (no coin cost — see deck.html's Noodle Shop
-  // section note) ----------
+  // ---------- playtest probes: direct card-count/repeat interactions for
+  // the Other Line rule (see rules.html Glossary — Other Line). Priced
+  // above the rest of the Noodle Shop, not below it — each scales with
+  // board state instead of paying a flat amount, so it's the ceiling case
+  // that sets the price, not the average one.
   {
     title: "Revolutionary Organizer",
     line: "outcast",
     glyph: "⚑",
-    // Playtest probe: a direct card-count interaction, same pattern as
-    // Embezzler (see rules.html Glossary — Other Line).
+    // Same pattern as Embezzler; unlike Embezzler's flat 1 coin per card,
+    // this scales a Rise, so its late-game ceiling (a long Citizen line)
+    // is priced above Embezzler and the rest of the Noodle Shop.
     slots: [{ text: "cube, for each card in your other line: Rise Outcast" }],
     conflictValue: 2,
-    cost: 2,
+    cost: 4,
     discardEffect: "1 coin",
   },
   {
@@ -206,10 +210,12 @@ const MARKET = [
     glyph: "⟲",
     // Deliberately strong probe: repeats every card's normal socket/recruit
     // effect in the other line, not their Intrigue/discard effects, and
-    // never moves cubes (see rules.html Glossary's Echo ruling).
+    // never moves cubes (see rules.html Glossary's Echo ruling). Priced
+    // highest in the Noodle Shop: a full other line to repeat is an
+    // exponential-feeling spike, not just a strong rate.
     slots: [{ text: "Repeat the effect of every slotted card in your other line." }],
     conflictValue: 2,
-    cost: 4,
+    cost: 5,
     discardEffect: "1 coin",
   },
 ];
