@@ -1,7 +1,7 @@
 // Double Life data shared by double-life.html (rules) and double-life-play.html (hot-seat game).
 
 const DL_CONFIG = {
-  rounds: 6,
+  rounds: 5,
   rowSize: 4,
   actionsPerPlayer: 3,
   reserve: 12,
