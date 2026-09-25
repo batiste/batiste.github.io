@@ -3,7 +3,7 @@
   --panel: #232a30;
   --panel-2: #2b343b;
   /* Raised board pieces (conflict, locations, spire): lighter than the table. */
-  --surface: #36424b;
+  --surface: #2a333a;
   --surface-edge: rgba(255, 255, 255, 0.22);
   --line: rgba(255, 255, 255, 0.12);
   --text: #dfe6ea;
@@ -158,7 +158,7 @@ h1, h2, h3 {
   background: color-mix(in srgb, var(--accent) 18%, var(--surface));
 }
 .ploc-head b { font-size: 12.5px; }
-.ploc .reward { margin: 6px 0 0; }
+.ploc .reward { margin: 8px 0 0; padding-top: 7px; border-top: 1px solid var(--surface-edge); }
 .ploc .lock { margin: 4px 0 0; font-size: 11px; color: var(--muted); }
 .ploc .lock.locked { color: #ff7b6b; }
 

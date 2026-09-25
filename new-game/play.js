@@ -9,6 +9,7 @@ const LINE_LABEL = { citizen: "Citizen", outcast: "Outcast", any: "Broker" };
 const HAND_SIZE = 4;
 const STARTING_COINS = 2;
 const CONFLICT_DECK_SIZE = 6;
+const STARTING_CUBES = 1; // per location
 const REVOLUTION_ROUNDS = 3;
 const TOP = SPIRE_SPACES;
 const SAVE_KEY = "aeropolis-playtest";
@@ -251,7 +252,7 @@ function newGame(setup) {
     conflictDeck: shuffle(CONFLICTS.map((c) => c.title)).slice(0, CONFLICT_DECK_SIZE),
     conflict: null,
     conflictIsRevolution: false,
-    locations: Object.fromEntries(LOCATIONS.map((l) => [l.name, capOf(l)])),
+    locations: Object.fromEntries(LOCATIONS.map((l) => [l.name, Math.min(STARTING_CUBES, capOf(l))])),
     market: { deck: shuffle(MARKET.map((c) => c.title)), offer: [], discard: [] },
     players: setup.map((s) => ({
       name: s.name,

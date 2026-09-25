@@ -44,7 +44,7 @@ cycle rapidly — aiming for 7–8 reshuffles across a game.
 3. Give each player the current example starter deck of 7 cards.
 4. Give each player 2 coins.
 5. Create a deck of 6 random Conflict cards.
-6. Fill each board location up to its cap (see Locations and Access; exact fill mechanism still TBD).
+6. Place 1 cube on each board location.
 
 The character pool, player count, and exact starting setup are still playtest parameters.
 
