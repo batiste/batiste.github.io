@@ -12,8 +12,8 @@ const TF_CONFIG = {
 };
 
 const GOODS = {
-  P: { name: "Papers", one: "Paper", use: "Deal: send troops to the lower city." },
-  S: { name: "Secrets", one: "Secret", use: "Rally: send troops to the upper city." },
+  P: { name: "Papers", one: "Paper", use: "Mostly pays Deal strips: troops to the lower city." },
+  S: { name: "Secrets", one: "Secret", use: "Mostly pays Rally strips: troops to the upper city." },
   A: { name: "Arms", one: "Arms", use: "Uprising: +1 strength each, committed in secret." },
   T: { name: "Stims", one: "Stim", use: "Street run: discard the card just drawn, then draw again." },
 }; // Every good also pays card costs.
@@ -31,17 +31,35 @@ const LOCATIONS = [
 
 // A side = the column tucked above or below a character. The character card is the base of both its sides.
 const SIDES = {
-  cit: {
-    name: "Citizen",
-    up: { name: "Rally", base: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }] },
-    down: { name: "Council", base: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
-  },
-  out: {
-    name: "Outcast",
-    up: { name: "Street", base: [{ run: 6 }] },
-    down: { name: "Deal", base: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
-  },
+  cit: { name: "Citizen", up: { name: "Rally" }, down: { name: "Council" } },
+  out: { name: "Outcast", up: { name: "Street" }, down: { name: "Deal" } },
 };
+
+// Characters: each player plays one Citizen and one Outcast. Their own strips (up / down) are the base of their sides.
+// Setup dials: goods (extra starting goods, may be negative), cit / out (starting heights), troops (placed at setup),
+// perDraw (Street run: choose the deck before each draw).
+const CHARACTERS = [
+  { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
+  { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
+  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "high", n: 3 } }], down: [{ gain: "S", n: 1 }], cit: 12 },
+  { id: "chancellor", name: "Chancellor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { scheme: true }], goods: { P: -1 } },
+  { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
+  { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 4 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], out: 2 },
+  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], goods: { T: 1 }, perDraw: true },
+  { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
+];
+const CHARACTER = Object.fromEntries(CHARACTERS.map((c) => [c.id, c]));
+const DEFAULT_CHARS = { cit: "councillor", out: "hustler" };
+// Setup text of a character, e.g. "Citizen starts at 13, 1 troop at the Forum".
+function charSetupText(c) {
+  const parts = [];
+  Object.entries(c.goods || {}).forEach(([g, n]) => parts.push(n > 0 ? `+${icon(g, n)}` : `no starting ${GOODS[g].one}`));
+  if (c.cit) parts.push(`Citizen starts at ${c.cit}`);
+  if (c.out) parts.push(`Outcast starts at ${c.out}`);
+  Object.entries(c.troops || {}).forEach(([id, n]) => parts.push(`${n} troop${n > 1 ? "s" : ""} at the ${LOCATIONS.find((l) => l.id === id).name}`));
+  if (c.perDraw) parts.push("street run: choose the deck before each draw");
+  return parts.join(", ") || "—";
+}
 
 // Effects: {gain, n} · {rise, n} · {troop: "low"|"high", n} · {move} · {spend, get} (optional) · {limit} (Street only)
 // · {scheme} · {run} (base only) · {choice}.
@@ -123,7 +141,7 @@ const ICON_HELP = {
   sink: "Your Citizen goes down 1: pays for each good of a card cost you lack.",
   low: "Place a troop at the Docks, Rag Market or Cable Lift.",
   high: "Place a troop at the Cable Lift, Forum or Council Hall.",
-  move: "Move one of your troops to any location.",
+  move: "Move one of your troops to any location (you may move fewer).",
   any: "A good of your choice.",
 };
 const glossaryHtml = () =>

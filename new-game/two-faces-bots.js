@@ -195,7 +195,7 @@ function valueBot(profile) {
     const k = CARDS[id].char;
     const col = P(p).sides[k][side];
     const kept = col.length >= TF_CONFIG.sideCap ? col.slice(1) : col;
-    const list = activationOrder([...CARDS[id][side], ...[...kept].reverse().flatMap((c) => CARDS[c][side]), ...SIDES[k][side].base]);
+    const list = activationOrder([...CARDS[id][side], ...[...kept].reverse().flatMap((c) => CARDS[c][side]), ...charOf(P(p), k)[side]]);
     const cost = payValue(p, CARDS[id]);
     const dropped = kept !== col ? CARDS[col[0]][side] : null;
     return fxValue(p, list, { goods: { ...P(p).goods }, limit: 0 }) - cost + w.engine * kept.length + futureValue(p, k, side, CARDS[id][side], dropped);
@@ -225,7 +225,13 @@ function valueBot(profile) {
         case "moveTo":
           return idx((id) => locValue(p, id));
         case "moveFrom":
-          return idx((id) => (id === null ? -99 : S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - (upcoming().at.includes(id) ? 5 : 0)));
+          // Take a troop only from where it is spare: keep control (lead of 2+), never from the coming fight,
+          // never one just moved (no back-and-forth). Otherwise stop moving.
+          return idx((id) => {
+            if (id === null) return 0.5;
+            if ((info.arrived || []).includes(id)) return -99;
+            return S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - 1 - (upcoming().at.includes(id) ? 5 : 0);
+          });
         case "runDeck":
           return idx((k) => deckRunValue(p, info.decks[k], info.limit));
         case "draw": {

@@ -7,6 +7,7 @@
 //   node two-faces-sim.js compare  [games] [players]           rule variants side by side (see VARIANTS)
 //   node two-faces-sim.js profiles [games] [players]           bot profiles: mixed tournament + each against itself
 //   node two-faces-sim.js cards    [games] [players]           forced pick: does taking a strip win games?
+//   node two-faces-sim.js characters [games] [players]         random characters: win rate and play style per character
 //
 // Bots: "random" picks uniformly; the others are value-model profiles (see PROFILES in valueBot).
 
@@ -14,7 +15,7 @@ const fs = require("fs");
 const path = require("path");
 const vm = require("vm");
 
-const MODE = ["compare", "profiles", "cards"].includes(process.argv[2]) ? process.argv[2] : "report";
+const MODE = ["compare", "profiles", "cards", "characters"].includes(process.argv[2]) ? process.argv[2] : "report";
 const args = process.argv.slice(MODE === "report" ? 2 : 3);
 const GAMES = +args[0] || 1000;
 const PLAYERS = +args[1] || 3;
@@ -25,8 +26,7 @@ const PLAYERS = +args[1] || 3;
 const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
 const VARIANTS = [
   { name: "Current rules" },
-  { name: "×2 doubles everything (old)", patch: [["return (troops + arms) * 2 ** doubles + plus;", "return (troops + arms + plus) * 2 ** doubles;"]] },
-  { name: "×2 on troops + Arms, no stacking", patch: [["return (troops + arms) * 2 ** doubles + plus;", "return (troops + arms) * (doubles ? 2 : 1) + plus;"]] },
+  { name: "Uprising tie: lower Outcast (old)", patch: [["res.sort((a, b) => b.s - a.s || fightTie(a.q, b.q, arms));", "res.sort((a, b) => b.s - a.s || P(a.q).out - P(b.q).out);"]] },
 ];
 
 // ---------- load the game in a sandbox ----------
@@ -142,7 +142,10 @@ function sim(GAMES, setups, done) {
     return kind === "forced" ? forcedBot(valueBot(base), key) : valueBot(name);
   };
 
-  async function playGame(names) {
+  // seats: bot names, or { bot, chars: { cit, out } } to give characters (default: Councillor + Hustler).
+  async function playGame(seats) {
+    const names = seats.map((s) => s.bot ?? s);
+    const chars = seats.map((s) => s.chars || DEFAULT_CHARS);
     const bots = names.map(makeBot);
     G = { deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
     G.sides = bots.map(() => new Set());
@@ -150,7 +153,7 @@ function sim(GAMES, setups, done) {
     G.stat = bots.map(() => ({ schemeTurns: 0, troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
     G.took = bots.map(() => new Set());
     G.options = [];
-    startGame(bots.map((_, q) => `P${q}`));
+    startGame(bots.map((_, q) => ({ name: `P${q}`, chars: chars[q] })));
     const plan = {};
     for (let steps = 0; S.phase === "play"; steps++) {
       if (steps > 20000) throw new Error("stalled game");
@@ -184,7 +187,7 @@ function sim(GAMES, setups, done) {
     const winners = S.players.map((x) => byRank(x, best) === 0);
     const share = winners.map((w) => (w ? 1 / winners.filter(Boolean).length : 0));
     const sorted = final.map((f) => f[0]).sort((a, b) => b - a);
-    return { ...G, names, onBoard: S.players.map((_, q) => LOCATIONS.reduce((t, l) => t + S.troops[l.id][q], 0)), supply: S.players.map((x) => x.supply), left: S.players.map((x) => Object.values(x.goods).reduce((a, b) => a + b, 0)), leftBy: S.players.map((x) => ({ ...x.goods })), rounds: S.round, met: S.met, final: final.map((f) => f[0]), cit: S.players.map((x) => x.cit), share, margin: sorted[0] - sorted[1] };
+    return { ...G, names, chars, onBoard: S.players.map((_, q) => LOCATIONS.reduce((t, l) => t + S.troops[l.id][q], 0)), supply: S.players.map((x) => x.supply), left: S.players.map((x) => Object.values(x.goods).reduce((a, b) => a + b, 0)), leftBy: S.players.map((x) => ({ ...x.goods })), rounds: S.round, met: S.met, final: final.map((f) => f[0]), cit: S.players.map((x) => x.cit), share, margin: sorted[0] - sorted[1] };
   }
 
   /* ---------- reports ---------- */
@@ -300,6 +303,29 @@ function sim(GAMES, setups, done) {
     out("- Weakest:");
     rows.slice(-6).forEach((r) => out(fmt(r)));
     // Per bot name (seat-independent), and the forced pick's taker if any.
+    // Per character (and per Citizen + Outcast pair): win rate, score and behaviour.
+    m.byChar = {};
+    m.byPair = {};
+    games.forEach((g) =>
+      g.chars.forEach((c, q) => {
+        const add = (key) => {
+          const r = (key.includes("+") ? m.byPair : m.byChar)[key] || { games: 0, win: 0, score: 0, troops: 0, runs: 0, schemes: 0, up: 0, ctrl: 0, sunk: 0 };
+          r.games++;
+          r.win += g.share[q];
+          r.score += g.final[q];
+          r.troops += g.stat[q].troops;
+          r.runs += g.stat[q].runs;
+          r.schemes += g.stat[q].schemes;
+          r.up += g.stat[q]["out.uprising"] + g.stat[q]["cit.uprising"];
+          r.ctrl += g.stat[q]["out.control"];
+          r.sunk += g.stat[q].sunk;
+          (key.includes("+") ? m.byPair : m.byChar)[key] = r;
+        };
+        add(c.cit);
+        add(c.out);
+        add(`${c.cit}+${c.out}`);
+      }),
+    );
     m.byBot = {};
     games.forEach((g) =>
       g.names.forEach((b, q) => {
@@ -412,6 +438,26 @@ const MODES = {
       ),
     );
     console.log(`\n## Each profile against itself (${GAMES} games each)\n\n${metricsTable(mirror.map((r) => [r.title, r.m]))}`);
+  },
+
+  // Characters: smart bots, random distinct characters per player. Win rate and play style per character and pair.
+  async characters() {
+    const ids = (k) => vm.runInContext(`CHARACTERS.filter((c) => c.char === "${k}").map((c) => c.id)`, sandbox());
+    const [cits, outs] = [ids("cit"), ids("out")];
+    const seats = () => {
+      const [c, o] = [shuffled(cits), shuffled(outs)];
+      return all("smart").map((bot, q) => ({ bot, chars: { cit: c[q % c.length], out: o[q % o.length] } }));
+    };
+    const [r] = await run(BASE, [["characters", seats, GAMES * 2]]);
+    const se = (x) => Math.sqrt(((x.win / x.games) * (1 - x.win / x.games)) / x.games);
+    const per = (x, k) => (x[k] / x.games).toFixed(1);
+    const rowOf = (id, x) => [id, x.games, `${pct(x.win / x.games)} ± ${pct(2 * se(x))}`, per(x, "score"), per(x, "troops"), per(x, "runs"), per(x, "schemes"), per(x, "up"), per(x, "ctrl"), per(x, "sunk")];
+    const head = ["Character", "Games", "Win rate", "Score", "Troops sent", "Street runs", "Schemes", "Steps from Uprisings", "Steps from control", "Citizen sinks"];
+    console.log(`# Characters — ${GAMES * 2} games, ${PLAYERS} smart players, random distinct characters (fair ${pct(1 / PLAYERS)})\n`);
+    console.log(md(head, [...cits, ...outs].map((id) => rowOf(id, r.m.byChar[id]))));
+    const pairs = Object.entries(r.m.byPair).filter(([, x]) => x.games >= 60).sort((a, b) => b[1].win / b[1].games - a[1].win / a[1].games);
+    console.log(`\n## Pairs (≥60 games), strongest first\n`);
+    console.log(md(["Pair", "Games", "Win rate"], pairs.map(([id, x]) => [id.replace("+", " + "), x.games, `${pct(x.win / x.games)} ± ${pct(2 * se(x))}`])));
   },
 
   // Forced pick: one smart player at a random seat takes a given strip the first time it can.

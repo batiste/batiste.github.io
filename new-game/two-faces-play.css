@@ -177,5 +177,8 @@ body { padding-bottom: 220px; }
 .results tr.winner td { background: rgba(233, 196, 119, 0.15); font-weight: 700; }
 
 /* ---------- AI seats ---------- */
-.setup-player { grid-template-columns: 26px 1fr 160px; }
+.setup-player { grid-template-columns: 26px 1fr 140px 130px 130px; }
 .ai-badge { margin-left: 8px; padding: 1px 7px; border-radius: 10px; background: rgba(20, 24, 28, 0.35); color: #15191c; font-family: var(--font-body); font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: 0.04em; }
+.char-kind { color: var(--ink-soft); font-size: 10px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; }
+dialog { max-width: 860px; }
+.setup-head span { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }

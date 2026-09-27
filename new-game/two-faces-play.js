@@ -105,6 +105,7 @@ function payCost(p, c) {
   return steps;
 }
 const score = (x) => x.cit + x.out;
+const charOf = (x, k) => CHARACTER[x.chars[k]];
 // Final ranking key: score, then leftover goods in tie-break order. Compare keys left to right.
 const rankKey = (x) => [score(x), ...TF_CONFIG.tieBreak.map((g) => x.goods[g])];
 const byRank = (a, b) => {
@@ -164,12 +165,14 @@ async function sendTroops(p, zone, amount) {
 
 // Move: up to `amount` troops of yours, each to any other location. You may stop at any time.
 async function moveTroops(p, amount) {
+  const arrived = []; // destinations of this effect's moves (bots never move those troops back)
   for (let i = 0; i < amount; i++) {
     const opts = LOCATIONS.filter((l) => troopsAt(l.id, p) > 0).map((l) => ({ label: l.name, value: l.id }));
     if (!opts.length) return log(`${nm(p)} has no troop to move.`);
-    const from = await pick(`Move a troop (${i + 1}/${amount}): from where?`, [...opts, { label: "Stop moving", value: null }], p, { kind: "moveFrom" });
+    const from = await pick(`Move a troop (${i + 1}/${amount}): from where?`, [...opts, { label: "Stop moving", value: null }], p, { kind: "moveFrom", arrived });
     if (!from) return;
     const to = await pickLoc(p, `Move a troop from the ${LOC[from].name} to where?`, (l) => l.id !== from, { kind: "moveTo", from });
+    arrived.push(to);
     S.troops[from][p]--;
     S.troops[to][p]++;
     log(`${nm(p)} moves a troop from the <b>${LOC[from].name}</b> to the <b>${LOC[to].name}</b>.`);
@@ -185,23 +188,29 @@ async function run(p, limit) {
   try {
     const x = P(p);
     const view = (id) => ({ id, heat: heatOf(CARDS[id]), n: costSize(CARDS[id]), cost: CARDS[id].cost });
-    const k = await pick(
-      `Street run, limit ${icon("heat", limit)}: draw from which deck?`,
-      CHARS.map((c) => ({ label: `${SIDES[c].name} deck`, value: c })),
-      p,
-      { kind: "runDeck", limit, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
-    );
     const haul = [];
     let heat = 0;
+    const chooseDeck = () =>
+      pick(
+        `Street run, heat ${heat}/${limit}: draw from which deck?`,
+        CHARS.map((c) => ({ label: `${SIDES[c].name} deck`, value: c })),
+        p,
+        { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
+      );
+    // The Pawnbroker chooses the deck before each draw; everyone else once per run.
+    const perDraw = charOf(x, "out").perDraw;
+    let k = perDraw ? null : await chooseDeck();
+    const deckName = () => (k ? `${SIDES[k].name} deck` : "any deck");
     const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
-    const show = (drawn, note) => ({ cards: haul, drawn, note: note || `${SIDES[k].name} deck · heat ${heat}/${limit}` });
-    S.ctx[S.ctx.length - 1] = `Street run · ${SIDES[k].name} deck`;
-    log(`${nm(p)} runs the street through the ${SIDES[k].name} deck, limit ${icon("heat", limit)}.`);
+    const show = (drawn, note) => ({ cards: haul, drawn, note: note || `${deckName()} · heat ${heat}/${limit}` });
+    S.ctx[S.ctx.length - 1] = `Street run · ${deckName()}`;
+    log(`${nm(p)} runs the street through the ${deckName()}, limit ${icon("heat", limit)}.`);
     let redraw = false; // after a Stim: draw again, no stopping
     for (;;) {
-      const info = { kind: "draw", heat, limit, deck: S.decks[k].map(view), haul: haul.map(view), show: show() };
+      const info = { kind: "draw", heat, limit, deck: (k ? S.decks[k] : [...S.decks.cit, ...S.decks.out]).map(view), haul: haul.map(view), show: show() };
       if (!redraw && !(await pick(`Street run: ${icon("heat", `${heat}/${limit}`)} haul: ${loot()}. Draw or stop?`, [{ label: "Draw", value: true }, { label: "Stop", value: false }], p, info))) break;
       redraw = false;
+      if (perDraw) k = await chooseDeck();
       const id = draw(k);
       if (!id) break;
       const c = view(id);
@@ -294,7 +303,7 @@ async function activate(p, k, side) {
   try {
     const strips = [...P(p).sides[k][side]].reverse().flatMap((id) => CARDS[id][side]);
     log(`${nm(p)} activates <b>${SIDES[k][side].name}</b>.`);
-    await effects(p, activationOrder([...strips, ...SIDES[k][side].base]));
+    await effects(p, activationOrder([...strips, ...charOf(P(p), k)[side]]));
   } finally {
     S.ctx.pop();
   }
@@ -390,6 +399,14 @@ function strength(p, at, arms) {
   return (troops + arms) * 2 ** doubles + plus;
 }
 
+// Uprising tie-break, like the final one: most leftover goods (after committed Arms) in tieBreak order; then turn order (stable sort).
+const leftover = (q, committed) => TF_CONFIG.tieBreak.map((g) => P(q).goods[g] - (g === "A" ? committed : 0));
+function fightTie(a, b, arms) {
+  const [ka, kb] = [leftover(a, arms[a]), leftover(b, arms[b])];
+  const i = ka.findIndex((v, j) => v !== kb[j]);
+  return i < 0 ? 0 : kb[i] - ka[i];
+}
+
 // Why a fighter has that strength, e.g. "(3 troops + 1 Arms) ×2 + 2 from Schemes".
 function strengthText(p, at, arms) {
   const strs = P(p).schemes.map((id) => CARDS[id].str);
@@ -414,7 +431,9 @@ function uprisingResult(u, res, arms, order) {
   res.slice(1).forEach((r, i) => {
     const a = res[i];
     if (a.s !== r.s) return;
-    const why = P(a.q).out < P(r.q).out ? `lower Outcast (${P(a.q).out} vs ${P(r.q).out})` : "same Outcast: earlier in turn order";
+    const [la, lb] = [leftover(a.q, arms[a.q]), leftover(r.q, arms[r.q])];
+    const k = la.findIndex((v, j) => v !== lb[j]);
+    const why = k < 0 ? "same leftover goods: earlier in turn order" : `more leftover ${GOODS[TF_CONFIG.tieBreak[k]].name} (${la[k]} vs ${lb[k]})`;
     lines.push(`Tie at ${a.s}: ${nm(a.q)} ranks above ${nm(r.q)}, ${why}.`);
   });
   const out = order.filter((q) => !res.some((r) => r.q === q));
@@ -426,7 +445,7 @@ function uprisingResult(u, res, arms, order) {
   const notes = lines.slice(res.length).map((l) => `<p>${l}</p>`).join("");
   return {
     lines,
-    html: `<div class="modal-uprising">${uprisingCardHtml(u)}<div><h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = (troops there + Arms) ×2 per ×2 Scheme, + your +N Schemes · tie: lower Outcast</p>${table}${notes}</div></div>`,
+    html: `<div class="modal-uprising">${uprisingCardHtml(u)}<div><h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = (troops there + Arms) ×2 per ×2 Scheme, + your +N Schemes · tie: most leftover Arms, then Stims, Secrets, Papers</p>${table}${notes}</div></div>`,
   };
 }
 
@@ -443,7 +462,7 @@ async function uprising() {
       arms[q] = have ? await pick(`Uprising: ${esc(u.name)}. Pass to ${nm(q)}, others look away. Commit how many Arms?`, Array.from({ length: have + 1 }, (_, a) => ({ label: `${a}`, value: a })), q, { kind: "arms", u }) : 0;
     }
     const res = fighters.map((q) => ({ q, s: strength(q, u.at, arms[q]) }));
-    res.sort((a, b) => b.s - a.s || P(a.q).out - P(b.q).out);
+    res.sort((a, b) => b.s - a.s || fightTie(a.q, b.q, arms));
     const result = uprisingResult(u, res, arms, order);
     result.lines.forEach((l) => log(l));
     sound("uprising");
@@ -533,17 +552,24 @@ function endGame() {
 function startGame(seats) {
   const deck = (k) => shuffle(TF_CARDS.filter((c) => c.char === k).flatMap((c) => Array(c.copies).fill(c.id)));
   S = {
-    players: seats.map((seat, q) => ({
-      name: seat.name ?? seat,
-      ai: seat.ai || null,
-      color: COLORS[q],
-      cit: TF_CONFIG.spire,
-      out: 1,
-      goods: { ...TF_CONFIG.start },
-      sides: { cit: { up: [], down: [] }, out: { up: [], down: [] } },
-      schemes: [],
-      supply: TF_CONFIG.troops,
-    })),
+    players: seats.map((seat, q) => {
+      const chars = { ...DEFAULT_CHARS, ...(seat.chars || {}) };
+      const dial = (key) => CHARS.reduce((v, k) => CHARACTER[chars[k]][key] ?? v, null);
+      const goods = { ...TF_CONFIG.start };
+      CHARS.forEach((k) => Object.entries(CHARACTER[chars[k]].goods || {}).forEach(([g, n]) => (goods[g] = Math.max(0, goods[g] + n))));
+      return {
+        name: seat.name ?? seat,
+        ai: seat.ai || null,
+        chars,
+        color: COLORS[q],
+        cit: dial("cit") ?? TF_CONFIG.spire,
+        out: dial("out") ?? 1,
+        goods,
+        sides: { cit: { up: [], down: [] }, out: { up: [], down: [] } },
+        schemes: [],
+        supply: TF_CONFIG.troops,
+      };
+    }),
     troops: Object.fromEntries(LOCATIONS.map((l) => [l.id, seats.map(() => 0)])),
     decks: { cit: deck("cit"), out: deck("out") },
     discards: { cit: [], out: [] },
@@ -558,12 +584,22 @@ function startGame(seats) {
     log: [],
     ctx: [], // what is being resolved, shown above the prompt (e.g. "Uprising: Dock Riot › Control")
   };
+  // Characters' starting troops.
+  S.players.forEach((x, q) =>
+    CHARS.forEach((k) =>
+      Object.entries(charOf(x, k).troops || {}).forEach(([id, n]) => {
+        S.troops[id][q] += n;
+        x.supply -= n;
+      }),
+    ),
+  );
   CHARS.forEach(refill);
   history = [];
   resultsOpen = false;
   ui = {};
   busy = false;
   const u = TF_UPRISINGS[S.uprisings[0]];
+  S.players.forEach((x, q) => log(`${nm(q)} plays the <b>${charOf(x, "cit").name}</b> and the <b>${charOf(x, "out").name}</b>.`));
   log(`— Game starts. ${nm(0)} goes first. Uprising: <b>${esc(u.name)}</b> at the ${locNames(u.at)}. —`);
   render();
 }
@@ -678,9 +714,9 @@ function tableauHtml(x) {
     const s = x.sides[k];
     return `<div class="char-col ${k}">
       ${[...s.up].reverse().map((id) => tuck(id, "up")).join("")}
-      <div class="tcard char ${k}">${band(k, "up", fxList(SIDES[k].up.base))}
-        <div class="face">${SILHOUETTE[k]}<h3>${SIDES[k].name}</h3></div>
-        ${band(k, "down", fxList(SIDES[k].down.base))}</div>
+      <div class="tcard char ${k}">${band(k, "up", fxList(charOf(x, k).up))}
+        <div class="face">${SILHOUETTE[k]}<h3>${charOf(x, k).name}</h3><div class="char-kind">${SIDES[k].name}</div></div>
+        ${band(k, "down", fxList(charOf(x, k).down))}</div>
       ${s.down.map((id) => tuck(id, "down")).join("")}</div>`;
   }).join("");
 }
@@ -839,15 +875,34 @@ const SEAT_TYPES = [
   ["builder", "AI · builder"],
   ["random", "AI · random"],
 ];
+// Character menus: Random (default) or a given character.
+const charOptions = (k, sel) =>
+  [["", "Random"], ...CHARACTERS.filter((c) => c.char === k).map((c) => [c.id, c.name])]
+    .map(([v, label]) => `<option value="${v}" ${v === sel ? "selected" : ""}>${label}</option>`)
+    .join("");
 function renderSetup() {
   const count = +$("setup-count").value;
-  const prev = [...document.querySelectorAll(".setup-player")].map((el) => [el.querySelector("input").value, el.querySelector("select").value]);
-  $("setup-players").innerHTML = Array.from({ length: count }, (_, i) => {
-    const [name, ai] = prev[i] || [`Player ${i + 1}`, ""];
+  const prev = [...document.querySelectorAll(".setup-player:not(.setup-head)")].map((el) => [el.querySelector("input").value, ...[...el.querySelectorAll("select")].map((s) => s.value)]);
+  const head = `<div class="setup-player setup-head"><span></span><span>Name</span><span>Seat</span><span>Citizen</span><span>Outcast</span></div>`;
+  $("setup-players").innerHTML = head + Array.from({ length: count }, (_, i) => {
+    const [name, ai, cit, out] = prev[i] || [`Player ${i + 1}`, "", "", ""];
     const opts = SEAT_TYPES.map(([v, label]) => `<option value="${v}" ${v === ai ? "selected" : ""}>${label}</option>`).join("");
-    return `<div class="setup-player"><i style="background:${COLORS[i]}"></i><input value="${esc(name)}" /><select>${opts}</select></div>`;
+    return `<div class="setup-player"><i style="background:${COLORS[i]}"></i><input value="${esc(name)}" /><select title="Seat">${opts}</select>
+      <select title="Citizen">${charOptions("cit", cit)}</select><select title="Outcast">${charOptions("out", out)}</select></div>`;
   }).join("");
 }
+
+// Random characters: different for each player while the pool lasts.
+function assignCharacters(seats) {
+  CHARS.forEach((k) => {
+    const pool = shuffle(CHARACTERS.filter((c) => c.char === k && !seats.some((s) => s.chars[k] === c.id)).map((c) => c.id));
+    seats.forEach((s) => {
+      if (!s.chars[k]) s.chars[k] = pool.pop() || pickFrom(CHARACTERS.filter((c) => c.char === k)).id;
+    });
+  });
+  return seats;
+}
+const pickFrom = (a) => a[Math.floor(Math.random() * a.length)];
 
 function openSetup() {
   $("setup").returnValue = "";
@@ -859,7 +914,11 @@ $("setup-count").addEventListener("change", renderSetup);
 $("new-game").addEventListener("click", openSetup);
 $("setup").addEventListener("close", () => {
   if ($("setup").returnValue !== "start") return;
-  startGame([...document.querySelectorAll(".setup-player")].map((el) => ({ name: el.querySelector("input").value.trim() || "Player", ai: el.querySelector("select").value || null })));
+  const seats = [...document.querySelectorAll(".setup-player:not(.setup-head)")].map((el) => {
+    const [ai, cit, out] = [...el.querySelectorAll("select")].map((s) => s.value);
+    return { name: el.querySelector("input").value.trim() || "Player", ai: ai || null, chars: { cit, out } };
+  });
+  startGame(assignCharacters(seats));
   sound("start");
 });
 

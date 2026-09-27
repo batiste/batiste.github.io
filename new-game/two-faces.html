@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Two Faces — Draft Rules</title>
+    <title>Aeropolis - Two Faces — Draft Rules</title>
     <link rel="stylesheet" href="common.css" />
     <link rel="stylesheet" href="two-faces-icons.css" />
     <link rel="stylesheet" href="rules.css" />
@@ -12,7 +12,7 @@
     <div class="wrap">
       <header class="page-head">
         <div>
-          <h1>Two Faces</h1>
+          <h1>Aeropolis - Two Faces</h1>
           <p class="tagline">Aeropolis, back to the core: one city on the edge of revolution, two characters per player, 2–4 players.</p>
         </div>
         <nav aria-label="Game pages">
@@ -22,17 +22,19 @@
 
       <p class="callout">
         You play both sides: a Citizen at the top of the Spire, an Outcast at its base. Each turn, take a card and tuck it
-        above or below one of your characters: that column activates, every card in it. Send troops into the city and win
-        its Uprisings: that is how your Outcast climbs. When your two characters meet, the game ends. You score the
-        heights of <strong>both</strong> added together.
+        above or below one of your characters: that side activates, every card in it. Send troops into the city, win its
+        Uprisings and hold its key locations: that is how your Outcast climbs. When your two characters meet, the game ends
+        after that round. You score the heights of <strong>both</strong> added together.
       </p>
 
       <section>
         <h2>Setup</h2>
         <ol class="steps">
-          <li>Each player: a Citizen card and an Outcast card side by side; Citizen pawn on Spire <span data-cfg="spire"></span>, Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply.</li>
+          <li>Each player takes a Citizen and an Outcast character (deal 2 of each, keep 1 of each) and places them side by side.</li>
+          <li>Each player: Citizen pawn on Spire <span data-cfg="spire"></span> (the top), Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply. Then apply your characters' setup (see Characters).</li>
           <li>Shuffle the Citizen and Outcast decks. Reveal <span data-cfg="row"></span> cards from each: the <strong>row</strong>.</li>
-          <li>Shuffle the Uprising deck and draw <span data-cfg="rounds"></span>: the game lasts that many rounds. Reveal the first.</li>
+          <li>Shuffle the Uprising deck and draw <span data-cfg="rounds"></span>: the game lasts at most that many rounds. Reveal the first.</li>
+          <li>Choose a first player.</li>
         </ol>
       </section>
 
@@ -40,7 +42,7 @@
         <h2>Round</h2>
         <ol class="steps">
           <li>Starting with the first player, each player takes 1 turn, twice around the table.</li>
-          <li>Resolve the Uprising, then Control and Catch-up (see City).</li>
+          <li>Resolve the Uprising, then Control, then Catch-up (see Uprising and City).</li>
           <li>The first player passes left. Reveal the next Uprising.</li>
         </ol>
       </section>
@@ -48,9 +50,8 @@
       <section>
         <h2>Turn</h2>
         <ul class="steps">
-          <li><strong>Recruit:</strong> take 1 card from the row. Pay its cost in goods; for each good you lack, Sink your Citizen 1. Tuck it above or below its character, then <strong>activate</strong> that side. Refill the row from the same deck.</li>
+          <li><strong>Recruit:</strong> take 1 card from the row and pay its cost in goods; for each good you lack, Sink your Citizen 1 instead. Refill the row from the same deck. Tuck the card above or below its own character (Citizen cards go to the Citizen, Outcast cards to the Outcast), then <strong>activate</strong> that side.</li>
           <li>If you cannot afford any card in the row, take 1 good of your choice instead.</li>
-          <li><strong>Scheme</strong> (a strip effect and the Council Hall reward): look at the top card of each deck. Place 1 face down in front of you, the other at the bottom of its deck.</li>
         </ul>
         <p>Empty deck: shuffle its discards into it.</p>
       </section>
@@ -58,35 +59,54 @@
       <section>
         <h2>Sides</h2>
         <p>
-          Each character has 2 sides: tucked cards above it, tucked cards below it. A card tucked above shows only its top strip;
+          Each character has 2 sides: cards tucked above it and cards tucked below it. A card tucked above shows only its top strip;
           below, only its bottom strip. A side holds <span data-cfg="sideCap"></span> strips: tucking another discards its oldest.
         </p>
-        <p><strong>Activate:</strong> first take every "+" good on the side (strips and character). Then resolve the other effects: strips from newest to oldest, then the character's own strip. "→" effects are optional.</p>
+        <p><strong>Activate:</strong> first take every "+" good on the side (strips and character). Then resolve the other effects: strips from newest to oldest, then the character's own strip. "→" effects are optional: pay what is left of the arrow to get what is right of it.</p>
+      </section>
+
+      <section>
+        <h2>Characters</h2>
+        <p>
+          A character's own strips are the base of its sides: they resolve last on every activation (after the goods).
+          The Councillor and the Hustler are the plain ones; the others trade something for a specialty.
+        </p>
         <table class="revolution-table">
-          <thead><tr><th>Character</th><th>Side</th><th>Character strip</th></tr></thead>
-          <tbody id="sides"></tbody>
+          <thead><tr><th>Character</th><th>Is a</th><th>▲ Top strip</th><th>▼ Bottom strip</th><th>Setup</th></tr></thead>
+          <tbody id="characters"></tbody>
         </table>
       </section>
 
       <section>
         <h2>Icons</h2>
+        <p>Goods are public. Every good also pays card costs.</p>
         <ul class="steps" id="glossary"></ul>
       </section>
 
       <section>
         <h2>Street Run</h2>
         <p>
-          Choose the Citizen or the Outcast deck, then draw from it one card at a time. Each gives the goods of its cost and adds its <strong>heat</strong> (printed on the card;
-          free cards give nothing and run hot). Stop whenever you like and take the goods.
-          If your total heat goes over your heat limit, you are <strong>caught</strong>: you gain nothing. Either way, discard the drawn cards. The decks differ: Citizen cards cost mostly Secrets and run hotter; Outcast cards cost mostly Stims and Papers.
+          The Outcast's own strip above it (Street) runs the street. Your <strong>heat limit</strong> is the number on that strip, plus every "+🔥" strip
+          resolved before it in the same activation. Choose the Citizen or the Outcast deck, then draw from it one card at a time.
+          Each card gives the goods of its cost and adds its printed <strong>heat</strong>; free cards give nothing and run hot.
         </p>
+        <ul class="steps">
+          <li>Stop whenever you like and take the goods.</li>
+          <li>If your total heat goes over your limit, you are <strong>caught</strong>: you gain nothing.</li>
+          <li>After drawing a card, you may spend a Stim to discard it; you must then draw again.</li>
+          <li>Either way, discard the drawn cards. Citizen cards give mostly Secrets and Papers; Outcast cards mostly Stims, Papers and Arms.</li>
+        </ul>
       </section>
 
       <section>
         <h2>City</h2>
-        <p>Five locations. Troops sent by Deal go to the lower city, by Rally to the upper city; the Cable Lift is in both. Troops stay until they are lost or moved.</p>
+        <p>
+          Five locations, in the lower city, the upper city, or both (the Cable Lift). A troop icon says where the troop goes: any
+          location of that city. Troops stay until they are lost or moved; "Move" goes to any location, and you may move fewer.
+          With an empty supply, a troop effect does nothing.
+        </p>
         <p><strong>Control:</strong> after each Uprising, the player with the most troops at a location takes its reward. Tie: nobody. At the Forum and the Cable Lift, the controller then loses 1 troop there (upkeep).</p>
-        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 free troop to the lower city, from their supply. It keeps the last player in the fight for the next Uprisings.</p>
+        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 free troop to the lower city, from their supply. It keeps the last player in the fight.</p>
         <table class="revolution-table">
           <thead><tr><th>Location</th><th>City</th><th>Control</th><th>Upkeep</th></tr></thead>
           <tbody id="locations"></tbody>
@@ -95,11 +115,12 @@
 
       <section>
         <h2>Uprising</h2>
+        <p><strong>Scheme</strong> (a strip effect, and the Council Hall reward): look at the top card of each deck. Place 1 face down in front of you, the other at the bottom of its deck. Its Scheme value (+2, +3 or ×2) stays hidden until an Uprising.</p>
         <ol class="steps">
           <li>Each Uprising is fought at its location(s). Only players with troops there take part.</li>
-          <li>Each fighter secretly commits any number of their Arms, then all fighters reveal them together with their Schemes.</li>
-          <li><strong>Strength</strong> = (your troops there + Arms committed), doubled for each ×2 Scheme, + your +N Schemes. Strongest gets the first reward, next gets the second. Tie: lower Outcast wins, then turn order.</li>
-          <li>Every fighter, winner included, loses 1 troop at each of the Uprising's locations (back to supply). Fighters discard their Schemes and committed Arms; the others keep their Schemes.</li>
+          <li>Each fighter secretly commits any number of their Arms. Then all fighters reveal them, together with <strong>all</strong> their Schemes (not optional).</li>
+          <li><strong>Strength</strong> = (your troops there + Arms committed), doubled for each ×2 Scheme, + your +N Schemes. Strongest gets the first reward, next gets the second. Tie: most leftover goods, as at the end of the game (Arms after committing, then Stims, Secrets, Papers), then turn order.</li>
+          <li>Every fighter, winner included, loses 1 troop at each of the Uprising's locations where they have one (back to supply). Fighters discard their Schemes and committed Arms; the others keep their Schemes.</li>
         </ol>
         <table class="revolution-table">
           <thead><tr><th>Uprising</th><th>At</th><th>First</th><th>Second</th></tr></thead>
@@ -110,15 +131,16 @@
       <section>
         <h2>Spire</h2>
         <ul class="steps">
-          <li>Your Outcast never goes above your Citizen. You cannot pay a cost that would put your Citizen below your Outcast.</li>
-          <li>When they stand on the same height, they <strong>meet</strong>.</li>
+          <li>Heights go from 1 to <span data-cfg="spire"></span>. Your Citizen never goes above <span data-cfg="spire"></span>, and your Outcast never goes above your Citizen: any extra rise is lost.</li>
+          <li>You cannot pay a cost that would put your Citizen below your Outcast.</li>
+          <li>When your Citizen and Outcast stand on the same height, they <strong>meet</strong>.</li>
         </ul>
       </section>
 
       <section>
         <h2>End</h2>
         <ul class="steps">
-          <li>The game ends after the Uprising of the round in which any player's characters meet, or after round <span data-cfg="rounds"></span>.</li>
+          <li>When any player's characters meet, the round is still played to its end: the remaining turns, the Uprising, Control and Catch-up. Then the game ends. Otherwise it ends after round <span data-cfg="rounds"></span>.</li>
           <li>Score: the heights of your Citizen and Outcast added together. Tie: most Arms, then Stims, then Secrets, then Papers.</li>
         </ul>
       </section>
@@ -143,25 +165,26 @@
           <li><strong>Scheme as a turn action removed</strong> (strips and Council Hall keep it): players and bots rarely chose it, and those who did won less. Early in the design it slowed the race; with goods costs it no longer matters.</li>
           <li><strong>Troop supply 12</strong> (was 10): in a playtest, troops ran out. Leftover goods break final ties; converting them into points (5 goods = +1 Outcast) was tried and dropped: it widened gaps (2 players: blowouts 36% → 44%).</li>
           <li><strong>×2 Schemes double troops + Arms only</strong> (was: the whole total, +N Schemes included): slightly tighter games; ×2 cards stay fair (29–35%). Not stacking ×2 was worse.</li>
+          <li><strong>Characters</strong> tuned with <code>node two-faces-sim.js characters</code> (random distinct characters, smart bots): all within about 2 points of fair at 2, 3 and 4 players; pairs within 28–39% at 3 players. First drafts: Gunsmith (+2 Arms) and Demagogue (Forum troop) won 43–45%, Chancellor 25%.</li>
           <li>Tried and dropped: heat limit 4 or more Patrols, control without Spire steps, seat bonuses.</li>
-          <li><strong>5 rounds, Spire 14</strong>: shorter games are tighter (close finishes 44%, blowouts 21%), and characters meet in about 30% of games.</li>
-          <li><strong>Street run through the Citizen or Outcast deck</strong> (was: a separate contraband deck): same balance, one deck less; free cards' heat makes goods scarcer. Base limit 6, hot free cards and +2/+3 limit strips: Street went from 1.6 to 7.8 runs per game.</li>
+          <li><strong>5 rounds, Spire 14</strong>: shorter games are tighter; most games now end by a meeting in round 4 or 5.</li>
+          <li><strong>Street run through the Citizen or Outcast deck</strong> (was: a separate contraband deck): same balance, one deck less; free cards' heat makes goods scarcer. Base limit 6, hot free cards and +2/+3 limit strips made the Street worth taking.</li>
           <li><strong>Benefactor, Fixer</strong> (2 each): 2 goods → Rise Outcast 1. A sink for stockpiled goods. 3 → 1 was weaker; 4 → 2 made the card fair but widened gaps (leader wins more, fewer close games).</li>
           <li>Tried and dropped: leader −2 Uprising strength (works, but needs checking who leads at the table).</li>
-          <li>Known issues: the leader after round 2 still wins about 45% (fair: 33%); street runs rarely bust (about 2%); Outcast troop strips (Fence ▼, Blackmailer ▼) are weak (22–26%).</li>
+          <li><strong>Forum and Cable Lift upkeep</strong> (−1 troop for the controller): holding them uncontested wears down; 2 players: fewer blowouts, more comebacks.</li>
+          <li>Known issues: the leader after round 2 still wins about 45% (fair: 33%; 2 players: about 55% vs 50%); street runs rarely bust; Outcast troop strips (Fence ▼, Blackmailer ▼) are weak; a Citizen rise at the top is lost.</li>
         </ul>
       </section>
 
       <section>
         <h2>Playtest Questions</h2>
         <ul class="steps">
-          <li>Game length: do characters meet before the last Uprising?</li>
-          <li>City: are troops too cheap or too expensive? Is the Council Hall (a free Scheme) worth fighting for?</li>
+          <li>Ending: is triggering the meeting a good gamble, given that the others still play the round?</li>
+          <li>City: is the Council Hall (a Scheme each round) too strong when nobody contests it? Should Schemes be placed on a location?</li>
           <li>Engine: what would make building 3 sides, or stacking one, worth it?</li>
-          <li>Cost: do specific goods costs make the street run and Council worth it?</li>
-          <li>Street run: how to make it risky? It rarely busts.</li>
-          <li>Scheme: too opaque? It slows the race, which keeps games tight.</li>
-          <li>Characters: all identical for now. Unique base strips per character later?</li>
+          <li>Street run: how to make it riskier? It rarely busts.</li>
+          <li>Rise Citizen at the top is lost: should it become an Outcast rise?</li>
+          <li>Characters: are they balanced, and do they play differently? Which pairs are too strong?</li>
         </ul>
       </section>
     </div>
@@ -172,7 +195,7 @@
       const set = (id, v) => (document.getElementById(id).innerHTML = v);
       document.querySelectorAll("[data-cfg]").forEach((el) => (el.textContent = TF_CONFIG[el.dataset.cfg]));
       set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n }).slice(1)).join(", "));
-      set("sides", Object.values(SIDES).flatMap((c) => [["up", "above"], ["down", "below"]].map(([k, w]) => row([c.name, `<strong>${c[k].name}</strong> (${w})`, fxList(c[k].base)]))).join(""));
+      set("characters", CHARACTERS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, `${SIDES[c.char].up.name}: ${fxList(c.up)}`, `${SIDES[c.char].down.name}: ${fxList(c.down)}`, charSetupText(c)])).join(""));
       set("glossary", glossaryHtml());
       set("locations", LOCATIONS.map((l) => row([`<strong>${l.name}</strong>`, [l.low && "lower", l.high && "upper"].filter(Boolean).join(" + "), fxList(l.control), l.upkeep ? `−${l.upkeep} troop` : "—"])).join(""));
       set("uprisings", TF_UPRISINGS.map((u) => row([`<strong>${u.name}</strong>`, locNames(u.at), fxList(u.first), fxList(u.second)])).join(""));
