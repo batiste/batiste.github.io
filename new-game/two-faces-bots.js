@@ -25,7 +25,7 @@ const RANDOM = {
 // future (a tucked strip fires again on later activations of its side).
 const GV = { P: 0.6, S: 0.6, A: 0.5, T: 0.3 };
 // plan: fight planning for the coming Uprising and no goods hoarding (0 = the older, naive bot).
-const BASE_W = { plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
+const BASE_W = { needs: 1, plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
 const PROFILES = {
   greedy: {},
   myopic: { future: 0 }, // greedy without future activations: the old baseline
@@ -111,17 +111,23 @@ function valueBot(profile) {
   const troopValue = (p, zone) => (P(p).supply ? Math.max(...LOCATIONS.filter((l) => l[zone]).map((l) => locValue(p, l.id))) : 0);
 
   // A good is worth less the more of it you already hold: a stockpile you cannot spend is worth little.
-  const goodValue = (g, stock) => (w.goods * GV[g]) / (1 + stock / 4);
+  // Goods that the bot's own characters spend (e.g. Arms for the Gunsmith) are worth more while it holds few.
+  const needs = (p) => {
+    const x = P(p);
+    const own = CHARS.flatMap((k) => [...charOf(x, k).up, ...charOf(x, k).down]);
+    return new Set(own.flatMap((e) => (e.spend ? Object.keys(e.spend) : [])));
+  };
+  const goodValue = (g, stock, p) => ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1);
   function fxValue(p, list, sim) {
     let v = 0;
     for (const e of list) {
       if (e.gain) {
-        for (let i = 0; i < e.n; i++) v += goodValue(e.gain, sim.goods[e.gain]++);
+        for (let i = 0; i < e.n; i++) v += goodValue(e.gain, sim.goods[e.gain]++, p);
       } else if (e.spend) {
         const [g, n] = Object.entries(e.spend)[0];
         const have = g === "any" ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : sim.goods[g];
         if (have < n) continue;
-        const gain = fxValue(p, [e.get], sim) - w.goods * (g === "any" ? 0.4 : GV[g]) * n;
+        const gain = fxValue(p, [].concat(e.get), sim) - w.goods * (g === "any" ? 0.4 : GV[g]) * n;
         if (gain <= 0) continue;
         v += gain;
         if (g !== "any") sim.goods[g] -= n;
@@ -146,7 +152,7 @@ function valueBot(profile) {
   function payValue(p, card) {
     const x = P(p);
     const steps = missing(p, card);
-    const goods = Object.entries(card.cost).reduce((t, [g, k]) => t + Math.min(k, x.goods[g]) * goodValue(g, x.goods[g] - 1), 0);
+    const goods = Object.entries(card.cost).reduce((t, [g, k]) => t + Math.min(k, x.goods[g]) * goodValue(g, x.goods[g] - 1, p), 0);
     return goods + w.cost * w.rise * steps - tempo(p, steps);
   }
 
@@ -185,7 +191,7 @@ function valueBot(profile) {
         }
         got.push(c);
       }
-      got.forEach((c) => Object.entries(c.cost).forEach(([g, k]) => { for (let i = 0; i < k; i++) total += goodValue(g, stock[g]++); }));
+      got.forEach((c) => Object.entries(c.cost).forEach(([g, k]) => { for (let i = 0; i < k; i++) total += goodValue(g, stock[g]++, p); }));
     }
     return total / 40;
   }

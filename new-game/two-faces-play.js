@@ -139,7 +139,7 @@ async function spend(p, e) {
       x.goods[h]--;
     }
   } else x.goods[g] -= amount;
-  await effect(p, e.get, {});
+  for (const g of [].concat(e.get)) await effect(p, g, {});
 }
 
 /* ---------- city ---------- */
@@ -190,10 +190,27 @@ async function run(p, limit) {
     const view = (id) => ({ id, heat: heatOf(CARDS[id]), n: costSize(CARDS[id]), cost: CARDS[id].cost });
     const haul = [];
     let heat = 0;
+    // What to expect from a deck, from the cards left in it: goods per draw, free cards, average heat, bust risk now.
+    const deckHint = (c) => {
+      const cards = (S.decks[c].length ? S.decks[c] : S.discards[c]).map((id) => CARDS[id]);
+      if (!cards.length) return "empty";
+      const per = (f) => cards.reduce((t, card) => t + f(card), 0) / cards.length;
+      const goods = Object.keys(GOODS)
+        .map((g) => [g, per((card) => card.cost[g] || 0)])
+        .filter(([, v]) => v >= 0.05)
+        .sort((a, b) => b[1] - a[1])
+        .map(([g, v]) => `${v.toFixed(1)}${icon(g)}`)
+        .join(" ");
+      const free = Math.round(100 * per((card) => (costSize(card) ? 0 : 1)));
+      const bust = Math.round(100 * per((card) => (heat + heatOf(card) > limit ? 1 : 0)));
+      return `per draw ${goods} · free ${free}% · heat ${per(heatOf).toFixed(1)} · bust now ${bust}%`;
+    };
     const chooseDeck = () =>
       pick(
-        `Street run, heat ${heat}/${limit}: draw from which deck?`,
-        CHARS.map((c) => ({ label: `${SIDES[c].name} deck`, value: c })),
+        perDraw
+          ? `Street run, heat ${heat}/${limit}: as the <b>Pawnbroker</b>, you choose the deck for each draw. Which deck now?`
+          : `Street run, heat ${heat}/${limit}: draw from which deck (for the whole run)?`,
+        CHARS.map((c) => ({ label: `${SIDES[c].name} deck<small>${deckHint(c)}</small>`, value: c })),
         p,
         { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
       );
@@ -599,7 +616,7 @@ function startGame(seats) {
   ui = {};
   busy = false;
   const u = TF_UPRISINGS[S.uprisings[0]];
-  S.players.forEach((x, q) => log(`${nm(q)} plays the <b>${charOf(x, "cit").name}</b> and the <b>${charOf(x, "out").name}</b>.`));
+  S.players.forEach((x, q) => log(`${nm(q)} (${x.ai ? `AI · ${x.ai}` : "human"}) plays the <b>${charOf(x, "cit").name}</b> and the <b>${charOf(x, "out").name}</b>.`));
   log(`— Game starts. ${nm(0)} goes first. Uprising: <b>${esc(u.name)}</b> at the ${locNames(u.at)}. —`);
   render();
 }

@@ -41,7 +41,7 @@ const SIDES = {
 const CHARACTERS = [
   { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
-  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "high", n: 3 } }], down: [{ gain: "S", n: 1 }], cit: 12 },
+  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: [{ troop: "high", n: 2 }, { gain: "A", n: 1 }] }], down: [{ gain: "S", n: 1 }], cit: 12 },
   { id: "chancellor", name: "Chancellor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { scheme: true }], goods: { P: -1 } },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
   { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 4 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], out: 2 },
@@ -53,7 +53,7 @@ const DEFAULT_CHARS = { cit: "councillor", out: "hustler" };
 // Setup text of a character, e.g. "Citizen starts at 13, 1 troop at the Forum".
 function charSetupText(c) {
   const parts = [];
-  Object.entries(c.goods || {}).forEach(([g, n]) => parts.push(n > 0 ? `+${icon(g, n)}` : `no starting ${GOODS[g].one}`));
+  Object.entries(c.goods || {}).forEach(([g, n]) => parts.push(n > 0 ? `${icon(g, n)} extra` : `no starting ${GOODS[g].one}`));
   if (c.cit) parts.push(`Citizen starts at ${c.cit}`);
   if (c.out) parts.push(`Outcast starts at ${c.out}`);
   Object.entries(c.troops || {}).forEach(([id, n]) => parts.push(`${n} troop${n > 1 ? "s" : ""} at the ${LOCATIONS.find((l) => l.id === id).name}`));
@@ -61,7 +61,7 @@ function charSetupText(c) {
   return parts.join(", ") || "—";
 }
 
-// Effects: {gain, n} · {rise, n} · {troop: "low"|"high", n} · {move} · {spend, get} (optional) · {limit} (Street only)
+// Effects: {gain, n} · {rise, n} · {troop: "low"|"high", n} · {move} · {spend, get} (optional; get: an effect or a list) · {limit} (Street only)
 // · {scheme} · {run} (base only) · {choice}.
 // Card: character (= its deck), cost (goods; each one you lack sinks your Citizen 1), heat (optional, see heatOf), strength as a Scheme (+N, or "x2": doubles your total), top strip (up), bottom strip (down).
 const TF_CARDS = [
@@ -134,7 +134,7 @@ const ICON_NAMES = {
 
 // Icon glossary (goods use GOODS[g].use).
 const ICON_HELP = {
-  heat: "Street run: the heat printed on each drawn card adds up. +🔥 on a strip raises your limit for this run.",
+  heat: "Street run: the heat printed on each drawn card adds up. 🔥 on a strip raises your limit for this run.",
   scheme: "Look at the top card of each deck; keep 1 face down for the Uprising.",
   cit: "Your Citizen climbs 1 on the Spire.",
   out: "Your Outcast climbs 1 on the Spire.",
@@ -171,18 +171,18 @@ const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));
 const locNames = (ids) => ids.map((id) => LOC[id].name).join(" + ");
 
 function fxText(e) {
-  if (e.gain) return `+${icon(e.gain, e.n)}`;
+  if (e.gain) return icon(e.gain, e.n);
   if (e.spend) {
     const [g, n] = Object.entries(e.spend)[0];
-    return `${icon(g, n)} → ${fxText(e.get)}`;
+    return `${icon(g, n)} → ${[].concat(e.get).map(fxText).join(" ")}`;
   }
   if (e.rise) return icon(e.rise, e.n);
   if (e.troop) return icon(e.troop, e.n);
   if (e.move) return icon("move", e.move);
-  if (e.limit) return `<span class="gt">heat limit</span>+${icon("heat", e.limit)}`;
+  if (e.limit) return `<span class="gt">heat limit +</span>${icon("heat", e.limit)}`;
   if (e.scheme) return icon("scheme");
   if (e.run) return `<span class="gt">street run, heat limit</span>${icon("heat", e.run)}`;
-  if (e.choice) return `+${icon("any", e.choice)}`;
+  if (e.choice) return icon("any", e.choice);
   return "";
 }
 const strText = (str) => `<span class="str">${str === "x2" ? "×2" : `+${str}`}</span>`;
