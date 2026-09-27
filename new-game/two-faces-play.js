@@ -717,10 +717,29 @@ function renderSpire() {
 }
 
 // Character art: a Citizen in a top hat, a hooded Outcast.
-const SILHOUETTE = {
-  cit: '<svg class="silhouette" viewBox="0 0 40 48" aria-hidden="true"><path d="M13 2h14v11h4v3H9v-3h4z"/><circle cx="20" cy="22" r="6"/><path d="M6 48c0-11 6-17 14-17s14 6 14 17z"/></svg>',
-  out: '<svg class="silhouette" viewBox="0 0 40 48" aria-hidden="true"><path d="M20 4c-8 0-12 7-12 15 0 5 1 9 3 11h18c2-2 3-6 3-11 0-8-4-15-12-15z"/><path d="M4 48c0-10 6-17 16-17s16 7 16 17z"/></svg>',
+// Character art: one silhouette per character, same family look (Citizens wear hats, Outcasts hoods or caps).
+// Dark shapes use the card ink; "cut" details use the card paper colour.
+const CUT = 'fill="var(--paper)"';
+const LINE = (w) => `fill="none" stroke="currentColor" stroke-width="${w}" stroke-linecap="round"`;
+const PAPER_LINE = (w) => `fill="none" stroke="var(--paper)" stroke-width="${w}"`;
+const BODY = '<path d="M8 56c0-12 7-19 16-19s16 7 16 19z"/>';
+const HEAD = '<circle cx="24" cy="27" r="7"/>';
+const TOPHAT = '<path d="M17 4h14v13h5v3H12v-3h5z"/>';
+const HOOD = `<path d="M24 11c-10 0-14 8-14 17 0 5 1 8 3 10h22c2-2 3-5 3-10 0-9-4-17-14-17z"/><ellipse cx="24" cy="29" rx="5" ry="6" ${CUT} opacity="0.3"/>`;
+const CAP = '<path d="M15 23c0-8 18-8 18 0z"/><path d="M29 20h9l-1 3h-8z"/>';
+const ART = {
+  councillor: TOPHAT + HEAD + BODY + `<path d="M15 41l19 14h-6l-16-11z" ${CUT}/>`,
+  banker: TOPHAT + HEAD + BODY + `<circle cx="27" cy="26" r="2.6" ${PAPER_LINE(1.4)}/><circle cx="40" cy="47" r="6"/><circle cx="40" cy="47" r="3.4" ${PAPER_LINE(1.2)}/>`,
+  demagogue: `<path d="M33 44L41 19" ${LINE(5)}/><circle cx="42" cy="15" r="4.5"/>` + HEAD + BODY,
+  chancellor: '<path d="M8 20c4-9 28-9 32 0-7-2-25-2-32 0z"/>' + HEAD + BODY + `<path d="M16 40c3 7 13 7 16 0" ${PAPER_LINE(1.6)}/><circle cx="24" cy="47" r="2.8" ${CUT}/>`,
+  whip: '<path d="M16 21c0-10 16-10 16 0z"/><rect x="12" y="19" width="24" height="3" rx="1.5"/>' + HEAD + BODY + `<path d="M39 52C47 41 45 26 34 13" ${LINE(1.8)}/>`,
+  hustler: CAP + HEAD + BODY + `<path d="M29 31h8" ${LINE(1.6)}/><circle cx="39" cy="28" r="1.2"/><circle cx="41" cy="25" r="1"/>`,
+  firebrand: `<path d="M41 55V25" ${LINE(3)}/><path d="M41 9c3 4 6 8 6 11a6 6 0 0 1-12 0c0-3 3-7 6-11z"/>` + HOOD + BODY,
+  pawnbroker: HOOD + BODY + `<path d="M36 39c-2 0-3 2-2 3l-4 7c0 3 4 6 10 6s8-3 8-6l-3-7c1-1 0-3-2-3z"/><path d="M34 42h7" ${PAPER_LINE(1.2)}/>`,
+  gunsmith: `<path d="M39 6L29 50" ${LINE(3.2)}/><path d="M39 6l2 1" ${LINE(2)}/>` + HOOD + BODY,
+  courier: CAP + HEAD + BODY + `<rect x="30" y="40" width="15" height="12" rx="1.5"/><path d="M30 46h15M37.5 40v12" ${PAPER_LINE(1.2)}/>`,
 };
+const silhouette = (x, k) => `<svg class="silhouette" viewBox="0 0 48 56" aria-hidden="true">${ART[x.chars[k]] || (k === "cit" ? TOPHAT + HEAD + BODY : HOOD + BODY)}</svg>`;
 
 // Each character: tucked strips above (newest on top), the character card, tucked strips below (newest at the bottom).
 function tableauHtml(x) {
@@ -732,7 +751,7 @@ function tableauHtml(x) {
     return `<div class="char-col ${k}">
       ${[...s.up].reverse().map((id) => tuck(id, "up")).join("")}
       <div class="tcard char ${k}">${band(k, "up", fxList(charOf(x, k).up))}
-        <div class="face">${SILHOUETTE[k]}<h3>${charOf(x, k).name}</h3><div class="char-kind">${SIDES[k].name}</div></div>
+        <div class="face">${silhouette(x, k)}<h3>${charOf(x, k).name}</h3><div class="char-kind">${SIDES[k].name}</div></div>
         ${band(k, "down", fxList(charOf(x, k).down))}</div>
       ${s.down.map((id) => tuck(id, "down")).join("")}</div>`;
   }).join("");
@@ -775,7 +794,8 @@ function renderPrompt() {
 // Modal: a result to read before going on (e.g. an Uprising), with the pending pick's buttons.
 function renderModal() {
   const html = ui.info && ui.info.modal;
-  if (html) return ($("modal").innerHTML = `<div class="modal-box">${html}<menu>${ui.buttons.map((b, i) => `<button class="btn primary" data-btn="${i}">${b.label}</button>`).join("")}</menu></div>`);
+  const auto = S.players.every((x) => x.ai) ? `<span class="auto-note">Continues by itself in ${AI_DELAY.result / 1000}s · hover to keep it open</span>` : "";
+  if (html) return ($("modal").innerHTML = `<div class="modal-box">${html}<menu>${auto}${ui.buttons.map((b, i) => `<button class="btn primary" data-btn="${i}">${b.label}</button>`).join("")}</menu></div>`);
   $("modal").innerHTML =
     S.phase === "end" && resultsOpen ? `<div class="modal-box">${renderResults()}<menu><button class="btn primary" data-close-results>Close</button></menu></div>` : "";
 }
@@ -794,7 +814,7 @@ function renderReveal() {
 /* ---------- AI seats ---------- */
 
 // AI players act on their own after a short pause, so the table can follow. Bots: two-faces-bots.js.
-const AI_DELAY = { turn: 900, pick: 650, result: 2500 };
+const AI_DELAY = { turn: 900, pick: 650, result: 7000 }; // result: how long an Uprising result stays open in an all-AI game
 const aiBots = {};
 const aiPlan = {}; // side chosen by an AI's turn, answered when the game asks "above or below?"
 let aiTimer = null;
@@ -807,7 +827,13 @@ function scheduleAI() {
     const p = ui.player;
     // A result to read: humans click Continue; with only AI seats, it continues by itself.
     if (p == null) {
-      if (S.players.every((x) => x.ai)) aiTimer = setTimeout(() => ui.msg && settle(ui.buttons[0].value), AI_DELAY.result);
+      // All AI: close it after a pause, but not while the mouse is over it (hover to keep reading).
+      const close = () => {
+        if (!ui.msg || ui.player != null) return;
+        if (document.querySelector(".modal-box:hover")) return (aiTimer = setTimeout(close, 1000));
+        settle(ui.buttons[0].value);
+      };
+      if (S.players.every((x) => x.ai)) aiTimer = setTimeout(close, AI_DELAY.result);
       return;
     }
     if (!P(p).ai) return;

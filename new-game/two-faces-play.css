@@ -106,7 +106,7 @@ body { padding-bottom: 220px; }
 .loc-troops { display: flex; gap: 4px; margin-top: 6px; min-height: 24px; }
 .troops { min-width: 24px; height: 24px; padding: 0 6px; border-radius: 4px; color: #15191c; font-weight: 800; text-align: center; line-height: 24px; }
 
-.silhouette { width: 46px; height: 56px; fill: rgba(20, 24, 28, 0.78); }
+.silhouette { width: 58px; height: 68px; color: rgba(20, 24, 28, 0.82); fill: currentColor; }
 .tcard.char .face { gap: 4px; }
 .btn.small { margin-left: 8px; padding: 2px 8px; font-size: 11px; letter-spacing: 0; }
 
@@ -183,3 +183,5 @@ body { padding-bottom: 220px; }
 dialog { max-width: 860px; }
 .setup-head span { color: var(--muted); font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .prompt .btn small { display: block; margin-top: 3px; color: inherit; font-size: 12px; font-weight: 600; opacity: 0.85; max-width: none; }
+.modal-box menu { align-items: center; gap: 12px; }
+.auto-note { color: var(--muted); font-size: 12px; }

@@ -43,10 +43,12 @@ const CHARACTERS = [
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
   { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "high", n: 3 } }], down: [{ gain: "S", n: 1 }], cit: 12 },
   { id: "chancellor", name: "Chancellor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { scheme: true }], goods: { P: -1 } },
+  { id: "whip", name: "Whip", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { move: 2 }], goods: { S: 1 } },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
-  { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 4 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
+  { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], goods: { P: -1 } },
   { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], goods: { T: 1 }, perDraw: true },
   { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
+  { id: "courier", name: "Courier", char: "out", up: [{ run: 6 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }], goods: { P: 1 } },
 ];
 const CHARACTER = Object.fromEntries(CHARACTERS.map((c) => [c.id, c]));
 const DEFAULT_CHARS = { cit: "councillor", out: "hustler" };

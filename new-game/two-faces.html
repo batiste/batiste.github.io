@@ -165,7 +165,7 @@
           <li><strong>Scheme as a turn action removed</strong> (strips and Council Hall keep it): players and bots rarely chose it, and those who did won less. Early in the design it slowed the race; with goods costs it no longer matters.</li>
           <li><strong>Troop supply 12</strong> (was 10): in a playtest, troops ran out. Leftover goods break final ties; converting them into points (5 goods = +1 Outcast) was tried and dropped: it widened gaps (2 players: blowouts 36% → 44%).</li>
           <li><strong>×2 Schemes double troops + Arms only</strong> (was: the whole total, +N Schemes included): slightly tighter games; ×2 cards stay fair (29–35%). Not stacking ×2 was worse.</li>
-          <li><strong>Characters</strong> tuned with <code>node two-faces-sim.js characters</code> (random distinct characters, smart bots): all within about 2 points of fair at 2, 3 and 4 players; pairs within 28–39% at 3 players. First drafts: Gunsmith (+2 Arms) and Demagogue (Forum troop) won 43–45%, Chancellor 25%.</li>
+          <li><strong>Characters</strong> tuned with <code>node two-faces-sim.js characters</code> (random distinct characters, smart bots): all within about 2 points of fair at 2, 3 and 4 players; pairs within 28–39% at 3 players. First drafts: Gunsmith (+2 Arms) and Demagogue (Forum troop) won 43–45%, Chancellor 25%. Firebrand needed three nerfs (start at 1, heat 3, no Paper): "Paper → 2 troops" is strong. Whip and Courier add movement. The Courier trades 1 heat against the Hustler for 1 free move (2 moves were too much to think about).</li>
           <li>Tried and dropped: heat limit 4 or more Patrols, control without Spire steps, seat bonuses.</li>
           <li><strong>5 rounds, Spire 14</strong>: shorter games are tighter; most games now end by a meeting in round 4 or 5.</li>
           <li><strong>Street run through the Citizen or Outcast deck</strong> (was: a separate contraband deck): same balance, one deck less; free cards' heat makes goods scarcer. Base limit 6, hot free cards and +2/+3 limit strips made the Street worth taking.</li>
@@ -194,7 +194,7 @@
       const row = (cells) => `<tr>${cells.map((x) => `<td>${x}</td>`).join("")}</tr>`;
       const set = (id, v) => (document.getElementById(id).innerHTML = v);
       document.querySelectorAll("[data-cfg]").forEach((el) => (el.textContent = TF_CONFIG[el.dataset.cfg]));
-      set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n }).slice(1)).join(", "));
+      set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n })).join(", "));
       set("characters", CHARACTERS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, `${SIDES[c.char].up.name}: ${fxList(c.up)}`, `${SIDES[c.char].down.name}: ${fxList(c.down)}`, charSetupText(c)])).join(""));
       set("glossary", glossaryHtml());
       set("locations", LOCATIONS.map((l) => row([`<strong>${l.name}</strong>`, [l.low && "lower", l.high && "upper"].filter(Boolean).join(" + "), fxList(l.control), l.upkeep ? `−${l.upkeep} troop` : "—"])).join(""));

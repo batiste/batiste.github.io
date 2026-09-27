@@ -37,25 +37,31 @@ const PROFILES = {
   daring: { tempo: 1, contest: 1.5, deny: 0.5, riskBehind: 0.3 }, // smart, but gambles on street runs when behind
 };
 
-const RUN_EV = {}; // expected goods from a street run (better of the two decks), by heat limit (stop when a draw is more likely to hurt than help)
-for (let L = 1; L <= 14; L++) {
-  let total = 0;
-  for (let t = 0; t < 400; t++) {
-    const deck = shuffle(TF_CARDS.filter((c) => c.char === CHARS[t % 2]).flatMap((c) => Array(c.copies).fill({ heat: heatOf(c), n: costSize(c) })));
-    let heat = 0;
-    let goods = 0;
-    while (deck.length && drawEV(heat, L, deck, goods) > 0) {
-      const c = deck.pop();
-      heat += c.heat;
-      if (heat > L) {
-        goods = 0;
-        break;
+// Expected haul of a street run by deck and heat limit, per good type (stop when a draw is more likely to hurt than help).
+// RUN_BY_DECK[k][L] = { P, S, A, T }: lets a bot value a run by the goods it needs (the Outcast deck is where Stims are).
+const RUN_BY_DECK = {};
+for (const k of CHARS) {
+  RUN_BY_DECK[k] = {};
+  const cards = TF_CARDS.filter((c) => c.char === k).flatMap((c) => Array(c.copies).fill({ heat: heatOf(c), n: costSize(c), cost: c.cost }));
+  for (let L = 1; L <= 14; L++) {
+    const total = { P: 0, S: 0, A: 0, T: 0 };
+    for (let t = 0; t < 300; t++) {
+      const deck = shuffle([...cards]);
+      let heat = 0;
+      let got = [];
+      while (deck.length && drawEV(heat, L, deck, got.reduce((a, c) => a + c.n, 0)) > 0) {
+        const c = deck.pop();
+        heat += c.heat;
+        if (heat > L) {
+          got = [];
+          break;
+        }
+        got.push(c);
       }
-      goods += c.n;
+      got.forEach((c) => Object.entries(c.cost).forEach(([g, n]) => (total[g] += n)));
     }
-    total += goods;
+    RUN_BY_DECK[k][L] = Object.fromEntries(Object.entries(total).map(([g, n]) => [g, n / 300]));
   }
-  RUN_EV[L] = total / 400;
 }
 function drawEV(heat, limit, deck, haulGoods) {
   const bust = deck.filter((c) => heat + c.heat > limit);
@@ -78,10 +84,14 @@ function valueBot(profile) {
   // Tempo: closing your own Citizen–Outcast gap ends the game sooner: good when ahead, bad when behind.
   const tempo = (p, steps) => w.tempo * steps * Math.sign(lead(p) || -1) * 0.5;
   // Score = Citizen + Outcast, so every effective step up is worth the same.
+  // Meeting ends the game after this round: a bot that is not ahead must not trigger it.
+  const MEET_PENALTY = 25;
+  const meetCost = (p, gap) => (gap <= 0 && !S.met && lead(p) <= 0 ? MEET_PENALTY : 0);
   const riseValue = (p, k, n) => {
     const x = P(p);
     const eff = k === "out" ? Math.min(n, x.cit - x.out) : Math.min(n, TF_CONFIG.spire - x.cit);
-    return eff * w.rise + (k === "out" ? tempo(p, eff) : -tempo(p, eff));
+    const meet = k === "out" && eff > 0 ? meetCost(p, x.cit - x.out - eff) : 0;
+    return eff * w.rise + (k === "out" ? tempo(p, eff) : -tempo(p, eff)) - meet;
   };
   // Force at the coming Uprising: troops at its locations + Arms (a rival's Arms are visible).
   const force = (q) => upcoming().at.reduce((t, id) => t + S.troops[id][q], 0) + P(q).goods.A;
@@ -96,6 +106,20 @@ function valueBot(profile) {
     if (mine <= rival) return w.fight; // too far behind: do not chase
     if (mine === 0) return w.fight + 1; // join for the second reward
     return w.fight * 0.5; // already clearly ahead
+  }
+
+  // Value of keeping one troop where it is: in the coming fight, or holding control by exactly 1 (or a tie
+  // that denies a rival control), it matters; elsewhere it is nearly free to move.
+  const movePlan = {};
+  function keepValue(p, id) {
+    const t = S.troops[id];
+    const lead = t[p] - Math.max(...t.filter((_, q) => q !== p));
+    const ctrl = w.ctrl * fxValue(p, LOC[id].control, { goods: { ...P(p).goods }, limit: 0 });
+    let v = 0.3 * w.troop;
+    if (upcoming().at.includes(id)) v += w.plan ? fightValue(p) : w.fight;
+    if (lead === 1) v += ctrl; // moving it loses control
+    if (lead === 0) v += 0.5 * ctrl; // moving it hands control to a rival
+    return v;
   }
 
   function locValue(p, id) {
@@ -141,7 +165,10 @@ function valueBot(profile) {
       else if (e.run) {
         // A street run is worth less the more goods you already hold (no hoarding).
         const stock = w.plan ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : 0;
-        v += (w.goods * 0.55 * RUN_EV[Math.min(14, e.run + sim.limit)]) / (1 + Math.max(0, stock - 6) / 6);
+        // Best deck for the goods this bot needs (goodValue boosts what its characters spend).
+        const L = Math.min(14, e.run + sim.limit);
+        const haul = Math.max(...CHARS.map((k) => Object.entries(RUN_BY_DECK[k][L]).reduce((t, [g, n]) => t + n * goodValue(g, sim.goods[g], p), 0)));
+        v += haul / (1 + Math.max(0, stock - 6) / 6);
       }
       else if (e.choice) v += w.goods * 0.6 * e.choice;
     }
@@ -153,7 +180,7 @@ function valueBot(profile) {
     const x = P(p);
     const steps = missing(p, card);
     const goods = Object.entries(card.cost).reduce((t, [g, k]) => t + Math.min(k, x.goods[g]) * goodValue(g, x.goods[g] - 1, p), 0);
-    return goods + w.cost * w.rise * steps - tempo(p, steps);
+    return goods + w.cost * w.rise * steps - tempo(p, steps) + (steps ? meetCost(p, x.cit - steps - x.out) : 0);
   }
 
   // Turns this player has left: the table's smallest Citizen–Outcast gap closes about 2.5 per round.
@@ -228,16 +255,26 @@ function valueBot(profile) {
         case "spendGood":
           return idx((g) => x.goods[g] - GV[g]);
         case "send":
-        case "moveTo":
           return idx((id) => locValue(p, id));
-        case "moveFrom":
-          // Take a troop only from where it is spare: keep control (lead of 2+), never from the coming fight,
-          // never one just moved (no back-and-forth). Otherwise stop moving.
-          return idx((id) => {
-            if (id === null) return 0.5;
-            if ((info.arrived || []).includes(id)) return -99;
-            return S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - 1 - (upcoming().at.includes(id) ? 5 : 0);
-          });
+        case "moveFrom": {
+          // Best move = the (from, to) pair with the largest gain: value at the destination minus value of staying.
+          // Never move a troop just moved (no back-and-forth); stop when no move gains enough.
+          const froms = buttons.map((b) => b.value).filter((id) => id !== null && !(info.arrived || []).includes(id));
+          let best = { gain: 0.5, from: null, to: null };
+          froms.forEach((from) =>
+            LOCATIONS.forEach((l) => {
+              if (l.id === from) return;
+              const gain = locValue(p, l.id) - keepValue(p, from);
+              if (gain > best.gain) best = { gain, from, to: l.id };
+            }),
+          );
+          movePlan[p] = best.to;
+          return buttons.findIndex((b) => b.value === best.from);
+        }
+        case "moveTo": {
+          const i = buttons.findIndex((b) => b.value === movePlan[p]);
+          return i >= 0 ? i : idx((id) => locValue(p, id));
+        }
         case "runDeck":
           return idx((k) => deckRunValue(p, info.decks[k], info.limit));
         case "draw": {

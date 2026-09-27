@@ -26,6 +26,7 @@ const PLAYERS = +args[1] || 3;
 const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
 const VARIANTS = [
   { name: "Current rules" },
+  { name: "Courier: 2 extra Papers", data: `CHARACTER.courier.goods = { P: 2 };` },
   { name: "Uprising tie: lower Outcast (old)", patch: [["res.sort((a, b) => b.s - a.s || fightTie(a.q, b.q, arms));", "res.sort((a, b) => b.s - a.s || P(a.q).out - P(b.q).out);"]] },
 ];
 
@@ -97,6 +98,18 @@ function sim(GAMES, setups, done) {
     G.stat[p][`${k}.${G.src}`] += P(p)[k] - before;
   };
   scheme = wrap(scheme, (p) => G.stat[p].schemes++);
+  const spendRule = spend;
+  spend = async (p, e) => {
+    const before = S.log.length;
+    await spendRule(p, e);
+    if (S.log.slice(0, S.log.length - before).some((l) => l.includes("cannot pay"))) G.stat[p].cantPay++;
+  };
+  const moveRule = moveTroops;
+  moveTroops = async (p, amount) => {
+    const before = S.log.length;
+    await moveRule(p, amount);
+    G.stat[p].moves += S.log.slice(0, S.log.length - before).filter((l) => l.includes("moves a troop")).length;
+  };
   const sendRule = sendTroops;
   sendTroops = async (p, zone, amount) => {
     const before = P(p).supply;
@@ -150,7 +163,7 @@ function sim(GAMES, setups, done) {
     G = { deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
     G.sides = bots.map(() => new Set());
     G.src = "turn";
-    G.stat = bots.map(() => ({ schemeTurns: 0, troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
+    G.stat = bots.map(() => ({ cantPay: 0, moves: 0, schemeTurns: 0, troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
     G.took = bots.map(() => new Set());
     G.options = [];
     startGame(bots.map((_, q) => ({ name: `P${q}`, chars: chars[q] })));
@@ -309,7 +322,10 @@ function sim(GAMES, setups, done) {
     games.forEach((g) =>
       g.chars.forEach((c, q) => {
         const add = (key) => {
-          const r = (key.includes("+") ? m.byPair : m.byChar)[key] || { games: 0, win: 0, score: 0, troops: 0, runs: 0, schemes: 0, up: 0, ctrl: 0, sunk: 0 };
+          const r = (key.includes("+") ? m.byPair : m.byChar)[key] || { games: 0, win: 0, score: 0, troops: 0, moves: 0, runs: 0, schemes: 0, up: 0, ctrl: 0, sunk: 0 };
+          r.moves += g.stat[q].moves;
+          r.cantPay = (r.cantPay || 0) + g.stat[q].cantPay;
+          r.deckOut = (r.deckOut || 0) + (g.deckBy ? g.deckBy[q].out : 0);
           r.games++;
           r.win += g.share[q];
           r.score += g.final[q];
@@ -451,8 +467,8 @@ const MODES = {
     const [r] = await run(BASE, [["characters", seats, GAMES * 2]]);
     const se = (x) => Math.sqrt(((x.win / x.games) * (1 - x.win / x.games)) / x.games);
     const per = (x, k) => (x[k] / x.games).toFixed(1);
-    const rowOf = (id, x) => [id, x.games, `${pct(x.win / x.games)} ± ${pct(2 * se(x))}`, per(x, "score"), per(x, "troops"), per(x, "runs"), per(x, "schemes"), per(x, "up"), per(x, "ctrl"), per(x, "sunk")];
-    const head = ["Character", "Games", "Win rate", "Score", "Troops sent", "Street runs", "Schemes", "Steps from Uprisings", "Steps from control", "Citizen sinks"];
+    const rowOf = (id, x) => [id, x.games, `${pct(x.win / x.games)} ± ${pct(2 * se(x))}`, per(x, "score"), per(x, "troops"), per(x, "moves"), per(x, "cantPay"), per(x, "runs"), per(x, "schemes"), per(x, "up"), per(x, "ctrl"), per(x, "sunk")];
+    const head = ["Character", "Games", "Win rate", "Score", "Troops sent", "Moves", "Cannot pay", "Street runs", "Schemes", "Steps from Uprisings", "Steps from control", "Citizen sinks"];
     console.log(`# Characters — ${GAMES * 2} games, ${PLAYERS} smart players, random distinct characters (fair ${pct(1 / PLAYERS)})\n`);
     console.log(md(head, [...cits, ...outs].map((id) => rowOf(id, r.m.byChar[id]))));
     const pairs = Object.entries(r.m.byPair).filter(([, x]) => x.games >= 60).sort((a, b) => b[1].win / b[1].games - a[1].win / a[1].games);
