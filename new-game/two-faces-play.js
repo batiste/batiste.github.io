@@ -424,7 +424,10 @@ function uprisingResult(u, res, arms, order) {
     ? `<table class="results"><tr><th>Fighter</th><th>Schemes</th><th>Arms</th><th>Why</th><th>Strength</th><th>Reward</th></tr>${res.map(row).join("")}</table>`
     : "<p>Nobody has troops there: no fight, no reward.</p>";
   const notes = lines.slice(res.length).map((l) => `<p>${l}</p>`).join("");
-  return { lines, html: `<h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = (troops there + Arms) ×2 per ×2 Scheme, + your +N Schemes · tie: lower Outcast</p>${table}${notes}` };
+  return {
+    lines,
+    html: `<div class="modal-uprising">${uprisingCardHtml(u)}<div><h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = (troops there + Arms) ×2 per ×2 Scheme, + your +N Schemes · tie: lower Outcast</p>${table}${notes}</div></div>`,
+  };
 }
 
 async function uprising() {
@@ -521,6 +524,7 @@ async function control() {
 
 function endGame() {
   S.phase = "end";
+  resultsOpen = true;
   sound("fanfare");
   log("— Game over. —");
 }
@@ -554,6 +558,7 @@ function startGame(names) {
   };
   CHARS.forEach(refill);
   history = [];
+  resultsOpen = false;
   ui = {};
   busy = false;
   const u = TF_UPRISINGS[S.uprisings[0]];
@@ -564,11 +569,27 @@ function startGame(names) {
 /* ---------- render ---------- */
 
 function renderStatus() {
-  if (S.phase === "end") return ($("status").innerHTML = renderResults());
-  const u = TF_UPRISINGS[S.uprisings[S.uprising]];
+  if (S.phase === "end") {
+    const win = [...S.players.keys()].sort((a, b) => byRank(P(a), P(b)))[0];
+    return ($("status").innerHTML = `<b>Game over</b> · ${nm(win)} wins with ${score(P(win))} <button class="btn small" data-results>Results</button>`);
+  }
   const turn = S.step < 2 * n() ? `turn ${Math.floor(S.step / n()) + 1}/2 · ${nm(current())} to play` : "resolving the Uprising";
-  $("status").innerHTML = `Round ${S.round}/${S.uprisings.length} · ${turn}${S.met ? " · <b>last round</b>" : ""}
-    <div class="uprising"><b>Uprising: ${esc(u.name)}</b> at the ${locNames(u.at)} · first: ${fxList(u.first)} · second: ${fxList(u.second)}</div>`;
+  $("status").innerHTML = `Round ${S.round}/${S.uprisings.length} · ${turn}${S.met ? " · <b>last round</b>" : ""}`;
+}
+
+// The Uprising as a card (as it would be printed): name, locations, first and second rewards.
+const FLAG = '<svg class="ucard-art" viewBox="0 0 64 48" aria-hidden="true"><path d="M14 4v42" stroke="currentColor" stroke-width="3"/><path d="M16 6c10-5 18 5 30 0v20c-12 5-20-5-30 0z" fill="currentColor"/></svg>';
+function uprisingCardHtml(u) {
+  const locs = u.at.map((id) => `<span class="uloc ${LOC[id].low ? "low" : ""} ${LOC[id].high ? "high" : ""}">${LOC[id].name}</span>`).join("");
+  const reward = (rank, list) => `<div class="ucard-reward"><span class="rank">${rank}</span>${list.length ? fxList(list) : "—"}</div>`;
+  return `<div class="ucard"><div class="ucard-head"><span>Uprising</span><b>${esc(u.name)}</b></div>
+    <div class="ucard-locs">${locs}</div>${FLAG}${reward("1st", u.first)}${reward("2nd", u.second)}</div>`;
+}
+
+function renderUprisingCard() {
+  if (S.phase === "end") return ($("uprising-card").innerHTML = "");
+  const left = S.uprisings.length - S.uprising - 1;
+  $("uprising-card").innerHTML = `<p class="mini-label">This round</p><div class="uprising-slot">${uprisingCardHtml(TF_UPRISINGS[S.uprisings[S.uprising]])}<p class="mini-label">${left} more Uprising${left === 1 ? "" : "s"} to come</p></div>`;
 }
 
 function renderMap() {
@@ -585,15 +606,24 @@ function renderMap() {
   }).join("");
 }
 
+// Final results, shown in a modal that can be closed and reopened (status bar "Results").
+let resultsOpen = false;
 function renderResults() {
   const order = TF_CONFIG.tieBreak;
-  const rows = S.players
-    .map((x, q) => ({ x, q }))
-    .sort((a, b) => byRank(a.x, b.x))
-    .map(({ x, q }) => `<tr><td>${nm(q)}</td><td>${score(x)}</td><td>${x.cit}</td><td>${x.out}</td><td>${order.map((g) => icon(g, `${x.goods[g]}`)).join(" ")}</td></tr>`)
+  const ranked = [...S.players.keys()].sort((a, b) => byRank(P(a), P(b)));
+  const win = P(ranked[0]);
+  const tied = ranked.length > 1 && score(P(ranked[1])) === score(win);
+  const rows = ranked
+    .map((q, i) => {
+      const x = P(q);
+      return `<tr class="${i ? "" : "winner"}"><td>${i + 1}</td><td>${nm(q)}</td><td><b>${score(x)}</b></td><td>${x.cit}</td><td>${x.out}</td><td>${order.map((g) => icon(g, `${x.goods[g]}`)).join(" ")}</td></tr>`;
+    })
     .join("");
-  return `<b>Game over.</b> Score = Citizen + Outcast heights; tie → most ${order.map((g) => GOODS[g].name).join(", then ")}.
-    <table class="results"><tr><th>Player</th><th>Score</th><th>Citizen</th><th>Outcast</th><th>Tie-break goods</th></tr>${rows}</table>`;
+  const ending = S.met ? "A Citizen and Outcast met: the revolution is here." : `The last Uprising is over (round ${S.round}).`;
+  return `<div class="victory" style="--pc:${win.color}">
+    <div class="victory-crown">♛</div><h2>${esc(win.name)} wins</h2>
+    <p class="modal-sub">${ending} Score = Citizen + Outcast heights${tied ? `; tie broken by most ${order.map((g) => GOODS[g].name).join(", then ")}` : ""}.</p></div>
+    <table class="results"><tr><th>#</th><th>Player</th><th>Score</th><th>Citizen</th><th>Outcast</th><th>Tie-break goods</th></tr>${rows}</table>`;
 }
 
 // A card: top strip, face (name, cost, Scheme strength), bottom strip.
@@ -688,7 +718,9 @@ function renderPrompt() {
 // Modal: a result to read before going on (e.g. an Uprising), with the pending pick's buttons.
 function renderModal() {
   const html = ui.info && ui.info.modal;
-  $("modal").innerHTML = html ? `<div class="modal-box">${html}<menu>${ui.buttons.map((b, i) => `<button class="btn primary" data-btn="${i}">${b.label}</button>`).join("")}</menu></div>` : "";
+  if (html) return ($("modal").innerHTML = `<div class="modal-box">${html}<menu>${ui.buttons.map((b, i) => `<button class="btn primary" data-btn="${i}">${b.label}</button>`).join("")}</menu></div>`);
+  $("modal").innerHTML =
+    S.phase === "end" && resultsOpen ? `<div class="modal-box">${renderResults()}<menu><button class="btn primary" data-close-results>Close</button></menu></div>` : "";
 }
 
 // Reveal panel: cards drawn in a street run, or the cards seen by a Scheme (click one to keep).
@@ -710,6 +742,7 @@ function render() {
   renderPlayers();
   renderPrompt();
   renderReveal();
+  renderUprisingCard();
   renderModal();
   $("log").innerHTML = S.log.map((m) => `<li>${m}</li>`).join("");
 }
@@ -735,9 +768,13 @@ $("copy-log").addEventListener("click", () => {
 
 document.addEventListener("click", (e) => {
   if (!S) return;
-  const t = e.target.closest("[data-undo],[data-pass],[data-row],[data-btn]");
+  const t = e.target.closest("[data-undo],[data-pass],[data-row],[data-btn],[data-results],[data-close-results]");
   if (!t) return;
   const d = t.dataset;
+  if (d.results !== undefined || d.closeResults !== undefined) {
+    resultsOpen = d.results !== undefined;
+    return render();
+  }
   if (d.undo !== undefined) return undo();
   if (d.btn !== undefined && ui.msg) return settle(ui.buttons[+d.btn].value);
   if (ui.msg) return;
