@@ -529,11 +529,13 @@ function endGame() {
   log("— Game over. —");
 }
 
-function startGame(names) {
+// seats: names, or { name, ai } where ai is a bot profile (two-faces-bots.js) or null for a human.
+function startGame(seats) {
   const deck = (k) => shuffle(TF_CARDS.filter((c) => c.char === k).flatMap((c) => Array(c.copies).fill(c.id)));
   S = {
-    players: names.map((name, q) => ({
-      name,
+    players: seats.map((seat, q) => ({
+      name: seat.name ?? seat,
+      ai: seat.ai || null,
       color: COLORS[q],
       cit: TF_CONFIG.spire,
       out: 1,
@@ -542,7 +544,7 @@ function startGame(names) {
       schemes: [],
       supply: TF_CONFIG.troops,
     })),
-    troops: Object.fromEntries(LOCATIONS.map((l) => [l.id, names.map(() => 0)])),
+    troops: Object.fromEntries(LOCATIONS.map((l) => [l.id, seats.map(() => 0)])),
     decks: { cit: deck("cit"), out: deck("out") },
     discards: { cit: [], out: [] },
     row: { cit: [], out: [] },
@@ -645,7 +647,7 @@ function cardHtml(id, attrs = "", live = false) {
 
 function renderRow() {
   $("row").innerHTML = CHARS.map((k) => {
-    const cards = S.row[k].map((id, i) => cardHtml(id, `data-row="${k},${i}"`, canAct() && !ui.msg && canPay(current(), CARDS[id])));
+    const cards = S.row[k].map((id, i) => cardHtml(id, `data-row="${k},${i}"`, canAct() && !ui.msg && !P(current()).ai && canPay(current(), CARDS[id])));
     return `<div><p class="mini-label">${SIDES[k].name} deck · ${S.decks[k].length} left</p><div class="row-cards">${cards.join("")}</div></div>`;
   }).join("");
 }
@@ -690,7 +692,7 @@ function renderPlayers() {
       const open = q === acting || S.phase === "end";
       const sch = x.schemes.map((id) => `<span class="scheme-card">${icon("scheme")}${open ? strText(CARDS[id].str) : "?"}</span>`).join("");
       return `<div class="player ${q === acting ? "active" : ""}" style="--pc:${x.color}">
-        <h3><span>${esc(x.name)}</span><small>score ${score(x)}</small></h3>
+        <h3><span>${esc(x.name)}${x.ai ? ` <em class="ai-badge">AI · ${x.ai}</em>` : ""}</span><small>score ${score(x)}</small></h3>
         <div class="player-body"><div class="goods">${goodsLabel(x)}<span class="gx" title="Troops in supply"><span class="gt">troops in supply:</span><b>${x.supply}</b>${icon("low")}</span>${sch}</div>
         <div class="tableau">${tableauHtml(x)}</div></div></div>`;
     })
@@ -700,10 +702,12 @@ function renderPlayers() {
 function renderPrompt() {
   let msg = "";
   let buttons = "";
+  const aiPick = ui.msg && ui.player != null && P(ui.player).ai;
   if (ui.msg) {
-    msg = (ui.player != null ? `${nm(ui.player)}: ` : "") + ui.msg;
-    buttons = ui.buttons.map((b, i) => `<button class="btn" data-btn="${i}">${b.label}</button>`).join("");
-  } else if (S.phase === "play") {
+    msg = (ui.player != null ? `${nm(ui.player)}${aiPick ? " (AI)" : ""}: ` : "") + ui.msg;
+    buttons = ui.buttons.map((b, i) => `<button class="btn" data-btn="${i}" ${aiPick ? "disabled" : ""}>${b.label}</button>`).join("");
+  } else if (S.phase === "play" && P(current()).ai) msg = `${nm(current())} (AI · ${P(current()).ai}) is thinking…`;
+  else if (S.phase === "play") {
     if (canRecruit(current())) msg = `${nm(current())}: click a row card to Recruit it.`;
     else {
       msg = `${nm(current())}: no card you can afford.`;
@@ -734,6 +738,43 @@ function renderReveal() {
   $("reveal").innerHTML = `<div class="reveal-note">${sh.note}</div><div class="reveal-cards">${cards.join("") || "<i>No card yet.</i>"}</div>`;
 }
 
+/* ---------- AI seats ---------- */
+
+// AI players act on their own after a short pause, so the table can follow. Bots: two-faces-bots.js.
+const AI_DELAY = { turn: 900, pick: 650, result: 2500 };
+const aiBots = {};
+const aiPlan = {}; // side chosen by an AI's turn, answered when the game asks "above or below?"
+let aiTimer = null;
+const botFor = (p) => (aiBots[P(p).ai] = aiBots[P(p).ai] || (P(p).ai === "random" ? RANDOM : valueBot(P(p).ai)));
+
+function scheduleAI() {
+  clearTimeout(aiTimer);
+  if (!S || typeof valueBot === "undefined") return;
+  if (ui.msg) {
+    const p = ui.player;
+    // A result to read: humans click Continue; with only AI seats, it continues by itself.
+    if (p == null) {
+      if (S.players.every((x) => x.ai)) aiTimer = setTimeout(() => ui.msg && settle(ui.buttons[0].value), AI_DELAY.result);
+      return;
+    }
+    if (!P(p).ai) return;
+    aiTimer = setTimeout(() => {
+      if (!ui.msg || ui.player !== p) return;
+      const i = ui.info.kind === "side" ? Math.max(0, ui.buttons.findIndex((b) => b.value === aiPlan[p])) : botFor(p).choose(p, ui.info, ui.buttons);
+      settle(ui.buttons[i].value);
+    }, AI_DELAY.pick);
+  } else if (S.phase === "play" && !busy && P(current()).ai) {
+    aiTimer = setTimeout(() => {
+      const p = current();
+      if (ui.msg || busy || S.phase !== "play" || !P(p).ai) return;
+      const a = botFor(p).turn(p);
+      if (a.type === "pass") return passTurn();
+      aiPlan[p] = a.side;
+      recruit(a.k, a.i);
+    }, AI_DELAY.turn);
+  }
+}
+
 function render() {
   renderStatus();
   renderMap();
@@ -745,6 +786,7 @@ function render() {
   renderUprisingCard();
   renderModal();
   $("log").innerHTML = S.log.map((m) => `<li>${m}</li>`).join("");
+  scheduleAI();
 }
 
 /* ---------- events ---------- */
@@ -776,8 +818,8 @@ document.addEventListener("click", (e) => {
     return render();
   }
   if (d.undo !== undefined) return undo();
-  if (d.btn !== undefined && ui.msg) return settle(ui.buttons[+d.btn].value);
-  if (ui.msg) return;
+  if (d.btn !== undefined && ui.msg) return ui.player != null && P(ui.player).ai ? undefined : settle(ui.buttons[+d.btn].value);
+  if (ui.msg || P(current()).ai) return; // AI seats play by themselves
   if (d.pass !== undefined) return passTurn();
   if (d.row !== undefined) {
     const [k, i] = d.row.split(",");
@@ -787,13 +829,24 @@ document.addEventListener("click", (e) => {
 
 /* ---------- setup dialog ---------- */
 
+// Seat types: a human, or an AI with one of the bot profiles.
+const SEAT_TYPES = [
+  ["", "Human"],
+  ["smart", "AI · smart"],
+  ["greedy", "AI · greedy"],
+  ["frugal", "AI · frugal"],
+  ["warlord", "AI · warlord"],
+  ["builder", "AI · builder"],
+  ["random", "AI · random"],
+];
 function renderSetup() {
   const count = +$("setup-count").value;
-  const prev = [...document.querySelectorAll(".setup-player input")].map((i) => i.value);
-  $("setup-players").innerHTML = Array.from(
-    { length: count },
-    (_, i) => `<div class="setup-player"><i style="background:${COLORS[i]}"></i><input value="${esc(prev[i] || `Player ${i + 1}`)}" /></div>`,
-  ).join("");
+  const prev = [...document.querySelectorAll(".setup-player")].map((el) => [el.querySelector("input").value, el.querySelector("select").value]);
+  $("setup-players").innerHTML = Array.from({ length: count }, (_, i) => {
+    const [name, ai] = prev[i] || [`Player ${i + 1}`, ""];
+    const opts = SEAT_TYPES.map(([v, label]) => `<option value="${v}" ${v === ai ? "selected" : ""}>${label}</option>`).join("");
+    return `<div class="setup-player"><i style="background:${COLORS[i]}"></i><input value="${esc(name)}" /><select>${opts}</select></div>`;
+  }).join("");
 }
 
 function openSetup() {
@@ -806,7 +859,7 @@ $("setup-count").addEventListener("change", renderSetup);
 $("new-game").addEventListener("click", openSetup);
 $("setup").addEventListener("close", () => {
   if ($("setup").returnValue !== "start") return;
-  startGame([...document.querySelectorAll(".setup-player input")].map((i) => i.value.trim() || "Player"));
+  startGame([...document.querySelectorAll(".setup-player")].map((el) => ({ name: el.querySelector("input").value.trim() || "Player", ai: el.querySelector("select").value || null })));
   sound("start");
 });
 

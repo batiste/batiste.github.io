@@ -175,3 +175,7 @@ body { padding-bottom: 220px; }
 .victory-crown { font-size: 44px; line-height: 1; color: var(--gold); text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); }
 .victory h2 { color: #fff; font-size: 30px; text-shadow: 0 2px 6px rgba(0, 0, 0, 0.5); }
 .results tr.winner td { background: rgba(233, 196, 119, 0.15); font-weight: 700; }
+
+/* ---------- AI seats ---------- */
+.setup-player { grid-template-columns: 26px 1fr 160px; }
+.ai-badge { margin-left: 8px; padding: 1px 7px; border-radius: 10px; background: rgba(20, 24, 28, 0.35); color: #15191c; font-family: var(--font-body); font-size: 11px; font-style: normal; font-weight: 700; letter-spacing: 0.04em; }
