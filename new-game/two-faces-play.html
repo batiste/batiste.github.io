@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Two Faces — Playtest</title>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="two-faces-icons.css" />
+    <link rel="stylesheet" href="double-life-play.css" />
+    <link rel="stylesheet" href="two-faces-play.css" />
+  </head>
+  <body>
+    <header class="page-head">
+      <h1>Two Faces <span class="sub">Playtest · hot-seat</span></h1>
+      <nav>
+        <a class="nav-link" href="two-faces.html">Rules</a>
+        <button class="nav-link" id="new-game" type="button">New game</button>
+      </nav>
+    </header>
+
+    <div class="status" id="status"></div>
+
+    <main class="table">
+      <section class="tf-left">
+        <div>
+          <p class="mini-label">Spire · ● Citizen ◆ Outcast</p>
+          <div class="spire-track" id="spire"></div>
+        </div>
+        <div class="tf-main">
+          <div id="row"></div>
+          <p class="mini-label">Players</p>
+          <div id="players"></div>
+        </div>
+      </section>
+      <section class="log-wrap">
+        <p class="mini-label">Log (newest first)</p>
+        <ol class="log" id="log"></ol>
+      </section>
+    </main>
+
+    <div class="prompt" id="prompt"></div>
+
+    <dialog id="setup">
+      <form method="dialog">
+        <h2>New game</h2>
+        <label class="count">Players
+          <select id="setup-count">
+            <option>2</option><option selected>3</option><option>4</option>
+          </select>
+        </label>
+        <div id="setup-players" class="setup-players"></div>
+        <menu>
+          <button class="btn" value="cancel">Cancel</button>
+          <button class="btn primary" value="start">Start</button>
+        </menu>
+      </form>
+    </dialog>
+
+    <script src="two-faces-data.js"></script>
+    <script src="two-faces-play.js"></script>
+  </body>
+</html>

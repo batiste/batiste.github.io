@@ -1,0 +1,75 @@
+/* Two Faces additions on top of double-life-play.css (spire, players, prompt, dialog) and two-faces-icons.css. */
+
+body { font-size: 15px; }
+.mini-label { font-size: 12px; }
+.status { font-size: 16px; }
+.prompt .msg { font-size: 16px; }
+.btn { font-size: 14px; }
+.log { font-size: 14px; }
+
+.table { grid-template-columns: minmax(0, 1fr) 360px; }
+.log-wrap { margin-top: 0; }
+.log { max-height: 75vh; }
+
+.tf-left { display: flex; gap: 16px; align-items: flex-start; }
+.tf-main { flex: 1; min-width: 0; }
+.spire-track { width: 110px; }
+.sp-row { height: 26px; }
+.sp-row b { font-size: 12px; }
+.tok { width: 13px; height: 13px; }
+
+.uprising { margin-top: 6px; color: var(--text); font-size: 15px; }
+
+/* ---------- cards ---------- */
+
+#row { display: flex; flex-wrap: wrap; gap: 18px; margin-bottom: 20px; }
+.row-cards { display: flex; gap: 10px; }
+
+.tcard {
+  --frame: var(--brass);
+  --tint: rgba(176, 129, 47, 0.16);
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  aspect-ratio: 5 / 7;
+  border: 4px solid var(--frame);
+  border-radius: 10px;
+  background: var(--paper);
+  color: var(--ink);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45);
+  overflow: hidden;
+}
+.tcard.out, .tuck.out { --frame: var(--verdigris); --tint: rgba(47, 125, 116, 0.16); }
+.tcard.live { cursor: pointer; transition: transform 0.12s ease, box-shadow 0.12s ease; }
+.tcard.live:hover { transform: translateY(-4px); box-shadow: 0 0 0 3px var(--gold), 0 8px 16px rgba(0, 0, 0, 0.5); }
+.row-cards .tcard:not(.live) { opacity: 0.55; }
+
+.band { padding: 5px 7px; background: var(--tint); font-size: 14px; }
+.band.up { border-bottom: 1px dashed rgba(20, 24, 28, 0.25); }
+.band.down { border-top: 1px dashed rgba(20, 24, 28, 0.25); }
+.band-name { display: block; color: var(--ink-soft); font-size: 10.5px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
+.band-fx { min-height: 1.7em; padding-top: 2px; line-height: 1.7; }
+
+.face { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 4px 6px; position: relative; }
+.face h3 { color: var(--ink); font-size: 17px; text-align: center; }
+.deck-name { color: var(--ink-soft); font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; }
+.corners { position: absolute; top: 5px; left: 6px; right: 6px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
+
+/* ---------- players ---------- */
+
+#players { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
+.player h3 { font-size: 18px; }
+.goods { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; font-size: 15px; }
+.scheme-card { display: inline-flex; align-items: center; padding: 2px 6px 2px 2px; border-radius: 6px; background: #3a3340; color: #f3ede0; }
+
+.tableau { display: flex; justify-content: center; gap: 16px; margin-top: 10px; align-items: center; }
+.char-col { display: flex; flex-direction: column; align-items: center; }
+.tcard.char { width: 170px; aspect-ratio: auto; min-height: 150px; position: relative; z-index: 1; }
+.height { display: flex; align-items: center; gap: 6px; font-size: 22px; }
+.height b { font-weight: 800; }
+
+/* Tucked strips peek out from behind the character card. */
+.tuck { --frame: var(--brass); --tint: rgba(176, 129, 47, 0.16); width: 160px; border: 3px solid var(--frame); background: var(--paper); color: var(--ink); overflow: hidden; }
+.tuck.up { border-bottom: none; border-radius: 8px 8px 0 0; margin-bottom: -2px; }
+.tuck.down { border-top: none; border-radius: 0 0 8px 8px; margin-top: -2px; }
+.tuck .band { border: none; font-size: 13px; }

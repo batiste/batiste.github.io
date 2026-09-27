@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Two Faces — Draft Rules</title>
+    <link rel="stylesheet" href="common.css" />
+    <link rel="stylesheet" href="two-faces-icons.css" />
+    <link rel="stylesheet" href="rules.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="page-head">
+        <div>
+          <h1>Two Faces</h1>
+          <p class="tagline">Aeropolis, back to the core: one city on the edge of revolution, two characters per player, 2–4 players.</p>
+        </div>
+        <nav aria-label="Game pages">
+          <a class="nav-link" href="two-faces-play.html">Playtest</a>
+        </nav>
+      </header>
+
+      <p class="callout">
+        You play both sides: a Citizen at the top of the Spire, an Outcast at its base. Each turn, take a card and tuck it
+        above or below one of your characters: that column activates, every card in it. When your two characters meet, the
+        game ends. You score the height of your <strong>lower</strong> one.
+      </p>
+
+      <section>
+        <h2>Setup</h2>
+        <ol class="steps">
+          <li>Each player: a Citizen card and an Outcast card side by side; Citizen pawn on Spire <span data-cfg="spire"></span>, Outcast pawn on 1; <span id="start"></span>.</li>
+          <li>Shuffle the Citizen and Outcast decks. Reveal <span data-cfg="row"></span> cards from each: the <strong>row</strong>.</li>
+          <li>Shuffle the contraband deck and the Uprising deck. Reveal the first Uprising.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Round</h2>
+        <ol class="steps">
+          <li>Starting with the first player, each player takes 1 turn, twice around the table.</li>
+          <li>Resolve the Uprising (see Uprising).</li>
+          <li>The first player passes left. Reveal the next Uprising.</li>
+        </ol>
+      </section>
+
+      <section>
+        <h2>Turn</h2>
+        <p>Take one:</p>
+        <ul class="steps">
+          <li><strong>Recruit:</strong> take 1 card from the row. Pay its cost: Sink your Citizen that many. Tuck it above or below its character, then <strong>activate</strong> that side. Refill the row from the same deck.</li>
+          <li><strong>Scheme:</strong> look at the top card of each deck. Place 1 face down in front of you, the other at the bottom of its deck.</li>
+        </ul>
+        <p>Empty deck: shuffle its discards into it.</p>
+      </section>
+
+      <section>
+        <h2>Sides</h2>
+        <p>
+          Each character has 2 sides: tucked cards above it, tucked cards below it. A card tucked above shows only its top strip;
+          below, only its bottom strip. A side holds <span data-cfg="sideCap"></span> strips: tucking another discards its oldest.
+        </p>
+        <p><strong>Activate:</strong> resolve the side's strips from newest to oldest, then the character's own strip. "→" effects are optional.</p>
+        <table class="revolution-table">
+          <thead><tr><th>Character</th><th>Side</th><th>Character strip</th></tr></thead>
+          <tbody id="sides"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Contraband</h2>
+        <table class="revolution-table">
+          <thead><tr><th>Good</th><th>Use</th></tr></thead>
+          <tbody id="goods"></tbody>
+        </table>
+        <p>
+          <strong>Street run:</strong> draw contraband cards one at a time. Each shows goods and heat; a Patrol shows only heat.
+          Stop whenever you like and take the goods drawn. If your total heat goes over your heat limit, you are
+          <strong>caught</strong>: you gain nothing. Either way, shuffle the drawn cards back.
+        </p>
+        <p id="contraband"></p>
+      </section>
+
+      <section>
+        <h2>Uprising</h2>
+        <ol class="steps">
+          <li>Each player secretly commits any number of their Arms, then all reveal them together with their Schemes.</li>
+          <li><strong>Strength</strong> = your +N Schemes + Arms committed, doubled for each ×2 Scheme. Strongest gets the first reward, next gets the second. Strength 0 gets nothing. Tie: lower Outcast wins, then turn order.</li>
+          <li>Discard all Schemes and committed Arms.</li>
+        </ol>
+        <table class="revolution-table">
+          <thead><tr><th>Uprising</th><th>First</th><th>Second</th></tr></thead>
+          <tbody id="uprisings"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Spire</h2>
+        <ul class="steps">
+          <li>Your Outcast never goes above your Citizen. You cannot pay a cost that would put your Citizen below your Outcast.</li>
+          <li>When they stand on the same height, they <strong>meet</strong>.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>End</h2>
+        <ul class="steps">
+          <li>The game ends after the Uprising of the round in which any player's characters meet, or after the last Uprising.</li>
+          <li>Score: the height of your lower pawn. Tie: higher Citizen.</li>
+        </ul>
+      </section>
+
+      <section>
+        <h2>Cards</h2>
+        <table class="revolution-table">
+          <thead><tr><th>Card</th><th>Deck</th><th>Cost</th><th>Scheme</th><th>Copies</th><th>Top strip</th><th>Bottom strip</th></tr></thead>
+          <tbody id="cards"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Playtest Questions</h2>
+        <ul class="steps">
+          <li>Game length: do characters meet before the last Uprising? Tune costs, Deal and rewards.</li>
+          <li>Engine: is a cap of <span data-cfg="sideCap"></span> strips per side too tight, too loose?</li>
+          <li>Cost: is sinking the Citizen a real price, since only the lower pawn scores?</li>
+          <li>Street run: is heat limit 5 with Patrols fun, or too safe / too swingy?</li>
+          <li>Scheme: is giving up a Recruit worth it? Is ×2 a fun bluff or a trap?</li>
+          <li>Loud Citizen (later): each Citizen activation adds heat to your next run?</li>
+          <li>Characters: all identical for now. Unique base strips per character later?</li>
+        </ul>
+      </section>
+    </div>
+
+    <script src="two-faces-data.js"></script>
+    <script>
+      const row = (cells) => `<tr>${cells.map((x) => `<td>${x}</td>`).join("")}</tr>`;
+      const set = (id, v) => (document.getElementById(id).innerHTML = v);
+      document.querySelectorAll("[data-cfg]").forEach((el) => (el.textContent = TF_CONFIG[el.dataset.cfg]));
+      set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n }).slice(1)).join(", "));
+      set("sides", Object.values(SIDES).flatMap((c) => [["up", "above"], ["down", "below"]].map(([k, w]) => row([c.name, `<strong>${c[k].name}</strong> (${w})`, fxList(c[k].base)]))).join(""));
+      set("goods", Object.values(GOODS).map((g) => row([`<strong>${g.name}</strong>`, g.use])).join(""));
+      const per = TF_CONTRABAND.filter((c) => c.good === "P");
+      const patrols = TF_CONTRABAND.filter((c) => !c.good);
+      set("contraband", `Deck: per good, ${[1, 2, 3].map((h) => `${per.filter((c) => c.heat === h).length}× ${per.find((c) => c.heat === h).n} good${h > 1 ? "s" : ""} / heat ${h}`).join(", ")}; plus ${patrols.length} Patrols (heat ${patrols[0].heat}).`);
+      set("uprisings", TF_UPRISINGS.map((u) => row([`<strong>${u.name}</strong>`, fxList(u.first), fxList(u.second)])).join(""));
+      set("cards", TF_CARDS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, c.cost ? icon("sink", c.cost) : "free", strText(c.str), c.copies, fxList(c.up), fxList(c.down)])).join(""));
+    </script>
+  </body>
+</html>
