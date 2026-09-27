@@ -41,10 +41,10 @@ const SIDES = {
 const CHARACTERS = [
   { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
-  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: [{ troop: "high", n: 2 }, { gain: "A", n: 1 }] }], down: [{ gain: "S", n: 1 }], cit: 12 },
+  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "high", n: 3 } }], down: [{ gain: "S", n: 1 }], cit: 12 },
   { id: "chancellor", name: "Chancellor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { scheme: true }], goods: { P: -1 } },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
-  { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 4 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], out: 2 },
+  { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 4 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], goods: { T: 1 }, perDraw: true },
   { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
 ];
