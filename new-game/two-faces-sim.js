@@ -343,7 +343,7 @@ const run = (variant, setups) => new Promise((resolve) => vm.runInContext(`(${si
 const all = (bot) => Array(PLAYERS).fill(bot);
 const pct = (x) => `${Math.round(100 * x)}%`;
 
-const PROFILE_NAMES = ["myopic", "greedy", "frugal", "warlord", "builder", "smart", "daring"];
+const PROFILE_NAMES = ["smart", "smart-old", "greedy", "frugal", "warlord", "builder"];
 const shuffled = (a) => a.map((x) => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map((x) => x[1]);
 const cols = [
   ["Rounds", (m) => m.rounds.toFixed(1)],

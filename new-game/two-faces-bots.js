@@ -24,7 +24,8 @@ const RANDOM = {
 // locations), deny (value a card has for the next player), engine (stack a side),
 // future (a tucked strip fires again on later activations of its side).
 const GV = { P: 0.6, S: 0.6, A: 0.5, T: 0.3 };
-const BASE_W = { riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
+// plan: fight planning for the coming Uprising and no goods hoarding (0 = the older, naive bot).
+const BASE_W = { plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
 const PROFILES = {
   greedy: {},
   myopic: { future: 0 }, // greedy without future activations: the old baseline
@@ -32,6 +33,7 @@ const PROFILES = {
   warlord: { troop: 1.5, fight: 2.5, scheme: 1.6, ctrl: 0.3 },
   builder: { engine: 0.6, goods: 1.3, limit: 0.5 },
   smart: { tempo: 1, contest: 1.5, deny: 0.5 },
+  "smart-old": { tempo: 1, contest: 1.5, deny: 0.5, plan: 0 }, // smart before fight planning, for comparison
   daring: { tempo: 1, contest: 1.5, deny: 0.5, riskBehind: 0.3 }, // smart, but gambles on street runs when behind
 };
 
@@ -81,9 +83,24 @@ function valueBot(profile) {
     const eff = k === "out" ? Math.min(n, x.cit - x.out) : Math.min(n, TF_CONFIG.spire - x.cit);
     return eff * w.rise + (k === "out" ? tempo(p, eff) : -tempo(p, eff));
   };
+  // Force at the coming Uprising: troops at its locations + Arms (a rival's Arms are visible).
+  const force = (q) => upcoming().at.reduce((t, id) => t + S.troops[id][q], 0) + P(q).goods.A;
+  // Fight planning: a troop at the Uprising is worth a lot when it can tip the fight, less once clearly ahead.
+  function fightValue(p) {
+    if (!w.plan) return w.fight;
+    const mine = force(p);
+    const rival = Math.max(...S.players.map((_, q) => (q === p ? 0 : force(q))));
+    const first = fxValue(p, upcoming().first, { goods: { ...P(p).goods }, limit: 0 });
+    // Half the reward: the troop may still lose, and every fighter loses a troop.
+    if (mine + 1 > rival && mine <= rival) return w.fight + first * 0.5; // this troop takes the lead
+    if (mine <= rival) return w.fight; // too far behind: do not chase
+    if (mine === 0) return w.fight + 1; // join for the second reward
+    return w.fight * 0.5; // already clearly ahead
+  }
+
   function locValue(p, id) {
     let v = w.troop;
-    if (upcoming().at.includes(id)) v += w.fight;
+    if (upcoming().at.includes(id)) v += fightValue(p);
     const t = S.troops[id];
     const best = Math.max(...t.filter((_, q) => q !== p));
     if (t[p] <= best && t[p] + 1 > best) v += w.ctrl * fxValue(p, LOC[id].control, { goods: { ...P(p).goods }, limit: 0 });
@@ -115,7 +132,11 @@ function valueBot(profile) {
         sim.limit += e.limit;
         v += w.limit * e.limit;
       } else if (e.scheme) v += schemeValue(p);
-      else if (e.run) v += w.goods * 0.55 * RUN_EV[Math.min(14, e.run + sim.limit)];
+      else if (e.run) {
+        // A street run is worth less the more goods you already hold (no hoarding).
+        const stock = w.plan ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : 0;
+        v += (w.goods * 0.55 * RUN_EV[Math.min(14, e.run + sim.limit)]) / (1 + Math.max(0, stock - 6) / 6);
+      }
       else if (e.choice) v += w.goods * 0.6 * e.choice;
     }
     return v;
