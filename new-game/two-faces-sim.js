@@ -25,10 +25,8 @@ const PLAYERS = +args[1] || 3;
 const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
 const VARIANTS = [
   { name: "Current rules" },
-  { name: "Spire 12", data: `TF_CONFIG.spire = 12;` },
-  { name: "Forum + Cable Lift: controller loses 1 troop", patch: controlCost(["forum", "lift"]) },
-  { name: "Any control: controller loses 1 troop", patch: controlCost(["docks", "rag", "lift", "forum", "hall"]) },
-  { name: "Spire 12 + Forum/Lift controller loses 1 troop", data: `TF_CONFIG.spire = 12;`, patch: controlCost(["forum", "lift"]) },
+  { name: "×2 doubles everything (old)", patch: [["return (troops + arms) * 2 ** doubles + plus;", "return (troops + arms + plus) * 2 ** doubles;"]] },
+  { name: "×2 on troops + Arms, no stacking", patch: [["return (troops + arms) * 2 ** doubles + plus;", "return (troops + arms) * (doubles ? 2 : 1) + plus;"]] },
 ];
 
 // ---------- load the game in a sandbox ----------
@@ -60,7 +58,6 @@ function sim(GAMES, setups, done) {
   const avg = (a) => (a.length ? a.reduce((x, y) => x + y, 0) / a.length : 0);
   const pct = (x) => `${(100 * x).toFixed(0)}%`;
   const pickRandom = (a) => a[Math.floor(Math.random() * a.length)];
-  const noScheme = () => typeof NO_SCHEME !== "undefined"; // set by the "No Scheme" variant
   const upcoming = () => TF_UPRISINGS[S.uprisings[S.uprising]];
   const affordable = (p) => CHARS.flatMap((k) => S.row[k].map((id, i) => ({ k, i, id })).filter((o) => canPay(p, CARDS[o.id])));
 
@@ -69,7 +66,7 @@ function sim(GAMES, setups, done) {
   const RANDOM = {
     turn(p) {
       const opts = affordable(p);
-      if (!opts.length || (!noScheme() && Math.random() < 1 / (opts.length + 1))) return { type: "scheme" };
+      if (!opts.length) return { type: "pass" };
       return { type: "recruit", ...pickRandom(opts), side: pickRandom(["up", "down"]) };
     },
     choose: (p, info, buttons) => Math.floor(Math.random() * buttons.length),
@@ -230,7 +227,7 @@ function sim(GAMES, setups, done) {
       const k = CARDS[id].char;
       const col = P(p).sides[k][side];
       const kept = col.length >= TF_CONFIG.sideCap ? col.slice(1) : col;
-      const list = [...CARDS[id][side], ...[...kept].reverse().flatMap((c) => CARDS[c][side]), ...SIDES[k][side].base];
+      const list = activationOrder([...CARDS[id][side], ...[...kept].reverse().flatMap((c) => CARDS[c][side]), ...SIDES[k][side].base]);
       const cost = payValue(p, CARDS[id]);
       const dropped = kept !== col ? CARDS[col[0]][side] : null;
       return fxValue(p, list, { goods: { ...P(p).goods }, limit: 0 }) - cost + w.engine * kept.length + futureValue(p, k, side, CARDS[id][side], dropped);
@@ -244,7 +241,7 @@ function sim(GAMES, setups, done) {
           const deny = w.deny && next !== null && canPay(next, CARDS[o.id]) ? w.deny * bestTuck(next, o.id) : 0;
           return ["up", "down"].map((side) => ({ type: "recruit", ...o, side, v: tuckValue(p, o.id, side) + deny }));
         });
-        if (!noScheme() || !opts.length) opts.push({ type: "scheme", v: schemeValue(p) * 1.1 });
+        if (!opts.length) return { type: "pass" };
         opts.forEach((o) => (o.v += Math.random() * 0.3));
         return opts.sort((a, b) => b.v - a.v)[0];
       },
@@ -260,7 +257,7 @@ function sim(GAMES, setups, done) {
           case "moveTo":
             return idx((id) => locValue(p, id));
           case "moveFrom":
-            return idx((id) => S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - (upcoming().at.includes(id) ? 5 : 0));
+            return idx((id) => (id === null ? -99 : S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - (upcoming().at.includes(id) ? 5 : 0)));
           case "runDeck":
             return idx((k) => deckRunValue(p, info.decks[k], info.limit));
           case "draw": {
@@ -375,7 +372,7 @@ function sim(GAMES, setups, done) {
     G = { deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
     G.sides = bots.map(() => new Set());
     G.src = "turn";
-    G.stat = bots.map(() => ({ troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
+    G.stat = bots.map(() => ({ schemeTurns: 0, troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
     G.took = bots.map(() => new Set());
     G.options = [];
     startGame(bots.map((_, q) => `P${q}`));
@@ -392,7 +389,10 @@ function sim(GAMES, setups, done) {
         const p = current();
         G.options.push(affordable(p).length);
         const a = bots[p].turn(p);
-        if (a.type === "scheme") schemeTurn();
+        if (a.type === "pass") {
+          G.stat[p].schemeTurns++; // counts forced "take 1 good" turns
+          passTurn();
+        }
         else {
           plan[p] = a.side;
           G.stat[p].spent += costSize(CARDS[a.id]);
@@ -403,10 +403,10 @@ function sim(GAMES, setups, done) {
       }
       await new Promise((r) => setImmediate(r));
     }
-    // Winner(s): higher lower-pawn, then higher Citizen. Shared ties split the win.
-    const final = S.players.map((x) => [score(x), x.cit]);
-    const best = final.reduce((b, f) => (f[0] > b[0] || (f[0] === b[0] && f[1] > b[1]) ? f : b));
-    const winners = final.map((f) => f[0] === best[0] && f[1] === best[1]);
+    // Winner(s): the game's own ranking (score, then tie-break goods). Full ties split the win.
+    const final = S.players.map((x) => [score(x)]);
+    const best = [...S.players].sort(byRank)[0];
+    const winners = S.players.map((x) => byRank(x, best) === 0);
     const share = winners.map((w) => (w ? 1 / winners.filter(Boolean).length : 0));
     const sorted = final.map((f) => f[0]).sort((a, b) => b - a);
     return { ...G, names, onBoard: S.players.map((_, q) => LOCATIONS.reduce((t, l) => t + S.troops[l.id][q], 0)), supply: S.players.map((x) => x.supply), left: S.players.map((x) => Object.values(x.goods).reduce((a, b) => a + b, 0)), leftBy: S.players.map((x) => ({ ...x.goods })), rounds: S.round, met: S.met, final: final.map((f) => f[0]), cit: S.players.map((x) => x.cit), share, margin: sorted[0] - sorted[1] };
@@ -467,8 +467,10 @@ function sim(GAMES, setups, done) {
     out("\n### Uprisings & city");
     const fights = games.flatMap((g) => g.fights);
     out(`- Fighters per Uprising: avg ${avg(fights).toFixed(2)} · nobody ${pct(avg(fights.map((f) => (f === 0 ? 1 : 0))))} · uncontested (1) ${pct(avg(fights.map((f) => (f === 1 ? 1 : 0))))} · contested (2+) ${pct(avg(fights.map((f) => (f >= 2 ? 1 : 0))))}`);
+    m.loc = {};
     LOCATIONS.forEach((l) => {
       const c = games.map((g) => g.ctrl[l.id]).reduce((a, b) => ({ rounds: a.rounds + b.rounds, held: a.held + b.held, contested: a.contested + b.contested }));
+      m.loc[l.id] = { held: c.held / c.rounds, contested: c.contested / c.rounds };
       out(`- ${l.name.padEnd(13)} controlled ${pct(c.held / c.rounds)} of rounds · contested ${pct(c.contested / c.rounds)}`);
     });
     const tw = games.flatMap((g) => g.stat), sent = tw.reduce((t, x) => t + x.troops, 0), wanted = tw.reduce((t, x) => t + x.troopsWanted, 0);
@@ -484,6 +486,12 @@ function sim(GAMES, setups, done) {
     m.stepsUp = steps("uprising");
     m.stepsCtrl = steps("control");
     m.met = avg(games.map((g) => (g.met ? 1 : 0)));
+    m.schemeTurns = avg(games.flatMap((g) => g.stat.map((st) => st.schemeTurns)));
+    m.schemeWin = (() => {
+      const all = games.flatMap((g) => g.stat.map((st, q) => ({ t: st.schemeTurns, w: g.share[q] })));
+      const some = all.filter((x) => x.t > 0);
+      return some.length ? avg(some.map((x) => x.w)) : 0;
+    })();
     m.final = avg(games.flatMap((g) => g.final));
     const citRuns = games.reduce((t, g) => t + g.deckRuns.cit, 0);
     out(`- Street runs per game: ${(runs / games.length).toFixed(1)} · caught ${pct(m.caught)} · through the Citizen deck ${pct(citRuns / runs)}`);
@@ -578,6 +586,8 @@ const cols = [
   ["Goods left", (m) => m.left.toFixed(1)],
   ["Steps: Uprising / control", (m) => `${m.stepsUp.toFixed(1)} / ${m.stepsCtrl.toFixed(1)}`],
   ["Ends by meeting", (m) => pct(m.met)],
+  ["Docks / Rag held · contested", (m) => `${pct(m.loc.docks.held)}·${pct(m.loc.docks.contested)} / ${pct(m.loc.rag.held)}·${pct(m.loc.rag.contested)}`],
+  ["Forced passes / player", (m) => m.schemeTurns.toFixed(2)],
   ["Avg score", (m) => m.final.toFixed(1)],
   ["Best strip", (m) => (m.best ? `${m.best.name.trim()} ${pct(m.best.win)}` : "—")],
   ["Worst strip", (m) => (m.worst ? `${m.worst.name.trim()} ${pct(m.worst.win)}` : "—")],

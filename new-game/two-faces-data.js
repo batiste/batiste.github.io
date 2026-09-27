@@ -6,7 +6,8 @@ const TF_CONFIG = {
   rounds: 5, // Uprisings drawn: the game ends after the last one (or when characters meet)
   sideCap: 3,
   freeHeat: 2, // Street run: heat of a free card (it gives no goods) // strips per side; a new one beyond this discards the oldest
-  troops: 10, // troops per player
+  troops: 12, // troops per player
+  tieBreak: ["A", "T", "S", "P"], // final tie: most Arms, then Stims, Secrets, Papers
   start: { P: 1, S: 1, A: 0, T: 0 }, // starting goods
 };
 
@@ -19,11 +20,12 @@ const GOODS = {
 
 // The city. Deal sends troops to the lower city, Rally to the upper city; the Cable Lift is in both.
 // control: reward for the player with the most troops there after each Uprising (tie: nobody).
+// upkeep: the controller then loses that many troops there (back to supply).
 const LOCATIONS = [
-  { id: "docks", name: "Docks", low: true, control: [{ gain: "A", n: 2 }] },
+  { id: "docks", name: "Docks", low: true, control: [{ gain: "A", n: 2 }, { gain: "T", n: 1 }] },
   { id: "rag", name: "Rag Market", low: true, control: [{ choice: 2 }] },
-  { id: "lift", name: "Cable Lift", low: true, high: true, control: [{ rise: "out", n: 1 }] },
-  { id: "forum", name: "Forum", high: true, control: [{ rise: "out", n: 1 }] },
+  { id: "lift", name: "Cable Lift", low: true, high: true, control: [{ rise: "out", n: 1 }], upkeep: 1 },
+  { id: "forum", name: "Forum", high: true, control: [{ rise: "out", n: 1 }], upkeep: 1 },
   { id: "hall", name: "Council Hall", high: true, control: [{ scheme: true }] },
 ];
 
@@ -80,7 +82,7 @@ const TF_UPRISINGS = [
 
 // Cost: goods to pay; each good you lack sinks your Citizen 1 instead.
 const costSize = (c) => Object.values(c.cost).reduce((a, b) => a + b, 0);
-const costHtml = (c) => Object.entries(c.cost).map(([g, k]) => icon(g, k)).join("");
+const costHtml = (c) => Object.entries(c.cost).map(([g, k]) => icon(g, k)).join(" ");
 // Street run heat, printed on every card: the card's own heat if set, else the number of goods in its cost, else freeHeat.
 const heatOf = (c) => c.heat ?? (costSize(c) || TF_CONFIG.freeHeat);
 
@@ -142,6 +144,10 @@ function icon(key, n) {
   if (typeof n === "number" && n <= 3) return `<span class="gx">${text}${chip.repeat(n)}</span>`;
   return `<span class="gx">${text}${n != null ? `<b aria-hidden="true">${n}</b>` : ""}${chip}</span>`;
 }
+
+// Activation order: every plain "+ goods" effect first (production), then the rest in order (strips newest to oldest,
+// then the character's own strip). So a strip can spend goods produced by the same activation.
+const activationOrder = (list) => [...list.filter((e) => e.gain), ...list.filter((e) => !e.gain)];
 
 const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));
 const locNames = (ids) => ids.map((id) => LOC[id].name).join(" + ");

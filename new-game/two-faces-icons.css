@@ -31,3 +31,5 @@
 /* Hidden text label next to each chip: invisible, but kept when the log is copied. */
 .gt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
 .gx { position: relative; }
+/* Copying text keeps only the hidden labels, not the visible numbers and chips (no "8/8 Heat8/8"). */
+.gx b, .gi { user-select: none; -webkit-user-select: none; }

@@ -105,6 +105,13 @@ function payCost(p, c) {
   return steps;
 }
 const score = (x) => x.cit + x.out;
+// Final ranking key: score, then leftover goods in tie-break order. Compare keys left to right.
+const rankKey = (x) => [score(x), ...TF_CONFIG.tieBreak.map((g) => x.goods[g])];
+const byRank = (a, b) => {
+  const [ka, kb] = [rankKey(a), rankKey(b)];
+  const i = ka.findIndex((v, j) => v !== kb[j]);
+  return i < 0 ? 0 : kb[i] - ka[i];
+};
 
 /* ---------- effects ---------- */
 
@@ -155,11 +162,13 @@ async function sendTroops(p, zone, amount) {
   }
 }
 
-// Move: any troop of yours to any other location.
+// Move: up to `amount` troops of yours, each to any other location. You may stop at any time.
 async function moveTroops(p, amount) {
   for (let i = 0; i < amount; i++) {
-    const from = await pickLoc(p, `Move a troop (${i + 1}/${amount}): from where?`, (l) => troopsAt(l.id, p) > 0, { kind: "moveFrom" });
-    if (!from) return log(`${nm(p)} has no troop to move.`);
+    const opts = LOCATIONS.filter((l) => troopsAt(l.id, p) > 0).map((l) => ({ label: l.name, value: l.id }));
+    if (!opts.length) return log(`${nm(p)} has no troop to move.`);
+    const from = await pick(`Move a troop (${i + 1}/${amount}): from where?`, [...opts, { label: "Stop moving", value: null }], p, { kind: "moveFrom" });
+    if (!from) return;
     const to = await pickLoc(p, `Move a troop from the ${LOC[from].name} to where?`, (l) => l.id !== from, { kind: "moveTo", from });
     S.troops[from][p]--;
     S.troops[to][p]++;
@@ -285,7 +294,7 @@ async function activate(p, k, side) {
   try {
     const strips = [...P(p).sides[k][side]].reverse().flatMap((id) => CARDS[id][side]);
     log(`${nm(p)} activates <b>${SIDES[k][side].name}</b>.`);
-    await effects(p, [...strips, ...SIDES[k][side].base]);
+    await effects(p, activationOrder([...strips, ...SIDES[k][side].base]));
   } finally {
     S.ctx.pop();
   }
@@ -352,10 +361,15 @@ function recruit(k, i) {
   });
 }
 
-function schemeTurn() {
-  if (!canAct()) return;
+// Only when no card in the row is affordable: take 1 good of your choice instead of recruiting.
+const canRecruit = (p) => CHARS.some((k) => S.row[k].some((id) => canPay(p, CARDS[id])));
+function passTurn() {
+  const p = current();
+  if (!canAct() || canRecruit(p)) return;
   guarded(async () => {
-    await scheme(current());
+    const g = await pickGood(p, "No card you can afford: take 1 good of your choice.", () => true, { kind: "choice" });
+    P(p).goods[g]++;
+    log(`${nm(p)} cannot recruit: takes +${icon(g, 1)}.`);
     await endTurn();
   });
 }
@@ -367,22 +381,24 @@ async function endTurn() {
   if (S.phase === "play") sound("turn");
 }
 
-// Strength: troops at the Uprising's locations, +N Schemes and committed Arms, doubled per ×2 Scheme.
+// Strength: (troops at the Uprising's locations + committed Arms) doubled per ×2 Scheme, plus the +N Schemes.
 function strength(p, at, arms) {
   const strs = P(p).schemes.map((id) => CARDS[id].str);
   const troops = at.reduce((t, id) => t + troopsAt(id, p), 0);
-  const plus = troops + strs.filter((s) => s !== "x2").reduce((a, b) => a + b, 0) + arms;
-  return plus * 2 ** strs.filter((s) => s === "x2").length;
+  const doubles = strs.filter((s) => s === "x2").length;
+  const plus = strs.filter((s) => s !== "x2").reduce((a, b) => a + b, 0);
+  return (troops + arms) * 2 ** doubles + plus;
 }
 
-// Why a fighter has that strength, e.g. "(3 troops + 2 Schemes + 1 Arms) ×2 = 12".
+// Why a fighter has that strength, e.g. "(3 troops + 1 Arms) ×2 + 2 from Schemes".
 function strengthText(p, at, arms) {
   const strs = P(p).schemes.map((id) => CARDS[id].str);
   const troops = at.reduce((t, id) => t + troopsAt(id, p), 0);
   const sch = strs.filter((s) => s !== "x2").reduce((a, b) => a + b, 0);
   const doubles = strs.filter((s) => s === "x2").length;
-  const parts = [`${troops} troop${troops === 1 ? "" : "s"}`, sch && `${sch} from Schemes`, arms && `${arms} Arms`].filter(Boolean).join(" + ");
-  return doubles ? `(${parts}) ×${2 ** doubles}` : parts;
+  const force = [`${troops} troop${troops === 1 ? "" : "s"}`, arms && `${arms} Arms`].filter(Boolean).join(" + ");
+  const doubled = doubles ? `(${force}) ×${2 ** doubles}` : force;
+  return sch ? `${doubled} + ${sch} from Schemes` : doubled;
 }
 
 // Uprising result: who fought, each strength and why, the ranking with tie-breaks, rewards and losses. Logged and shown in a modal.
@@ -408,7 +424,7 @@ function uprisingResult(u, res, arms, order) {
     ? `<table class="results"><tr><th>Fighter</th><th>Schemes</th><th>Arms</th><th>Why</th><th>Strength</th><th>Reward</th></tr>${res.map(row).join("")}</table>`
     : "<p>Nobody has troops there: no fight, no reward.</p>";
   const notes = lines.slice(res.length).map((l) => `<p>${l}</p>`).join("");
-  return { lines, html: `<h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = troops there + Schemes + Arms, doubled per ×2 Scheme · tie: lower Outcast</p>${table}${notes}` };
+  return { lines, html: `<h2>Uprising: ${esc(u.name)}</h2><p class="modal-sub">at the ${locNames(u.at)} · strength = (troops there + Arms) ×2 per ×2 Scheme, + your +N Schemes · tie: lower Outcast</p>${table}${notes}` };
 }
 
 async function uprising() {
@@ -491,6 +507,12 @@ async function control() {
       S.ctx[S.ctx.length - 1] = `Control: ${l.name}`;
       log(`${nm(q)} controls the <b>${l.name}</b>: ${fxList(l.control)}.`);
       await effects(q, l.control);
+      if (l.upkeep) {
+        const lost = Math.min(l.upkeep, S.troops[l.id][q]);
+        S.troops[l.id][q] -= lost;
+        P(q).supply += lost;
+        log(`${nm(q)} pays upkeep: loses ${lost} troop at the <b>${l.name}</b>.`);
+      }
     }
   } finally {
     S.ctx.pop();
@@ -559,18 +581,19 @@ function renderMap() {
     const fight = S.phase === "play" && u.at.includes(l.id);
     return `<div class="city-loc ${l.low ? "low" : ""} ${l.high ? "high" : ""} ${fight ? "fight" : ""}">
       <div class="loc-name">${l.name}</div><div class="loc-body"><div class="loc-zone">${zone}${fight ? " · <b>Uprising</b>" : ""}</div>
-      <div class="loc-ctrl">Control: ${fxList(l.control)}</div><div class="loc-troops">${troops || "—"}</div></div></div>`;
+      <div class="loc-ctrl">Control: ${fxList(l.control)}${l.upkeep ? ` · <span class="upkeep" title="Upkeep: the controller loses ${l.upkeep} troop here">−${icon("low")}</span>` : ""}</div><div class="loc-troops">${troops || "—"}</div></div></div>`;
   }).join("");
 }
 
 function renderResults() {
+  const order = TF_CONFIG.tieBreak;
   const rows = S.players
-    .map((x, q) => ({ q, lo: score(x), cit: x.cit, out: x.out }))
-    .sort((a, b) => b.lo - a.lo || b.cit - a.cit)
-    .map((r) => `<tr><td>${nm(r.q)}</td><td>${r.lo}</td><td>${r.cit}</td><td>${r.out}</td></tr>`)
+    .map((x, q) => ({ x, q }))
+    .sort((a, b) => byRank(a.x, b.x))
+    .map(({ x, q }) => `<tr><td>${nm(q)}</td><td>${score(x)}</td><td>${x.cit}</td><td>${x.out}</td><td>${order.map((g) => icon(g, `${x.goods[g]}`)).join(" ")}</td></tr>`)
     .join("");
-  return `<b>Game over.</b> Score = Citizen + Outcast heights; tie → higher Citizen.
-    <table class="results"><tr><th>Player</th><th>Score</th><th>Citizen</th><th>Outcast</th></tr>${rows}</table>`;
+  return `<b>Game over.</b> Score = Citizen + Outcast heights; tie → most ${order.map((g) => GOODS[g].name).join(", then ")}.
+    <table class="results"><tr><th>Player</th><th>Score</th><th>Citizen</th><th>Outcast</th><th>Tie-break goods</th></tr>${rows}</table>`;
 }
 
 // A card: top strip, face (name, cost, Scheme strength), bottom strip.
@@ -616,7 +639,9 @@ const SILHOUETTE = {
 
 // Each character: tucked strips above (newest on top), the character card, tucked strips below (newest at the bottom).
 function tableauHtml(x) {
-  const tuck = (id, side) => `<div class="tuck ${side} ${CARDS[id].char}" title="${CARDS[id].name}">${band(CARDS[id].char, side, fxList(CARDS[id][side]), CARDS[id].name)}</div>`;
+  // Hovering a tucked strip for 1s shows the whole card (CSS delay).
+  const tuck = (id, side) =>
+    `<div class="tuck ${side} ${CARDS[id].char}">${band(CARDS[id].char, side, fxList(CARDS[id][side]), CARDS[id].name)}<div class="tuck-preview">${cardHtml(id)}</div></div>`;
   return CHARS.map((k) => {
     const s = x.sides[k];
     return `<div class="char-col ${k}">
@@ -649,8 +674,11 @@ function renderPrompt() {
     msg = (ui.player != null ? `${nm(ui.player)}: ` : "") + ui.msg;
     buttons = ui.buttons.map((b, i) => `<button class="btn" data-btn="${i}">${b.label}</button>`).join("");
   } else if (S.phase === "play") {
-    msg = `${nm(current())}: click a row card to Recruit it, or Scheme.`;
-    buttons = `<button class="btn primary" data-scheme>Scheme</button>`;
+    if (canRecruit(current())) msg = `${nm(current())}: click a row card to Recruit it.`;
+    else {
+      msg = `${nm(current())}: no card you can afford.`;
+      buttons = `<button class="btn primary" data-pass>Take 1 good</button>`;
+    }
   } else msg = "Game over.";
   buttons += `<button class="btn" data-undo ${history.length ? "" : "disabled"}>Undo</button>`;
   const ctx = S.ctx.length ? `<div class="ctx">${S.ctx.map(esc).join(" › ")}</div>` : "";
@@ -707,13 +735,13 @@ $("copy-log").addEventListener("click", () => {
 
 document.addEventListener("click", (e) => {
   if (!S) return;
-  const t = e.target.closest("[data-undo],[data-scheme],[data-row],[data-btn]");
+  const t = e.target.closest("[data-undo],[data-pass],[data-row],[data-btn]");
   if (!t) return;
   const d = t.dataset;
   if (d.undo !== undefined) return undo();
   if (d.btn !== undefined && ui.msg) return settle(ui.buttons[+d.btn].value);
   if (ui.msg) return;
-  if (d.scheme !== undefined) return schemeTurn();
+  if (d.pass !== undefined) return passTurn();
   if (d.row !== undefined) {
     const [k, i] = d.row.split(",");
     return recruit(k, +i);
@@ -742,6 +770,7 @@ $("new-game").addEventListener("click", openSetup);
 $("setup").addEventListener("close", () => {
   if ($("setup").returnValue !== "start") return;
   startGame([...document.querySelectorAll(".setup-player input")].map((i) => i.value.trim() || "Player"));
+  sound("start");
 });
 
 openSetup();

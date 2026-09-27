@@ -33,6 +33,34 @@ const SFX = (() => {
     osc.stop(t + dur + 0.02);
   }
 
+  // Brass-like note: sawtooth through a lowpass that opens on the attack, with a slight vibrato.
+  function brass({ freq, start = 0, dur = 0.2, vol = 0.12 }) {
+    const a = audio();
+    const t = a.currentTime + start;
+    const osc = a.createOscillator();
+    const vib = a.createOscillator();
+    const vibGain = a.createGain();
+    const f = a.createBiquadFilter();
+    const gain = a.createGain();
+    osc.type = "sawtooth";
+    osc.frequency.value = freq;
+    vib.frequency.value = 6;
+    vibGain.gain.value = freq * 0.01;
+    vib.connect(vibGain).connect(osc.frequency);
+    f.type = "lowpass";
+    f.frequency.setValueAtTime(freq * 1.5, t);
+    f.frequency.linearRampToValueAtTime(freq * 5, t + 0.05);
+    gain.gain.setValueAtTime(0.0001, t);
+    gain.gain.exponentialRampToValueAtTime(vol, t + 0.03);
+    gain.gain.setValueAtTime(vol, t + dur - 0.05);
+    gain.gain.exponentialRampToValueAtTime(0.0001, t + dur);
+    osc.connect(f).connect(gain).connect(a.destination);
+    [osc, vib].forEach((o) => {
+      o.start(t);
+      o.stop(t + dur + 0.02);
+    });
+  }
+
   // Filtered white noise: swishes, snaps, hisses, drum skins.
   function noise({ start = 0, dur = 0.15, vol = 0.2, filter = "bandpass", freq = 1500, to = freq, q = 1 }) {
     const a = audio();
@@ -86,6 +114,14 @@ const SFX = (() => {
       tone({ freq: 1320, type: "sine", dur: 0.6, vol: 0.12 });
       tone({ freq: 1980, type: "sine", dur: 0.4, vol: 0.05 });
     },
+    // Game start: a little trumpet call (da-da-da-daaa).
+    start: () =>
+      [
+        [392, 0, 0.14],
+        [392, 0.16, 0.14],
+        [523, 0.32, 0.14],
+        [659, 0.48, 0.55],
+      ].forEach(([freq, start, dur]) => brass({ freq, start, dur })),
     // Characters meet / game over: short fanfare.
     fanfare: () => [392, 523, 659, 784].forEach((f, i) => tone({ freq: f, type: "triangle", start: i * 0.12, dur: i === 3 ? 0.6 : 0.16, vol: 0.15 })),
   };
