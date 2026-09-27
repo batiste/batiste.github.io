@@ -23,18 +23,8 @@ const PLAYERS = +args[1] || 3;
 // patch: [find, replace] pairs applied to two-faces-play.js source before loading.
 // Controller pays 1 troop at the location after taking its reward.
 const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
-// Goods → Spire cards: Benefactor (Citizen) and Fixer (Outcast), n goods of your choice per Outcast step.
-const VP_CARDS = (n) => `TF_CARDS.push(
-  { id: "benefactor", name: "Benefactor", char: "cit", cost: { S: 1, P: 1 }, str: 2, copies: 3,
-    up: [{ spend: { any: ${n} }, get: { rise: "out", n: 1 } }], down: [{ spend: { S: 2 }, get: { rise: "cit", n: 1 } }] },
-  { id: "fixer", name: "Fixer", char: "out", cost: { T: 1, A: 1 }, str: 2, copies: 3,
-    up: [{ gain: "T", n: 1 }], down: [{ spend: { any: ${n} }, get: { rise: "out", n: 1 } }] });
-TF_CARDS.slice(-2).forEach((c) => (CARDS[c.id] = c));`;
 const VARIANTS = [
   { name: "Current rules" },
-  { name: "Goods → Spire cards, 2 goods per step", data: VP_CARDS(2) },
-  { name: "Goods → Spire cards, 3 goods per step", data: VP_CARDS(3) },
-  { name: "Goods → Spire cards, 4 goods per step", data: VP_CARDS(4) },
   { name: "Spire 12", data: `TF_CONFIG.spire = 12;` },
   { name: "Forum + Cable Lift: controller loses 1 troop", patch: controlCost(["forum", "lift"]) },
   { name: "Any control: controller loses 1 troop", patch: controlCost(["docks", "rag", "lift", "forum", "hall"]) },
@@ -392,7 +382,8 @@ function sim(GAMES, setups, done) {
     const plan = {};
     for (let steps = 0; S.phase === "play"; steps++) {
       if (steps > 20000) throw new Error("stalled game");
-      if (ui.msg) {
+      if (ui.msg && ui.player == null) settle(ui.buttons[0].value); // a result to read (no decision)
+      else if (ui.msg) {
         const p = ui.player;
         const i = ui.info.kind === "side" ? Math.max(0, ui.buttons.findIndex((b) => b.value === plan[p])) : bots[p].choose(p, ui.info, ui.buttons);
         if (ui.info.kind === "runDeck") G.deckRuns[ui.buttons[i].value]++;
@@ -642,7 +633,10 @@ const MODES = {
   // Both sides of every card. Smart: one smart player takes the strip the first time it can, the others play normally.
   // Random: win rate of players who took the strip in all-random games (no judgment involved).
   async cards() {
-    const { cards, fxList, costHtml, costSize } = sandboxCards();
+    // ONLY="id,id" limits the test to some cards.
+    const only = process.env.ONLY ? process.env.ONLY.split(",") : null;
+    const cards = sandboxCards().cards.filter((c) => !only || only.includes(c.id));
+    const { fxList, costHtml, costSize } = sandboxCards();
     const forced = {};
     for (const c of cards)
       for (const side of ["up", "down"]) {
