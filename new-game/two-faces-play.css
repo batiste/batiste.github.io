@@ -185,3 +185,4 @@ dialog { max-width: 860px; }
 .prompt .btn small { display: block; margin-top: 3px; color: inherit; font-size: 12px; font-weight: 600; opacity: 0.85; max-width: none; }
 .modal-box menu { align-items: center; gap: 12px; }
 .auto-note { color: var(--muted); font-size: 12px; }
+.ai-why { color: var(--muted); font-style: italic; }

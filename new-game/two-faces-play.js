@@ -616,7 +616,7 @@ function startGame(seats) {
   ui = {};
   busy = false;
   const u = TF_UPRISINGS[S.uprisings[0]];
-  S.players.forEach((x, q) => log(`${nm(q)} (${x.ai ? `AI · ${x.ai}` : "human"}) plays the <b>${charOf(x, "cit").name}</b> and the <b>${charOf(x, "out").name}</b>.`));
+  S.players.forEach((x, q) => log(`${nm(q)} (${x.ai ? `AI · ${aiName(x.ai)}` : "human"}) plays the <b>${charOf(x, "cit").name}</b> and the <b>${charOf(x, "out").name}</b>.`));
   log(`— Game starts. ${nm(0)} goes first. Uprising: <b>${esc(u.name)}</b> at the ${locNames(u.at)}. —`);
   render();
 }
@@ -764,7 +764,7 @@ function renderPlayers() {
       const open = q === acting || S.phase === "end";
       const sch = x.schemes.map((id) => `<span class="scheme-card">${icon("scheme")}${open ? strText(CARDS[id].str) : "?"}</span>`).join("");
       return `<div class="player ${q === acting ? "active" : ""}" style="--pc:${x.color}">
-        <h3><span>${esc(x.name)}${x.ai ? ` <em class="ai-badge">AI · ${x.ai}</em>` : ""}</span><small>score ${score(x)}</small></h3>
+        <h3><span>${esc(x.name)}${x.ai ? ` <em class="ai-badge">AI · ${aiName(x.ai)}</em>` : ""}</span><small>score ${score(x)}</small></h3>
         <div class="player-body"><div class="goods">${goodsLabel(x)}<span class="gx" title="Troops in supply"><span class="gt">troops in supply:</span><b>${x.supply}</b>${icon("low")}</span>${sch}</div>
         <div class="tableau">${tableauHtml(x)}</div></div></div>`;
     })
@@ -778,7 +778,7 @@ function renderPrompt() {
   if (ui.msg) {
     msg = (ui.player != null ? `${nm(ui.player)}${aiPick ? " (AI)" : ""}: ` : "") + ui.msg;
     buttons = ui.buttons.map((b, i) => `<button class="btn" data-btn="${i}" ${aiPick ? "disabled" : ""}>${b.label}</button>`).join("");
-  } else if (S.phase === "play" && P(current()).ai) msg = `${nm(current())} (AI · ${P(current()).ai}) is thinking…`;
+  } else if (S.phase === "play" && P(current()).ai) msg = `${nm(current())} (AI · ${aiName(P(current()).ai)}) is thinking…`;
   else if (S.phase === "play") {
     if (canRecruit(current())) msg = `${nm(current())}: click a row card to Recruit it.`;
     else {
@@ -847,6 +847,10 @@ function scheduleAI() {
       const p = current();
       if (ui.msg || busy || S.phase !== "play" || !P(p).ai) return;
       const a = botFor(p).turn(p);
+      if (S.aiReasoning && a.considered) {
+        const label = (o) => (o.type === "recruit" ? `${CARDS[o.id].name} ${o.side === "up" ? "▲" : "▼"}` : "take 1 good");
+        log(`<span class="ai-why">${nm(p)} (AI) weighed: ${a.considered.map((o) => `${label(o)} ${o.v.toFixed(1)}`).join(" · ")}</span>`);
+      }
       if (a.type === "pass") return passTurn();
       aiPlan[p] = a.side;
       recruit(a.k, a.i);
@@ -908,13 +912,14 @@ document.addEventListener("click", (e) => {
 
 /* ---------- setup dialog ---------- */
 
-// Seat types: a human, or an AI with one of the bot profiles.
+// Seat types: a human, or an AI with one of the bot profiles. The warlord profile is shown as "easy" (clearly the weakest).
+const aiName = (profile) => (profile === "warlord" ? "easy" : profile);
 const SEAT_TYPES = [
   ["", "Human"],
   ["smart", "AI · smart"],
   ["greedy", "AI · greedy"],
   ["frugal", "AI · frugal"],
-  ["warlord", "AI · warlord"],
+  ["warlord", "AI · easy"],
   ["builder", "AI · builder"],
   ["random", "AI · random"],
 ];
@@ -962,6 +967,7 @@ $("setup").addEventListener("close", () => {
     return { name: el.querySelector("input").value.trim() || "Player", ai: ai || null, chars: { cit, out } };
   });
   startGame(assignCharacters(seats));
+  S.aiReasoning = $("setup-reasoning").checked;
   sound("start");
 });
 

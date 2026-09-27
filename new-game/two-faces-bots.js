@@ -157,7 +157,11 @@ function valueBot(profile) {
         if (g !== "any") sim.goods[g] -= n;
       } else if (e.rise) v += riseValue(p, e.rise, e.n);
       else if (e.troop) v += troopValue(p, e.troop) * e.n;
-      else if (e.move) v += 0.5 * e.move;
+      else if (e.move) {
+        // A move is only worth something with troops on the board to move.
+        const onBoard = LOCATIONS.reduce((t, l) => t + S.troops[l.id][p], 0);
+        v += 0.5 * Math.min(e.move, onBoard);
+      }
       else if (e.limit) {
         sim.limit += e.limit;
         v += w.limit * e.limit;
@@ -244,7 +248,8 @@ function valueBot(profile) {
       });
       if (!opts.length) return { type: "pass" };
       opts.forEach((o) => (o.v += Math.random() * 0.3));
-      return opts.sort((a, b) => b.v - a.v)[0];
+      opts.sort((a, b) => b.v - a.v);
+      return { ...opts[0], considered: opts.slice(0, 3) }; // top options, for the AI reasoning log
     },
     choose(p, info, buttons) {
       const idx = (f) => buttons.reduce((best, b, i) => (f(b.value) > f(buttons[best].value) ? i : best), 0);
