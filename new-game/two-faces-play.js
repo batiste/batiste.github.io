@@ -89,7 +89,16 @@ function checkMet(p) {
   log(`— ${nm(p)}'s Citizen and Outcast meet: the game ends after this round's Uprising. —`);
 }
 
-const canPay = (p, cost) => P(p).cit - cost >= P(p).out;
+// Cost: pay each good; each good you lack sinks your Citizen 1 (never below your Outcast).
+const missing = (p, c) => Object.entries(c.cost).reduce((t, [g, k]) => t + Math.max(0, k - P(p).goods[g]), 0);
+const canPay = (p, c) => P(p).cit - missing(p, c) >= P(p).out;
+function payCost(p, c) {
+  const x = P(p);
+  const steps = missing(p, c);
+  Object.entries(c.cost).forEach(([g, k]) => (x.goods[g] = Math.max(0, x.goods[g] - k)));
+  x.cit -= steps;
+  return steps;
+}
 const score = (x) => x.cit + x.out;
 
 /* ---------- effects ---------- */
@@ -154,45 +163,67 @@ async function moveTroops(p, amount) {
 }
 
 
-// Street run: draw contraband until you stop or your heat goes over the limit. Stims discard the card just drawn.
+// Street run: choose a deck, then draw from it until you stop or your heat goes over the limit. Each card gives the goods
+// of its cost and adds its printed heat (a free card gives nothing). A Stim discards the card just drawn, but you must draw
+// again. Drawn cards are discarded.
 async function run(p, limit) {
   const x = P(p);
-  const deck = shuffle([...TF_CONTRABAND]);
+  const view = (id) => ({ id, heat: heatOf(CARDS[id]), n: costSize(CARDS[id]), cost: CARDS[id].cost });
+  const k = await pick(
+    `Street run, limit ${icon("heat", limit)}: draw from which deck?`,
+    CHARS.map((c) => ({ label: `${SIDES[c].name} deck`, value: c })),
+    p,
+    { kind: "runDeck", limit, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
+  );
   const haul = [];
   let heat = 0;
-  const haulText = () => (haul.length ? haul.map((c) => (c.good ? icon(c.good, c.n) : "Patrol")).join(" ") : "nothing");
-  log(`${nm(p)} runs the street, limit ${icon("heat", limit)}.`);
+  const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
+  const show = (drawn, note) => ({ cards: haul, drawn, note: note || `${SIDES[k].name} deck · heat ${heat}/${limit}` });
+  log(`${nm(p)} runs the street through the ${SIDES[k].name} deck, limit ${icon("heat", limit)}.`);
+  let redraw = false; // after a Stim: draw again, no stopping
   for (;;) {
-    const msg = `Street run: ${icon("heat", `${heat}/${limit}`)} haul: ${haulText()}.`;
-    const go = await pick(`${msg} Draw or stop?`, [{ label: "Draw", value: true }, { label: "Stop", value: false }], p, { kind: "draw", heat, limit, deck, haul });
-    if (!go) break;
-    const c = deck.pop();
-    const drawn = `${c.good ? icon(c.good, c.n) : "a Patrol"} (${icon("heat", c.heat)})`;
+    const info = { kind: "draw", heat, limit, deck: S.decks[k].map(view), haul: haul.map(view), show: show() };
+    if (!redraw && !(await pick(`Street run: ${icon("heat", `${heat}/${limit}`)} haul: ${loot()}. Draw or stop?`, [{ label: "Draw", value: true }, { label: "Stop", value: false }], p, info))) break;
+    redraw = false;
+    const id = draw(k);
+    if (!id) break;
+    const c = view(id);
     if (x.goods.T > 0) {
       const over = heat + c.heat > limit ? " That would get you caught!" : "";
-      const stim = await pick(`Drew ${drawn}.${over} Spend a Stim to discard it?`, [{ label: "Spend Stim", value: true }, { label: "Keep", value: false }], p, { kind: "stim", heat, limit, card: c });
+      const stim = await pick(`Drew ${CARDS[id].name} (${icon("heat", c.heat)}).${over} Spend a Stim to discard it and draw again?`, [{ label: "Spend Stim", value: true }, { label: "Keep", value: false }], p, {
+        kind: "stim",
+        heat,
+        limit,
+        card: c,
+        show: show(id),
+      });
       if (stim) {
         x.goods.T--;
-        log(`${nm(p)} spends a Stim to discard ${drawn}.`);
+        discard(id);
+        log(`${nm(p)} spends a Stim to discard <b>${CARDS[id].name}</b> and must draw again.`);
+        redraw = true;
         continue;
       }
     }
-    haul.push(c);
+    haul.push(id);
     heat += c.heat;
     if (heat > limit) {
-      log(`${nm(p)} draws ${drawn}: ${icon("heat", `${heat}/${limit}`)} <b>caught</b>! Loses ${haulText()}.`);
+      log(`${nm(p)} draws <b>${CARDS[id].name}</b>: ${icon("heat", `${heat}/${limit}`)} <b>caught</b>! Loses ${loot()}.`);
+      await pick(`Caught! Heat ${heat}/${limit}: you lose the haul.`, [{ label: "Continue", value: true }], p, { kind: "done", show: show(id, `Caught: heat ${heat}/${limit}`) });
+      haul.forEach(discard);
       return;
     }
   }
-  haul.forEach((c) => c.good && (x.goods[c.good] += c.n));
-  log(`${nm(p)} stops at ${icon("heat", `${heat}/${limit}`)} and takes ${haulText()}.`);
+  haul.forEach((id) => Object.entries(CARDS[id].cost).forEach(([g, k]) => (x.goods[g] += k)));
+  log(`${nm(p)} stops at ${icon("heat", `${heat}/${limit}`)} and takes ${loot()}.`);
+  haul.forEach(discard);
 }
 
 async function scheme(p) {
   const seen = CHARS.map(draw).filter(Boolean);
   if (!seen.length) return log(`${nm(p)}: no card to Scheme with.`);
   const opts = seen.map((id) => ({ label: `Keep ${CARDS[id].name} (${strText(CARDS[id].str)})`, value: id }));
-  const keep = await pick("Scheme: keep 1 card face down.", opts, p, { kind: "keep" });
+  const keep = await pick("Scheme: click the card to keep face down.", opts, p, { kind: "keep", show: { cards: seen, pickable: true, note: "Scheme" } });
   seen.filter((id) => id !== keep).forEach((id) => S.decks[CARDS[id].char].unshift(id));
   P(p).schemes.push(keep);
   log(`${nm(p)} schemes (${P(p).schemes.length} face down).`);
@@ -266,7 +297,7 @@ function recruit(k, i) {
   const p = current();
   const id = S.row[k][i];
   const c = CARDS[id];
-  if (!canAct() || !canPay(p, c.cost)) return;
+  if (!canAct() || !canPay(p, c)) return;
   guarded(async () => {
     const side = await pick(
       `Tuck <b>${c.name}</b> above or below your ${SIDES[k].name}?`,
@@ -275,12 +306,13 @@ function recruit(k, i) {
       { kind: "side", id },
     );
     const x = P(p);
-    x.cit -= c.cost;
+    const steps = payCost(p, c);
     S.row[k].splice(i, 1);
     refill(k);
     const col = x.sides[k][side];
     col.push(id);
-    log(`${nm(p)} recruits <b>${c.name}</b>${c.cost ? ` (Citizen sinks ${c.cost} to ${x.cit})` : ""}, tucked ${side === "up" ? "above" : "below"}.`);
+    const paid = costSize(c) ? ` for ${costHtml(c)}${steps ? ` (lacking ${steps}: Citizen sinks to ${x.cit})` : ""}` : "";
+    log(`${nm(p)} recruits <b>${c.name}</b>${paid}, tucked ${side === "up" ? "above" : "below"}.`);
     if (col.length > TF_CONFIG.sideCap) {
       const old = col.shift();
       discard(old);
@@ -408,7 +440,7 @@ function startGame(names) {
     decks: { cit: deck("cit"), out: deck("out") },
     discards: { cit: [], out: [] },
     row: { cit: [], out: [] },
-    uprisings: shuffle(TF_UPRISINGS.map((_, i) => i)),
+    uprisings: shuffle(TF_UPRISINGS.map((_, i) => i)).slice(0, TF_CONFIG.rounds),
     uprising: 0,
     round: 1,
     first: 0,
@@ -470,15 +502,16 @@ function cardHtml(id, attrs = "", live = false) {
   return `<div class="tcard ${k} ${live ? "live" : ""}" ${attrs}>
     ${band(k, "up", fxList(c.up))}
     <div class="face">
-      <div class="corners"><span title="Cost: Sink Citizen">${c.cost ? icon("sink", c.cost) : ""}</span><span title="Scheme strength">${icon("scheme")}${strText(c.str)}</span></div>
+      <div class="corners"><span title="Cost">${costHtml(c)}</span><span title="Scheme strength">${icon("scheme")}${strText(c.str)}</span></div>
       <h3>${c.name}</h3>
+      <div class="heat" title="Street-run heat">${icon("heat", heatOf(c))}</div>
     </div>
     ${band(k, "down", fxList(c.down))}</div>`;
 }
 
 function renderRow() {
   $("row").innerHTML = CHARS.map((k) => {
-    const cards = S.row[k].map((id, i) => cardHtml(id, `data-row="${k},${i}"`, canAct() && !ui.msg && canPay(current(), CARDS[id].cost)));
+    const cards = S.row[k].map((id, i) => cardHtml(id, `data-row="${k},${i}"`, canAct() && !ui.msg && canPay(current(), CARDS[id])));
     return `<div><p class="mini-label">${SIDES[k].name} deck · ${S.decks[k].length} left</p><div class="row-cards">${cards.join("")}</div></div>`;
   }).join("");
 }
@@ -542,6 +575,17 @@ function renderPrompt() {
   $("prompt").innerHTML = `<div class="msg">${msg}</div>${buttons}`;
 }
 
+// Reveal panel: cards drawn in a street run, or the cards seen by a Scheme (click one to keep).
+function renderReveal() {
+  const sh = ui.info && ui.info.show;
+  if (!sh) return ($("reveal").innerHTML = "");
+  const cards = [...sh.cards, ...(sh.drawn && !sh.cards.includes(sh.drawn) ? [sh.drawn] : [])].map((id, i) => {
+    const attrs = sh.pickable ? `data-btn="${i}"` : "";
+    return `<div class="reveal-card ${id === sh.drawn ? "drawn" : ""}">${cardHtml(id, attrs, sh.pickable)}</div>`;
+  });
+  $("reveal").innerHTML = `<div class="reveal-note">${sh.note}</div><div class="reveal-cards">${cards.join("") || "<i>No card yet.</i>"}</div>`;
+}
+
 function render() {
   renderStatus();
   renderMap();
@@ -549,6 +593,7 @@ function render() {
   renderSpire();
   renderPlayers();
   renderPrompt();
+  renderReveal();
   $("log").innerHTML = S.log.map((m) => `<li>${m}</li>`).join("");
 }
 

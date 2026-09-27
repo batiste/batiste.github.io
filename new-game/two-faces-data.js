@@ -1,9 +1,11 @@
 // Aeropolis: Two Faces — data shared by two-faces.html (rules) and two-faces-play.html (hot-seat game).
 
 const TF_CONFIG = {
-  spire: 16, // Spire heights 1 (base) to 16 (top). Citizen starts on 16, Outcast on 1.
+  spire: 14, // Spire heights 1 (base) to 14 (top). Citizen starts on 14, Outcast on 1.
   row: 2, // cards on offer from each deck (Citizen, Outcast)
-  sideCap: 3, // strips per side; a new one beyond this discards the oldest
+  rounds: 5, // Uprisings drawn: the game ends after the last one (or when characters meet)
+  sideCap: 3,
+  freeHeat: 2, // Street run: heat of a free card (it gives no goods) // strips per side; a new one beyond this discards the oldest
   troops: 10, // troops per player
   start: { P: 1, S: 1, A: 0, T: 0 }, // starting goods
 };
@@ -12,8 +14,8 @@ const GOODS = {
   P: { name: "Papers", one: "Paper", use: "Deal: send troops to the lower city." },
   S: { name: "Secrets", one: "Secret", use: "Rally: send troops to the upper city." },
   A: { name: "Arms", one: "Arms", use: "Uprising: +1 strength each, committed in secret." },
-  T: { name: "Stims", one: "Stim", use: "Street run: discard the card just drawn." },
-};
+  T: { name: "Stims", one: "Stim", use: "Street run: discard the card just drawn, then draw again." },
+}; // Every good also pays card costs.
 
 // The city. Deal sends troops to the lower city, Rally to the upper city; the Cable Lift is in both.
 // control: reward for the player with the most troops there after each Uprising (tie: nobody).
@@ -34,42 +36,32 @@ const SIDES = {
   },
   out: {
     name: "Outcast",
-    up: { name: "Street", base: [{ run: 5 }] },
+    up: { name: "Street", base: [{ run: 6 }] },
     down: { name: "Deal", base: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
   },
 };
 
 // Effects: {gain, n} · {rise, n} · {troop: "low"|"high", n} · {move} · {spend, get} (optional) · {limit} (Street only)
 // · {scheme} · {run} (base only) · {choice}.
-// Card: character (= its deck), cost (Sink Citizen), strength as a Scheme (+N, or "x2": doubles your total), top strip (up), bottom strip (down).
+// Card: character (= its deck), cost (goods; each one you lack sinks your Citizen 1), heat (optional, see heatOf), strength as a Scheme (+N, or "x2": doubles your total), top strip (up), bottom strip (down).
 const TF_CARDS = [
-  { id: "clerk", name: "Clerk", char: "cit", cost: 0, str: 2, copies: 4, up: [{ gain: "S", n: 1 }], down: [{ gain: "P", n: 1 }] },
-  { id: "magistrate", name: "Magistrate", char: "cit", cost: 1, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }] },
-  { id: "physician", name: "Physician", char: "cit", cost: 0, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "T", n: 2 }] },
-  { id: "spymaster", name: "Spymaster", char: "cit", cost: 1, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ scheme: true }] },
-  { id: "quartermaster", name: "Quartermaster", char: "cit", cost: 1, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
-  { id: "orator", name: "Orator", char: "cit", cost: 3, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }] },
-  { id: "censor", name: "Censor", char: "cit", cost: 2, str: "x2", copies: 3, up: [{ move: 2 }], down: [{ scheme: true }] },
-  { id: "patron", name: "Patron", char: "cit", cost: 2, str: 2, copies: 3, up: [{ spend: { S: 2 }, get: { troop: "high", n: 2 } }], down: [{ spend: { S: 1 }, get: { troop: "low", n: 1 } }] },
+  { id: "clerk", name: "Clerk", char: "cit", cost: { P: 1 }, str: 2, copies: 4, up: [{ gain: "S", n: 1 }], down: [{ gain: "P", n: 1 }] },
+  { id: "magistrate", name: "Magistrate", char: "cit", cost: { P: 1 }, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }] },
+  { id: "physician", name: "Physician", char: "cit", cost: {}, heat: 3, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "T", n: 2 }] },
+  { id: "spymaster", name: "Spymaster", char: "cit", cost: { S: 1 }, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ scheme: true }] },
+  { id: "quartermaster", name: "Quartermaster", char: "cit", cost: { A: 1 }, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
+  { id: "orator", name: "Orator", char: "cit", cost: { S: 2, P: 1 }, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }] },
+  { id: "censor", name: "Censor", char: "cit", cost: { S: 1 }, str: "x2", copies: 3, up: [{ move: 2 }], down: [{ scheme: true }] },
+  { id: "patron", name: "Patron", char: "cit", cost: { S: 1, P: 1 }, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 2 } }], down: [{ spend: { S: 1 }, get: { troop: "low", n: 2 } }] },
 
-  { id: "lookout", name: "Lookout", char: "out", cost: 0, str: 2, copies: 4, up: [{ limit: 1 }], down: [{ gain: "P", n: 1 }] },
-  { id: "runner", name: "Runner", char: "out", cost: 0, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "P", n: 1 }] },
-  { id: "forger", name: "Forger", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 1 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
-  { id: "fence", name: "Fence", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { any: 2 }, get: { troop: "low", n: 1 } }] },
-  { id: "gunrunner", name: "Gunrunner", char: "out", cost: 1, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
-  { id: "blackmailer", name: "Blackmailer", char: "out", cost: 1, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ move: 1 }] },
-  { id: "agitator", name: "Agitator", char: "out", cost: 1, str: "x2", copies: 3, up: [{ limit: 1 }], down: [{ scheme: true }] },
-  { id: "smuggler", name: "Smuggler", char: "out", cost: 2, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
-];
-
-// Contraband deck for Street runs: good (or null for Patrol), goods gained, heat.
-const TF_CONTRABAND = [
-  ...["P", "S", "A", "T"].flatMap((g) => [
-    ...Array(3).fill({ good: g, n: 1, heat: 1 }),
-    ...Array(2).fill({ good: g, n: 2, heat: 2 }),
-    { good: g, n: 3, heat: 3 },
-  ]),
-  ...Array(4).fill({ good: null, n: 0, heat: 2 }),
+  { id: "lookout", name: "Lookout", char: "out", cost: {}, heat: 3, str: 2, copies: 4, up: [{ limit: 2 }], down: [{ gain: "P", n: 1 }] },
+  { id: "runner", name: "Runner", char: "out", cost: {}, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "P", n: 1 }] },
+  { id: "forger", name: "Forger", char: "out", cost: { P: 1 }, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
+  { id: "fence", name: "Fence", char: "out", cost: { T: 1 }, str: 2, copies: 3, up: [{ limit: 3 }], down: [{ spend: { any: 2 }, get: { troop: "low", n: 1 } }] },
+  { id: "gunrunner", name: "Gunrunner", char: "out", cost: { T: 1 }, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
+  { id: "blackmailer", name: "Blackmailer", char: "out", cost: { S: 1 }, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ move: 2 }] },
+  { id: "agitator", name: "Agitator", char: "out", cost: { A: 1 }, str: "x2", copies: 3, up: [{ limit: 2 }], down: [{ scheme: true }] },
+  { id: "smuggler", name: "Smuggler", char: "out", cost: { T: 1, P: 1 }, str: 2, copies: 3, up: [{ limit: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
 ];
 
 // One Uprising per round, fought at its locations. first / second: rewards for the strongest and second strongest.
@@ -83,6 +75,12 @@ const TF_UPRISINGS = [
   { name: "Storm the Forum", at: ["forum", "hall"], first: [{ rise: "out", n: 2 }, { rise: "cit", n: 1 }], second: [{ rise: "out", n: 1 }] },
   { name: "Night of Knives", at: ["lift", "hall"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
 ];
+
+// Cost: goods to pay; each good you lack sinks your Citizen 1 instead.
+const costSize = (c) => Object.values(c.cost).reduce((a, b) => a + b, 0);
+const costHtml = (c) => Object.entries(c.cost).map(([g, k]) => icon(g, k)).join("");
+// Street run heat, printed on every card: the card's own heat if set, else the number of goods in its cost, else freeHeat.
+const heatOf = (c) => c.heat ?? (costSize(c) || TF_CONFIG.freeHeat);
 
 // Icons: inline SVG chips (styles in two-faces-icons.css), shared by the rules page and the playtest.
 const ICON_PATHS = {
@@ -114,11 +112,11 @@ const ICON_NAMES = {
 
 // Icon glossary (goods use GOODS[g].use).
 const ICON_HELP = {
-  heat: "Street run: your heat limit. +🔥 raises it for this run.",
+  heat: "Street run: the heat printed on each drawn card adds up. +🔥 on a strip raises your limit for this run.",
   scheme: "Look at the top card of each deck; keep 1 face down for the Uprising.",
   cit: "Your Citizen climbs 1 on the Spire.",
   out: "Your Outcast climbs 1 on the Spire.",
-  sink: "Card cost: your Citizen goes down 1.",
+  sink: "Your Citizen goes down 1: pays for each good of a card cost you lack.",
   low: "Place a troop at the Docks, Rag Market or Cable Lift.",
   high: "Place a troop at the Cable Lift, Forum or Council Hall.",
   move: "Move one of your troops to any location.",

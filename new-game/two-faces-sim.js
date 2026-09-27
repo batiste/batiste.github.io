@@ -21,23 +21,24 @@ const PLAYERS = +args[1] || 3;
 
 // Rule variants for "compare". data: runs in the sandbox after loading (mutate TF_* data, define helpers).
 // patch: [find, replace] pairs applied to two-faces-play.js source before loading.
+// Controller pays 1 troop at the location after taking its reward.
+const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
+// Goods → Spire cards: Benefactor (Citizen) and Fixer (Outcast), n goods of your choice per Outcast step.
+const VP_CARDS = (n) => `TF_CARDS.push(
+  { id: "benefactor", name: "Benefactor", char: "cit", cost: { S: 1, P: 1 }, str: 2, copies: 3,
+    up: [{ spend: { any: ${n} }, get: { rise: "out", n: 1 } }], down: [{ spend: { S: 2 }, get: { rise: "cit", n: 1 } }] },
+  { id: "fixer", name: "Fixer", char: "out", cost: { T: 1, A: 1 }, str: 2, copies: 3,
+    up: [{ gain: "T", n: 1 }], down: [{ spend: { any: ${n} }, get: { rise: "out", n: 1 } }] });
+TF_CARDS.slice(-2).forEach((c) => (CARDS[c.id] = c));`;
 const VARIANTS = [
   { name: "Current rules" },
-  {
-    name: "No Scheme (strips → +1 Arms, Council Hall → +Secret +Arms)",
-    data: `NO_SCHEME = true;
-    TF_CARDS.forEach((c) => ["up", "down"].forEach((s) => (c[s] = c[s].map((e) => (e.scheme ? { gain: "A", n: 1 } : e)))));
-    LOC.hall.control = [{ gain: "S", n: 1 }, { gain: "A", n: 1 }];`,
-  },
-  {
-    name: "Catch-up: leader −2 Uprising strength",
-    patch: [["s: strength(q, u.at, arms[q]) }));", "s: strength(q, u.at, arms[q]) - leaderPenalty(q) }));"]],
-    data: `function leaderPenalty(q) {
-      const s = S.players.map(score);
-      const top = Math.max(...s);
-      return s[q] === top && s.filter((v) => v === top).length === 1 ? 2 : 0;
-    }`,
-  },
+  { name: "Goods → Spire cards, 2 goods per step", data: VP_CARDS(2) },
+  { name: "Goods → Spire cards, 3 goods per step", data: VP_CARDS(3) },
+  { name: "Goods → Spire cards, 4 goods per step", data: VP_CARDS(4) },
+  { name: "Spire 12", data: `TF_CONFIG.spire = 12;` },
+  { name: "Forum + Cable Lift: controller loses 1 troop", patch: controlCost(["forum", "lift"]) },
+  { name: "Any control: controller loses 1 troop", patch: controlCost(["docks", "rag", "lift", "forum", "hall"]) },
+  { name: "Spire 12 + Forum/Lift controller loses 1 troop", data: `TF_CONFIG.spire = 12;`, patch: controlCost(["forum", "lift"]) },
 ];
 
 // ---------- load the game in a sandbox ----------
@@ -71,7 +72,7 @@ function sim(GAMES, setups, done) {
   const pickRandom = (a) => a[Math.floor(Math.random() * a.length)];
   const noScheme = () => typeof NO_SCHEME !== "undefined"; // set by the "No Scheme" variant
   const upcoming = () => TF_UPRISINGS[S.uprisings[S.uprising]];
-  const affordable = (p) => CHARS.flatMap((k) => S.row[k].map((id, i) => ({ k, i, id })).filter((o) => canPay(p, CARDS[o.id].cost)));
+  const affordable = (p) => CHARS.flatMap((k) => S.row[k].map((id, i) => ({ k, i, id })).filter((o) => canPay(p, CARDS[o.id])));
 
   /* ---------- bots ---------- */
 
@@ -86,22 +87,25 @@ function sim(GAMES, setups, done) {
 
   // Value-model bots. A profile is a set of weights; greedy is the state-blind baseline.
   // State-aware terms: tempo (end the game when ahead, stall when behind), contest (fight the leader's
-  // locations), deny (value a card has for the next player), engine (stack a side).
+  // locations), deny (value a card has for the next player), engine (stack a side),
+  // future (a tucked strip fires again on later activations of its side).
   const GV = { P: 0.6, S: 0.6, A: 0.5, T: 0.3 };
-  const BASE_W = { rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0 };
+  const BASE_W = { riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
   const PROFILES = {
     greedy: {},
-    rusher: { rise: 3.5, troop: 0.8, fight: 0.6, scheme: 0.5, tempo: 1 },
+    myopic: { future: 0 }, // greedy without future activations: the old baseline
+    frugal: { rise: 3.5, troop: 0.8, fight: 0.6, scheme: 0.5, tempo: 1 },
     warlord: { troop: 1.5, fight: 2.5, scheme: 1.6, ctrl: 0.3 },
     builder: { engine: 0.6, goods: 1.3, limit: 0.5 },
     smart: { tempo: 1, contest: 1.5, deny: 0.5 },
+    daring: { tempo: 1, contest: 1.5, deny: 0.5, riskBehind: 0.3 }, // smart, but gambles on street runs when behind
   };
 
-  const RUN_EV = {}; // expected goods from a street run, by heat limit (stop when a draw is more likely to hurt than help)
+  const RUN_EV = {}; // expected goods from a street run (better of the two decks), by heat limit (stop when a draw is more likely to hurt than help)
   for (let L = 1; L <= 14; L++) {
     let total = 0;
     for (let t = 0; t < 400; t++) {
-      const deck = shuffle([...TF_CONTRABAND]);
+      const deck = shuffle(TF_CARDS.filter((c) => c.char === CHARS[t % 2]).flatMap((c) => Array(c.copies).fill({ heat: heatOf(c), n: costSize(c) })));
       let heat = 0;
       let goods = 0;
       while (deck.length && drawEV(heat, L, deck, goods) > 0) {
@@ -155,12 +159,13 @@ function sim(GAMES, setups, done) {
     }
     const troopValue = (p, zone) => (P(p).supply ? Math.max(...LOCATIONS.filter((l) => l[zone]).map((l) => locValue(p, l.id))) : 0);
 
+    // A good is worth less the more of it you already hold: a stockpile you cannot spend is worth little.
+    const goodValue = (g, stock) => (w.goods * GV[g]) / (1 + stock / 4);
     function fxValue(p, list, sim) {
       let v = 0;
       for (const e of list) {
         if (e.gain) {
-          sim.goods[e.gain] += e.n;
-          v += w.goods * GV[e.gain] * e.n;
+          for (let i = 0; i < e.n; i++) v += goodValue(e.gain, sim.goods[e.gain]++);
         } else if (e.spend) {
           const [g, n] = Object.entries(e.spend)[0];
           const have = g === "any" ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : sim.goods[g];
@@ -182,15 +187,63 @@ function sim(GAMES, setups, done) {
       return v;
     }
 
+    // Cost of a card: the goods it takes, plus a Citizen step (1 point) for each good lacking.
+    function payValue(p, card) {
+      const x = P(p);
+      const steps = missing(p, card);
+      const goods = Object.entries(card.cost).reduce((t, [g, k]) => t + Math.min(k, x.goods[g]) * goodValue(g, x.goods[g] - 1), 0);
+      return goods + w.cost * w.rise * steps - tempo(p, steps);
+    }
+
+    // Turns this player has left: the table's smallest Citizen–Outcast gap closes about 2.5 per round.
+    const turnsLeft = () => {
+      const gap = Math.min(...S.players.map((x) => x.cit - x.out));
+      const rounds = Math.min(S.uprisings.length - S.uprising, Math.max(1, gap / 2.5));
+      return Math.max(0, 2 * rounds - Math.floor(S.step / n()) - 1);
+    };
+    // Future activations of a strip: turns left × share of turns that activate its side (sides with more strips get more).
+    // Spend strips are judged with a small stock of goods, not today's (often empty) one.
+    function futureValue(p, k, side, strip, dropped) {
+      if (!w.future) return 0;
+      const x = P(p);
+      const total = CHARS.reduce((t, c) => t + x.sides[c].up.length + x.sides[c].down.length, 0);
+      const acts = turnsLeft() * ((2 + x.sides[k][side].length) / (8 + total));
+      const val = (list) => fxValue(p, list, { goods: { P: 2, S: 2, A: 1, T: 1 }, limit: 0 });
+      return w.future * acts * (val(strip) - (dropped ? val(dropped) : 0));
+    }
+
+    // Expected value of a street run through a deck: sampled runs, stopping when a draw hurts more than it helps;
+    // goods valued against the current stock (so the deck with the goods you need wins).
+    function deckRunValue(p, deck, limit) {
+      let total = 0;
+      for (let t = 0; t < 40; t++) {
+        const d = shuffle([...deck]);
+        const stock = { ...P(p).goods };
+        let heat = 0;
+        let got = [];
+        while (d.length && drawEV(heat, limit, d, got.reduce((a, c) => a + c.n, 0)) > 0) {
+          const c = d.pop();
+          heat += c.heat;
+          if (heat > limit) {
+            got = [];
+            break;
+          }
+          got.push(c);
+        }
+        got.forEach((c) => Object.entries(c.cost).forEach(([g, k]) => { for (let i = 0; i < k; i++) total += goodValue(g, stock[g]++); }));
+      }
+      return total / 40;
+    }
+
     // Tucking card id on side: the new strip, then the side's strips newest to oldest (oldest dropped if full), then the base.
     function tuckValue(p, id, side) {
       const k = CARDS[id].char;
       const col = P(p).sides[k][side];
       const kept = col.length >= TF_CONFIG.sideCap ? col.slice(1) : col;
       const list = [...CARDS[id][side], ...[...kept].reverse().flatMap((c) => CARDS[c][side]), ...SIDES[k][side].base];
-      const c = CARDS[id].cost;
-      const cost = w.cost * w.rise * c - tempo(p, c); // each cost step is a point lost
-      return fxValue(p, list, { goods: { ...P(p).goods }, limit: 0 }) - cost + w.engine * kept.length;
+      const cost = payValue(p, CARDS[id]);
+      const dropped = kept !== col ? CARDS[col[0]][side] : null;
+      return fxValue(p, list, { goods: { ...P(p).goods }, limit: 0 }) - cost + w.engine * kept.length + futureValue(p, k, side, CARDS[id][side], dropped);
     }
     const bestTuck = (p, id) => Math.max(tuckValue(p, id, "up"), tuckValue(p, id, "down"));
 
@@ -198,7 +251,7 @@ function sim(GAMES, setups, done) {
       turn(p) {
         const next = (S.step + 1) % n() === 0 && S.step + 1 >= 2 * n() ? null : (current() + 1) % n();
         const opts = affordable(p).flatMap((o) => {
-          const deny = w.deny && next !== null && canPay(next, CARDS[o.id].cost) ? w.deny * bestTuck(next, o.id) : 0;
+          const deny = w.deny && next !== null && canPay(next, CARDS[o.id]) ? w.deny * bestTuck(next, o.id) : 0;
           return ["up", "down"].map((side) => ({ type: "recruit", ...o, side, v: tuckValue(p, o.id, side) + deny }));
         });
         if (!noScheme() || !opts.length) opts.push({ type: "scheme", v: schemeValue(p) * 1.1 });
@@ -218,10 +271,15 @@ function sim(GAMES, setups, done) {
             return idx((id) => locValue(p, id));
           case "moveFrom":
             return idx((id) => S.troops[id][p] - Math.max(...S.troops[id].filter((_, q) => q !== p)) - (upcoming().at.includes(id) ? 5 : 0));
-          case "draw":
-            return drawEV(info.heat, info.limit, info.deck, info.haul.reduce((t, c) => t + c.n, 0)) > 0 ? 0 : 1;
-          case "stim":
-            return info.heat + info.card.heat > info.limit || !info.card.good ? 0 : 1;
+          case "runDeck":
+            return idx((k) => deckRunValue(p, info.decks[k], info.limit));
+          case "draw": {
+            // Behind: losing the haul matters less (riskBehind < 1 pushes further).
+            const haul = info.haul.reduce((t, c) => t + c.n, 0) * (lead(p) < 0 ? w.riskBehind : 1);
+            return drawEV(info.heat, info.limit, info.deck, haul) > 0 ? 0 : 1;
+          }
+          case "stim": // a Stim forces another draw: only worth it against a card that would bust you
+            return info.heat + info.card.heat > info.limit ? 0 : 1;
           case "keep": {
             const base = upcoming().at.reduce((t, id) => t + S.troops[id][p], 0) + x.schemes.reduce((t, id) => t + (CARDS[id].str === "x2" ? 0 : CARDS[id].str), 0);
             return idx((id) => (CARDS[id].str === "x2" ? base : CARDS[id].str));
@@ -267,10 +325,35 @@ function sim(GAMES, setups, done) {
       if (after) after(...args);
     };
   activate = wrap(activate, (p, k, side) => G.sides[p].add(`${k}.${side}`));
-  run = wrap(run, null, () => {
-    G.runs++;
-    if (S.log[0].includes("caught")) G.busts++;
-  });
+  // Behaviour: where Spire steps come from (turn = card strips, uprising = rewards, control = locations), Schemes, troops.
+  uprising = wrap(uprising, () => (G.src = "uprising"), () => (G.src = "turn"));
+  control = wrap(control, () => (G.src = "control"), () => (G.src = "uprising"));
+  const riseRule = rise;
+  rise = (p, k, amount) => {
+    const before = P(p)[k];
+    riseRule(p, k, amount);
+    G.stat[p][`${k}.${G.src}`] += P(p)[k] - before;
+  };
+  scheme = wrap(scheme, (p) => G.stat[p].schemes++);
+  const sendRule = sendTroops;
+  sendTroops = async (p, zone, amount) => {
+    const before = P(p).supply;
+    await sendRule(p, zone, amount);
+    G.stat[p].troops += before - P(p).supply;
+    G.stat[p].troopsWanted += amount;
+  };
+  run = wrap(
+    run,
+    (p) => (G.runGoods = Object.values(P(p).goods).reduce((a, b) => a + b, 0)),
+    (p) => {
+      G.runs++;
+      G.stat[p].runs++;
+      if (S.log[0].includes("caught")) {
+        G.busts++;
+        G.stat[p].caught++;
+      } else G.stat[p].runGoods += Object.values(P(p).goods).reduce((a, b) => a + b, 0) - G.runGoods;
+    },
+  );
   uprising = wrap(
     uprising,
     () => {
@@ -299,8 +382,10 @@ function sim(GAMES, setups, done) {
 
   async function playGame(names) {
     const bots = names.map(makeBot);
-    G = { forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
+    G = { deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
     G.sides = bots.map(() => new Set());
+    G.src = "turn";
+    G.stat = bots.map(() => ({ troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
     G.took = bots.map(() => new Set());
     G.options = [];
     startGame(bots.map((_, q) => `P${q}`));
@@ -310,6 +395,7 @@ function sim(GAMES, setups, done) {
       if (ui.msg) {
         const p = ui.player;
         const i = ui.info.kind === "side" ? Math.max(0, ui.buttons.findIndex((b) => b.value === plan[p])) : bots[p].choose(p, ui.info, ui.buttons);
+        if (ui.info.kind === "runDeck") G.deckRuns[ui.buttons[i].value]++;
         settle(ui.buttons[i].value);
       } else if (!busy) {
         const p = current();
@@ -318,6 +404,8 @@ function sim(GAMES, setups, done) {
         if (a.type === "scheme") schemeTurn();
         else {
           plan[p] = a.side;
+          G.stat[p].spent += costSize(CARDS[a.id]);
+          G.stat[p].sunk += missing(p, CARDS[a.id]);
           G.took[p].add(`${a.id}.${a.side}`);
           recruit(a.k, a.i);
         }
@@ -330,7 +418,7 @@ function sim(GAMES, setups, done) {
     const winners = final.map((f) => f[0] === best[0] && f[1] === best[1]);
     const share = winners.map((w) => (w ? 1 / winners.filter(Boolean).length : 0));
     const sorted = final.map((f) => f[0]).sort((a, b) => b - a);
-    return { ...G, names, rounds: S.round, met: S.met, final: final.map((f) => f[0]), cit: S.players.map((x) => x.cit), share, margin: sorted[0] - sorted[1] };
+    return { ...G, names, onBoard: S.players.map((_, q) => LOCATIONS.reduce((t, l) => t + S.troops[l.id][q], 0)), supply: S.players.map((x) => x.supply), left: S.players.map((x) => Object.values(x.goods).reduce((a, b) => a + b, 0)), leftBy: S.players.map((x) => ({ ...x.goods })), rounds: S.round, met: S.met, final: final.map((f) => f[0]), cit: S.players.map((x) => x.cit), share, margin: sorted[0] - sorted[1] };
   }
 
   /* ---------- reports ---------- */
@@ -392,9 +480,22 @@ function sim(GAMES, setups, done) {
       const c = games.map((g) => g.ctrl[l.id]).reduce((a, b) => ({ rounds: a.rounds + b.rounds, held: a.held + b.held, contested: a.contested + b.contested }));
       out(`- ${l.name.padEnd(13)} controlled ${pct(c.held / c.rounds)} of rounds · contested ${pct(c.contested / c.rounds)}`);
     });
+    const tw = games.flatMap((g) => g.stat), sent = tw.reduce((t, x) => t + x.troops, 0), wanted = tw.reduce((t, x) => t + x.troopsWanted, 0);
+    out(`- Troops: ${(sent / tw.length).toFixed(1)} sent per player (${pct(1 - sent / wanted)} of troop effects wasted: supply empty); on the board at the end ${avg(games.flatMap((g) => g.onBoard)).toFixed(1)}, in supply ${avg(games.flatMap((g) => g.supply)).toFixed(1)}`);
+    const leftBy = Object.keys(GOODS).map((k) => `${GOODS[k].name} ${avg(games.flatMap((g) => g.leftBy.map((l) => l[k]))).toFixed(1)}`);
+    out(`- Goods left at game end, per player: ${leftBy.join(" · ")}`);
     const runs = games.reduce((t, g) => t + g.runs, 0);
     m.caught = games.reduce((t, g) => t + g.busts, 0) / runs;
-    out(`- Street runs per game: ${(runs / games.length).toFixed(1)} · caught ${pct(m.caught)}`);
+    m.sunk = avg(games.flatMap((g) => g.stat.map((s) => s.sunk)));
+    m.spent = avg(games.flatMap((g) => g.stat.map((s) => s.spent)));
+    m.left = avg(games.flatMap((g) => g.left));
+    const steps = (src) => avg(games.flatMap((g) => g.stat.map((st) => st[`out.${src}`] + st[`cit.${src}`])));
+    m.stepsUp = steps("uprising");
+    m.stepsCtrl = steps("control");
+    m.met = avg(games.map((g) => (g.met ? 1 : 0)));
+    m.final = avg(games.flatMap((g) => g.final));
+    const citRuns = games.reduce((t, g) => t + g.deckRuns.cit, 0);
+    out(`- Street runs per game: ${(runs / games.length).toFixed(1)} · caught ${pct(m.caught)} · through the Citizen deck ${pct(citRuns / runs)}`);
 
     out("\n### Sides (does the game force 3 of 4?)");
     const players = games.flatMap((g) => g.sides.map((s, q) => ({ s, w: g.share[q] })));
@@ -411,6 +512,8 @@ function sim(GAMES, setups, done) {
       ["up", "down"].forEach((side) => {
         const key = `${c.id}.${side}`;
         const takers = games.flatMap((g) => g.took.map((t, q) => (t.has(key) ? g.share[q] : null)).filter((v) => v !== null));
+        m.strips = m.strips || {};
+        m.strips[key] = { taken: takers.length, win: avg(takers) };
         if (takers.length >= 30) rows.push({ name: `${c.name} ${side === "up" ? "▲" : "▼"}`, fx: fxList(c[side]).replace(/<[^>]*>/g, " ").replace(/\s+/g, " "), taken: takers.length, win: avg(takers) });
       }),
     );
@@ -429,6 +532,15 @@ function sim(GAMES, setups, done) {
         const r = (m.byBot[b] = m.byBot[b] || { games: 0, win: 0 });
         r.games++;
         r.win += g.share[q];
+      }),
+    );
+    // Behaviour per bot name: averages per player per game.
+    m.behaviour = {};
+    games.forEach((g) =>
+      g.names.forEach((b, q) => {
+        const r = (m.behaviour[b] = m.behaviour[b] || { n: 0 });
+        r.n++;
+        Object.entries(g.stat[q]).forEach(([k, v]) => (r[k] = (r[k] || 0) + v));
       }),
     );
     const forced = games.filter((g) => g.forced != null);
@@ -450,11 +562,14 @@ function sim(GAMES, setups, done) {
   });
 }
 
+// profiles / cards run on the current rules, or on a variant: VARIANT="<part of its name>" node two-faces-sim.js profiles
+const BASE = process.env.VARIANT ? VARIANTS.find((v) => v.name.includes(process.env.VARIANT)) : {};
+if (!BASE) throw new Error(`No variant matches "${process.env.VARIANT}"`);
 const run = (variant, setups) => new Promise((resolve) => vm.runInContext(`(${sim})`, sandbox(variant))(GAMES, setups, resolve));
 const all = (bot) => Array(PLAYERS).fill(bot);
 const pct = (x) => `${Math.round(100 * x)}%`;
 
-const PROFILE_NAMES = ["greedy", "rusher", "warlord", "builder", "smart"];
+const PROFILE_NAMES = ["myopic", "greedy", "frugal", "warlord", "builder", "smart", "daring"];
 const shuffled = (a) => a.map((x) => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map((x) => x[1]);
 const cols = [
   ["Rounds", (m) => m.rounds.toFixed(1)],
@@ -468,6 +583,11 @@ const cols = [
   ["3+ sides", (m) => pct(m.sides3)],
   ["Council", (m) => pct(m.council)],
   ["Caught", (m) => pct(m.caught)],
+  ["Cost paid / sunk", (m) => `${m.spent.toFixed(1)} / ${m.sunk.toFixed(1)}`],
+  ["Goods left", (m) => m.left.toFixed(1)],
+  ["Steps: Uprising / control", (m) => `${m.stepsUp.toFixed(1)} / ${m.stepsCtrl.toFixed(1)}`],
+  ["Ends by meeting", (m) => pct(m.met)],
+  ["Avg score", (m) => m.final.toFixed(1)],
   ["Best strip", (m) => (m.best ? `${m.best.name.trim()} ${pct(m.best.win)}` : "—")],
   ["Worst strip", (m) => (m.worst ? `${m.worst.name.trim()} ${pct(m.worst.win)}` : "—")],
 ];
@@ -502,36 +622,59 @@ const MODES = {
   // Bot profiles: a mixed tournament (who wins?), then each profile against itself (does the game stay tight?).
   async profiles() {
     const setups = [["Mixed", () => shuffled(PROFILE_NAMES).slice(0, PLAYERS), GAMES * 2], ...PROFILE_NAMES.map((b) => [b, all(b)])];
-    const [mixed, ...mirror] = await run({}, setups);
+    const [mixed, ...mirror] = await run(BASE, setups);
     const byBot = Object.entries(mixed.m.byBot).sort((a, b) => b[1].win / b[1].games - a[1].win / a[1].games);
+    if (BASE.name) console.log(`Variant: ${BASE.name}\n`);
     console.log(`# Bot profiles — ${PLAYERS} players (fair win rate ${pct(1 / PLAYERS)})\n`);
     console.log(`## Mixed tournament (${GAMES * 2} games, random profiles and seats)\n`);
-    console.log(md(["Profile", "Games", "Win rate"], byBot.map(([b, r]) => [b, r.games, pct(r.win / r.games)])));
+    const beh = mixed.m.behaviour;
+    const per = (b, k) => (beh[b][k] / beh[b].n).toFixed(1);
+    console.log(
+      md(
+        ["Profile", "Games", "Win rate", "Cost paid", "Schemes", "Troops sent", "Street runs", "Caught", "Goods from runs", "Outcast ↑ Uprisings", "Outcast ↑ control"],
+        byBot.map(([b, r]) => [b, r.games, pct(r.win / r.games), per(b, "spent"), per(b, "schemes"), per(b, "troops"), per(b, "runs"), pct(beh[b].caught / (beh[b].runs || 1)), per(b, "runGoods"), per(b, "out.uprising"), per(b, "out.control")]),
+      ),
+    );
     console.log(`\n## Each profile against itself (${GAMES} games each)\n\n${metricsTable(mirror.map((r) => [r.title, r.m]))}`);
   },
 
   // Forced pick: one smart player at a random seat takes a given strip the first time it can.
+  // Both sides of every card. Smart: one smart player takes the strip the first time it can, the others play normally.
+  // Random: win rate of players who took the strip in all-random games (no judgment involved).
   async cards() {
-    const keys = [];
-    sandboxCards().forEach((c) => ["up", "down"].forEach((side) => keys.push([`${c.name} ${side === "up" ? "▲" : "▼"}`, `${c.id}.${side}`, c])));
-    const rows = [];
-    for (const [label, key, c] of keys) {
-      const [r] = await run({}, [[label, () => shuffled([`forced:smart:${key}`, ...all("smart").slice(1)])]]);
-      rows.push({ label, c, side: key.split(".")[1], ...r.m.forced });
-      tick();
-    }
-    rows.sort((a, b) => b.win - a.win);
+    const { cards, fxList, costHtml, costSize } = sandboxCards();
+    const forced = {};
+    for (const c of cards)
+      for (const side of ["up", "down"]) {
+        const key = `${c.id}.${side}`;
+        const [r] = await run(BASE, [[key, () => shuffled([`forced:smart:${key}`, ...all("smart").slice(1)])]]);
+        forced[key] = r.m.forced;
+        tick();
+      }
+    const [rnd] = await run(BASE, [["random", all("random"), GAMES * 5]]);
     const se = (r) => Math.sqrt((r.win * (1 - r.win)) / r.games);
-    const flag = (r) => (r.win - 2 * se(r) > 1 / PLAYERS ? "strong" : r.win + 2 * se(r) < 1 / PLAYERS ? "weak" : "");
-    console.log(`# Forced pick — ${GAMES} games per strip, ${PLAYERS} smart players (fair ${pct(1 / PLAYERS)})\n`);
-    console.log("One player takes the strip the first time it can afford it; everyone else plays normally. Flag: outside 2 standard errors.\n");
-    console.log(md(["Strip", "Cost", "Win rate", "± 2 SE", "Flag"], rows.map((r) => [r.label, r.c.cost, pct(r.win), pct(2 * se(r)), flag(r)])));
+    const text = (fx) => fx.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").replace(/\+ /g, "+").trim();
+    const cell = (key) => `${pct(forced[key].win)} / ${pct(rnd.m.strips[key].win)}`;
+    const stronger = (c) => {
+      const [u, d] = [forced[`${c.id}.up`], forced[`${c.id}.down`]];
+      const gap = u.win - d.win;
+      return Math.abs(gap) < 2 * Math.hypot(se(u), se(d)) ? "≈" : gap > 0 ? `▲ +${Math.round(100 * gap)}` : `▼ +${Math.round(-100 * gap)}`;
+    };
+    const rows = [...cards]
+      .sort((a, b) => a.char.localeCompare(b.char) || costSize(a) - costSize(b))
+      .map((c) => [c.name, c.char === "cit" ? "Citizen" : "Outcast", text(costHtml(c)) || "free", text(fxList(c.up)), cell(`${c.id}.up`), text(fxList(c.down)), cell(`${c.id}.down`), stronger(c)]);
+    const n = Object.values(forced)[0].games;
+    console.log(`# Card sides — ${PLAYERS} players, fair win rate ${pct(1 / PLAYERS)}\n`);
+    console.log(`Win rates: smart forced pick (~${n} games per strip, ± ~${pct(2 * Math.sqrt(1 / PLAYERS * (1 - 1 / PLAYERS) / n))}) / random takers (${GAMES * 5} games). "Stronger" compares the smart column; ≈ = within noise.\n`);
+    console.log(md(["Card", "Deck", "Cost", "▲ Top strip", "▲ Win", "▼ Bottom strip", "▼ Win", "Stronger"], rows));
   },
 };
 
-// Card list for the "cards" mode, read from the data file.
+// Card list and strip text for the "cards" mode, read from the data file.
 function sandboxCards() {
-  return vm.runInContext("TF_CARDS", sandbox());
+  const box = sandbox(BASE);
+  const get = (name) => vm.runInContext(name, box);
+  return { cards: get("TF_CARDS"), fxList: get("fxList"), costHtml: get("costHtml"), costSize: get("costSize") };
 }
 
 (async () => {

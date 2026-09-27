@@ -93,3 +93,26 @@ body { font-size: 15px; }
 .glossary summary { cursor: pointer; }
 .glossary ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 5px; font-size: 13px; color: #b9c3c9; }
 .glossary b { color: #f3ede0; }
+
+/* ---------- reveal: street run and Scheme ---------- */
+
+.reveal:empty { display: none; }
+.reveal {
+  position: fixed;
+  left: 50%;
+  bottom: 76px;
+  z-index: 6;
+  transform: translateX(-50%);
+  max-width: calc(100vw - 32px);
+  padding: 12px 16px 16px;
+  border: 1px solid rgba(233, 196, 119, 0.5);
+  border-radius: 12px;
+  background: rgba(20, 24, 28, 0.97);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+}
+.reveal-note { margin-bottom: 8px; color: var(--gold); font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
+.reveal-cards { display: flex; gap: 10px; overflow-x: auto; }
+.reveal-card { flex: none; }
+.reveal-card.drawn .tcard { box-shadow: 0 0 0 3px #d9731f, 0 6px 16px rgba(0, 0, 0, 0.5); }
+.reveal .tcard.live:hover { transform: translateY(-4px); }
+.face .heat { position: absolute; bottom: 5px; right: 6px; font-size: 12px; }

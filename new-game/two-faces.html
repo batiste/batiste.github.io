@@ -32,7 +32,7 @@
         <ol class="steps">
           <li>Each player: a Citizen card and an Outcast card side by side; Citizen pawn on Spire <span data-cfg="spire"></span>, Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply.</li>
           <li>Shuffle the Citizen and Outcast decks. Reveal <span data-cfg="row"></span> cards from each: the <strong>row</strong>.</li>
-          <li>Shuffle the contraband deck and the Uprising deck. Reveal the first Uprising.</li>
+          <li>Shuffle the Uprising deck and draw <span data-cfg="rounds"></span>: the game lasts that many rounds. Reveal the first.</li>
         </ol>
       </section>
 
@@ -49,7 +49,7 @@
         <h2>Turn</h2>
         <p>Take one:</p>
         <ul class="steps">
-          <li><strong>Recruit:</strong> take 1 card from the row. Pay its cost: Sink your Citizen that many. Tuck it above or below its character, then <strong>activate</strong> that side. Refill the row from the same deck.</li>
+          <li><strong>Recruit:</strong> take 1 card from the row. Pay its cost in goods; for each good you lack, Sink your Citizen 1. Tuck it above or below its character, then <strong>activate</strong> that side. Refill the row from the same deck.</li>
           <li><strong>Scheme:</strong> look at the top card of each deck. Place 1 face down in front of you, the other at the bottom of its deck.</li>
         </ul>
         <p>Empty deck: shuffle its discards into it.</p>
@@ -74,20 +74,19 @@
       </section>
 
       <section>
-        <h2>Contraband</h2>
+        <h2>Street Run</h2>
         <p>
-          <strong>Street run:</strong> draw contraband cards one at a time. Each shows goods and heat; a Patrol shows only heat.
-          Stop whenever you like and take the goods drawn. If your total heat goes over your heat limit, you are
-          <strong>caught</strong>: you gain nothing. Either way, shuffle the drawn cards back.
+          Choose the Citizen or the Outcast deck, then draw from it one card at a time. Each gives the goods of its cost and adds its <strong>heat</strong> (printed on the card;
+          free cards give nothing and run hot). Stop whenever you like and take the goods.
+          If your total heat goes over your heat limit, you are <strong>caught</strong>: you gain nothing. Either way, discard the drawn cards. The decks differ: Citizen cards cost mostly Secrets and run hotter; Outcast cards cost mostly Stims and Papers.
         </p>
-        <p id="contraband"></p>
       </section>
 
       <section>
         <h2>City</h2>
         <p>Five locations. Troops sent by Deal go to the lower city, by Rally to the upper city; the Cable Lift is in both. Troops stay until they are lost or moved.</p>
         <p><strong>Control:</strong> after each Uprising, the player with the most troops at a location takes its reward. Tie: nobody.</p>
-        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 troop to the lower city.</p>
+        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 free troop to the lower city, from their supply. It keeps the last player in the fight for the next Uprisings.</p>
         <table class="revolution-table">
           <thead><tr><th>Location</th><th>City</th><th>Control</th></tr></thead>
           <tbody id="locations"></tbody>
@@ -119,7 +118,7 @@
       <section>
         <h2>End</h2>
         <ul class="steps">
-          <li>The game ends after the Uprising of the round in which any player's characters meet, or after the last Uprising.</li>
+          <li>The game ends after the Uprising of the round in which any player's characters meet, or after round <span data-cfg="rounds"></span>.</li>
           <li>Score: the heights of your Citizen and Outcast added together. Tie: higher Citizen.</li>
         </ul>
       </section>
@@ -127,22 +126,37 @@
       <section>
         <h2>Cards</h2>
         <table class="revolution-table">
-          <thead><tr><th>Card</th><th>Deck</th><th>Cost</th><th>Scheme</th><th>Copies</th><th>Top strip</th><th>Bottom strip</th></tr></thead>
+          <thead><tr><th>Card</th><th>Deck</th><th>Cost</th><th>Heat</th><th>Scheme</th><th>Copies</th><th>Top strip</th><th>Bottom strip</th></tr></thead>
           <tbody id="cards"></tbody>
         </table>
       </section>
 
       <section>
+        <h2>Balance Notes</h2>
+        <p>Tuned with <code>two-faces-sim.js</code>: bots playing thousands of games on these exact rules (3 players). Bots show trends, not truths.</p>
+        <ul class="steps">
+          <li><strong>Costs in goods</strong> (was: Sink Citizen): paying in Citizen points meant every card lost score, so the cheapest player won and building did not pay. Now building pays: the best bots plan ahead, 80% of players use 3+ sides, and every card side wins 25–39% when taken (fair: 33%).</li>
+          <li><strong>Score = Citizen + Outcast</strong> (was: the lower pawn).</li>
+          <li><strong>Every fighter loses troops</strong>, the winner too: fewer blowouts.</li>
+          <li><strong>Catch-up troop</strong>: fewer runaway leaders, more lead changes.</li>
+          <li><strong>Council</strong> base +1 Paper, <strong>Patron ▼</strong> 2 troops, <strong>Censor</strong> cheaper: weak sides; <strong>Orator</strong> costs more: too strong. Card sides: <code>node two-faces-sim.js cards</code>.</li>
+          <li>Tried and dropped: heat limit 4 or more Patrols, control without Spire steps, seat bonuses, removing Scheme.</li>
+          <li><strong>5 rounds, Spire 14</strong>: shorter games are tighter (close finishes 44%, blowouts 21%), and characters meet in about 30% of games.</li>
+          <li><strong>Street run through the Citizen or Outcast deck</strong> (was: a separate contraband deck): same balance, one deck less; free cards' heat makes goods scarcer. Base limit 6, hot free cards and +2/+3 limit strips: Street went from 1.6 to 7.8 runs per game.</li>
+          <li>Tried and dropped: leader −2 Uprising strength (works, but needs checking who leads at the table).</li>
+          <li>Known issues: the leader after round 2 still wins about 45% (fair: 33%); street runs rarely bust (about 2%); Outcast troop strips (Fence ▼, Blackmailer ▼) are weak (22–26%).</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Playtest Questions</h2>
         <ul class="steps">
-          <li>Game length: do characters meet before the last Uprising? Tune costs, control and Uprising rewards.</li>
+          <li>Game length: do characters meet before the last Uprising?</li>
           <li>City: are troops too cheap or too expensive? Is the Council Hall (a free Scheme) worth fighting for?</li>
-          <li>Does the game force you to build at least 3 of the 4 sides?</li>
-          <li>Engine: is a cap of <span data-cfg="sideCap"></span> strips per side too tight, too loose?</li>
-          <li>Cost: is sinking the Citizen (1 point per step) too expensive?</li>
-          <li>Street run: is heat limit 5 with Patrols fun, or too safe / too swingy?</li>
-          <li>Scheme: is giving up a Recruit worth it? Is ×2 a fun bluff or a trap?</li>
-          <li>Loud Citizen (later): each Citizen activation adds heat to your next run?</li>
+          <li>Engine: what would make building 3 sides, or stacking one, worth it?</li>
+          <li>Cost: do specific goods costs make the street run and Council worth it?</li>
+          <li>Street run: how to make it risky? It rarely busts.</li>
+          <li>Scheme: too opaque? It slows the race, which keeps games tight.</li>
           <li>Characters: all identical for now. Unique base strips per character later?</li>
         </ul>
       </section>
@@ -157,11 +171,8 @@
       set("sides", Object.values(SIDES).flatMap((c) => [["up", "above"], ["down", "below"]].map(([k, w]) => row([c.name, `<strong>${c[k].name}</strong> (${w})`, fxList(c[k].base)]))).join(""));
       set("glossary", glossaryHtml());
       set("locations", LOCATIONS.map((l) => row([`<strong>${l.name}</strong>`, [l.low && "lower", l.high && "upper"].filter(Boolean).join(" + "), fxList(l.control)])).join(""));
-      const per = TF_CONTRABAND.filter((c) => c.good === "P");
-      const patrols = TF_CONTRABAND.filter((c) => !c.good);
-      set("contraband", `Deck: per good, ${[1, 2, 3].map((h) => `${per.filter((c) => c.heat === h).length}× ${per.find((c) => c.heat === h).n} good${h > 1 ? "s" : ""} / heat ${h}`).join(", ")}; plus ${patrols.length} Patrols (heat ${patrols[0].heat}).`);
       set("uprisings", TF_UPRISINGS.map((u) => row([`<strong>${u.name}</strong>`, locNames(u.at), fxList(u.first), fxList(u.second)])).join(""));
-      set("cards", TF_CARDS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, c.cost ? icon("sink", c.cost) : "free", strText(c.str), c.copies, fxList(c.up), fxList(c.down)])).join(""));
+      set("cards", TF_CARDS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, costHtml(c) || "free", icon("heat", heatOf(c)), strText(c.str), c.copies, fxList(c.up), fxList(c.down)])).join(""));
     </script>
   </body>
 </html>
