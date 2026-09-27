@@ -22,14 +22,15 @@
 
       <p class="callout">
         You play both sides: a Citizen at the top of the Spire, an Outcast at its base. Each turn, take a card and tuck it
-        above or below one of your characters: that column activates, every card in it. When your two characters meet, the
-        game ends. You score the height of your <strong>lower</strong> one.
+        above or below one of your characters: that column activates, every card in it. Send troops into the city and win
+        its Uprisings: that is how your Outcast climbs. When your two characters meet, the game ends. You score the
+        heights of <strong>both</strong> added together.
       </p>
 
       <section>
         <h2>Setup</h2>
         <ol class="steps">
-          <li>Each player: a Citizen card and an Outcast card side by side; Citizen pawn on Spire <span data-cfg="spire"></span>, Outcast pawn on 1; <span id="start"></span>.</li>
+          <li>Each player: a Citizen card and an Outcast card side by side; Citizen pawn on Spire <span data-cfg="spire"></span>, Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply.</li>
           <li>Shuffle the Citizen and Outcast decks. Reveal <span data-cfg="row"></span> cards from each: the <strong>row</strong>.</li>
           <li>Shuffle the contraband deck and the Uprising deck. Reveal the first Uprising.</li>
         </ol>
@@ -39,7 +40,7 @@
         <h2>Round</h2>
         <ol class="steps">
           <li>Starting with the first player, each player takes 1 turn, twice around the table.</li>
-          <li>Resolve the Uprising (see Uprising).</li>
+          <li>Resolve the Uprising, then Control and Catch-up (see City).</li>
           <li>The first player passes left. Reveal the next Uprising.</li>
         </ol>
       </section>
@@ -68,11 +69,12 @@
       </section>
 
       <section>
+        <h2>Icons</h2>
+        <ul class="steps" id="glossary"></ul>
+      </section>
+
+      <section>
         <h2>Contraband</h2>
-        <table class="revolution-table">
-          <thead><tr><th>Good</th><th>Use</th></tr></thead>
-          <tbody id="goods"></tbody>
-        </table>
         <p>
           <strong>Street run:</strong> draw contraband cards one at a time. Each shows goods and heat; a Patrol shows only heat.
           Stop whenever you like and take the goods drawn. If your total heat goes over your heat limit, you are
@@ -82,14 +84,26 @@
       </section>
 
       <section>
+        <h2>City</h2>
+        <p>Five locations. Troops sent by Deal go to the lower city, by Rally to the upper city; the Cable Lift is in both. Troops stay until they are lost or moved.</p>
+        <p><strong>Control:</strong> after each Uprising, the player with the most troops at a location takes its reward. Tie: nobody.</p>
+        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 troop to the lower city.</p>
+        <table class="revolution-table">
+          <thead><tr><th>Location</th><th>City</th><th>Control</th></tr></thead>
+          <tbody id="locations"></tbody>
+        </table>
+      </section>
+
+      <section>
         <h2>Uprising</h2>
         <ol class="steps">
-          <li>Each player secretly commits any number of their Arms, then all reveal them together with their Schemes.</li>
-          <li><strong>Strength</strong> = your +N Schemes + Arms committed, doubled for each ×2 Scheme. Strongest gets the first reward, next gets the second. Strength 0 gets nothing. Tie: lower Outcast wins, then turn order.</li>
-          <li>Discard all Schemes and committed Arms.</li>
+          <li>Each Uprising is fought at its location(s). Only players with troops there take part.</li>
+          <li>Each fighter secretly commits any number of their Arms, then all fighters reveal them together with their Schemes.</li>
+          <li><strong>Strength</strong> = your troops there + your +N Schemes + Arms committed, doubled for each ×2 Scheme. Strongest gets the first reward, next gets the second. Tie: lower Outcast wins, then turn order.</li>
+          <li>Every fighter, winner included, loses 1 troop at each of the Uprising's locations (back to supply). Fighters discard their Schemes and committed Arms; the others keep their Schemes.</li>
         </ol>
         <table class="revolution-table">
-          <thead><tr><th>Uprising</th><th>First</th><th>Second</th></tr></thead>
+          <thead><tr><th>Uprising</th><th>At</th><th>First</th><th>Second</th></tr></thead>
           <tbody id="uprisings"></tbody>
         </table>
       </section>
@@ -106,7 +120,7 @@
         <h2>End</h2>
         <ul class="steps">
           <li>The game ends after the Uprising of the round in which any player's characters meet, or after the last Uprising.</li>
-          <li>Score: the height of your lower pawn. Tie: higher Citizen.</li>
+          <li>Score: the heights of your Citizen and Outcast added together. Tie: higher Citizen.</li>
         </ul>
       </section>
 
@@ -121,9 +135,11 @@
       <section>
         <h2>Playtest Questions</h2>
         <ul class="steps">
-          <li>Game length: do characters meet before the last Uprising? Tune costs, Deal and rewards.</li>
+          <li>Game length: do characters meet before the last Uprising? Tune costs, control and Uprising rewards.</li>
+          <li>City: are troops too cheap or too expensive? Is the Council Hall (a free Scheme) worth fighting for?</li>
+          <li>Does the game force you to build at least 3 of the 4 sides?</li>
           <li>Engine: is a cap of <span data-cfg="sideCap"></span> strips per side too tight, too loose?</li>
-          <li>Cost: is sinking the Citizen a real price, since only the lower pawn scores?</li>
+          <li>Cost: is sinking the Citizen (1 point per step) too expensive?</li>
           <li>Street run: is heat limit 5 with Patrols fun, or too safe / too swingy?</li>
           <li>Scheme: is giving up a Recruit worth it? Is ×2 a fun bluff or a trap?</li>
           <li>Loud Citizen (later): each Citizen activation adds heat to your next run?</li>
@@ -139,11 +155,12 @@
       document.querySelectorAll("[data-cfg]").forEach((el) => (el.textContent = TF_CONFIG[el.dataset.cfg]));
       set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n }).slice(1)).join(", "));
       set("sides", Object.values(SIDES).flatMap((c) => [["up", "above"], ["down", "below"]].map(([k, w]) => row([c.name, `<strong>${c[k].name}</strong> (${w})`, fxList(c[k].base)]))).join(""));
-      set("goods", Object.values(GOODS).map((g) => row([`<strong>${g.name}</strong>`, g.use])).join(""));
+      set("glossary", glossaryHtml());
+      set("locations", LOCATIONS.map((l) => row([`<strong>${l.name}</strong>`, [l.low && "lower", l.high && "upper"].filter(Boolean).join(" + "), fxList(l.control)])).join(""));
       const per = TF_CONTRABAND.filter((c) => c.good === "P");
       const patrols = TF_CONTRABAND.filter((c) => !c.good);
       set("contraband", `Deck: per good, ${[1, 2, 3].map((h) => `${per.filter((c) => c.heat === h).length}× ${per.find((c) => c.heat === h).n} good${h > 1 ? "s" : ""} / heat ${h}`).join(", ")}; plus ${patrols.length} Patrols (heat ${patrols[0].heat}).`);
-      set("uprisings", TF_UPRISINGS.map((u) => row([`<strong>${u.name}</strong>`, fxList(u.first), fxList(u.second)])).join(""));
+      set("uprisings", TF_UPRISINGS.map((u) => row([`<strong>${u.name}</strong>`, locNames(u.at), fxList(u.first), fxList(u.second)])).join(""));
       set("cards", TF_CARDS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, c.cost ? icon("sink", c.cost) : "free", strText(c.str), c.copies, fxList(c.up), fxList(c.down)])).join(""));
     </script>
   </body>

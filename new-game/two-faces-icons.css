@@ -25,3 +25,9 @@
 .gi-out { --chip: #2f7d74; }
 .gi-sink { --chip: #8a5a1f; }
 .str { font-weight: 800; margin-left: 2px; }
+.gi-low { --chip: #2f7d74; }
+.gi-high { --chip: #b0812f; }
+.gi-move { --chip: #56606a; }
+/* Hidden text label next to each chip: invisible, but kept when the log is copied. */
+.gt { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+.gx { position: relative; }

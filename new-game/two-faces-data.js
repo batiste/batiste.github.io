@@ -4,50 +4,62 @@ const TF_CONFIG = {
   spire: 16, // Spire heights 1 (base) to 16 (top). Citizen starts on 16, Outcast on 1.
   row: 2, // cards on offer from each deck (Citizen, Outcast)
   sideCap: 3, // strips per side; a new one beyond this discards the oldest
+  troops: 10, // troops per player
   start: { P: 1, S: 1, A: 0, T: 0 }, // starting goods
 };
 
 const GOODS = {
-  P: { name: "Papers", one: "Paper", use: "Deal: climb your Outcast." },
-  S: { name: "Secrets", one: "Secret", use: "Rally: your Citizen lifts your Outcast (patronage)." },
+  P: { name: "Papers", one: "Paper", use: "Deal: send troops to the lower city." },
+  S: { name: "Secrets", one: "Secret", use: "Rally: send troops to the upper city." },
   A: { name: "Arms", one: "Arms", use: "Uprising: +1 strength each, committed in secret." },
   T: { name: "Stims", one: "Stim", use: "Street run: discard the card just drawn." },
 };
+
+// The city. Deal sends troops to the lower city, Rally to the upper city; the Cable Lift is in both.
+// control: reward for the player with the most troops there after each Uprising (tie: nobody).
+const LOCATIONS = [
+  { id: "docks", name: "Docks", low: true, control: [{ gain: "A", n: 2 }] },
+  { id: "rag", name: "Rag Market", low: true, control: [{ choice: 2 }] },
+  { id: "lift", name: "Cable Lift", low: true, high: true, control: [{ rise: "out", n: 1 }] },
+  { id: "forum", name: "Forum", high: true, control: [{ rise: "out", n: 1 }] },
+  { id: "hall", name: "Council Hall", high: true, control: [{ scheme: true }] },
+];
 
 // A side = the column tucked above or below a character. The character card is the base of both its sides.
 const SIDES = {
   cit: {
     name: "Citizen",
-    up: { name: "Rally", base: [{ spend: { S: 1 }, rise: "out", n: 1 }] },
-    down: { name: "Council", base: [{ gain: "S", n: 1 }] },
+    up: { name: "Rally", base: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }] },
+    down: { name: "Council", base: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   },
   out: {
     name: "Outcast",
     up: { name: "Street", base: [{ run: 5 }] },
-    down: { name: "Deal", base: [{ spend: { P: 1 }, rise: "out", n: 1 }] },
+    down: { name: "Deal", base: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
   },
 };
 
-// Effects: {gain, n} · {rise, n} · {spend, rise, n} (optional) · {limit} (Street only) · {scheme} · {run} (base only) · {choice}.
+// Effects: {gain, n} · {rise, n} · {troop: "low"|"high", n} · {move} · {spend, get} (optional) · {limit} (Street only)
+// · {scheme} · {run} (base only) · {choice}.
 // Card: character (= its deck), cost (Sink Citizen), strength as a Scheme (+N, or "x2": doubles your total), top strip (up), bottom strip (down).
 const TF_CARDS = [
   { id: "clerk", name: "Clerk", char: "cit", cost: 0, str: 2, copies: 4, up: [{ gain: "S", n: 1 }], down: [{ gain: "P", n: 1 }] },
-  { id: "magistrate", name: "Magistrate", char: "cit", cost: 1, str: 2, copies: 3, up: [{ spend: { S: 1 }, rise: "out", n: 1 }], down: [{ gain: "P", n: 2 }] },
+  { id: "magistrate", name: "Magistrate", char: "cit", cost: 1, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }] },
   { id: "physician", name: "Physician", char: "cit", cost: 0, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "T", n: 2 }] },
   { id: "spymaster", name: "Spymaster", char: "cit", cost: 1, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ scheme: true }] },
   { id: "quartermaster", name: "Quartermaster", char: "cit", cost: 1, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
-  { id: "orator", name: "Orator", char: "cit", cost: 2, str: 2, copies: 3, up: [{ rise: "out", n: 1 }], down: [{ gain: "S", n: 2 }] },
-  { id: "censor", name: "Censor", char: "cit", cost: 2, str: "x2", copies: 3, up: [{ spend: { S: 1 }, rise: "out", n: 1 }], down: [{ scheme: true }] },
-  { id: "patron", name: "Patron", char: "cit", cost: 2, str: 2, copies: 3, up: [{ spend: { S: 2 }, rise: "out", n: 2 }], down: [{ spend: { S: 1 }, rise: "cit", n: 1 }] },
+  { id: "orator", name: "Orator", char: "cit", cost: 3, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }] },
+  { id: "censor", name: "Censor", char: "cit", cost: 2, str: "x2", copies: 3, up: [{ move: 2 }], down: [{ scheme: true }] },
+  { id: "patron", name: "Patron", char: "cit", cost: 2, str: 2, copies: 3, up: [{ spend: { S: 2 }, get: { troop: "high", n: 2 } }], down: [{ spend: { S: 1 }, get: { troop: "low", n: 1 } }] },
 
   { id: "lookout", name: "Lookout", char: "out", cost: 0, str: 2, copies: 4, up: [{ limit: 1 }], down: [{ gain: "P", n: 1 }] },
   { id: "runner", name: "Runner", char: "out", cost: 0, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "P", n: 1 }] },
-  { id: "forger", name: "Forger", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 1 }], down: [{ spend: { P: 1 }, rise: "out", n: 1 }] },
-  { id: "fence", name: "Fence", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { any: 2 }, rise: "out", n: 1 }] },
+  { id: "forger", name: "Forger", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 1 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
+  { id: "fence", name: "Fence", char: "out", cost: 1, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { any: 2 }, get: { troop: "low", n: 1 } }] },
   { id: "gunrunner", name: "Gunrunner", char: "out", cost: 1, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
-  { id: "blackmailer", name: "Blackmailer", char: "out", cost: 1, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ spend: { S: 1 }, rise: "out", n: 1 }] },
+  { id: "blackmailer", name: "Blackmailer", char: "out", cost: 1, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ move: 1 }] },
   { id: "agitator", name: "Agitator", char: "out", cost: 1, str: "x2", copies: 3, up: [{ limit: 1 }], down: [{ scheme: true }] },
-  { id: "smuggler", name: "Smuggler", char: "out", cost: 2, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { P: 1 }, rise: "out", n: 2 }] },
+  { id: "smuggler", name: "Smuggler", char: "out", cost: 2, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
 ];
 
 // Contraband deck for Street runs: good (or null for Patrol), goods gained, heat.
@@ -60,16 +72,16 @@ const TF_CONTRABAND = [
   ...Array(4).fill({ good: null, n: 0, heat: 2 }),
 ];
 
-// One Uprising per round. first / second: rewards for the strongest and second strongest.
+// One Uprising per round, fought at its locations. first / second: rewards for the strongest and second strongest.
 const TF_UPRISINGS = [
-  { name: "Dock Riot", first: [{ rise: "out", n: 3 }], second: [{ rise: "out", n: 1 }] },
-  { name: "Show Trial", first: [{ rise: "cit", n: 3 }], second: [{ rise: "cit", n: 1 }] },
-  { name: "Barricades", first: [{ rise: "out", n: 2 }, { gain: "A", n: 2 }], second: [{ gain: "A", n: 1 }] },
-  { name: "General Strike", first: [{ rise: "out", n: 2 }, { rise: "cit", n: 1 }], second: [{ rise: "out", n: 1 }] },
-  { name: "Market Raid", first: [{ choice: 3 }], second: [{ choice: 1 }] },
-  { name: "Council Purge", first: [{ rise: "cit", n: 2 }, { gain: "S", n: 1 }], second: [{ gain: "S", n: 1 }] },
-  { name: "Storm the Forum", first: [{ rise: "out", n: 2 }, { rise: "cit", n: 2 }], second: [{ rise: "out", n: 1 }] },
-  { name: "Night of Knives", first: [{ rise: "out", n: 3 }], second: [] },
+  { name: "Dock Riot", at: ["docks"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
+  { name: "Show Trial", at: ["forum"], first: [{ rise: "out", n: 1 }, { rise: "cit", n: 2 }], second: [{ rise: "cit", n: 1 }] },
+  { name: "Barricades", at: ["lift"], first: [{ rise: "out", n: 2 }, { gain: "A", n: 1 }], second: [{ gain: "A", n: 1 }] },
+  { name: "General Strike", at: ["docks", "rag"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
+  { name: "Market Raid", at: ["rag"], first: [{ rise: "out", n: 1 }, { choice: 2 }], second: [{ choice: 1 }] },
+  { name: "Council Purge", at: ["hall"], first: [{ rise: "out", n: 2 }, { gain: "S", n: 1 }], second: [{ gain: "S", n: 1 }] },
+  { name: "Storm the Forum", at: ["forum", "hall"], first: [{ rise: "out", n: 2 }, { rise: "cit", n: 1 }], second: [{ rise: "out", n: 1 }] },
+  { name: "Night of Knives", at: ["lift", "hall"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
 ];
 
 // Icons: inline SVG chips (styles in two-faces-icons.css), shared by the rules page and the playtest.
@@ -84,27 +96,68 @@ const ICON_PATHS = {
   out: '<path d="M12 3l8 9h-5v9H9v-9H4z" fill="currentColor"/>',
   sink: '<path d="M12 21l8-9h-5V3H9v9H4z" fill="currentColor"/>',
   any: '<circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2.4"/><path d="M12 7.5v9M7.5 12h9" stroke="currentColor" stroke-width="2.4"/>',
+  low: '<circle cx="12" cy="6.5" r="4" fill="currentColor"/><path d="M4 21c0-5 3.5-8 8-8s8 3 8 8z" fill="currentColor"/>',
+  high: '<circle cx="12" cy="6.5" r="4" fill="currentColor"/><path d="M4 21c0-5 3.5-8 8-8s8 3 8 8z" fill="currentColor"/>',
+  move: '<path d="M3 9h13l-4-4M21 15H8l4 4" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"/>',
 };
-const ICON_TITLES = { heat: "Heat", scheme: "Scheme", cit: "Rise Citizen", out: "Rise Outcast", sink: "Sink Citizen", any: "Any good" };
+const ICON_NAMES = {
+  heat: ["Heat", "Heat"],
+  scheme: ["Scheme", "Schemes"],
+  cit: ["Rise Citizen", "Rise Citizen"],
+  out: ["Rise Outcast", "Rise Outcast"],
+  sink: ["Sink Citizen", "Sink Citizen"],
+  any: ["Any good", "goods of your choice"],
+  low: ["Troop, lower city", "troops to the lower city"],
+  high: ["Troop, upper city", "troops to the upper city"],
+  move: ["Move a troop", "Move troops"],
+};
+
+// Icon glossary (goods use GOODS[g].use).
+const ICON_HELP = {
+  heat: "Street run: your heat limit. +🔥 raises it for this run.",
+  scheme: "Look at the top card of each deck; keep 1 face down for the Uprising.",
+  cit: "Your Citizen climbs 1 on the Spire.",
+  out: "Your Outcast climbs 1 on the Spire.",
+  sink: "Card cost: your Citizen goes down 1.",
+  low: "Place a troop at the Docks, Rag Market or Cable Lift.",
+  high: "Place a troop at the Cable Lift, Forum or Council Hall.",
+  move: "Move one of your troops to any location.",
+  any: "A good of your choice.",
+};
+const glossaryHtml = () =>
+  [...Object.keys(GOODS), ...Object.keys(ICON_HELP)]
+    .map((k) => `<li>${icon(k)} <b>${iconLabel(k)}</b> ${GOODS[k] ? GOODS[k].use : ICON_HELP[k]}</li>`)
+    .join("");
+
+// Plain-text label, e.g. "2 Papers". Kept hidden next to each chip so a copied log still reads.
+function iconLabel(key, n) {
+  const [one, many] = GOODS[key] ? [GOODS[key].one, GOODS[key].name] : ICON_NAMES[key];
+  return n == null ? one : `${n} ${n === 1 ? one : many}`;
+}
 
 // icon("P") → chip; icon("P", 2) → 2 chips. Above 3, or a non-number (e.g. "2/7"): the number + 1 chip.
 function icon(key, n) {
-  const title = GOODS[key] ? GOODS[key].name : ICON_TITLES[key];
-  const chip = `<span class="gi gi-${key}" title="${title}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON_PATHS[key]}</svg></span>`;
-  if (typeof n === "number" && n <= 3) return `<span class="gx">${chip.repeat(n)}</span>`;
-  return `<span class="gx">${n != null ? `<b>${n}</b>` : ""}${chip}</span>`;
+  const text = `<span class="gt">${iconLabel(key, n)}</span>`;
+  const chip = `<span class="gi gi-${key}" title="${iconLabel(key)}"><svg viewBox="0 0 24 24" aria-hidden="true">${ICON_PATHS[key]}</svg></span>`;
+  if (typeof n === "number" && n <= 3) return `<span class="gx">${text}${chip.repeat(n)}</span>`;
+  return `<span class="gx">${text}${n != null ? `<b aria-hidden="true">${n}</b>` : ""}${chip}</span>`;
 }
+
+const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));
+const locNames = (ids) => ids.map((id) => LOC[id].name).join(" + ");
 
 function fxText(e) {
   if (e.gain) return `+${icon(e.gain, e.n)}`;
   if (e.spend) {
     const [g, n] = Object.entries(e.spend)[0];
-    return `${icon(g, n)} → ${icon(e.rise, e.n)}`;
+    return `${icon(g, n)} → ${fxText(e.get)}`;
   }
   if (e.rise) return icon(e.rise, e.n);
-  if (e.limit) return `+${icon("heat", e.limit)} limit`;
+  if (e.troop) return icon(e.troop, e.n);
+  if (e.move) return icon("move", e.move);
+  if (e.limit) return `<span class="gt">heat limit</span>+${icon("heat", e.limit)}`;
   if (e.scheme) return icon("scheme");
-  if (e.run) return `Run ${icon("heat", e.run)}`;
+  if (e.run) return `<span class="gt">street run, heat limit</span>${icon("heat", e.run)}`;
   if (e.choice) return `+${icon("any", e.choice)}`;
   return "";
 }
