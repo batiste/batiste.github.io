@@ -228,10 +228,17 @@ function valueBot(profile) {
         const [g, n] = Object.entries(e.spend)[0];
         const have = g === "any" ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : sim.goods[g];
         if (have < n) continue;
-        const gain = fxValue(p, [].concat(e.get), sim) - w.goods * (g === "any" ? 0.4 : GV[g]) * n;
+        // Spent goods cost what they are worth to this bot ("any": the least useful ones).
+        const after = { ...sim.goods };
+        let paid = 0;
+        for (let i = 0; i < n; i++) {
+          const h = g === "any" ? Object.keys(after).filter((k) => after[k] > 0).sort((a, b) => goodValue(a, after[a] - 1, p) - goodValue(b, after[b] - 1, p))[0] : g;
+          paid += goodValue(h, --after[h], p);
+        }
+        const gain = fxValue(p, [].concat(e.get), sim) - paid;
         if (gain <= 0) continue;
         v += gain;
-        if (g !== "any") sim.goods[g] -= n;
+        sim.goods = after;
       } else if (e.rise) v += riseValue(p, e.rise, e.n);
       else if (e.troop) v += troopValue(p, e.troop) * e.n;
       else if (e.move) {
@@ -251,10 +258,16 @@ function valueBot(profile) {
         const haul = Math.max(...CHARS.map((k) => Object.entries(RUN_BY_DECK[k][L]).reduce((t, [g, n]) => t + n * goodValue(g, sim.goods[g], p), 0)));
         v += haul / (1 + Math.max(0, stock - 6) / 6);
       }
-      else if (e.choice) v += w.goods * 0.6 * e.choice * late();
+      else if (e.choice)
+        // Goods of your choice: each one is the most useful good for this bot (as chosen in choose "choice").
+        for (let i = 0; i < e.choice; i++) {
+          const g = bestChoice(p, sim.goods);
+          v += goodValue(g, sim.goods[g]++, p);
+        }
     }
     return v;
   }
+  const bestChoice = (p, goods) => Object.keys(goods).reduce((a, b) => (goodValue(b, goods[b], p) > goodValue(a, goods[a], p) ? b : a));
 
   // Cost of a card: the goods it takes, plus a Citizen step (1 point) for each good lacking.
   function payValue(p, card) {
@@ -331,7 +344,7 @@ function valueBot(profile) {
         case "spend":
           return 0;
         case "spendGood":
-          return idx((g) => x.goods[g] - GV[g]);
+          return idx((g) => -goodValue(g, x.goods[g] - 1, p)); // the least useful good
         case "send":
           return idx((id) => locValue(p, id));
         case "moveFrom": {
@@ -367,7 +380,7 @@ function valueBot(profile) {
           return idx((id) => (CARDS[id].str === "x2" ? base : CARDS[id].str));
         }
         case "choice":
-          return idx((g) => (g === "P" || g === "S" ? 2 : g === "A" ? 1 : 0) - x.goods[g]);
+          return buttons.findIndex((b) => b.value === bestChoice(p, x.goods));
         case "arms":
           return Math.round(w.arms * (buttons.length - 1));
         default:

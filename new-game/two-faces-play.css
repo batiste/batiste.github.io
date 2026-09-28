@@ -1,5 +1,6 @@
 /* Two Faces additions on top of double-life-play.css (spire, players, prompt, dialog) and two-faces-icons.css. */
 
+:root { --ruby: #8e2f2a; } /* Uprising colour: the card and the locations it is fought at */
 body { font-size: 15px; }
 .mini-label { font-size: 12px; }
 .status { font-size: 16px; }
@@ -27,6 +28,11 @@ body { padding-bottom: 220px; }
 .sp-row:nth-child(odd) { background: rgba(255, 255, 255, 0.03); }
 .sp-row b { width: 28px; margin-right: 6px; color: #cfd8dd; font-size: 17px; }
 .tok { width: 20px; height: 20px; border-width: 2px; }
+.spire-wrap { width: 170px; }
+.spire-title { margin: 0; color: var(--gold); font-family: var(--font-display); font-size: 24px; letter-spacing: 0.14em; text-align: center; text-transform: uppercase; }
+.spire-help { margin: 2px 0 8px; color: var(--muted); font-size: 12px; line-height: 1.35; text-align: center; }
+.spire-end { display: flex; gap: 8px; align-items: center; margin: 6px 0; color: #cfd8dd; font-size: 12px; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; }
+.spire-end .tok { width: 12px; height: 12px; background: #cfd8dd; }
 
 .uprising { margin-top: 6px; color: var(--text); font-size: 15px; }
 
@@ -68,7 +74,7 @@ body { padding-bottom: 220px; }
 #players { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
 /* Player panel: thick border and header band in the player's colour, like the city locations. */
 .player { margin-bottom: 0; padding: 0; border: 4px solid var(--pc); border-radius: 10px; }
-.player.active { box-shadow: 0 0 0 3px var(--gold), 0 0 22px rgba(233, 196, 119, 0.45); }
+.player.active { box-shadow: 0 0 0 3px var(--gold), 0 0 22px rgba(233, 196, 119, 0.45); animation: breathe-gold 1.8s ease-in-out infinite; }
 .player > h3 { align-items: baseline; border-radius: 5px 5px 0 0; padding: 6px 12px; background: var(--pc); color: #15191c; font-size: 18px; }
 .player > h3 small { color: #15191c; font-size: 13px; font-weight: 700; }
 .player-body { padding: 4px 12px 12px; }
@@ -91,12 +97,22 @@ body { padding-bottom: 220px; }
 
 /* ---------- city ---------- */
 
-#map { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; margin-bottom: 18px; }
+#map { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 22px; } /* wraps on small screens */
 /* Lower city = teal, upper city = brass, Cable Lift = both. Thick border + coloured header band. */
 .city-loc { --zone: var(--verdigris); overflow: hidden; border: 4px solid var(--zone); border-radius: 10px; background: var(--surface); }
 .city-loc.high { --zone: var(--brass); }
 .city-loc.low.high { border-color: var(--verdigris) var(--brass) var(--brass) var(--verdigris); }
-.city-loc.fight { box-shadow: 0 0 0 4px #d9731f, 0 0 18px rgba(217, 115, 31, 0.6); }
+.city-loc.fight { box-shadow: 0 0 0 4px var(--ruby), 0 0 18px rgba(190, 50, 42, 0.8); animation: breathe-ruby 1.8s ease-in-out infinite; }
+/* Breathing glow (active player, Uprising locations): the ring stays, the halo swells and fades. */
+@keyframes breathe-gold {
+  0%, 100% { box-shadow: 0 0 0 3px var(--gold), 0 0 8px rgba(233, 196, 119, 0.25); }
+  50% { box-shadow: 0 0 0 3px var(--gold), 0 0 28px rgba(233, 196, 119, 0.7); }
+}
+@keyframes breathe-ruby {
+  0%, 100% { box-shadow: 0 0 0 4px var(--ruby), 0 0 6px rgba(190, 50, 42, 0.4); }
+  50% { box-shadow: 0 0 0 4px var(--ruby), 0 0 26px rgba(210, 55, 45, 0.95); }
+}
+@media (prefers-reduced-motion: reduce) { .player.active, .city-loc.fight { animation: none; } }
 .loc-name { padding: 6px 10px; background: var(--zone); color: #fff; font-family: var(--font-display); font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
 .city-loc.low.high .loc-name { background: linear-gradient(90deg, var(--verdigris), var(--brass)); }
 .loc-body { padding: 6px 10px 8px; }
@@ -155,15 +171,15 @@ body { padding-bottom: 220px; }
 
 #uprising-card { margin-bottom: 16px; }
 .uprising-slot { display: flex; gap: 12px; align-items: flex-end; }
-.ucard { width: 170px; border: 4px solid #8e2f2a; border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45); overflow: hidden; }
-.ucard-head { padding: 6px 8px; background: #8e2f2a; color: #fff; text-align: center; }
+.ucard { width: 170px; border: 4px solid var(--ruby); border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45); overflow: hidden; }
+.ucard-head { padding: 6px 8px; background: var(--ruby); color: #fff; text-align: center; }
 .ucard-head span { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
 .ucard-head b { display: block; font-family: var(--font-display); font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; }
 .ucard-locs { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 6px 6px 0; }
 .uloc { padding: 2px 6px; border-radius: 4px; background: var(--verdigris); color: #fff; font-size: 11px; font-weight: 700; }
 .uloc.high { background: var(--brass); }
 .uloc.low.high { background: linear-gradient(90deg, var(--verdigris), var(--brass)); }
-.ucard-art { display: block; width: 64px; height: 48px; margin: 4px auto 2px; color: #8e2f2a; }
+.ucard-art { display: block; width: 64px; height: 48px; margin: 4px auto 2px; color: var(--ruby); }
 .ucard-reward { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-top: 1px dashed rgba(20, 24, 28, 0.25); font-size: 14px; }
 .ucard-reward .rank { flex: none; width: 30px; color: var(--ink-soft); font-size: 11px; font-weight: 800; text-transform: uppercase; }
 .modal-uprising { display: flex; gap: 18px; align-items: flex-start; }
@@ -186,3 +202,6 @@ dialog { max-width: 860px; }
 .modal-box menu { align-items: center; gap: 12px; }
 .auto-note { color: var(--muted); font-size: 12px; }
 .ai-why { color: var(--muted); font-style: italic; }
+
+/* Small screens: the Spire stacks above the board (the city grid wraps by itself). */
+@media (max-width: 700px) { .tf-left { flex-direction: column; } .spire-wrap, .spire-track { width: 100%; } }

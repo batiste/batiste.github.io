@@ -73,7 +73,7 @@ const TF_CARDS = [
   { id: "spymaster", name: "Spymaster", char: "cit", cost: { S: 1 }, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ scheme: true }] },
   { id: "quartermaster", name: "Quartermaster", char: "cit", cost: { A: 1 }, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
   { id: "benefactor", name: "Benefactor", char: "cit", cost: { P: 1 }, str: 2, copies: 2, up: [{ spend: { any: 2 }, get: { rise: "out", n: 1 } }], down: [{ gain: "S", n: 1 }] },
-  { id: "orator", name: "Orator", char: "cit", cost: { S: 2, P: 1 }, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }] },
+  { id: "orator", name: "Orator", char: "cit", cost: { S: 2, P: 1 }, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }, { choice: 1 }] },
   { id: "censor", name: "Censor", char: "cit", cost: { S: 1 }, str: "x2", copies: 3, up: [{ move: 2 }], down: [{ scheme: true }] },
   { id: "patron", name: "Patron", char: "cit", cost: { S: 1, P: 1 }, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 2 } }], down: [{ spend: { S: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "conspirator", name: "Conspirator", char: "cit", cost: {}, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ spend: { T: 1 }, get: { scheme: true } }] },
