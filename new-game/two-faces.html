@@ -7,6 +7,13 @@
     <link rel="stylesheet" href="common.css" />
     <link rel="stylesheet" href="two-faces-icons.css" />
     <link rel="stylesheet" href="rules.css" />
+    <style>
+      /* "Play online": a gold button that stays in the corner while reading. */
+      .play-cta { position: fixed; right: 24px; bottom: 24px; z-index: 10; display: inline-flex; gap: 10px; align-items: center; padding: 14px 24px; border-radius: 999px; background: var(--gold); color: #1b2126; font-family: var(--font-display); font-size: 18px; font-weight: 600; letter-spacing: 0.12em; text-decoration: none; text-transform: uppercase; box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(233, 196, 119, 0.25); transition: transform 0.15s, box-shadow 0.15s; }
+      .play-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(0, 0, 0, 0.55), 0 0 0 5px rgba(233, 196, 119, 0.35); }
+      .play-cta:focus-visible { outline: 3px solid #f3ede0; outline-offset: 3px; }
+      @media (max-width: 600px) { .play-cta { right: 16px; bottom: 16px; left: 16px; justify-content: center; } }
+    </style>
   </head>
   <body>
     <div class="wrap">
@@ -15,9 +22,6 @@
           <h1>Synodos</h1>
           <p class="tagline">One city on the edge of revolution, two characters per player, 2–4 players.</p>
         </div>
-        <nav aria-label="Game pages">
-          <a class="nav-link" href="two-faces-play.html">Play online</a>
-        </nav>
       </header>
 
       <p class="callout">
@@ -152,6 +156,8 @@
         </table>
       </section>
     </div>
+
+    <a class="play-cta" href="two-faces-play.html">▶ Play online</a>
 
     <script src="two-faces-data.js"></script>
     <script>
