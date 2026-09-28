@@ -7,6 +7,7 @@ const TF_CONFIG = {
   sideCap: 3,
   freeHeat: 2, // Street run: heat of a free card (it gives no goods) // strips per side; a new one beyond this discards the oldest
   troops: 12, // troops per player
+  goodsCap: 6, // at most this many of each good; any extra is lost
   tieBreak: ["A", "T", "S", "P"], // final tie: most Arms, then Stims, Secrets, Papers
   start: { P: 1, S: 1, A: 0, T: 0 }, // starting goods
 };
@@ -41,12 +42,12 @@ const SIDES = {
 const CHARACTERS = [
   { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
-  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "high", n: 3 } }], down: [{ gain: "S", n: 1 }], cit: 12 },
+  { id: "demagogue", name: "Demagogue", char: "cit", up: [{ spend: { S: 2 }, get: { troop: "low", n: 3 } }], down: [{ gain: "S", n: 1 }] },
   { id: "chancellor", name: "Chancellor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { scheme: true }], goods: { P: -1 } },
   { id: "whip", name: "Whip", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { move: 2 }], goods: { S: 1 } },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
   { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], goods: { P: -1 } },
-  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], goods: { T: 1 }, perDraw: true },
+  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], perDraw: true },
   { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "courier", name: "Courier", char: "out", up: [{ run: 6 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }], goods: { P: 1 } },
 ];

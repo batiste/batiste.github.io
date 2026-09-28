@@ -168,6 +168,7 @@ function valueBot(profile) {
     return new Set(own.flatMap((e) => (e.spend ? Object.keys(e.spend) : [])));
   };
   const goodValue = (g, stock, p) => {
+    if (stock >= TF_CONFIG.goodsCap) return 0; // over the cap: lost
     if (w.usage && p != null) return w.goods * marginal(uses(p)[g], stock);
     return ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1) * late(g, p);
   };
@@ -380,7 +381,7 @@ function valueBot(profile) {
           return idx((id) => (CARDS[id].str === "x2" ? base : CARDS[id].str));
         }
         case "choice":
-          return buttons.findIndex((b) => b.value === bestChoice(p, x.goods));
+          return idx((g) => goodValue(g, x.goods[g], p)); // the most useful good among those offered (full ones are not)
         case "arms":
           return Math.round(w.arms * (buttons.length - 1));
         default:

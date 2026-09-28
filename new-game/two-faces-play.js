@@ -93,6 +93,14 @@ function checkMet(p) {
   sound("fanfare");
 }
 
+// Goods: at most TF_CONFIG.goodsCap of each; any extra is lost.
+function gainGood(p, g, n) {
+  const x = P(p);
+  const got = Math.max(0, Math.min(n, TF_CONFIG.goodsCap - x.goods[g]));
+  x.goods[g] += got;
+  if (got < n) log(`${nm(p)} holds ${TF_CONFIG.goodsCap} ${GOODS[g].name}: ${n - got} lost.`);
+}
+
 // Cost: pay each good; each good you lack sinks your Citizen 1 (never below 1).
 const missing = (p, c) => Object.entries(c.cost).reduce((t, [g, k]) => t + Math.max(0, k - P(p).goods[g]), 0);
 const canPay = (p, c) => P(p).cit - missing(p, c) >= 1;
@@ -118,6 +126,8 @@ const byRank = (a, b) => {
 // Stock shows a count, not repeated chips (a string n keeps the number).
 const goodsLabel = (x) => Object.keys(GOODS).map((g) => icon(g, `${x.goods[g]}`)).join("");
 
+// Goods of your choice: only those below the cap (all of them if every good is full).
+const roomFor = (p) => (P(p).goods && Object.values(P(p).goods).every((n) => n >= TF_CONFIG.goodsCap) ? () => true : (g) => P(p).goods[g] < TF_CONFIG.goodsCap);
 async function pickGood(p, msg, filter, info) {
   const opts = Object.keys(GOODS)
     .filter(filter)
@@ -220,7 +230,7 @@ async function run(p, limit) {
     const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
     const show = (drawn, note) => ({ cards: haul, drawn, note: note || `${deckName()} · heat ${heat}/${limit}` });
     S.ctx[S.ctx.length - 1] = `Street run · ${deckName()}`;
-    log(`${nm(p)} runs the street through the ${deckName()}, limit ${icon("heat", limit)}.`);
+    log(`${nm(p)} runs the street ${k ? `through the ${deckName()}` : "(deck chosen before each draw)"}, limit ${icon("heat", limit)}.`);
     let redraw = false; // after a Stim: draw again, no stopping
     for (;;) {
       const info = { kind: "draw", heat, limit, deck: (k ? S.decks[k] : [...S.decks.cit, ...S.decks.out]).map(view), haul: haul.map(view), show: show() };
@@ -259,8 +269,8 @@ async function run(p, limit) {
         return;
       }
     }
-    haul.forEach((id) => Object.entries(CARDS[id].cost).forEach(([g, k]) => (x.goods[g] += k)));
     log(`${nm(p)} stops at ${icon("heat", `${heat}/${limit}`)} and takes ${loot()}.`);
+    haul.forEach((id) => Object.entries(CARDS[id].cost).forEach(([g, k]) => gainGood(p, g, k)));
     haul.forEach(discard);
   } finally {
     S.ctx.pop();
@@ -286,8 +296,8 @@ async function scheme(p) {
 async function effect(p, e, ctx) {
   const x = P(p);
   if (e.gain) {
-    x.goods[e.gain] += e.n;
-    return log(`${nm(p)}: ${fxText(e)}.`);
+    log(`${nm(p)}: ${fxText(e)}.`);
+    return gainGood(p, e.gain, e.n);
   }
   if (e.spend) return spend(p, e);
   if (e.rise) return rise(p, e.rise, e.n);
@@ -301,9 +311,9 @@ async function effect(p, e, ctx) {
   if (e.run) return run(p, e.run + ctx.limit);
   if (e.choice) {
     for (let i = 0; i < e.choice; i++) {
-      const g = await pickGood(p, `Take a good of your choice (${i + 1}/${e.choice}).`, () => true, { kind: "choice" });
-      x.goods[g]++;
+      const g = await pickGood(p, `Take a good of your choice (${i + 1}/${e.choice}).`, roomFor(p), { kind: "choice" });
       log(`${nm(p)}: +${icon(g, 1)}.`);
+      gainGood(p, g, 1);
     }
   }
 }
@@ -392,9 +402,9 @@ function passTurn() {
   const p = current();
   if (!canAct() || canRecruit(p)) return;
   guarded(async () => {
-    const g = await pickGood(p, "No card you can afford: take 1 good of your choice.", () => true, { kind: "choice" });
-    P(p).goods[g]++;
+    const g = await pickGood(p, "No card you can afford: take 1 good of your choice.", roomFor(p), { kind: "choice" });
     log(`${nm(p)} cannot recruit: takes +${icon(g, 1)}.`);
+    gainGood(p, g, 1);
     await endTurn();
   });
 }
