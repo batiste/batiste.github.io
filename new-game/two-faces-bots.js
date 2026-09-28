@@ -34,7 +34,7 @@ const PROFILES = {
   frugal: { rise: 3.5, troop: 0.8, fight: 0.6, scheme: 0.5, tempo: 1 },
   warlord: { troop: 1.5, fight: 2.5, scheme: 1.6, ctrl: 0.3 },
   builder: { engine: 0.6, goods: 1.3, limit: 0.5 },
-  smart: { tempo: 1, contest: 1.5, deny: 0.5 },
+  smart: { tempo: 1, contest: 1.5, deny: 0.5, scheme: 2 },
   "smart-old": { tempo: 1, contest: 1.5, deny: 0.5, plan: 0 }, // smart before fight planning, for comparison
   daring: { tempo: 1, contest: 1.5, deny: 0.5, riskBehind: 0.3 }, // smart, but gambles on street runs when behind
 };

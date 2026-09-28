@@ -67,7 +67,7 @@ function charSetupText(c) {
 // · {scheme} · {run} (base only) · {choice}.
 // Card: character (= its deck), cost (goods; each one you lack sinks your Citizen 1), heat (optional, see heatOf), strength as a Scheme (+N, or "x2": doubles your total), top strip (up), bottom strip (down).
 const TF_CARDS = [
-  { id: "clerk", name: "Clerk", char: "cit", cost: { P: 1 }, str: 2, copies: 4, up: [{ gain: "S", n: 1 }], down: [{ gain: "P", n: 1 }] },
+  { id: "clerk", name: "Clerk", char: "cit", cost: { P: 1 }, str: 2, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ gain: "P", n: 1 }] },
   { id: "magistrate", name: "Magistrate", char: "cit", cost: { P: 1 }, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }] },
   { id: "physician", name: "Physician", char: "cit", cost: {}, heat: 3, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "T", n: 2 }] },
   { id: "spymaster", name: "Spymaster", char: "cit", cost: { S: 1 }, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ scheme: true }] },
@@ -76,14 +76,15 @@ const TF_CARDS = [
   { id: "orator", name: "Orator", char: "cit", cost: { S: 2, P: 1 }, str: 2, copies: 3, up: [{ troop: "high", n: 1 }], down: [{ gain: "S", n: 2 }] },
   { id: "censor", name: "Censor", char: "cit", cost: { S: 1 }, str: "x2", copies: 3, up: [{ move: 2 }], down: [{ scheme: true }] },
   { id: "patron", name: "Patron", char: "cit", cost: { S: 1, P: 1 }, str: 2, copies: 3, up: [{ spend: { S: 1 }, get: { troop: "high", n: 2 } }], down: [{ spend: { S: 1 }, get: { troop: "low", n: 2 } }] },
+  { id: "conspirator", name: "Conspirator", char: "cit", cost: {}, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ spend: { T: 1 }, get: { scheme: true } }] },
 
-  { id: "lookout", name: "Lookout", char: "out", cost: {}, heat: 3, str: 2, copies: 4, up: [{ limit: 2 }], down: [{ gain: "P", n: 1 }] },
+  { id: "lookout", name: "Lookout", char: "out", cost: {}, heat: 3, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ gain: "P", n: 1 }] },
   { id: "runner", name: "Runner", char: "out", cost: {}, str: 2, copies: 3, up: [{ gain: "T", n: 1 }], down: [{ gain: "P", n: 1 }] },
   { id: "forger", name: "Forger", char: "out", cost: { P: 1 }, str: 2, copies: 3, up: [{ limit: 2 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }] },
   { id: "fence", name: "Fence", char: "out", cost: { T: 1 }, str: 2, copies: 3, up: [{ limit: 3 }], down: [{ spend: { any: 2 }, get: { troop: "low", n: 1 } }] },
   { id: "gunrunner", name: "Gunrunner", char: "out", cost: { T: 1 }, str: 2, copies: 3, up: [{ gain: "A", n: 1 }], down: [{ gain: "A", n: 2 }] },
   { id: "blackmailer", name: "Blackmailer", char: "out", cost: { S: 1 }, str: 3, copies: 3, up: [{ gain: "S", n: 1 }], down: [{ move: 2 }] },
-  { id: "agitator", name: "Agitator", char: "out", cost: { A: 1 }, str: "x2", copies: 3, up: [{ limit: 2 }], down: [{ scheme: true }] },
+  { id: "agitator", name: "Agitator", char: "out", cost: { A: 1 }, str: "x2", copies: 3, up: [{ limit: 2 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "fixer", name: "Fixer", char: "out", cost: { A: 1 }, str: 2, copies: 2, up: [{ gain: "T", n: 1 }], down: [{ spend: { any: 2 }, get: { rise: "out", n: 1 } }] },
   { id: "smuggler", name: "Smuggler", char: "out", cost: { T: 1, P: 1 }, str: 2, copies: 3, up: [{ limit: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }] },
 ];
