@@ -25,7 +25,8 @@ const RANDOM = {
 // future (a tucked strip fires again on later activations of its side).
 const GV = { P: 0.6, S: 0.6, A: 0.5, T: 0.3 };
 // plan: fight planning for the coming Uprising and no goods hoarding (0 = the older, naive bot).
-const BASE_W = { needs: 1, plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
+// horizon: goods and spare troops lose value as the game runs out (0 = valued the same until the end).
+const BASE_W = { horizon: 1, needs: 1, plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
 const PROFILES = {
   greedy: {},
   myopic: { future: 0 }, // greedy without future activations: the old baseline
@@ -81,6 +82,19 @@ const fighting = (p) => upcoming().at.some((id) => S.troops[id][p] > 0);
 function valueBot(profile) {
   const w = { ...BASE_W, ...PROFILES[profile] };
   const schemeValue = (p) => w.scheme * (fighting(p) ? 1.8 : 0.5);
+  // Turns this player has left after this one: the table's smallest Citizen–Outcast gap closes about 2.5 per round.
+  const turnsLeft = () => {
+    const gap = Math.min(...S.players.map((x) => x.cit - x.out));
+    const rounds = S.met ? 1 : Math.min(S.uprisings.length - S.uprising, Math.max(1, gap / 2.5));
+    return Math.max(0, 2 * rounds - Math.floor(S.step / n()) - 1);
+  };
+  // Horizon: goods and spare troops only matter while there are turns left to use them (Arms: also in the coming fight).
+  // Score is all that counts at the end, so late in the game rises dominate.
+  const late = (g, p) => {
+    if (!w.horizon) return 1;
+    const f = Math.min(1, 0.1 + turnsLeft() / 4);
+    return g === "A" && p != null && fighting(p) ? Math.max(f, 0.8) : f;
+  };
   // Tempo: closing your own Citizen–Outcast gap ends the game sooner: good when ahead, bad when behind.
   const tempo = (p, steps) => w.tempo * steps * Math.sign(lead(p) || -1) * 0.5;
   // Score = Citizen + Outcast, so every effective step up is worth the same.
@@ -89,7 +103,7 @@ function valueBot(profile) {
   const meetCost = (p, gap) => (gap <= 0 && !S.met && lead(p) <= 0 ? MEET_PENALTY : 0);
   const riseValue = (p, k, n) => {
     const x = P(p);
-    const eff = k === "out" ? Math.min(n, x.cit - x.out) : Math.min(n, TF_CONFIG.spire - x.cit);
+    const eff = Math.min(n, TF_CONFIG.spire - x[k]);
     const meet = k === "out" && eff > 0 ? meetCost(p, x.cit - x.out - eff) : 0;
     return eff * w.rise + (k === "out" ? tempo(p, eff) : -tempo(p, eff)) - meet;
   };
@@ -115,7 +129,7 @@ function valueBot(profile) {
     const t = S.troops[id];
     const lead = t[p] - Math.max(...t.filter((_, q) => q !== p));
     const ctrl = w.ctrl * fxValue(p, LOC[id].control, { goods: { ...P(p).goods }, limit: 0 });
-    let v = 0.3 * w.troop;
+    let v = 0.3 * w.troop * late();
     if (upcoming().at.includes(id)) v += w.plan ? fightValue(p) : w.fight;
     if (lead === 1) v += ctrl; // moving it loses control
     if (lead === 0) v += 0.5 * ctrl; // moving it hands control to a rival
@@ -123,7 +137,7 @@ function valueBot(profile) {
   }
 
   function locValue(p, id) {
-    let v = w.troop;
+    let v = w.troop * late();
     if (upcoming().at.includes(id)) v += fightValue(p);
     const t = S.troops[id];
     const best = Math.max(...t.filter((_, q) => q !== p));
@@ -141,7 +155,7 @@ function valueBot(profile) {
     const own = CHARS.flatMap((k) => [...charOf(x, k).up, ...charOf(x, k).down]);
     return new Set(own.flatMap((e) => (e.spend ? Object.keys(e.spend) : [])));
   };
-  const goodValue = (g, stock, p) => ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1);
+  const goodValue = (g, stock, p) => ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1) * late(g, p);
   function fxValue(p, list, sim) {
     let v = 0;
     for (const e of list) {
@@ -174,7 +188,7 @@ function valueBot(profile) {
         const haul = Math.max(...CHARS.map((k) => Object.entries(RUN_BY_DECK[k][L]).reduce((t, [g, n]) => t + n * goodValue(g, sim.goods[g], p), 0)));
         v += haul / (1 + Math.max(0, stock - 6) / 6);
       }
-      else if (e.choice) v += w.goods * 0.6 * e.choice;
+      else if (e.choice) v += w.goods * 0.6 * e.choice * late();
     }
     return v;
   }
@@ -187,12 +201,6 @@ function valueBot(profile) {
     return goods + w.cost * w.rise * steps - tempo(p, steps) + (steps ? meetCost(p, x.cit - steps - x.out) : 0);
   }
 
-  // Turns this player has left: the table's smallest Citizen–Outcast gap closes about 2.5 per round.
-  const turnsLeft = () => {
-    const gap = Math.min(...S.players.map((x) => x.cit - x.out));
-    const rounds = Math.min(S.uprisings.length - S.uprising, Math.max(1, gap / 2.5));
-    return Math.max(0, 2 * rounds - Math.floor(S.step / n()) - 1);
-  };
   // Future activations of a strip: turns left × share of turns that activate its side (sides with more strips get more).
   // Spend strips are judged with a small stock of goods, not today's (often empty) one.
   function futureValue(p, k, side, strip, dropped) {

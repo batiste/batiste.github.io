@@ -75,11 +75,10 @@ const discard = (id) => S.discards[CARDS[id].char].push(id);
 
 /* ---------- Spire ---------- */
 
-// Outcast never above Citizen; Citizen never above the top.
+// Neither pawn goes above the top.
 function rise(p, k, amount) {
   const x = P(p);
-  const cap = k === "cit" ? TF_CONFIG.spire : x.cit;
-  const to = Math.min(cap, x[k] + amount);
+  const to = Math.min(TF_CONFIG.spire, x[k] + amount);
   if (to === x[k]) return log(`${nm(p)}'s ${SIDES[k].name} cannot rise.`);
   log(`${nm(p)}'s ${SIDES[k].name} rises ${to - x[k]} to ${to}.`);
   sound("rise", k);
@@ -94,9 +93,9 @@ function checkMet(p) {
   sound("fanfare");
 }
 
-// Cost: pay each good; each good you lack sinks your Citizen 1 (never below your Outcast).
+// Cost: pay each good; each good you lack sinks your Citizen 1 (never below 1).
 const missing = (p, c) => Object.entries(c.cost).reduce((t, [g, k]) => t + Math.max(0, k - P(p).goods[g]), 0);
-const canPay = (p, c) => P(p).cit - missing(p, c) >= P(p).out;
+const canPay = (p, c) => P(p).cit - missing(p, c) >= 1;
 function payCost(p, c) {
   const x = P(p);
   const steps = missing(p, c);

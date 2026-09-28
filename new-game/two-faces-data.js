@@ -1,7 +1,7 @@
 // Aeropolis: Two Faces — data shared by two-faces.html (rules) and two-faces-play.html (hot-seat game).
 
 const TF_CONFIG = {
-  spire: 14, // Spire heights 1 (base) to 14 (top). Citizen starts on 14, Outcast on 1.
+  spire: 12, // Spire heights 1 (base) to 12 (top). Citizen starts on 12, Outcast on 1.
   row: 2, // cards on offer from each deck (Citizen, Outcast)
   rounds: 5, // Uprisings drawn: the game ends after the last one (or when characters meet)
   sideCap: 3,
