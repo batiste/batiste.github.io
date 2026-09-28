@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Synodos — Draft Rules</title>
+    <title>Synodos — Rules</title>
     <link rel="stylesheet" href="common.css" />
     <link rel="stylesheet" href="two-faces-icons.css" />
     <link rel="stylesheet" href="rules.css" />
@@ -16,7 +16,7 @@
           <p class="tagline">One city on the edge of revolution, two characters per player, 2–4 players.</p>
         </div>
         <nav aria-label="Game pages">
-          <a class="nav-link" href="two-faces-play.html">Playtest</a>
+          <a class="nav-link" href="two-faces-play.html">Play online</a>
         </nav>
       </header>
 
@@ -62,31 +62,13 @@
           Each character has 2 sides: cards tucked above it and cards tucked below it. A card tucked above shows only its top strip;
           below, only its bottom strip. A side holds <span data-cfg="sideCap"></span> strips: tucking another discards its oldest.
         </p>
-        <p><strong>Activate:</strong> first take every good the side produces (goods not behind an arrow, on strips and character). Then resolve the other effects: strips from newest to oldest, then the character's own strip. "→" effects are optional: pay what is left of the arrow to get what is right of it.</p>
-      </section>
-
-      <section>
-        <h2>Characters</h2>
-        <p>
-          A character's own strips are the base of its sides: they resolve last on every activation (after the goods).
-          The Councillor and the Hustler are the plain ones; the others trade something for a specialty.
-        </p>
-        <table class="revolution-table">
-          <thead><tr><th>Character</th><th>Is a</th><th>▲ Top strip</th><th>▼ Bottom strip</th><th>Setup</th></tr></thead>
-          <tbody id="characters"></tbody>
-        </table>
-      </section>
-
-      <section>
-        <h2>Icons</h2>
-        <p>Goods are public. Every good also pays card costs.</p>
-        <ul class="steps" id="glossary"></ul>
+        <p><strong>Activate:</strong> first gain every plain good shown on the side, on its strips and on the character. Then resolve the other effects: strips from newest to oldest, then the character's own strip. An effect with "→" is optional: pay the left part to get the right part.</p>
       </section>
 
       <section>
         <h2>Street Run</h2>
         <p>
-          The Outcast's own strip above it (Street) runs the street. Your <strong>heat limit</strong> is the number on that strip, plus every 🔥 strip
+          The Outcast's top strip (Street) runs the street. Your <strong>heat limit</strong> is the number on that strip, plus every 🔥 strip
           resolved before it in the same activation. Choose the Citizen or the Outcast deck, then draw from it one card at a time.
           Each card gives the goods of its cost and adds its printed <strong>heat</strong>; free cards give nothing and run hot.
         </p>
@@ -106,7 +88,7 @@
           With an empty supply, a troop effect does nothing.
         </p>
         <p><strong>Control:</strong> after each Uprising, the player with the most troops at a location takes its reward. Tie: nobody. At the Forum and the Cable Lift, the controller then loses 1 troop there (upkeep).</p>
-        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 free troop to the lower city, from their supply. It keeps the last player in the fight.</p>
+        <p><strong>Catch-up:</strong> then the player with the lowest score (all of them, if tied) sends 1 free troop to the lower city, from their supply.</p>
         <table class="revolution-table">
           <thead><tr><th>Location</th><th>City</th><th>Control</th><th>Upkeep</th></tr></thead>
           <tbody id="locations"></tbody>
@@ -119,7 +101,7 @@
         <ol class="steps">
           <li>Each Uprising is fought at its location(s). Only players with troops there take part.</li>
           <li>Each fighter secretly commits any number of their Arms. Then all fighters reveal them, together with <strong>all</strong> their Schemes (not optional).</li>
-          <li><strong>Strength</strong> = (your troops there + Arms committed), doubled for each ×2 Scheme, + your +N Schemes. Strongest gets the first reward, next gets the second. Tie: most leftover goods, as at the end of the game (Arms after committing, then Stims, Secrets, Papers), then turn order.</li>
+          <li><strong>Strength</strong> = (your troops there + Arms committed), doubled for each ×2 Scheme, + your +N Schemes. Strongest gets the first reward, next gets the second. Tie: the end-of-game tie-break (Arms left after committing, then Stims, Secrets, Papers), then turn order.</li>
           <li>Every fighter, winner included, loses 1 troop at each of the Uprising's locations where they have one (back to supply). Fighters discard their Schemes and committed Arms; the others keep their Schemes.</li>
         </ol>
         <table class="revolution-table">
@@ -145,48 +127,29 @@
       </section>
 
       <section>
+        <h2>Characters</h2>
+        <p>
+          A character's own strips are the base of both its sides. The Councillor and the Hustler are the plain ones;
+          the others trade something for a specialty.
+        </p>
+        <table class="revolution-table">
+          <thead><tr><th>Character</th><th>Is a</th><th>▲ Top strip</th><th>▼ Bottom strip</th><th>Setup</th></tr></thead>
+          <tbody id="characters"></tbody>
+        </table>
+      </section>
+
+      <section>
+        <h2>Icons</h2>
+        <p>Goods are public. Every good also pays card costs.</p>
+        <ul class="steps" id="glossary"></ul>
+      </section>
+
+      <section>
         <h2>Cards</h2>
         <table class="revolution-table">
           <thead><tr><th>Card</th><th>Deck</th><th>Cost</th><th>Heat</th><th>Scheme</th><th>Copies</th><th>Top strip</th><th>Bottom strip</th></tr></thead>
           <tbody id="cards"></tbody>
         </table>
-      </section>
-
-      <section>
-        <h2>Balance Notes</h2>
-        <p>Tuned with <code>two-faces-sim.js</code>: bots playing thousands of games on these exact rules (3 players). Bots show trends, not truths.</p>
-        <ul class="steps">
-          <li><strong>Costs in goods</strong> (was: Sink Citizen): paying in Citizen points meant every card lost score, so the cheapest player won and building did not pay. Now building pays: the best bots plan ahead, 80% of players use 3+ sides, and every card side wins 25–39% when taken (fair: 33%).</li>
-          <li><strong>Score = Citizen + Outcast</strong> (was: the lower pawn).</li>
-          <li><strong>Every fighter loses troops</strong>, the winner too: fewer blowouts.</li>
-          <li><strong>Catch-up troop</strong>: fewer runaway leaders, more lead changes.</li>
-          <li><strong>Council</strong> base +1 Paper, <strong>Patron ▼</strong> 2 troops, <strong>Censor</strong> cheaper: weak sides; <strong>Orator</strong> costs more: too strong; then its ▼ +1 good of your choice (won 26% when taken, now 30%). Card sides: <code>node two-faces-sim.js cards</code>.</li>
-          <li><strong>Scheme as a turn action removed</strong> (strips and Council Hall keep it): players and bots rarely chose it, and those who did won less. Early in the design it slowed the race; with goods costs it no longer matters.</li>
-          <li><strong>Troop supply 12</strong> (was 10): in a playtest, troops ran out. Leftover goods break final ties; converting them into points (5 goods = +1 Outcast) was tried and dropped: it widened gaps (2 players: blowouts 36% → 44%).</li>
-          <li><strong>×2 Schemes double troops + Arms only</strong> (was: the whole total, +N Schemes included): slightly tighter games; ×2 cards stay fair (29–35%). Not stacking ×2 was worse.</li>
-          <li><strong>Characters</strong> tuned with <code>node two-faces-sim.js characters</code> (random distinct characters, smart bots): all within about 2 points of fair at 2, 3 and 4 players; pairs within 28–39% at 3 players. First drafts: Gunsmith (+2 Arms) and Demagogue (Forum troop) won 43–45%, Chancellor 25%. Firebrand needed three nerfs (start at 1, heat 3, no Paper): "Paper → 2 troops" is strong. Whip and Courier add movement. The Courier trades 1 heat against the Hustler for 1 free move (2 moves were too much to think about).</li>
-          <li>Tried and dropped: heat limit 4 or more Patrols, control without Spire steps, seat bonuses.</li>
-          <li><strong>5 rounds, Spire 12</strong> (was 14): at 14, a meeting ended the game before round 5 in only 9% of games (3 players); at 12, 30% (2 players: 57%, 4 players: 16%). Other metrics unchanged. The player who meets is usually the leader: a bonus for meeting widened gaps.</li>
-          <li><strong>Street run through the Citizen or Outcast deck</strong> (was: a separate contraband deck): same balance, one deck less; free cards' heat makes goods scarcer. Base limit 6, hot free cards and +2/+3 limit strips made the Street worth taking.</li>
-          <li><strong>Benefactor, Fixer</strong> (2 each): 2 goods → Rise Outcast 1. A sink for stockpiled goods. 3 → 1 was weaker; 4 → 2 made the card fair but widened gaps (leader wins more, fewer close games).</li>
-          <li>Tried and dropped: leader −2 Uprising strength (works, but needs checking who leads at the table).</li>
-          <li><strong>No pawn order</strong> (was: the Outcast never above the Citizen, no cost sinking the Citizen below the Outcast): same balance, two rules less.</li>
-          <li><strong>Schemes are the Council's</strong>: Agitator ▼ was a Scheme, now 1 Stim → 2 troops; new Conspirator (▼ 1 Stim → Scheme); Clerk and Lookout 4 → 3 copies. Council 18% → 20% of activations; Deal less mandatory (skipping it: −7 → −2 points). A 2-Scheme strip was not needed. Lanes tested by banning one from a smart bot.</li>
-          <li><strong>Forum and Cable Lift upkeep</strong> (−1 troop for the controller): holding them uncontested wears down; 2 players: fewer blowouts, more comebacks.</li>
-          <li>Known issues: the leader after round 2 still wins about 45% (fair: 33%; 2 players: about 55% vs 50%); street runs rarely bust; Outcast troop strips (Fence ▼, Blackmailer ▼) are weak; a Citizen rise at the top is lost.</li>
-        </ul>
-      </section>
-
-      <section>
-        <h2>Playtest Questions</h2>
-        <ul class="steps">
-          <li>Ending: is triggering the meeting a good gamble, given that the others still play the round?</li>
-          <li>City: is the Council Hall (a Scheme each round) too strong when nobody contests it? Should Schemes be placed on a location?</li>
-          <li>Engine: what would make building 3 sides, or stacking one, worth it?</li>
-          <li>Street run: how to make it riskier? It rarely busts.</li>
-          <li>Rise Citizen at the top is lost: should it become an Outcast rise?</li>
-          <li>Characters: are they balanced, and do they play differently? Which pairs are too strong?</li>
-        </ul>
       </section>
     </div>
 

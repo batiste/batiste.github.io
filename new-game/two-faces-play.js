@@ -940,11 +940,15 @@ function renderSetup() {
 }
 
 // Random characters: different for each player while the pool lasts.
+// Humans never get a per-draw character at random (choosing the deck before every draw is tiresome); AIs may.
 function assignCharacters(seats) {
   CHARS.forEach((k) => {
     const pool = shuffle(CHARACTERS.filter((c) => c.char === k && !seats.some((s) => s.chars[k] === c.id)).map((c) => c.id));
     seats.forEach((s) => {
-      if (!s.chars[k]) s.chars[k] = pool.pop() || pickFrom(CHARACTERS.filter((c) => c.char === k)).id;
+      if (s.chars[k]) return;
+      const ok = (id) => s.ai || !CHARACTER[id].perDraw;
+      const i = pool.findIndex(ok);
+      s.chars[k] = i >= 0 ? pool.splice(i, 1)[0] : pickFrom(CHARACTERS.filter((c) => c.char === k && ok(c.id))).id;
     });
   });
   return seats;
