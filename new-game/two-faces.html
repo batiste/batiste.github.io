@@ -32,6 +32,16 @@
       </p>
 
       <section>
+        <h2>Components</h2>
+        <ul class="steps">
+          <li><strong>Board:</strong> the Spire (heights 1 to <span data-cfg="spire"></span>) and the five city locations.</li>
+          <li><strong>Cards:</strong> <span id="n-cit"></span> Citizen cards, <span id="n-out"></span> Outcast cards, <span id="n-chars"></span> characters, <span id="n-upr"></span> Uprisings. Schemes are cards from the decks, kept face down.</li>
+          <li><strong>Per player</strong> (4 colours): 2 pawns (Citizen, Outcast), <span data-cfg="troops"></span> troops, <span data-cfg="goodsCap"></span> Arms (single tokens, so they can be committed in a closed fist), and 3 tokens for each of Papers, Secrets and Stims (1 on one face, 2 on the other: 0 to 6).</li>
+          <li>A first-player marker.</li>
+        </ul>
+      </section>
+
+      <section>
         <h2>Setup</h2>
         <ol class="steps">
           <li>Each player takes a Citizen and an Outcast character (deal 2 of each, keep 1 of each) and places them side by side.</li>
@@ -164,7 +174,12 @@
       const row = (cells) => `<tr>${cells.map((x) => `<td>${x}</td>`).join("")}</tr>`;
       const set = (id, v) => (document.getElementById(id).innerHTML = v);
       document.querySelectorAll("[data-cfg]").forEach((el) => (el.textContent = TF_CONFIG[el.dataset.cfg]));
-      set("start", Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n })).join(", "));
+      const deckSize = (k) => TF_CARDS.filter((c) => c.char === k).reduce((t, c) => t + c.copies, 0);
+      set("n-cit", deckSize("cit"));
+      set("n-out", deckSize("out"));
+      set("n-chars", `${CHARACTERS.length} (${CHARACTERS.filter((c) => c.char === "cit").length} Citizens, ${CHARACTERS.filter((c) => c.char === "out").length} Outcasts)`);
+      set("n-upr", TF_UPRISINGS.length);
+      set("start",Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n })).join(", "));
       set("characters", CHARACTERS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, `${SIDES[c.char].up.name}: ${fxList(c.up)}`, `${SIDES[c.char].down.name}: ${fxList(c.down)}`, charSetupText(c)])).join(""));
       set("glossary", glossaryHtml());
       set("locations", LOCATIONS.map((l) => row([`<strong>${l.name}</strong>`, [l.low && "lower", l.high && "upper"].filter(Boolean).join(" + "), fxList(l.control), l.upkeep ? `−${l.upkeep} troop` : "—"])).join(""));
