@@ -26,7 +26,8 @@ const RANDOM = {
 const GV = { P: 0.6, S: 0.6, A: 0.5, T: 0.3 };
 // plan: fight planning for the coming Uprising and no goods hoarding (0 = the older, naive bot).
 // horizon: goods and spare troops lose value as the game runs out (0 = valued the same until the end).
-const BASE_W = { horizon: 1, needs: 1, plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
+// usage: a good is worth its best use still uncovered by stock (costs, own spend strips, fights, runs); 0 = fixed GV with a stock discount.
+const BASE_W = { usage: 1, horizon: 1, needs: 1, plan: 1, riskBehind: 1, rise: 2.5, troop: 1, fight: 1.2, ctrl: 0.6, goods: 1, scheme: 1, limit: 0.2, cost: 1, arms: 1, tempo: 0, contest: 0, deny: 0, engine: 0, future: 0.6 };
 const PROFILES = {
   greedy: {},
   myopic: { future: 0 }, // greedy without future activations: the old baseline
@@ -70,6 +71,17 @@ function drawEV(heat, limit, deck, haulGoods) {
   const pb = bust.length / deck.length;
   return (1 - pb) * avg(safe.map((c) => c.n)) - pb * haulGoods;
 }
+
+// Average cost of a card, per good (weighted by copies): what a future recruit is expected to cost.
+const AVG_COST = (() => {
+  const t = { P: 0, S: 0, A: 0, T: 0 };
+  let n = 0;
+  TF_CARDS.forEach((c) => {
+    n += c.copies;
+    Object.entries(c.cost).forEach(([g, k]) => (t[g] += k * c.copies));
+  });
+  return Object.fromEntries(Object.entries(t).map(([g, k]) => [g, k / n]));
+})();
 
 const lead = (p) => score(P(p)) - Math.max(...S.players.filter((_, q) => q !== p).map(score));
 const leader = () => {
@@ -155,7 +167,58 @@ function valueBot(profile) {
     const own = CHARS.flatMap((k) => [...charOf(x, k).up, ...charOf(x, k).down]);
     return new Set(own.flatMap((e) => (e.spend ? Object.keys(e.spend) : [])));
   };
-  const goodValue = (g, stock, p) => ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1) * late(g, p);
+  const goodValue = (g, stock, p) => {
+    if (w.usage && p != null) return w.goods * marginal(uses(p)[g], stock);
+    return ((w.goods * GV[g]) / (1 + stock / 4)) * (w.plan && w.needs && p != null && needs(p).has(g) && stock < 3 ? 1.6 : 1) * late(g, p);
+  };
+  // Uses of each good over this player's remaining turns: [{ v: value of one unit, d: expected units needed }].
+  // Memoized per decision (cleared in turn / choose): the board does not change while a bot weighs its options.
+  let usesMemo = {};
+  function uses(p) {
+    if (usesMemo[p]) return usesMemo[p];
+    // Placeholder while computing: a strip's reward may itself be valued in goods (fixed values, no recursion).
+    usesMemo[p] = Object.fromEntries(Object.entries(GV).map(([g, v]) => [g, [{ v, d: 2 }]]));
+    const x = P(p);
+    const t = turnsLeft() + 1; // this turn included: goods gained now can pay for this turn's later effects
+    const u = { P: [], S: [], A: [], T: [] };
+    // Card costs: a good that covers a future cost saves a Citizen step.
+    Object.keys(u).forEach((g) => u[g].push({ v: w.cost * w.rise, d: turnsLeft() * AVG_COST[g] }));
+    // Own spend strips: expected activations of their side × goods they take; a unit is worth what the strip gives for it.
+    const total = CHARS.reduce((n, k) => n + x.sides[k].up.length + x.sides[k].down.length, 0);
+    let runs = 0;
+    for (const k of CHARS)
+      for (const side of ["up", "down"]) {
+        const acts = t * ((1 + x.sides[k][side].length) / (4 + total));
+        const list = [...x.sides[k][side].flatMap((id) => CARDS[id][side]), ...charOf(x, k)[side]];
+        for (const e of list) {
+          if (e.run) runs += acts;
+          if (!e.spend) continue;
+          const [g, n] = Object.entries(e.spend)[0];
+          const v = fxValue(p, [].concat(e.get), { goods: { P: 0, S: 0, A: 0, T: 0 }, limit: 0 }) / n;
+          if (g === "any") ["P", "S", "T"].forEach((h) => u[h].push({ v, d: (acts * n) / 3 }));
+          else u[g].push({ v, d: acts * n });
+        }
+      }
+    // Arms: +1 strength each. The coming fight if this bot is in it, then later fights.
+    const fightsLeft = Math.max(0, S.uprisings.length - S.uprising - (S.met ? 1 : 0));
+    if (fighting(p)) u.A.push({ v: w.fight, d: 3 });
+    u.A.push({ v: 0.5 * w.fight, d: 2 * Math.max(0, Math.min(fightsLeft, t / 2) - 1) });
+    // Stims: a redraw on a street run.
+    u.T.push({ v: 1, d: 0.5 * runs });
+    return (usesMemo[p] = u);
+  }
+  // Value of one more unit when holding `stock`: the best uses are covered first; beyond all needs, a tie-break crumb.
+  function marginal(list, stock) {
+    let at = 0;
+    let v = 0;
+    for (const e of [...list].sort((a, b) => b.v - a.v)) {
+      const overlap = Math.max(0, Math.min(stock + 1, at + e.d) - Math.max(stock, at));
+      v += overlap * e.v;
+      at += e.d;
+      if (at >= stock + 1) return v;
+    }
+    return v + (stock + 1 - Math.max(stock, at)) * 0.02;
+  }
   function fxValue(p, list, sim) {
     let v = 0;
     for (const e of list) {
@@ -249,6 +312,7 @@ function valueBot(profile) {
 
   return {
     turn(p) {
+      usesMemo = {};
       const next = (S.step + 1) % n() === 0 && S.step + 1 >= 2 * n() ? null : (current() + 1) % n();
       const opts = affordable(p).flatMap((o) => {
         const deny = w.deny && next !== null && canPay(next, CARDS[o.id]) ? w.deny * bestTuck(next, o.id) : 0;
@@ -260,6 +324,7 @@ function valueBot(profile) {
       return { ...opts[0], considered: opts.slice(0, 3) }; // top options, for the AI reasoning log
     },
     choose(p, info, buttons) {
+      usesMemo = {};
       const idx = (f) => buttons.reduce((best, b, i) => (f(b.value) > f(buttons[best].value) ? i : best), 0);
       const x = P(p);
       switch (info.kind) {
