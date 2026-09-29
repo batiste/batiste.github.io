@@ -204,6 +204,8 @@ async function run(p, limit) {
   try {
     const x = P(p);
     const view = (id) => ({ id, heat: heatOf(CARDS[id]), n: costSize(CARDS[id]), cost: CARDS[id].cost });
+    // What the next draws come from (for bots): the deck, or its discards when empty (draw() reshuffles them).
+    const upNext = (c) => (S.decks[c].length ? S.decks[c] : S.discards[c]).map(view);
     const haul = [];
     let heat = 0;
     // What a deck generally gives: its most common goods (whole deck, no exact odds).
@@ -217,7 +219,7 @@ async function run(p, limit) {
       `Street run, limit ${icon("heat", limit)}: draw from which deck?`,
       CHARS.map((c) => ({ label: `${SIDES[c].name} deck<small>${deckHint(c)}</small>`, value: c })),
       p,
-      { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
+      { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, upNext(c)])) },
     );
     const deckName = () => `${SIDES[k].name} deck`;
     const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
@@ -226,7 +228,7 @@ async function run(p, limit) {
     log(`${nm(p)} runs the street through the ${deckName()}, limit ${icon("heat", limit)}.`);
     let redraw = false; // after a Stim: draw again, no stopping
     for (;;) {
-      const info = { kind: "draw", heat, limit, deck: S.decks[k].map(view), haul: haul.map(view), show: show() };
+      const info = { kind: "draw", heat, limit, deck: upNext(k), haul: haul.map(view), show: show() };
       if (!redraw && !(await pick(`Street run: ${icon("heat", `${heat}/${limit}`)} haul: ${loot()}. Draw or stop?`, [{ label: "Draw", value: true }, { label: "Stop", value: false }], p, info))) break;
       redraw = false;
       const id = draw(k);
