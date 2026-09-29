@@ -47,9 +47,9 @@ const CHARACTERS = [
   { id: "whip", name: "Whip", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { move: 1 }] },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
   { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], goods: { P: -1 } },
-  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 4 }, { gain: "T", n: 1 }], down: [{ spend: { T: 1, A: 1 }, get: { troop: "low", n: 2 } }] },
+  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 5 }, { gain: "T", n: 1 }], down: [{ spend: { T: 1, A: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
-  { id: "courier", name: "Courier", char: "out", up: [{ run: 5 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }], goods: { P: 1 } },
+  { id: "courier", name: "Courier", char: "out", up: [{ run: 5 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }] },
 ];
 const CHARACTER = Object.fromEntries(CHARACTERS.map((c) => [c.id, c]));
 const DEFAULT_CHARS = { cit: "councillor", out: "hustler" };

@@ -35,13 +35,14 @@ const closeLift = `
 const suddenDeath = [["  log(`— ${nm(p)}'s Citizen and Outcast meet: the game ends after this round's Uprising. —`);\n  sound(\"fanfare\");", "  log(`— ${nm(p)}'s Citizen and Outcast meet: the game ends now. —`);\n  endGame();\n  throw ABORT;"]];
 const VARIANTS = [
   { name: "Current rules" },
-  { name: "Courier: 2 extra Papers", data: `CHARACTER.courier.goods = { P: 2 };` },
   { name: "Uprising tie: lower Outcast (old)", patch: [["res.sort((a, b) => b.s - a.s || fightTie(a.q, b.q, arms));", "res.sort((a, b) => b.s - a.s || P(a.q).out - P(b.q).out);"]] },
   { name: "Cable Lift closed", data: closeLift },
   { name: "Cable Lift closed + sudden death", data: closeLift, patch: suddenDeath },
   { name: "Meeting ends the game at once", patch: suddenDeath },
   { name: "Spire 12 for all (old)", data: `TF_CONFIG.spire = 12; TF_CONFIG.citStart = { 2: 12, 3: 12, 4: 12 };` },
-  { name: "Pawnbroker: run 5 + 1 Stim", data: `CHARACTER.pawnbroker.up[0].run = 5;` },
+  { name: "Pawnbroker: run 4 (old)", data: `CHARACTER.pawnbroker.up[0].run = 4;` },
+  { name: "Courier: run 6, no extra Paper", data: `CHARACTER.courier.up[0].run = 6; delete CHARACTER.courier.goods;` },
+  { name: "Courier: 1 extra Paper (old)", data: `CHARACTER.courier.goods = { P: 1 };` },
   { name: "Spire 14 at 2 players", data: `TF_CONFIG.spire = 14; TF_CONFIG.citStart[2] = 14;` },
 ];
 
