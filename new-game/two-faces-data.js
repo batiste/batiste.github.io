@@ -24,10 +24,10 @@ const GOODS = {
 // upkeep: the controller then loses that many troops there (back to supply).
 const LOCATIONS = [
   { id: "docks", name: "Docks", low: true, control: [{ gain: "A", n: 2 }, { gain: "T", n: 1 }] },
-  { id: "rag", name: "Rag Market", low: true, control: [{ choice: 2 }] },
+  { id: "market", name: "Black Market", low: true, control: [{ choice: 2 }] },
   { id: "lift", name: "Cable Lift", low: true, high: true, control: [{ rise: "out", n: 1 }], upkeep: 1 },
   { id: "forum", name: "Forum", high: true, control: [{ rise: "out", n: 1 }], upkeep: 1 },
-  { id: "hall", name: "Council Hall", high: true, control: [{ scheme: true }] },
+  { id: "archives", name: "Archives", high: true, control: [{ scheme: true }] },
 ];
 
 // A side = the column tucked above or below a character. The character card is the base of both its sides.
@@ -95,11 +95,11 @@ const TF_UPRISINGS = [
   { name: "Dock Riot", at: ["docks"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
   { name: "Show Trial", at: ["forum"], first: [{ rise: "out", n: 1 }, { rise: "cit", n: 2 }], second: [{ rise: "cit", n: 1 }] },
   { name: "Barricades", at: ["lift"], first: [{ rise: "out", n: 2 }, { gain: "A", n: 1 }], second: [{ gain: "A", n: 1 }] },
-  { name: "General Strike", at: ["docks", "rag"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
-  { name: "Market Raid", at: ["rag"], first: [{ rise: "out", n: 1 }, { choice: 2 }], second: [{ choice: 1 }] },
-  { name: "Council Purge", at: ["hall"], first: [{ rise: "out", n: 2 }, { gain: "S", n: 1 }], second: [{ gain: "S", n: 1 }] },
-  { name: "Storm the Forum", at: ["forum", "hall"], first: [{ rise: "out", n: 2 }, { rise: "cit", n: 1 }], second: [{ rise: "out", n: 1 }] },
-  { name: "Night of Knives", at: ["lift", "hall"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
+  { name: "General Strike", at: ["docks", "market"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
+  { name: "Market Raid", at: ["market"], first: [{ rise: "out", n: 1 }, { choice: 2 }], second: [{ choice: 1 }] },
+  { name: "Burn the Archives", at: ["archives"], first: [{ rise: "out", n: 2 }, { gain: "S", n: 1 }], second: [{ gain: "S", n: 1 }] },
+  { name: "Storm the Forum", at: ["forum", "archives"], first: [{ rise: "out", n: 2 }, { rise: "cit", n: 1 }], second: [{ rise: "out", n: 1 }] },
+  { name: "Night of Knives", at: ["lift", "archives"], first: [{ rise: "out", n: 2 }], second: [{ rise: "out", n: 1 }] },
 ];
 
 // Cost: goods to pay; each good you lack sinks your Citizen 1 instead.
@@ -143,8 +143,8 @@ const ICON_HELP = {
   cit: "Your Citizen climbs 1 on the Spire.",
   out: "Your Outcast climbs 1 on the Spire.",
   sink: "Your Citizen goes down 1: pays for each good of a card cost you lack.",
-  low: "Place a troop at the Docks, Rag Market or Cable Lift.",
-  high: "Place a troop at the Cable Lift, Forum or Council Hall.",
+  low: "Place a troop at the Docks, Black Market or Cable Lift.",
+  high: "Place a troop at the Cable Lift, Forum or Archives.",
   move: "Move one of your troops to any location (you may move fewer).",
   any: "A good of your choice.",
 };

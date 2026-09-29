@@ -123,8 +123,11 @@ const byRank = (a, b) => {
 
 /* ---------- effects ---------- */
 
-// Stock shows a count, not repeated chips (a string n keeps the number).
-const goodsLabel = (x) => Object.keys(GOODS).map((g) => icon(g, `${x.goods[g]}`)).join("");
+// Stock shows a count out of the cap, not repeated chips (a string n keeps the number). Full: the cap lights up.
+const goodsLabel = (x) =>
+  Object.keys(GOODS)
+    .map((g) => `<span class="stock ${x.goods[g] >= TF_CONFIG.goodsCap ? "full" : ""}">${icon(g, `${x.goods[g]}<small class="cap">/${TF_CONFIG.goodsCap}</small>`)}</span>`)
+    .join("");
 
 // Goods of your choice: only those below the cap (all of them if every good is full).
 const roomFor = (p) => (P(p).goods && Object.values(P(p).goods).every((n) => n >= TF_CONFIG.goodsCap) ? () => true : (g) => P(p).goods[g] < TF_CONFIG.goodsCap);

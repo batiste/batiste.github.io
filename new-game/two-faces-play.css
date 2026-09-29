@@ -83,6 +83,8 @@ body { padding-bottom: 220px; }
 .player > h3 small { color: #15191c; font-size: 13px; font-weight: 700; }
 .player-body { padding: 4px 12px 12px; }
 .goods { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 8px; font-size: 15px; }
+.stock .cap { color: rgba(255, 255, 255, 0.28); font-size: 0.9em; font-weight: 600; }
+.stock.full .cap { color: #fff; font-weight: 800; }
 .scheme-card { display: inline-flex; align-items: center; padding: 2px 6px 2px 2px; border-radius: 6px; background: #3a3340; color: #f3ede0; }
 
 .tableau { display: flex; justify-content: center; gap: 16px; margin-top: 10px; align-items: center; }
