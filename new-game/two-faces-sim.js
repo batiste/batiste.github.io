@@ -43,6 +43,11 @@ const VARIANTS = [
   { name: "Pawnbroker: run 4 (old)", data: `CHARACTER.pawnbroker.up[0].run = 4;` },
   { name: "Courier: run 6, no extra Paper", data: `CHARACTER.courier.up[0].run = 6; delete CHARACTER.courier.goods;` },
   { name: "Courier: 1 extra Paper (old)", data: `CHARACTER.courier.goods = { P: 1 };` },
+  // 2-player blowout candidates.
+  { name: "Lone fighter takes only the second reward", patch: [["for (const [rank, key] of [[0, \"first\"], [1, \"second\"]]) {", "for (const [rank, key] of res.length === 1 ? [[0, \"second\"]] : [[0, \"first\"], [1, \"second\"]]) {"]] },
+  { name: "Lone fighter second reward + catch-up 2 troops", patch: [["for (const [rank, key] of [[0, \"first\"], [1, \"second\"]]) {", "for (const [rank, key] of res.length === 1 ? [[0, \"second\"]] : [[0, \"first\"], [1, \"second\"]]) {"], ["await sendTroops(q, \"low\", 1);", "await sendTroops(q, \"low\", 2);"]] },
+  { name: "Catch-up: 2 troops", patch: [["await sendTroops(q, \"low\", 1);", "await sendTroops(q, \"low\", 2);"]] },
+  { name: "Catch-up: 1 troop anywhere", patch: [["await sendTroops(q, \"low\", 1);", "await sendTroops(q, \"any\", 1);"], ["(l) => l[zone], { kind: \"send\", zone }", "(l) => zone === \"any\" || l[zone], { kind: \"send\", zone }"]] },
   { name: "Spire 14 at 2 players", data: `TF_CONFIG.spire = 14; TF_CONFIG.citStart[2] = 14;` },
 ];
 
