@@ -199,20 +199,12 @@ async function run(p, limit) {
     const view = (id) => ({ id, heat: heatOf(CARDS[id]), n: costSize(CARDS[id]), cost: CARDS[id].cost });
     const haul = [];
     let heat = 0;
-    // What to expect from a deck, from the cards left in it: goods per draw, free cards, average heat, bust risk now.
+    // What a deck generally gives: its most common goods (whole deck, no exact odds).
     const deckHint = (c) => {
-      const cards = (S.decks[c].length ? S.decks[c] : S.discards[c]).map((id) => CARDS[id]);
-      if (!cards.length) return "empty";
-      const per = (f) => cards.reduce((t, card) => t + f(card), 0) / cards.length;
-      const goods = Object.keys(GOODS)
-        .map((g) => [g, per((card) => card.cost[g] || 0)])
-        .filter(([, v]) => v >= 0.05)
-        .sort((a, b) => b[1] - a[1])
-        .map(([g, v]) => `${v.toFixed(1)}${icon(g)}`)
-        .join(" ");
-      const free = Math.round(100 * per((card) => (costSize(card) ? 0 : 1)));
-      const bust = Math.round(100 * per((card) => (heat + heatOf(card) > limit ? 1 : 0)));
-      return `per draw ${goods} · free ${free}% · heat ${per(heatOf).toFixed(1)} · bust now ${bust}%`;
+      const tally = {};
+      TF_CARDS.filter((card) => card.char === c).forEach((card) => Object.entries(card.cost).forEach(([g, k]) => (tally[g] = (tally[g] || 0) + k * card.copies)));
+      const top = Math.max(...Object.values(tally));
+      return `mostly ${Object.keys(tally).filter((g) => tally[g] >= top / 2).sort((a, b) => tally[b] - tally[a]).map((g) => icon(g)).join(" ")}`;
     };
     const chooseDeck = () =>
       pick(
@@ -228,7 +220,7 @@ async function run(p, limit) {
     let k = perDraw ? null : await chooseDeck();
     const deckName = () => (k ? `${SIDES[k].name} deck` : "any deck");
     const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
-    const show = (drawn, note) => ({ cards: haul, drawn, note: note || `${deckName()} · heat ${heat}/${limit}` });
+    const show = (drawn, note) => ({ cards: haul, drawn, heat, limit, note: note || deckName() });
     S.ctx[S.ctx.length - 1] = `Street run · ${deckName()}`;
     log(`${nm(p)} runs the street ${k ? `through the ${deckName()}` : "(deck chosen before each draw)"}, limit ${icon("heat", limit)}.`);
     let redraw = false; // after a Stim: draw again, no stopping
@@ -243,7 +235,7 @@ async function run(p, limit) {
       sound("draw", Math.min(1, (heat + c.heat) / limit));
       if (x.goods.T > 0) {
         const over = heat + c.heat > limit ? " That would get you caught!" : "";
-        const stim = await pick(`Drew ${CARDS[id].name} (${icon("heat", c.heat)}).${over} Spend a Stim to discard it and draw again?`, [{ label: "Spend Stim", value: true }, { label: "Keep", value: false }], p, {
+        const stim = await pick(`Drew ${CARDS[id].name} (${icon("heat", c.heat)}).${over} Spend a Stim to discard it and draw again?`, [{ label: "Keep", value: false }, { label: `${icon("T")} Spend a Stim`, value: true, cls: "stim" }], p, {
           kind: "stim",
           heat,
           limit,
@@ -323,13 +315,30 @@ async function effects(p, list) {
   for (const e of list) await effect(p, e, ctx);
 }
 
-// Activate: strips newest to oldest, then the character's own strip.
+// Activate: every effect on the side once, in the order the player chooses. AI seats use activationOrder;
+// the choices are offered in that order too, so a bot picking the first one follows it.
 async function activate(p, k, side) {
   S.ctx.push(`${SIDES[k].name} · ${SIDES[k][side].name}`);
   try {
-    const strips = [...P(p).sides[k][side]].reverse().flatMap((id) => CARDS[id][side]);
+    const src = (list, name) => list.map((e) => ({ e, name }));
+    const strips = [...P(p).sides[k][side]].reverse().flatMap((id) => src(CARDS[id][side], CARDS[id].name));
+    const all = [...strips, ...src(charOf(P(p), k)[side], charOf(P(p), k).name)];
+    const gains = new Set(all.filter((s) => s.e.gain));
+    const left = [...gains, ...all.filter((s) => !gains.has(s))];
     log(`${nm(p)} activates <b>${SIDES[k][side].name}</b>.`);
-    await effects(p, activationOrder([...strips, ...charOf(P(p), k)[side]]));
+    const ctx = { limit: 0 };
+    // Resolved without asking: heat limit (never worse first) and goods that fit under the cap (nothing lost).
+    const auto = (e) => e.limit || (e.gain && P(p).goods[e.gain] + e.n <= TF_CONFIG.goodsCap);
+    while (left.length) {
+      const a = left.findIndex((s) => auto(s.e));
+      // Only plain goods left (or a single effect): their order does not matter.
+      const ask = !P(p).ai && a < 0 && left.some((s) => !s.e.gain) && left.length > 1;
+      const i = ask
+        ? await pick("Resolve which effect next?", left.map((s, j) => ({ label: `${fxText(s.e)}<small>${esc(s.name)}</small>`, value: j })), p, { kind: "order" })
+        : P(p).ai ? 0 : Math.max(0, a);
+      const [s] = left.splice(i, 1);
+      await effect(p, s.e, ctx);
+    }
   } finally {
     S.ctx.pop();
   }
@@ -786,7 +795,7 @@ function renderPrompt() {
   const aiPick = ui.msg && ui.player != null && P(ui.player).ai;
   if (ui.msg) {
     msg = (ui.player != null ? `${nm(ui.player)}${aiPick ? " (AI)" : ""}: ` : "") + ui.msg;
-    buttons = ui.buttons.map((b, i) => `<button class="btn" data-btn="${i}" ${aiPick ? "disabled" : ""}>${b.label}</button>`).join("");
+    buttons = ui.buttons.map((b, i) => `<button class="btn ${b.cls || ""}" data-btn="${i}" ${aiPick ? "disabled" : ""}>${b.label}</button>`).join("");
   } else if (S.phase === "play" && P(current()).ai) msg = `${nm(current())} (AI · ${aiName(P(current()).ai)}) is thinking…`;
   else if (S.phase === "play") {
     if (canRecruit(current())) msg = `${nm(current())}: click a row card to Recruit it.`;
@@ -809,15 +818,30 @@ function renderModal() {
     S.phase === "end" && resultsOpen ? `<div class="modal-box">${renderResults()}<menu><button class="btn primary" data-close-results>Close</button></menu></div>` : "";
 }
 
-// Reveal panel: cards drawn in a street run, or the cards seen by a Scheme (click one to keep).
+// Reveal panel: a street run (heat meter, the card just drawn, the haul's goods), or the cards seen by a Scheme
+// (click one to keep). It sits just above the prompt, whatever the prompt's height.
 function renderReveal() {
   const sh = ui.info && ui.info.show;
   if (!sh) return ($("reveal").innerHTML = "");
-  const cards = [...sh.cards, ...(sh.drawn && !sh.cards.includes(sh.drawn) ? [sh.drawn] : [])].map((id, i) => {
-    const attrs = sh.pickable ? `data-btn="${i}"` : "";
-    return `<div class="reveal-card ${id === sh.drawn ? "drawn" : ""}">${cardHtml(id, attrs, sh.pickable)}</div>`;
-  });
-  $("reveal").innerHTML = `<div class="reveal-note">${sh.note}</div><div class="reveal-cards">${cards.join("") || "<i>No card yet.</i>"}</div>`;
+  const card = (id, i) => `<div class="reveal-card">${cardHtml(id, sh.pickable ? `data-btn="${i}"` : "", sh.pickable)}</div>`;
+  if (sh.heat == null) {
+    $("reveal").innerHTML = `<div class="reveal-note">${sh.note}</div><div class="reveal-cards">${sh.cards.map(card).join("")}</div>`;
+  } else {
+    // Heat meter: one pip per point of the limit; the drawn card's heat (not yet kept) shows as "+N".
+    const plus = sh.drawn && !sh.cards.includes(sh.drawn) ? heatOf(CARDS[sh.drawn]) : 0;
+    const total = sh.heat + plus;
+    const pips = Array.from({ length: Math.max(sh.limit, total) }, (_, i) =>
+      `<i class="${i >= sh.limit ? "over" : i >= sh.heat ? (i < total ? "next" : "") : "on"}"></i>`).join("");
+    const meter = `<div class="heat-meter ${total > sh.limit ? "bust" : ""}">${icon("heat")}<b>${sh.heat}</b><span>/ ${sh.limit}</span>${plus ? `<em>+${plus}</em>` : ""}<div class="pips">${pips}</div></div>`;
+    const goods = {};
+    sh.cards.filter((id) => id !== sh.drawn || !plus).forEach((id) => Object.entries(CARDS[id].cost).forEach(([g, k]) => (goods[g] = (goods[g] || 0) + k)));
+    const haul = Object.keys(GOODS).filter((g) => goods[g]).map((g) => icon(g, `${goods[g]}`)).join("") || "<i>nothing yet</i>";
+    // The card just drawn, else the last one kept; its goods and heat are framed in red (what a run is about).
+    const last = sh.drawn || sh.cards[sh.cards.length - 1];
+    const drawn = last ? `<div class="reveal-drawn"><p class="mini-label">${sh.drawn ? "Just drawn" : "Last drawn"}</p>${card(last)}</div>` : "";
+    $("reveal").innerHTML = `<div class="reveal-note">${sh.note}</div><div class="reveal-row">${drawn}<div class="reveal-side">${meter}<p class="mini-label">Haul</p><div class="haul">${haul}</div></div></div>`;
+  }
+  $("reveal").style.bottom = `${$("prompt").offsetHeight + 12}px`;
 }
 
 /* ---------- AI seats ---------- */

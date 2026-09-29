@@ -13,6 +13,9 @@ body { padding-bottom: 220px; }
 .prompt .btn:hover { background: rgba(233, 196, 119, 0.32); }
 .prompt .btn.primary, .prompt .btn[data-btn] { background: var(--gold); color: #1b2126; }
 .prompt .btn.primary:hover, .prompt .btn[data-btn]:hover { background: #f3d58f; }
+/* Spend a Stim: a green outline button, apart from the gold ones (not a "Draw" look-alike). */
+.prompt .btn.stim { margin-left: 28px; border: 2px dashed #6fcf8f; background: rgba(61, 138, 90, 0.22); color: #d6f5df; }
+.prompt .btn.stim:hover { background: rgba(61, 138, 90, 0.45); }
 .prompt .btn[data-undo] { border-color: var(--muted); background: transparent; color: var(--muted); font-size: 14px; }
 .log { font-size: 14px; }
 
@@ -74,7 +77,8 @@ body { padding-bottom: 220px; }
 #players { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
 /* Player panel: thick border and header band in the player's colour, like the city locations. */
 .player { margin-bottom: 0; padding: 0; border: 4px solid var(--pc); border-radius: 10px; }
-.player.active { box-shadow: 0 0 0 3px var(--gold), 0 0 22px rgba(233, 196, 119, 0.45); animation: breathe-gold 1.8s ease-in-out infinite; }
+.player { position: relative; }
+.player.active { box-shadow: none; }
 .player > h3 { align-items: baseline; border-radius: 5px 5px 0 0; padding: 6px 12px; background: var(--pc); color: #15191c; font-size: 18px; }
 .player > h3 small { color: #15191c; font-size: 13px; font-weight: 700; }
 .player-body { padding: 4px 12px 12px; }
@@ -99,21 +103,31 @@ body { padding-bottom: 220px; }
 
 #map { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 22px; } /* wraps on small screens */
 /* Lower city = teal, upper city = brass, Cable Lift = both. Thick border + coloured header band. */
-.city-loc { --zone: var(--verdigris); overflow: hidden; border: 4px solid var(--zone); border-radius: 10px; background: var(--surface); }
+.city-loc { --zone: var(--verdigris); position: relative; border: 4px solid var(--zone); border-radius: 10px; background: var(--surface); }
 .city-loc.high { --zone: var(--brass); }
 .city-loc.low.high { border-color: var(--verdigris) var(--brass) var(--brass) var(--verdigris); }
-.city-loc.fight { box-shadow: 0 0 0 4px var(--ruby), 0 0 18px rgba(190, 50, 42, 0.8); animation: breathe-ruby 1.8s ease-in-out infinite; }
-/* Breathing glow (active player, Uprising locations): the ring stays, the halo swells and fades. */
-@keyframes breathe-gold {
-  0%, 100% { box-shadow: 0 0 0 3px var(--gold), 0 0 8px rgba(233, 196, 119, 0.25); }
-  50% { box-shadow: 0 0 0 3px var(--gold), 0 0 28px rgba(233, 196, 119, 0.7); }
+/* Marching dashes (active player, Uprising locations): a dashed frame whose dashes run clockwise around the box,
+   over a thin steady line. Each edge is a repeating gradient; the animation slides each one along its edge. */
+.player.active::before, .city-loc.fight::before {
+  --ant: var(--gold);
+  content: "";
+  position: absolute;
+  inset: -9px;
+  pointer-events: none;
+  border: 1px solid color-mix(in srgb, var(--ant) 35%, transparent);
+  background:
+    linear-gradient(90deg, var(--ant) 60%, transparent 0) 0 0 / 18px 4px repeat-x,
+    linear-gradient(90deg, var(--ant) 60%, transparent 0) 0 100% / 18px 4px repeat-x,
+    linear-gradient(0deg, var(--ant) 60%, transparent 0) 0 0 / 4px 18px repeat-y,
+    linear-gradient(0deg, var(--ant) 60%, transparent 0) 100% 0 / 4px 18px repeat-y;
+  animation: march 0.9s linear infinite;
 }
-@keyframes breathe-ruby {
-  0%, 100% { box-shadow: 0 0 0 4px var(--ruby), 0 0 6px rgba(190, 50, 42, 0.4); }
-  50% { box-shadow: 0 0 0 4px var(--ruby), 0 0 26px rgba(210, 55, 45, 0.95); }
+.city-loc.fight::before { --ant: #e0513f; }
+@keyframes march {
+  to { background-position: 18px 0, -18px 100%, 0 -18px, 100% 18px; }
 }
-@media (prefers-reduced-motion: reduce) { .player.active, .city-loc.fight { animation: none; } }
-.loc-name { padding: 6px 10px; background: var(--zone); color: #fff; font-family: var(--font-display); font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
+@media (prefers-reduced-motion: reduce) { .player.active::before, .city-loc.fight::before { animation: none; } }
+.loc-name { border-radius: 5px 5px 0 0; padding: 6px 10px; background: var(--zone); color: #fff; font-family: var(--font-display); font-size: 16px; letter-spacing: 0.06em; text-transform: uppercase; }
 .city-loc.low.high .loc-name { background: linear-gradient(90deg, var(--verdigris), var(--brass)); }
 .loc-body { padding: 6px 10px 8px; }
 .loc-zone { color: var(--muted); font-size: 12px; }
@@ -148,9 +162,28 @@ body { padding-bottom: 220px; }
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
 }
 .reveal-note { margin-bottom: 8px; color: var(--gold); font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
-.reveal-cards { display: flex; gap: 10px; overflow-x: auto; }
+.reveal-row { display: flex; gap: 16px; align-items: flex-start; }
+.reveal-drawn { flex: none; }
+.reveal-drawn .tcard { width: 170px; box-shadow: 0 0 0 3px #d9731f, 0 6px 16px rgba(0, 0, 0, 0.5); }
+/* Teach the run: red frames on the goods (cost corner) and the heat of the drawn card. */
+.reveal-drawn .corners > span:first-child:not(:empty), .reveal-drawn .face > .heat { padding: 1px 3px; border-radius: 4px; outline: 2px solid #d8392b; outline-offset: 1px; }
+.reveal-side { display: flex; flex-direction: column; gap: 8px; min-width: 260px; }
+/* Heat meter: big "heat / limit", then one pip per point (lit = heat, amber = the drawn card's heat, red = over the limit). */
+.heat-meter { display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px; font-size: 22px; color: #f3ede0; }
+.heat-meter .gi { font-size: 26px; align-self: center; }
+.heat-meter b { font-size: 52px; line-height: 1; color: #f0a060; }
+.heat-meter span { font-size: 30px; color: var(--muted); }
+.heat-meter em { font-size: 30px; font-style: normal; font-weight: 800; color: #f3d58f; }
+.heat-meter.bust em, .heat-meter.bust b { color: #ff6b57; }
+.heat-meter .pips { display: flex; gap: 4px; flex-basis: 100%; }
+.pips i { width: 18px; height: 12px; border-radius: 3px; background: rgba(255, 255, 255, 0.12); }
+.pips i.on { background: #d9731f; }
+.pips i.next { background: #f3d58f; }
+.pips i.over { background: #ff6b57; }
+.haul { display: flex; flex-wrap: wrap; gap: 12px; font-size: 22px; color: #f3ede0; }
+.reveal-cards { display: flex; gap: 10px; overflow-x: auto; padding: 4px; } /* padding: room for rings and hover lift */
 .reveal-card { flex: none; }
-.reveal-card.drawn .tcard { box-shadow: 0 0 0 3px #d9731f, 0 6px 16px rgba(0, 0, 0, 0.5); }
+.reveal .mini-label { margin: 0 0 6px; }
 .reveal .tcard.live:hover { transform: translateY(-4px); }
 .face .heat { position: absolute; bottom: 5px; right: 6px; font-size: 12px; }
 .prompt .ctx { margin-bottom: 4px; color: var(--gold); font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }

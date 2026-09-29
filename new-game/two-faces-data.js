@@ -167,8 +167,8 @@ function icon(key, n) {
   return `<span class="gx">${text}${n != null ? `<b aria-hidden="true">${n}</b>` : ""}${chip}</span>`;
 }
 
-// Activation order: every plain "+ goods" effect first (production), then the rest in order (strips newest to oldest,
-// then the character's own strip). So a strip can spend goods produced by the same activation.
+// AI activation order (players choose their own): every plain "+ goods" effect first (production), then the rest in order
+// (strips newest to oldest, then the character's own strip). So a strip can spend goods produced by the same activation.
 const activationOrder = (list) => [...list.filter((e) => e.gain), ...list.filter((e) => !e.gain)];
 
 const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));

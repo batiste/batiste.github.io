@@ -375,7 +375,9 @@ function valueBot(profile) {
           return drawEV(info.heat, info.limit, info.deck, haul) > 0 ? 0 : 1;
         }
         case "stim": // a Stim forces another draw: only worth it against a card that would bust you
-          return info.heat + info.card.heat > info.limit ? 0 : 1;
+          return buttons.findIndex((b) => b.value === info.heat + info.card.heat > info.limit);
+        case "order": // choices come in activationOrder
+          return 0;
         case "keep": {
           const base = upcoming().at.reduce((t, id) => t + S.troops[id][p], 0) + x.schemes.reduce((t, id) => t + (CARDS[id].str === "x2" ? 0 : CARDS[id].str), 0);
           return idx((id) => (CARDS[id].str === "x2" ? base : CARDS[id].str));
