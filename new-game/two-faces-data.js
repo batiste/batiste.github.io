@@ -180,17 +180,26 @@ function citStarts() {
 const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));
 const locNames = (ids) => ids.map((id) => LOC[id].name).join(" + ");
 
-function fxText(e) {
-  if (e.gain) return icon(e.gain, e.n);
-  if (e.spend) return `${Object.entries(e.spend).map(([g, n]) => icon(g, n)).join(" ")} → ${[].concat(e.get).map(fxText).join(" ")}`;
-  if (e.rise) return icon(e.rise, e.n);
-  if (e.troop) return icon(e.troop, e.n);
-  if (e.move) return icon("move", e.move);
+// compact: counts as a number next to one icon ("3" + troop) instead of repeated icons.
+function fxText(e, compact = false) {
+  const ic = (key, n) => icon(key, compact && n > 1 ? `${n}` : n);
+  if (e.gain) return ic(e.gain, e.n);
+  if (e.spend) return `${Object.entries(e.spend).map(([g, n]) => ic(g, n)).join(" ")} → ${[].concat(e.get).map((g) => fxText(g, compact)).join(" ")}`;
+  if (e.rise) return ic(e.rise, e.n);
+  if (e.troop) return ic(e.troop, e.n);
+  if (e.move) return ic("move", e.move);
   if (e.limit) return `<span class="gt">heat limit +</span>${icon("heat", e.limit)}`;
   if (e.scheme) return icon("scheme");
   if (e.run) return `<span class="gt">street run, heat limit</span>${icon("heat", e.run)}`;
-  if (e.choice) return icon("any", e.choice);
+  if (e.choice) return ic("any", e.choice);
   return "";
 }
+// Icons an effect shows when drawn as repeated chips.
+const chipCount = (e) =>
+  e.spend ? Object.values(e.spend).reduce((a, b) => a + b, 0) + [].concat(e.get).reduce((t, g) => t + chipCount(g), 0) : e.gain || e.rise || e.troop ? e.n : e.move || e.choice || 1;
 const strText = (str) => `<span class="str">${str === "x2" ? "×2" : `+${str}`}</span>`;
-const fxList = (list) => (list.length ? list.map(fxText).join(" ") : "—");
+// A strip of more than 3 icons shows counts as numbers, so it fits on one line of a card.
+const fxList = (list) => {
+  const compact = list.reduce((t, e) => t + chipCount(e), 0) > 3;
+  return list.length ? list.map((e) => fxText(e, compact)).join(" ") : "—";
+};

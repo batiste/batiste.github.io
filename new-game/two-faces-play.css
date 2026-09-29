@@ -1,6 +1,6 @@
 /* Two Faces additions on top of double-life-play.css (spire, players, prompt, dialog) and two-faces-icons.css. */
 
-:root { --ruby: #8e2f2a; } /* Uprising colour: the card and the locations it is fought at */
+:root { --ruby: #8e2f2a; --card-ratio: 56 / 87; } /* one card format for actions, characters and Uprisings: bridge size, 56 × 87 mm */ /* Uprising colour: the card and the locations it is fought at */
 body { font-size: 15px; }
 .mini-label { font-size: 12px; }
 .status { font-size: 16px; }
@@ -50,8 +50,8 @@ body { padding-bottom: 220px; }
   --tint: rgba(176, 129, 47, 0.16);
   display: flex;
   flex-direction: column;
-  width: 150px;
-  aspect-ratio: 5 / 7;
+  width: 140px;
+  aspect-ratio: var(--card-ratio);
   border: 4px solid var(--frame);
   border-radius: 10px;
   background: var(--paper);
@@ -69,7 +69,7 @@ body { padding-bottom: 220px; }
 .band.down { border-top: 1px dashed rgba(20, 24, 28, 0.25); }
 .band-fx { min-height: 1.9em; line-height: 1.9; text-align: center; }
 
-.face { flex: 1; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 4px 6px; position: relative; }
+.face { flex: 1; min-height: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 2px; padding: 4px 6px; position: relative; }
 .face h3 { color: var(--ink); font-size: 17px; text-align: center; }
 .corners { position: absolute; top: 5px; left: 6px; right: 6px; display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--ink-soft); }
 
@@ -90,10 +90,10 @@ body { padding-bottom: 220px; }
 
 .tableau { display: flex; justify-content: center; gap: 16px; margin-top: 10px; align-items: center; }
 .char-col { display: flex; flex-direction: column; align-items: center; }
-.tcard.char { width: 170px; aspect-ratio: auto; min-height: 150px; position: relative; z-index: 1; }
+.tcard.char { width: 130px; position: relative; z-index: 1; }
 
 /* Tucked strips peek out from behind the character card. */
-.tuck { --frame: var(--brass); --tint: rgba(176, 129, 47, 0.16); position: relative; width: 160px; border: 3px solid var(--frame); background: var(--paper); color: var(--ink); }
+.tuck { --frame: var(--brass); --tint: rgba(176, 129, 47, 0.16); position: relative; width: 120px; border: 3px solid var(--frame); background: var(--paper); color: var(--ink); }
 /* Full card preview after hovering 1s. */
 .tuck-preview { position: absolute; top: 50%; right: calc(100% + 10px); z-index: 20; transform: translateY(-50%); visibility: hidden; opacity: 0; pointer-events: none; transition: opacity 0.15s, visibility 0s; }
 .tuck:hover .tuck-preview { visibility: visible; opacity: 1; transition-delay: 1s; }
@@ -139,7 +139,7 @@ body { padding-bottom: 220px; }
 .loc-troops { display: flex; gap: 4px; margin-top: 6px; min-height: 24px; }
 .troops { min-width: 24px; height: 24px; padding: 0 6px; border-radius: 4px; color: #15191c; font-weight: 800; text-align: center; line-height: 24px; }
 
-.silhouette { width: 58px; height: 68px; color: rgba(20, 24, 28, 0.82); fill: currentColor; }
+.silhouette { width: 50px; height: 58px; color: rgba(20, 24, 28, 0.82); fill: currentColor; }
 .tcard.char .face { gap: 4px; }
 .btn.small { margin-left: 8px; padding: 2px 8px; font-size: 11px; letter-spacing: 0; }
 
@@ -167,7 +167,7 @@ body { padding-bottom: 220px; }
 .reveal-note { margin-bottom: 8px; color: var(--gold); font-family: var(--font-display); font-size: 16px; letter-spacing: 0.08em; text-transform: uppercase; }
 .reveal-row { display: flex; gap: 16px; align-items: flex-start; }
 .reveal-drawn { flex: none; }
-.reveal-drawn .tcard { width: 170px; box-shadow: 0 0 0 3px #d9731f, 0 6px 16px rgba(0, 0, 0, 0.5); }
+.reveal-drawn .tcard { width: 150px; box-shadow: 0 0 0 3px #d9731f, 0 6px 16px rgba(0, 0, 0, 0.5); }
 /* Teach the run: red frames on the goods (cost corner) and the heat of the drawn card. */
 .reveal-drawn .corners > span:first-child:not(:empty), .reveal-drawn .face > .heat { padding: 1px 3px; border-radius: 4px; outline: 2px solid #d8392b; outline-offset: 1px; }
 .reveal-side { display: flex; flex-direction: column; gap: 8px; min-width: 260px; }
@@ -207,15 +207,15 @@ body { padding-bottom: 220px; }
 
 #uprising-card { margin-bottom: 16px; }
 .uprising-slot { display: flex; gap: 12px; align-items: flex-end; }
-.ucard { width: 170px; border: 4px solid var(--ruby); border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45); overflow: hidden; }
+.ucard { display: flex; flex-direction: column; width: 154px; aspect-ratio: var(--card-ratio); border: 4px solid var(--ruby); border-radius: 10px; background: var(--paper); color: var(--ink); box-shadow: 0 3px 8px rgba(0, 0, 0, 0.45); overflow: hidden; }
 .ucard-head { padding: 6px 8px; background: var(--ruby); color: #fff; text-align: center; }
 .ucard-head span { display: block; font-size: 10px; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; opacity: 0.85; }
-.ucard-head b { display: block; font-family: var(--font-display); font-size: 17px; letter-spacing: 0.05em; text-transform: uppercase; }
+.ucard-head b { display: block; font-family: var(--font-display); font-size: 15px; letter-spacing: 0.05em; text-transform: uppercase; }
 .ucard-locs { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 6px 6px 0; }
 .uloc { padding: 2px 6px; border-radius: 4px; background: var(--verdigris); color: #fff; font-size: 11px; font-weight: 700; }
 .uloc.high { background: var(--brass); }
 .uloc.low.high { background: linear-gradient(90deg, var(--verdigris), var(--brass)); }
-.ucard-art { display: block; width: 64px; height: 48px; margin: 4px auto 2px; color: var(--ruby); }
+.ucard-art { display: block; flex: 1 1 0; width: 64px; min-height: 16px; margin: 4px auto 2px; color: var(--ruby); } /* takes the spare height: rewards sit at the bottom */
 .ucard-reward { display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-top: 1px dashed rgba(20, 24, 28, 0.25); font-size: 14px; }
 .ucard-reward .rank { flex: none; width: 30px; color: var(--ink-soft); font-size: 11px; font-weight: 800; text-transform: uppercase; }
 .modal-uprising { display: flex; gap: 18px; align-items: flex-start; }
