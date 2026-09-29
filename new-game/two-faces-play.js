@@ -962,12 +962,19 @@ const charOptions = (k, sel) =>
   [["", "Random"], ...CHARACTERS.filter((c) => c.char === k).map((c) => [c.id, c.name])]
     .map(([v, label]) => `<option value="${v}" ${v === sel ? "selected" : ""}>${label}</option>`)
     .join("");
+// Default table: one human, then smart AIs with art-deco names.
+const DEFAULT_SEATS = [
+  ["Human 1", "", "", ""],
+  ["Madame Gilt", "smart", "", ""],
+  ["Baron Zeppelin", "smart", "", ""],
+  ["Countess Chrome", "smart", "", ""],
+];
 function renderSetup() {
   const count = +$("setup-count").value;
   const prev = [...document.querySelectorAll(".setup-player:not(.setup-head)")].map((el) => [el.querySelector("input").value, ...[...el.querySelectorAll("select")].map((s) => s.value)]);
   const head = `<div class="setup-player setup-head"><span></span><span>Name</span><span>Seat</span><span>Citizen</span><span>Outcast</span></div>`;
   $("setup-players").innerHTML = head + Array.from({ length: count }, (_, i) => {
-    const [name, ai, cit, out] = prev[i] || [`Player ${i + 1}`, "", "", ""];
+    const [name, ai, cit, out] = prev[i] || DEFAULT_SEATS[i];
     const opts = SEAT_TYPES.map(([v, label]) => `<option value="${v}" ${v === ai ? "selected" : ""}>${label}</option>`).join("");
     return `<div class="setup-player"><i style="background:${COLORS[i]}"></i><input value="${esc(name)}" /><select title="Seat">${opts}</select>
       <select title="Citizen">${charOptions("cit", cit)}</select><select title="Outcast">${charOptions("out", out)}</select></div>`;
