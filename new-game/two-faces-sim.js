@@ -24,10 +24,25 @@ const PLAYERS = +args[1] || 3;
 // patch: [find, replace] pairs applied to two-faces-play.js source before loading.
 // Controller pays 1 troop at the location after taking its reward.
 const controlCost = (ids) => [["    await effects(q, l.control);", `    await effects(q, l.control);\n    if (${JSON.stringify(ids)}.includes(l.id)) { S.troops[l.id][q]--; P(q).supply++; }`]];
+// Cable Lift closed (meant for 2 players): no Lift; Uprisings fought only there leave the deck, the others lose it.
+const closeLift = `
+  LOCATIONS.splice(LOCATIONS.findIndex((l) => l.id === "lift"), 1);
+  for (let i = TF_UPRISINGS.length - 1; i >= 0; i--) {
+    TF_UPRISINGS[i].at = TF_UPRISINGS[i].at.filter((id) => id !== "lift");
+    if (!TF_UPRISINGS[i].at.length) TF_UPRISINGS.splice(i, 1);
+  }`;
+// Sudden death: the game ends (and is scored) the moment a player's characters meet.
+const suddenDeath = [["  log(`— ${nm(p)}'s Citizen and Outcast meet: the game ends after this round's Uprising. —`);\n  sound(\"fanfare\");", "  log(`— ${nm(p)}'s Citizen and Outcast meet: the game ends now. —`);\n  endGame();\n  throw ABORT;"]];
 const VARIANTS = [
   { name: "Current rules" },
   { name: "Courier: 2 extra Papers", data: `CHARACTER.courier.goods = { P: 2 };` },
   { name: "Uprising tie: lower Outcast (old)", patch: [["res.sort((a, b) => b.s - a.s || fightTie(a.q, b.q, arms));", "res.sort((a, b) => b.s - a.s || P(a.q).out - P(b.q).out);"]] },
+  { name: "Cable Lift closed", data: closeLift },
+  { name: "Cable Lift closed + sudden death", data: closeLift, patch: suddenDeath },
+  { name: "Meeting ends the game at once", patch: suddenDeath },
+  { name: "Spire 12 for all (old)", data: `TF_CONFIG.spire = 12; TF_CONFIG.citStart = { 2: 12, 3: 12, 4: 12 };` },
+  { name: "Pawnbroker: run 5 + 1 Stim", data: `CHARACTER.pawnbroker.up[0].run = 5;` },
+  { name: "Spire 14 at 2 players", data: `TF_CONFIG.spire = 14; TF_CONFIG.citStart[2] = 14;` },
 ];
 
 // ---------- load the game in a sandbox ----------
@@ -98,6 +113,12 @@ function sim(GAMES, setups, done) {
     G.stat[p][`${k}.${G.src}`] += P(p)[k] - before;
   };
   scheme = wrap(scheme, (p) => G.stat[p].schemes++);
+  // Who triggered the meeting (recorded before: a sudden-death variant ends the game inside checkMet).
+  const metRule = checkMet;
+  checkMet = (p) => {
+    if (!S.met && P(p).out >= P(p).cit) G.meeter = p;
+    metRule(p);
+  };
   const spendRule = spend;
   spend = async (p, e) => {
     const before = S.log.length;
@@ -160,7 +181,7 @@ function sim(GAMES, setups, done) {
     const names = seats.map((s) => s.bot ?? s);
     const chars = seats.map((s) => s.chars || DEFAULT_CHARS);
     const bots = names.map(makeBot);
-    G = { deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
+    G = { meeter: null, deckRuns: { cit: 0, out: 0 }, forced: null, runs: 0, busts: 0, fights: [], leaders: [], ctrl: Object.fromEntries(LOCATIONS.map((l) => [l.id, { rounds: 0, held: 0, contested: 0 }])) };
     G.sides = bots.map(() => new Set());
     G.src = "turn";
     G.stat = bots.map(() => ({ cantPay: 0, moves: 0, schemeTurns: 0, troopsWanted: 0, runs: 0, caught: 0, runGoods: 0, sunk: 0, spent: 0, schemes: 0, troops: 0, "out.turn": 0, "out.uprising": 0, "out.control": 0, "cit.turn": 0, "cit.uprising": 0, "cit.control": 0 }));
@@ -216,8 +237,9 @@ function sim(GAMES, setups, done) {
     const rounds = {};
     games.forEach((g) => (rounds[g.rounds] = (rounds[g.rounds] || 0) + 1));
     m.rounds = avg(games.map((g) => g.rounds));
+    m.early = avg(games.map((g) => (g.rounds < TF_CONFIG.rounds ? 1 : 0)));
     out(`- Rounds: avg ${m.rounds.toFixed(1)} · ${Object.keys(rounds).sort((a, b) => a - b).map((r) => `${r}: ${pct(rounds[r] / games.length)}`).join(", ")}`);
-    out(`- Ended by a meeting: ${pct(avg(games.map((g) => (g.met ? 1 : 0))))} (else: Uprising deck ran out)`);
+    out(`- Ended by a meeting: ${pct(avg(games.map((g) => (g.met ? 1 : 0))))} (else: Uprising deck ran out) · the player who met wins ${pct(avg(games.filter((g) => g.meeter != null).map((g) => g.share[g.meeter])))}`);
     out(`- Final score (Citizen + Outcast): winner avg ${avg(games.map((g) => Math.max(...g.final))).toFixed(1)}, all players avg ${avg(games.flatMap((g) => g.final)).toFixed(1)}; Citizen avg ${avg(games.flatMap((g) => g.cit)).toFixed(1)}`);
     out(`- Affordable cards per turn: avg ${avg(games.flatMap((g) => g.options)).toFixed(1)} of ${2 * TF_CONFIG.row}`);
 
@@ -277,6 +299,8 @@ function sim(GAMES, setups, done) {
     m.stepsUp = steps("uprising");
     m.stepsCtrl = steps("control");
     m.met = avg(games.map((g) => (g.met ? 1 : 0)));
+    const met = games.filter((g) => g.meeter != null);
+    m.meeterWins = avg(met.map((g) => g.share[g.meeter]));
     m.schemeTurns = avg(games.flatMap((g) => g.stat.map((st) => st.schemeTurns)));
     m.schemeWin = (() => {
       const all = games.flatMap((g) => g.stat.map((st, q) => ({ t: st.schemeTurns, w: g.share[q] })));
@@ -378,7 +402,7 @@ function sim(GAMES, setups, done) {
   });
 }
 
-// profiles / cards run on the current rules, or on a variant: VARIANT="<part of its name>" node two-faces-sim.js profiles
+// report / profiles / cards run on the current rules, or on a variant: VARIANT="<part of its name>" node two-faces-sim.js profiles
 const BASE = process.env.VARIANT ? VARIANTS.find((v) => v.name.includes(process.env.VARIANT)) : {};
 if (!BASE) throw new Error(`No variant matches "${process.env.VARIANT}"`);
 const run = (variant, setups) => new Promise((resolve) => vm.runInContext(`(${sim})`, sandbox(variant))(GAMES, setups, resolve));
@@ -389,6 +413,7 @@ const PROFILE_NAMES = ["smart", "smart-old", "greedy", "frugal", "warlord", "bui
 const shuffled = (a) => a.map((x) => [Math.random(), x]).sort((p, q) => p[0] - q[0]).map((x) => x[1]);
 const cols = [
   ["Rounds", (m) => m.rounds.toFixed(1)],
+  ["Ends early", (m) => pct(m.early)], // before the last round
   ["Runaway", (m) => pct(m.runaway)],
   ["Comeback", (m) => pct(m.comeback)],
   ["Lead chg", (m) => m.changes.toFixed(2)],
@@ -403,6 +428,7 @@ const cols = [
   ["Goods left", (m) => m.left.toFixed(1)],
   ["Steps: Uprising / control", (m) => `${m.stepsUp.toFixed(1)} / ${m.stepsCtrl.toFixed(1)}`],
   ["Ends by meeting", (m) => pct(m.met)],
+  ["Meeter wins", (m) => pct(m.meeterWins)],
   ["Docks / Black Market held · contested", (m) => `${pct(m.loc.docks.held)}·${pct(m.loc.docks.contested)} / ${pct(m.loc.market.held)}·${pct(m.loc.market.contested)}`],
   ["Forced passes / player", (m) => m.schemeTurns.toFixed(2)],
   ["Avg score", (m) => m.final.toFixed(1)],
@@ -416,7 +442,7 @@ const tick = () => process.stderr.write(".");
 const MODES = {
   // Full report: random, smart, and a skill check.
   async report() {
-    const results = await run({}, [
+    const results = await run(BASE, [
       ["All random", all("random")],
       ["All smart", all("smart")],
       ["Skill check: 1 smart vs greedy", ["smart", ...all("greedy").slice(1)]],

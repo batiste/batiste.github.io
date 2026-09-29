@@ -30,6 +30,7 @@ body { padding-bottom: 220px; }
 .sp-row { gap: 5px; height: 38px; border-bottom: 1px solid rgba(255, 255, 255, 0.08); }
 .sp-row:nth-child(odd) { background: rgba(255, 255, 255, 0.03); }
 .sp-row b { width: 28px; margin-right: 6px; color: #cfd8dd; font-size: 17px; }
+.sp-mark { margin-left: auto; color: rgba(255, 255, 255, 0.3); font-size: 12px; font-weight: 600; } /* Citizen start by player count */
 .tok { width: 20px; height: 20px; border-width: 2px; }
 .spire-wrap { width: 170px; }
 .spire-title { margin: 0; color: var(--gold); font-family: var(--font-display); font-size: 24px; letter-spacing: 0.14em; text-align: center; text-transform: uppercase; }

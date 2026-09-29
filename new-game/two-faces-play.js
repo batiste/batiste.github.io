@@ -140,17 +140,21 @@ async function pickGood(p, msg, filter, info) {
 
 async function spend(p, e) {
   const x = P(p);
-  const [g, amount] = Object.entries(e.spend)[0];
+  const parts = Object.entries(e.spend); // one or more goods, or "any" (goods of your choice)
   const total = Object.values(x.goods).reduce((a, b) => a + b, 0);
-  if (g === "any" ? total < amount : x.goods[g] < amount) return log(`${nm(p)} cannot pay: ${fxText(e)}.`);
+  if (parts.some(([g, amount]) => (g === "any" ? total < amount : x.goods[g] < amount))) return log(`${nm(p)} cannot pay: ${fxText(e)}.`);
   const yes = await pick(`${fxText(e)}?`, [{ label: "Yes", value: true }, { label: "No", value: false }], p, { kind: "spend", e });
   if (!yes) return;
-  if (g === "any") {
+  for (const [g, amount] of parts) {
+    if (g !== "any") {
+      x.goods[g] -= amount;
+      continue;
+    }
     for (let i = 0; i < amount; i++) {
       const h = await pickGood(p, `Spend which good? (${i + 1}/${amount})`, (h) => x.goods[h] > 0, { kind: "spendGood" });
       x.goods[h]--;
     }
-  } else x.goods[g] -= amount;
+  }
   for (const g of [].concat(e.get)) await effect(p, g, {});
 }
 
@@ -209,29 +213,22 @@ async function run(p, limit) {
       const top = Math.max(...Object.values(tally));
       return `mostly ${Object.keys(tally).filter((g) => tally[g] >= top / 2).sort((a, b) => tally[b] - tally[a]).map((g) => icon(g)).join(" ")}`;
     };
-    const chooseDeck = () =>
-      pick(
-        perDraw
-          ? `Street run, heat ${heat}/${limit}: as the <b>Pawnbroker</b>, you choose the deck for each draw. Which deck now?`
-          : `Street run, heat ${heat}/${limit}: draw from which deck (for the whole run)?`,
-        CHARS.map((c) => ({ label: `${SIDES[c].name} deck<small>${deckHint(c)}</small>`, value: c })),
-        p,
-        { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
-      );
-    // The Pawnbroker chooses the deck before each draw; everyone else once per run.
-    const perDraw = charOf(x, "out").perDraw;
-    let k = perDraw ? null : await chooseDeck();
-    const deckName = () => (k ? `${SIDES[k].name} deck` : "any deck");
+    const k = await pick(
+      `Street run, limit ${icon("heat", limit)}: draw from which deck?`,
+      CHARS.map((c) => ({ label: `${SIDES[c].name} deck<small>${deckHint(c)}</small>`, value: c })),
+      p,
+      { kind: "runDeck", limit, heat, decks: Object.fromEntries(CHARS.map((c) => [c, S.decks[c].map(view)])) },
+    );
+    const deckName = () => `${SIDES[k].name} deck`;
     const loot = () => haul.filter((id) => costSize(CARDS[id])).map((id) => costHtml(CARDS[id])).join(" ") || "nothing";
     const show = (drawn, note) => ({ cards: haul, drawn, heat, limit, note: note || deckName() });
     S.ctx[S.ctx.length - 1] = `Street run · ${deckName()}`;
-    log(`${nm(p)} runs the street ${k ? `through the ${deckName()}` : "(deck chosen before each draw)"}, limit ${icon("heat", limit)}.`);
+    log(`${nm(p)} runs the street through the ${deckName()}, limit ${icon("heat", limit)}.`);
     let redraw = false; // after a Stim: draw again, no stopping
     for (;;) {
-      const info = { kind: "draw", heat, limit, deck: (k ? S.decks[k] : [...S.decks.cit, ...S.decks.out]).map(view), haul: haul.map(view), show: show() };
+      const info = { kind: "draw", heat, limit, deck: S.decks[k].map(view), haul: haul.map(view), show: show() };
       if (!redraw && !(await pick(`Street run: ${icon("heat", `${heat}/${limit}`)} haul: ${loot()}. Draw or stop?`, [{ label: "Draw", value: true }, { label: "Stop", value: false }], p, info))) break;
       redraw = false;
-      if (perDraw) k = await chooseDeck();
       const id = draw(k);
       if (!id) break;
       const c = view(id);
@@ -600,7 +597,7 @@ function startGame(seats) {
         ai: seat.ai || null,
         chars,
         color: COLORS[q],
-        cit: dial("cit") ?? TF_CONFIG.spire,
+        cit: dial("cit") ?? TF_CONFIG.citStart[seats.length],
         out: dial("out") ?? 1,
         goods,
         sides: { cit: { up: [], down: [] }, out: { up: [], down: [] } },
@@ -728,11 +725,12 @@ function renderRow() {
 
 function renderSpire() {
   const rows = [];
+  const marks = citStarts();
   for (let h = TF_CONFIG.spire; h >= 1; h--) {
     const toks = S.players.flatMap((x) =>
       CHARS.filter((k) => x[k] === h).map((k) => `<i class="tok ${k === "cit" ? "C" : "O"}" style="background:${x.color}" title="${esc(x.name)} ${SIDES[k].name}"></i>`),
     );
-    rows.push(`<div class="sp-row"><b>${h}</b>${toks.join("")}</div>`);
+    rows.push(`<div class="sp-row"><b>${h}</b>${toks.join("")}${marks[h] ? `<small class="sp-mark" title="Citizen start">${marks[h]}p</small>` : ""}</div>`);
   }
   $("spire").innerHTML = rows.join("");
 }
@@ -977,15 +975,11 @@ function renderSetup() {
 }
 
 // Random characters: different for each player while the pool lasts.
-// Humans never get a per-draw character at random (choosing the deck before every draw is tiresome); AIs may.
 function assignCharacters(seats) {
   CHARS.forEach((k) => {
     const pool = shuffle(CHARACTERS.filter((c) => c.char === k && !seats.some((s) => s.chars[k] === c.id)).map((c) => c.id));
     seats.forEach((s) => {
-      if (s.chars[k]) return;
-      const ok = (id) => s.ai || !CHARACTER[id].perDraw;
-      const i = pool.findIndex(ok);
-      s.chars[k] = i >= 0 ? pool.splice(i, 1)[0] : pickFrom(CHARACTERS.filter((c) => c.char === k && ok(c.id))).id;
+      if (!s.chars[k]) s.chars[k] = pool.pop() ?? pickFrom(CHARACTERS.filter((c) => c.char === k)).id;
     });
   });
   return seats;

@@ -1,7 +1,8 @@
 // Aeropolis: Two Faces — data shared by two-faces.html (rules) and two-faces-play.html (hot-seat game).
 
 const TF_CONFIG = {
-  spire: 12, // Spire heights 1 (base) to 12 (top). Citizen starts on 12, Outcast on 1.
+  spire: 13, // Spire heights 1 (base) to 13 (top). Outcast starts on 1.
+  citStart: { 2: 13, 3: 12, 4: 12 }, // Citizen start by player count (marked on the Spire)
   row: 2, // cards on offer from each deck (Citizen, Outcast)
   rounds: 5, // Uprisings drawn: the game ends after the last one (or when characters meet)
   sideCap: 3,
@@ -37,8 +38,7 @@ const SIDES = {
 };
 
 // Characters: each player plays one Citizen and one Outcast. Their own strips (up / down) are the base of their sides.
-// Setup dials: goods (extra starting goods, may be negative), cit / out (starting heights), troops (placed at setup),
-// perDraw (Street run: choose the deck before each draw).
+// Setup dials: goods (extra starting goods, may be negative), cit / out (starting heights), troops (placed at setup).
 const CHARACTERS = [
   { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },
@@ -47,9 +47,9 @@ const CHARACTERS = [
   { id: "whip", name: "Whip", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { move: 1 }] },
   { id: "hustler", name: "Hustler", char: "out", up: [{ run: 7 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }], goods: { P: 1 } },
   { id: "firebrand", name: "Firebrand", char: "out", up: [{ run: 3 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 2 } }], goods: { P: -1 } },
-  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 6 }], down: [{ spend: { T: 1 }, get: { troop: "low", n: 2 } }], perDraw: true },
+  { id: "pawnbroker", name: "Pawnbroker", char: "out", up: [{ run: 4 }, { gain: "T", n: 1 }], down: [{ spend: { T: 1, A: 1 }, get: { troop: "low", n: 2 } }] },
   { id: "gunsmith", name: "Gunsmith", char: "out", up: [{ run: 4 }], down: [{ spend: { A: 1 }, get: { troop: "low", n: 2 } }] },
-  { id: "courier", name: "Courier", char: "out", up: [{ run: 6 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }], goods: { P: 1 } },
+  { id: "courier", name: "Courier", char: "out", up: [{ run: 5 }], down: [{ spend: { P: 1 }, get: { troop: "low", n: 1 } }, { move: 1 }], goods: { P: 1 } },
 ];
 const CHARACTER = Object.fromEntries(CHARACTERS.map((c) => [c.id, c]));
 const DEFAULT_CHARS = { cit: "councillor", out: "hustler" };
@@ -60,7 +60,6 @@ function charSetupText(c) {
   if (c.cit) parts.push(`Citizen starts at ${c.cit}`);
   if (c.out) parts.push(`Outcast starts at ${c.out}`);
   Object.entries(c.troops || {}).forEach(([id, n]) => parts.push(`${n} troop${n > 1 ? "s" : ""} at the ${LOCATIONS.find((l) => l.id === id).name}`));
-  if (c.perDraw) parts.push("street run: choose the deck before each draw");
   return parts.join(", ") || "—";
 }
 
@@ -171,15 +170,19 @@ function icon(key, n) {
 // (strips newest to oldest, then the character's own strip). So a strip can spend goods produced by the same activation.
 const activationOrder = (list) => [...list.filter((e) => e.gain), ...list.filter((e) => !e.gain)];
 
+// Citizen start heights with their player counts, e.g. { 13: "2", 12: "3–4" }.
+function citStarts() {
+  const by = {};
+  Object.entries(TF_CONFIG.citStart).forEach(([n, h]) => (by[h] = [...(by[h] || []), n]));
+  return Object.fromEntries(Object.entries(by).map(([h, ns]) => [h, ns.length > 1 ? `${ns[0]}–${ns[ns.length - 1]}` : ns[0]]));
+}
+
 const LOC = Object.fromEntries(LOCATIONS.map((l) => [l.id, l]));
 const locNames = (ids) => ids.map((id) => LOC[id].name).join(" + ");
 
 function fxText(e) {
   if (e.gain) return icon(e.gain, e.n);
-  if (e.spend) {
-    const [g, n] = Object.entries(e.spend)[0];
-    return `${icon(g, n)} → ${[].concat(e.get).map(fxText).join(" ")}`;
-  }
+  if (e.spend) return `${Object.entries(e.spend).map(([g, n]) => icon(g, n)).join(" ")} → ${[].concat(e.get).map(fxText).join(" ")}`;
   if (e.rise) return icon(e.rise, e.n);
   if (e.troop) return icon(e.troop, e.n);
   if (e.move) return icon("move", e.move);

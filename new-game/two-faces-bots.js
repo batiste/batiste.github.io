@@ -194,10 +194,12 @@ function valueBot(profile) {
         for (const e of list) {
           if (e.run) runs += acts;
           if (!e.spend) continue;
-          const [g, n] = Object.entries(e.spend)[0];
-          const v = fxValue(p, [].concat(e.get), { goods: { P: 0, S: 0, A: 0, T: 0 }, limit: 0 }) / n;
-          if (g === "any") ["P", "S", "T"].forEach((h) => u[h].push({ v, d: (acts * n) / 3 }));
-          else u[g].push({ v, d: acts * n });
+          const parts = Object.entries(e.spend);
+          const v = fxValue(p, [].concat(e.get), { goods: { P: 0, S: 0, A: 0, T: 0 }, limit: 0 }) / parts.reduce((t, [, n]) => t + n, 0);
+          for (const [g, n] of parts) {
+            if (g === "any") ["P", "S", "T"].forEach((h) => u[h].push({ v, d: (acts * n) / 3 }));
+            else u[g].push({ v, d: acts * n });
+          }
         }
       }
     // Arms: +1 strength each. The coming fight if this bot is in it, then later fights.
@@ -226,16 +228,17 @@ function valueBot(profile) {
       if (e.gain) {
         for (let i = 0; i < e.n; i++) v += goodValue(e.gain, sim.goods[e.gain]++, p);
       } else if (e.spend) {
-        const [g, n] = Object.entries(e.spend)[0];
-        const have = g === "any" ? Object.values(sim.goods).reduce((a, b) => a + b, 0) : sim.goods[g];
-        if (have < n) continue;
+        const parts = Object.entries(e.spend);
+        const total = Object.values(sim.goods).reduce((a, b) => a + b, 0);
+        if (parts.some(([g, n]) => (g === "any" ? total : sim.goods[g]) < n)) continue;
         // Spent goods cost what they are worth to this bot ("any": the least useful ones).
         const after = { ...sim.goods };
         let paid = 0;
-        for (let i = 0; i < n; i++) {
-          const h = g === "any" ? Object.keys(after).filter((k) => after[k] > 0).sort((a, b) => goodValue(a, after[a] - 1, p) - goodValue(b, after[b] - 1, p))[0] : g;
-          paid += goodValue(h, --after[h], p);
-        }
+        for (const [g, n] of parts)
+          for (let i = 0; i < n; i++) {
+            const h = g === "any" ? Object.keys(after).filter((k) => after[k] > 0).sort((a, b) => goodValue(a, after[a] - 1, p) - goodValue(b, after[b] - 1, p))[0] : g;
+            paid += goodValue(h, --after[h], p);
+          }
         const gain = fxValue(p, [].concat(e.get), sim) - paid;
         if (gain <= 0) continue;
         v += gain;

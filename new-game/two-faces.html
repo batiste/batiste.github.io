@@ -44,11 +44,11 @@
       <section>
         <h2>Setup</h2>
         <ol class="steps">
-          <li>Each player takes a Citizen and an Outcast character (deal 2 of each, keep 1 of each) and places them side by side.</li>
-          <li>Each player: Citizen pawn on Spire <span data-cfg="spire"></span> (the top), Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply. Then apply your characters' setup (see Characters).</li>
+          <li>Choose a first player.</li>
+          <li>Deal each player 1 Citizen and 1 Outcast character at random; place them side by side. <strong>Advanced:</strong> snake draft instead. Lay out all characters face up. In turn order, each player takes one; then in reverse order (the last player takes twice in a row), each takes one of the other kind.</li>
+          <li>Each player: Citizen pawn on Spire <span id="cit-start"></span> (marked on the board), Outcast pawn on 1; <span id="start"></span>; <span data-cfg="troops"></span> troops in supply. Then apply your characters' setup (see Characters).</li>
           <li>Shuffle the Citizen and Outcast decks. Reveal <span data-cfg="row"></span> cards from each: the <strong>row</strong>.</li>
           <li>Shuffle the Uprising deck and draw <span data-cfg="rounds"></span>: the game lasts at most that many rounds. Reveal the first.</li>
-          <li>Choose a first player.</li>
         </ol>
       </section>
 
@@ -179,6 +179,7 @@
       set("n-out", deckSize("out"));
       set("n-chars", `${CHARACTERS.length} (${CHARACTERS.filter((c) => c.char === "cit").length} Citizens, ${CHARACTERS.filter((c) => c.char === "out").length} Outcasts)`);
       set("n-upr", TF_UPRISINGS.length);
+      set("cit-start", Object.entries(citStarts()).sort((a, b) => b[0] - a[0]).map(([h, ns]) => `${h} with ${ns} players`).join(", "));
       set("start",Object.entries(TF_CONFIG.start).filter(([, n]) => n).map(([g, n]) => fxText({ gain: g, n })).join(", "));
       set("characters", CHARACTERS.map((c) => row([`<strong>${c.name}</strong>`, SIDES[c.char].name, `${SIDES[c.char].up.name}: ${fxList(c.up)}`, `${SIDES[c.char].down.name}: ${fxList(c.down)}`, charSetupText(c)])).join(""));
       set("glossary", glossaryHtml());

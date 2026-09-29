@@ -1,6 +1,6 @@
 /* Two Faces icon chips, drawn by icon() in two-faces-data.js. Shared by two-faces.html and two-faces-play.html. */
 
-.gx { display: inline-flex; align-items: center; gap: 2px; vertical-align: -0.35em; white-space: nowrap; }
+.gx { display: inline-flex; align-items: center; gap: 2px; vertical-align: middle; white-space: nowrap; } /* middle: chips with and without a number line up */
 .gx b { font-weight: 800; }
 .gi {
   --chip: #6b7278;
