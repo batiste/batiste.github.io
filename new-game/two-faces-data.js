@@ -39,6 +39,7 @@ const SIDES = {
 
 // Characters: each player plays one Citizen and one Outcast. Their own strips (up / down) are the base of their sides.
 // Setup dials: goods (extra starting goods, may be negative), cit / out (starting heights), troops (placed at setup).
+// art: illustration shown on the card (else a silhouette).
 const CHARACTERS = [
   { id: "councillor", name: "Councillor", char: "cit", up: [{ spend: { S: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "S", n: 1 }, { gain: "P", n: 1 }] },
   { id: "banker", name: "Banker", char: "cit", up: [{ spend: { P: 1 }, get: { troop: "high", n: 1 } }], down: [{ gain: "P", n: 2 }], goods: { P: 1 } },

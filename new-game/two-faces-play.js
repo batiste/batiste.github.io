@@ -760,6 +760,8 @@ const ART = {
   gunsmith: `<path d="M39 6L29 50" ${LINE(3.2)}/><path d="M39 6l2 1" ${LINE(2)}/>` + HOOD + BODY,
   courier: CAP + HEAD + BODY + `<rect x="30" y="40" width="15" height="12" rx="1.5"/><path d="M30 46h15M37.5 40v12" ${PAPER_LINE(1.2)}/>`,
 };
+// The character's illustration if it has one, else its silhouette.
+const charArt = (x, k) => (charOf(x, k).art ? `<img class="char-art" src="${charOf(x, k).art}" alt="${charOf(x, k).name}" title="${charOf(x, k).name} (${SIDES[k].name})" />` : silhouette(x, k));
 const silhouette = (x, k) => `<svg class="silhouette" viewBox="0 0 48 56" aria-hidden="true">${ART[x.chars[k]] || (k === "cit" ? TOPHAT + HEAD + BODY : HOOD + BODY)}</svg>`;
 
 // Each character: tucked strips above (newest on top), the character card, tucked strips below (newest at the bottom).
@@ -772,7 +774,7 @@ function tableauHtml(x) {
     return `<div class="char-col ${k}">
       ${[...s.up].reverse().map((id) => tuck(id, "up")).join("")}
       <div class="tcard char ${k}">${band(k, "up", fxList(charOf(x, k).up))}
-        <div class="face">${silhouette(x, k)}<h3>${charOf(x, k).name}</h3><div class="char-kind">${SIDES[k].name}</div></div>
+        <div class="face ${charOf(x, k).art ? "art" : ""}">${charArt(x, k)}<h3>${charOf(x, k).name}</h3><div class="char-kind">${SIDES[k].name}</div></div>
         ${band(k, "down", fxList(charOf(x, k).down))}</div>
       ${s.down.map((id) => tuck(id, "down")).join("")}</div>`;
   }).join("");

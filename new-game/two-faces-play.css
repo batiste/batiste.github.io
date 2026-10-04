@@ -141,6 +141,10 @@ body { padding-bottom: 220px; }
 
 .silhouette { width: 50px; height: 58px; color: rgba(20, 24, 28, 0.82); fill: currentColor; }
 .tcard.char .face { gap: 4px; }
+/* Illustrated character: the picture covers the whole face; the name moves to its tooltip. */
+.tcard.char .face.art { padding: 0; }
+.char-art { width: 100%; height: 100%; object-fit: cover; object-position: 50% 0; }
+.face.art h3, .face.art .char-kind { display: none; }
 .btn.small { margin-left: 8px; padding: 2px 8px; font-size: 11px; letter-spacing: 0; }
 
 .glossary { margin-bottom: 16px; }
